@@ -1,0 +1,77 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ExternalLink } from "lucide-react";
+import { getItinerary, getItinerarySlugs } from "@/lib/data";
+import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
+
+export async function generateStaticParams() {
+  return getItinerarySlugs();
+}
+
+export async function generateMetadata({ params }: PageProps<"/itineraries/[slug]">): Promise<Metadata> {
+  const it = await getItinerary((await params).slug);
+  return it ? { title: it.title, description: it.summary } : {};
+}
+
+export default async function ItineraryPage({ params }: PageProps<"/itineraries/[slug]">) {
+  const it = await getItinerary((await params).slug);
+  if (!it) notFound();
+
+  return (
+    <>
+      <Link href={`/destinations/${it.destination.slug}`} className="text-sm text-muted hover:text-foreground">
+        ← {it.destination.name}
+      </Link>
+      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
+      <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
+      <p className="mt-2 text-muted">
+        by{" "}
+        <Link href={`/creators/${it.creator.handle}`} className="underline">
+          {it.creator.name}
+        </Link>{" "}
+        · {it.days} days · {formatMoney(it.totalCents)} est. ·{" "}
+        <a href={it.sourceUrl} className="underline" rel="noopener noreferrer" target="_blank">
+          original
+        </a>
+      </p>
+      <p className="mt-3 max-w-2xl">{it.summary}</p>
+
+      <div className="mt-10 space-y-8">
+        {it.schedule.map(({ day, items }) => (
+          <section key={day}>
+            <h2 className="text-lg font-semibold">Day {day}</h2>
+            <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
+              {items.map((item) => (
+                <li key={item.id} className="flex items-center justify-between gap-4 p-4">
+                  <div>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-xs text-muted">
+                      {categoryLabel[item.category]}
+                      {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <span className="text-sm tabular-nums">
+                      {item.priceCents === 0 ? "Free" : formatMoney(item.priceCents * item.quantity, item.currency)}
+                    </span>
+                    {item.bookUrl && (
+                      <a
+                        href={item.bookUrl}
+                        rel="sponsored noopener noreferrer"
+                        target="_blank"
+                        className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-background"
+                      >
+                        {item.vendor} <ExternalLink className="size-3" aria-hidden />
+                      </a>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </>
+  );
+}

@@ -1,0 +1,178 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Tier {
+  BACKPACKER
+  BUDGET
+  MIDRANGE
+  LUXURY
+}
+
+enum ItemCategory {
+  STAY
+  EXPERIENCE
+  FOOD
+  ESIM
+  GEAR
+  TRANSIT
+}
+
+enum Platform {
+  INSTAGRAM
+  TIKTOK
+  YOUTUBE
+  BLOG
+}
+
+enum CouponType {
+  PLATFORM // our link + our exclusive code
+  PUBLIC // our link + public brand promo
+  CREATOR // creator's link + creator code (attribution kept)
+}
+
+enum PhotoSource {
+  OTA
+  OEMBED
+  UNSPLASH
+  PEXELS
+  PLACEHOLDER
+}
+
+model Destination {
+  id           String      @id @default(cuid())
+  slug         String      @unique
+  name         String
+  country      String
+  summary      String
+  heroPhotoUrl String?
+  places       Place[]
+  itineraries  Itinerary[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Creator {
+  id             String          @id @default(cuid())
+  handle         String          @unique
+  name           String
+  platform       Platform
+  profileUrl     String
+  avatarUrl      String?
+  bio            String?
+  itineraries    Itinerary[]
+  coupons        Coupon[]
+  affiliateLinks AffiliateLink[]
+  createdAt      DateTime        @default(now())
+}
+
+model Itinerary {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  title         String
+  summary       String
+  tier          Tier
+  days          Int
+  sourceUrl     String
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  creatorId     String
+  creator       Creator     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  items         Item[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([destinationId])
+  @@index([creatorId])
+}
+
+/// A canonical spot shared across creators. Consensus = distinct creators whose items point at the same Place.
+model Place {
+  id            String       @id @default(cuid())
+  slug          String
+  name          String
+  category      ItemCategory
+  tip           String?
+  destinationId String
+  destination   Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  items         Item[]
+
+  @@unique([destinationId, slug])
+}
+
+model Item {
+  id          String          @id @default(cuid())
+  day         Int
+  position    Int
+  name        String
+  note        String?
+  category    ItemCategory
+  priceCents  Int
+  currency    String          @default("USD")
+  unit        String? // "night", "person", "day"
+  quantity    Int             @default(1)
+  itineraryId String
+  itinerary   Itinerary       @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+  placeId     String?
+  place       Place?          @relation(fields: [placeId], references: [id], onDelete: SetNull)
+  vendorId    String?
+  vendor      Vendor?         @relation(fields: [vendorId], references: [id])
+  links       AffiliateLink[]
+
+  @@index([itineraryId, day, position])
+  @@index([placeId])
+}
+
+model Vendor {
+  id             String          @id @default(cuid())
+  slug           String          @unique
+  name           String
+  homepage       String
+  items          Item[]
+  affiliateLinks AffiliateLink[]
+  coupons        Coupon[]
+}
+
+/// creatorId null = our platform deep link; set = creator's original link.
+model AffiliateLink {
+  id        String   @id @default(cuid())
+  url       String
+  itemId    String
+  item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  vendorId  String
+  vendor    Vendor   @relation(fields: [vendorId], references: [id])
+  creatorId String?
+  creator   Creator? @relation(fields: [creatorId], references: [id])
+
+  @@index([itemId])
+}
+
+model Coupon {
+  id          String     @id @default(cuid())
+  code        String
+  type        CouponType
+  description String?
+  vendorId    String
+  vendor      Vendor     @relation(fields: [vendorId], references: [id])
+  creatorId   String?
+  creator     Creator?   @relation(fields: [creatorId], references: [id])
+  validFrom   DateTime?
+  validTo     DateTime?
+  active      Boolean    @default(true)
+
+  @@index([vendorId, type, active])
+}
+
+model PhotoCache {
+  id          String      @id @default(cuid())
+  key         String      @unique
+  source      PhotoSource
+  url         String
+  attribution String?
+  fetchedAt   DateTime    @default(now())
+}
