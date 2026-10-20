@@ -9,7 +9,8 @@ export type CartItem = {
   id: string;
   name: string;
   category: ItemCategory;
-  priceCents: number;
+  priceCents: number | null;
+  priceNote?: string | null;
   currency: string;
   unit: string | null;
   quantity: number;
@@ -61,4 +62,5 @@ export function useCartHydrated() {
   return useSyncExternalStore(subscribeHydration, () => useCart.persist.hasHydrated(), () => false);
 }
 
-export const lineTotal = (i: Pick<CartItem, "priceCents" | "quantity">) => i.priceCents * i.quantity;
+/** Unpriced items count as 0; callers show them separately. */
+export const lineTotal = (i: Pick<CartItem, "priceCents" | "quantity">) => (i.priceCents ?? 0) * i.quantity;

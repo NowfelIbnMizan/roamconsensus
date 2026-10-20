@@ -6,7 +6,7 @@ import { ClipboardCopy, Download, ExternalLink, Minus, Plus, Trash2 } from "luci
 import { AllocationBar } from "@/components/allocation-bar";
 import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toNotionMarkdown, toText } from "@/lib/cart-export";
-import { categoryLabel, formatMoney } from "@/lib/format";
+import { categoryLabel, formatMoney, formatPrice } from "@/lib/format";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 export function CartView() {
@@ -34,6 +34,7 @@ export function CartView() {
   const allocation = [...byCategory]
     .map(([category, cents]) => ({ category, pct: totalCents ? (cents / totalCents) * 100 : 0 }))
     .sort((a, b) => b.pct - a.pct);
+  const unpriced = items.filter((i) => i.priceCents === null).length;
   const remaining = budgetCents === null ? null : budgetCents - totalCents;
 
   function download() {
@@ -97,8 +98,8 @@ export function CartView() {
                       <Plus className="size-3" aria-hidden />
                     </button>
                   </div>
-                  <span className="w-16 text-right text-sm tabular-nums">
-                    {item.priceCents === 0 ? "Free" : formatMoney(lineTotal(item), item.currency)}
+                  <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">
+                    {formatPrice(item)}
                   </span>
                   <div className="flex items-center gap-2">
                     {item.bookUrl && (
@@ -131,6 +132,11 @@ export function CartView() {
         <div className="rounded-2xl border border-line bg-card p-5">
           <p className="text-sm text-muted">Estimated total</p>
           <p className="text-3xl font-semibold tabular-nums">{formatMoney(totalCents)}</p>
+          {unpriced > 0 && (
+            <p className="text-xs text-muted">
+              Plus {unpriced} item{unpriced > 1 ? "s" : ""} without a listed price
+            </p>
+          )}
 
           <label className="mt-4 block text-sm text-muted" htmlFor="budget">
             Your budget (USD)

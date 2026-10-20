@@ -1,0 +1,325 @@
+{
+  "slug": "bali",
+  "name": "Bali",
+  "country": "Indonesia",
+  "summary": "Resort beaches in Nusa Dua, cliff temples in Uluwatu, Nusa Penida's coastline, Ubud's rice terraces and volcano sunrises, then Canggu sunsets.",
+  "places": [
+    {
+      "slug": "marriotts-bali-nusa-dua-gardens",
+      "name": "Marriott's Bali Nusa Dua Gardens",
+      "category": "STAY"
+    },
+    {
+      "slug": "nusa-dua-beach-geger-beach-pandawa-beach",
+      "name": "Nusa Dua Beach / Geger Beach / Pandawa Beach",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "bali-collection",
+      "name": "Bali Collection",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "uluwatu-temple",
+      "name": "Uluwatu Temple",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "kecak-dance-performance",
+      "name": "Kecak Dance Performance",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "bumbu-bali",
+      "name": "Bumbu Bali",
+      "category": "FOOD"
+    },
+    {
+      "slug": "ferry-from-sanur-to-nusa-penida",
+      "name": "Ferry from Sanur to Nusa Penida",
+      "category": "TRANSIT"
+    },
+    {
+      "slug": "west-nusa-penida",
+      "name": "West Nusa Penida (Kelingking Beach, Angel's Billabong, Broken Beach, Crystal Bay)",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "diamond-beach",
+      "name": "Diamond Beach",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "maruti-beach-club",
+      "name": "Maruti Beach Club",
+      "category": "FOOD"
+    },
+    {
+      "slug": "sanur-to-ubud-drive",
+      "name": "Sanur to Ubud Drive",
+      "category": "TRANSIT"
+    },
+    {
+      "slug": "ubud-art-market",
+      "name": "Ubud Art Market",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "mount-batur-sunrise-hike",
+      "name": "Mount Batur Sunrise Hike",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "tegalalang-rice-terraces",
+      "name": "Tegalalang Rice Terraces",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "goa-gajah-and-pura-gunung-lebah",
+      "name": "Goa Gajah & Pura Gunung Lebah",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "copper-kitchen-and-bar",
+      "name": "Copper Kitchen and Bar",
+      "category": "FOOD"
+    },
+    {
+      "slug": "alchemy-umah-pizza-warung-di-koi",
+      "name": "Alchemy / Umah Pizza / Warung Di Koi",
+      "category": "FOOD"
+    },
+    {
+      "slug": "no-mas-bar-cp-lounge",
+      "name": "No Mas Bar / CP Lounge",
+      "category": "FOOD"
+    },
+    {
+      "slug": "ubud-yoga",
+      "name": "Ubud Yoga (Radiantly Alive / Ubud Yoga House)",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "pura-tanah-lot",
+      "name": "Pura Tanah Lot",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "canggu-beach-clubs",
+      "name": "Canggu Beach Clubs (The Lawn, Finns, La Brisa)",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "the-shady-shack",
+      "name": "The Shady Shack",
+      "category": "FOOD"
+    }
+  ],
+  "creators": [
+    {
+      "handle": "racheloffduty",
+      "name": "Rachel Off Duty",
+      "platform": "BLOG",
+      "profileUrl": "https://racheloffduty.com"
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "bali-one-week-racheloffduty",
+      "title": "One week in Bali",
+      "summary": "Start slow at a Nusa Dua resort, day-trip to Nusa Penida, base in Ubud for temples and a Mount Batur sunrise hike, finish with Tanah Lot and Canggu beach clubs.",
+      "tier": "MIDRANGE",
+      "days": 7,
+      "creator": "racheloffduty",
+      "sourceUrl": "https://racheloffduty.com/blog/what-to-do-bali-one-week-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "SafetyWing Travel Insurance",
+          "category": "GEAR",
+          "sentiment": "RECOMMENDED",
+          "note": "Essential for emergency medical coverage, trip protection, and optional adventure sports coverage in Bali.",
+          "priceNote": "A couple bucks a day"
+        },
+        {
+          "day": 1,
+          "name": "Marriott's Bali Nusa Dua Gardens",
+          "category": "STAY",
+          "sentiment": "RECOMMENDED",
+          "note": "Great for a relaxing first day to beat jet-lag with a resort feel and dedicated beach shuttles.",
+          "priceNote": "Bookable with Marriott points",
+          "place": "marriotts-bali-nusa-dua-gardens"
+        },
+        {
+          "day": 1,
+          "name": "Nusa Dua Beach / Geger Beach / Pandawa Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Guaranteed beach time with reserved hotel cabanas or space on the sand for non-guests.",
+          "place": "nusa-dua-beach-geger-beach-pandawa-beach"
+        },
+        {
+          "day": 1,
+          "name": "Bali Collection",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "The main spot in the area for grabbing some shopping.",
+          "place": "bali-collection"
+        },
+        {
+          "day": 1,
+          "name": "Uluwatu Temple",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Built on the edge of a cliff, it provides an amazing vantage point of South Bali's epic cliffs and pristine beaches.",
+          "place": "uluwatu-temple"
+        },
+        {
+          "day": 1,
+          "name": "Kecak Dance Performance",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "A rhythmic musical and choreographed skit performance at sunset; well worth seeing for first-timers.",
+          "place": "kecak-dance-performance"
+        },
+        {
+          "day": 1,
+          "name": "Bumbu Bali",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "A sizable restaurant serving exclusively Balinese cuisine.",
+          "place": "bumbu-bali"
+        },
+        {
+          "day": 2,
+          "name": "Ferry from Sanur to Nusa Penida",
+          "category": "TRANSIT",
+          "sentiment": "RECOMMENDED",
+          "note": "A 40-minute ferry ride; wear clothes above the knees as you have to wade shin-deep in water to board.",
+          "place": "ferry-from-sanur-to-nusa-penida"
+        },
+        {
+          "day": 2,
+          "name": "West Nusa Penida (Kelingking Beach, Angel's Billabong, Broken Beach, Crystal Bay)",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Stunning, unbelievable beaches that make the trek to the island completely worth it.",
+          "place": "west-nusa-penida"
+        },
+        {
+          "day": 2,
+          "name": "Diamond Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "An epic must-visit beach on the eastern side of the island.",
+          "place": "diamond-beach"
+        },
+        {
+          "day": 3,
+          "name": "Maruti Beach Club",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Convenient spot near the dock to relax by the pool; the smoothies are great though the food is average.",
+          "priceNote": "Free to use facilities with food/drink purchase",
+          "place": "maruti-beach-club"
+        },
+        {
+          "day": 3,
+          "name": "Sanur to Ubud Drive",
+          "category": "TRANSIT",
+          "sentiment": "RECOMMENDED",
+          "note": "Takes 1-2 hours depending on traffic; highly recommend arranging a private driver ahead of time.",
+          "place": "sanur-to-ubud-drive"
+        },
+        {
+          "day": 3,
+          "name": "Ubud Art Market",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Wander around and pick up beautiful woven bags, scarves, or jewelry.",
+          "place": "ubud-art-market"
+        },
+        {
+          "day": 4,
+          "name": "Mount Batur Sunrise Hike",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Requires a 2 AM wake-up call, but the 1.5-2 hour guided hike yields incredible sunrise views from the volcano.",
+          "place": "mount-batur-sunrise-hike"
+        },
+        {
+          "day": 4,
+          "name": "Tegalalang Rice Terraces",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Make this your first stop to beat the crowds and enjoy the beautiful morning light.",
+          "place": "tegalalang-rice-terraces"
+        },
+        {
+          "day": 4,
+          "name": "Goa Gajah & Pura Gunung Lebah",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Beautiful nearby temples; Goa Gajah has a carved demon entrance, and Gunung Lebah is the birthplace of Ubud.",
+          "place": "goa-gajah-and-pura-gunung-lebah"
+        },
+        {
+          "day": 4,
+          "name": "Copper Kitchen and Bar",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "A fun rooftop spot perfect for a fancier night out.",
+          "place": "copper-kitchen-and-bar"
+        },
+        {
+          "day": 4,
+          "name": "Alchemy / Umah Pizza / Warung Di Koi",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Great diverse eats: Alchemy for raw/vegan, Umah for cozy pizza, and Warung Di Koi for solid mie goreng.",
+          "place": "alchemy-umah-pizza-warung-di-koi"
+        },
+        {
+          "day": 4,
+          "name": "No Mas Bar / CP Lounge",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Vibrant nightlife spots for grabbing drinks, dancing to live music, and mingling.",
+          "place": "no-mas-bar-cp-lounge"
+        },
+        {
+          "day": 6,
+          "name": "Ubud Yoga (Radiantly Alive / Ubud Yoga House)",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Take a class in open-air studios with natural lighting and views of rice terraces.",
+          "place": "ubud-yoga"
+        },
+        {
+          "day": 6,
+          "name": "Pura Tanah Lot",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Very crowded but an absolutely iconic and breathtaking spot to catch the sunset.",
+          "place": "pura-tanah-lot"
+        },
+        {
+          "day": 6,
+          "name": "Canggu Beach Clubs (The Lawn, Finns, La Brisa)",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Choose your vibe from open-air casual, lively poolside DJs, or reclaimed wood Mediterranean atmospheres.",
+          "place": "canggu-beach-clubs"
+        },
+        {
+          "day": 6,
+          "name": "The Shady Shack",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "A breezy, vegetarian health food cafe overlooking the rice fields.",
+          "place": "the-shady-shack"
+        }
+      ]
+    }
+  ]
+}

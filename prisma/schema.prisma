@@ -36,6 +36,12 @@ enum CouponType {
   CREATOR // creator's link + creator code (attribution kept)
 }
 
+enum Sentiment {
+  MUST_VISIT
+  RECOMMENDED
+  OPTIONAL
+}
+
 enum PhotoSource {
   OTA
   OEMBED
@@ -114,7 +120,9 @@ model Item {
   name        String
   note        String?
   category    ItemCategory
-  priceCents  Int
+  priceCents  Int? // null = creator didn't give a price
+  priceNote   String? // creator's own wording, e.g. "a couple bucks a day"
+  sentiment   Sentiment?
   currency    String          @default("USD")
   unit        String? // "night", "person", "day"
   quantity    Int             @default(1)
