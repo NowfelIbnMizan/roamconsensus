@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { CheckCircle2, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { Photo, PhotoCredit } from "@/components/photo";
-import { SampleBanner } from "@/components/sample-banner";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
 
@@ -40,23 +39,7 @@ export default async function DestinationPage({
 
   return (
     <>
-      {destination.isSample && <SampleBanner />}
-      <Photo
-        photoKey={`destination:${destination.slug}`}
-        query={`${destination.name} ${destination.country}`}
-        category="DESTINATION"
-        alt={destination.name}
-        sizes="(min-width: 1024px) 1024px, 100vw"
-        className="mb-6 aspect-[21/9] rounded-2xl"
-        priority
-      />
-      <p className="text-sm text-muted">{destination.country}</p>
-      <h1 className="text-4xl font-semibold tracking-tight">
-        {destination.name}
-      </h1>
-      <p className="mt-3 max-w-2xl text-muted">{destination.summary}</p>
-
-      <section className="mt-10">
+      <section>
         <h2 className="flex items-center gap-2 text-xl font-semibold">
           <Users className="size-5 text-accent" aria-hidden />{" "}
           {creatorCount > 1 ? "Creator consensus" : "Recommended spots"}

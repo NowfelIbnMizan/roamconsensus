@@ -184,6 +184,28 @@ model Coupon {
   @@index([vendorId, type, active])
 }
 
+/// One eSIM data plan for a country, loaded from data/esim/*.json.
+model EsimPlan {
+  id         String   @id @default(cuid())
+  country    String
+  provider   String
+  name       String
+  /// Null = unlimited.
+  dataMb     Int?
+  days       Int
+  priceCents Int
+  currency   String   @default("USD")
+  network    String?
+  speed      String?
+  hotspot    Boolean?
+  notes      String?
+  url        String
+  sourceUrl  String?
+  checkedAt  DateTime
+
+  @@index([country])
+}
+
 model PhotoCache {
   id          String      @id @default(cuid())
   key         String      @unique

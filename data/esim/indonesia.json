@@ -1,0 +1,420 @@
+{
+  "country": "Indonesia",
+  "checkedAt": "2026-10-20",
+  "plans": [
+    {
+      "provider": "Airalo",
+      "name": "Indotel 1GB",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.5,
+      "speed": "4G/5G",
+      "url": "https://www.airalo.com/indonesia-esim",
+      "sourceUrl": "https://kenstechtips.com/index.php/airalo-esim/indotel"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Indotel 3GB",
+      "dataGb": 3,
+      "days": 30,
+      "price": 9.0,
+      "speed": "4G/5G",
+      "url": "https://www.airalo.com/indonesia-esim",
+      "sourceUrl": "https://kenstechtips.com/index.php/airalo-esim/indotel"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Indotel 5GB",
+      "dataGb": 5,
+      "days": 30,
+      "price": 13.5,
+      "speed": "4G/5G",
+      "url": "https://www.airalo.com/indonesia-esim",
+      "sourceUrl": "https://esimdb.com/indonesia/airalo"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Indotel 10GB",
+      "dataGb": 10,
+      "days": 30,
+      "price": 21.0,
+      "speed": "4G/5G",
+      "url": "https://www.airalo.com/indonesia-esim",
+      "sourceUrl": "https://esimdb.com/indonesia/airalo"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Indonesia Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.0,
+      "notes": "Full speed 3GB/day, then 1 Mbps",
+      "url": "https://www.airalo.com/indonesia-esim",
+      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/travelsim-asia-vs-airalo-indonesia-esim"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 1 day",
+      "dataGb": null,
+      "days": 1,
+      "price": 5.9,
+      "network": "Telkomsel/Indosat/XL",
+      "speed": "4G",
+      "hotspot": true,
+      "notes": "Hotspot ~500MB/day; fair use applies",
+      "url": "https://esim.holafly.com/esim-indonesia/",
+      "sourceUrl": "https://esim.holafly.com/internet/mobile-internet-indonesia/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.5,
+      "network": "Telkomsel/Indosat/XL",
+      "speed": "4G",
+      "hotspot": true,
+      "notes": "Hotspot ~500MB/day; fair use applies",
+      "url": "https://esim.holafly.com/esim-indonesia/",
+      "sourceUrl": "https://esim.holafly.com/data-plans/top-best-esim-indonesia"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 50.5,
+      "network": "Telkomsel/Indosat/XL",
+      "speed": "4G",
+      "hotspot": true,
+      "notes": "Hotspot ~500MB/day; fair use applies",
+      "url": "https://esim.holafly.com/esim-indonesia/",
+      "sourceUrl": "https://esim.holafly.com/data-plans/top-best-esim-indonesia"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 74.9,
+      "network": "Telkomsel/Indosat/XL",
+      "speed": "4G",
+      "hotspot": true,
+      "notes": "Hotspot ~500MB/day; fair use applies",
+      "url": "https://esim.holafly.com/esim-indonesia/",
+      "sourceUrl": "https://esim.holafly.com/internet/mobile-internet-indonesia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.79,
+      "hotspot": true,
+      "url": "https://saily.com/esim-indonesia/",
+      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/indonesia-esim-prices-2026"
+    },
+    {
+      "provider": "Saily",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 13.99,
+      "hotspot": true,
+      "url": "https://saily.com/esim-indonesia/",
+      "sourceUrl": "https://esimdb.com/es/indonesia/saily"
+    },
+    {
+      "provider": "Saily",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 21.99,
+      "hotspot": true,
+      "url": "https://saily.com/esim-indonesia/",
+      "sourceUrl": "https://esimdb.com/es/indonesia/saily"
+    },
+    {
+      "provider": "Nomad",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.0,
+      "network": "Telkomsel",
+      "speed": "4G",
+      "hotspot": true,
+      "url": "https://www.getnomad.app/",
+      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/indonesia-esim-prices-2026"
+    },
+    {
+      "provider": "Nomad",
+      "name": "3GB 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 7.0,
+      "network": "Telkomsel",
+      "speed": "4G",
+      "hotspot": true,
+      "url": "https://www.getnomad.app/",
+      "sourceUrl": "https://esims.io/providers/nomad/730410717ed17"
+    },
+    {
+      "provider": "Nomad",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 19.0,
+      "network": "Telkomsel",
+      "speed": "4G",
+      "hotspot": true,
+      "url": "https://www.getnomad.app/",
+      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/indonesia-esim-prices-2026"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.0,
+      "network": "Telkomsel",
+      "speed": "4G",
+      "hotspot": true,
+      "url": "https://www.getnomad.app/",
+      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/indonesia-esim-prices-2026"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.0,
+      "network": "Indosat",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/indonesia-data-plans/",
+      "sourceUrl": "https://esims.io/providers/ubigi/0303107102407243c"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "3GB 15 days",
+      "dataGb": 3,
+      "days": 15,
+      "price": 7.0,
+      "network": "Indosat",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/indonesia-data-plans/",
+      "sourceUrl": "https://esims.io/providers/ubigi/0303107307215243c"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 16.0,
+      "network": "Indosat",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/indonesia-data-plans/",
+      "sourceUrl": "https://esims.io/providers/ubigi/03031071024030243c"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 59.0,
+      "network": "Indosat",
+      "notes": "Fair use ~60GB",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/indonesia-data-plans/indonesia-unlimited-30-days/",
+      "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/indonesia-data-plans/indonesia-unlimited-30-days/"
+    },
+    {
+      "provider": "aloSIM",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.5,
+      "url": "https://alosim.com/destinations/asia-esim/indonesia-esim/",
+      "sourceUrl": "https://alosim.com/destinations/asia-esim/indonesia-esim/"
+    },
+    {
+      "provider": "aloSIM",
+      "name": "3GB 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 9.0,
+      "url": "https://alosim.com/destinations/asia-esim/indonesia-esim/",
+      "sourceUrl": "https://alosim.com/destinations/asia-esim/indonesia-esim/"
+    },
+    {
+      "provider": "aloSIM",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 22.0,
+      "url": "https://alosim.com/destinations/asia-esim/indonesia-esim/",
+      "sourceUrl": "https://alosim.com/destinations/asia-esim/indonesia-esim/"
+    },
+    {
+      "provider": "aloSIM",
+      "name": "20GB 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 35.0,
+      "url": "https://alosim.com/destinations/asia-esim/indonesia-esim/",
+      "sourceUrl": "https://alosim.com/destinations/asia-esim/indonesia-esim/"
+    },
+    {
+      "provider": "Maya Mobile",
+      "name": "1GB 10 days",
+      "dataGb": 1,
+      "days": 10,
+      "price": 4.99,
+      "speed": "4G",
+      "url": "https://maya.net/",
+      "sourceUrl": "https://esims.io/providers/maya-mobile/93521071024010ef83"
+    },
+    {
+      "provider": "Maya Mobile",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 17.0,
+      "speed": "4G",
+      "url": "https://maya.net/",
+      "sourceUrl": "https://esims.io/providers/maya-mobile/93521071024030"
+    },
+    {
+      "provider": "Maya Mobile",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 59.0,
+      "network": "Telkomsel",
+      "speed": "4G",
+      "notes": "Full speed 3GB/day, then 1 Mbps",
+      "url": "https://maya.net/",
+      "sourceUrl": "https://esims.io/blog/the-best-prepaid-esim-plans-for-indonesia"
+    },
+    {
+      "provider": "Jetpac",
+      "name": "1GB 4 days",
+      "dataGb": 1,
+      "days": 4,
+      "price": 7.0,
+      "network": "Indosat",
+      "notes": "Free lounge access if flight delayed 1h+",
+      "url": "https://www.jetpac.com/",
+      "sourceUrl": "https://esims.io/providers/jetpac/8401107102446b7d"
+    },
+    {
+      "provider": "Jetpac",
+      "name": "3GB 7 days",
+      "dataGb": 3,
+      "days": 7,
+      "price": 8.01,
+      "network": "Indosat",
+      "url": "https://www.jetpac.com/",
+      "sourceUrl": "https://esims.io/providers/jetpac/84011073072785ec"
+    },
+    {
+      "provider": "Jetpac",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 11.0,
+      "network": "Indosat",
+      "url": "https://www.jetpac.com/",
+      "sourceUrl": "https://esims.io/providers/jetpac/8401107512030d7a7"
+    },
+    {
+      "provider": "Jetpac",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 18.0,
+      "network": "Indosat",
+      "url": "https://www.jetpac.com/",
+      "sourceUrl": "https://esims.io/en/providers/jetpac/840110710240309794"
+    },
+    {
+      "provider": "GigSky",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 3.49,
+      "url": "https://www.gigsky.com/",
+      "sourceUrl": "https://esims.io/providers/gigsky/4224107102474647"
+    },
+    {
+      "provider": "GigSky",
+      "name": "3GB 15 days",
+      "dataGb": 3,
+      "days": 15,
+      "price": 7.98,
+      "url": "https://www.gigsky.com/",
+      "sourceUrl": "https://esims.io/providers/gigsky/42241073072154647"
+    },
+    {
+      "provider": "GigSky",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 12.8,
+      "url": "https://www.gigsky.com/",
+      "sourceUrl": "https://esims.io/providers/gigsky/42241075120304647"
+    },
+    {
+      "provider": "GigSky",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 19.8,
+      "url": "https://www.gigsky.com/",
+      "sourceUrl": "https://esims.io/providers/gigsky/422410710240304647"
+    },
+    {
+      "provider": "Truely",
+      "name": "Unlimited 1 day",
+      "dataGb": null,
+      "days": 1,
+      "price": 4.42,
+      "notes": "Full speed 5GB/day, then 512 kbps",
+      "url": "https://truely.com/",
+      "sourceUrl": "https://esimdb.com/ja/indonesia/truely"
+    },
+    {
+      "provider": "Truely",
+      "name": "Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 10.32,
+      "notes": "Full speed 5GB/day, then 512 kbps",
+      "url": "https://truely.com/",
+      "sourceUrl": "https://esimdb.com/ja/indonesia/truely"
+    },
+    {
+      "provider": "Truely",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 40.74,
+      "notes": "Full speed 5GB/day, then 512 kbps",
+      "url": "https://truely.com/",
+      "sourceUrl": "https://esimdb.com/fr/indonesia/truely"
+    },
+    {
+      "provider": "Yesim",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 14.6,
+      "url": "https://yesim.app/",
+      "sourceUrl": "https://esims.io/providers/yesim/032110710240304647"
+    },
+    {
+      "provider": "Yesim",
+      "name": "20GB 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 20.0,
+      "url": "https://yesim.app/",
+      "sourceUrl": "https://esims.io/providers/yesim/032110720480304647"
+    }
+  ]
+}

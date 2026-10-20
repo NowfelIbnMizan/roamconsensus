@@ -270,3 +270,31 @@ export async function getCreator(handle: string) {
     },
   });
 }
+
+export async function getEsimPlans(country: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(`esim:${country}`);
+  return db.esimPlan.findMany({
+    where: { country },
+    orderBy: { priceCents: "asc" },
+    select: {
+      id: true,
+      provider: true,
+      name: true,
+      dataMb: true,
+      days: true,
+      priceCents: true,
+      currency: true,
+      network: true,
+      speed: true,
+      hotspot: true,
+      notes: true,
+      url: true,
+      sourceUrl: true,
+      checkedAt: true,
+    },
+  });
+}
+
+export type EsimPlanRow = Awaited<ReturnType<typeof getEsimPlans>>[number];
