@@ -16,7 +16,7 @@ export function groupByVendor(items: CartItem[]) {
 function describe(i: CartItem) {
   const qty = i.unit ? ` (${i.quantity} ${i.unit}${i.quantity > 1 ? "s" : ""})` : i.quantity > 1 ? ` x${i.quantity}` : "";
   const price = i.priceCents === 0 ? "free" : formatMoney(lineTotal(i), i.currency);
-  return `${i.name}${qty}: ${price}`;
+  return `${i.name}${qty}: ${price}${i.couponCode ? ` (code ${i.couponCode})` : ""}`;
 }
 
 export function toText(items: CartItem[]) {

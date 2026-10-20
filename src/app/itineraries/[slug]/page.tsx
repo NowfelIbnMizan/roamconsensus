@@ -35,6 +35,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
           quantity: i.quantity,
           vendor: i.vendor,
           bookUrl: i.bookUrl,
+          couponCode: i.couponCode,
           itinerary: ref,
         },
       ]),
@@ -76,6 +77,16 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                       {categoryLabel[item.category]}
                       {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
                     </p>
+                    {(item.couponCode || item.creditedTo) && (
+                      <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
+                        {item.couponCode && (
+                          <span className="rounded border border-dashed border-accent px-1.5 py-0.5 font-mono text-accent">
+                            {item.couponCode}
+                          </span>
+                        )}
+                        {item.creditedTo && <span className="text-muted">via {item.creditedTo}&apos;s link</span>}
+                      </p>
+                    )}
                   </div>
                   <div className="flex shrink-0 items-center gap-3">
                     <span className="text-sm tabular-nums">

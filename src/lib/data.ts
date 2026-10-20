@@ -1,6 +1,55 @@
 import { cacheLife, cacheTag } from "next/cache";
 import { db } from "@/lib/db";
 import type { ItemCategory } from "@/generated/prisma/client";
+import { pickOffer, type CouponCandidate } from "@/lib/coupons";
+
+const couponSelect = {
+  vendorId: true,
+  code: true,
+  type: true,
+  description: true,
+  creatorId: true,
+  validFrom: true,
+  validTo: true,
+  active: true,
+} as const;
+
+async function couponsByVendor(vendorIds: string[]) {
+  const coupons = await db.coupon.findMany({ where: { vendorId: { in: vendorIds }, active: true }, select: couponSelect });
+  const map = new Map<string, CouponCandidate[]>();
+  for (const { vendorId, ...c } of coupons) map.set(vendorId, [...(map.get(vendorId) ?? []), c]);
+  return map;
+}
+
+type LinkRow = { url: string; creatorId: string | null };
+
+function offerFor(
+  item: { vendorId: string | null; links: LinkRow[] },
+  creator: { id: string; name: string },
+  coupons: Map<string, CouponCandidate[]>,
+) {
+  return pickOffer({
+    platformUrl: item.links.find((l) => l.creatorId === null)?.url ?? null,
+    creatorUrl: item.links.find((l) => l.creatorId === creator.id)?.url ?? null,
+    creator,
+    coupons: item.vendorId ? (coupons.get(item.vendorId) ?? []) : [],
+  });
+}
+
+/** Resolve the best link + code for one item. Not cached: coupon validity depends on the current time. */
+export async function resolveItemOffer(itemId: string) {
+  const item = await db.item.findUnique({
+    where: { id: itemId },
+    select: {
+      vendorId: true,
+      links: { select: { url: true, creatorId: true } },
+      itinerary: { select: { creator: { select: { id: true, name: true } } } },
+    },
+  });
+  if (!item) return null;
+  const coupons = await couponsByVendor(item.vendorId ? [item.vendorId] : []);
+  return offerFor(item, item.itinerary.creator, coupons);
+}
 
 export async function getDestinations() {
   "use cache";
@@ -114,19 +163,21 @@ export async function getItinerary(slug: string) {
     where: { slug },
     include: {
       destination: { select: { slug: true, name: true } },
-      creator: { select: { handle: true, name: true, platform: true } },
+      creator: { select: { id: true, handle: true, name: true, platform: true } },
       items: {
         orderBy: [{ day: "asc" }, { position: "asc" }],
         include: {
           vendor: { select: { name: true } },
           place: { select: { slug: true } },
-          // Platform deep link (creatorId null) for now; coupon fallback resolver lands in step 4.
-          links: { where: { creatorId: null }, select: { url: true }, take: 1 },
+          links: { select: { url: true, creatorId: true } },
         },
       },
     },
   });
   if (!it) return null;
+
+  // Resolved when the page is cached (hourly), so a code can outlive its validTo by up to the cache lifetime.
+  const coupons = await couponsByVendor([...new Set(it.items.flatMap((i) => (i.vendorId ? [i.vendorId] : [])))]);
 
   const days = new Map<number, typeof it.items>();
   for (const item of it.items) days.set(item.day, [...(days.get(item.day) ?? []), item]);
@@ -139,11 +190,13 @@ export async function getItinerary(slug: string) {
     days: it.days,
     sourceUrl: it.sourceUrl,
     destination: it.destination,
-    creator: it.creator,
+    creator: { handle: it.creator.handle, name: it.creator.name, platform: it.creator.platform },
     totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
     schedule: [...days].map(([day, items]) => ({
       day,
-      items: items.map((i) => ({
+      items: items.map((i) => {
+        const offer = offerFor(i, it.creator, coupons);
+        return {
         id: i.id,
         name: i.name,
         note: i.note,
@@ -153,8 +206,11 @@ export async function getItinerary(slug: string) {
         unit: i.unit,
         currency: i.currency,
         vendor: i.vendor?.name ?? null,
-        bookUrl: i.links[0]?.url ?? null,
-      })),
+        bookUrl: offer?.url ?? null,
+        couponCode: offer?.code ?? null,
+        creditedTo: offer?.creditedTo ?? null,
+      };
+      }),
     })),
   };
 }
