@@ -225,6 +225,7 @@ export async function getItinerary(slug: string) {
         category: i.category,
         priceCents: i.priceCents,
         priceNote: i.priceNote,
+        priceSourceUrl: i.priceSourceUrl,
         sentiment: i.sentiment,
         quantity: i.quantity,
         unit: i.unit,

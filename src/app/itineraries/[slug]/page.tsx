@@ -117,6 +117,20 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                   <div className="flex shrink-0 items-center gap-3">
                     <span className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}>
                       {formatPrice(item)}
+                      {item.priceCents !== null && item.priceNote && (
+                        <span className="block text-xs text-muted">{item.priceNote}</span>
+                      )}
+                      {item.priceSourceUrl && (
+                        <a
+                          href={item.priceSourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-xs text-muted underline decoration-dotted hover:text-accent"
+                          title="The creator didn't list a price; this is the typical price from this source."
+                        >
+                          Typical price · {new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}
+                        </a>
+                      )}
                     </span>
                     {item.bookUrl && (
                       <a
