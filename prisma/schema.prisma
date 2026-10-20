@@ -46,6 +46,7 @@ enum Sentiment {
 enum PhotoSource {
   OTA
   OEMBED
+  WEBSITE
   UNSPLASH
   PEXELS
   PLACEHOLDER
@@ -107,6 +108,8 @@ model Place {
   name          String
   category      ItemCategory
   tip           String?
+  /// Venue's own site; its share image (og:image) is used as the place photo.
+  website       String?
   destinationId String
   destination   Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
   items         Item[]

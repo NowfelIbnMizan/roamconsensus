@@ -5,6 +5,8 @@ type Props = {
   photoKey: string;
   query: string;
   category: PlaceholderCategory;
+  /** Venue's own site, tried before stock photos. */
+  website?: string | null;
   alt: string;
   sizes: string;
   className?: string;
@@ -13,9 +15,21 @@ type Props = {
   priority?: boolean;
 };
 
-export async function Photo({ photoKey, query, category, alt, sizes, className = "", credit = true, priority }: Props) {
-  const photo = await getPhoto({ key: photoKey, query, category });
+export async function Photo({
+  photoKey,
+  query,
+  category,
+  website,
+  alt,
+  sizes,
+  className = "",
+  credit = true,
+  priority,
+}: Props) {
+  const photo = await getPhoto({ key: photoKey, query, category, website });
   const isPlaceholder = photo.source === "PLACEHOLDER";
+  // Venue images can be on any host, so they skip the optimizer rather than opening it to every domain.
+  const unoptimized = isPlaceholder || photo.source === "WEBSITE";
   return (
     <div className={`relative overflow-hidden bg-line ${className}`}>
       <Image
@@ -24,7 +38,7 @@ export async function Photo({ photoKey, query, category, alt, sizes, className =
         fill
         sizes={sizes}
         priority={priority}
-        unoptimized={isPlaceholder}
+        unoptimized={unoptimized}
         className="object-cover"
       />
       {credit && photo.attribution && (
@@ -42,8 +56,13 @@ export async function Photo({ photoKey, query, category, alt, sizes, className =
 }
 
 /** Credit line for photos shown too small to carry one. */
-export async function PhotoCredit({ photoKey, query, category }: Pick<Props, "photoKey" | "query" | "category">) {
-  const photo = await getPhoto({ key: photoKey, query, category });
+export async function PhotoCredit({
+  photoKey,
+  query,
+  category,
+  website,
+}: Pick<Props, "photoKey" | "query" | "category" | "website">) {
+  const photo = await getPhoto({ key: photoKey, query, category, website });
   if (!photo.attribution) return null;
   return (
     <a href={photo.creditUrl ?? undefined} target="_blank" rel="noopener noreferrer" className="hover:text-accent">

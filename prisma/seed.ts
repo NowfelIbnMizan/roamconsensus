@@ -36,7 +36,7 @@ const Destination = z.object({
   summary: z.string(),
   heroPhotoUrl: url.optional(),
   sample: z.boolean().default(false),
-  places: z.array(z.object({ slug, name: z.string(), category, tip: z.string().optional() })),
+  places: z.array(z.object({ slug, name: z.string(), category, tip: z.string().optional(), website: url.optional() })),
   creators: z.array(
     z.object({
       handle: slug,
@@ -151,10 +151,12 @@ async function main() {
 
     const placeIds = new Map<string, string>();
     for (const p of places) {
+      // Explicit nulls so removing an optional field from the JSON clears it.
+      const fields = { ...p, tip: p.tip ?? null, website: p.website ?? null };
       const row = await db.place.upsert({
         where: { destinationId_slug: { destinationId: dest.id, slug: p.slug } },
-        create: { ...p, destinationId: dest.id },
-        update: p,
+        create: { ...fields, destinationId: dest.id },
+        update: fields,
       });
       placeIds.set(p.slug, row.id);
     }

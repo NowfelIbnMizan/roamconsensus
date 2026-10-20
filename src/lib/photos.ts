@@ -20,6 +20,7 @@ type Lookup = {
   query: string;
   category: PlaceholderCategory;
   postUrl?: string;
+  website?: string | null;
 };
 
 // OTA content APIs (Agoda, Booking, Klook) need partner credentials; plug them in here first when available.
@@ -38,6 +39,29 @@ async function fromOEmbed(postUrl?: string): Promise<Photo | null> {
         creditUrl: postUrl,
       }
     : null;
+}
+
+const META_IMAGE_TAG = /<meta[^>]+(?:property|name)=["'](?:og:image(?::secure_url)?|twitter:image)["'][^>]*>/gi;
+const CONTENT_ATTR = /content=["']([^"']+)["']/i;
+
+/** The venue's own share image (og:image / twitter:image) from its homepage. */
+async function fromWebsite(website?: string | null): Promise<Photo | null> {
+  if (!website) return null;
+  const res = await fetch(website, {
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; RoamConsensus/1.0; +https://roamconsensus-3arq.netlify.app)" },
+    redirect: "follow",
+    signal: AbortSignal.timeout(8000),
+  }).catch(() => null);
+  if (!res?.ok || !res.headers.get("content-type")?.includes("html")) return null;
+  const html = (await res.text().catch(() => "")).slice(0, 300_000);
+  for (const tag of html.match(META_IMAGE_TAG) ?? []) {
+    const raw = tag.match(CONTENT_ATTR)?.[1]?.replace(/&amp;/g, "&");
+    const url = raw ? URL.parse(raw, res.url) : null;
+    if (url?.protocol !== "https:") continue;
+    const host = new URL(website).hostname.replace(/^www\./, "");
+    return { url: url.href, source: "WEBSITE", attribution: `Photo from ${host}`, creditUrl: website };
+  }
+  return null;
 }
 
 async function fromUnsplash(query: string): Promise<Photo | null> {
@@ -88,8 +112,8 @@ async function fromPexels(query: string): Promise<Photo | null> {
     : null;
 }
 
-/** Fallback chain: cache → OTA → oEmbed thumbnail → Unsplash → Pexels → category placeholder. */
-export async function findPhoto({ key, query, category, postUrl }: Lookup): Promise<Photo> {
+/** Fallback chain: cache → OTA → venue website → oEmbed thumbnail → Unsplash → Pexels → category placeholder. */
+export async function findPhoto({ key, query, category, postUrl, website }: Lookup): Promise<Photo> {
   const cached = await db.photoCache.findUnique({ where: { key } });
   if (cached && Date.now() - cached.fetchedAt.getTime() < CACHE_TTL_MS) {
     return {
@@ -101,7 +125,7 @@ export async function findPhoto({ key, query, category, postUrl }: Lookup): Prom
   }
 
   const found =
-    (await fromOta()) ?? (await fromOEmbed(postUrl)) ?? (await fromUnsplash(query)) ?? (await fromPexels(query));
+    (await fromOta()) ?? (await fromWebsite(website)) ?? (await fromOEmbed(postUrl)) ?? (await fromUnsplash(query)) ?? (await fromPexels(query));
 
   if (!found) {
     return {

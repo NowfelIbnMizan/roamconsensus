@@ -126,6 +126,7 @@ export async function getDestination(slug: string) {
         name: place.name,
         category: place.category,
         tip: place.tip,
+        website: place.website,
         creators: toList(byCreator(false)),
         skippedBy: toList(byCreator(true)),
       };

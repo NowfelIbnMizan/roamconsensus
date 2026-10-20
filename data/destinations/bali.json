@@ -7,7 +7,8 @@
     {
       "slug": "marriotts-bali-nusa-dua-gardens",
       "name": "Marriott's Bali Nusa Dua Gardens",
-      "category": "STAY"
+      "category": "STAY",
+      "website": "https://www.marriott.com/en-us/hotels/dpsmv-marriotts-bali-nusa-dua-gardens/overview/"
     },
     {
       "slug": "nusa-dua-beach-geger-beach-pandawa-beach",
@@ -32,7 +33,8 @@
     {
       "slug": "bumbu-bali",
       "name": "Bumbu Bali",
-      "category": "FOOD"
+      "category": "FOOD",
+      "website": "https://www.balifoods.com"
     },
     {
       "slug": "ferry-from-sanur-to-nusa-penida",
@@ -82,7 +84,8 @@
     {
       "slug": "copper-kitchen-and-bar",
       "name": "Copper Kitchen and Bar",
-      "category": "FOOD"
+      "category": "FOOD",
+      "website": "https://bisma-eight.com"
     },
     {
       "slug": "alchemy-umah-pizza-warung-di-koi",
@@ -112,7 +115,8 @@
     {
       "slug": "the-shady-shack",
       "name": "The Shady Shack",
-      "category": "FOOD"
+      "category": "FOOD",
+      "website": "https://theshadyshackbali.com"
     },
     {
       "slug": "coffee-cartel",
@@ -127,17 +131,20 @@
     {
       "slug": "w-hotel",
       "name": "W Hotel",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "website": "https://www.marriott.com/en-us/hotels/dpswh-w-bali-seminyak/overview/"
     },
     {
       "slug": "merah-putih",
       "name": "Merah Putih",
-      "category": "FOOD"
+      "category": "FOOD",
+      "website": "https://merahputihbali.com"
     },
     {
       "slug": "the-edge",
       "name": "The Edge",
-      "category": "FOOD"
+      "category": "FOOD",
+      "website": "https://theedgebali.com"
     },
     {
       "slug": "green-bowl-beach",
@@ -147,7 +154,8 @@
     {
       "slug": "sundays-beach-club",
       "name": "Sundays Beach Club",
-      "category": "FOOD"
+      "category": "FOOD",
+      "website": "https://www.sundaysbeachclub.com"
     },
     {
       "slug": "sarong",
