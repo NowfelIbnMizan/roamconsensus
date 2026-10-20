@@ -76,7 +76,8 @@ export default async function DestinationPage({
                     query={placeQuery(p.name, destination.name)}
                     category={p.category}
                     alt={p.name}
-                    sizes="64px"
+                    // Landscape photos cropped to a square need ~2x the box width to stay sharp.
+                    sizes="128px"
                     credit={false}
                     className="size-16 shrink-0 rounded-lg"
                   />
