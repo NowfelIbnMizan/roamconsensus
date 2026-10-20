@@ -203,8 +203,22 @@ async function main() {
     console.log(`Loaded ${d.slug}: ${itineraries.length} itineraries, ${creators.length} creators.`);
   }
 
-  // Coupons are fully owned by coupons.json.
+  // Coupons are fully owned by coupons.json. Clear them before pruning so no
+  // coupon still points at a creator about to be removed.
   await db.coupon.deleteMany();
+
+  // A destination whose file was deleted is removed (cascades to its places,
+  // itineraries and items), then any creator left with no itineraries.
+  const goneDestinations = await db.destination.deleteMany({
+    where: { slug: { notIn: destinations.map((d) => d.slug) } },
+  });
+  const goneCreators = await db.creator.deleteMany({
+    where: { handle: { notIn: [...creatorHandles] }, itineraries: { none: {} } },
+  });
+  if (goneDestinations.count || goneCreators.count) {
+    console.log(`Removed ${goneDestinations.count} destinations and ${goneCreators.count} creators no longer in data/.`);
+  }
+
   await db.coupon.createMany({
     data: coupons.map(({ vendor, creator, ...c }) => ({
       ...c,
