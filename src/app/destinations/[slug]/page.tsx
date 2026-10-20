@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
+import { SampleBanner } from "@/components/sample-banner";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
 
@@ -22,6 +23,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
 
   return (
     <>
+      {destination.isSample && <SampleBanner />}
       <p className="text-sm text-muted">{destination.country}</p>
       <h1 className="text-4xl font-semibold tracking-tight">{destination.name}</h1>
       <p className="mt-3 max-w-2xl text-muted">{destination.summary}</p>

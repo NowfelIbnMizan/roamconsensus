@@ -29,7 +29,14 @@ export default async function Home() {
                 <div className="flex items-center gap-1 text-sm text-muted">
                   <MapPin className="size-4" aria-hidden /> {d.country}
                 </div>
-                <h3 className="mt-1 text-xl font-semibold">{d.name}</h3>
+                <h3 className="mt-1 text-xl font-semibold">
+                  {d.name}
+                  {d.isSample && (
+                    <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200">
+                      Sample
+                    </span>
+                  )}
+                </h3>
                 <p className="mt-2 text-sm text-muted">{d.summary}</p>
                 <p className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                   {d._count.itineraries} itineraries <ArrowRight className="size-4 transition group-hover:translate-x-0.5" aria-hidden />

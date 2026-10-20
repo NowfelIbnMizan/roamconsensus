@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import { SampleBanner } from "@/components/sample-banner";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
@@ -44,6 +45,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
 
   return (
     <>
+      {it.destination.isSample && <SampleBanner />}
       <Link href={`/destinations/${it.destination.slug}`} className="text-sm text-muted hover:text-foreground">
         ← {it.destination.name}
       </Link>

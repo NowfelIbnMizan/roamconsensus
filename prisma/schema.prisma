@@ -51,6 +51,8 @@ model Destination {
   country      String
   summary      String
   heroPhotoUrl String?
+  /// Fictional demo content; the site shows a banner on it.
+  isSample     Boolean     @default(false)
   places       Place[]
   itineraries  Itinerary[]
   createdAt    DateTime    @default(now())

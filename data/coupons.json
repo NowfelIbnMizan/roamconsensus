@@ -1,0 +1,38 @@
+[
+  {
+    "vendor": "klook",
+    "code": "ROAMKLOOK8",
+    "type": "PLATFORM",
+    "description": "8% off activities"
+  },
+  {
+    "vendor": "booking",
+    "code": "BOOK2026",
+    "type": "PUBLIC",
+    "description": "Public promo"
+  },
+  {
+    "vendor": "truely",
+    "code": "ROAMSIM15",
+    "type": "PLATFORM",
+    "description": "15% off eSIMs"
+  },
+  {
+    "vendor": "klook",
+    "code": "MIKA10",
+    "type": "CREATOR",
+    "creator": "packlightmika"
+  },
+  {
+    "vendor": "klook",
+    "code": "SAMTRAVELS",
+    "type": "CREATOR",
+    "creator": "slowtravelsam"
+  },
+  {
+    "vendor": "klook",
+    "code": "AURELIA",
+    "type": "CREATOR",
+    "creator": "aurelia.journeys"
+  }
+]
