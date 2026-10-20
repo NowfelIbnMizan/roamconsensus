@@ -96,7 +96,12 @@ export async function getDestination(slug: string) {
       },
       places: {
         include: {
-          items: { select: { itinerary: { select: { creator: { select: { handle: true, name: true } } } } } },
+          items: {
+            select: {
+              sentiment: true,
+              itinerary: { select: { creator: { select: { handle: true, name: true } } } },
+            },
+          },
         },
       },
     },
@@ -105,20 +110,32 @@ export async function getDestination(slug: string) {
 
   const creatorCount = new Set(destination.itineraries.map((i) => i.creatorId)).size;
 
-  // Consensus: how many distinct creators recommend each place.
+  // Consensus: how many distinct creators recommend each place. AVOID items
+  // count against a place instead of for it.
   const consensus = destination.places
     .map((place) => {
-      const creators = new Map(place.items.map((i) => [i.itinerary.creator.handle, i.itinerary.creator.name]));
+      const byCreator = (avoid: boolean) =>
+        new Map(
+          place.items
+            .filter((i) => (i.sentiment === "AVOID") === avoid)
+            .map((i) => [i.itinerary.creator.handle, i.itinerary.creator.name]),
+        );
+      const toList = (m: Map<string, string>) => [...m].map(([handle, name]) => ({ handle, name }));
       return {
         slug: place.slug,
         name: place.name,
         category: place.category,
         tip: place.tip,
-        creators: [...creators].map(([handle, name]) => ({ handle, name })),
+        creators: toList(byCreator(false)),
+        skippedBy: toList(byCreator(true)),
       };
     })
-    .filter((p) => p.creators.length > 0)
-    .sort((a, b) => b.creators.length - a.creators.length || a.name.localeCompare(b.name));
+    .filter((p) => p.creators.length > 0 || p.skippedBy.length > 0)
+    .sort(
+      (a, b) =>
+        b.creators.length - b.skippedBy.length - (a.creators.length - a.skippedBy.length) ||
+        a.name.localeCompare(b.name),
+    );
 
   const routes = destination.itineraries.map((it) => {
     const byCategory = new Map<ItemCategory, number>();

@@ -113,6 +113,81 @@
       "slug": "the-shady-shack",
       "name": "The Shady Shack",
       "category": "FOOD"
+    },
+    {
+      "slug": "coffee-cartel",
+      "name": "Coffee Cartel",
+      "category": "FOOD"
+    },
+    {
+      "slug": "prana-spa",
+      "name": "Prana Spa",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "w-hotel",
+      "name": "W Hotel",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "merah-putih",
+      "name": "Merah Putih",
+      "category": "FOOD"
+    },
+    {
+      "slug": "the-edge",
+      "name": "The Edge",
+      "category": "FOOD"
+    },
+    {
+      "slug": "green-bowl-beach",
+      "name": "Green Bowl Beach",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "sundays-beach-club",
+      "name": "Sundays Beach Club",
+      "category": "FOOD"
+    },
+    {
+      "slug": "sarong",
+      "name": "Sarong",
+      "category": "FOOD"
+    },
+    {
+      "slug": "ubud-shopping",
+      "name": "Ubud Shopping",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "royal-ubud-palace-fire-show",
+      "name": "Royal Ubud Palace Fire Show",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "tirta-gangga-water-palace",
+      "name": "Tirta Gangga Water Palace",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "gates-of-heaven",
+      "name": "Gates of Heaven (Lempuyang Temple)",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "ubud-rafting",
+      "name": "Ubud Rafting",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "tegenungan-waterfall",
+      "name": "Tegenungan Waterfall",
+      "category": "EXPERIENCE"
+    },
+    {
+      "slug": "tirta-empul-temple",
+      "name": "Tirta Empul Temple",
+      "category": "EXPERIENCE"
     }
   ],
   "creators": [
@@ -121,6 +196,12 @@
       "name": "Rachel Off Duty",
       "platform": "BLOG",
       "profileUrl": "https://racheloffduty.com"
+    },
+    {
+      "handle": "vamosbitchachos",
+      "name": "Evie",
+      "platform": "BLOG",
+      "profileUrl": "https://vamosbitchachos.com"
     }
   ],
   "itineraries": [
@@ -318,6 +399,162 @@
           "sentiment": "RECOMMENDED",
           "note": "A breezy, vegetarian health food cafe overlooking the rice fields.",
           "place": "the-shady-shack"
+        }
+      ]
+    },
+    {
+      "slug": "bali-10-days-vamosbitchachos",
+      "title": "10 days of luxury Bali",
+      "summary": "Seminyak spas and fine dining, Uluwatu cliff pools and beach clubs, Ubud culture and rice terraces, East Bali water palaces, and a Nusa Penida day trip.",
+      "tier": "LUXURY",
+      "days": 10,
+      "creator": "vamosbitchachos",
+      "sourceUrl": "https://vamosbitchachos.com/bali-10-day-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Coffee Cartel",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "A little coffee shop with the freshest produce and the tastiest breakfast options.",
+          "place": "coffee-cartel"
+        },
+        {
+          "day": 1,
+          "name": "Prana Spa",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "A perfect place to kick back, relax, and enjoy a spa treatment.",
+          "place": "prana-spa"
+        },
+        {
+          "day": 1,
+          "name": "W Hotel",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Great beachfront spot with endless pools and an energetic atmosphere.",
+          "place": "w-hotel"
+        },
+        {
+          "day": 1,
+          "name": "Merah Putih",
+          "category": "FOOD",
+          "sentiment": "MUST_VISIT",
+          "note": "Authentic Balinese fine dining with 10/10 lobster dumplings; book in advance.",
+          "priceNote": "Relatively pricey",
+          "place": "merah-putih"
+        },
+        {
+          "day": 2,
+          "name": "The Edge",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Ultimate #poolgoals; make sure to reserve a table early to secure your spot.",
+          "place": "the-edge"
+        },
+        {
+          "day": 2,
+          "name": "Green Bowl Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "A gorgeous, secluded beach perfect for exploring.",
+          "place": "green-bowl-beach"
+        },
+        {
+          "day": 2,
+          "name": "Sundays Beach Club",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "An amazing beach club setting with great vibes.",
+          "place": "sundays-beach-club"
+        },
+        {
+          "day": 2,
+          "name": "Sarong",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Another fantastic dinner option known for excellent service and tasting menus.",
+          "place": "sarong"
+        },
+        {
+          "day": 5,
+          "name": "Ubud Shopping",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Pick up souvenirs like the popular twine bags and local household products.",
+          "place": "ubud-shopping"
+        },
+        {
+          "day": 5,
+          "name": "Royal Ubud Palace Fire Show",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "A cultural evening show starting around 8:30 PM; arrive early for good seats.",
+          "place": "royal-ubud-palace-fire-show"
+        },
+        {
+          "day": 6,
+          "name": "Tegallalang Rice Terrace",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Incredibly famous, vast rice terraces with spectacular, dream-like views.",
+          "place": "tegalalang-rice-terraces"
+        },
+        {
+          "day": 6,
+          "name": "Tirta Gangga Water Palace",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Former royal home featuring beautiful carved statues, lush gardens, and iconic koi fish ponds.",
+          "place": "tirta-gangga-water-palace"
+        },
+        {
+          "day": 6,
+          "name": "Gates of Heaven (Lempuyang Temple)",
+          "category": "EXPERIENCE",
+          "sentiment": "AVOID",
+          "note": "Felt like a social media trap with nothing to see but two gates; not worth the hype.",
+          "place": "gates-of-heaven"
+        },
+        {
+          "day": 8,
+          "name": "Kelingking Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Breathtaking T-Rex shaped viewpoint; arrive early so you have energy to hike down and back up.",
+          "place": "west-nusa-penida"
+        },
+        {
+          "day": 8,
+          "name": "Crystal Bay Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Crystal clear water making it ideal for snorkeling, diving, or just kicking back for a tan.",
+          "place": "west-nusa-penida"
+        },
+        {
+          "day": 10,
+          "name": "Ubud Rafting",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Highly rated by others as a trip highlight, though the creator skipped it due to personal preference.",
+          "place": "ubud-rafting"
+        },
+        {
+          "day": 10,
+          "name": "Tegenungan Waterfall",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "A stunning, accessible waterfall located in the southern part of Bali.",
+          "place": "tegenungan-waterfall"
+        },
+        {
+          "day": 10,
+          "name": "Tirta Empul Temple",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "The creator's biggest regret to miss; watch thousands bathe in thousand-year-old curative holy springs.",
+          "place": "tirta-empul-temple"
         }
       ]
     }

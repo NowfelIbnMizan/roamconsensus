@@ -40,6 +40,7 @@ enum Sentiment {
   MUST_VISIT
   RECOMMENDED
   OPTIONAL
+  AVOID
 }
 
 enum PhotoSource {
