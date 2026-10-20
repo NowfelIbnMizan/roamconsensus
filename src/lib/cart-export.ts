@@ -1,5 +1,5 @@
 import { lineTotal, type CartItem } from "@/lib/cart-store";
-import { formatMoney } from "@/lib/format";
+import { formatMoney, formatPrice } from "@/lib/format";
 
 export function groupByVendor(items: CartItem[]) {
   const groups = new Map<string, CartItem[]>();
@@ -15,7 +15,7 @@ export function groupByVendor(items: CartItem[]) {
 
 function describe(i: CartItem) {
   const qty = i.unit ? ` (${i.quantity} ${i.unit}${i.quantity > 1 ? "s" : ""})` : i.quantity > 1 ? ` x${i.quantity}` : "";
-  const price = i.priceCents === 0 ? "free" : formatMoney(lineTotal(i), i.currency);
+  const price = formatPrice(i);
   return `${i.name}${qty}: ${price}${i.couponCode ? ` (code ${i.couponCode})` : ""}`;
 }
 

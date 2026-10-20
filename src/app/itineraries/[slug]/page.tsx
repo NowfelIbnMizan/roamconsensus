@@ -6,7 +6,7 @@ import { SampleBanner } from "@/components/sample-banner";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
-import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
+import { categoryLabel, formatMoney, formatPrice, sentimentLabel, tierLabel } from "@/lib/format";
 
 export async function generateStaticParams() {
   return getItinerarySlugs();
@@ -31,6 +31,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
           name: i.name,
           category: i.category,
           priceCents: i.priceCents,
+          priceNote: i.priceNote,
           currency: i.currency,
           unit: i.unit,
           quantity: i.quantity,
@@ -56,7 +57,8 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         <Link href={`/creators/${it.creator.handle}`} className="underline">
           {it.creator.name}
         </Link>{" "}
-        · {it.days} days · {formatMoney(it.totalCents)} est. ·{" "}
+        · {it.days} days ·{" "}
+        {it.totalCents > 0 && <>{formatMoney(it.totalCents)} est.{it.unpricedCount > 0 && " for priced items"} · </>}
         <a href={it.sourceUrl} className="underline" rel="noopener noreferrer" target="_blank">
           original
         </a>
@@ -72,10 +74,23 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
             <h2 className="text-lg font-semibold">Day {day}</h2>
             <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
               {items.map((item) => (
-                <li key={item.id} className="flex items-center justify-between gap-4 p-4">
-                  <div>
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-xs text-muted">
+                <li key={item.id} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 p-4">
+                  <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
+                    <p className="font-medium">
+                      {item.name}
+                      {item.sentiment === "MUST_VISIT" && (
+                        <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
+                          {sentimentLabel.MUST_VISIT}
+                        </span>
+                      )}
+                      {item.sentiment === "OPTIONAL" && (
+                        <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs text-muted">
+                          {sentimentLabel.OPTIONAL}
+                        </span>
+                      )}
+                    </p>
+                    {item.note && <p className="mt-0.5 text-sm text-muted">{item.note}</p>}
+                    <p className="mt-0.5 text-xs text-muted">
                       {categoryLabel[item.category]}
                       {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
                     </p>
@@ -91,8 +106,8 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                     )}
                   </div>
                   <div className="flex shrink-0 items-center gap-3">
-                    <span className="text-sm tabular-nums">
-                      {item.priceCents === 0 ? "Free" : formatMoney(item.priceCents * item.quantity, item.currency)}
+                    <span className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}>
+                      {formatPrice(item)}
                     </span>
                     {item.bookUrl && (
                       <a

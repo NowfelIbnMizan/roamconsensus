@@ -75,8 +75,8 @@ export async function getDestinationSlugs() {
   return db.destination.findMany({ select: { slug: true } });
 }
 
-function itemTotal(item: { priceCents: number; quantity: number }) {
-  return item.priceCents * item.quantity;
+function itemTotal(item: { priceCents: number | null; quantity: number }) {
+  return (item.priceCents ?? 0) * item.quantity;
 }
 
 export async function getDestination(slug: string) {
@@ -125,6 +125,7 @@ export async function getDestination(slug: string) {
     for (const item of it.items) byCategory.set(item.category, (byCategory.get(item.category) ?? 0) + itemTotal(item));
     const totalCents = [...byCategory.values()].reduce((a, b) => a + b, 0);
     return {
+      unpricedCount: it.items.filter((i) => i.priceCents === null).length,
       slug: it.slug,
       title: it.title,
       summary: it.summary,
@@ -194,6 +195,7 @@ export async function getItinerary(slug: string) {
     destination: it.destination,
     creator: { handle: it.creator.handle, name: it.creator.name, platform: it.creator.platform },
     totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
+    unpricedCount: it.items.filter((i) => i.priceCents === null).length,
     schedule: [...days].map(([day, items]) => ({
       day,
       items: items.map((i) => {
@@ -204,6 +206,8 @@ export async function getItinerary(slug: string) {
         note: i.note,
         category: i.category,
         priceCents: i.priceCents,
+        priceNote: i.priceNote,
+        sentiment: i.sentiment,
         quantity: i.quantity,
         unit: i.unit,
         currency: i.currency,
