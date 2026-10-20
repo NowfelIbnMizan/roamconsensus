@@ -25,6 +25,14 @@ npm run dev
 - `/cart` trip cart (localStorage): steppers, budget, vendor groups, TXT/Notion export
 - `/disclosure` affiliate disclosure
 
+## API
+
+- `GET /api/coupons/resolve?itemId=` best link + code: platform code, then public promo, then creator code via creator link
+- `GET /api/photos?query=&category=&key=&postUrl=` cache, OTA (stub), oEmbed thumbnail, Unsplash, Pexels, placeholder
+- `GET /api/oembed?url=` YouTube / TikTok / Instagram embeds (Instagram needs `META_OEMBED_TOKEN`)
+
+`npm test` runs the coupon fallback tests.
+
 ## Data model
 
 See `prisma/schema.prisma`. Consensus counts distinct creators whose `Item`s point at the same `Place`.

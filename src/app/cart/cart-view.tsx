@@ -68,6 +68,11 @@ export function CartView() {
                       <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
                         {item.itinerary.title}
                       </Link>
+                      {item.couponCode && (
+                        <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
+                          {item.couponCode}
+                        </span>
+                      )}
                     </p>
                   </div>
                   <div className="mr-auto flex items-center gap-1 sm:mr-0" aria-label={`Quantity for ${item.name}`}>

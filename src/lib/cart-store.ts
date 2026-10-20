@@ -15,6 +15,7 @@ export type CartItem = {
   quantity: number;
   vendor: string | null;
   bookUrl: string | null;
+  couponCode?: string | null; // optional: carts saved before codes existed lack it
   itinerary: { slug: string; title: string };
 };
 
