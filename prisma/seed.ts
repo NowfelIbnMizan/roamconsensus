@@ -122,6 +122,12 @@ const creators: {
 ];
 
 async function main() {
+  // Runs on every Netlify build; only wipe and reseed when asked, so real data is never lost.
+  if (process.env.SEED_RESET !== "1" && (await db.destination.count()) > 0) {
+    console.log("Database already has data; skipping seed. Set SEED_RESET=1 to wipe and reseed.");
+    return;
+  }
+
   await db.$transaction([
     db.affiliateLink.deleteMany(),
     db.coupon.deleteMany(),
