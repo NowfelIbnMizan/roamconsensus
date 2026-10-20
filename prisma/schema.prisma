@@ -128,6 +128,8 @@ model Item {
   priceNote   String? // creator's own wording, e.g. "a couple bucks a day"
   sentiment   Sentiment?
   currency    String          @default("USD")
+  /// Where we found the price when the creator didn't give one (official site, ticket office, booking platform).
+  priceSourceUrl String?
   unit        String? // "night", "person", "day"
   quantity    Int             @default(1)
   itineraryId String

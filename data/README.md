@@ -11,7 +11,7 @@ Rules:
 - Places can have `"website"`: the venue's official site. Its share image becomes the place photo (falls back to Unsplash).
 - `"sample": true` marks fictional demo content; the site shows a banner on it.
 - Items that point at the same `place` slug count toward that place's creator consensus.
-- `price` is in `currency` (default USD), per `unit` x `quantity`. Leave it out when the creator gave none; `priceNote` keeps their wording.
+- `price` is in `currency` (default USD), per `unit` x `quantity`. Leave it out when the creator gave none; `priceNote` keeps their wording. If the creator gave none but we found a typical price, set `price` plus `priceSource` (the URL it came from); `priceNote` then says what it covers, and the site labels it "Typical price".
 - `sentiment`: `MUST_VISIT`, `RECOMMENDED`, `OPTIONAL` or `AVOID` (creator says skip it; not counted as a recommendation). `note` holds the creator's key tip.
 - `ourUrl` is our affiliate link, `creatorUrl` is the creator's own link; both need `vendor`.
 

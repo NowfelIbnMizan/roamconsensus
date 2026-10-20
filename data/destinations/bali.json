@@ -236,8 +236,10 @@
           "category": "STAY",
           "sentiment": "RECOMMENDED",
           "note": "Great for a relaxing first day to beat jet-lag with a resort feel and dedicated beach shuttles.",
-          "priceNote": "Bookable with Marriott points",
-          "place": "marriotts-bali-nusa-dua-gardens"
+          "priceNote": "per night, 1-bedroom (date-dependent) (creator: bookable with Marriott points)",
+          "place": "marriotts-bali-nusa-dua-gardens",
+          "price": 170,
+          "priceSource": "https://www.stayz.com.au/pdp/lo/19414394"
         },
         {
           "day": 1,
@@ -245,7 +247,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Guaranteed beach time with reserved hotel cabanas or space on the sand for non-guests.",
-          "place": "nusa-dua-beach-geger-beach-pandawa-beach"
+          "place": "nusa-dua-beach-geger-beach-pandawa-beach",
+          "price": 1.56,
+          "priceNote": "Pandawa entry; Nusa Dua free, Geger ~IDR 5k",
+          "priceSource": "https://inivie.com/discover-bali/pantai-pandawa-bali"
         },
         {
           "day": 1,
@@ -253,7 +258,10 @@
           "category": "EXPERIENCE",
           "sentiment": "OPTIONAL",
           "note": "The main spot in the area for grabbing some shopping.",
-          "place": "bali-collection"
+          "place": "bali-collection",
+          "price": 0,
+          "priceNote": "free to enter",
+          "priceSource": "https://ca.hotels.com/go/indonesia/bali-collection"
         },
         {
           "day": 1,
@@ -261,7 +269,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Built on the edge of a cliff, it provides an amazing vantage point of South Bali's epic cliffs and pristine beaches.",
-          "place": "uluwatu-temple"
+          "place": "uluwatu-temple",
+          "price": 6.25,
+          "priceNote": "IDR 100k per adult, sarong included",
+          "priceSource": "https://www.indonesia.travel/id-id/travel-ideas/pilgrimage/pura-uluwatu/"
         },
         {
           "day": 1,
@@ -269,7 +280,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "A rhythmic musical and choreographed skit performance at sunset; well worth seeing for first-timers.",
-          "place": "kecak-dance-performance"
+          "place": "kecak-dance-performance",
+          "price": 9.38,
+          "priceNote": "IDR 150k ticket; temple entry extra",
+          "priceSource": "https://kura2bus.com/blog/uluwatu-kecak-dance-ticket-price/"
         },
         {
           "day": 1,
@@ -285,7 +299,10 @@
           "category": "TRANSIT",
           "sentiment": "RECOMMENDED",
           "note": "A 40-minute ferry ride; wear clothes above the knees as you have to wade shin-deep in water to board.",
-          "place": "ferry-from-sanur-to-nusa-penida"
+          "place": "ferry-from-sanur-to-nusa-penida",
+          "price": 12.5,
+          "priceNote": "IDR 200k per person, one way",
+          "priceSource": "https://inivie.com/discover-bali/nusa-penida-ferry-schedule-prices-and-how-to-book"
         },
         {
           "day": 2,
@@ -293,7 +310,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Stunning, unbelievable beaches that make the trek to the island completely worth it.",
-          "place": "west-nusa-penida"
+          "place": "west-nusa-penida",
+          "price": 50,
+          "priceNote": "shared day tour incl. boat & lunch",
+          "priceSource": "https://www.expedia.com/things-to-do/bali-nusa-penida-day-trip-west-tour-ticket.a49261655.activity-details"
         },
         {
           "day": 2,
@@ -301,7 +321,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "An epic must-visit beach on the eastern side of the island.",
-          "place": "diamond-beach"
+          "place": "diamond-beach",
+          "price": 2.19,
+          "priceNote": "IDR 35k entry + parking",
+          "priceSource": "https://pickyourtrail.com/blog/diamond-beach-nusa-penida"
         },
         {
           "day": 3,
@@ -309,8 +332,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "Convenient spot near the dock to relax by the pool; the smoothies are great though the food is average.",
-          "priceNote": "Free to use facilities with food/drink purchase",
-          "place": "maruti-beach-club"
+          "priceNote": "sunbed minimum spend (creator: free to use facilities with food/drink purchase)",
+          "place": "maruti-beach-club",
+          "price": 18.75,
+          "priceSource": "https://wanderlog.com/place/details/7765167"
         },
         {
           "day": 3,
@@ -318,7 +343,10 @@
           "category": "TRANSIT",
           "sentiment": "RECOMMENDED",
           "note": "Takes 1-2 hours depending on traffic; highly recommend arranging a private driver ahead of time.",
-          "place": "sanur-to-ubud-drive"
+          "place": "sanur-to-ubud-drive",
+          "price": 30,
+          "priceNote": "private car, one way",
+          "priceSource": "https://kiwitaxi.com/de/indonesia/ubud-sanur"
         },
         {
           "day": 3,
@@ -326,7 +354,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Wander around and pick up beautiful woven bags, scarves, or jewelry.",
-          "place": "ubud-art-market"
+          "place": "ubud-art-market",
+          "price": 0,
+          "priceNote": "free to enter",
+          "priceSource": "https://pickyourtrail.com/tourism/bali/ubud-art-market-guide"
         },
         {
           "day": 4,
@@ -334,7 +365,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Requires a 2 AM wake-up call, but the 1.5-2 hour guided hike yields incredible sunrise views from the volcano.",
-          "place": "mount-batur-sunrise-hike"
+          "place": "mount-batur-sunrise-hike",
+          "price": 37,
+          "priceNote": "small-group tour with breakfast",
+          "priceSource": "https://www.pelago.com/en/activity/ptd2o-mount-batur-sunrise-trekking/"
         },
         {
           "day": 4,
@@ -342,7 +376,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Make this your first stop to beat the crowds and enjoy the beautiful morning light.",
-          "place": "tegalalang-rice-terraces"
+          "place": "tegalalang-rice-terraces",
+          "price": 1.56,
+          "priceNote": "IDR 25k entry; farmer donations extra",
+          "priceSource": "https://www.thecommonwanderer.com/blog/tegalalang-rice-terraces-bali"
         },
         {
           "day": 4,
@@ -350,7 +387,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Beautiful nearby temples; Goa Gajah has a carved demon entrance, and Gunung Lebah is the birthplace of Ubud.",
-          "place": "goa-gajah-and-pura-gunung-lebah"
+          "place": "goa-gajah-and-pura-gunung-lebah",
+          "price": 3.13,
+          "priceNote": "IDR 50k Goa Gajah entry",
+          "priceSource": "https://pickyourtrail.com/attractions/bali/goa-gajah"
         },
         {
           "day": 4,
@@ -358,7 +398,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "A fun rooftop spot perfect for a fancier night out.",
-          "place": "copper-kitchen-and-bar"
+          "place": "copper-kitchen-and-bar",
+          "price": 5.94,
+          "priceNote": "mains from IDR 95k++",
+          "priceSource": "https://thehoneycombers.com/bali/where-to-eat-ubud-best-restaurants"
         },
         {
           "day": 4,
@@ -366,7 +409,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "Great diverse eats: Alchemy for raw/vegan, Umah for cozy pizza, and Warung Di Koi for solid mie goreng.",
-          "place": "alchemy-umah-pizza-warung-di-koi"
+          "place": "alchemy-umah-pizza-warung-di-koi",
+          "price": 5.94,
+          "priceNote": "per person, Alchemy breakfast bar",
+          "priceSource": "https://www.alchemybali.com/menu"
         },
         {
           "day": 4,
@@ -374,7 +420,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "Vibrant nightlife spots for grabbing drinks, dancing to live music, and mingling.",
-          "place": "no-mas-bar-cp-lounge"
+          "place": "no-mas-bar-cp-lounge",
+          "price": 10.94,
+          "priceNote": "per cocktail at No Más",
+          "priceSource": "https://whatsnewindonesia.com/bali/ultimate-guide/party-guide-ubud"
         },
         {
           "day": 6,
@@ -382,7 +431,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Take a class in open-air studios with natural lighting and views of rice terraces.",
-          "place": "ubud-yoga"
+          "place": "ubud-yoga",
+          "price": 9.38,
+          "priceNote": "drop-in class, Ubud Yoga House",
+          "priceSource": "https://www.neverendingvoyage.com/yoga-ubud-bali/"
         },
         {
           "day": 6,
@@ -390,7 +442,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Very crowded but an absolutely iconic and breathtaking spot to catch the sunset.",
-          "place": "pura-tanah-lot"
+          "place": "pura-tanah-lot",
+          "price": 4.69,
+          "priceNote": "IDR 75k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/tanah-lot-temple/"
         },
         {
           "day": 6,
@@ -398,7 +453,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Choose your vibe from open-air casual, lively poolside DJs, or reclaimed wood Mediterranean atmospheres.",
-          "place": "canggu-beach-clubs"
+          "place": "canggu-beach-clubs",
+          "price": 0,
+          "priceNote": "free entry; daybeds have min spend",
+          "priceSource": "https://baliuntold.com/destinations/canggu/beach-clubs/"
         },
         {
           "day": 6,
@@ -406,7 +464,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "A breezy, vegetarian health food cafe overlooking the rice fields.",
-          "place": "the-shady-shack"
+          "place": "the-shady-shack",
+          "price": 11,
+          "priceNote": "main course, approx.",
+          "priceSource": "https://world-travellers.com/Asia/Indonesia/bali/canggu-restaurants-good-food/"
         }
       ]
     },
@@ -425,7 +486,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "A little coffee shop with the freshest produce and the tastiest breakfast options.",
-          "place": "coffee-cartel"
+          "place": "coffee-cartel",
+          "price": 6.88,
+          "priceNote": "breakfast main, coffee extra",
+          "priceSource": "https://danielfooddiary.com/2025/10/01/coffeecartel/"
         },
         {
           "day": 1,
@@ -433,7 +497,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "A perfect place to kick back, relax, and enjoy a spa treatment.",
-          "place": "prana-spa"
+          "place": "prana-spa",
+          "price": 46.88,
+          "priceNote": "60-min massage, from",
+          "priceSource": "https://thehoneycombers.com/bali/best-seminyak-spas-bali/"
         },
         {
           "day": 1,
@@ -441,7 +508,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Great beachfront spot with endless pools and an energetic atmosphere.",
-          "place": "w-hotel"
+          "place": "w-hotel",
+          "price": 360,
+          "priceNote": "per night, entry room (date-dependent)",
+          "priceSource": "https://www.expedia.com.my/ms/Seminyak-Hotels-Hotel-Ski.0-0-d6047747-tHotelSki.Travel-Guide-Filter-Hotels"
         },
         {
           "day": 1,
@@ -449,8 +519,10 @@
           "category": "FOOD",
           "sentiment": "MUST_VISIT",
           "note": "Authentic Balinese fine dining with 10/10 lobster dumplings; book in advance.",
-          "priceNote": "Relatively pricey",
-          "place": "merah-putih"
+          "priceNote": "10-dish tasting menu per person (creator: relatively pricey)",
+          "place": "merah-putih",
+          "price": 66,
+          "priceSource": "https://www.priceless.com/culinary/product/211365/a-celebration-of-indonesia-at-merah-putih"
         },
         {
           "day": 2,
@@ -458,7 +530,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "Ultimate #poolgoals; make sure to reserve a table early to secure your spot.",
-          "place": "the-edge"
+          "place": "the-edge",
+          "price": 43.75,
+          "priceNote": "day pass incl. IDR 600k F&B credit",
+          "priceSource": "https://www.trvlogue.com/en/oneeighty-bali-dayclub-uluwatu"
         },
         {
           "day": 2,
@@ -466,7 +541,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "A gorgeous, secluded beach perfect for exploring.",
-          "place": "green-bowl-beach"
+          "place": "green-bowl-beach",
+          "price": 0.31,
+          "priceNote": "IDR 5k entry + parking",
+          "priceSource": "https://baliuntold.com/things-to-do/beaches/green-bowl-beach/"
         },
         {
           "day": 2,
@@ -474,7 +552,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "An amazing beach club setting with great vibes.",
-          "place": "sundays-beach-club"
+          "place": "sundays-beach-club",
+          "price": 50,
+          "priceNote": "day pass incl. F&B credit & cable car",
+          "priceSource": "https://thehoneycombers.com/bali/sundays-beach-club-uluwatu/"
         },
         {
           "day": 2,
@@ -482,7 +563,10 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "Another fantastic dinner option known for excellent service and tasting menus.",
-          "place": "sarong"
+          "place": "sarong",
+          "price": 50,
+          "priceNote": "per person approx., before wine",
+          "priceSource": "https://theluxtraveller.com/?p=4272"
         },
         {
           "day": 5,
@@ -498,7 +582,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "A cultural evening show starting around 8:30 PM; arrive early for good seats.",
-          "place": "royal-ubud-palace-fire-show"
+          "place": "royal-ubud-palace-fire-show",
+          "price": 6.25,
+          "priceNote": "IDR 100k show ticket",
+          "priceSource": "https://www.baliholidaysecrets.com/ubud-palace-legong-dance/"
         },
         {
           "day": 6,
@@ -506,7 +593,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Incredibly famous, vast rice terraces with spectacular, dream-like views.",
-          "place": "tegalalang-rice-terraces"
+          "place": "tegalalang-rice-terraces",
+          "price": 1.56,
+          "priceNote": "IDR 25k entry; farmer donations extra",
+          "priceSource": "https://www.thecommonwanderer.com/blog/tegalalang-rice-terraces-bali"
         },
         {
           "day": 6,
@@ -514,7 +604,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Former royal home featuring beautiful carved statues, lush gardens, and iconic koi fish ponds.",
-          "place": "tirta-gangga-water-palace"
+          "place": "tirta-gangga-water-palace",
+          "price": 5.63,
+          "priceNote": "IDR 90k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/tirta-gangga-water-palace/"
         },
         {
           "day": 6,
@@ -522,7 +615,10 @@
           "category": "EXPERIENCE",
           "sentiment": "AVOID",
           "note": "Felt like a social media trap with nothing to see but two gates; not worth the hype.",
-          "place": "gates-of-heaven"
+          "place": "gates-of-heaven",
+          "price": 9.38,
+          "priceNote": "IDR 150k entry + ~50k shuttle",
+          "priceSource": "https://www.baliholidaysecrets.com/lempuyang-temple/"
         },
         {
           "day": 8,
@@ -530,7 +626,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "Breathtaking T-Rex shaped viewpoint; arrive early so you have energy to hike down and back up.",
-          "place": "west-nusa-penida"
+          "place": "west-nusa-penida",
+          "price": 0.63,
+          "priceNote": "IDR 10k entry + island levy",
+          "priceSource": "https://themanduls.com/blog/kelingking-beach-nusa-penida/"
         },
         {
           "day": 8,
@@ -546,7 +645,10 @@
           "category": "EXPERIENCE",
           "sentiment": "OPTIONAL",
           "note": "Highly rated by others as a trip highlight, though the creator skipped it due to personal preference.",
-          "place": "ubud-rafting"
+          "place": "ubud-rafting",
+          "price": 40,
+          "priceNote": "per person incl. hotel pickup",
+          "priceSource": "https://www.trvlogue.com/en/ayung-river-rafting-bali"
         },
         {
           "day": 10,
@@ -554,7 +656,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "A stunning, accessible waterfall located in the southern part of Bali.",
-          "place": "tegenungan-waterfall"
+          "place": "tegenungan-waterfall",
+          "price": 1.88,
+          "priceNote": "IDR 30k per adult",
+          "priceSource": "https://www.destination.com/guides/tegenungan-waterfall-bali"
         },
         {
           "day": 10,
@@ -562,7 +667,10 @@
           "category": "EXPERIENCE",
           "sentiment": "MUST_VISIT",
           "note": "The creator's biggest regret to miss; watch thousands bathe in thousand-year-old curative holy springs.",
-          "place": "tirta-empul-temple"
+          "place": "tirta-empul-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult",
+          "priceSource": "https://www.indonesia.travel/us-en/travel-ideas/pilgrimage/pura-tirta-empul"
         }
       ]
     }

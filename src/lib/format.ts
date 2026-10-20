@@ -1,9 +1,21 @@
 export function formatMoney(cents: number, currency = "USD") {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 }).format(cents / 100);
+  // Whole units, except small amounts (entry fees) that would round to $0 or $1.
+  const digits = cents < 1000 && cents % 100 !== 0 ? 2 : 0;
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(cents / 100);
 }
 
 /** Price for a line: total when known, else the creator's wording, else "Price not listed". */
-export function formatPrice(item: { priceCents: number | null; quantity: number; currency?: string; priceNote?: string | null }) {
+export function formatPrice(item: {
+  priceCents: number | null;
+  quantity: number;
+  currency?: string;
+  priceNote?: string | null;
+}) {
   if (item.priceCents === null) return item.priceNote ?? "Price not listed";
   if (item.priceCents === 0) return "Free";
   return formatMoney(item.priceCents * item.quantity, item.currency);

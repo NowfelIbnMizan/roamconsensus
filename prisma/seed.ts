@@ -63,6 +63,7 @@ const Destination = z.object({
           category,
           price: z.number().nonnegative().optional(), // omit when the creator gave no price
           priceNote: z.string().optional(),
+          priceSource: url.optional(), // set when the price is our research, not the creator's
           sentiment: z.enum(["MUST_VISIT", "RECOMMENDED", "OPTIONAL", "AVOID"]).optional(),
           currency: z.string().length(3).default("USD"),
           unit: z.string().optional(),
@@ -183,6 +184,7 @@ async function main() {
             category: item.category,
             priceCents: item.price === undefined ? null : Math.round(item.price * 100),
             priceNote: item.priceNote,
+            priceSourceUrl: item.priceSource,
             sentiment: item.sentiment,
             currency: item.currency,
             unit: item.unit,

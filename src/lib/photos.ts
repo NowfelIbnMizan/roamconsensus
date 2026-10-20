@@ -52,7 +52,12 @@ async function fromWebsite(website?: string | null): Promise<Photo | null> {
     redirect: "follow",
     signal: AbortSignal.timeout(8000),
   }).catch(() => null);
-  if (!res?.ok || !res.headers.get("content-type")?.includes("html")) return null;
+  if (!res?.ok || !res.headers.get("content-type")?.includes("html")) {
+    console.warn(
+      `[photos] website ${website}: ${res ? `HTTP ${res.status} ${res.headers.get("content-type")}` : "fetch failed"}`,
+    );
+    return null;
+  }
   const html = (await res.text().catch(() => "")).slice(0, 300_000);
   for (const tag of html.match(META_IMAGE_TAG) ?? []) {
     const raw = tag.match(CONTENT_ATTR)?.[1]?.replace(/&amp;/g, "&");
@@ -61,6 +66,7 @@ async function fromWebsite(website?: string | null): Promise<Photo | null> {
     const host = new URL(website).hostname.replace(/^www\./, "");
     return { url: url.href, source: "WEBSITE", attribution: `Photo from ${host}`, creditUrl: website };
   }
+  console.warn(`[photos] website ${website}: no og:image`);
   return null;
 }
 
@@ -74,7 +80,12 @@ async function fromUnsplash(query: string): Promise<Photo | null> {
       signal: AbortSignal.timeout(5000),
     },
   ).catch(() => null);
-  if (!res?.ok) return null;
+  if (!res?.ok) {
+    console.warn(
+      `[photos] unsplash "${query}": ${res ? `HTTP ${res.status}, ${res.headers.get("x-ratelimit-remaining") ?? "?"} left this hour` : "fetch failed"}`,
+    );
+    return null;
+  }
   const photo = (await res.json()).results?.[0];
   if (!photo) return null;
   // Unsplash API terms: report each photo we start using via its download endpoint.
@@ -125,7 +136,11 @@ export async function findPhoto({ key, query, category, postUrl, website }: Look
   }
 
   const found =
-    (await fromOta()) ?? (await fromWebsite(website)) ?? (await fromOEmbed(postUrl)) ?? (await fromUnsplash(query)) ?? (await fromPexels(query));
+    (await fromOta()) ??
+    (await fromWebsite(website)) ??
+    (await fromOEmbed(postUrl)) ??
+    (await fromUnsplash(query)) ??
+    (await fromPexels(query));
 
   if (!found) {
     return {
@@ -147,6 +162,9 @@ export async function findPhoto({ key, query, category, postUrl, website }: Look
 /** Cached lookup for server components, so prerendered pages don't re-query providers. */
 export async function getPhoto(lookup: Lookup): Promise<Photo> {
   "use cache";
-  cacheLife("days");
-  return findPhoto(lookup);
+  const photo = await findPhoto(lookup);
+  // A placeholder usually means a provider was down or rate-limited, so retry within the hour instead of keeping it for days.
+  if (photo.source === "PLACEHOLDER") cacheLife("hours");
+  else cacheLife("days");
+  return photo;
 }
