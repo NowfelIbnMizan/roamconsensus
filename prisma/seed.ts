@@ -29,6 +29,27 @@ const Coupons = z.array(
   }),
 );
 
+const EsimFile = z.object({
+  country: z.string(),
+  checkedAt: z.coerce.date(),
+  plans: z.array(
+    z.object({
+      provider: z.string(),
+      name: z.string(),
+      dataGb: z.number().positive().nullable(), // null = unlimited
+      days: z.number().int().positive(),
+      price: z.number().positive(),
+      currency: z.string().length(3).default("USD"),
+      network: z.string().optional(),
+      speed: z.string().optional(),
+      hotspot: z.boolean().optional(),
+      notes: z.string().optional(),
+      url,
+      sourceUrl: url.optional(),
+    }),
+  ),
+});
+
 const Destination = z.object({
   slug,
   name: z.string(),
@@ -206,6 +227,25 @@ async function main() {
     }
     console.log(`Loaded ${d.slug}: ${itineraries.length} itineraries, ${creators.length} creators.`);
   }
+
+  // eSIM plans are fully owned by data/esim/*.json, one file per country.
+  const esimDir = path.join(dataDir, "esim");
+  const esimFiles = readdirSync(esimDir)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => load(EsimFile, path.join(esimDir, f)));
+  await db.esimPlan.deleteMany();
+  await db.esimPlan.createMany({
+    data: esimFiles.flatMap(({ country, checkedAt, plans }) =>
+      plans.map(({ dataGb, price, ...p }) => ({
+        ...p,
+        country,
+        checkedAt,
+        dataMb: dataGb === null ? null : Math.round(dataGb * 1024),
+        priceCents: Math.round(price * 100),
+      })),
+    ),
+  });
+  console.log(`Loaded ${esimFiles.reduce((n, f) => n + f.plans.length, 0)} eSIM plans.`);
 
   // Coupons are fully owned by coupons.json. Clear them before pruning so no
   // coupon still points at a creator about to be removed.
