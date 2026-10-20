@@ -63,6 +63,7 @@ export async function getDestinations() {
       country: true,
       summary: true,
       heroPhotoUrl: true,
+      isSample: true,
       _count: { select: { itineraries: true } },
     },
   });
@@ -142,6 +143,7 @@ export async function getDestination(slug: string) {
     name: destination.name,
     country: destination.country,
     summary: destination.summary,
+    isSample: destination.isSample,
     creatorCount,
     consensus,
     routes,
@@ -162,7 +164,7 @@ export async function getItinerary(slug: string) {
   const it = await db.itinerary.findUnique({
     where: { slug },
     include: {
-      destination: { select: { slug: true, name: true } },
+      destination: { select: { slug: true, name: true, isSample: true } },
       creator: { select: { id: true, handle: true, name: true, platform: true } },
       items: {
         orderBy: [{ day: "asc" }, { position: "asc" }],

@@ -10,7 +10,7 @@ Stack: Next.js 16 (App Router, Cache Components), Tailwind CSS 4, Lucide, Prisma
 cp .env.example .env        # set DATABASE_URL
 npm install                 # also runs prisma generate
 npm run db:migrate          # apply migrations
-npm run db:seed             # sample Kyoto data (fictional creators)
+npm run db:seed             # load data/*.json
 npm run dev
 ```
 
@@ -18,7 +18,7 @@ npm run dev
 
 ## Deploy (Netlify + Neon)
 
-`netlify.toml` runs migrations, seeds an empty database (skips if data exists), then builds.
+`netlify.toml` runs migrations, loads `data/*.json` into the database (upsert; see `data/README.md`), then builds.
 Set env vars in Netlify: `DATABASE_URL` (Neon pooled URL) and `DIRECT_DATABASE_URL` (same URL without `-pooler`).
 To wipe and reseed sample data: `SEED_RESET=1 npm run db:seed`.
 

@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "agoda",
+    "name": "Agoda",
+    "homepage": "https://www.agoda.com"
+  },
+  {
+    "slug": "booking",
+    "name": "Booking.com",
+    "homepage": "https://www.booking.com"
+  },
+  {
+    "slug": "klook",
+    "name": "Klook",
+    "homepage": "https://www.klook.com"
+  },
+  {
+    "slug": "getyourguide",
+    "name": "GetYourGuide",
+    "homepage": "https://www.getyourguide.com"
+  },
+  {
+    "slug": "amazon",
+    "name": "Amazon",
+    "homepage": "https://www.amazon.com"
+  },
+  {
+    "slug": "truely",
+    "name": "Truely eSIM",
+    "homepage": "https://www.truely.com"
+  }
+]

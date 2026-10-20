@@ -1,230 +1,219 @@
-// Sample data: fictional creators, placeholder affiliate IDs. Replace with real data before launch.
+// Loads data/*.json into the database. Runs on every Netlify build.
+// Upserts by slug/handle, so editing or adding a file and redeploying is enough.
+// Rows that disappear from the files are removed only for itineraries' items; set SEED_RESET=1 to wipe everything first.
 import "dotenv/config";
+import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { z } from "zod";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient, type ItemCategory, type Tier } from "../src/generated/prisma/client";
+import { PrismaClient } from "../src/generated/prisma/client";
 
 const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
 
-const vendors = [
-  { slug: "agoda", name: "Agoda", homepage: "https://www.agoda.com" },
-  { slug: "booking", name: "Booking.com", homepage: "https://www.booking.com" },
-  { slug: "klook", name: "Klook", homepage: "https://www.klook.com" },
-  { slug: "getyourguide", name: "GetYourGuide", homepage: "https://www.getyourguide.com" },
-  { slug: "amazon", name: "Amazon", homepage: "https://www.amazon.com" },
-  { slug: "truely", name: "Truely eSIM", homepage: "https://www.truely.com" },
-];
+const slug = z.string().regex(/^[a-z0-9.-]+$/, "use lowercase letters, numbers, dots and dashes");
+const category = z.enum(["STAY", "EXPERIENCE", "FOOD", "ESIM", "GEAR", "TRANSIT"]);
+const url = z.string().url();
 
-const places: { slug: string; name: string; category: ItemCategory; tip?: string }[] = [
-  { slug: "fushimi-inari", name: "Fushimi Inari Taisha", category: "EXPERIENCE", tip: "Go at sunrise, crowds thin past Yotsutsuji intersection." },
-  { slug: "arashiyama-bamboo", name: "Arashiyama Bamboo Grove", category: "EXPERIENCE", tip: "Before 7:30am or skip it." },
-  { slug: "kinkakuji", name: "Kinkaku-ji (Golden Pavilion)", category: "EXPERIENCE" },
-  { slug: "nishiki-market", name: "Nishiki Market", category: "FOOD", tip: "Closes around 6pm; many stalls shut Wednesdays." },
-  { slug: "gion-walk", name: "Gion evening walk", category: "EXPERIENCE" },
-  { slug: "kiyomizu-dera", name: "Kiyomizu-dera", category: "EXPERIENCE" },
-  { slug: "tea-ceremony", name: "Tea ceremony", category: "EXPERIENCE" },
-  { slug: "japan-esim", name: "Japan eSIM", category: "ESIM" },
-  { slug: "icoca-card", name: "ICOCA transit card", category: "TRANSIT" },
-];
+const Vendors = z.array(z.object({ slug, name: z.string(), homepage: url }));
 
-type SeedItem = {
-  day: number;
-  name: string;
-  category: ItemCategory;
-  price: number;
-  unit?: string;
-  quantity?: number;
-  place?: string;
-  vendor?: string;
-  note?: string;
-};
+const Coupons = z.array(
+  z.object({
+    vendor: slug,
+    code: z.string().min(1),
+    type: z.enum(["PLATFORM", "PUBLIC", "CREATOR"]),
+    description: z.string().optional(),
+    creator: slug.optional(),
+    validFrom: z.coerce.date().optional(),
+    validTo: z.coerce.date().optional(),
+    active: z.boolean().default(true),
+  }),
+);
 
-const creators: {
-  handle: string;
-  name: string;
-  platform: "INSTAGRAM" | "TIKTOK" | "YOUTUBE" | "BLOG";
-  bio: string;
-  code: string;
-  itinerary: { slug: string; title: string; summary: string; tier: Tier; days: number; items: SeedItem[] };
-}[] = [
-  {
-    handle: "packlightmika",
-    name: "Mika on a Budget",
-    platform: "TIKTOK",
-    bio: "Hostels, 7-Eleven breakfasts, early alarms.",
-    code: "MIKA10",
-    itinerary: {
-      slug: "kyoto-3-days-backpacker",
-      title: "Kyoto in 3 days under $300",
-      summary: "Temples at dawn, konbini meals, one big splurge on street food.",
-      tier: "BACKPACKER",
-      days: 3,
-      items: [
-        { day: 1, name: "Capsule hostel near Kyoto Station", category: "STAY", price: 28, unit: "night", quantity: 3, vendor: "booking" },
-        { day: 1, name: "Fushimi Inari at sunrise", category: "EXPERIENCE", price: 0, place: "fushimi-inari" },
-        { day: 1, name: "Nishiki Market grazing", category: "FOOD", price: 20, place: "nishiki-market" },
-        { day: 2, name: "Arashiyama Bamboo Grove", category: "EXPERIENCE", price: 0, place: "arashiyama-bamboo" },
-        { day: 2, name: "Gion at dusk", category: "EXPERIENCE", price: 0, place: "gion-walk" },
-        { day: 3, name: "Kiyomizu-dera", category: "EXPERIENCE", price: 3, place: "kiyomizu-dera", vendor: "klook" },
-        { day: 1, name: "ICOCA card top-up", category: "TRANSIT", price: 15, place: "icoca-card", vendor: "klook" },
-        { day: 1, name: "Japan eSIM 5GB", category: "ESIM", price: 9, place: "japan-esim", vendor: "truely" },
-      ],
-    },
-  },
-  {
-    handle: "slowtravelsam",
-    name: "Slow Travel Sam",
-    platform: "YOUTUBE",
-    bio: "Mid-range comfort, long walks, good coffee.",
-    code: "SAMTRAVELS",
-    itinerary: {
-      slug: "kyoto-4-days-midrange",
-      title: "4 relaxed days in Kyoto",
-      summary: "Boutique ryokan, guided Arashiyama morning, tea ceremony.",
-      tier: "MIDRANGE",
-      days: 4,
-      items: [
-        { day: 1, name: "Machiya boutique stay in Higashiyama", category: "STAY", price: 140, unit: "night", quantity: 4, vendor: "agoda" },
-        { day: 1, name: "Fushimi Inari early hike", category: "EXPERIENCE", price: 0, place: "fushimi-inari" },
-        { day: 2, name: "Arashiyama guided morning tour", category: "EXPERIENCE", price: 65, place: "arashiyama-bamboo", vendor: "getyourguide" },
-        { day: 2, name: "Kinkaku-ji", category: "EXPERIENCE", price: 4, place: "kinkakuji" },
-        { day: 3, name: "Tea ceremony in Gion", category: "EXPERIENCE", price: 45, place: "tea-ceremony", vendor: "klook" },
-        { day: 3, name: "Nishiki Market lunch", category: "FOOD", price: 30, place: "nishiki-market" },
-        { day: 4, name: "Kiyomizu-dera", category: "EXPERIENCE", price: 3, place: "kiyomizu-dera" },
-        { day: 1, name: "Japan eSIM 10GB", category: "ESIM", price: 15, place: "japan-esim", vendor: "truely" },
-        { day: 1, name: "Packable daypack", category: "GEAR", price: 35, vendor: "amazon" },
-      ],
-    },
-  },
-  {
-    handle: "aurelia.journeys",
-    name: "Aurelia Journeys",
-    platform: "INSTAGRAM",
-    bio: "Luxury ryokans and private guides.",
-    code: "AURELIA",
-    itinerary: {
-      slug: "kyoto-3-days-luxury",
-      title: "Kyoto luxe: 3 days of ryokan calm",
-      summary: "Private guide, kaiseki dinners, sunrise shrine before the crowds.",
-      tier: "LUXURY",
-      days: 3,
-      items: [
-        { day: 1, name: "Riverside luxury ryokan, kaiseki included", category: "STAY", price: 650, unit: "night", quantity: 3, vendor: "agoda" },
-        { day: 1, name: "Private sunrise Fushimi Inari", category: "EXPERIENCE", price: 180, place: "fushimi-inari", vendor: "getyourguide" },
-        { day: 2, name: "Arashiyama bamboo + rickshaw", category: "EXPERIENCE", price: 120, place: "arashiyama-bamboo", vendor: "klook" },
-        { day: 2, name: "Kinkaku-ji private entry", category: "EXPERIENCE", price: 60, place: "kinkakuji", vendor: "getyourguide" },
-        { day: 3, name: "Gion geiko district walk with historian", category: "EXPERIENCE", price: 90, place: "gion-walk", vendor: "getyourguide" },
-        { day: 3, name: "Private tea ceremony", category: "EXPERIENCE", price: 150, place: "tea-ceremony", vendor: "klook" },
-        { day: 1, name: "Private airport transfer", category: "TRANSIT", price: 220, vendor: "klook" },
-        { day: 1, name: "Japan eSIM unlimited", category: "ESIM", price: 25, place: "japan-esim", vendor: "truely" },
-      ],
-    },
-  },
-];
+const Destination = z.object({
+  slug,
+  name: z.string(),
+  country: z.string(),
+  summary: z.string(),
+  heroPhotoUrl: url.optional(),
+  sample: z.boolean().default(false),
+  places: z.array(z.object({ slug, name: z.string(), category, tip: z.string().optional() })),
+  creators: z.array(
+    z.object({
+      handle: slug,
+      name: z.string(),
+      platform: z.enum(["INSTAGRAM", "TIKTOK", "YOUTUBE", "BLOG"]),
+      profileUrl: url,
+      avatarUrl: url.optional(),
+      bio: z.string().optional(),
+    }),
+  ),
+  itineraries: z.array(
+    z.object({
+      slug,
+      title: z.string(),
+      summary: z.string(),
+      tier: z.enum(["BACKPACKER", "BUDGET", "MIDRANGE", "LUXURY"]),
+      days: z.number().int().positive(),
+      creator: slug,
+      sourceUrl: url,
+      items: z.array(
+        z.object({
+          day: z.number().int().positive(),
+          name: z.string(),
+          category,
+          price: z.number().nonnegative(),
+          currency: z.string().length(3).default("USD"),
+          unit: z.string().optional(),
+          quantity: z.number().int().positive().default(1),
+          note: z.string().optional(),
+          place: slug.optional(),
+          vendor: slug.optional(),
+          ourUrl: url.optional(),
+          creatorUrl: url.optional(),
+        }),
+      ),
+    }),
+  ),
+});
+
+const dataDir = path.join(process.cwd(), "data");
+
+function load<T extends z.ZodType>(schema: T, file: string): z.infer<T> {
+  const result = schema.safeParse(JSON.parse(readFileSync(file, "utf8")));
+  if (!result.success) {
+    const issues = result.error.issues.map((i) => `  ${i.path.join(".")}: ${i.message}`).join("\n");
+    throw new Error(`Invalid data in ${path.relative(process.cwd(), file)}:\n${issues}`);
+  }
+  return result.data;
+}
 
 async function main() {
-  // Runs on every Netlify build; only wipe and reseed when asked, so real data is never lost.
-  if (process.env.SEED_RESET !== "1" && (await db.destination.count()) > 0) {
-    console.log("Database already has data; skipping seed. Set SEED_RESET=1 to wipe and reseed.");
-    return;
-  }
+  const vendors = load(Vendors, path.join(dataDir, "vendors.json"));
+  const coupons = load(Coupons, path.join(dataDir, "coupons.json"));
+  const destDir = path.join(dataDir, "destinations");
+  const destinations = readdirSync(destDir)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => load(Destination, path.join(destDir, f)));
 
-  await db.$transaction([
-    db.affiliateLink.deleteMany(),
-    db.coupon.deleteMany(),
-    db.item.deleteMany(),
-    db.itinerary.deleteMany(),
-    db.place.deleteMany(),
-    db.destination.deleteMany(),
-    db.creator.deleteMany(),
-    db.vendor.deleteMany(),
-    db.photoCache.deleteMany(),
-  ]);
+  // Check cross-references before touching the database, so a typo fails the build with a clear message.
+  const vendorSlugs = new Set(vendors.map((v) => v.slug));
+  const creatorHandles = new Set(destinations.flatMap((d) => d.creators.map((c) => c.handle)));
+  const problems: string[] = [];
+  for (const c of coupons) {
+    if (!vendorSlugs.has(c.vendor)) problems.push(`coupons.json ${c.code}: unknown vendor "${c.vendor}"`);
+    if (c.creator && !creatorHandles.has(c.creator)) problems.push(`coupons.json ${c.code}: unknown creator "${c.creator}"`);
+    if (c.type === "CREATOR" && !c.creator) problems.push(`coupons.json ${c.code}: CREATOR coupons need "creator"`);
+  }
+  for (const d of destinations) {
+    const places = new Set(d.places.map((p) => p.slug));
+    const creators = new Set(d.creators.map((c) => c.handle));
+    for (const it of d.itineraries) {
+      if (!creators.has(it.creator)) problems.push(`${d.slug} ${it.slug}: creator "${it.creator}" not in this file's creators`);
+      for (const item of it.items) {
+        if (item.place && !places.has(item.place)) problems.push(`${d.slug} ${it.slug} "${item.name}": unknown place "${item.place}"`);
+        if (item.vendor && !vendorSlugs.has(item.vendor)) problems.push(`${d.slug} ${it.slug} "${item.name}": unknown vendor "${item.vendor}"`);
+        if ((item.ourUrl || item.creatorUrl) && !item.vendor) problems.push(`${d.slug} ${it.slug} "${item.name}": links need a vendor`);
+      }
+    }
+  }
+  if (problems.length) throw new Error(`Data problems:\n  ${problems.join("\n  ")}`);
+
+  if (process.env.SEED_RESET === "1") {
+    console.log("SEED_RESET=1: wiping all data first.");
+    await db.$transaction([
+      db.affiliateLink.deleteMany(),
+      db.coupon.deleteMany(),
+      db.item.deleteMany(),
+      db.itinerary.deleteMany(),
+      db.place.deleteMany(),
+      db.destination.deleteMany(),
+      db.creator.deleteMany(),
+      db.vendor.deleteMany(),
+    ]);
+  }
 
   const vendorIds = new Map<string, string>();
-  for (const v of vendors) vendorIds.set(v.slug, (await db.vendor.create({ data: v })).id);
-
-  const kyoto = await db.destination.create({
-    data: {
-      slug: "kyoto",
-      name: "Kyoto",
-      country: "Japan",
-      summary: "Shrines, bamboo groves and tea houses. Three creators, three budgets, one city.",
-    },
-  });
-
-  const placeIds = new Map<string, string>();
-  for (const p of places) {
-    placeIds.set(p.slug, (await db.place.create({ data: { ...p, destinationId: kyoto.id } })).id);
+  for (const v of vendors) {
+    const row = await db.vendor.upsert({ where: { slug: v.slug }, create: v, update: v });
+    vendorIds.set(v.slug, row.id);
   }
 
-  await db.coupon.createMany({
-    data: [
-      { code: "ROAMKLOOK8", type: "PLATFORM", description: "8% off activities", vendorId: vendorIds.get("klook")! },
-      { code: "BOOK2026", type: "PUBLIC", description: "Public promo", vendorId: vendorIds.get("booking")! },
-      { code: "ROAMSIM15", type: "PLATFORM", description: "15% off eSIMs", vendorId: vendorIds.get("truely")! },
-    ],
-  });
-
-  for (const c of creators) {
-    const creator = await db.creator.create({
-      data: {
-        handle: c.handle,
-        name: c.name,
-        platform: c.platform,
-        bio: c.bio,
-        profileUrl: `https://example.com/@${c.handle}`,
-      },
-    });
-    await db.coupon.create({
-      data: { code: c.code, type: "CREATOR", creatorId: creator.id, vendorId: vendorIds.get("klook")! },
+  const creatorIds = new Map<string, string>();
+  for (const d of destinations) {
+    const { places, creators, itineraries, sample, ...fields } = d;
+    const dest = await db.destination.upsert({
+      where: { slug: d.slug },
+      create: { ...fields, isSample: sample },
+      update: { ...fields, isSample: sample },
     });
 
-    const it = c.itinerary;
-    await db.itinerary.create({
-      data: {
-        slug: it.slug,
-        title: it.title,
-        summary: it.summary,
-        tier: it.tier,
-        days: it.days,
-        sourceUrl: `https://example.com/@${c.handle}/kyoto`,
-        destinationId: kyoto.id,
-        creatorId: creator.id,
-        items: {
-          create: it.items.map((item, i) => {
-            const vendorId = item.vendor ? vendorIds.get(item.vendor) : undefined;
-            return {
-              day: item.day,
-              position: i,
-              name: item.name,
-              note: item.note,
-              category: item.category,
-              priceCents: Math.round(item.price * 100),
-              unit: item.unit,
-              quantity: item.quantity ?? 1,
-              placeId: item.place ? placeIds.get(item.place) : undefined,
-              vendorId,
-              links: vendorId
+    const placeIds = new Map<string, string>();
+    for (const p of places) {
+      const row = await db.place.upsert({
+        where: { destinationId_slug: { destinationId: dest.id, slug: p.slug } },
+        create: { ...p, destinationId: dest.id },
+        update: p,
+      });
+      placeIds.set(p.slug, row.id);
+    }
+
+    for (const c of creators) {
+      const row = await db.creator.upsert({ where: { handle: c.handle }, create: c, update: c });
+      creatorIds.set(c.handle, row.id);
+    }
+
+    for (const { items, creator, ...it } of itineraries) {
+      const data = { ...it, destinationId: dest.id, creatorId: creatorIds.get(creator)! };
+      const itinerary = await db.itinerary.upsert({ where: { slug: it.slug }, create: data, update: data });
+      // Items have no natural key, so replace them wholesale.
+      await db.item.deleteMany({ where: { itineraryId: itinerary.id } });
+      for (const [position, item] of items.entries()) {
+        const vendorId = item.vendor ? vendorIds.get(item.vendor) : undefined;
+        await db.item.create({
+          data: {
+            itineraryId: itinerary.id,
+            day: item.day,
+            position,
+            name: item.name,
+            note: item.note,
+            category: item.category,
+            priceCents: Math.round(item.price * 100),
+            currency: item.currency,
+            unit: item.unit,
+            quantity: item.quantity,
+            placeId: item.place ? placeIds.get(item.place) : undefined,
+            vendorId,
+            links:
+              vendorId && (item.ourUrl || item.creatorUrl)
                 ? {
                     create: [
-                      { vendorId, url: `${vendors.find((v) => v.slug === item.vendor)!.homepage}/?aid=ROAMCONSENSUS` },
-                      { vendorId, creatorId: creator.id, url: `${vendors.find((v) => v.slug === item.vendor)!.homepage}/?aid=${c.handle}` },
+                      ...(item.ourUrl ? [{ vendorId, url: item.ourUrl }] : []),
+                      ...(item.creatorUrl ? [{ vendorId, url: item.creatorUrl, creatorId: data.creatorId }] : []),
                     ],
                   }
                 : undefined,
-            };
-          }),
-        },
-      },
-    });
+          },
+        });
+      }
+    }
+    console.log(`Loaded ${d.slug}: ${itineraries.length} itineraries, ${creators.length} creators.`);
   }
 
-  console.log("Seeded Kyoto: 3 creators, 3 itineraries.");
+  // Coupons are fully owned by coupons.json.
+  await db.coupon.deleteMany();
+  await db.coupon.createMany({
+    data: coupons.map(({ vendor, creator, ...c }) => ({
+      ...c,
+      vendorId: vendorIds.get(vendor)!,
+      creatorId: creator ? creatorIds.get(creator) ?? null : null,
+    })),
+  });
+  console.log(`Loaded ${vendors.length} vendors, ${coupons.length} coupons.`);
 }
 
 main()
   .catch((e) => {
-    console.error(e);
+    console.error(e instanceof Error ? e.message : e);
     process.exit(1);
   })
   .finally(() => db.$disconnect());
