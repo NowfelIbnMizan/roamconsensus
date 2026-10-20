@@ -16,6 +16,12 @@ npm run dev
 
 `npm run build` needs a reachable database: pages are prerendered from it.
 
+## Deploy (Netlify + Neon)
+
+`netlify.toml` runs migrations, seeds an empty database (skips if data exists), then builds.
+Set env vars in Netlify: `DATABASE_URL` (Neon pooled URL) and `DIRECT_DATABASE_URL` (same URL without `-pooler`).
+To wipe and reseed sample data: `SEED_RESET=1 npm run db:seed`.
+
 ## Routes
 
 - `/` destinations
