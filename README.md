@@ -22,6 +22,7 @@ npm run dev
 - `/destinations/[slug]` creator consensus + route comparison
 - `/itineraries/[slug]` day-by-day plan with booking links
 - `/creators/[handle]` creator profile
+- `/cart` trip cart (localStorage): steppers, budget, vendor groups, TXT/Notion export
 - `/disclosure` affiliate disclosure
 
 ## Data model

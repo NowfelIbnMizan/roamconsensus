@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
+import type { CartItem } from "@/lib/cart-store";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
 
@@ -17,6 +19,27 @@ export async function generateMetadata({ params }: PageProps<"/itineraries/[slug
 export default async function ItineraryPage({ params }: PageProps<"/itineraries/[slug]">) {
   const it = await getItinerary((await params).slug);
   if (!it) notFound();
+
+  const ref = { slug: it.slug, title: it.title };
+  const cartItems = new Map<string, CartItem>(
+    it.schedule.flatMap(({ items }) =>
+      items.map((i) => [
+        i.id,
+        {
+          id: i.id,
+          name: i.name,
+          category: i.category,
+          priceCents: i.priceCents,
+          currency: i.currency,
+          unit: i.unit,
+          quantity: i.quantity,
+          vendor: i.vendor,
+          bookUrl: i.bookUrl,
+          itinerary: ref,
+        },
+      ]),
+    ),
+  );
 
   return (
     <>
@@ -36,6 +59,9 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         </a>
       </p>
       <p className="mt-3 max-w-2xl">{it.summary}</p>
+      <div className="mt-5">
+        <AddRouteButton items={[...cartItems.values()]} />
+      </div>
 
       <div className="mt-10 space-y-8">
         {it.schedule.map(({ day, items }) => (
@@ -65,6 +91,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                         {item.vendor} <ExternalLink className="size-3" aria-hidden />
                       </a>
                     )}
+                    <AddItemButton item={cartItems.get(item.id)!} />
                   </div>
                 </li>
               ))}

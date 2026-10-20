@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { Compass } from "lucide-react";
+import { CartLink } from "@/components/cart-link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,8 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               RoamConsensus
             </Link>
             <div className="flex gap-5 text-sm text-muted">
-              <Link href="/#destinations" className="hover:text-foreground">Destinations</Link>
-              <Link href="/disclosure" className="hover:text-foreground">Disclosure</Link>
+              <Link href="/#destinations" className="hidden hover:text-foreground sm:inline">Destinations</Link>
+              <Link href="/disclosure" className="hidden hover:text-foreground sm:inline">Disclosure</Link>
+              <CartLink />
             </div>
           </nav>
         </header>
