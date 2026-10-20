@@ -63,11 +63,18 @@ export default async function DestinationPage({
                     </span>
                   </p>
                   {p.tip && <p className="text-sm text-muted">{p.tip}</p>}
-                  <p className="text-xs text-muted">
-                    {p.creators.map((c) => c.name).join(", ")}
-                  </p>
+                  {p.creators.length > 0 && (
+                    <p className="text-xs text-muted">
+                      {p.creators.map((c) => c.name).join(", ")}
+                    </p>
+                  )}
+                  {p.skippedBy.length > 0 && (
+                    <p className="text-xs text-red-700 dark:text-red-400">
+                      {p.skippedBy.map((c) => c.name).join(", ")} says skip it
+                    </p>
+                  )}
                 </div>
-                {creatorCount > 1 && (
+                {creatorCount > 1 && p.creators.length > 0 && (
                   <span
                     className={`inline-flex shrink-0 items-center gap-1 self-start rounded-full px-3 py-1 text-sm font-medium sm:self-center ${
                       all ? "bg-accent-soft text-accent" : "bg-line text-muted"

@@ -22,6 +22,10 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
   if (!it) notFound();
 
   const ref = { slug: it.slug, title: it.title };
+  // Places the creator says to skip stay listed but out of the route bundle.
+  const skipped = new Set(
+    it.schedule.flatMap(({ items }) => items.filter((i) => i.sentiment === "AVOID").map((i) => i.id)),
+  );
   const cartItems = new Map<string, CartItem>(
     it.schedule.flatMap(({ items }) =>
       items.map((i) => [
@@ -65,7 +69,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       </p>
       <p className="mt-3 max-w-2xl">{it.summary}</p>
       <div className="mt-5">
-        <AddRouteButton items={[...cartItems.values()]} />
+        <AddRouteButton items={[...cartItems.values()].filter((c) => !skipped.has(c.id))} />
       </div>
 
       <div className="mt-10 space-y-8">
@@ -86,6 +90,11 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                       {item.sentiment === "OPTIONAL" && (
                         <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs text-muted">
                           {sentimentLabel.OPTIONAL}
+                        </span>
+                      )}
+                      {item.sentiment === "AVOID" && (
+                        <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
+                          {sentimentLabel.AVOID}
                         </span>
                       )}
                     </p>
@@ -119,7 +128,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                         {item.vendor} <ExternalLink className="size-3" aria-hidden />
                       </a>
                     )}
-                    <AddItemButton item={cartItems.get(item.id)!} />
+                    {item.sentiment !== "AVOID" && <AddItemButton item={cartItems.get(item.id)!} />}
                   </div>
                 </li>
               ))}

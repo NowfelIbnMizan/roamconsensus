@@ -13,6 +13,7 @@ export const sentimentLabel = {
   MUST_VISIT: "Must visit",
   RECOMMENDED: "Recommended",
   OPTIONAL: "Optional",
+  AVOID: "Skip it",
 } as const;
 
 export const tierLabel = {

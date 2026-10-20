@@ -63,7 +63,7 @@ const Destination = z.object({
           category,
           price: z.number().nonnegative().optional(), // omit when the creator gave no price
           priceNote: z.string().optional(),
-          sentiment: z.enum(["MUST_VISIT", "RECOMMENDED", "OPTIONAL"]).optional(),
+          sentiment: z.enum(["MUST_VISIT", "RECOMMENDED", "OPTIONAL", "AVOID"]).optional(),
           currency: z.string().length(3).default("USD"),
           unit: z.string().optional(),
           quantity: z.number().int().positive().default(1),
