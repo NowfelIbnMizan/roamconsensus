@@ -8,6 +8,7 @@ Everything shown on the site comes from these files. Every Netlify build loads t
 
 Rules:
 - Itineraries must come from a creator's real post: set `sourceUrl` to it. Never invent recommendations for a real person.
+- Places can have `"website"`: the venue's official site. Its share image becomes the place photo (falls back to Unsplash).
 - `"sample": true` marks fictional demo content; the site shows a banner on it.
 - Items that point at the same `place` slug count toward that place's creator consensus.
 - `price` is in `currency` (default USD), per `unit` x `quantity`. Leave it out when the creator gave none; `priceNote` keeps their wording.

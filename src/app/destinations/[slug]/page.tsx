@@ -13,6 +13,11 @@ function placeQuery(place: string, destination: string) {
   return `${place.split(" (")[0].split(" / ")[0]} ${destination}`;
 }
 
+// Places with a website get their own cache key so a stock photo cached earlier doesn't shadow the venue's.
+function placePhotoKey(destination: string, place: { slug: string; website: string | null }) {
+  return `place:${destination}:${place.slug}${place.website ? ":site" : ""}`;
+}
+
 export async function generateStaticParams() {
   return getDestinationSlugs();
 }
@@ -72,9 +77,10 @@ export default async function DestinationPage({
               >
                 <div className="flex gap-3">
                   <Photo
-                    photoKey={`place:${destination.slug}:${p.slug}`}
+                    photoKey={placePhotoKey(destination.slug, p)}
                     query={placeQuery(p.name, destination.name)}
                     category={p.category}
+                    website={p.website}
                     alt={p.name}
                     // Landscape photos cropped to a square need ~2x the box width to stay sharp.
                     sizes="128px"
@@ -101,9 +107,10 @@ export default async function DestinationPage({
                     )}
                     <p className="text-[10px] text-muted">
                       <PhotoCredit
-                        photoKey={`place:${destination.slug}:${p.slug}`}
+                        photoKey={placePhotoKey(destination.slug, p)}
                         query={placeQuery(p.name, destination.name)}
                         category={p.category}
+                        website={p.website}
                       />
                     </p>
                   </div>
