@@ -185,5 +185,7 @@ model PhotoCache {
   source      PhotoSource
   url         String
   attribution String?
+  /// Photographer's profile page, linked from the credit line.
+  creditUrl   String?
   fetchedAt   DateTime    @default(now())
 }

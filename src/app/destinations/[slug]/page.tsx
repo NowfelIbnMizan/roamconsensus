@@ -3,9 +3,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
+import { Photo, PhotoCredit } from "@/components/photo";
 import { SampleBanner } from "@/components/sample-banner";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
+
+// "West Nusa Penida (Kelingking Beach, …)" searches better without the parenthetical.
+function placeQuery(place: string, destination: string) {
+  return `${place.split(" (")[0].split(" / ")[0]} ${destination}`;
+}
 
 export async function generateStaticParams() {
   return getDestinationSlugs();
@@ -30,6 +36,15 @@ export default async function DestinationPage({
   return (
     <>
       {destination.isSample && <SampleBanner />}
+      <Photo
+        photoKey={`destination:${destination.slug}`}
+        query={`${destination.name} ${destination.country}`}
+        category="DESTINATION"
+        alt={destination.name}
+        sizes="(min-width: 1024px) 1024px, 100vw"
+        className="mb-6 aspect-[21/9] rounded-2xl"
+        priority
+      />
       <p className="text-sm text-muted">{destination.country}</p>
       <h1 className="text-4xl font-semibold tracking-tight">
         {destination.name}
@@ -55,24 +70,42 @@ export default async function DestinationPage({
                 key={p.slug}
                 className="flex flex-col gap-1 p-4 sm:flex-row sm:items-center sm:justify-between"
               >
-                <div>
-                  <p className="font-medium">
-                    {p.name}{" "}
-                    <span className="ml-1 text-xs text-muted">
-                      {categoryLabel[p.category]}
-                    </span>
-                  </p>
-                  {p.tip && <p className="text-sm text-muted">{p.tip}</p>}
-                  {p.creators.length > 0 && (
-                    <p className="text-xs text-muted">
-                      {p.creators.map((c) => c.name).join(", ")}
+                <div className="flex gap-3">
+                  <Photo
+                    photoKey={`place:${destination.slug}:${p.slug}`}
+                    query={placeQuery(p.name, destination.name)}
+                    category={p.category}
+                    alt={p.name}
+                    sizes="64px"
+                    credit={false}
+                    className="size-16 shrink-0 rounded-lg"
+                  />
+                  <div>
+                    <p className="font-medium">
+                      {p.name}{" "}
+                      <span className="ml-1 text-xs text-muted">
+                        {categoryLabel[p.category]}
+                      </span>
                     </p>
-                  )}
-                  {p.skippedBy.length > 0 && (
-                    <p className="text-xs text-red-700 dark:text-red-400">
-                      {p.skippedBy.map((c) => c.name).join(", ")} says skip it
+                    {p.tip && <p className="text-sm text-muted">{p.tip}</p>}
+                    {p.creators.length > 0 && (
+                      <p className="text-xs text-muted">
+                        {p.creators.map((c) => c.name).join(", ")}
+                      </p>
+                    )}
+                    {p.skippedBy.length > 0 && (
+                      <p className="text-xs text-red-700 dark:text-red-400">
+                        {p.skippedBy.map((c) => c.name).join(", ")} says skip it
+                      </p>
+                    )}
+                    <p className="text-[10px] text-muted">
+                      <PhotoCredit
+                        photoKey={`place:${destination.slug}:${p.slug}`}
+                        query={placeQuery(p.name, destination.name)}
+                        category={p.category}
+                      />
                     </p>
-                  )}
+                  </div>
                 </div>
                 {creatorCount > 1 && p.creators.length > 0 && (
                   <span
