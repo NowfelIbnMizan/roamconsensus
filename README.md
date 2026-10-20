@@ -20,7 +20,7 @@ npm run dev
 
 `netlify.toml` runs migrations, loads `data/*.json` into the database (upsert; see `data/README.md`), then builds.
 Set env vars in Netlify: `DATABASE_URL` (Neon pooled URL) and `DIRECT_DATABASE_URL` (same URL without `-pooler`).
-To wipe and reseed sample data: `SEED_RESET=1 npm run db:seed`.
+To wipe and reseed everything: `SEED_RESET=1 npm run db:seed`.
 
 ## Routes
 
