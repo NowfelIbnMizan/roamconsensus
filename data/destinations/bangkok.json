@@ -1,0 +1,1189 @@
+{
+  "slug": "bangkok",
+  "name": "Bangkok",
+  "country": "Thailand",
+  "summary": "Gilded temples on the river, street food on every corner, rooftop bars and the giant Chatuchak market, with Ayutthaya and the floating markets a day trip away.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Bangkok",
+  "months": [
+    {
+      "month": 1,
+      "highC": 33,
+      "lowC": 23,
+      "rainMm": 24,
+      "crowd": "HIGH",
+      "note": "Peak cool, dry season and lowest humidity, so hotels cost more. Chinese New Year can fall late Jan or Feb and fills Yaowarat."
+    },
+    {
+      "month": 2,
+      "highC": 34,
+      "lowC": 25,
+      "rainMm": 21,
+      "crowd": "HIGH",
+      "note": "Still dry high season, warming up. Chinese New Year often lands this month."
+    },
+    {
+      "month": 3,
+      "highC": 35,
+      "lowC": 26,
+      "rainMm": 51,
+      "crowd": "MEDIUM",
+      "note": "Hot season starts and crowds thin, but heat and humidity build."
+    },
+    {
+      "month": 4,
+      "highC": 36,
+      "lowC": 27,
+      "rainMm": 93,
+      "crowd": "HIGH",
+      "note": "Hottest month. Songkran water festival (13-15 April) packs Silom and Khao San Road, and prices spike."
+    },
+    {
+      "month": 5,
+      "highC": 35,
+      "lowC": 27,
+      "rainMm": 217,
+      "crowd": "LOW",
+      "note": "Rainy season begins with afternoon storms; low-season hotel deals start."
+    },
+    {
+      "month": 6,
+      "highC": 34,
+      "lowC": 26,
+      "rainMm": 199,
+      "crowd": "LOW",
+      "note": "Green season: short daily downpours, fewer tourists, discounted rooms."
+    },
+    {
+      "month": 7,
+      "highC": 34,
+      "lowC": 26,
+      "rainMm": 190,
+      "crowd": "MEDIUM",
+      "note": "Rainy, but European summer holidays bring a bump in visitors."
+    },
+    {
+      "month": 8,
+      "highC": 33,
+      "lowC": 26,
+      "rainMm": 227,
+      "crowd": "MEDIUM",
+      "note": "Wet and humid, with steady summer-holiday traffic."
+    },
+    {
+      "month": 9,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 336,
+      "crowd": "LOW",
+      "note": "Wettest month; streets can flood. Hotel prices are at their lowest."
+    },
+    {
+      "month": 10,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 289,
+      "crowd": "MEDIUM",
+      "note": "Rain tapers off late in the month and high-season prices return. Chinatown's Vegetarian Festival is usually late Sep or Oct."
+    },
+    {
+      "month": 11,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 45,
+      "crowd": "HIGH",
+      "note": "Dry season and high season begin. Loy Krathong fills the riverbanks with floating krathongs."
+    },
+    {
+      "month": 12,
+      "highC": 32,
+      "lowC": 23,
+      "rainMm": 12,
+      "crowd": "HIGH",
+      "note": "Driest, most pleasant month and peak season. Book ahead for Christmas and New Year."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free stay is now 30 days",
+      "body": "From 15 September 2026, visa-exempt tourists from about 60 countries (including the US, UK, Canada, Australia and the EU) get 30 days, down from 60. One extension can be requested from Thai immigration.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/thailand/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Fill in the TDAC before you fly",
+      "body": "Every foreign visitor must submit the Thailand Digital Arrival Card online within 3 days before arrival. It's free on the official site, tdac.immigration.go.th; skip look-alike sites that charge a fee.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Thailand_Digital_Arrival_Card"
+    },
+    {
+      "topic": "Entry",
+      "title": "Passport validity and proof of funds",
+      "body": "Your passport needs 6 months left and a blank page. Immigration may ask for an onward ticket and 10,000 baht per person (20,000 per family).",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/thailand/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "No tourist entry fee yet",
+      "body": "The planned 300-baht tourism fee had no start date as of mid-2026. If it starts, it's expected to be added to air fares or the TDAC, not paid at immigration.",
+      "sourceUrl": "https://blog.wego.com/thailand-tourist-entry-fee-2026/"
+    },
+    {
+      "topic": "Money",
+      "title": "ATMs charge foreign cards 220 baht",
+      "body": "Most Thai ATMs charge a flat 220 baht per withdrawal (AEON about 150). Take out larger amounts less often and always choose to be charged in baht.",
+      "sourceUrl": "https://www.thailandstarterkit.com/money/atm-thailand/"
+    },
+    {
+      "topic": "Money",
+      "title": "Tipping is optional",
+      "body": "Not expected at street stalls or where a 10% service charge is on the bill. Otherwise 5-10% at sit-down restaurants, round up taxis, and 50-100 baht after a massage.",
+      "sourceUrl": "https://radicalstorage.com/travel/tipping-in-thailand/"
+    },
+    {
+      "topic": "Packing",
+      "title": "Plugs and voltage",
+      "body": "220V, 50Hz. Most sockets take Type A, B and C plugs. Check your chargers say 100-240V.",
+      "sourceUrl": "https://www.you.co/sg/blog/thailand-power-plug/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Temple and Grand Palace dress code",
+      "body": "Cover shoulders and knees at temples. At the Grand Palace no shorts or sleeveless tops. Take your shoes off before entering temple halls.",
+      "sourceUrl": "https://www.nationthailand.com/thailand/bangkok/40069670"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Respect the monarchy",
+      "body": "Criticising the royal family, even in a shared post, can bring a long prison sentence. Never deface royal images, including on banknotes.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Vapes are illegal",
+      "body": "Owning or using any vape or e-cigarette is illegal, with fines of 5,000-30,000 baht and possible detention. There's no tourist exemption.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Cannabis now needs a prescription",
+      "body": "Since 23 June 2025, buying or using cannabis flower needs a Thai medical prescription. Recreational use is illegal again.",
+      "sourceUrl": "https://www.tatnews.org/2025/06/cannabis-flower-now-strictly-regulated-in-thailand-important-notice-for-tourists/"
+    },
+    {
+      "topic": "Safety",
+      "title": "\"Grand Palace is closed today\"",
+      "body": "Friendly strangers near the palace may say it's closed and wave you into a cheap tuk-tuk tour that ends at gem or tailor shops. Ignore unsolicited help and check opening hours yourself.",
+      "sourceUrl": "https://www.thailandstarterkit.com/moving/thailand-scams-tuk-tuks-and-touts-and-taxis-oh-my/"
+    },
+    {
+      "topic": "Getting around",
+      "title": "Taxis, Grab and the metro",
+      "body": "Insist on the meter in taxis; walk away from flat-fare quotes. Grab and Bolt show the price upfront. The MRT takes contactless Visa and Mastercard; the BTS Skytrain still needs a Rabbit card or a single ticket.",
+      "sourceUrl": "https://notyourtypicaltourist.com/thailand-2/bangkok-mrt-shift-emv-2026/"
+    },
+    {
+      "topic": "Health",
+      "title": "Dengue and mosquitoes",
+      "body": "Dengue is around all year and peaks in the rainy season (about June to October). Use repellent, especially in the daytime. Ambulance: dial 1669.",
+      "sourceUrl": "https://wwwnc.cdc.gov/travel/yellowbook/2020/popular-itineraries/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Street food and water",
+      "body": "Pick busy stalls that cook to order and serve it hot. Drink bottled or filtered water: the tap water is treated, but old building pipes can contaminate it.",
+      "sourceUrl": "https://wwwnc.cdc.gov/travel/yellowbook/2020/popular-itineraries/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Beat the heat",
+      "body": "Highs are 32-36°C all year. Sightsee in the mornings, drink lots of water, and check the AQI in the dry season if you have asthma.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/thailand/health"
+    }
+  ],
+  "places": [
+    {
+      "slug": "grand-palace",
+      "name": "Grand Palace & Wat Phra Kaew",
+      "category": "EXPERIENCE",
+      "area": "Rattanakosin",
+      "blurb": "Home of the Chakri kings since 1782. The compound holds Wat Phra Kaew and the Emerald Buddha, Thailand's most sacred image.",
+      "tip": "Ignore anyone outside saying it's closed today: it's a scam.",
+      "website": "https://royalgrandpalace.th",
+      "lat": 13.75,
+      "lng": 100.4913
+    },
+    {
+      "slug": "wat-pho",
+      "name": "Wat Pho",
+      "category": "EXPERIENCE",
+      "area": "Rattanakosin",
+      "blurb": "Home of the 46 m gold-leaf Reclining Buddha and the traditional centre of Thai massage teaching.",
+      "website": "https://watpho.com",
+      "lat": 13.7465,
+      "lng": 100.493
+    },
+    {
+      "slug": "wat-arun",
+      "name": "Wat Arun",
+      "category": "EXPERIENCE",
+      "area": "Thonburi",
+      "blurb": "The Temple of Dawn on the Thonburi bank, its central prang covered in porcelain mosaic. Best at sunset from across the river.",
+      "lat": 13.7437,
+      "lng": 100.4888
+    },
+    {
+      "slug": "tha-tien-ferry",
+      "name": "Tha Tien to Wat Arun ferry",
+      "category": "TRANSIT",
+      "area": "Rattanakosin",
+      "blurb": "A short shuttle boat across the Chao Phraya from Tha Tien pier, by Wat Pho, to Wat Arun.",
+      "lat": 13.7463,
+      "lng": 100.4914
+    },
+    {
+      "slug": "wat-benchamabophit",
+      "name": "Wat Benchamabophit (Marble Temple)",
+      "category": "EXPERIENCE",
+      "area": "Dusit",
+      "blurb": "King Rama V's temple built of Italian Carrara marble, pictured on the back of the 5-baht coin.",
+      "lat": 13.7666,
+      "lng": 100.5141
+    },
+    {
+      "slug": "jim-thompson-house",
+      "name": "Jim Thompson House",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "blurb": "Teak houses and Asian art collection of the American silk trader who vanished in Malaysia in 1967.",
+      "tip": "No photos inside the house.",
+      "website": "https://jimthompsonhouse.org",
+      "lat": 13.7493,
+      "lng": 100.5283
+    },
+    {
+      "slug": "golden-mount",
+      "name": "Golden Mount (Wat Saket)",
+      "category": "EXPERIENCE",
+      "area": "Old Town",
+      "blurb": "A man-made hill topped by a golden chedi, about 300 steps up, with 360-degree views over old Bangkok. Great at sunset.",
+      "lat": 13.7538,
+      "lng": 100.5068
+    },
+    {
+      "slug": "khao-san-road",
+      "name": "Khao San Road",
+      "category": "EXPERIENCE",
+      "area": "Banglamphu",
+      "blurb": "Bangkok's famous backpacker street of guesthouses, bars, street food and stalls. Liveliest at night.",
+      "lat": 13.7589,
+      "lng": 100.4974
+    },
+    {
+      "slug": "chatuchak-weekend-market",
+      "name": "Chatuchak Weekend Market",
+      "category": "EXPERIENCE",
+      "area": "Chatuchak",
+      "blurb": "One of the world's biggest weekend markets: thousands of stalls of clothes, crafts, plants, antiques and food.",
+      "tip": "Weekends only. Go early before the heat, and haggle.",
+      "lat": 13.7999,
+      "lng": 100.5502
+    },
+    {
+      "slug": "co-van-kessel-bike-tour",
+      "name": "Bike and canal tour",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Guided bike rides through Chinatown alleys and Thonburi's canal-side villages, finishing with a longtail boat ride. Co van Kessel is the long-running operator.",
+      "website": "https://www.covankessel.com",
+      "lat": 13.7297,
+      "lng": 100.5148
+    },
+    {
+      "slug": "sompong-thai-cooking-school",
+      "name": "Sompong Thai Cooking School",
+      "category": "EXPERIENCE",
+      "area": "Silom",
+      "blurb": "Cooking school on Silom Soi 13 near BTS Chong Nonsi. Classes start with a market visit.",
+      "website": "http://www.sompongthaicookingschool.com/intro.html",
+      "lat": 13.7247,
+      "lng": 100.5269
+    },
+    {
+      "slug": "rajadamnern-stadium",
+      "name": "Rajadamnern Stadium",
+      "category": "EXPERIENCE",
+      "area": "Old Town",
+      "blurb": "Bangkok's oldest purpose-built Muay Thai stadium, opened in 1945.",
+      "website": "https://rajadamnern.com/",
+      "lat": 13.7573,
+      "lng": 100.5078
+    },
+    {
+      "slug": "lub-d-siam",
+      "name": "Lub d Bangkok Siam",
+      "category": "STAY",
+      "area": "Siam",
+      "blurb": "Hostel opposite MBK at BTS National Stadium, with dorms and private rooms.",
+      "website": "https://lubd.com",
+      "lat": 13.7466,
+      "lng": 100.5296
+    },
+    {
+      "slug": "bangkok-national-museum",
+      "name": "Bangkok National Museum",
+      "category": "EXPERIENCE",
+      "area": "Rattanakosin",
+      "blurb": "Thailand's largest museum, partly in the old Front Palace, covering Thai art and history from prehistory on.",
+      "lat": 13.7577,
+      "lng": 100.4925
+    },
+    {
+      "slug": "karim-roti-mataba",
+      "name": "Karim Roti Mataba",
+      "category": "FOOD",
+      "area": "Banglamphu",
+      "blurb": "Long-running Thai-Muslim shop on Phra Athit Road, known for roti, mataba and curry.",
+      "lat": 13.7625,
+      "lng": 100.4946
+    },
+    {
+      "slug": "the-deck-arun-residence",
+      "name": "The Deck",
+      "category": "FOOD",
+      "area": "Rattanakosin",
+      "blurb": "Riverside restaurant at Arun Residence looking straight across to Wat Arun. Popular at sunset.",
+      "lat": 13.7454,
+      "lng": 100.4917
+    },
+    {
+      "slug": "yaowarat-street-food",
+      "name": "Yaowarat (Chinatown) street food",
+      "category": "FOOD",
+      "area": "Chinatown",
+      "blurb": "After dark Yaowarat Road turns into one of Bangkok's busiest street-food strips: seafood, noodles, dim sum and desserts.",
+      "lat": 13.7398,
+      "lng": 100.5094
+    },
+    {
+      "slug": "siam-paragon",
+      "name": "Siam Paragon",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "blurb": "Big luxury mall at BTS Siam with an aquarium, cinema and a huge food hall.",
+      "lat": 13.7462,
+      "lng": 100.5347
+    },
+    {
+      "slug": "wat-ratchabophit",
+      "name": "Wat Ratchabophit",
+      "category": "EXPERIENCE",
+      "area": "Rattanakosin",
+      "blurb": "Rama V-era temple known for its Benjarong-tiled cloister and Gothic-style chapel interior.",
+      "lat": 13.7491,
+      "lng": 100.4972
+    },
+    {
+      "slug": "loha-prasat",
+      "name": "Loha Prasat",
+      "category": "EXPERIENCE",
+      "area": "Old Town",
+      "blurb": "The Metal Castle at Wat Ratchanatdaram: a tiered building with 37 metal spires, the only one of its kind left.",
+      "lat": 13.7547,
+      "lng": 100.5034
+    },
+    {
+      "slug": "red-sky",
+      "name": "Red Sky",
+      "category": "FOOD",
+      "area": "Siam",
+      "blurb": "Rooftop bar on the 55th floor of Centara Grand at CentralWorld, under a red-lit arch.",
+      "tip": "Dress code: no flip-flops.",
+      "website": "http://www.centarahotelsresorts.com/redsky",
+      "lat": 13.7477,
+      "lng": 100.5393
+    },
+    {
+      "slug": "ayutthaya",
+      "name": "Ayutthaya",
+      "category": "EXPERIENCE",
+      "area": "Ayutthaya",
+      "blurb": "The old Siamese capital (1351-1767), 80 km north of Bangkok. Its temple ruins are a UNESCO World Heritage Site.",
+      "lat": 14.3532,
+      "lng": 100.5689
+    },
+    {
+      "slug": "damnoen-saduak-maeklong",
+      "name": "Damnoen Saduak & Maeklong Railway Market",
+      "category": "EXPERIENCE",
+      "area": "Ratchaburi",
+      "blurb": "A half-day trip pairing the busy Damnoen Saduak floating market with the Maeklong market, where stalls fold back as the train passes.",
+      "lat": 13.5196,
+      "lng": 99.959
+    },
+    {
+      "slug": "siri-heritage",
+      "name": "Siri Heritage Bangkok Hotel",
+      "category": "STAY",
+      "area": "Old Town",
+      "blurb": "Three-star old-city hotel with Siamese touches and a small pool, near the Grand Palace and Khao San.",
+      "lat": 13.7543,
+      "lng": 100.4992
+    },
+    {
+      "slug": "longtail-canal-tour",
+      "name": "Longtail boat canal tour",
+      "category": "EXPERIENCE",
+      "area": "Thonburi",
+      "blurb": "Longtail boats leave from piers like Tha Chang and run through Thonburi's canals past stilt houses and temples.",
+      "lat": 13.7531,
+      "lng": 100.4893
+    },
+    {
+      "slug": "bacc",
+      "name": "Bangkok Art and Culture Centre",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "blurb": "Contemporary art centre opposite MBK with galleries on a spiral ramp. Free; closed Mondays.",
+      "lat": 13.7466,
+      "lng": 100.5302
+    },
+    {
+      "slug": "mbk-center",
+      "name": "MBK Center",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "blurb": "Eight-storey budget mall with more than 2,000 shops: phones, clothes and souvenirs.",
+      "lat": 13.7447,
+      "lng": 100.5299
+    },
+    {
+      "slug": "erawan-shrine",
+      "name": "Erawan Shrine",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "blurb": "Hindu shrine to Brahma at the Ratchaprasong junction, where worshippers pay classical dancers to perform.",
+      "lat": 13.7443,
+      "lng": 100.5404
+    },
+    {
+      "slug": "jodd-fairs",
+      "name": "Jodd Fairs night market",
+      "category": "FOOD",
+      "area": "Rama 9",
+      "blurb": "Night market behind Central Rama 9 near MRT Phra Ram 9, with food stalls and shops. It took over from the old Talad Neon market.",
+      "lat": 13.7566,
+      "lng": 100.5664
+    },
+    {
+      "slug": "sukhumvit-soi-11",
+      "name": "Sukhumvit Soi 11 bars",
+      "category": "FOOD",
+      "area": "Sukhumvit",
+      "blurb": "Nightlife lane with the Above Eleven rooftop and Havana Social, a Cuban speakeasy you enter through a phone booth.",
+      "lat": 13.7442,
+      "lng": 100.5554
+    },
+    {
+      "slug": "sampeng-lane",
+      "name": "Sampeng Lane",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Narrow wholesale lane through Chinatown packed with stalls of accessories, toys, fabrics and trinkets.",
+      "lat": 13.7425,
+      "lng": 100.5035
+    },
+    {
+      "slug": "wat-traimit",
+      "name": "Wat Traimit (Golden Buddha)",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Home of a 5.5-tonne solid-gold Buddha found under a plaster shell in 1955, plus a Chinatown heritage museum.",
+      "lat": 13.7378,
+      "lng": 100.5135
+    },
+    {
+      "slug": "lumphini-park",
+      "name": "Lumphini Park",
+      "category": "EXPERIENCE",
+      "area": "Silom",
+      "blurb": "Central Bangkok's big green space, with a lake, jogging paths and wild monitor lizards.",
+      "lat": 13.7314,
+      "lng": 100.5414
+    },
+    {
+      "slug": "silom-thai-cooking-school",
+      "name": "Silom Thai Cooking School",
+      "category": "EXPERIENCE",
+      "area": "Silom",
+      "blurb": "Popular budget cooking school off Silom Road; half-day classes start with a market visit.",
+      "lat": 13.7245,
+      "lng": 100.5265
+    },
+    {
+      "slug": "sky-bar-lebua",
+      "name": "Sky Bar at Lebua",
+      "category": "FOOD",
+      "area": "Silom",
+      "blurb": "Open-air bar on the 63rd floor of lebua at State Tower, made famous by The Hangover Part II.",
+      "tip": "Smart dress code.",
+      "lat": 13.7216,
+      "lng": 100.5167
+    },
+    {
+      "slug": "amphawa-floating-market",
+      "name": "Amphawa Floating Market",
+      "category": "EXPERIENCE",
+      "area": "Samut Songkhram",
+      "blurb": "Weekend canal-side market popular with Thai visitors, known for grilled seafood sold from boats and evening firefly boat trips.",
+      "lat": 13.4253,
+      "lng": 99.9551
+    },
+    {
+      "slug": "riva-surya",
+      "name": "Riva Surya Bangkok",
+      "category": "STAY",
+      "area": "Banglamphu",
+      "blurb": "Four-star boutique hotel on the river with a riverside pool, near Khao San and the Grand Palace.",
+      "lat": 13.7613,
+      "lng": 100.4945
+    },
+    {
+      "slug": "ruam-tai",
+      "name": "Ruam Tai",
+      "category": "FOOD",
+      "area": "Thonburi",
+      "blurb": "Southern Thai restaurant near Wang Lang Market serving fiery curries from 6 am.",
+      "lat": 13.756,
+      "lng": 100.487
+    },
+    {
+      "slug": "som-tam-jay-so",
+      "name": "Som Tam Jay So",
+      "category": "FOOD",
+      "area": "Silom",
+      "blurb": "Famously fiery Isan som tam spot on Soi Phiphat 2, packed with office workers at lunch.",
+      "lat": 13.724,
+      "lng": 100.532
+    },
+    {
+      "slug": "or-tor-kor-market",
+      "name": "Or Tor Kor Market",
+      "category": "FOOD",
+      "area": "Chatuchak",
+      "blurb": "Upscale fresh market next to Chatuchak, known for top-quality fruit, curries and northern Thai food stalls.",
+      "lat": 13.7985,
+      "lng": 100.548
+    },
+    {
+      "slug": "tom-yum-goong-banglamphu",
+      "name": "Tom Yum Goong Banglamphu",
+      "category": "FOOD",
+      "area": "Banglamphu",
+      "blurb": "Street-side shop on Kraisi Road near Khao San famous for creamy tom yum with big river prawns.",
+      "lat": 13.76,
+      "lng": 100.496
+    },
+    {
+      "slug": "airport-transfer-bkk",
+      "name": "Airport to the city",
+      "category": "TRANSIT",
+      "area": "Suvarnabhumi",
+      "blurb": "From Suvarnabhumi: the S1 bus to Khao San, the Airport Rail Link to Phaya Thai, or a metered taxi from the official queue.",
+      "lat": 13.69,
+      "lng": 100.7501
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "theplanetd",
+      "name": "The Planet D",
+      "platform": "BLOG",
+      "profileUrl": "https://theplanetd.com",
+      "bio": "Travel blog. Bangkok guide by Stella Saintis."
+    },
+    {
+      "handle": "markwiens",
+      "name": "Mark Wiens",
+      "platform": "BLOG",
+      "profileUrl": "https://www.eatingthaifood.com",
+      "youtubeUrl": "https://www.youtube.com/@MarkWiens",
+      "bio": "Food traveller behind Migrationology and Eating Thai Food."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "bangkok-3-days-thebrokebackpacker",
+      "title": "3 days in Bangkok on a budget",
+      "summary": "Temples and the Grand Palace by the river, the Marble Temple, Jim Thompson House and Khao San Road, then a bike and canal tour, a cooking class and Muay Thai.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/bangkok-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Chatuchak Weekend Market",
+          "category": "EXPERIENCE",
+          "note": "BTS to Mo Chit. Don't be afraid to haggle; try coconut ice cream.",
+          "place": "chatuchak-weekend-market",
+          "price": 0,
+          "priceNote": "free entry (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Wat Pho",
+          "category": "EXPERIENCE",
+          "note": "5-10 min walk from MRT Sanam Chai. Wear shoes you can slip off.",
+          "place": "wat-pho",
+          "price": 8.92,
+          "priceNote": "300 THB per adult (creator: 200 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 1,
+          "name": "Grand Palace",
+          "category": "EXPERIENCE",
+          "note": "5-10 min walk from Wat Pho.",
+          "place": "grand-palace",
+          "price": 14.87,
+          "priceNote": "500 THB per adult",
+          "priceSource": "https://royalgrandpalace.th/en/visit/practical-information"
+        },
+        {
+          "day": 1,
+          "name": "Ferry to Wat Arun",
+          "category": "TRANSIT",
+          "place": "tha-tien-ferry",
+          "price": 0.09,
+          "priceNote": "creator: 3 THB"
+        },
+        {
+          "day": 1,
+          "name": "Wat Arun",
+          "category": "EXPERIENCE",
+          "place": "wat-arun",
+          "price": 5.95,
+          "priceNote": "200 THB per adult (creator: 50 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Marble Temple",
+          "category": "EXPERIENCE",
+          "note": "BTS Phaya Thai, then walk or tuk-tuk. Creator: go at dawn if you're a morning person.",
+          "place": "wat-benchamabophit",
+          "price": 2.97,
+          "priceNote": "100 THB per adult (creator: 20 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Jim Thompson House",
+          "category": "EXPERIENCE",
+          "note": "20 min walk from BTS Siam. No photos inside.",
+          "place": "jim-thompson-house",
+          "price": 7.44,
+          "priceNote": "250 THB per adult (creator: 200 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Golden Mount",
+          "category": "EXPERIENCE",
+          "note": "Bus 8 from Victory Monument.",
+          "place": "golden-mount",
+          "price": 2.97,
+          "priceNote": "100 THB per adult (creator: 50 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Khao San Road",
+          "category": "EXPERIENCE",
+          "note": "Pad Thai and a beer on a plastic stool.",
+          "place": "khao-san-road",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Bike and canal tour",
+          "category": "EXPERIENCE",
+          "note": "MRT to Itsaraphap. Lunch included; ends with a longtail boat ride.",
+          "place": "co-van-kessel-bike-tour",
+          "price": 40.15,
+          "priceNote": "creator: from 1,350 THB"
+        },
+        {
+          "day": 3,
+          "name": "Sompong Thai Cooking School",
+          "category": "EXPERIENCE",
+          "note": "BTS to Sukhumvit.",
+          "place": "sompong-thai-cooking-school",
+          "price": 29.74,
+          "priceNote": "1,000 THB per class (creator: $115)",
+          "priceSource": "https://www.minoritynomad.com/blog/best-thai-cooking-class-bangkok-sompong-thai-cooking-school"
+        },
+        {
+          "day": 3,
+          "name": "Muay Thai at Rajadamnern",
+          "category": "EXPERIENCE",
+          "note": "7 min walk from Khao San Road.",
+          "place": "rajadamnern-stadium",
+          "price": 29.74,
+          "priceNote": "third class 1,000 THB; ringside 2,500 THB (creator: $65 VIP)",
+          "priceSource": "https://muaythaistadiums.com/rajadamnern-muay-thai-stadium/"
+        },
+        {
+          "day": 1,
+          "name": "Lub d Bangkok Siam",
+          "category": "STAY",
+          "note": "Creator's best hostel pick. Or Thanabhumi (budget) or the Marriott Surawongse (luxury).",
+          "place": "lub-d-siam",
+          "price": 38,
+          "priceNote": "per night, private double; dorms cheaper (date-dependent)",
+          "priceSource": "https://www.za.kayak.com/Bangkok-Hotels-Lub-D-Bangkok---Siam-Square.365841.ksp",
+          "unit": "night",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "slug": "bangkok-3-days-bucketlistly",
+      "title": "3 days in Bangkok, local-approved",
+      "summary": "Old-town temples and the National Museum, sunset at Wat Arun and Chinatown street food, then Chatuchak, the Golden Mount and a rooftop bar, with an optional day trip.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/3-days-itinerary-bangkok",
+      "items": [
+        {
+          "day": 1,
+          "name": "Bus S1 from the airport",
+          "category": "TRANSIT",
+          "note": "Straight to Khao San Road. Taxi is about 300 THB plus a 50 THB airport fee.",
+          "place": "airport-transfer-bkk",
+          "price": 1.78,
+          "priceNote": "creator: 60 THB"
+        },
+        {
+          "day": 1,
+          "name": "Grand Palace",
+          "category": "EXPERIENCE",
+          "note": "Ignore tuk-tuk drivers who say it's closed. Elephant pants to cover up cost about 150 THB.",
+          "place": "grand-palace",
+          "price": 14.87,
+          "priceNote": "500 THB per adult",
+          "priceSource": "https://royalgrandpalace.th/en/visit/practical-information"
+        },
+        {
+          "day": 1,
+          "name": "Wat Pho",
+          "category": "EXPERIENCE",
+          "place": "wat-pho",
+          "price": 8.92,
+          "priceNote": "300 THB per adult (creator)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 1,
+          "name": "Bangkok National Museum",
+          "category": "EXPERIENCE",
+          "place": "bangkok-national-museum",
+          "price": 5.95,
+          "priceNote": "200 THB per adult (creator: 240 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 1,
+          "name": "Karim Roti Mataba",
+          "category": "FOOD",
+          "note": "Lunch on Phra Athit: beef panaeng with yellow rice, and the mataba they're known for.",
+          "place": "karim-roti-mataba"
+        },
+        {
+          "day": 1,
+          "name": "Ferry to Wat Arun",
+          "category": "TRANSIT",
+          "place": "tha-tien-ferry",
+          "price": 0.12,
+          "priceNote": "creator: about 4 THB"
+        },
+        {
+          "day": 1,
+          "name": "Wat Arun at sunset",
+          "category": "EXPERIENCE",
+          "note": "Then a drink at The Deck across the river.",
+          "place": "wat-arun",
+          "price": 5.95,
+          "priceNote": "200 THB per adult (creator)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 1,
+          "name": "Yaowarat Night Market",
+          "category": "FOOD",
+          "note": "6-10 pm.",
+          "place": "yaowarat-street-food",
+          "price": 1.04,
+          "priceNote": "creator: dishes 35-200+ THB"
+        },
+        {
+          "day": 1,
+          "name": "Khao San Road",
+          "category": "EXPERIENCE",
+          "note": "Check it out, but don't stay too long.",
+          "place": "khao-san-road",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Chatuchak Weekend Market",
+          "category": "EXPERIENCE",
+          "note": "MRT to Chatuchak Park or Kamphaeng Phet.",
+          "place": "chatuchak-weekend-market",
+          "price": 0,
+          "priceNote": "free entry",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Siam Paragon",
+          "category": "EXPERIENCE",
+          "place": "siam-paragon",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 2,
+          "name": "Wat Ratchabophit",
+          "category": "EXPERIENCE",
+          "place": "wat-ratchabophit",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Golden Mount at sunset",
+          "category": "EXPERIENCE",
+          "note": "318 steps up.",
+          "place": "golden-mount",
+          "price": 2.97,
+          "priceNote": "100 THB per adult (creator)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Loha Prasat",
+          "category": "EXPERIENCE",
+          "note": "Best after dark when it's lit up.",
+          "place": "loha-prasat",
+          "price": 0.59,
+          "priceNote": "20 THB per adult",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Red Sky rooftop bar",
+          "category": "FOOD",
+          "note": "Dress code: no flip-flops. Or Nest in Sukhumvit, or Wanderlust in Thonglor.",
+          "place": "red-sky"
+        },
+        {
+          "day": 3,
+          "name": "Ayutthaya day trip",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Wat Chai Watthanaram, Wat Maha That, Wat Phra Si Sanphet.",
+          "place": "ayutthaya"
+        },
+        {
+          "day": 3,
+          "name": "Damnoen Saduak & Maeklong tour",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Creator: Damnoen Saduak is more or less a tourist trap; the train market is the fun part.",
+          "place": "damnoen-saduak-maeklong",
+          "price": 20.82,
+          "priceNote": "creator: tour 700 THB"
+        },
+        {
+          "day": 1,
+          "name": "Siri Heritage Bangkok Hotel",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Niras Bankoc hostel (budget), Sala Rattanakosin (high-end).",
+          "place": "siri-heritage",
+          "price": 40,
+          "priceNote": "per night, entry room (date-dependent)",
+          "priceSource": "https://www.kayak.com/Bangkok-Hotels-Siri-Heritage-Bangkok-Hotel.4211813.ksp",
+          "unit": "night",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "slug": "bangkok-3-days-theplanetd",
+      "title": "The perfect 3 days in Bangkok",
+      "summary": "Grand Palace, Wat Pho and a private longtail through the canals, then malls, shrines and Sukhumvit bars, Chinatown and the Golden Buddha, a cooking class and Sky Bar.",
+      "tier": "MIDRANGE",
+      "days": 4,
+      "creator": "theplanetd",
+      "sourceUrl": "https://theplanetd.com/3-days-in-bangkok-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Grand Palace & Wat Phra Kaew",
+          "category": "EXPERIENCE",
+          "note": "Open 8:30 am to 3:30 pm.",
+          "place": "grand-palace",
+          "price": 14.87,
+          "priceNote": "500 THB per adult (creator)",
+          "priceSource": "https://royalgrandpalace.th/en/visit/practical-information"
+        },
+        {
+          "day": 1,
+          "name": "Wat Pho",
+          "category": "EXPERIENCE",
+          "place": "wat-pho",
+          "price": 8.92,
+          "priceNote": "300 THB per adult (creator: 100 THB with free water)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 1,
+          "name": "The Deck",
+          "category": "FOOD",
+          "note": "Lunch with great drinks and a view of Wat Arun.",
+          "place": "the-deck-arun-residence"
+        },
+        {
+          "day": 1,
+          "name": "Ferry to Wat Arun",
+          "category": "TRANSIT",
+          "place": "tha-tien-ferry",
+          "price": 0.09,
+          "priceNote": "creator: 3 THB"
+        },
+        {
+          "day": 1,
+          "name": "Wat Arun",
+          "category": "EXPERIENCE",
+          "place": "wat-arun",
+          "price": 5.95,
+          "priceNote": "200 THB per adult (creator: 100 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 1,
+          "name": "Private longtail through the canals",
+          "category": "EXPERIENCE",
+          "note": "Stops at a small floating market.",
+          "place": "longtail-canal-tour",
+          "price": 29.74,
+          "priceNote": "creator: 1,000 THB for the whole boat"
+        },
+        {
+          "day": 1,
+          "name": "Khao San Road",
+          "category": "EXPERIENCE",
+          "note": "One of the cheaper places to drink and shop. Sunset at the Golden Mount, a 20 min walk.",
+          "place": "khao-san-road",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Riva Surya Bangkok",
+          "category": "STAY",
+          "note": "Creator's Banglamphu pick. Or Okura Prestige (Sukhumvit), Royal Orchid Sheraton (riverside, where they stayed).",
+          "place": "riva-surya",
+          "price": 76,
+          "priceNote": "per night, entry room (date-dependent)",
+          "priceSource": "https://www.kayak.com/Bangkok-Hotels-Riva-Surya-Bangkok.675198.ksp",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 2,
+          "name": "Chatuchak Weekend Market",
+          "category": "EXPERIENCE",
+          "note": "Sat-Sun 9 am to 6 pm. Everything is super cheap.",
+          "place": "chatuchak-weekend-market",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Jim Thompson House",
+          "category": "EXPERIENCE",
+          "note": "BTS National Stadium.",
+          "place": "jim-thompson-house",
+          "price": 7.44,
+          "priceNote": "250 THB per adult (creator: 200 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 2,
+          "name": "Bangkok Art and Culture Centre",
+          "category": "EXPERIENCE",
+          "note": "Closed Mondays.",
+          "place": "bacc",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Siam Paragon & MBK",
+          "category": "EXPERIENCE",
+          "place": "mbk-center",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 2,
+          "name": "Erawan Shrine",
+          "category": "EXPERIENCE",
+          "note": "BTS Chit Lom.",
+          "place": "erawan-shrine",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Night market",
+          "category": "FOOD",
+          "note": "Creator's pick was Talad Neon, which has closed. Jodd Fairs in Rama 9 is the nearest equivalent.",
+          "place": "jodd-fairs"
+        },
+        {
+          "day": 2,
+          "name": "Sukhumvit Soi 11 bars",
+          "category": "FOOD",
+          "note": "Above Eleven rooftop, then Havana Social: get the phone-booth code from the Cubano sandwich seller.",
+          "place": "sukhumvit-soi-11",
+          "price": 2.68,
+          "priceNote": "creator: drinks 90-180 THB"
+        },
+        {
+          "day": 3,
+          "name": "Sampeng Lane",
+          "category": "EXPERIENCE",
+          "note": "Never accept the first price.",
+          "place": "sampeng-lane",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 3,
+          "name": "Wat Traimit (Golden Buddha)",
+          "category": "EXPERIENCE",
+          "note": "MRT Hua Lamphong. Creator recommends adding the museum.",
+          "place": "wat-traimit",
+          "price": 2.97,
+          "priceNote": "100 THB Buddha only; 200 THB with museum (creator: 40/140 THB)",
+          "priceSource": "https://yourthaiguide.com/bangkok-big-list-of-entry-fees"
+        },
+        {
+          "day": 3,
+          "name": "Lumphini Park",
+          "category": "EXPERIENCE",
+          "note": "Paddle boats; 20 THB more for bread to feed the fish.",
+          "place": "lumphini-park",
+          "price": 1.19,
+          "priceNote": "creator: 40 THB boat + 40 THB deposit"
+        },
+        {
+          "day": 3,
+          "name": "Silom Thai Cooking School",
+          "category": "EXPERIENCE",
+          "note": "Morning class includes a market tour; night class 900 THB.",
+          "place": "silom-thai-cooking-school",
+          "price": 29.74,
+          "priceNote": "creator: 1,000 THB per person"
+        },
+        {
+          "day": 3,
+          "name": "Sky Bar at Lebua",
+          "category": "FOOD",
+          "note": "Or Moon Bar at Banyan Tree.",
+          "place": "sky-bar-lebua",
+          "price": 19.33,
+          "priceNote": "creator: most cocktails 650-690 THB"
+        },
+        {
+          "day": 4,
+          "name": "Amphawa Floating Market",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Creator's favourite floating market. Van from the Southern Bus Terminal. Weekends.",
+          "place": "amphawa-floating-market",
+          "price": 0,
+          "priceNote": "free entry"
+        }
+      ]
+    },
+    {
+      "slug": "bangkok-food-tour-markwiens",
+      "title": "One-day Thai food tour of Bangkok",
+      "summary": "Eat your way through four regions of Thai food in one day: southern curries for breakfast, Isaan som tam for lunch, northern dishes at Or Tor Kor and tom yum goong for dinner.",
+      "tier": "BUDGET",
+      "days": 1,
+      "creator": "markwiens",
+      "sourceUrl": "https://www.eatingthaifood.com/thai-food-tour-bangkok/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Ruam Tai",
+          "category": "FOOD",
+          "note": "Southern Thai breakfast near Wang Lang Market: sour curry with taro stems, dry beef curry, salted fried fish. Open 6 am-8 pm.",
+          "place": "ruam-tai",
+          "price": 8.92,
+          "priceNote": "creator: dishes 40-50 THB; meal about 300 THB"
+        },
+        {
+          "day": 1,
+          "name": "Som Tam Jay So",
+          "category": "FOOD",
+          "note": "Isaan lunch: som tam, minced catfish laab, grilled pork neck, sticky rice. Gets packed at lunch; 8:30 am-4:30 pm.",
+          "place": "som-tam-jay-so",
+          "price": 14.34,
+          "priceNote": "creator: 482 THB for everything"
+        },
+        {
+          "day": 1,
+          "name": "Or Tor Kor Market",
+          "category": "FOOD",
+          "note": "Northern Thai at the Pen Jan stall: gaeng hanglay, sai oua sausage. Great place to try durian too.",
+          "place": "or-tor-kor-market",
+          "price": 1.78,
+          "priceNote": "creator: most dishes about 60 THB"
+        },
+        {
+          "day": 1,
+          "name": "Tom Yum Goong Banglamphu",
+          "category": "FOOD",
+          "note": "Central Thai dinner: tom yum goong, shrimp omelet, morning glory with crispy pork. 9 am-6:30 pm.",
+          "place": "tom-yum-goong-banglamphu",
+          "price": 17.85,
+          "priceNote": "creator: 600 THB for everything"
+        }
+      ]
+    }
+  ]
+}

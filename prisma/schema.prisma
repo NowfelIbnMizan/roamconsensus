@@ -65,6 +65,19 @@ model DestinationMonth {
   @@unique([destinationId, month])
 }
 
+/// "Before you go": one practical checklist entry (visa, money, health…).
+model DestinationTip {
+  id            String      @id @default(cuid())
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  /// Group heading, e.g. "Entry" or "Health".
+  topic         String
+  title         String
+  body          String
+  sourceUrl     String?
+  position      Int         @default(0)
+}
+
 enum PhotoSource {
   OTA
   OEMBED
@@ -88,6 +101,7 @@ model Destination {
   places           Place[]
   itineraries      Itinerary[]
   months           DestinationMonth[]
+  tips             DestinationTip[]
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
 }
@@ -255,4 +269,11 @@ model PhotoCache {
   /// Photographer's profile page, linked from the credit line.
   creditUrl   String?
   fetchedAt   DateTime    @default(now())
+}
+
+/// Content the deploy seed has already loaded once ("itinerary:<slug>", "destination:<slug>"), so new entries in data/
+/// get added on deploy while anything edited or deleted in the admin panel stays that way.
+model SeedLog {
+  key      String   @id
+  loadedAt DateTime @default(now())
 }

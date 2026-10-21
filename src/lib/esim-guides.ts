@@ -77,4 +77,119 @@ export const esimGuides: Record<string, EsimGuide> = {
       },
     ],
   },
+  Thailand: {
+    checked: "October 2026",
+    imei: {
+      title: "Travel eSIM? No registration needed",
+      body: [
+        "Travel eSIMs like Airalo, Saily or Holafly roam on Thai networks, so there's nothing to register. They are data only, with no Thai number.",
+        "Thai tourist SIMs and eSIMs (AIS, True, dtac) give you a +66 number but must be registered with your passport. Since 16 May 2026 foreigners register in person at a shop or dealer, tourist packages last up to 60 days, and you can hold 3 SIMs per operator.",
+      ],
+      sources: [
+        "https://www.yozzo.com/mvno-news/thailand-nbtc-sim-card-registration-kyc-measures/",
+        "https://littlebigreddot.com/thailand-tourist-sim-passport-60-day-rule/",
+        "https://www.roamiapp.com/blog/thailand-esim-comparison/",
+      ],
+    },
+    coverage: {
+      intro:
+        "Thailand now has two big networks: AIS, and True (TrueMove H and dtac merged). In Bangkok both are excellent, so pick on price. AIS reaches further outside the cities, which matters more if you head on to the islands or national parks.",
+      areas: [
+        {
+          name: "Sukhumvit, Silom & Siam",
+          note: "Excellent on both. AIS is the most consistent; dtac has the fastest 5G downloads.",
+        },
+        { name: "Old Town & Chinatown", note: "Strong on both networks, like the rest of inner Bangkok." },
+        { name: "BTS & MRT", note: "Signal holds in tunnels and basement food courts, with 5G on both networks." },
+        { name: "Chatuchak", note: "Excellent on both, even on busy weekend market days." },
+        { name: "Ayutthaya & floating markets", note: "Fine on both; AIS has a slight edge outside the city." },
+        { name: "The islands", note: "AIS is the safer pick. Expect no data on ferry crossings." },
+      ],
+      sources: [
+        "https://www.roamiapp.com/blog/thailand-esim-comparison/",
+        "https://insights.opensignal.com/reports/2026/08/thailand/mobile-network-experience",
+        "https://matrix.in/blogs/news/best-esim-for-thailand-in-2026-ais-vs-truemove-vs-dtac-compared",
+      ],
+    },
+    faq: [
+      {
+        q: "Travel eSIM or Thai tourist SIM?",
+        a: "A Thai tourist SIM or eSIM (AIS, dtac) gives you a +66 number and cheap unlimited data, but needs passport registration in person. A travel eSIM installs before you fly, needs no registration, and is data only.",
+      },
+      {
+        q: "Is unlimited really unlimited?",
+        a: "Usually not. Airalo and Saily slow to 1 Mbps after 5 GB a day, Maya to 3 Mbps, and Holafly caps hotspot use at 1 GB a day.",
+      },
+      {
+        q: "AIS or True for a Bangkok-only trip?",
+        a: "Either works well in Bangkok. AIS is better if you'll also visit small islands, the northern mountains or national parks.",
+      },
+      {
+        q: "When should I install the eSIM?",
+        a: "Install it at home on Wi-Fi before you fly. Some plans start counting days at installation, so check the plan's activation rule. Most eSIMs can only be installed once.",
+      },
+      {
+        q: "How much data do I need?",
+        a: "Maps and messaging use very little. An hour of Instagram or TikTok uses about 0.5 to 1 GB and HD streaming about 3 GB. Light users manage on 5 GB a week; heavy social or video users want 10 GB or more. Use the estimator above for your trip.",
+      },
+    ],
+  },
+  Japan: {
+    checked: "October 2026",
+    imei: {
+      title: "Travel eSIM? No registration needed",
+      body: [
+        "Japan has no IMEI or handset registration for visitors. Your phone just needs to be unlocked and support eSIM.",
+        "Data-only travel eSIMs (Airalo, Saily, Holafly, Mobal data) install by QR code with no Japanese ID check.",
+        "Want a Japanese 070/080/090 number? Voice plans like Mobal Voice or Sakura Mobile need passport ID checks. A 2026 law change may extend ID checks to data SIMs too, with no start date yet, so carry your passport.",
+      ],
+      sources: [
+        "https://simology.io/blog/japan-esim-tourists-identity-requirements-app-calling-network-notes-2026",
+        "https://selectra.jp/en/sim/best-esim-japan-tourists",
+        "https://tokyointernationalmeetup.com/japan-sim-card-id-verification-law-2026-guide/",
+      ],
+    },
+    coverage: {
+      intro:
+        "Japan has three big networks, Docomo, KDDI (au) and SoftBank, plus newcomer Rakuten. Most travel eSIMs ride on au or SoftBank; Mobal and Sakura Mobile use Docomo. In Tokyo all three are excellent. Docomo pulls ahead underground, in the mountains and in the countryside.",
+      areas: [
+        {
+          name: "Central Tokyo",
+          note: "Effectively tied above ground on all three. 5G is strongest in the city centers.",
+        },
+        { name: "Tokyo subway", note: "Docomo and au are best underground. SoftBank works but is weaker." },
+        { name: "Shibuya & Shinjuku crowds", note: "Rush-hour crowds slow every network the same way." },
+        { name: "Hakone & Mt Fuji", note: "Docomo and au are the most reliable. SoftBank and Rakuten are patchier." },
+        { name: "Nikko", note: "Docomo is the most dependable, au a close second." },
+        { name: "Kyoto & Osaka by Shinkansen", note: "Fine on all three, with brief drops in tunnels." },
+      ],
+      sources: [
+        "https://www.sakuramobile.jp/blog/japan-sim/data-roaming-in-japan-choosing-a-network-provider-for-your-next-trip/",
+        "https://www.esimpass.com/en/blog/softbank-vs-docomo-japan",
+        "https://simology.io/blog/japan-esim-tourists-identity-requirements-app-calling-network-notes-2026",
+      ],
+    },
+    faq: [
+      {
+        q: "Do I need to register my phone or show a passport?",
+        a: "Not for a data-only travel eSIM. A plan with a Japanese phone number needs an ID check. Rules for data SIMs may tighten in 2026, so keep your passport handy.",
+      },
+      {
+        q: "Is unlimited really unlimited?",
+        a: "Usually not. Saily and Maya slow down after 5 GB a day, Jetpac and aloSIM after 3 GB, Nomad after 2 GB. Holafly caps hotspot use at 1 GB a day.",
+      },
+      {
+        q: "Which network if I'm leaving Tokyo?",
+        a: "For mountains, onsen towns, Nikko or hiking, a Docomo plan (Mobal, Sakura Mobile) or au is safest. For city trips, au or SoftBank plans are fine.",
+      },
+      {
+        q: "Can I tether a laptop?",
+        a: "Most providers allow hotspot (Saily, Nomad, Jetpac, GigSky, Yesim, Mobal, Ubigi). Holafly caps it at 1 GB a day.",
+      },
+      {
+        q: "When should I install the eSIM?",
+        a: "Install it at home on Wi-Fi before you fly. Some plans start counting days at installation, so check the plan's activation rule. Most eSIMs can only be installed once.",
+      },
+    ],
+  },
 };

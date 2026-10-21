@@ -30,6 +30,9 @@ type CartState = {
   budgetCents: number | null;
   /** Trip length the traveller set; 0 means "as many days as planned items use". */
   tripDays: number;
+  /** Packing list entries the traveller ticked off. */
+  packed: string[];
+  togglePacked: (item: string) => void;
   add: (items: CartItem[]) => void;
   setDay: (id: string, day: number | null) => void;
   /** Moves an item before (-1) or after (+1) the neighbouring item planned for the same day. */
@@ -48,6 +51,9 @@ export const useCart = create<CartState>()(
       items: [],
       budgetCents: null,
       tripDays: 0,
+      packed: [],
+      togglePacked: (item) =>
+        set((s) => ({ packed: s.packed.includes(item) ? s.packed.filter((p) => p !== item) : [...s.packed, item] })),
       // Re-adding an item already in the cart leaves its quantity alone.
       add: (incoming) =>
         set((s) => {

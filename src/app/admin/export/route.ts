@@ -20,6 +20,7 @@ export async function GET() {
       include: {
         places: { orderBy: { slug: "asc" } },
         months: { orderBy: { month: "asc" } },
+        tips: { orderBy: { position: "asc" } },
         itineraries: {
           orderBy: { slug: "asc" },
           include: {
@@ -64,6 +65,9 @@ export async function GET() {
         ? d.months.map((m) =>
             clean({ month: m.month, highC: m.highC, lowC: m.lowC, rainMm: m.rainMm, crowd: m.crowd, note: m.note }),
           )
+        : null,
+      tips: d.tips.length
+        ? d.tips.map((t) => clean({ topic: t.topic, title: t.title, body: t.body, sourceUrl: t.sourceUrl }))
         : null,
       sample: d.isSample || null,
       places: d.places.map((p) =>

@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import type { ItemCategory, Prisma } from "@/generated/prisma/client";
 import { pickOffer, type CouponCandidate } from "@/lib/coupons";
 import { creatorLinkSelect } from "@/lib/creator-links";
+import { vibesOf, type VibeKey } from "@/lib/vibes";
 
 /** On every cached read of site content; admin saves invalidate it so edits show at once. */
 export const CONTENT_TAG = "content";
@@ -172,10 +173,22 @@ export async function getDestination(slug: string) {
         orderBy: { tier: "asc" },
         include: {
           creator: { select: { ...creatorLinkSelect, platform: true } },
-          items: { select: { category: true, priceCents: true, quantity: true } },
+          items: {
+            select: {
+              category: true,
+              priceCents: true,
+              quantity: true,
+              sentiment: true,
+              place: { select: { slug: true } },
+            },
+          },
         },
       },
       months: { orderBy: { month: "asc" }, omit: { id: true, destinationId: true } },
+      tips: {
+        orderBy: { position: "asc" },
+        select: { id: true, topic: true, title: true, body: true, sourceUrl: true },
+      },
       places: { include: { items: { select: placeItemSelect } } },
     },
   });
@@ -198,6 +211,9 @@ export async function getDestination(slug: string) {
     const totalCents = [...byCategory.values()].reduce((a, b) => a + b, 0);
     return {
       unpricedCount: it.items.filter((i) => i.priceCents === null).length,
+      stops: it.items.length,
+      /** Places it recommends (not ones it says to skip), for comparing routes. */
+      places: [...new Set(it.items.flatMap((i) => (i.place && i.sentiment !== "AVOID" ? [i.place.slug] : [])))],
       slug: it.slug,
       title: it.title,
       summary: it.summary,
@@ -219,6 +235,7 @@ export async function getDestination(slug: string) {
     isSample: destination.isSample,
     climateSourceUrl: destination.climateSourceUrl,
     months: destination.months,
+    tips: destination.tips,
     creatorCount,
     consensus,
     routes,
@@ -284,6 +301,150 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
     others: place.destination.places.map((p) => ({ ...p, lat: p.lat!, lng: p.lng! })),
   };
 }
+
+/** Every route and recommended spot, tagged with trip vibes, for the trip quiz. */
+export async function getQuizData() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+
+  const itineraries = await db.itinerary.findMany({
+    include: {
+      destination: { select: { slug: true, name: true } },
+      creator: { select: creatorLinkSelect },
+      items: {
+        select: {
+          name: true,
+          note: true,
+          category: true,
+          priceCents: true,
+          quantity: true,
+          sentiment: true,
+          place: { select: { slug: true, name: true, area: true, blurb: true, category: true } },
+        },
+      },
+    },
+  });
+
+  const places = new Map<
+    string,
+    {
+      slug: string;
+      destination: string;
+      name: string;
+      area: string | null;
+      category: ItemCategory;
+      vibes: VibeKey[];
+      creators: Set<string>;
+    }
+  >();
+  const routes = itineraries.map((it) => {
+    const counts: Record<string, number> = {};
+    const kept = it.items.filter((i) => i.sentiment !== "AVOID");
+    for (const i of kept) {
+      const text = [i.name, i.note, i.place?.name, i.place?.blurb].filter(Boolean).join(" ");
+      const vibes = vibesOf(text, i.category);
+      for (const v of vibes) counts[v] = (counts[v] ?? 0) + 1;
+      if (i.place) {
+        const key = `${it.destination.slug}/${i.place.slug}`;
+        const p = places.get(key) ?? {
+          slug: i.place.slug,
+          destination: it.destination.slug,
+          name: i.place.name,
+          area: i.place.area,
+          category: i.place.category,
+          vibes: [],
+          creators: new Set<string>(),
+        };
+        p.vibes = [...new Set([...p.vibes, ...vibes])];
+        p.creators.add(it.creatorId);
+        places.set(key, p);
+      }
+    }
+    return {
+      slug: it.slug,
+      title: it.title,
+      tier: it.tier,
+      days: it.days,
+      destination: it.destination,
+      creator: it.creator,
+      totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
+      /** Share of the route's stops matching each vibe, 0–1. */
+      vibes: Object.fromEntries(Object.entries(counts).map(([k, n]) => [k, n / Math.max(1, kept.length)])),
+    };
+  });
+
+  return {
+    routes,
+    places: [...places.values()].map(({ creators, ...p }) => ({ ...p, creatorCount: creators.size })),
+  };
+}
+
+export type QuizData = Awaited<ReturnType<typeof getQuizData>>;
+
+/** Everything the search box can find. Small enough to send whole and filter in the browser. */
+export async function getSearchIndex() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const [destinations, places, creators, itineraries] = await Promise.all([
+    db.destination.findMany({ select: { slug: true, name: true, country: true, summary: true } }),
+    db.place.findMany({
+      where: { items: { some: {} } },
+      select: {
+        slug: true,
+        name: true,
+        area: true,
+        category: true,
+        blurb: true,
+        destination: { select: { slug: true, name: true } },
+      },
+    }),
+    db.creator.findMany({ where: { itineraries: { some: {} } }, select: { handle: true, name: true, bio: true } }),
+    db.itinerary.findMany({
+      select: {
+        slug: true,
+        title: true,
+        summary: true,
+        days: true,
+        creator: { select: { name: true } },
+        destination: { select: { name: true } },
+      },
+    }),
+  ]);
+  return [
+    ...destinations.map((d) => ({
+      kind: "Destination" as const,
+      href: `/destinations/${d.slug}`,
+      title: d.name,
+      sub: d.country,
+      text: `${d.name} ${d.country} ${d.summary}`,
+    })),
+    ...itineraries.map((i) => ({
+      kind: "Itinerary" as const,
+      href: `/itineraries/${i.slug}`,
+      title: i.title,
+      sub: `${i.days} days by ${i.creator.name} · ${i.destination.name}`,
+      text: `${i.title} ${i.summary} ${i.creator.name} ${i.destination.name}`,
+    })),
+    ...places.map((p) => ({
+      kind: "Spot" as const,
+      href: `/destinations/${p.destination.slug}/places/${p.slug}`,
+      title: p.name,
+      sub: [p.area, p.destination.name].filter(Boolean).join(", "),
+      text: `${p.name} ${p.area ?? ""} ${p.destination.name} ${p.category} ${p.blurb ?? ""}`,
+    })),
+    ...creators.map((c) => ({
+      kind: "Creator" as const,
+      href: `/creators/${c.handle}`,
+      title: c.name,
+      sub: `@${c.handle}`,
+      text: `${c.name} ${c.handle} ${c.bio ?? ""}`,
+    })),
+  ];
+}
+
+export type SearchEntry = Awaited<ReturnType<typeof getSearchIndex>>[number];
 
 export async function getItinerarySlugs() {
   "use cache";

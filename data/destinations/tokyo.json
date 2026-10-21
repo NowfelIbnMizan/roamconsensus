@@ -1,0 +1,1570 @@
+{
+  "slug": "tokyo",
+  "name": "Tokyo",
+  "country": "Japan",
+  "summary": "Ancient temples next to neon crossings, sushi at dawn, rooftop views from Shibuya Sky and Tokyo Tower, digital art museums and tiny bars in Golden Gai.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Tokyo",
+  "months": [
+    {
+      "month": 1,
+      "highC": 10,
+      "lowC": 1,
+      "rainMm": 60,
+      "crowd": "MEDIUM",
+      "note": "Cold, dry and sunny. Many shops and some sights close Jan 1-3 for New Year."
+    },
+    {
+      "month": 2,
+      "highC": 11,
+      "lowC": 2,
+      "rainMm": 57,
+      "crowd": "LOW",
+      "note": "Coldest, quietest month with low hotel prices; plum blossoms late in the month."
+    },
+    {
+      "month": 3,
+      "highC": 14,
+      "lowC": 5,
+      "rainMm": 116,
+      "crowd": "HIGH",
+      "note": "Cherry blossoms usually open in late March, so prices and crowds jump at month's end."
+    },
+    {
+      "month": 4,
+      "highC": 19,
+      "lowC": 10,
+      "rainMm": 134,
+      "crowd": "HIGH",
+      "note": "Blossoms into early April; Golden Week (Apr 29-May 5) brings peak prices and packed trains."
+    },
+    {
+      "month": 5,
+      "highC": 24,
+      "lowC": 15,
+      "rainMm": 140,
+      "crowd": "MEDIUM",
+      "note": "After Golden Week the weather is pleasant and prices drop."
+    },
+    {
+      "month": 6,
+      "highC": 26,
+      "lowC": 19,
+      "rainMm": 168,
+      "crowd": "LOW",
+      "note": "Rainy season: humid with frequent drizzle, but fewer crowds and hydrangeas in bloom."
+    },
+    {
+      "month": 7,
+      "highC": 30,
+      "lowC": 22,
+      "rainMm": 156,
+      "crowd": "MEDIUM",
+      "note": "Rainy season ends mid to late July, then hot and humid with festivals and fireworks."
+    },
+    {
+      "month": 8,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 155,
+      "crowd": "HIGH",
+      "note": "Hottest month. Obon (mid-August) fills transport; typhoons can disrupt travel."
+    },
+    {
+      "month": 9,
+      "highC": 28,
+      "lowC": 20,
+      "rainMm": 225,
+      "crowd": "MEDIUM",
+      "note": "Still hot early on and peak typhoon season."
+    },
+    {
+      "month": 10,
+      "highC": 22,
+      "lowC": 15,
+      "rainMm": 235,
+      "crowd": "MEDIUM",
+      "note": "Comfortable temperatures, though early October is wet."
+    },
+    {
+      "month": 11,
+      "highC": 17,
+      "lowC": 9,
+      "rainMm": 96,
+      "crowd": "HIGH",
+      "note": "Autumn leaves peak mid to late November; crisp, clear days."
+    },
+    {
+      "month": 12,
+      "highC": 12,
+      "lowC": 4,
+      "rainMm": 58,
+      "crowd": "MEDIUM",
+      "note": "Dry and sunny with winter illuminations; many businesses close from about Dec 29."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free short stays",
+      "body": "Visitors from about 70 countries, including the US, UK, Canada, Australia and most of the EU, can visit without a visa, usually for up to 90 days. Check the Foreign Ministry list for your passport.",
+      "sourceUrl": "https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html?fs=e"
+    },
+    {
+      "topic": "Entry",
+      "title": "No JESTA needed yet",
+      "body": "Japan plans an ESTA-style pre-travel authorization called JESTA, now due by fiscal 2028. Nothing is required for trips in 2026.",
+      "sourceUrl": "https://visasnews.com/en/japan-brings-forward-the-introduction-of-its-electronic-travel-authorization/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Register on Visit Japan Web",
+      "body": "Enter your immigration and customs details online before you fly to get QR codes for a faster arrival. It's free.",
+      "sourceUrl": "https://www.ana.co.jp/en/ca/travel-information/special-guidance-for-each-country/customs-declaration/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Departure tax is now ¥3,000",
+      "body": "The International Tourist Tax rose from ¥1,000 to ¥3,000 per traveller on 1 July 2026. It's usually added to your airline ticket.",
+      "sourceUrl": "https://www.japan.travel/en/ca/news/japans-international-tourist-tax-is-increasing/"
+    },
+    {
+      "topic": "Money",
+      "title": "Tax-free shopping is now a refund",
+      "body": "From 1 November 2026 you pay the full price including 10% tax, then get it refunded after customs checks the goods at the airport. Spend at least ¥5,000 per shop per day and keep your passport handy.",
+      "sourceUrl": "https://www.japan.travel/en/us/blog/everything-you-need-to-know-japans-new-tax-free-shopping-system/"
+    },
+    {
+      "topic": "Money",
+      "title": "Cards are common, but carry yen",
+      "body": "Most shops take Visa and Mastercard, but small restaurants, shrines and stalls may be cash only. 7-Eleven ATMs accept foreign cards, many around the clock.",
+      "sourceUrl": "https://wise.com/us/blog/atms-in-japan"
+    },
+    {
+      "topic": "Money",
+      "title": "No tipping",
+      "body": "Tipping isn't done at restaurants, bars, taxis or hotels and can cause confusion.",
+      "sourceUrl": "https://www.japan.travel/en/plan/tipping-in-japan/"
+    },
+    {
+      "topic": "Getting around",
+      "title": "Get a Suica or PASMO card",
+      "body": "Tap-on IC cards work on almost all Tokyo trains, subways, buses and convenience stores. Tourists can buy a Welcome Suica at Haneda, Narita and major JR stations, or use the Welcome Suica Mobile app on iPhone.",
+      "sourceUrl": "https://tokyocheapo.com/travel/the-return-of-suica-cards/"
+    },
+    {
+      "topic": "Getting around",
+      "title": "JR Pass only pays off for long trips",
+      "body": "Since 1 October 2026 the 7-day JR Pass costs ¥53,000. It's worth it only with long shinkansen rides, not for getting around Tokyo.",
+      "sourceUrl": "https://www.japan.travel/en/ca/news/price-increases-are-coming-to-the-nationwide-japan-rail-pass-2026/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Keep quiet on trains",
+      "body": "No phone calls on public transport; keep your phone on silent and voices low. Leave priority seats free.",
+      "sourceUrl": "https://www.gotokyo.org/en/plan/customs-manners/index.html"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Shoes off, trash in your bag",
+      "body": "Some restaurants, temples and inns ask you to take shoes off, so wear socks without holes. Public bins are rare: carry a small bag for rubbish.",
+      "sourceUrl": "https://www.japan.travel/en/faq/"
+    },
+    {
+      "topic": "Packing",
+      "title": "Type A plugs, 100V",
+      "body": "Two flat pins at 100V. Most phone and laptop chargers are fine; hair dryers may not be.",
+      "sourceUrl": "https://www.japan.travel/en/plan/plug-and-electricity/"
+    },
+    {
+      "topic": "Health",
+      "title": "Strict medicine rules",
+      "body": "Amphetamine-based ADHD drugs (like Adderall) are banned, as are pseudoephedrine products such as Sudafed and Vicks inhalers. Up to one month of other prescription medicine is fine; bring the prescription.",
+      "sourceUrl": "https://www.miami.us.emb-japan.go.jp/itpr_en/medication.html"
+    },
+    {
+      "topic": "Safety",
+      "title": "Earthquakes: install Safety tips",
+      "body": "The free Safety tips app sends earthquake and tsunami alerts in English. Police 110, fire and ambulance 119.",
+      "sourceUrl": "https://www.gotokyo.org/en/plan/health-safety/index.html"
+    },
+    {
+      "topic": "Health",
+      "title": "Tap water is safe",
+      "body": "Tokyo tap water is safe to drink. Vending machines are everywhere for hot summers.",
+      "sourceUrl": "https://www.gotokyo.org/en/plan/health-safety/index.html"
+    }
+  ],
+  "places": [
+    {
+      "slug": "senso-ji",
+      "name": "Senso-ji",
+      "category": "EXPERIENCE",
+      "area": "Asakusa",
+      "blurb": "Tokyo's oldest temple, dedicated to Kannon, reached through the Kaminarimon gate and the Nakamise shopping street.",
+      "tip": "Go early morning or after dark to beat the crowds.",
+      "website": "https://www.senso-ji.jp/english/",
+      "lat": 35.7148,
+      "lng": 139.7967
+    },
+    {
+      "slug": "asakusa-culture-center",
+      "name": "Asakusa Culture Tourist Information Center",
+      "category": "EXPERIENCE",
+      "area": "Asakusa",
+      "blurb": "Kengo Kuma-designed tourist centre opposite Kaminarimon, with a free 8th-floor terrace over Nakamise and Tokyo Skytree.",
+      "lat": 35.7108,
+      "lng": 139.7964
+    },
+    {
+      "slug": "hanayashiki",
+      "name": "Hanayashiki",
+      "category": "EXPERIENCE",
+      "area": "Asakusa",
+      "blurb": "Japan's oldest amusement park, founded in 1853: a compact retro park right next to Senso-ji.",
+      "website": "https://en.hanayashiki.net/",
+      "lat": 35.7155,
+      "lng": 139.7944
+    },
+    {
+      "slug": "ueno-park",
+      "name": "Ueno Park",
+      "category": "EXPERIENCE",
+      "area": "Ueno",
+      "blurb": "Big public park holding national museums, Ueno Zoo, Toshogu shrine and Shinobazu Pond. Famous for cherry blossoms.",
+      "lat": 35.7156,
+      "lng": 139.774
+    },
+    {
+      "slug": "tokyo-national-museum",
+      "name": "Tokyo National Museum",
+      "category": "EXPERIENCE",
+      "area": "Ueno",
+      "blurb": "Japan's oldest and largest museum, with a vast collection of Japanese and Asian art.",
+      "tip": "Closed Mondays.",
+      "website": "https://www.tnm.jp/",
+      "lat": 35.7188,
+      "lng": 139.7765
+    },
+    {
+      "slug": "nature-science-museum",
+      "name": "National Museum of Nature and Science",
+      "category": "EXPERIENCE",
+      "area": "Ueno",
+      "blurb": "Japan's national natural history and science museum, with dinosaur skeletons and a Japan gallery.",
+      "tip": "Closed Mondays.",
+      "website": "https://www.kahaku.go.jp/english/",
+      "lat": 35.7163,
+      "lng": 139.7764
+    },
+    {
+      "slug": "western-art-museum",
+      "name": "National Museum of Western Art",
+      "category": "EXPERIENCE",
+      "area": "Ueno",
+      "blurb": "Le Corbusier-designed museum, a UNESCO World Heritage Site, strong on Rodin and French painting.",
+      "tip": "Closed Mondays.",
+      "website": "https://www.nmwa.go.jp/en/",
+      "lat": 35.7153,
+      "lng": 139.7757
+    },
+    {
+      "slug": "akihabara",
+      "name": "Akihabara Electric Town",
+      "category": "EXPERIENCE",
+      "area": "Akihabara",
+      "blurb": "Tokyo's electronics, anime, manga and gaming district. Chuo-dori closes to cars on Sundays.",
+      "lat": 35.6984,
+      "lng": 139.7731
+    },
+    {
+      "slug": "yurakucho-gado-shita",
+      "name": "Yurakucho gado-shita izakayas",
+      "category": "FOOD",
+      "area": "Yurakucho",
+      "blurb": "Smoky yakitori and izakaya joints tucked under the brick railway arches between Yurakucho and Shimbashi.",
+      "lat": 35.6748,
+      "lng": 139.7629
+    },
+    {
+      "slug": "shibuya-sky",
+      "name": "Shibuya Sky",
+      "category": "EXPERIENCE",
+      "area": "Shibuya",
+      "blurb": "Open-air rooftop deck about 230 m up on Shibuya Scramble Square, looking straight down on the crossing.",
+      "tip": "Sunset slots sell out weeks ahead: book online.",
+      "website": "https://www.shibuya-scramble-square.com/sky/",
+      "lat": 35.6585,
+      "lng": 139.7022
+    },
+    {
+      "slug": "shibuya-crossing",
+      "name": "Shibuya Scramble Crossing",
+      "category": "EXPERIENCE",
+      "area": "Shibuya",
+      "blurb": "The famous all-directions crossing outside Shibuya Station's Hachiko exit.",
+      "lat": 35.6595,
+      "lng": 139.7005
+    },
+    {
+      "slug": "magnet-shibuya109",
+      "name": "MAGNET by Shibuya109 rooftop",
+      "category": "EXPERIENCE",
+      "area": "Shibuya",
+      "blurb": "Rooftop viewing deck and lounge over the Scramble Crossing, reopened in March 2026 after renovation. Cashless only.",
+      "lat": 35.66,
+      "lng": 139.6997
+    },
+    {
+      "slug": "takeshita-street",
+      "name": "Takeshita Street",
+      "category": "EXPERIENCE",
+      "area": "Harajuku",
+      "blurb": "Narrow street opposite JR Harajuku Station packed with youth-fashion shops and crepe stands.",
+      "lat": 35.6716,
+      "lng": 139.7031
+    },
+    {
+      "slug": "harakado",
+      "name": "Tokyu Plaza Harajuku Harakado",
+      "category": "EXPERIENCE",
+      "area": "Harajuku",
+      "blurb": "Shopping and culture complex at the Jingumae crossing, opened 2024, with a rooftop terrace.",
+      "lat": 35.6684,
+      "lng": 139.7056
+    },
+    {
+      "slug": "meiji-jingu",
+      "name": "Meiji Jingu",
+      "category": "EXPERIENCE",
+      "area": "Harajuku",
+      "blurb": "Shinto shrine to Emperor Meiji and Empress Shoken in a big planted forest beside Harajuku Station.",
+      "website": "https://www.meijijingu.or.jp/en/",
+      "lat": 35.6764,
+      "lng": 139.6993
+    },
+    {
+      "slug": "yoyogi-park",
+      "name": "Yoyogi Park",
+      "category": "EXPERIENCE",
+      "area": "Harajuku",
+      "blurb": "One of Tokyo's largest parks, next to Meiji Jingu, popular for weekend picnics and buskers.",
+      "lat": 35.6717,
+      "lng": 139.6949
+    },
+    {
+      "slug": "golden-gai",
+      "name": "Shinjuku Golden Gai",
+      "category": "FOOD",
+      "area": "Shinjuku",
+      "blurb": "Six narrow alleys of about 200 tiny bars in low postwar buildings.",
+      "tip": "Many bars charge a cover; some are regulars-only.",
+      "lat": 35.6939,
+      "lng": 139.7046
+    },
+    {
+      "slug": "kabukicho",
+      "name": "Kabukicho",
+      "category": "EXPERIENCE",
+      "area": "Shinjuku",
+      "blurb": "Shinjuku's nightlife district, home to the Godzilla head on the Toho building.",
+      "tip": "Ignore touts.",
+      "lat": 35.695,
+      "lng": 139.702
+    },
+    {
+      "slug": "tmg-building",
+      "name": "Tokyo Metropolitan Government Building",
+      "category": "EXPERIENCE",
+      "area": "Shinjuku",
+      "blurb": "Free observation decks on the 45th floor (202 m) of Kenzo Tange's twin-towered city hall.",
+      "lat": 35.6896,
+      "lng": 139.6917
+    },
+    {
+      "slug": "uniqlo-ginza",
+      "name": "UNIQLO Ginza flagship",
+      "category": "EXPERIENCE",
+      "area": "Ginza",
+      "blurb": "Uniqlo's 12-floor global flagship on Chuo-dori.",
+      "lat": 35.6703,
+      "lng": 139.7633
+    },
+    {
+      "slug": "ginza",
+      "name": "Ginza",
+      "category": "EXPERIENCE",
+      "area": "Ginza",
+      "blurb": "Tokyo's upscale shopping district. Chuo-dori closes to cars on weekend afternoons.",
+      "lat": 35.6717,
+      "lng": 139.765
+    },
+    {
+      "slug": "kabukiza",
+      "name": "Kabukiza",
+      "category": "EXPERIENCE",
+      "area": "Ginza",
+      "blurb": "Tokyo's main kabuki theatre. Single-act tickets let you watch one act from the top floor.",
+      "website": "https://www.kabuki-bito.jp/eng/contents/theatre/kabukiza.html",
+      "lat": 35.6696,
+      "lng": 139.7678
+    },
+    {
+      "slug": "tokyo-tower",
+      "name": "Tokyo Tower",
+      "category": "EXPERIENCE",
+      "area": "Minato",
+      "blurb": "333 m tower from 1958, with a Main Deck at 150 m and a Top Deck at 250 m.",
+      "website": "https://en.tokyotower.co.jp/",
+      "lat": 35.6586,
+      "lng": 139.7454
+    },
+    {
+      "slug": "zojoji",
+      "name": "Zojoji Temple",
+      "category": "EXPERIENCE",
+      "area": "Minato",
+      "blurb": "Head temple of the Jodo sect and burial place of six Tokugawa shoguns, with Tokyo Tower behind it.",
+      "website": "https://www.zojoji.or.jp/en/",
+      "lat": 35.6575,
+      "lng": 139.7483
+    },
+    {
+      "slug": "tsukiji-outer-market",
+      "name": "Tsukiji Outer Market",
+      "category": "FOOD",
+      "area": "Tsukiji",
+      "blurb": "Blocks of seafood, knife and food stalls that stayed in Tsukiji after the wholesale market moved to Toyosu.",
+      "tip": "Many shops close Sundays, holidays and some Wednesdays.",
+      "website": "https://www.tsukiji.or.jp/english/",
+      "lat": 35.6654,
+      "lng": 139.7707
+    },
+    {
+      "slug": "toyosu-market",
+      "name": "Toyosu Market",
+      "category": "EXPERIENCE",
+      "area": "Toyosu",
+      "blurb": "Tokyo's wholesale fish market. Tuna auctions run about 5:30-6:30 am, seen from glass-walled galleries.",
+      "tip": "Closer observation deck is a free lottery: apply the month before.",
+      "lat": 35.6467,
+      "lng": 139.7858
+    },
+    {
+      "slug": "national-art-center",
+      "name": "National Art Center Tokyo",
+      "category": "EXPERIENCE",
+      "area": "Roppongi",
+      "blurb": "Kisho Kurokawa's wavy glass exhibition hall. No permanent collection; each show sets its own price.",
+      "website": "https://www.nact.jp/english/",
+      "lat": 35.6653,
+      "lng": 139.7263
+    },
+    {
+      "slug": "tokyo-skytree",
+      "name": "Tokyo Skytree",
+      "category": "EXPERIENCE",
+      "area": "Oshiage",
+      "blurb": "634 m tower, Japan's tallest structure, with decks at 350 m and 450 m.",
+      "website": "https://www.tokyo-skytree.jp/en/",
+      "lat": 35.7101,
+      "lng": 139.8107
+    },
+    {
+      "slug": "miraikan",
+      "name": "Miraikan",
+      "category": "EXPERIENCE",
+      "area": "Odaiba",
+      "blurb": "Japan's museum of emerging science, known for its Geo-Cosmos globe and robots.",
+      "tip": "Closed for refurbishment until 22 April 2027.",
+      "website": "https://www.miraikan.jst.go.jp/en/",
+      "lat": 35.6192,
+      "lng": 139.7765
+    },
+    {
+      "slug": "teamlab-borderless",
+      "name": "teamLab Borderless",
+      "category": "EXPERIENCE",
+      "area": "Azabudai",
+      "blurb": "Immersive digital art museum at Azabudai Hills where the rooms flow into one another.",
+      "tip": "Book ahead online.",
+      "website": "https://www.teamlab.art/e/tokyo/",
+      "lat": 35.6603,
+      "lng": 139.7404
+    },
+    {
+      "slug": "teamlab-planets",
+      "name": "teamLab Planets",
+      "category": "EXPERIENCE",
+      "area": "Toyosu",
+      "blurb": "Barefoot digital art museum where you wade through water and gardens of light.",
+      "tip": "Timed tickets online only.",
+      "website": "https://www.teamlab.art/e/planets/",
+      "lat": 35.6491,
+      "lng": 139.7898
+    },
+    {
+      "slug": "ryogoku-kokugikan",
+      "name": "Ryogoku Kokugikan",
+      "category": "EXPERIENCE",
+      "area": "Ryogoku",
+      "blurb": "Tokyo's national sumo arena. Grand tournaments run in January, May and September; nearby stables hold morning practice.",
+      "tip": "Tournament tickets sell out fast.",
+      "lat": 35.6969,
+      "lng": 139.7934
+    },
+    {
+      "slug": "tokyo-disneyland",
+      "name": "Tokyo Disneyland",
+      "category": "EXPERIENCE",
+      "area": "Urayasu",
+      "blurb": "Disney park at Tokyo Disney Resort, next to DisneySea.",
+      "tip": "Dated tickets, sold online; prices change by date.",
+      "website": "https://www.tokyodisneyresort.jp/en/",
+      "lat": 35.6329,
+      "lng": 139.8804
+    },
+    {
+      "slug": "yasukuni",
+      "name": "Yasukuni Shrine & Yushukan",
+      "category": "EXPERIENCE",
+      "area": "Kudanshita",
+      "blurb": "Shrine founded in 1869 to Japan's war dead, politically controversial; the Yushukan military museum is in its grounds.",
+      "website": "https://www.yasukuni.or.jp/english/",
+      "lat": 35.6944,
+      "lng": 139.7435
+    },
+    {
+      "slug": "kitanomaru-park",
+      "name": "Kitanomaru Park",
+      "category": "EXPERIENCE",
+      "area": "Chiyoda",
+      "blurb": "Park on the old Edo Castle grounds north of the Imperial Palace, known for moat-side cherry blossoms.",
+      "lat": 35.6919,
+      "lng": 139.7505
+    },
+    {
+      "slug": "imperial-palace-east-gardens",
+      "name": "Imperial Palace East Gardens",
+      "category": "EXPERIENCE",
+      "area": "Marunouchi",
+      "blurb": "Free gardens on the site of Edo Castle's inner keep, with the old castle foundations.",
+      "tip": "Closed Mondays and Fridays.",
+      "website": "https://www.kunaicho.go.jp/e-event/higashigyoen02.html",
+      "lat": 35.6863,
+      "lng": 139.7577
+    },
+    {
+      "slug": "kyu-asakura-house",
+      "name": "Kyu Asakura House",
+      "category": "EXPERIENCE",
+      "area": "Daikanyama",
+      "blurb": "1919 wooden house of politician Torajiro Asakura, with a strolling garden on a slope.",
+      "tip": "Closed Mondays.",
+      "website": "https://www.city.shibuya.tokyo.jp/eng/est/asakura.html",
+      "lat": 35.649,
+      "lng": 139.703
+    },
+    {
+      "slug": "daikanyama-ebisu",
+      "name": "Daikanyama & Ebisu",
+      "category": "EXPERIENCE",
+      "area": "Daikanyama",
+      "blurb": "Laid-back neighbourhoods south of Shibuya with boutiques, cafés and the T-Site bookshop.",
+      "lat": 35.6486,
+      "lng": 139.7032
+    },
+    {
+      "slug": "hamarikyu",
+      "name": "Hamarikyu Gardens",
+      "category": "EXPERIENCE",
+      "area": "Shiodome",
+      "blurb": "Former shogun's garden with seawater tidal ponds and an island teahouse, under the Shiodome towers.",
+      "website": "https://www.tokyo-park.or.jp/teien/en/hama-rikyu/outline.html",
+      "lat": 35.66,
+      "lng": 139.7633
+    },
+    {
+      "slug": "tokyo-international-forum",
+      "name": "Tokyo International Forum",
+      "category": "EXPERIENCE",
+      "area": "Marunouchi",
+      "blurb": "Rafael Viñoly's ship-hull glass hall between Yurakucho and Tokyo Station. Free to walk through.",
+      "lat": 35.6768,
+      "lng": 139.7639
+    },
+    {
+      "slug": "ramen-street",
+      "name": "Tokyo Station Ramen Street",
+      "category": "FOOD",
+      "area": "Marunouchi",
+      "blurb": "A row of well-known ramen shops in the basement on the Yaesu side of Tokyo Station.",
+      "tip": "Expect queues at peak times.",
+      "lat": 35.6798,
+      "lng": 139.7685
+    },
+    {
+      "slug": "nezu-museum",
+      "name": "Nezu Museum",
+      "category": "EXPERIENCE",
+      "area": "Aoyama",
+      "blurb": "Pre-modern Japanese and East Asian art in a Kengo Kuma building with a big garden.",
+      "tip": "Book a timed slot online.",
+      "website": "https://www.nezu-muse.or.jp/en/",
+      "lat": 35.6623,
+      "lng": 139.7175
+    },
+    {
+      "slug": "skyliner",
+      "name": "Keisei Skyliner",
+      "category": "TRANSIT",
+      "area": "Ueno",
+      "blurb": "Reserved-seat express from Narita Airport to Nippori and Keisei-Ueno in about 41 minutes.",
+      "website": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/",
+      "lat": 35.7113,
+      "lng": 139.7737
+    },
+    {
+      "slug": "tokyo-subway-ticket",
+      "name": "Tokyo Subway Ticket",
+      "category": "TRANSIT",
+      "area": "Citywide",
+      "blurb": "Unlimited Tokyo Metro and Toei subway rides for 24, 48 or 72 hours. For overseas visitors.",
+      "website": "https://www.tokyometro.jp/en/ticket/travel/index.html",
+      "lat": 35.6812,
+      "lng": 139.7671
+    },
+    {
+      "slug": "narita-airport",
+      "name": "Narita Airport",
+      "category": "TRANSIT",
+      "area": "Narita",
+      "blurb": "Tokyo's main international airport, about an hour east of the city.",
+      "lat": 35.772,
+      "lng": 140.3929
+    },
+    {
+      "slug": "unplan-shinjuku",
+      "name": "UNPLAN Shinjuku",
+      "category": "STAY",
+      "area": "Shinjuku",
+      "blurb": "Design hostel near Shinjuku-sanchome with dorms, private rooms and a ground-floor lounge.",
+      "lat": 35.693,
+      "lng": 139.708
+    },
+    {
+      "slug": "hotel-fukudaya",
+      "name": "Hotel Fukudaya",
+      "category": "STAY",
+      "area": "Meguro",
+      "blurb": "Small traditional ryokan with tatami rooms in a quiet street near Shibuya.",
+      "lat": 35.654,
+      "lng": 139.689
+    },
+    {
+      "slug": "gate-hotel",
+      "name": "The Gate Hotel Tokyo by Hulic",
+      "category": "STAY",
+      "area": "Hibiya",
+      "blurb": "Upscale hotel in the Hibiya and Ginza area.",
+      "lat": 35.6715,
+      "lng": 139.7595
+    },
+    {
+      "slug": "aman-tokyo",
+      "name": "Aman Tokyo",
+      "category": "STAY",
+      "area": "Otemachi",
+      "blurb": "Luxury hotel at the top of The Otemachi Tower.",
+      "website": "https://www.aman.com/hotels/aman-tokyo",
+      "lat": 35.687,
+      "lng": 139.765
+    },
+    {
+      "slug": "ichiran-shibuya",
+      "name": "Ichiran Shibuya",
+      "category": "FOOD",
+      "area": "Shibuya",
+      "blurb": "Tonkotsu ramen chain known for solo booths and order sheets to customise your bowl.",
+      "lat": 35.662,
+      "lng": 139.6995
+    },
+    {
+      "slug": "la-cocorico",
+      "name": "La Cocorico Ueno",
+      "category": "FOOD",
+      "area": "Ueno",
+      "blurb": "French bistro known for rotisserie chicken, by Ueno Park.",
+      "website": "http://www.la-cocorico.jp/ueno",
+      "lat": 35.711,
+      "lng": 139.7735
+    },
+    {
+      "slug": "mon-cher-ton-ton",
+      "name": "Teppanyaki mon cher ton ton",
+      "category": "FOOD",
+      "area": "Hibiya",
+      "blurb": "Teppanyaki inside The Peninsula Tokyo where chefs grill wagyu and seafood at the counter.",
+      "tip": "Book weeks ahead.",
+      "website": "https://peninsula.com/en/tokyo/hotel-fine-dining/teppanyaki-monchertonton",
+      "lat": 35.6748,
+      "lng": 139.7614
+    },
+    {
+      "slug": "matcha-stand-maruni",
+      "name": "Matcha Stand Maruni",
+      "category": "FOOD",
+      "area": "Tsukiji",
+      "blurb": "Small Tsukiji tea stand whisking matcha to order. Open 8 am-4 pm, closed Wednesdays.",
+      "lat": 35.6655,
+      "lng": 139.771
+    },
+    {
+      "slug": "bills-omotesando",
+      "name": "bills Omotesando",
+      "category": "FOOD",
+      "area": "Harajuku",
+      "blurb": "Bill Granger's Sydney café, known for ricotta hotcakes.",
+      "lat": 35.6687,
+      "lng": 139.7053
+    },
+    {
+      "slug": "pizza-bar-38th",
+      "name": "The Pizza Bar on 38th",
+      "category": "FOOD",
+      "area": "Nihonbashi",
+      "blurb": "38th-floor pizza omakase at Mandarin Oriental Tokyo.",
+      "lat": 35.6871,
+      "lng": 139.7735
+    },
+    {
+      "slug": "gonpachi",
+      "name": "Gonpachi Nishi-Azabu",
+      "category": "FOOD",
+      "area": "Nishi-Azabu",
+      "blurb": "Big Edo-style izakaya in a wooden building, linked to the Kill Bill fight scene. Soba, yakitori and grills until late.",
+      "tip": "Book weeks ahead.",
+      "website": "https://gonpachi.jp/nishi-azabu/",
+      "lat": 35.659,
+      "lng": 139.724
+    },
+    {
+      "slug": "kyubey-ginza",
+      "name": "Kyubey Ginza",
+      "category": "FOOD",
+      "area": "Ginza",
+      "blurb": "Edomae sushi in Ginza: omakase and set sushi at the counter.",
+      "tip": "Book weeks ahead.",
+      "lat": 35.6683,
+      "lng": 139.7608
+    }
+  ],
+  "creators": [
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "timetravelturtle",
+      "name": "Time Travel Turtle",
+      "platform": "BLOG",
+      "profileUrl": "https://www.timetravelturtle.com",
+      "bio": "Michael Turtle's travel blog on culture and history."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "tokyo-3-days-bucketlistly",
+      "title": "3 days in Tokyo: backpacking itinerary",
+      "summary": "Senso-ji, Ueno and Akihabara at night, then Shibuya Sky, Harajuku, Meiji Jingu and Golden Gai, finishing in Ginza and at Tokyo Tower for sunset.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/tokyo-backpacking-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "Skyliner from Narita",
+          "category": "TRANSIT",
+          "note": "To Ueno in about 41 minutes.",
+          "place": "skyliner",
+          "price": 15.6,
+          "priceNote": "2,470 JPY per adult (creator: about 2,570 JPY)",
+          "priceSource": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/traffic/skyliner_fares.php"
+        },
+        {
+          "day": 1,
+          "name": "Senso-ji & Nakamise-dori",
+          "category": "EXPERIENCE",
+          "note": "Through Kaminarimon, past the snack stalls of Nakamise to the main hall.",
+          "place": "senso-ji",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Free view from the Asakusa Culture Center",
+          "category": "EXPERIENCE",
+          "note": "8th-floor terrace over Nakamise and Skytree.",
+          "place": "asakusa-culture-center",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Ichiran ramen lunch",
+          "category": "FOOD",
+          "note": "Customise your bowl on the order sheet and eat in a solo booth.",
+          "place": "ichiran-shibuya",
+          "price": 6.82,
+          "priceNote": "about 1,080 JPY a bowl",
+          "priceSource": "https://pricey.jp/web/articles/4683"
+        },
+        {
+          "day": 1,
+          "name": "Ueno Park & Toshogu",
+          "category": "EXPERIENCE",
+          "place": "ueno-park",
+          "price": 0,
+          "priceNote": "free park"
+        },
+        {
+          "day": 1,
+          "name": "Tokyo National Museum",
+          "category": "EXPERIENCE",
+          "place": "tokyo-national-museum",
+          "price": 6.32,
+          "priceNote": "1,000 JPY per adult",
+          "priceSource": "https://www.tnm.jp/modules/r_free_page/index.php?id=113"
+        },
+        {
+          "day": 1,
+          "name": "Akihabara at night",
+          "category": "EXPERIENCE",
+          "note": "Neon, arcades and anime shops.",
+          "place": "akihabara",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Yurakucho izakayas under the tracks",
+          "category": "FOOD",
+          "note": "Yakitori and beer under the railway arches.",
+          "place": "yurakucho-gado-shita"
+        },
+        {
+          "day": 2,
+          "name": "Shibuya Sky",
+          "category": "EXPERIENCE",
+          "note": "Book ahead: sunset slots sell out weeks or months ahead.",
+          "place": "shibuya-sky",
+          "price": 15.79,
+          "priceNote": "2,500 JPY online; 3,000 JPY at the counter",
+          "priceSource": "https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets"
+        },
+        {
+          "day": 2,
+          "name": "Shibuya Crossing",
+          "category": "EXPERIENCE",
+          "place": "shibuya-crossing",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "MAGNET by Shibuya109 rooftop",
+          "category": "EXPERIENCE",
+          "note": "Creator calls it a free view of the crossing; since the March 2026 renovation it charges.",
+          "place": "magnet-shibuya109",
+          "price": 11.37,
+          "priceNote": "1,800 JPY with a drink (creator: free)",
+          "priceSource": "https://haveagood-holiday.com/en/articles/crossing-view-rooftop-lounge-mag8-renewal-opening-march-2026"
+        },
+        {
+          "day": 2,
+          "name": "Takeshita Street",
+          "category": "EXPERIENCE",
+          "note": "Crepes and kawaii fashion.",
+          "place": "takeshita-street",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Tokyu Plaza Harajuku",
+          "category": "EXPERIENCE",
+          "place": "harakado",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 2,
+          "name": "Meiji Jingu",
+          "category": "EXPERIENCE",
+          "place": "meiji-jingu",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Golden Gai",
+          "category": "FOOD",
+          "note": "Tiny bars; many charge a cover.",
+          "place": "golden-gai"
+        },
+        {
+          "day": 2,
+          "name": "Kabukicho",
+          "category": "EXPERIENCE",
+          "note": "Look up for the Godzilla head.",
+          "place": "kabukicho",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 3,
+          "name": "Ginza & the UNIQLO flagship",
+          "category": "EXPERIENCE",
+          "note": "12 floors of Uniqlo.",
+          "place": "uniqlo-ginza",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "Tokyo Tower at sunset",
+          "category": "EXPERIENCE",
+          "place": "tokyo-tower",
+          "price": 9.47,
+          "priceNote": "1,500 JPY Main Deck per adult",
+          "priceSource": "https://en.tokyotower.co.jp/fee/"
+        },
+        {
+          "day": 3,
+          "name": "Zojoji Temple",
+          "category": "EXPERIENCE",
+          "note": "Right below Tokyo Tower.",
+          "place": "zojoji",
+          "price": 0,
+          "priceNote": "free grounds"
+        },
+        {
+          "day": 1,
+          "name": "Hotel Fukudaya",
+          "category": "STAY",
+          "note": "Creator's top pick: a ryokan near Shibuya. Or Wise Owl Hostels (budget) or Shibuya Stream Excel (comfort).",
+          "place": "hotel-fukudaya",
+          "price": 106,
+          "priceNote": "per night, lowest standard room (date-dependent)",
+          "priceSource": "https://www.kayak.com.ph/Tokyo-Hotels-Hotel-Fukudaya.366335.ksp",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 1,
+          "name": "Tokyo Subway Ticket (72h)",
+          "category": "TRANSIT",
+          "note": "Unlimited subway rides. Creator also suggests a 1-day pass.",
+          "place": "tokyo-subway-ticket",
+          "price": 12.63,
+          "priceNote": "2,000 JPY for 72 h (creator: about 1,500 JPY)",
+          "priceSource": "https://www.tokyometro.jp/en/ticket/travel/index.html"
+        }
+      ]
+    },
+    {
+      "slug": "tokyo-4-days-thebrokebackpacker",
+      "title": "Epic 4-day Tokyo itinerary",
+      "summary": "Ueno museums and Akihabara, Tsukiji, kabuki and Ginza, Senso-ji and Skytree, then digital art at teamLab and sumo in Ryogoku.",
+      "tier": "BACKPACKER",
+      "days": 4,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/tokyo-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Ueno Park",
+          "category": "EXPERIENCE",
+          "place": "ueno-park",
+          "price": 0,
+          "priceNote": "free park"
+        },
+        {
+          "day": 1,
+          "name": "National Museum of Nature and Science",
+          "category": "EXPERIENCE",
+          "place": "nature-science-museum",
+          "price": 3.98,
+          "priceNote": "630 JPY per adult (creator: 620 JPY)",
+          "priceSource": "https://www.kahaku.go.jp/english/userguide/access/index.html"
+        },
+        {
+          "day": 1,
+          "name": "La Cocorico lunch",
+          "category": "FOOD",
+          "note": "Rotisserie chicken by Ueno Park.",
+          "place": "la-cocorico",
+          "price": 9.47,
+          "priceNote": "lunch 1,000-2,000 JPY",
+          "priceSource": "https://gltjp.com/en/directory/item/10409"
+        },
+        {
+          "day": 1,
+          "name": "Akihabara",
+          "category": "EXPERIENCE",
+          "note": "Creator's Gundam Cafe pick closed for good in 2022.",
+          "place": "akihabara",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Golden Gai",
+          "category": "FOOD",
+          "note": "Creator says skip the Robot Restaurant: it has closed.",
+          "place": "golden-gai",
+          "price": 6,
+          "priceNote": "creator: beer about $6"
+        },
+        {
+          "day": 2,
+          "name": "Tsukiji Outer Market",
+          "category": "FOOD",
+          "note": "Sushi and street snacks for breakfast.",
+          "place": "tsukiji-outer-market",
+          "price": 0,
+          "priceNote": "free to browse (creator)"
+        },
+        {
+          "day": 2,
+          "name": "National Art Center Tokyo",
+          "category": "EXPERIENCE",
+          "note": "Each exhibition sets its own price (creator: about 1,500 JPY).",
+          "place": "national-art-center"
+        },
+        {
+          "day": 2,
+          "name": "Meiji Jingu",
+          "category": "EXPERIENCE",
+          "note": "Shrine grounds are free; the inner garden charges.",
+          "place": "meiji-jingu",
+          "price": 0,
+          "priceNote": "free grounds (creator: 500 JPY)"
+        },
+        {
+          "day": 2,
+          "name": "Kabukiza single-act ticket",
+          "category": "EXPERIENCE",
+          "note": "Watch one act from the top floor.",
+          "place": "kabukiza",
+          "price": 3.16,
+          "priceNote": "about 500-2,500 JPY per act (creator: 500-3,000 JPY)",
+          "priceSource": "https://japanroyalservice.com/blog/kabuki-single-act-tickets-tokyo"
+        },
+        {
+          "day": 2,
+          "name": "Ginza",
+          "category": "EXPERIENCE",
+          "place": "ginza",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 3,
+          "name": "Tokyo National Museum",
+          "category": "EXPERIENCE",
+          "place": "tokyo-national-museum",
+          "price": 6.32,
+          "priceNote": "1,000 JPY per adult (creator: 620 JPY)",
+          "priceSource": "https://www.tnm.jp/modules/r_free_page/index.php?id=113"
+        },
+        {
+          "day": 3,
+          "name": "Senso-ji",
+          "category": "EXPERIENCE",
+          "place": "senso-ji",
+          "price": 0,
+          "priceNote": "free (creator: 500 JPY)"
+        },
+        {
+          "day": 3,
+          "name": "Tokyo Skytree",
+          "category": "EXPERIENCE",
+          "place": "tokyo-skytree",
+          "price": 13.26,
+          "priceNote": "from 2,100 JPY per adult online, weekdays (creator: 410-770 JPY)",
+          "priceSource": "https://www.tokyo-skytree.jp/en/ticket/individual/"
+        },
+        {
+          "day": 3,
+          "name": "Shibuya, Daikanyama & Ebisu",
+          "category": "EXPERIENCE",
+          "note": "Wander the boutiques and cafés.",
+          "place": "daikanyama-ebisu",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 4,
+          "name": "Miraikan",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Closed for refurbishment until 22 April 2027.",
+          "place": "miraikan",
+          "price": 3.98,
+          "priceNote": "630 JPY per adult when open (creator: 620 JPY)",
+          "priceSource": "https://www.miraikan.jst.go.jp/en/visit/admission"
+        },
+        {
+          "day": 4,
+          "name": "teamLab Borderless",
+          "category": "EXPERIENCE",
+          "note": "Book online.",
+          "place": "teamlab-borderless",
+          "price": 24.0,
+          "priceNote": "from 3,800 JPY per adult, by date (creator: 3,000 JPY)",
+          "priceSource": "https://tokyocheapo.com/entertainment/museums-and-exhibitions/mori-building-digital-art-museum-teamlab-borderless/"
+        },
+        {
+          "day": 4,
+          "name": "Sumo at Ryogoku",
+          "category": "EXPERIENCE",
+          "note": "Only during the January, May and September tournaments.",
+          "place": "ryogoku-kokugikan",
+          "price": 25.26,
+          "priceNote": "creator: 4,000-9,000 JPY"
+        },
+        {
+          "day": 4,
+          "name": "Tokyo Disneyland evening",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Creator quoted 4,200 JPY for an after-6 pass; prices now change by date.",
+          "place": "tokyo-disneyland"
+        },
+        {
+          "day": 1,
+          "name": "UNPLAN Shinjuku",
+          "category": "STAY",
+          "note": "Creator's pick: a design hostel in Shinjuku.",
+          "place": "unplan-shinjuku",
+          "price": 53,
+          "priceNote": "from, per night (date-dependent)",
+          "priceSource": "https://www.expedia.com/Tokyo-Hotels-UNPLAN-Shinjuku-Hostel.h33891826.Hotel-Information",
+          "unit": "night",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "slug": "tokyo-3-days-timetravelturtle",
+      "title": "3 days in Tokyo: history and neighbourhoods",
+      "summary": "Imperial Palace gardens, Yasukuni and Asakusa, then Daikanyama, Harajuku and free views in Shinjuku, and a dawn tuna auction, Hamarikyu and Ginza.",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "timetravelturtle",
+      "sourceUrl": "https://www.timetravelturtle.com/japan/3-days-in-tokyo-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Yasukuni Shrine & Yushukan",
+          "category": "EXPERIENCE",
+          "note": "Shrine free; Yushukan museum ticket.",
+          "place": "yasukuni",
+          "price": 6.32,
+          "priceNote": "creator: Yushukan 1,000 JPY"
+        },
+        {
+          "day": 1,
+          "name": "Kitanomaru Park",
+          "category": "EXPERIENCE",
+          "place": "kitanomaru-park",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Imperial Palace East Gardens",
+          "category": "EXPERIENCE",
+          "note": "Closed Mondays and Fridays.",
+          "place": "imperial-palace-east-gardens",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.kunaicho.go.jp/e-event/higashigyoen02.html"
+        },
+        {
+          "day": 1,
+          "name": "Senso-ji & Asakusa Shrine",
+          "category": "EXPERIENCE",
+          "place": "senso-ji",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Hanayashiki",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Japan's oldest amusement park.",
+          "place": "hanayashiki",
+          "price": 10.11,
+          "priceNote": "creator: 1,600 JPY"
+        },
+        {
+          "day": 1,
+          "name": "National Museum of Western Art",
+          "category": "EXPERIENCE",
+          "place": "western-art-museum",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult (creator)",
+          "priceSource": "https://www.nmwa.go.jp/en/visit/"
+        },
+        {
+          "day": 1,
+          "name": "Akihabara",
+          "category": "EXPERIENCE",
+          "place": "akihabara",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Kyu Asakura House",
+          "category": "EXPERIENCE",
+          "note": "Closed Mondays.",
+          "place": "kyu-asakura-house",
+          "price": 3.16,
+          "priceNote": "creator: 500 JPY"
+        },
+        {
+          "day": 2,
+          "name": "Shibuya Crossing",
+          "category": "EXPERIENCE",
+          "place": "shibuya-crossing",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Omotesando & Harajuku",
+          "category": "EXPERIENCE",
+          "place": "takeshita-street",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Bento in Yoyogi Park",
+          "category": "EXPERIENCE",
+          "place": "yoyogi-park",
+          "price": 0,
+          "priceNote": "free park"
+        },
+        {
+          "day": 2,
+          "name": "Meiji Jingu",
+          "category": "EXPERIENCE",
+          "place": "meiji-jingu",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Free view from the Metropolitan Government Building",
+          "category": "EXPERIENCE",
+          "note": "45th-floor decks.",
+          "place": "tmg-building",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Shinjuku at night",
+          "category": "EXPERIENCE",
+          "place": "kabukicho",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 3,
+          "name": "Toyosu tuna auction",
+          "category": "EXPERIENCE",
+          "note": "Auctions about 5:30-6:30 am. The closer deck is a lottery: apply the month before.",
+          "place": "toyosu-market",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://asset.japan.travel/image/upload/v1767774751/pdf/2026_TIC/202601/2026_Toyosu_Fish_Market.pdf"
+        },
+        {
+          "day": 3,
+          "name": "Sushi breakfast at Tsukiji",
+          "category": "FOOD",
+          "place": "tsukiji-outer-market"
+        },
+        {
+          "day": 3,
+          "name": "Hamarikyu Gardens",
+          "category": "EXPERIENCE",
+          "place": "hamarikyu",
+          "price": 1.89,
+          "priceNote": "creator: 300 JPY"
+        },
+        {
+          "day": 3,
+          "name": "Ginza & Kabukiza",
+          "category": "EXPERIENCE",
+          "note": "Catch a single act.",
+          "place": "kabukiza",
+          "price": 3.16,
+          "priceNote": "single act about 500-2,500 JPY",
+          "priceSource": "https://japanroyalservice.com/blog/kabuki-single-act-tickets-tokyo"
+        },
+        {
+          "day": 3,
+          "name": "Tokyo International Forum",
+          "category": "EXPERIENCE",
+          "place": "tokyo-international-forum",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 3,
+          "name": "Tokyo Station Ramen Street",
+          "category": "FOOD",
+          "note": "Dinner at one of the ramen shops.",
+          "place": "ramen-street"
+        },
+        {
+          "day": 3,
+          "name": "teamLab Planets",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Bonus pick.",
+          "place": "teamlab-planets",
+          "price": 24.0,
+          "priceNote": "from 3,800 JPY per adult (creator: 3,600 JPY)",
+          "priceSource": "https://www.teamlab.art/e/planets/"
+        },
+        {
+          "day": 3,
+          "name": "Nezu Museum",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Bonus pick. Book a timed slot.",
+          "place": "nezu-museum",
+          "price": 10.11,
+          "priceNote": "creator: 1,600 JPY"
+        },
+        {
+          "day": 1,
+          "name": "Tokyo Subway Ticket (72h)",
+          "category": "TRANSIT",
+          "note": "Creator's tip: buy a 24, 48 or 72-hour pass.",
+          "place": "tokyo-subway-ticket",
+          "price": 12.63,
+          "priceNote": "2,000 JPY for 72 h; 1,000 JPY for 24 h",
+          "priceSource": "https://www.tokyometro.jp/en/ticket/travel/index.html"
+        },
+        {
+          "day": 1,
+          "name": "The Gate Hotel Tokyo",
+          "category": "STAY",
+          "note": "Creator's boutique pick.",
+          "place": "gate-hotel",
+          "price": 263,
+          "priceNote": "from, per night (date-dependent)",
+          "priceSource": "https://us.trip.com/hotels/tokyo-the-gate-hotel/hotels-c228b4946/",
+          "unit": "night",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "slug": "tokyo-3-nights-luxury-foratravel",
+      "title": "Ultimate 3-night luxury Tokyo",
+      "summary": "Aman Tokyo, private tours of the palace gardens and a sumo stable, wagyu teppanyaki, pizza omakase on the 38th floor, teamLab and sushi at Kyubey.",
+      "tier": "LUXURY",
+      "days": 3,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/VPW6ZR/the-ultimate-3-night-luxury-tokyo-itinerary-liza-goncharov",
+      "items": [
+        {
+          "day": 1,
+          "name": "Private transfer from the airport",
+          "category": "TRANSIT",
+          "note": "Arrange through your hotel.",
+          "place": "narita-airport"
+        },
+        {
+          "day": 1,
+          "name": "Private Imperial Palace Gardens tour",
+          "category": "EXPERIENCE",
+          "note": "Gardens are free; a guide costs extra. Closed Mondays and Fridays.",
+          "place": "imperial-palace-east-gardens"
+        },
+        {
+          "day": 1,
+          "name": "Shibuya Crossing",
+          "category": "EXPERIENCE",
+          "place": "shibuya-crossing",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Shibuya Sky",
+          "category": "EXPERIENCE",
+          "note": "Book a sunset slot.",
+          "place": "shibuya-sky",
+          "price": 15.79,
+          "priceNote": "2,500 JPY online",
+          "priceSource": "https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets"
+        },
+        {
+          "day": 1,
+          "name": "Shinjuku",
+          "category": "EXPERIENCE",
+          "place": "kabukicho",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Dinner at mon cher ton ton",
+          "category": "FOOD",
+          "note": "Wagyu teppanyaki at The Peninsula. Book weeks ahead.",
+          "place": "mon-cher-ton-ton",
+          "price": 69.48,
+          "priceNote": "dinner from 11,000 JPY",
+          "priceSource": "https://www.tablecheck.com/zh-CN/monchertonton-hibiya"
+        },
+        {
+          "day": 2,
+          "name": "Tsukiji at dawn",
+          "category": "FOOD",
+          "place": "tsukiji-outer-market",
+          "price": 0,
+          "priceNote": "free to browse"
+        },
+        {
+          "day": 2,
+          "name": "Matcha Stand Maruni",
+          "category": "FOOD",
+          "place": "matcha-stand-maruni",
+          "price": 4.11,
+          "priceNote": "iced matcha latte 650 JPY",
+          "priceSource": "https://www.timeout.com/tokyo/restaurants/matcha-stand-maruni"
+        },
+        {
+          "day": 2,
+          "name": "Brunch at bills Omotesando",
+          "category": "FOOD",
+          "note": "Ricotta hotcakes.",
+          "place": "bills-omotesando",
+          "price": 15.79,
+          "priceNote": "budget about 2,500-3,500 JPY",
+          "priceSource": "https://www.tablecheck.com/it/bills-omotesando"
+        },
+        {
+          "day": 2,
+          "name": "Harajuku & Meiji Shrine",
+          "category": "EXPERIENCE",
+          "place": "meiji-jingu",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 2,
+          "name": "Lunch at The Pizza Bar on 38th",
+          "category": "FOOD",
+          "note": "Pizza omakase.",
+          "place": "pizza-bar-38th",
+          "price": 143.81,
+          "priceNote": "22,770 JPY in October; changes monthly",
+          "priceSource": "https://omakase.in/en/r/sw463935"
+        },
+        {
+          "day": 2,
+          "name": "Aman spa",
+          "category": "EXPERIENCE",
+          "place": "aman-tokyo"
+        },
+        {
+          "day": 2,
+          "name": "Dinner at Gonpachi",
+          "category": "FOOD",
+          "note": "Book weeks ahead.",
+          "place": "gonpachi",
+          "price": 44.21,
+          "priceNote": "dinner budget 6,000-8,000 JPY (2024)",
+          "priceSource": "https://www.fun-japan.jp/en/articles/8619"
+        },
+        {
+          "day": 3,
+          "name": "Private sumo practice viewing",
+          "category": "EXPERIENCE",
+          "note": "Early-morning visit to a stable, booked through a tour operator.",
+          "place": "ryogoku-kokugikan"
+        },
+        {
+          "day": 3,
+          "name": "teamLab Planets",
+          "category": "EXPERIENCE",
+          "place": "teamlab-planets",
+          "price": 24.0,
+          "priceNote": "from 3,800 JPY per adult",
+          "priceSource": "https://www.teamlab.art/e/planets/"
+        },
+        {
+          "day": 3,
+          "name": "Afternoon tea at Aman",
+          "category": "FOOD",
+          "note": "Seasonal menu.",
+          "place": "aman-tokyo",
+          "price": 75.79,
+          "priceNote": "12,000 JPY",
+          "priceSource": "https://www.tablecheck.com/th/amantokyo-thelounge"
+        },
+        {
+          "day": 3,
+          "name": "Omakase at Kyubey Ginza",
+          "category": "FOOD",
+          "note": "Book weeks ahead.",
+          "place": "kyubey-ginza",
+          "price": 163,
+          "priceNote": "dinner about $163; lunch about $81",
+          "priceSource": "https://www.byfood.com/restaurant/ginza-kyubey-1607"
+        },
+        {
+          "day": 1,
+          "name": "Aman Tokyo",
+          "category": "STAY",
+          "note": "Top floors of The Otemachi Tower.",
+          "place": "aman-tokyo",
+          "price": 2823.22,
+          "priceNote": "from 447,000 JPY per night (date-dependent)",
+          "priceSource": "https://www.mrandmrssmith.com/luxury-hotels/aman-tokyo/rooms",
+          "unit": "night",
+          "quantity": 3
+        }
+      ]
+    }
+  ]
+}

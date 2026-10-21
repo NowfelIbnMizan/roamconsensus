@@ -8,10 +8,12 @@ export function DestinationTabs({ slug }: { slug: string }) {
   const tabs = [
     { href: `/destinations/${slug}`, label: "Itineraries" },
     { href: `/destinations/${slug}/when`, label: "When to go" },
+    { href: `/destinations/${slug}/before`, label: "Before you go" },
+    { href: `/destinations/${slug}/compare`, label: "Compare" },
     { href: `/destinations/${slug}/esim`, label: "eSIM" },
   ];
   return (
-    <nav className="mt-8 mb-8 flex gap-1 border-b border-line" aria-label="Destination sections">
+    <nav className="mt-8 mb-8 flex gap-1 overflow-x-auto border-b border-line" aria-label="Destination sections">
       {tabs.map((t) => {
         const active = pathname === t.href;
         return (
@@ -19,7 +21,7 @@ export function DestinationTabs({ slug }: { slug: string }) {
             key={t.href}
             href={t.href}
             aria-current={active ? "page" : undefined}
-            className={`-mb-px border-b-2 px-4 py-2 text-sm font-medium transition ${
+            className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-4 py-2 text-sm font-medium transition ${
               active ? "border-accent text-accent" : "border-transparent text-muted hover:text-foreground"
             }`}
           >
