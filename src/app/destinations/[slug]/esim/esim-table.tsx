@@ -4,18 +4,23 @@ import { useMemo, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import type { EsimPlanRow } from "@/lib/data";
 import { formatMoney } from "@/lib/format";
+import { DataEstimator } from "./data-estimator";
 
 type Plan = EsimPlanRow;
 
-const DATA_FILTERS = [
-  { label: "Any data", test: () => true },
-  { label: "1 GB+", test: (p: Plan) => p.dataMb === null || p.dataMb >= 1024 },
-  { label: "3 GB+", test: (p: Plan) => p.dataMb === null || p.dataMb >= 3 * 1024 },
-  { label: "5 GB+", test: (p: Plan) => p.dataMb === null || p.dataMb >= 5 * 1024 },
-  { label: "10 GB+", test: (p: Plan) => p.dataMb === null || p.dataMb >= 10 * 1024 },
-  { label: "Unlimited", test: (p: Plan) => p.dataMb === null },
-];
-const DAY_FILTERS = [0, 7, 15, 30];
+const UNLIMITED = -1;
+const DATA_OPTIONS = [0, 1, 3, 5, 10, 20, UNLIMITED]; // minimum GB; 0 = any
+const DAY_OPTIONS = [0, 7, 15, 30];
+
+const dataLabel = (gb: number) => (gb === 0 ? "Any data" : gb === UNLIMITED ? "Unlimited" : `${gb} GB+`);
+const meetsData = (p: Plan, gb: number) =>
+  gb === UNLIMITED ? p.dataMb === null : p.dataMb === null || p.dataMb >= gb * 1024;
+/** Fixed options plus the current value, so an estimator pick like "7 GB+" still shows in the menu. */
+const withValue = (options: number[], value: number) =>
+  options.includes(value)
+    ? options
+    : [...options, value].sort((a, b) => (a === UNLIMITED ? 1 : b === UNLIMITED ? -1 : a - b));
+
 const SORTS = {
   price: { label: "Lowest price", key: (p: Plan) => p.priceCents },
   perGb: { label: "Price per GB", key: (p: Plan) => pricePerGb(p) ?? Infinity },
@@ -46,8 +51,9 @@ function formatData(mb: number | null) {
 const selectClass = "rounded-lg border border-line bg-card px-3 py-1.5 text-sm";
 
 export function EsimTable({ plans }: { plans: Plan[] }) {
-  const [dataFilter, setDataFilter] = useState(0);
+  const [minGb, setMinGb] = useState(0);
   const [minDays, setMinDays] = useState(0);
+  const [hotspot, setHotspot] = useState(false);
   const [sort, setSort] = useState<keyof typeof SORTS>("price");
   const [provider, setProvider] = useState("");
 
@@ -55,23 +61,31 @@ export function EsimTable({ plans }: { plans: Plan[] }) {
   const shown = useMemo(
     () =>
       plans
-        .filter((p) => DATA_FILTERS[dataFilter].test(p) && p.days >= minDays && (!provider || p.provider === provider))
+        .filter(
+          (p) =>
+            meetsData(p, minGb) &&
+            p.days >= minDays &&
+            (!hotspot || p.hotspot === true) &&
+            (!provider || p.provider === provider),
+        )
         .sort((a, b) => SORTS[sort].key(a) - SORTS[sort].key(b)),
-    [plans, dataFilter, minDays, sort, provider],
+    [plans, minGb, minDays, hotspot, sort, provider],
   );
 
   return (
     <>
-      <div className="mt-5 flex flex-wrap gap-2">
-        <select
-          aria-label="Data"
-          className={selectClass}
-          value={dataFilter}
-          onChange={(e) => setDataFilter(+e.target.value)}
-        >
-          {DATA_FILTERS.map((f, i) => (
-            <option key={f.label} value={i}>
-              {f.label}
+      <DataEstimator
+        onApply={(gb, days) => {
+          setMinGb(gb ?? UNLIMITED);
+          setMinDays(days);
+          document.getElementById("esim-plans")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+      />
+      <div id="esim-plans" className="mt-5 flex scroll-mt-4 flex-wrap gap-2">
+        <select aria-label="Data" className={selectClass} value={minGb} onChange={(e) => setMinGb(+e.target.value)}>
+          {withValue(DATA_OPTIONS, minGb).map((gb) => (
+            <option key={gb} value={gb}>
+              {dataLabel(gb)}
             </option>
           ))}
         </select>
@@ -81,7 +95,7 @@ export function EsimTable({ plans }: { plans: Plan[] }) {
           value={minDays}
           onChange={(e) => setMinDays(+e.target.value)}
         >
-          {DAY_FILTERS.map((d) => (
+          {withValue(DAY_OPTIONS, minDays).map((d) => (
             <option key={d} value={d}>
               {d ? `${d}+ days` : "Any length"}
             </option>
@@ -110,6 +124,10 @@ export function EsimTable({ plans }: { plans: Plan[] }) {
             </option>
           ))}
         </select>
+        <label className={`${selectClass} flex items-center gap-2`}>
+          <input type="checkbox" checked={hotspot} onChange={(e) => setHotspot(e.target.checked)} />
+          Hotspot allowed
+        </label>
         <span className="self-center text-sm text-muted">{shown.length} plans</span>
       </div>
 
