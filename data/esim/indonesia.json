@@ -8,9 +8,11 @@
       "dataGb": 1,
       "days": 7,
       "price": 4.5,
+      "network": "Indosat/XL",
       "speed": "4G/5G",
       "url": "https://www.airalo.com/indonesia-esim",
-      "sourceUrl": "https://kenstechtips.com/index.php/airalo-esim/indotel"
+      "sourceUrl": "https://kenstechtips.com/index.php/airalo-esim/indotel",
+      "hotspot": true
     },
     {
       "provider": "Airalo",
@@ -18,9 +20,11 @@
       "dataGb": 3,
       "days": 30,
       "price": 9.0,
+      "network": "Indosat/XL",
       "speed": "4G/5G",
       "url": "https://www.airalo.com/indonesia-esim",
-      "sourceUrl": "https://kenstechtips.com/index.php/airalo-esim/indotel"
+      "sourceUrl": "https://kenstechtips.com/index.php/airalo-esim/indotel",
+      "hotspot": true
     },
     {
       "provider": "Airalo",
@@ -28,9 +32,11 @@
       "dataGb": 5,
       "days": 30,
       "price": 13.5,
+      "network": "Indosat/XL",
       "speed": "4G/5G",
       "url": "https://www.airalo.com/indonesia-esim",
-      "sourceUrl": "https://esimdb.com/indonesia/airalo"
+      "sourceUrl": "https://esimdb.com/indonesia/airalo",
+      "hotspot": true
     },
     {
       "provider": "Airalo",
@@ -38,9 +44,11 @@
       "dataGb": 10,
       "days": 30,
       "price": 21.0,
+      "network": "Indosat/XL",
       "speed": "4G/5G",
       "url": "https://www.airalo.com/indonesia-esim",
-      "sourceUrl": "https://esimdb.com/indonesia/airalo"
+      "sourceUrl": "https://esimdb.com/indonesia/airalo",
+      "hotspot": true
     },
     {
       "provider": "Airalo",
@@ -48,9 +56,11 @@
       "dataGb": null,
       "days": 7,
       "price": 27.0,
+      "network": "Indosat/XL",
       "notes": "Full speed 3GB/day, then 1 Mbps",
       "url": "https://www.airalo.com/indonesia-esim",
-      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/travelsim-asia-vs-airalo-indonesia-esim"
+      "sourceUrl": "https://travelsimasia.com/blogs/indonesia-guides/travelsim-asia-vs-airalo-indonesia-esim",
+      "hotspot": true
     },
     {
       "provider": "Holafly",
@@ -267,7 +277,8 @@
       "price": 4.99,
       "speed": "4G",
       "url": "https://maya.net/",
-      "sourceUrl": "https://esims.io/providers/maya-mobile/93521071024010ef83"
+      "sourceUrl": "https://esims.io/providers/maya-mobile/93521071024010ef83",
+      "hotspot": true
     },
     {
       "provider": "Maya Mobile",
@@ -277,7 +288,8 @@
       "price": 17.0,
       "speed": "4G",
       "url": "https://maya.net/",
-      "sourceUrl": "https://esims.io/providers/maya-mobile/93521071024030"
+      "sourceUrl": "https://esims.io/providers/maya-mobile/93521071024030",
+      "hotspot": true
     },
     {
       "provider": "Maya Mobile",
@@ -289,7 +301,8 @@
       "speed": "4G",
       "notes": "Full speed 3GB/day, then 1 Mbps",
       "url": "https://maya.net/",
-      "sourceUrl": "https://esims.io/blog/the-best-prepaid-esim-plans-for-indonesia"
+      "sourceUrl": "https://esims.io/blog/the-best-prepaid-esim-plans-for-indonesia",
+      "hotspot": true
     },
     {
       "provider": "Jetpac",
@@ -404,6 +417,7 @@
       "dataGb": 10,
       "days": 30,
       "price": 14.6,
+      "network": "Telkomsel",
       "url": "https://yesim.app/",
       "sourceUrl": "https://esims.io/providers/yesim/032110710240304647"
     },
@@ -413,6 +427,7 @@
       "dataGb": 20,
       "days": 30,
       "price": 20.0,
+      "network": "Telkomsel",
       "url": "https://yesim.app/",
       "sourceUrl": "https://esims.io/providers/yesim/032110720480304647"
     }
