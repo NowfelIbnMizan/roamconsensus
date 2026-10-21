@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import type { EsimPlanRow } from "@/lib/data";
-import { formatMoney } from "@/lib/format";
+import { useMoney } from "@/components/money";
 import { DataEstimator } from "./data-estimator";
 
 type Plan = EsimPlanRow;
@@ -56,6 +56,10 @@ export function EsimTable({ plans }: { plans: Plan[] }) {
   const [hotspot, setHotspot] = useState(false);
   const [sort, setSort] = useState<keyof typeof SORTS>("price");
   const [provider, setProvider] = useState("");
+  const { money, code, converting } = useMoney();
+  // Plan prices are compared to the cent, so they keep their cents unless shown in another currency.
+  const planPrice = (p: Plan) =>
+    !converting || code === p.currency ? formatExact(p.priceCents, p.currency) : money(p.priceCents, p.currency);
 
   const providers = useMemo(() => [...new Set(plans.map((p) => p.provider))].sort(), [plans]);
   const shown = useMemo(
@@ -150,11 +154,11 @@ export function EsimTable({ plans }: { plans: Plan[] }) {
                 <p className="text-xs text-muted">{p.days} days</p>
               </div>
               <div className="w-24 text-right">
-                <p className="font-semibold tabular-nums">{formatExact(p.priceCents, p.currency)}</p>
+                <p className="font-semibold tabular-nums">{planPrice(p)}</p>
                 <p className="text-xs text-muted tabular-nums">
                   {perGb === null
-                    ? `${formatMoney(Math.round(p.priceCents / p.days), p.currency)}/day`
-                    : `${formatMoney(Math.round(perGb), p.currency)}/GB`}
+                    ? `${money(Math.round(p.priceCents / p.days), p.currency)}/day`
+                    : `${money(Math.round(perGb), p.currency)}/GB`}
                 </p>
               </div>
               <a

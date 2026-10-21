@@ -3,7 +3,15 @@
 import { Check, Plus, ShoppingBag } from "lucide-react";
 import { useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
 
-export function AddRouteButton({ items }: { items: CartItem[] }) {
+export function AddRouteButton({
+  items,
+  label = "Add whole route to cart",
+  doneLabel = "Whole route in cart",
+}: {
+  items: CartItem[];
+  label?: string;
+  doneLabel?: string;
+}) {
   const hydrated = useCartHydrated();
   const inCart = useCart((s) => s.items);
   const add = useCart((s) => s.add);
@@ -18,7 +26,7 @@ export function AddRouteButton({ items }: { items: CartItem[] }) {
       className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background disabled:opacity-60"
     >
       {all ? <Check className="size-4" aria-hidden /> : <ShoppingBag className="size-4" aria-hidden />}
-      {all ? "Whole route in cart" : "Add whole route to cart"}
+      {all ? doneLabel : label}
     </button>
   );
 }

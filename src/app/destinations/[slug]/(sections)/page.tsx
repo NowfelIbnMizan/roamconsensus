@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, MapPin, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, Sun, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
-import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
+import { categoryLabel, tierLabel } from "@/lib/format";
+import { Money } from "@/components/money";
+import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
+import { TripMap, type MapStop } from "@/components/trip-map";
+import { bestMonths } from "@/lib/seasons";
+import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { ConsensusFilter } from "./consensus-filter";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
-// "West Nusa Penida (Kelingking Beach, …)" searches better without the parenthetical.
-function placeQuery(place: string, destination: string) {
-  return `${place.split(" (")[0].split(" / ")[0]} ${destination}`;
-}
-
-// Places with a website get their own cache key so a stock photo cached earlier doesn't shadow the venue's.
-function placePhotoKey(destination: string, place: { slug: string; website: string | null }) {
-  return `place:${destination}:${place.slug}${place.website ? ":site" : ""}`;
-}
-
-function fromPriceLabel(p: { cents: number; unit: string | null; currency: string }) {
+function FromPrice({ p }: { p: { cents: number; unit: string | null; currency: string } }) {
   if (p.cents === 0) return "Free";
-  return `from ${formatMoney(p.cents, p.currency)}${p.unit ? `/${p.unit}` : ""}`;
+  return (
+    <>
+      from <Money cents={p.cents} currency={p.currency} />
+      {p.unit && `/${p.unit}`}
+    </>
+  );
 }
 
 export async function generateStaticParams() {
@@ -44,8 +44,46 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   for (const p of consensus) counts[p.category] = (counts[p.category] ?? 0) + 1;
   const categories = Object.keys(counts) as ItemCategory[];
 
+  // Pins are numbered by list position, so "7" on the map is the 7th spot in the list.
+  const rank = new Map(consensus.map((p, n) => [p.slug, n + 1]));
+  const stops: MapStop[] = consensus.filter(hasPin).map((p) => ({
+    key: p.slug,
+    lat: p.lat,
+    lng: p.lng,
+    label: String(rank.get(p.slug)),
+    color: p.skippedBy.length > p.creators.length ? "#a8a29e" : categoryHex[p.category],
+    title: p.name,
+    subtitle: [
+      p.area,
+      categoryLabel[p.category],
+      creatorCount > 1 ? `${p.creators.length}/${creatorCount} creators` : null,
+    ]
+      .filter(Boolean)
+      .join(" · "),
+    href: googleMapsPlaceUrl(p.name, `${p.area ? `${p.area}, ` : ""}${destination.name}`),
+    cat: p.category,
+    page: placeHref(destination.slug, p.slug),
+    cartId: p.skippedBy.length === 0 ? p.cartItem?.id : undefined,
+  }));
+
+  const best = bestMonths(destination.months);
+
   return (
     <>
+      {best && (
+        <Link
+          href={`/destinations/${destination.slug}/when`}
+          className="mb-8 flex items-center gap-2 rounded-2xl border border-line bg-card px-4 py-3 text-sm transition hover:border-accent"
+        >
+          <Sun className="size-4 shrink-0 text-accent" aria-hidden />
+          <span>
+            Best time to go: <strong>{best}</strong>
+          </span>
+          <span className="ml-auto flex items-center gap-1 whitespace-nowrap font-medium text-accent">
+            Month by month <ArrowRight className="size-4" aria-hidden />
+          </span>
+        </Link>
+      )}
       <section>
         <h2 className="text-xl font-semibold">Pick your route</h2>
         <p className="mt-1 text-sm text-muted">
@@ -68,7 +106,9 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
               </p>
               {r.totalCents > 0 ? (
                 <>
-                  <p className="mt-3 text-2xl font-semibold tabular-nums">{formatMoney(r.totalCents)}</p>
+                  <p className="mt-3 text-2xl font-semibold tabular-nums">
+                    <Money cents={r.totalCents} />
+                  </p>
                   <p className="mb-4 text-xs text-muted">
                     est. per person
                     {r.unpricedCount > 0 && ` · ${r.unpricedCount} items unpriced`}
@@ -99,6 +139,14 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}
         </p>
         <ConsensusFilter categories={categories} counts={counts}>
+          {stops.length > 0 && (
+            <div className="mt-4">
+              <TripMap
+                stops={stops}
+                legend={categories.map((c) => ({ label: categoryLabel[c], color: categoryHex[c] }))}
+              />
+            </div>
+          )}
           <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
             {consensus.map((p) => {
               const all = p.creators.length === creatorCount;
@@ -118,7 +166,23 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <p className="font-semibold leading-snug">{p.name}</p>
+                        <p className="font-semibold leading-snug">
+                          {hasPin(p) && (
+                            <span
+                              className="mr-1.5 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                              style={{ background: categoryHex[p.category] }}
+                              title="Pin number on the map"
+                            >
+                              {rank.get(p.slug)}
+                            </span>
+                          )}
+                          <Link
+                            href={placeHref(destination.slug, p.slug)}
+                            className="hover:text-accent hover:underline"
+                          >
+                            {p.name}
+                          </Link>
+                        </p>
                         <p className="mt-0.5 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted">
                           {p.area && (
                             <>
@@ -142,7 +206,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                         {p.cartItem && p.skippedBy.length === 0 && <AddItemButton item={p.cartItem} />}
                         {p.fromPrice && (
                           <span className="whitespace-nowrap text-xs font-medium tabular-nums">
-                            {fromPriceLabel(p.fromPrice)}
+                            <FromPrice p={p.fromPrice} />
                           </span>
                         )}
                       </div>

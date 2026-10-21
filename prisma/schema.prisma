@@ -43,6 +43,28 @@ enum Sentiment {
   AVOID
 }
 
+enum Crowd {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+/// "Best time to go": typical weather and crowds for one month of the year.
+model DestinationMonth {
+  id            String      @id @default(cuid())
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  /// 1 = January.
+  month         Int
+  highC         Int?
+  lowC          Int?
+  rainMm        Int?
+  crowd         Crowd?
+  note          String?
+
+  @@unique([destinationId, month])
+}
+
 enum PhotoSource {
   OTA
   OEMBED
@@ -53,18 +75,21 @@ enum PhotoSource {
 }
 
 model Destination {
-  id           String      @id @default(cuid())
-  slug         String      @unique
-  name         String
-  country      String
-  summary      String
-  heroPhotoUrl String?
+  id               String             @id @default(cuid())
+  slug             String             @unique
+  name             String
+  country          String
+  summary          String
+  heroPhotoUrl     String?
   /// Fictional demo content; the site shows a banner on it.
-  isSample     Boolean     @default(false)
-  places       Place[]
-  itineraries  Itinerary[]
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
+  isSample         Boolean            @default(false)
+  /// Where the month-by-month weather figures come from.
+  climateSourceUrl String?
+  places           Place[]
+  itineraries      Itinerary[]
+  months           DestinationMonth[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
 }
 
 model Creator {
@@ -122,6 +147,9 @@ model Place {
   tip           String?
   /// Venue's own site; its share image (og:image) is used as the place photo.
   website       String?
+  /// Map pin. Approximate is fine; travellers get "Open in Google Maps" for exact directions.
+  lat           Float?
+  lng           Float?
   destinationId String
   destination   Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
   items         Item[]
@@ -130,27 +158,27 @@ model Place {
 }
 
 model Item {
-  id          String          @id @default(cuid())
-  day         Int
-  position    Int
-  name        String
-  note        String?
-  category    ItemCategory
-  priceCents  Int? // null = creator didn't give a price
-  priceNote   String? // creator's own wording, e.g. "a couple bucks a day"
-  sentiment   Sentiment?
-  currency    String          @default("USD")
+  id             String          @id @default(cuid())
+  day            Int
+  position       Int
+  name           String
+  note           String?
+  category       ItemCategory
+  priceCents     Int? // null = creator didn't give a price
+  priceNote      String? // creator's own wording, e.g. "a couple bucks a day"
+  sentiment      Sentiment?
+  currency       String          @default("USD")
   /// Where we found the price when the creator didn't give one (official site, ticket office, booking platform).
   priceSourceUrl String?
-  unit        String? // "night", "person", "day"
-  quantity    Int             @default(1)
-  itineraryId String
-  itinerary   Itinerary       @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
-  placeId     String?
-  place       Place?          @relation(fields: [placeId], references: [id], onDelete: SetNull)
-  vendorId    String?
-  vendor      Vendor?         @relation(fields: [vendorId], references: [id])
-  links       AffiliateLink[]
+  unit           String? // "night", "person", "day"
+  quantity       Int             @default(1)
+  itineraryId    String
+  itinerary      Itinerary       @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+  placeId        String?
+  place          Place?          @relation(fields: [placeId], references: [id], onDelete: SetNull)
+  vendorId       String?
+  vendor         Vendor?         @relation(fields: [vendorId], references: [id])
+  links          AffiliateLink[]
 
   @@index([itineraryId, day, position])
   @@index([placeId])

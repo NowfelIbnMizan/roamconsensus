@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { CONTENT_TAG } from "@/lib/data";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { SOCIALS, type SocialKey } from "@/lib/creator-links";
-import type { CouponType, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
+import type { CouponType, Crowd, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
 
 // Form helpers: blank inputs become null so clearing a field clears it in the database.
 const text = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
@@ -70,6 +70,32 @@ export async function deleteDestination(fd: FormData) {
   redirect("/admin");
 }
 
+// Best time to go: one form with a row per month. A row left blank removes that month.
+
+export async function saveMonths(fd: FormData) {
+  await requireAdmin();
+  const destinationId = text(fd, "destinationId");
+  const num = (key: string) => (text(fd, key) === "" ? null : int(fd, key));
+  await db.destination.update({
+    where: { id: destinationId },
+    data: { climateSourceUrl: optional(fd, "climateSourceUrl") },
+  });
+  for (let month = 1; month <= 12; month++) {
+    const data = {
+      highC: num(`highC${month}`),
+      lowC: num(`lowC${month}`),
+      rainMm: num(`rainMm${month}`),
+      crowd: (optional(fd, `crowd${month}`) as Crowd | null) ?? null,
+      note: optional(fd, `note${month}`),
+    };
+    const where = { destinationId_month: { destinationId, month } };
+    if (Object.values(data).every((v) => v === null))
+      await db.destinationMonth.deleteMany({ where: { destinationId, month } });
+    else await db.destinationMonth.upsert({ where, create: { ...data, destinationId, month }, update: data });
+  }
+  published();
+}
+
 // Places
 
 export async function savePlace(fd: FormData) {
@@ -83,10 +109,35 @@ export async function savePlace(fd: FormData) {
     blurb: optional(fd, "blurb"),
     tip: optional(fd, "tip"),
     website: optional(fd, "website"),
+    ...(await mapPin(text(fd, "pin"))),
   };
   if (id) await db.place.update({ where: { id }, data });
   else await db.place.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
   published();
+}
+
+/**
+ * "Map pin" field: coordinates ("-8.5069, 115.2625") or a Google Maps link, including maps.app.goo.gl share links.
+ * Blank clears the pin; anything unreadable leaves the saved pin alone.
+ */
+async function mapPin(input: string): Promise<{ lat?: number | null; lng?: number | null }> {
+  if (!input) return { lat: null, lng: null };
+  let s = input;
+  if (/^https?:\/\/(maps\.app\.goo\.gl|goo\.gl)\//.test(s)) {
+    const res = await fetch(s, { redirect: "manual" }).catch(() => null);
+    s = res?.headers.get("location") ?? s;
+  }
+  s = decodeURIComponent(s);
+  // !3d!4d is the place itself; @lat,lng is only where the map was centred.
+  const m =
+    s.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/) ??
+    s.match(/[?&](?:q|query|ll|destination)=(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/) ??
+    s.match(/@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/) ??
+    s.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);
+  if (!m) return {};
+  const lat = Number(m[1]);
+  const lng = Number(m[2]);
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : {};
 }
 
 export async function deletePlace(fd: FormData) {

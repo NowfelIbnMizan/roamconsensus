@@ -48,3 +48,50 @@ body {
 [data-filter="TRANSIT"] [data-cat]:not([data-cat="TRANSIT"]) {
   display: none;
 }
+
+/* Trip map (Leaflet). */
+.leaflet-container {
+  font-family: inherit;
+}
+.rc-pin-wrap {
+  background: none;
+  border: none;
+  /* Only the visible pin takes clicks, so a pin hidden by the category filter can't be tapped. */
+  pointer-events: none !important;
+}
+.rc-pin-wrap .rc-pin {
+  pointer-events: auto;
+}
+.rc-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
+}
+.rc-pin-picked .rc-pin {
+  outline: 3px solid #1c1917;
+  outline-offset: 1px;
+}
+.rc-popup-title {
+  margin: 0 !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+.rc-popup-sub {
+  margin: 2px 0 0 !important;
+  color: #78716c;
+}
+.rc-popup-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 500;
+  color: #0f766e !important;
+}
