@@ -154,6 +154,24 @@ function load<T extends z.ZodType>(schema: T, file: string): z.infer<T> {
   return result.data;
 }
 
+function loadEsimFiles() {
+  const esimDir = path.join(dataDir, "esim");
+  return readdirSync(esimDir)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => load(EsimFile, path.join(esimDir, f)));
+}
+
+const esimRows = (files: z.infer<typeof EsimFile>[]) =>
+  files.flatMap(({ country, checkedAt, plans }) =>
+    plans.map(({ dataGb, price, ...p }) => ({
+      ...p,
+      country,
+      checkedAt,
+      dataMb: dataGb === null ? null : Math.round(dataGb * 1024),
+      priceCents: Math.round(price * 100),
+    })),
+  );
+
 type Data = z.infer<typeof Destination>;
 
 const logLoaded = (keys: string[]) =>
@@ -213,6 +231,7 @@ async function loadItinerary(
  * Deploys on a database that already has content: add itineraries (and new destinations) that data/ has but the
  * seed has never loaded, with any creators, places and vendors they need. Nothing already in the database is
  * changed, and anything deleted in the admin panel stays deleted, since SeedLog remembers it was loaded once.
+ * eSIM files are loaded for countries that have no plans in the database yet.
  */
 async function addNew(vendors: z.infer<typeof Vendors>, destinations: Data[]) {
   const loaded = new Set((await db.seedLog.findMany({ select: { key: true } })).map((r) => r.key));
@@ -259,6 +278,16 @@ async function addNew(vendors: z.infer<typeof Vendors>, destinations: Data[]) {
       added++;
     }
     await logLoaded([`destination:${d.slug}`, ...todo.map((it) => `itinerary:${it.slug}`)]);
+  }
+
+  // eSIM plans for a country that has none yet (e.g. a new destination's country).
+  const haveEsim = new Set(
+    (await db.esimPlan.findMany({ distinct: ["country"], select: { country: true } })).map((r) => r.country),
+  );
+  const newEsim = loadEsimFiles().filter((f) => !haveEsim.has(f.country));
+  if (newEsim.length) {
+    await db.esimPlan.createMany({ data: esimRows(newEsim) });
+    console.log(`Added eSIM plans for ${newEsim.map((f) => f.country).join(", ")}.`);
   }
   console.log(
     added
@@ -378,22 +407,9 @@ async function main() {
   }
 
   // eSIM plans are fully owned by data/esim/*.json, one file per country.
-  const esimDir = path.join(dataDir, "esim");
-  const esimFiles = readdirSync(esimDir)
-    .filter((f) => f.endsWith(".json"))
-    .map((f) => load(EsimFile, path.join(esimDir, f)));
+  const esimFiles = loadEsimFiles();
   await db.esimPlan.deleteMany();
-  await db.esimPlan.createMany({
-    data: esimFiles.flatMap(({ country, checkedAt, plans }) =>
-      plans.map(({ dataGb, price, ...p }) => ({
-        ...p,
-        country,
-        checkedAt,
-        dataMb: dataGb === null ? null : Math.round(dataGb * 1024),
-        priceCents: Math.round(price * 100),
-      })),
-    ),
-  });
+  await db.esimPlan.createMany({ data: esimRows(esimFiles) });
   console.log(`Loaded ${esimFiles.reduce((n, f) => n + f.plans.length, 0)} eSIM plans.`);
 
   // Coupons are fully owned by coupons.json. Clear them before pruning so no
