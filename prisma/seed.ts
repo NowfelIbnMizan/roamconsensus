@@ -102,6 +102,13 @@ const Destination = z.object({
 
 const dataDir = path.join(process.cwd(), "data");
 
+const toSlug = (s: string) =>
+  s
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
 function load<T extends z.ZodType>(schema: T, file: string): z.infer<T> {
   const result = schema.safeParse(JSON.parse(readFileSync(file, "utf8")));
   if (!result.success) {
@@ -191,12 +198,18 @@ async function main() {
     for (const { items, creator, ...it } of itineraries) {
       const data = { ...it, destinationId: dest.id, creatorId: creatorIds.get(creator)! };
       const itinerary = await db.itinerary.upsert({ where: { slug: it.slug }, create: data, update: data });
-      // Items have no natural key, so replace them wholesale.
+      // Replace items wholesale, but with ids built from itinerary + name so saved carts still match after a reseed.
       await db.item.deleteMany({ where: { itineraryId: itinerary.id } });
+      const usedIds = new Set<string>();
       for (const [position, item] of items.entries()) {
         const vendorId = item.vendor ? vendorIds.get(item.vendor) : undefined;
+        const base = `${it.slug}--${toSlug(item.name)}`;
+        let id = base;
+        for (let n = 2; usedIds.has(id); n++) id = `${base}-${n}`;
+        usedIds.add(id);
         await db.item.create({
           data: {
+            id,
             itineraryId: itinerary.id,
             day: item.day,
             position,

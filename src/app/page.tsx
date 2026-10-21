@@ -1,10 +1,18 @@
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, Clock, MapPin } from "lucide-react";
 import { Photo } from "@/components/photo";
 import { getDestinations } from "@/lib/data";
 
+// Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
+const comingSoon = [
+  { slug: "tokyo", name: "Tokyo", country: "Japan" },
+  { slug: "bangkok", name: "Bangkok", country: "Thailand" },
+];
+
 export default async function Home() {
   const destinations = await getDestinations();
+  const live = new Set(destinations.map((d) => d.slug));
+  const placeholders = comingSoon.filter((c) => !live.has(c.slug)).slice(0, Math.max(0, 3 - destinations.length));
 
   return (
     <>
@@ -54,6 +62,30 @@ export default async function Home() {
                   </p>
                 </div>
               </Link>
+            </li>
+          ))}
+          {placeholders.map((c) => (
+            <li key={c.slug} aria-label={`${c.name}, coming soon`}>
+              <div className="overflow-hidden rounded-2xl border border-dashed border-line bg-card">
+                <Photo
+                  photoKey={`destination:${c.slug}`}
+                  query={`${c.name} ${c.country}`}
+                  category="DESTINATION"
+                  alt=""
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="aspect-[16/9] opacity-60 grayscale"
+                />
+                <div className="p-5">
+                  <div className="flex items-center gap-1 text-sm text-muted">
+                    <MapPin className="size-4" aria-hidden /> {c.country}
+                  </div>
+                  <h3 className="mt-1 text-xl font-semibold text-muted">{c.name}</h3>
+                  <p className="mt-2 text-sm text-muted">Collecting creator itineraries now.</p>
+                  <p className="mt-4 flex items-center gap-1 text-sm font-medium text-muted">
+                    <Clock className="size-4" aria-hidden /> Coming soon
+                  </p>
+                </div>
+              </div>
             </li>
           ))}
         </ul>

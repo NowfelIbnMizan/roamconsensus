@@ -5,6 +5,7 @@ import { ExternalLink } from "lucide-react";
 import { SampleBanner } from "@/components/sample-banner";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
+import { toCartItem } from "@/lib/cart-item";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, formatPrice, sentimentLabel, tierLabel } from "@/lib/format";
 
@@ -21,31 +22,12 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
   const it = await getItinerary((await params).slug);
   if (!it) notFound();
 
-  const ref = { slug: it.slug, title: it.title };
   // Places the creator says to skip stay listed but out of the route bundle.
   const skipped = new Set(
     it.schedule.flatMap(({ items }) => items.filter((i) => i.sentiment === "AVOID").map((i) => i.id)),
   );
   const cartItems = new Map<string, CartItem>(
-    it.schedule.flatMap(({ items }) =>
-      items.map((i) => [
-        i.id,
-        {
-          id: i.id,
-          name: i.name,
-          category: i.category,
-          priceCents: i.priceCents,
-          priceNote: i.priceNote,
-          currency: i.currency,
-          unit: i.unit,
-          quantity: i.quantity,
-          vendor: i.vendor,
-          bookUrl: i.bookUrl,
-          couponCode: i.couponCode,
-          itinerary: ref,
-        },
-      ]),
-    ),
+    it.schedule.flatMap(({ items }) => items.map((i) => [i.id, toCartItem(i, it)])),
   );
 
   return (

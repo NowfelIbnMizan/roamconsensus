@@ -189,7 +189,7 @@ export async function getItinerary(slug: string) {
         orderBy: [{ day: "asc" }, { position: "asc" }],
         include: {
           vendor: { select: { name: true } },
-          place: { select: { slug: true } },
+          place: { select: { slug: true, website: true } },
           links: { select: { url: true, creatorId: true } },
         },
       },
@@ -232,6 +232,7 @@ export async function getItinerary(slug: string) {
         currency: i.currency,
         vendor: i.vendor?.name ?? null,
         bookUrl: offer?.url ?? null,
+        website: i.place?.website ?? null,
         couponCode: offer?.code ?? null,
         creditedTo: offer?.creditedTo ?? null,
       };

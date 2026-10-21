@@ -228,7 +228,13 @@
           "category": "GEAR",
           "sentiment": "RECOMMENDED",
           "note": "Essential for emergency medical coverage, trip protection, and optional adventure sports coverage in Bali.",
-          "priceNote": "A couple bucks a day"
+          "priceNote": "Essential plan, ages 18-39, $62.72 per 4 weeks (creator: a couple bucks a day)",
+          "vendor": "safetywing",
+          "ourUrl": "https://safetywing.com/nomad-insurance",
+          "price": 2.24,
+          "unit": "day",
+          "quantity": 7,
+          "priceSource": "https://www.weseektravel.com/safetywing-review/"
         },
         {
           "day": 1,
@@ -239,7 +245,9 @@
           "priceNote": "per night, 1-bedroom (date-dependent) (creator: bookable with Marriott points)",
           "place": "marriotts-bali-nusa-dua-gardens",
           "price": 170,
-          "priceSource": "https://www.stayz.com.au/pdp/lo/19414394"
+          "priceSource": "https://www.stayz.com.au/pdp/lo/19414394",
+          "vendor": "marriott",
+          "ourUrl": "https://www.marriott.com/en-us/hotels/dpsmv-marriotts-bali-nusa-dua-gardens/overview/"
         },
         {
           "day": 1,
@@ -283,7 +291,9 @@
           "place": "kecak-dance-performance",
           "price": 9.38,
           "priceNote": "IDR 150k ticket; temple entry extra",
-          "priceSource": "https://kura2bus.com/blog/uluwatu-kecak-dance-ticket-price/"
+          "priceSource": "https://kura2bus.com/blog/uluwatu-kecak-dance-ticket-price/",
+          "vendor": "getyourguide",
+          "ourUrl": "https://www.getyourguide.com/s/?q=Uluwatu%20Kecak%20fire%20dance"
         },
         {
           "day": 1,
@@ -291,7 +301,8 @@
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "A sizable restaurant serving exclusively Balinese cuisine.",
-          "place": "bumbu-bali"
+          "place": "bumbu-bali",
+          "priceNote": "rijsttafel set menu, price on site"
         },
         {
           "day": 2,
@@ -302,7 +313,9 @@
           "place": "ferry-from-sanur-to-nusa-penida",
           "price": 12.5,
           "priceNote": "IDR 200k per person, one way",
-          "priceSource": "https://inivie.com/discover-bali/nusa-penida-ferry-schedule-prices-and-how-to-book"
+          "priceSource": "https://inivie.com/discover-bali/nusa-penida-ferry-schedule-prices-and-how-to-book",
+          "vendor": "12go",
+          "ourUrl": "https://12go.asia/en/travel/sanur/nusa-penida"
         },
         {
           "day": 2,
@@ -313,7 +326,9 @@
           "place": "west-nusa-penida",
           "price": 50,
           "priceNote": "shared day tour incl. boat & lunch",
-          "priceSource": "https://www.expedia.com/things-to-do/bali-nusa-penida-day-trip-west-tour-ticket.a49261655.activity-details"
+          "priceSource": "https://www.expedia.com/things-to-do/bali-nusa-penida-day-trip-west-tour-ticket.a49261655.activity-details",
+          "vendor": "getyourguide",
+          "ourUrl": "https://www.getyourguide.com/s/?q=Nusa%20Penida%20west%20day%20tour"
         },
         {
           "day": 2,
@@ -368,7 +383,9 @@
           "place": "mount-batur-sunrise-hike",
           "price": 37,
           "priceNote": "small-group tour with breakfast",
-          "priceSource": "https://www.pelago.com/en/activity/ptd2o-mount-batur-sunrise-trekking/"
+          "priceSource": "https://www.pelago.com/en/activity/ptd2o-mount-batur-sunrise-trekking/",
+          "vendor": "getyourguide",
+          "ourUrl": "https://www.getyourguide.com/s/?q=Mount%20Batur%20sunrise%20hike"
         },
         {
           "day": 4,
@@ -511,7 +528,9 @@
           "place": "w-hotel",
           "price": 360,
           "priceNote": "per night, entry room (date-dependent)",
-          "priceSource": "https://www.expedia.com.my/ms/Seminyak-Hotels-Hotel-Ski.0-0-d6047747-tHotelSki.Travel-Guide-Filter-Hotels"
+          "priceSource": "https://www.expedia.com.my/ms/Seminyak-Hotels-Hotel-Ski.0-0-d6047747-tHotelSki.Travel-Guide-Filter-Hotels",
+          "vendor": "marriott",
+          "ourUrl": "https://www.marriott.com/en-us/hotels/dpswh-w-bali-seminyak/overview/"
         },
         {
           "day": 1,
@@ -574,7 +593,8 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Pick up souvenirs like the popular twine bags and local household products.",
-          "place": "ubud-shopping"
+          "place": "ubud-shopping",
+          "priceNote": "varies by shop"
         },
         {
           "day": 5,
@@ -637,7 +657,10 @@
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Crystal clear water making it ideal for snorkeling, diving, or just kicking back for a tan.",
-          "place": "west-nusa-penida"
+          "place": "west-nusa-penida",
+          "price": 0,
+          "priceNote": "free entry; IDR 5k motorbike parking",
+          "priceSource": "https://twooutliers.com/crystal-bay-nusa-penida-bali/"
         },
         {
           "day": 10,
@@ -648,7 +671,9 @@
           "place": "ubud-rafting",
           "price": 40,
           "priceNote": "per person incl. hotel pickup",
-          "priceSource": "https://www.trvlogue.com/en/ayung-river-rafting-bali"
+          "priceSource": "https://www.trvlogue.com/en/ayung-river-rafting-bali",
+          "vendor": "getyourguide",
+          "ourUrl": "https://www.getyourguide.com/s/?q=Ayung%20river%20rafting%20Ubud"
         },
         {
           "day": 10,

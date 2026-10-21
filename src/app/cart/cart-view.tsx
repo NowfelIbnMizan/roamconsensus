@@ -1,18 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ClipboardCopy, Download, ExternalLink, Minus, Plus, Trash2 } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toNotionMarkdown, toText } from "@/lib/cart-export";
+import { VendorBadge } from "@/components/vendor-badge";
 import { categoryLabel, formatMoney, formatPrice } from "@/lib/format";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 export function CartView() {
   const hydrated = useCartHydrated();
-  const { items, budgetCents, remove, setQuantity, setBudget, clear } = useCart();
+  const { items, budgetCents, refresh, remove, setQuantity, setBudget, clear } = useCart();
   const [copied, setCopied] = useState(false);
+  const refreshed = useRef(false);
+
+  // Once per visit, pull current prices and links for what was saved earlier.
+  useEffect(() => {
+    if (!hydrated || refreshed.current) return;
+    refreshed.current = true;
+    const saved = useCart.getState().items;
+    if (saved.length === 0) return;
+    fetch("/api/cart/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: saved.map((i) => ({ id: i.id, name: i.name, slug: i.itinerary.slug })) }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((fresh) => fresh && refresh(fresh))
+      .catch(() => {});
+  }, [hydrated, refresh]);
 
   if (!hydrated) return <p className="text-muted">Loading your cart…</p>;
 
@@ -33,6 +51,7 @@ export function CartView() {
   for (const i of items) byCategory.set(i.category, (byCategory.get(i.category) ?? 0) + lineTotal(i));
   const allocation = [...byCategory]
     .map(([category, cents]) => ({ category, pct: totalCents ? (cents / totalCents) * 100 : 0 }))
+    .filter((a) => a.pct > 0)
     .sort((a, b) => b.pct - a.pct);
   const unpriced = items.filter((i) => i.priceCents === null).length;
   const remaining = budgetCents === null ? null : budgetCents - totalCents;
@@ -56,8 +75,12 @@ export function CartView() {
         {groupByVendor(items).map((group) => (
           <section key={group.vendor} className="rounded-2xl border border-line bg-card">
             <header className="flex items-center justify-between border-b border-line px-4 py-3">
-              <h2 className="font-semibold">{group.vendor}</h2>
-              <span className="text-sm tabular-nums text-muted">{formatMoney(group.totalCents)}</span>
+              <h2>
+                <VendorBadge name={group.vendor} bookable={group.items[0].vendor !== null} />
+              </h2>
+              <span className="text-sm tabular-nums text-muted">
+                {group.items.some((i) => i.priceCents !== null) ? formatMoney(group.totalCents) : "Price on site"}
+              </span>
             </header>
             <ul className="divide-y divide-line">
               {group.items.map((item) => (
@@ -98,19 +121,34 @@ export function CartView() {
                       <Plus className="size-3" aria-hidden />
                     </button>
                   </div>
-                  <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">
-                    {formatPrice(item)}
-                  </span>
+                  {item.priceCents === null ? (
+                    <span className="max-w-40 rounded-full bg-amber-500/15 px-2 py-0.5 text-right text-xs text-amber-700 dark:text-amber-300">
+                      {item.priceNote ?? "Varies · pay on site"}
+                    </span>
+                  ) : (
+                    <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">{formatPrice(item)}</span>
+                  )}
                   <div className="flex items-center gap-2">
-                    {item.bookUrl && (
+                    {item.bookUrl ? (
                       <a
                         href={item.bookUrl}
                         target="_blank"
                         rel="sponsored noopener noreferrer"
-                        className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-background"
+                        className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/25 dark:text-emerald-300"
                       >
-                        Book <ExternalLink className="size-3" aria-hidden />
+                        {item.vendor ? `Book on ${item.vendor}` : "Book"} <ExternalLink className="size-3" aria-hidden />
                       </a>
+                    ) : (
+                      item.website && (
+                        <a
+                          href={item.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-muted hover:text-foreground"
+                        >
+                          Website <ExternalLink className="size-3" aria-hidden />
+                        </a>
+                      )
                     )}
                     <button
                       type="button"
@@ -134,7 +172,7 @@ export function CartView() {
           <p className="text-3xl font-semibold tabular-nums">{formatMoney(totalCents)}</p>
           {unpriced > 0 && (
             <p className="text-xs text-muted">
-              Plus {unpriced} item{unpriced > 1 ? "s" : ""} without a listed price
+              Plus {unpriced} item{unpriced > 1 ? "s" : ""} priced on site
             </p>
           )}
 

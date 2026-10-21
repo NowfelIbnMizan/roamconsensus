@@ -16,6 +16,7 @@ export type CartItem = {
   quantity: number;
   vendor: string | null;
   bookUrl: string | null;
+  website?: string | null; // venue's own site, for items with no booking link
   couponCode?: string | null; // optional: carts saved before codes existed lack it
   itinerary: { slug: string; title: string };
 };
@@ -24,6 +25,7 @@ type CartState = {
   items: CartItem[];
   budgetCents: number | null;
   add: (items: CartItem[]) => void;
+  refresh: (fresh: Record<string, CartItem>) => void;
   remove: (id: string) => void;
   setQuantity: (id: string, quantity: number) => void;
   setBudget: (cents: number | null) => void;
@@ -40,6 +42,20 @@ export const useCart = create<CartState>()(
         set((s) => {
           const existing = new Set(s.items.map((i) => i.id));
           return { items: [...s.items, ...incoming.filter((i) => !existing.has(i.id))] };
+        }),
+      // Swap saved snapshots for current data (prices, links, ids), keeping the traveller's quantity unless the
+      // unit changed (a flat price that became per-day should start at the creator's day count).
+      refresh: (fresh) =>
+        set((s) => {
+          const seen = new Set<string>();
+          const items = s.items.flatMap((i) => {
+            const f = fresh[i.id];
+            const next = !f ? i : f.unit === i.unit ? { ...f, quantity: i.quantity } : f;
+            if (seen.has(next.id)) return [];
+            seen.add(next.id);
+            return [next];
+          });
+          return { items };
         }),
       remove: (id) => set((s) => ({ items: s.items.filter((i) => i.id !== id) })),
       setQuantity: (id, quantity) =>
