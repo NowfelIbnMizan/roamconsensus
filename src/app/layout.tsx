@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
-import { Compass } from "lucide-react";
+import { Compass, Search } from "lucide-react";
 import { CartLink } from "@/components/cart-link";
 import { CurrencyPicker, CurrencyProvider } from "@/components/money";
+import { ThemeToggle, themeScript } from "@/components/theme";
+import { InstallApp } from "@/components/install-app";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -17,7 +19,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+  ],
+};
+
 export const metadata: Metadata = {
+  appleWebApp: { capable: true, title: "Roam", statusBarStyle: "default" },
+  icons: { apple: "/icons/apple-touch-icon.png" },
   title: { default: "RoamConsensus", template: "%s · RoamConsensus" },
   description: "Compare travel creators' itineraries and see where they agree.",
 };
@@ -25,7 +36,15 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const { rates } = await getRates();
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      // The theme script sets data-theme before React loads.
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
           <header className="border-b border-line">
@@ -34,13 +53,24 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Compass className="size-5 text-accent" aria-hidden />
                 RoamConsensus
               </Link>
-              <div className="flex items-center gap-5 text-sm text-muted">
-                <Link href="/#destinations" className="hidden hover:text-foreground sm:inline">
+              <div className="flex items-center gap-2 text-sm text-muted sm:gap-4">
+                <Link href="/#destinations" className="hidden hover:text-foreground md:inline">
                   Destinations
                 </Link>
-                <Link href="/disclosure" className="hidden hover:text-foreground sm:inline">
+                <Link href="/quiz" className="hidden hover:text-foreground sm:inline">
+                  Trip quiz
+                </Link>
+                <Link href="/disclosure" className="hidden hover:text-foreground md:inline">
                   Disclosure
                 </Link>
+                <Link
+                  href="/search"
+                  aria-label="Search"
+                  className="flex size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground"
+                >
+                  <Search className="size-4" aria-hidden />
+                </Link>
+                <ThemeToggle />
                 <CurrencyPicker />
                 <CartLink />
               </div>
@@ -55,6 +85,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 Full disclosure
               </Link>
               .
+            </p>
+            <p className="mx-auto max-w-5xl px-4 pb-6 text-xs text-muted">
+              <InstallApp />
             </p>
           </footer>
         </CurrencyProvider>

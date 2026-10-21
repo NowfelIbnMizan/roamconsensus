@@ -12,6 +12,7 @@ import { encodeTrip } from "@/lib/share";
 import { TripMap } from "@/components/trip-map";
 import { DayPlan, planLength, planMap } from "@/components/day-plan";
 import { useMoney } from "@/components/money";
+import { PackingList } from "@/components/packing-list";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 export function CartView() {
@@ -229,6 +230,7 @@ export function CartView() {
             </section>
           ))
         )}
+        <PackingList items={items} />
       </div>
 
       <aside className="order-first space-y-4 lg:order-none lg:sticky lg:top-6 lg:self-start">

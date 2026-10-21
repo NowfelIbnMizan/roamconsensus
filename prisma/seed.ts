@@ -69,6 +69,9 @@ const Destination = z.object({
       }),
     )
     .default([]),
+  tips: z
+    .array(z.object({ topic: z.string(), title: z.string(), body: z.string(), sourceUrl: url.optional() }))
+    .default([]),
   sample: z.boolean().default(false),
   places: z.array(
     z.object({
@@ -216,7 +219,7 @@ async function main() {
 
   const creatorIds = new Map<string, string>();
   for (const d of destinations) {
-    const { places, creators, itineraries, sample, months, ...fields } = d;
+    const { places, creators, itineraries, sample, months, tips, ...fields } = d;
     const dest = await db.destination.upsert({
       where: { slug: d.slug },
       create: { ...fields, isSample: sample },
@@ -225,6 +228,10 @@ async function main() {
 
     await db.destinationMonth.deleteMany({ where: { destinationId: dest.id } });
     await db.destinationMonth.createMany({ data: months.map((m) => ({ ...m, destinationId: dest.id })) });
+    await db.destinationTip.deleteMany({ where: { destinationId: dest.id } });
+    await db.destinationTip.createMany({
+      data: tips.map((t, position) => ({ ...t, position, destinationId: dest.id })),
+    });
 
     const placeIds = new Map<string, string>();
     for (const p of places) {

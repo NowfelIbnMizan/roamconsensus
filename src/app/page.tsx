@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock, MapPin } from "lucide-react";
+import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
 import { Photo } from "@/components/photo";
 import { getDestinations } from "@/lib/data";
 
@@ -24,6 +24,20 @@ export default async function Home() {
           We line up itineraries from multiple creators for one destination, show what they all recommend, and let you
           compare budget, mid-range and luxury routes side by side.
         </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href="/quiz"
+            className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+          >
+            <Sparkles className="size-4" aria-hidden /> Find my trip in 3 questions
+          </Link>
+          <Link
+            href="#destinations"
+            className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:border-accent"
+          >
+            Browse destinations
+          </Link>
+        </div>
       </section>
 
       <section id="destinations" className="mt-6">

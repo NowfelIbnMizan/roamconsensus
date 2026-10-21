@@ -96,6 +96,29 @@ export async function saveMonths(fd: FormData) {
   published();
 }
 
+// Before you go
+
+export async function saveTip(fd: FormData) {
+  await requireAdmin();
+  const id = optional(fd, "id");
+  const data = {
+    topic: text(fd, "topic") || "General",
+    title: text(fd, "title"),
+    body: text(fd, "body"),
+    sourceUrl: optional(fd, "sourceUrl"),
+    position: int(fd, "position"),
+  };
+  if (id) await db.destinationTip.update({ where: { id }, data });
+  else await db.destinationTip.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
+  published();
+}
+
+export async function deleteTip(fd: FormData) {
+  await requireAdmin();
+  await db.destinationTip.delete({ where: { id: text(fd, "id") } });
+  published();
+}
+
 // Places
 
 export async function savePlace(fd: FormData) {

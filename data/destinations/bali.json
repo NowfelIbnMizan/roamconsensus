@@ -102,6 +102,76 @@
       "note": "Wet, and very busy from Christmas to New Year."
     }
   ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa on arrival",
+      "body": "Most nationalities need a visa. Buy the e-VOA online before you fly: IDR 500,000 (about US$31), valid 30 days and extendable once for 30 more. Your passport needs at least 6 months left.",
+      "sourceUrl": "https://evisa.imigrasi.go.id"
+    },
+    {
+      "topic": "Entry",
+      "title": "All Indonesia arrival card",
+      "body": "Fill in the free All Indonesia form online within 3 days before landing. It covers immigration, customs and health in one QR code you show at the airport.",
+      "sourceUrl": "https://allindonesia.imigrasi.go.id"
+    },
+    {
+      "topic": "Entry",
+      "title": "Bali tourist levy",
+      "body": "Every foreign visitor pays IDR 150,000 (about US$10) once per trip. Pay on the official Love Bali site or app before you fly and keep the receipt QR code.",
+      "sourceUrl": "https://lovebali.baliprov.go.id"
+    },
+    {
+      "topic": "Money",
+      "title": "Cash and ATMs",
+      "body": "The currency is the rupiah (IDR). Use ATMs inside banks or malls and authorised money changers. Skip street changers offering better-than-market rates: short-changing is common."
+    },
+    {
+      "topic": "Money",
+      "title": "Tipping",
+      "body": "Not expected. Many restaurants already add about 15% for service and tax. Round up for drivers, and leave IDR 20,000–50,000 for a good spa therapist or guide."
+    },
+    {
+      "topic": "Packing",
+      "title": "Plugs and power",
+      "body": "Type C and F sockets (two round pins), 230 V. Bring a universal adapter."
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Temple dress",
+      "body": "Cover shoulders and knees and wear a sarong and sash. Most temples lend or rent them at the gate. Don't step on the small offerings (canang) on the ground."
+    },
+    {
+      "topic": "Health",
+      "title": "Bali belly",
+      "body": "Drink bottled or filtered water only, also for brushing teeth. Pack rehydration salts just in case."
+    },
+    {
+      "topic": "Health",
+      "title": "Rabies and monkeys",
+      "body": "Bali has rabies. Don't touch monkeys or stray dogs, and keep food, glasses and phones out of reach at Uluwatu and the Monkey Forest. If bitten or scratched, see a clinic the same day."
+    },
+    {
+      "topic": "Health",
+      "title": "Mosquitoes",
+      "body": "Dengue occurs year-round, more in the wet season. Use repellent with DEET or picaridin, especially at dawn and dusk."
+    },
+    {
+      "topic": "Getting around",
+      "title": "Taxis and scooters",
+      "body": "Grab and Gojek apps are the easiest way to get cars and scooter taxis; some areas only allow local drivers. Renting a scooter needs an International Driving Permit that covers motorbikes, or insurance may not pay."
+    },
+    {
+      "topic": "Safety",
+      "title": "Ocean and cliffs",
+      "body": "Currents are strong on many beaches: swim between the red-and-yellow flags. On Nusa Penida, stay well back from the edges at Angel's Billabong and Devil's Tear."
+    },
+    {
+      "topic": "Safety",
+      "title": "Travel insurance",
+      "body": "Get cover that includes medical evacuation, and scooter accidents if you plan to ride."
+    }
+  ],
   "places": [
     {
       "slug": "marriotts-bali-nusa-dua-gardens",

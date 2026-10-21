@@ -4,10 +4,12 @@ import { db } from "@/lib/db";
 import {
   deleteDestination,
   deletePlace,
+  deleteTip,
   saveDestination,
   saveItinerary,
   saveMonths,
   savePlace,
+  saveTip,
 } from "@/lib/admin/actions";
 import { monthNames } from "@/lib/seasons";
 import { categoryLabel, tierLabel } from "@/lib/format";
@@ -23,6 +25,7 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
         itineraries: { orderBy: { title: "asc" }, include: { creator: true, _count: { select: { items: true } } } },
         places: { orderBy: { name: "asc" }, include: { _count: { select: { items: true } } } },
         months: true,
+        tips: { orderBy: { position: "asc" } },
       },
     }),
     db.creator.findMany({ orderBy: { name: "asc" } }),
@@ -176,6 +179,52 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
           </div>
         </div>
       </form>
+
+      <h2 className="mt-10 text-xl font-semibold">Before you go</h2>
+      <p className="mt-1 text-sm text-muted">
+        Practical checklist on the &quot;Before you go&quot; tab: visa, money, health, etiquette. Same topic = same group;
+        lower order numbers show first.
+      </p>
+      <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
+        {d.tips.map((t) => (
+          <li key={t.id}>
+            <details className="p-4">
+              <summary className="flex cursor-pointer items-center justify-between gap-4">
+                <span className="font-medium">{t.title}</span>
+                <span className="text-sm text-muted">{t.topic}</span>
+              </summary>
+              <form action={saveTip} className="mt-4 grid gap-3 sm:grid-cols-2">
+                <input type="hidden" name="id" value={t.id} />
+                <Field label="Title" name="title" defaultValue={t.title} required />
+                <Field label="Topic" name="topic" defaultValue={t.topic} placeholder="Entry, Money, Health…" />
+                <TextArea label="Text" name="body" defaultValue={t.body} rows={3} />
+                <Field label="Source link" name="sourceUrl" type="url" defaultValue={t.sourceUrl} />
+                <Field label="Order" name="position" type="number" defaultValue={t.position} />
+                <div>
+                  <SaveButton />
+                </div>
+              </form>
+              <div className="mt-2 text-right">
+                <DeleteButton action={deleteTip} id={t.id} what={t.title} />
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
+      <details className="mt-3 rounded-2xl border border-line bg-card p-4">
+        <summary className="cursor-pointer font-medium">Add a tip</summary>
+        <form action={saveTip} className="mt-4 grid gap-3 sm:grid-cols-2">
+          <input type="hidden" name="destinationId" value={d.id} />
+          <Field label="Title" name="title" required />
+          <Field label="Topic" name="topic" placeholder="Entry, Money, Health…" />
+          <TextArea label="Text" name="body" rows={3} />
+          <Field label="Source link" name="sourceUrl" type="url" />
+          <Field label="Order" name="position" type="number" defaultValue={(d.tips.at(-1)?.position ?? -1) + 1} />
+          <div>
+            <SaveButton>Add tip</SaveButton>
+          </div>
+        </form>
+      </details>
 
       <h2 className="mt-10 text-xl font-semibold">Places</h2>
       <p className="mt-1 text-sm text-muted">
