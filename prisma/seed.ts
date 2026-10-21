@@ -1,5 +1,6 @@
 // Loads data/*.json into the database. Runs on every Netlify build.
-// Upserts by slug/handle, so editing or adding a file and redeploying is enough.
+// An empty database gets everything. After that the admin panel owns content, and a deploy only adds itineraries
+// and destinations that are new in data/ (see addNew).
 // Rows that disappear from the files are removed only for itineraries' items; set SEED_RESET=1 to wipe everything first.
 import "dotenv/config";
 import { readdirSync, readFileSync } from "node:fs";
@@ -153,6 +154,119 @@ function load<T extends z.ZodType>(schema: T, file: string): z.infer<T> {
   return result.data;
 }
 
+type Data = z.infer<typeof Destination>;
+
+const logLoaded = (keys: string[]) =>
+  db.seedLog.createMany({ data: keys.map((key) => ({ key })), skipDuplicates: true });
+
+async function loadItinerary(
+  { items, creator, ...it }: Data["itineraries"][number],
+  destinationId: string,
+  creatorIds: Map<string, string>,
+  placeIds: Map<string, string>,
+  vendorIds: Map<string, string>,
+) {
+  const data = { ...it, destinationId, creatorId: creatorIds.get(creator)! };
+  const itinerary = await db.itinerary.upsert({ where: { slug: it.slug }, create: data, update: data });
+  // Replace items wholesale, but with ids built from itinerary + name so saved carts still match after a reseed.
+  await db.item.deleteMany({ where: { itineraryId: itinerary.id } });
+  const usedIds = new Set<string>();
+  for (const [position, item] of items.entries()) {
+    const vendorId = item.vendor ? vendorIds.get(item.vendor) : undefined;
+    const base = `${it.slug}--${toSlug(item.name)}`;
+    let id = base;
+    for (let n = 2; usedIds.has(id); n++) id = `${base}-${n}`;
+    usedIds.add(id);
+    await db.item.create({
+      data: {
+        id,
+        itineraryId: itinerary.id,
+        day: item.day,
+        position,
+        name: item.name,
+        note: item.note,
+        category: item.category,
+        priceCents: item.price === undefined ? null : Math.round(item.price * 100),
+        priceNote: item.priceNote,
+        priceSourceUrl: item.priceSource,
+        sentiment: item.sentiment,
+        currency: item.currency,
+        unit: item.unit,
+        quantity: item.quantity,
+        placeId: item.place ? placeIds.get(item.place) : undefined,
+        vendorId,
+        links:
+          vendorId && (item.ourUrl || item.creatorUrl)
+            ? {
+                create: [
+                  ...(item.ourUrl ? [{ vendorId, url: item.ourUrl }] : []),
+                  ...(item.creatorUrl ? [{ vendorId, url: item.creatorUrl, creatorId: data.creatorId }] : []),
+                ],
+              }
+            : undefined,
+      },
+    });
+  }
+}
+
+/**
+ * Deploys on a database that already has content: add itineraries (and new destinations) that data/ has but the
+ * seed has never loaded, with any creators, places and vendors they need. Nothing already in the database is
+ * changed, and anything deleted in the admin panel stays deleted, since SeedLog remembers it was loaded once.
+ */
+async function addNew(vendors: z.infer<typeof Vendors>, destinations: Data[]) {
+  const loaded = new Set((await db.seedLog.findMany({ select: { key: true } })).map((r) => r.key));
+  const vendorIds = new Map((await db.vendor.findMany()).map((v) => [v.slug, v.id]));
+  for (const v of vendors) if (!vendorIds.has(v.slug)) vendorIds.set(v.slug, (await db.vendor.create({ data: v })).id);
+
+  let added = 0;
+  for (const d of destinations) {
+    const { places, creators, itineraries, sample, months, tips, ...fields } = d;
+    const todo = itineraries.filter((it) => !loaded.has(`itinerary:${it.slug}`));
+    const newDestination = !loaded.has(`destination:${d.slug}`);
+    if (!todo.length && !newDestination) continue;
+
+    let dest = await db.destination.findUnique({ where: { slug: d.slug } });
+    if (!dest) {
+      if (!newDestination) continue; // deleted in the admin panel: leave it gone
+      dest = await db.destination.create({
+        data: {
+          ...fields,
+          isSample: sample,
+          months: { create: months },
+          tips: { create: tips.map((t, position) => ({ ...t, position })) },
+        },
+      });
+    }
+
+    const placeIds = new Map(
+      (await db.place.findMany({ where: { destinationId: dest.id } })).map((p) => [p.slug, p.id]),
+    );
+    const needed = new Set(todo.flatMap((it) => it.items.flatMap((i) => (i.place ? [i.place] : []))));
+    for (const p of places)
+      if (!placeIds.has(p.slug) && (needed.has(p.slug) || newDestination))
+        placeIds.set(p.slug, (await db.place.create({ data: { ...p, destinationId: dest.id } })).id);
+
+    const creatorIds = new Map((await db.creator.findMany()).map((c) => [c.handle, c.id]));
+    for (const c of creators)
+      if (!creatorIds.has(c.handle) && todo.some((it) => it.creator === c.handle))
+        creatorIds.set(c.handle, (await db.creator.create({ data: c })).id);
+
+    for (const it of todo) {
+      if (await db.itinerary.findUnique({ where: { slug: it.slug } })) continue;
+      await loadItinerary(it, dest.id, creatorIds, placeIds, vendorIds);
+      console.log(`Added itinerary ${it.slug}.`);
+      added++;
+    }
+    await logLoaded([`destination:${d.slug}`, ...todo.map((it) => `itinerary:${it.slug}`)]);
+  }
+  console.log(
+    added
+      ? `Added ${added} new itineraries from data/. Existing content was left as edited in the admin panel.`
+      : "Database already has content and no new itineraries in data/; nothing to load. Set FORCE_SEED=1 to reload data/.",
+  );
+}
+
 async function main() {
   const vendors = load(Vendors, path.join(dataDir, "vendors.json"));
   const coupons = load(Coupons, path.join(dataDir, "coupons.json"));
@@ -193,7 +307,7 @@ async function main() {
   // FORCE_SEED=1 loads the files anyway (e.g. to restore a backup laid out like data/).
   const force = process.env.FORCE_SEED === "1" || process.env.SEED_RESET === "1";
   if (!force && (await db.destination.count()) > 0) {
-    console.log("Database already has content; skipping seed so admin edits are kept. Set FORCE_SEED=1 to load data/.");
+    await addNew(vendors, destinations);
     return;
   }
 
@@ -258,49 +372,8 @@ async function main() {
       creatorIds.set(c.handle, row.id);
     }
 
-    for (const { items, creator, ...it } of itineraries) {
-      const data = { ...it, destinationId: dest.id, creatorId: creatorIds.get(creator)! };
-      const itinerary = await db.itinerary.upsert({ where: { slug: it.slug }, create: data, update: data });
-      // Replace items wholesale, but with ids built from itinerary + name so saved carts still match after a reseed.
-      await db.item.deleteMany({ where: { itineraryId: itinerary.id } });
-      const usedIds = new Set<string>();
-      for (const [position, item] of items.entries()) {
-        const vendorId = item.vendor ? vendorIds.get(item.vendor) : undefined;
-        const base = `${it.slug}--${toSlug(item.name)}`;
-        let id = base;
-        for (let n = 2; usedIds.has(id); n++) id = `${base}-${n}`;
-        usedIds.add(id);
-        await db.item.create({
-          data: {
-            id,
-            itineraryId: itinerary.id,
-            day: item.day,
-            position,
-            name: item.name,
-            note: item.note,
-            category: item.category,
-            priceCents: item.price === undefined ? null : Math.round(item.price * 100),
-            priceNote: item.priceNote,
-            priceSourceUrl: item.priceSource,
-            sentiment: item.sentiment,
-            currency: item.currency,
-            unit: item.unit,
-            quantity: item.quantity,
-            placeId: item.place ? placeIds.get(item.place) : undefined,
-            vendorId,
-            links:
-              vendorId && (item.ourUrl || item.creatorUrl)
-                ? {
-                    create: [
-                      ...(item.ourUrl ? [{ vendorId, url: item.ourUrl }] : []),
-                      ...(item.creatorUrl ? [{ vendorId, url: item.creatorUrl, creatorId: data.creatorId }] : []),
-                    ],
-                  }
-                : undefined,
-          },
-        });
-      }
-    }
+    for (const it of itineraries) await loadItinerary(it, dest.id, creatorIds, placeIds, vendorIds);
+    await logLoaded([`destination:${d.slug}`, ...itineraries.map((it) => `itinerary:${it.slug}`)]);
     console.log(`Loaded ${d.slug}: ${itineraries.length} itineraries, ${creators.length} creators.`);
   }
 

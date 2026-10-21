@@ -270,3 +270,10 @@ model PhotoCache {
   creditUrl   String?
   fetchedAt   DateTime    @default(now())
 }
+
+/// Content the deploy seed has already loaded once ("itinerary:<slug>", "destination:<slug>"), so new entries in data/
+/// get added on deploy while anything edited or deleted in the admin panel stays that way.
+model SeedLog {
+  key      String   @id
+  loadedAt DateTime @default(now())
+}

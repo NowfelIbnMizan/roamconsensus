@@ -511,6 +511,631 @@
       "blurb": "Thousand-year-old water temple where Balinese Hindus queue through 13 fountain spouts for the melukat purification ritual. Visitors can join with a guide and a sarong.",
       "lat": -8.4153,
       "lng": 115.3155
+    },
+    {
+      "slug": "bajra-sandhi-monument",
+      "name": "Bajra Sandhi Monument",
+      "category": "EXPERIENCE",
+      "area": "Denpasar",
+      "blurb": "A large monument in Renon's Niti Mandala park honouring the Balinese struggle for independence, with a history museum of dioramas and a 360-degree viewing deck at the top.",
+      "lat": -8.6721,
+      "lng": 115.2337
+    },
+    {
+      "slug": "pasar-badung",
+      "name": "Pasar Badung",
+      "category": "EXPERIENCE",
+      "area": "Denpasar",
+      "blurb": "Denpasar's biggest traditional market, beside the Badung River: several floors of produce, spices, temple offerings and textiles sold to locals.",
+      "lat": -8.6553,
+      "lng": 115.2125
+    },
+    {
+      "slug": "warung-blanjong",
+      "name": "Warung Blanjong",
+      "category": "FOOD",
+      "area": "Sanur",
+      "blurb": "Family-run Sanur warung known for nasi campur and Balinese home cooking.",
+      "website": "https://warungblanjong.shop",
+      "lat": -8.7065,
+      "lng": 115.2565
+    },
+    {
+      "slug": "sanur-beach",
+      "name": "Sanur Beach",
+      "category": "EXPERIENCE",
+      "area": "Sanur",
+      "blurb": "Calm, reef-protected beach on Bali's east coast with a long beachfront path. Known for sunrises and easy family swimming.",
+      "lat": -8.678,
+      "lng": 115.2633
+    },
+    {
+      "slug": "puri-santrian",
+      "name": "Puri Santrian",
+      "category": "STAY",
+      "area": "Sanur",
+      "blurb": "Long-running beachfront resort in Sanur with tropical gardens and several pools.",
+      "website": "https://santrian.com/puri-santrian/",
+      "lat": -8.7088,
+      "lng": 115.2585
+    },
+    {
+      "slug": "single-fin",
+      "name": "Single Fin",
+      "category": "FOOD",
+      "area": "Uluwatu",
+      "blurb": "Clifftop bar and restaurant above the Uluwatu surf break, famous for sunset sessions and its Sunday night party.",
+      "lat": -8.8149,
+      "lng": 115.0889
+    },
+    {
+      "slug": "padang-padang-beach",
+      "name": "Padang Padang Beach",
+      "category": "EXPERIENCE",
+      "area": "Uluwatu",
+      "blurb": "Small cove reached through a narrow gap in the limestone cliffs, famous from Eat Pray Love and for its world-class reef break.",
+      "lat": -8.811,
+      "lng": 115.103
+    },
+    {
+      "slug": "jimbaran-seafood-dinner",
+      "name": "Jimbaran Bay seafood dinner",
+      "category": "FOOD",
+      "area": "Jimbaran",
+      "blurb": "Rows of beach cafés on Jimbaran Bay grill the day's catch over coconut husks, served at tables on the sand at sunset.",
+      "lat": -8.7795,
+      "lng": 115.164
+    },
+    {
+      "slug": "intercontinental-bali-resort",
+      "name": "InterContinental Bali Resort",
+      "category": "STAY",
+      "area": "Jimbaran",
+      "blurb": "Large beachfront resort on Jimbaran Bay, close to the seafood cafés.",
+      "lat": -8.783,
+      "lng": 115.164
+    },
+    {
+      "slug": "waterblow",
+      "name": "Waterblow",
+      "category": "EXPERIENCE",
+      "area": "Nusa Dua",
+      "blurb": "Limestone outcrop where ocean swells smash into the rocks and shoot spray high into the air. Most dramatic at high tide.",
+      "lat": -8.8007,
+      "lng": 115.2363
+    },
+    {
+      "slug": "ku-de-ta",
+      "name": "KU DE TA",
+      "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Seminyak's original beachfront club: daybeds, cocktails and sunset DJs on the sand.",
+      "website": "https://kudeta.com/beachclub",
+      "lat": -8.6865,
+      "lng": 115.154
+    },
+    {
+      "slug": "motel-mexicola",
+      "name": "Motel Mexicola",
+      "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Loud, colourful Mexican cantina in Seminyak, as much party as restaurant.",
+      "website": "https://motelmexicola.info/",
+      "lat": -8.6835,
+      "lng": 115.1555
+    },
+    {
+      "slug": "pura-petitenget",
+      "name": "Pura Petitenget",
+      "category": "EXPERIENCE",
+      "area": "Seminyak",
+      "blurb": "16th-century sea temple linked to the priest Dang Hyang Nirartha, one of the chain of temples guarding Bali's southwest coast.",
+      "lat": -8.6797,
+      "lng": 115.153
+    },
+    {
+      "slug": "hotel-tugu-bali",
+      "name": "Hotel Tugu Bali",
+      "category": "STAY",
+      "area": "Canggu",
+      "blurb": "Boutique hotel on Batu Bolong beach filled with antique Indonesian art, built like a museum you can sleep in.",
+      "lat": -8.6593,
+      "lng": 115.1302
+    },
+    {
+      "slug": "batu-bolong-echo-beach",
+      "name": "Batu Bolong & Echo Beach",
+      "category": "EXPERIENCE",
+      "area": "Canggu",
+      "blurb": "Neighbouring black-sand surf beaches at the heart of Canggu: Batu Bolong for beginner waves, Echo Beach for sunset bars and bigger breaks.",
+      "lat": -8.6595,
+      "lng": 115.13
+    },
+    {
+      "slug": "crate-cafe",
+      "name": "Crate Café",
+      "category": "FOOD",
+      "area": "Canggu",
+      "blurb": "Busy Canggu breakfast café serving big brunch plates and smoothie bowls out of shipping-crate style digs.",
+      "lat": -8.648,
+      "lng": 115.133
+    },
+    {
+      "slug": "jatiluwih-rice-terraces",
+      "name": "Jatiluwih Rice Terraces",
+      "category": "EXPERIENCE",
+      "area": "Tabanan",
+      "blurb": "Sweeping terraces on the slopes of Mount Batukaru, part of the UNESCO-listed Subak landscape, with walking trails through the fields.",
+      "lat": -8.37,
+      "lng": 115.131
+    },
+    {
+      "slug": "taman-ayun-temple",
+      "name": "Taman Ayun Temple",
+      "category": "EXPERIENCE",
+      "area": "Mengwi",
+      "blurb": "Moated royal temple of the Mengwi kingdom, built in 1634 and part of the UNESCO Subak listing, known for its tiered meru shrines.",
+      "lat": -8.5418,
+      "lng": 115.1726
+    },
+    {
+      "slug": "sang-giri-mountain-glamping-camp",
+      "name": "Sang Giri Mountain Glamping Camp",
+      "category": "STAY",
+      "area": "Jatiluwih",
+      "blurb": "Safari-style tents in the forest above the Jatiluwih rice terraces.",
+      "website": "http://www.sanggiri.com",
+      "lat": -8.375,
+      "lng": 115.138
+    },
+    {
+      "slug": "ulun-danu-beratan-temple",
+      "name": "Ulun Danu Beratan Temple",
+      "category": "EXPERIENCE",
+      "area": "Bedugul",
+      "blurb": "17th-century water temple to the lake goddess Dewi Danu whose shrines seem to float on Lake Beratan. It is on the IDR 50,000 note.",
+      "lat": -8.2752,
+      "lng": 115.1668
+    },
+    {
+      "slug": "handara-gate",
+      "name": "Handara Gate",
+      "category": "EXPERIENCE",
+      "area": "Bedugul",
+      "blurb": "Traditional Balinese split gate at the entrance to Handara golf resort, framed by misty mountains. One of Bali's most photographed spots.",
+      "lat": -8.247,
+      "lng": 115.1563
+    },
+    {
+      "slug": "banyumala-twin-waterfalls",
+      "name": "Banyumala Twin Waterfalls",
+      "category": "EXPERIENCE",
+      "area": "Wanagiri",
+      "blurb": "Twin cascades in jungle above Lake Buyan, reached by a short steep trail, with a pool you can swim in.",
+      "lat": -8.2554,
+      "lng": 115.0983
+    },
+    {
+      "slug": "sacred-monkey-forest",
+      "name": "Sacred Monkey Forest Sanctuary",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Forest sanctuary in central Ubud with more than 1,000 long-tailed macaques, three 14th-century temples and moss-covered carvings.",
+      "tip": "Keep sunglasses and snacks out of sight: the monkeys grab them.",
+      "website": "https://monkeyforestubud.com/",
+      "lat": -8.5188,
+      "lng": 115.2585
+    },
+    {
+      "slug": "ubud-palace",
+      "name": "Ubud Palace",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Puri Saren Agung, home of Ubud's royal family, with ornate gates and courtyards. Free to walk in by day.",
+      "lat": -8.5068,
+      "lng": 115.2625
+    },
+    {
+      "slug": "campuhan-ridge-walk",
+      "name": "Campuhan Ridge Walk",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Paved 2 km ridge-top trail between two river valleys, lined with tall grass. Best at sunrise before the heat.",
+      "lat": -8.503,
+      "lng": 115.254
+    },
+    {
+      "slug": "bisma-eight",
+      "name": "Bisma Eight",
+      "category": "STAY",
+      "area": "Ubud",
+      "blurb": "Design hotel on Jalan Bisma with a jungle-view infinity pool, a short walk from central Ubud.",
+      "lat": -8.509,
+      "lng": 115.2588
+    },
+    {
+      "slug": "the-yoga-barn",
+      "name": "The Yoga Barn",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Ubud's best-known yoga centre, running many classes a day in open-air studios among the rice fields.",
+      "lat": -8.5167,
+      "lng": 115.2649
+    },
+    {
+      "slug": "kintamani-checkpoint",
+      "name": "Kintamani area entrance fee",
+      "category": "TRANSIT",
+      "area": "Kintamani",
+      "blurb": "Fee collected at checkpoints on the roads into the Batur caldera.",
+      "lat": -8.286,
+      "lng": 115.354
+    },
+    {
+      "slug": "toya-devasya-hot-springs",
+      "name": "Toya Devasya Hot Springs",
+      "category": "EXPERIENCE",
+      "area": "Kintamani",
+      "blurb": "Volcanic hot-spring pools on the shore of Lake Batur beneath Mount Batur. A classic soak after the sunrise hike.",
+      "website": "https://toyadevasya.com/",
+      "lat": -8.263,
+      "lng": 115.4005
+    },
+    {
+      "slug": "penglipuran-village",
+      "name": "Penglipuran Village",
+      "category": "EXPERIENCE",
+      "area": "Bangli",
+      "blurb": "Traditional village of matching bamboo-roofed compounds along a car-free street, often called one of the cleanest villages in the world.",
+      "lat": -8.422,
+      "lng": 115.359
+    },
+    {
+      "slug": "tukad-cepung-waterfall",
+      "name": "Tukad Cepung Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Bangli",
+      "blurb": "Waterfall hidden inside a narrow canyon cave, famous for morning light beams through the rock.",
+      "lat": -8.438,
+      "lng": 115.388
+    },
+    {
+      "slug": "sidemen-bukit-tegeh",
+      "name": "Sidemen Valley & Bukit Tegeh",
+      "category": "EXPERIENCE",
+      "area": "Sidemen",
+      "blurb": "Quiet valley of rice terraces under Mount Agung. Bukit Tegeh hill gives the best view over it.",
+      "lat": -8.472,
+      "lng": 115.441
+    },
+    {
+      "slug": "virgin-beach",
+      "name": "Virgin Beach",
+      "category": "EXPERIENCE",
+      "area": "East Bali",
+      "blurb": "White-sand cove with turquoise water near Candidasa, lined with simple warungs. One of east Bali's few white-sand beaches.",
+      "lat": -8.499,
+      "lng": 115.611
+    },
+    {
+      "slug": "jemeluk-bay",
+      "name": "Jemeluk Bay",
+      "category": "EXPERIENCE",
+      "area": "Amed",
+      "blurb": "Sheltered Amed bay with coral right off the beach, plus underwater statues and an underwater postbox.",
+      "lat": -8.3355,
+      "lng": 115.6595
+    },
+    {
+      "slug": "japanese-shipwreck-amed",
+      "name": "Japanese Shipwreck",
+      "category": "EXPERIENCE",
+      "area": "Amed",
+      "blurb": "Small WWII-era patrol boat wreck in 2-12 m of water off Banyuning, coral-covered and easy to snorkel from shore.",
+      "lat": -8.354,
+      "lng": 115.686
+    },
+    {
+      "slug": "warung-enak",
+      "name": "Warung Enak",
+      "category": "FOOD",
+      "area": "Amed",
+      "blurb": "Simple Amed warung for nasi goreng, grilled fish and other Indonesian staples.",
+      "lat": -8.338,
+      "lng": 115.655
+    },
+    {
+      "slug": "usat-liberty-wreck",
+      "name": "USAT Liberty wreck",
+      "category": "EXPERIENCE",
+      "area": "Tulamben",
+      "blurb": "US Army cargo ship torpedoed in 1942 that now lies just off the beach at 5-30 m, one of the world's most accessible wreck dives.",
+      "lat": -8.2747,
+      "lng": 115.5929
+    },
+    {
+      "slug": "lovina-dolphin-tour",
+      "name": "Lovina dolphin tour",
+      "category": "EXPERIENCE",
+      "area": "Lovina",
+      "blurb": "Sunrise trips in traditional outrigger boats to see wild spinner dolphins off Lovina's black-sand coast.",
+      "lat": -8.159,
+      "lng": 115.026
+    },
+    {
+      "slug": "banjar-hot-springs",
+      "name": "Banjar Hot Springs",
+      "category": "EXPERIENCE",
+      "area": "Lovina",
+      "blurb": "Sulphur springs pouring from carved dragon spouts into three tiered pools in a tropical garden.",
+      "lat": -8.214,
+      "lng": 114.969
+    },
+    {
+      "slug": "brahmavihara-arama",
+      "name": "Brahmavihara-Arama",
+      "category": "EXPERIENCE",
+      "area": "Lovina",
+      "blurb": "Bali's largest Buddhist monastery, on a hillside above Lovina, with a mini Borobudur stupa.",
+      "lat": -8.212,
+      "lng": 114.962
+    },
+    {
+      "slug": "gitgit-waterfall",
+      "name": "Gitgit Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Munduk",
+      "blurb": "35-40 m waterfall in jungle just off the Singaraja to Bedugul road.",
+      "lat": -8.198,
+      "lng": 115.136
+    },
+    {
+      "slug": "munduk-moding-plantation",
+      "name": "Munduk Moding Plantation",
+      "category": "STAY",
+      "area": "Munduk",
+      "blurb": "Eco resort on a coffee plantation in the Munduk highlands, known for its infinity pool above the clouds.",
+      "website": "https://mundukmodingplantation.com",
+      "lat": -8.2606,
+      "lng": 115.0765
+    },
+    {
+      "slug": "menjangan-island",
+      "name": "Menjangan Island",
+      "category": "EXPERIENCE",
+      "area": "West Bali",
+      "blurb": "Uninhabited island in West Bali National Park with steep coral walls and clear water, among Bali's best snorkelling.",
+      "lat": -8.095,
+      "lng": 114.515
+    },
+    {
+      "slug": "biorock-pemuteran",
+      "name": "Biorock Pemuteran",
+      "category": "EXPERIENCE",
+      "area": "Pemuteran",
+      "blurb": "One of the world's largest reef-restoration projects: coral grows on electrified steel frames right off Pemuteran beach.",
+      "lat": -8.142,
+      "lng": 114.661
+    },
+    {
+      "slug": "taman-sari-bali-resort",
+      "name": "Taman Sari Bali Resort & Spa",
+      "category": "STAY",
+      "area": "Pemuteran",
+      "blurb": "Beachfront bungalows in Pemuteran, close to the Biorock reef.",
+      "lat": -8.142,
+      "lng": 114.653
+    },
+    {
+      "slug": "drive-to-denpasar",
+      "name": "Drive back to Denpasar",
+      "category": "TRANSIT",
+      "area": "West Bali",
+      "blurb": "One-way private car from northwest Bali to the airport, about 4-5 hours.",
+      "lat": -8.144,
+      "lng": 114.656
+    },
+    {
+      "slug": "kampung-cafe",
+      "name": "Kampung Cafe",
+      "category": "FOOD",
+      "area": "Tegalalang",
+      "blurb": "Café overlooking the Tegalalang rice terraces.",
+      "lat": -8.433,
+      "lng": 115.279
+    },
+    {
+      "slug": "layana-warung",
+      "name": "Layana Warung",
+      "category": "FOOD",
+      "area": "Ubud",
+      "blurb": "Vegetarian-friendly warung near Goa Gajah.",
+      "lat": -8.5224,
+      "lng": 115.2843
+    },
+    {
+      "slug": "saraswati-temple",
+      "name": "Saraswati Temple",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Water temple to Saraswati, goddess of learning, fronted by a lotus pond. Evening dance shows are held here.",
+      "lat": -8.5065,
+      "lng": 115.2617
+    },
+    {
+      "slug": "prasaja-by-arang",
+      "name": "Prasaja by Arang",
+      "category": "FOOD",
+      "area": "Ubud",
+      "blurb": "Restaurant on Jalan Raya Ubud cooking over charcoal.",
+      "lat": -8.5069,
+      "lng": 115.2621
+    },
+    {
+      "slug": "ubud-traditional-spa",
+      "name": "Ubud Traditional Spa",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Well-reviewed day spa in Kedewatan, west of central Ubud, for traditional Balinese massage.",
+      "website": "https://ubudtraditionalspa.com/",
+      "lat": -8.495,
+      "lng": 115.244
+    },
+    {
+      "slug": "bali-swing",
+      "name": "Bali Swing",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "The original jungle swing park, with giant swings over the Ayung River valley.",
+      "lat": -8.4905,
+      "lng": 115.2212
+    },
+    {
+      "slug": "potato-head-beach-club",
+      "name": "Potato Head Beach Club",
+      "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Landmark Seminyak beach club with a lawn and infinity pool facing the sunset.",
+      "lat": -8.6794,
+      "lng": 115.15
+    },
+    {
+      "slug": "echo-beach-surf-lesson",
+      "name": "Surf lesson in Canggu",
+      "category": "EXPERIENCE",
+      "area": "Canggu",
+      "blurb": "Batu Bolong and Echo Beach have gentle sandy-bottom waves and dozens of surf schools on the beach.",
+      "lat": -8.6595,
+      "lng": 115.13
+    },
+    {
+      "slug": "mywarung",
+      "name": "MyWarung",
+      "category": "FOOD",
+      "area": "Canggu",
+      "blurb": "Casual Canggu warung serving Indonesian and western dishes.",
+      "website": "https://www.mywarung.com",
+      "lat": -8.652,
+      "lng": 115.135
+    },
+    {
+      "slug": "waterbom-bali",
+      "name": "Waterbom Bali",
+      "category": "EXPERIENCE",
+      "area": "Kuta",
+      "blurb": "Landscaped waterpark in Kuta with more than a dozen slides, regularly ranked among Asia's best.",
+      "lat": -8.728,
+      "lng": 115.169
+    },
+    {
+      "slug": "suluban-beach",
+      "name": "Suluban Beach",
+      "category": "EXPERIENCE",
+      "area": "Uluwatu",
+      "blurb": "Hidden beach reached through a gap in the cliffs below the Uluwatu surf break, with caves and sunset views.",
+      "lat": -8.815,
+      "lng": 115.088
+    },
+    {
+      "slug": "warung-bejana",
+      "name": "Warung Bejana",
+      "category": "FOOD",
+      "area": "Uluwatu",
+      "blurb": "Restaurant about 400 m from Uluwatu Temple, handy before or after the Kecak show.",
+      "lat": -8.8281,
+      "lng": 115.0881
+    },
+    {
+      "slug": "tribal-bali",
+      "name": "Tribal Bali",
+      "category": "STAY",
+      "area": "Canggu",
+      "blurb": "Co-working hostel with a big pool, popular with digital nomads.",
+      "website": "https://tribalbali.com/",
+      "lat": -8.6487,
+      "lng": 115.1248
+    },
+    {
+      "slug": "pura-besakih",
+      "name": "Pura Besakih",
+      "category": "EXPERIENCE",
+      "area": "East Bali",
+      "blurb": "Bali's Mother Temple: more than 80 temples on the slopes of Mount Agung, the holiest site in Balinese Hinduism.",
+      "tip": "Go with a guide or tour: touts at the gate are known for scams.",
+      "lat": -8.3741,
+      "lng": 115.451
+    },
+    {
+      "slug": "batur-natural-hot-spring",
+      "name": "Batur Natural Hot Spring",
+      "category": "EXPERIENCE",
+      "area": "Kintamani",
+      "blurb": "Hot-spring pools on the shore of Lake Batur with views of the volcano.",
+      "lat": -8.2669,
+      "lng": 115.4044
+    },
+    {
+      "slug": "la-plancha",
+      "name": "La Plancha",
+      "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Beach bar known for colourful umbrellas and beanbags on the sand at sunset.",
+      "lat": -8.693,
+      "lng": 115.16
+    },
+    {
+      "slug": "airport-taxi",
+      "name": "Airport taxi",
+      "category": "TRANSIT",
+      "area": "Denpasar",
+      "blurb": "Taxi between Ngurah Rai airport and your hotel.",
+      "lat": -8.7467,
+      "lng": 115.1668
+    },
+    {
+      "slug": "amar-boutique-hotel",
+      "name": "Amar Boutique Hotel",
+      "category": "STAY",
+      "area": "Canggu",
+      "blurb": "Small boutique hotel in Pererenan, near Echo Beach.",
+      "lat": -8.6513,
+      "lng": 115.1256
+    },
+    {
+      "slug": "kayon-jungle-resort",
+      "name": "The Kayon Jungle Resort",
+      "category": "STAY",
+      "area": "Ubud",
+      "blurb": "Adults-only jungle resort north of Ubud with tiered infinity pools over the river valley.",
+      "lat": -8.438,
+      "lng": 115.249
+    },
+    {
+      "slug": "goa-raja-waterfall",
+      "name": "Goa Raja Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Bangli",
+      "blurb": "The King Cave waterfall: water spills through a cave-like rock opening.",
+      "lat": -8.446,
+      "lng": 115.357
+    },
+    {
+      "slug": "ubud-to-nusa-penida-transfer",
+      "name": "Taxi and ferry to Nusa Penida",
+      "category": "TRANSIT",
+      "area": "Sanur",
+      "blurb": "Car to Sanur harbour, then the fast boat across to Nusa Penida.",
+      "lat": -8.6785,
+      "lng": 115.2635
+    },
+    {
+      "slug": "padang-padang-inn",
+      "name": "Padang Padang Inn",
+      "category": "STAY",
+      "area": "Uluwatu",
+      "blurb": "Simple bungalows a short walk from Padang Padang beach.",
+      "lat": -8.8114,
+      "lng": 115.105
     }
   ],
   "creators": [
@@ -525,6 +1150,27 @@
       "name": "Evie",
       "platform": "BLOG",
       "profileUrl": "https://vamosbitchachos.com"
+    },
+    {
+      "handle": "globalviewpoint",
+      "name": "Global Viewpoint",
+      "platform": "BLOG",
+      "profileUrl": "https://www.myglobalviewpoint.com",
+      "bio": "Jon Miksis's travel blog."
+    },
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget travel blog. Bali guide by Rose Wilson."
+    },
+    {
+      "handle": "saltinourhair",
+      "name": "Salt in our Hair",
+      "platform": "BLOG",
+      "profileUrl": "https://www.saltinourhair.com",
+      "bio": "Travel blog by Hannah & Nick."
     }
   ],
   "itineraries": [
@@ -1011,6 +1657,1063 @@
           "price": 3.13,
           "priceNote": "IDR 50k per adult",
           "priceSource": "https://www.indonesia.travel/us-en/travel-ideas/pilgrimage/pura-tirta-empul"
+        }
+      ]
+    },
+    {
+      "slug": "bali-3-week-road-trip-globalviewpoint",
+      "title": "3-week Bali road trip",
+      "summary": "A slow loop of the whole island by car: Denpasar and the Bukit beaches, Seminyak and Canggu, the rice terraces and lakes of the centre, Ubud, Mount Batur, Sidemen, Amed's reefs, Lovina's dolphins and the wild west.",
+      "tier": "MIDRANGE",
+      "days": 21,
+      "creator": "globalviewpoint",
+      "sourceUrl": "https://www.myglobalviewpoint.com/bali-road-trip-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Bajra Sandhi Monument",
+          "category": "EXPERIENCE",
+          "note": "Start in Denpasar with Bali's independence monument and museum.",
+          "place": "bajra-sandhi-monument",
+          "price": 1.88,
+          "priceNote": "IDR 30k per adult",
+          "priceSource": "https://themerusanur.com/blog/bajra-sandhi-monument/"
+        },
+        {
+          "day": 1,
+          "name": "Pasar Badung",
+          "category": "EXPERIENCE",
+          "note": "Denpasar's big local market.",
+          "place": "pasar-badung",
+          "price": 0,
+          "priceNote": "free entry",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 1,
+          "name": "Warung Blanjong",
+          "category": "FOOD",
+          "note": "Nasi campur in Sanur.",
+          "place": "warung-blanjong",
+          "price": 9.06,
+          "priceNote": "about IDR 145k per person with drinks",
+          "priceSource": "https://www.bali-travel-life.com/warung-blanjong-sanur/"
+        },
+        {
+          "day": 1,
+          "name": "Sanur Beach",
+          "category": "EXPERIENCE",
+          "note": "Walk the beachfront path.",
+          "place": "sanur-beach",
+          "price": 0,
+          "priceNote": "free public beach"
+        },
+        {
+          "day": 1,
+          "name": "Puri Santrian",
+          "category": "STAY",
+          "note": "Or The Bene Hotel.",
+          "place": "puri-santrian",
+          "price": 174,
+          "priceNote": "per night, lowest room (date-dependent)",
+          "priceSource": "https://www.expedia.com/Denpasar-Hotels-Puri-Santrian.h1030867.Hotel-Information",
+          "unit": "night"
+        },
+        {
+          "day": 2,
+          "name": "Uluwatu Temple",
+          "category": "EXPERIENCE",
+          "note": "Clifftop temple; stay for sunset.",
+          "place": "uluwatu-temple",
+          "price": 6.25,
+          "priceNote": "IDR 100k per adult, sarong included",
+          "priceSource": "https://www.indonesia.travel/id-id/travel-ideas/pilgrimage/pura-uluwatu/"
+        },
+        {
+          "day": 2,
+          "name": "Kecak Dance Performance",
+          "category": "EXPERIENCE",
+          "note": "Fire dance at sunset at Uluwatu Temple.",
+          "place": "kecak-dance-performance",
+          "price": 9.38,
+          "priceNote": "IDR 150k ticket; temple entry extra",
+          "priceSource": "https://kura2bus.com/blog/uluwatu-kecak-dance-ticket-price/"
+        },
+        {
+          "day": 2,
+          "name": "Single Fin",
+          "category": "FOOD",
+          "note": "Surf-view bar above Suluban.",
+          "place": "single-fin",
+          "price": 6.25,
+          "priceNote": "mains from about IDR 100k",
+          "priceSource": "https://www.chope.co/bali-restaurants/restaurant/single-fin-bali"
+        },
+        {
+          "day": 2,
+          "name": "Padang Padang Beach",
+          "category": "EXPERIENCE",
+          "place": "padang-padang-beach",
+          "price": 0.94,
+          "priceNote": "IDR 15k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 3,
+          "name": "Sundays Beach Club",
+          "category": "FOOD",
+          "note": "Creator: \"a bit pricey\".",
+          "place": "sundays-beach-club",
+          "price": 50,
+          "priceNote": "day pass incl. F&B credit & cable car",
+          "priceSource": "https://thehoneycombers.com/bali/sundays-beach-club-uluwatu/"
+        },
+        {
+          "day": 3,
+          "name": "Jimbaran Bay seafood dinner",
+          "category": "FOOD",
+          "note": "Grilled seafood on the sand; visit the fish market in the morning.",
+          "place": "jimbaran-seafood-dinner",
+          "price": 18.75,
+          "priceNote": "seafood set from IDR 300k per person",
+          "priceSource": "https://authentic-indonesia.com/blog/complete-guide-to-seafood-dining-at-jimbaran-beach/"
+        },
+        {
+          "day": 3,
+          "name": "InterContinental Bali Resort",
+          "category": "STAY",
+          "note": "Or Jimbaran Bay Beach Resort, The Open House, Kayumanis.",
+          "place": "intercontinental-bali-resort",
+          "price": 119,
+          "priceNote": "per night, Classic room (date-dependent)",
+          "priceSource": "https://www.kayak.com/South-Kuta-Hotels-Intercontinental-Hotels-Bali-Resort.86795.ksp",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 4,
+          "name": "Nusa Dua Beach",
+          "category": "EXPERIENCE",
+          "note": "Security checks at the resort gate.",
+          "place": "nusa-dua-beach-geger-beach-pandawa-beach",
+          "price": 1.56,
+          "priceNote": "Pandawa entry; Nusa Dua free, Geger ~IDR 5k",
+          "priceSource": "https://inivie.com/discover-bali/pantai-pandawa-bali"
+        },
+        {
+          "day": 4,
+          "name": "Waterblow",
+          "category": "EXPERIENCE",
+          "note": "Best at high tide.",
+          "place": "waterblow",
+          "price": 0,
+          "priceNote": "free inside the Nusa Dua complex"
+        },
+        {
+          "day": 4,
+          "name": "Bali Collection",
+          "category": "EXPERIENCE",
+          "place": "bali-collection",
+          "price": 0,
+          "priceNote": "free to enter",
+          "priceSource": "https://ca.hotels.com/go/indonesia/bali-collection"
+        },
+        {
+          "day": 5,
+          "name": "Hotel Tugu Bali",
+          "category": "STAY",
+          "note": "Or COMO Uma Canggu, The Slow, Aston Canggu (cheaper).",
+          "place": "hotel-tugu-bali",
+          "price": 226,
+          "priceNote": "per night, cheapest double (date-dependent)",
+          "priceSource": "https://www.mrandmrssmith.com/luxury-hotels/hotel-tugu-bali",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 5,
+          "name": "KU DE TA",
+          "category": "FOOD",
+          "note": "Seminyak sunset on the beach.",
+          "place": "ku-de-ta",
+          "price": 8.13,
+          "priceNote": "no entry fee; cocktails from IDR 130k",
+          "priceSource": "https://www.nomadotravel.app/es/attractions/ku-de-ta-beach-club"
+        },
+        {
+          "day": 5,
+          "name": "Pura Petitenget",
+          "category": "EXPERIENCE",
+          "place": "pura-petitenget",
+          "price": 0,
+          "priceNote": "no entry fee; small parking fee",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 5,
+          "name": "Motel Mexicola",
+          "category": "FOOD",
+          "note": "On Seminyak's Eat Street with Sisterfields and La Lucciola.",
+          "place": "motel-mexicola"
+        },
+        {
+          "day": 6,
+          "name": "Batu Bolong & Echo Beach",
+          "category": "EXPERIENCE",
+          "note": "Canggu's surf beaches.",
+          "place": "batu-bolong-echo-beach",
+          "price": 0,
+          "priceNote": "free public beaches"
+        },
+        {
+          "day": 6,
+          "name": "Crate Café",
+          "category": "FOOD",
+          "place": "crate-cafe",
+          "price": 4.06,
+          "priceNote": "breakfast plate IDR 65k",
+          "priceSource": "https://eatbook.sg/crate-cafe-bali/"
+        },
+        {
+          "day": 6,
+          "name": "The Shady Shack",
+          "category": "FOOD",
+          "place": "the-shady-shack",
+          "price": 11,
+          "priceNote": "main course, approx.",
+          "priceSource": "https://world-travellers.com/Asia/Indonesia/bali/canggu-restaurants-good-food/"
+        },
+        {
+          "day": 6,
+          "name": "Finns Beach Club",
+          "category": "EXPERIENCE",
+          "place": "canggu-beach-clubs",
+          "price": 0,
+          "priceNote": "free entry; daybeds have min spend",
+          "priceSource": "https://baliuntold.com/destinations/canggu/beach-clubs/"
+        },
+        {
+          "day": 7,
+          "name": "Tanah Lot",
+          "category": "EXPERIENCE",
+          "note": "Day trip from Canggu. Take the toll road; it needs an e-money card.",
+          "place": "pura-tanah-lot",
+          "price": 4.69,
+          "priceNote": "IDR 75k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/tanah-lot-temple/"
+        },
+        {
+          "day": 8,
+          "name": "Jatiluwih Rice Terraces",
+          "category": "EXPERIENCE",
+          "place": "jatiluwih-rice-terraces",
+          "price": 6.25,
+          "priceNote": "IDR 100k per person",
+          "priceSource": "https://www.baliholidaysecrets.com/jatiluwih-rice-terraces/"
+        },
+        {
+          "day": 8,
+          "name": "Taman Ayun Temple",
+          "category": "EXPERIENCE",
+          "place": "taman-ayun-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per person",
+          "priceSource": "https://www.baliholidaysecrets.com/taman-ayun-temple/"
+        },
+        {
+          "day": 8,
+          "name": "Sang Giri Mountain Glamping Camp",
+          "category": "STAY",
+          "note": "Creator lists it with Kintamani, but the camp is at Jatiluwih, so it fits here.",
+          "place": "sang-giri-mountain-glamping-camp",
+          "price": 89,
+          "priceNote": "per night, entry tent (date-dependent)",
+          "priceSource": "https://indonesia.tripcanvas.co/bali/rainforest-hotel-bali-2/amp/",
+          "unit": "night"
+        },
+        {
+          "day": 9,
+          "name": "Ulun Danu Beratan Temple",
+          "category": "EXPERIENCE",
+          "place": "ulun-danu-beratan-temple",
+          "price": 6.25,
+          "priceNote": "IDR 100k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/ulun-danu-beratan-temple/"
+        },
+        {
+          "day": 9,
+          "name": "Handara Gate",
+          "category": "EXPERIENCE",
+          "place": "handara-gate",
+          "price": 3.13,
+          "priceNote": "about IDR 50k per person for photos",
+          "priceSource": "https://wanderon.in/international-trips/bali/handara-gate-in-bali"
+        },
+        {
+          "day": 9,
+          "name": "Banyumala Twin Waterfalls",
+          "category": "EXPERIENCE",
+          "place": "banyumala-twin-waterfalls",
+          "price": 3.13,
+          "priceNote": "IDR 50k per person",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 10,
+          "name": "Bisma Eight",
+          "category": "STAY",
+          "note": "Or The Udaya, Alaya Resort. Creator: stay a little outside the centre for quiet and easy parking.",
+          "place": "bisma-eight",
+          "price": 198,
+          "priceNote": "per night, cheapest double (date-dependent)",
+          "priceSource": "https://www.mrandmrssmith.com/luxury-hotels/bisma-eight",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 10,
+          "name": "Sacred Monkey Forest Sanctuary",
+          "category": "EXPERIENCE",
+          "place": "sacred-monkey-forest",
+          "price": 8.13,
+          "priceNote": "IDR 130k per adult",
+          "priceSource": "https://monkeyforestubud.com/visit/"
+        },
+        {
+          "day": 10,
+          "name": "Ubud Palace",
+          "category": "EXPERIENCE",
+          "place": "ubud-palace",
+          "price": 0,
+          "priceNote": "free entry",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 10,
+          "name": "Ubud Art Market",
+          "category": "EXPERIENCE",
+          "place": "ubud-art-market",
+          "price": 0,
+          "priceNote": "free to enter",
+          "priceSource": "https://pickyourtrail.com/tourism/bali/ubud-art-market-guide"
+        },
+        {
+          "day": 10,
+          "name": "Campuhan Ridge Walk",
+          "category": "EXPERIENCE",
+          "place": "campuhan-ridge-walk",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 11,
+          "name": "Tegalalang Rice Terraces",
+          "category": "EXPERIENCE",
+          "note": "Skip the street parking touts; drive to the official café lots like Alas Harum.",
+          "place": "tegalalang-rice-terraces",
+          "price": 1.56,
+          "priceNote": "IDR 25k entry; farmer donations extra",
+          "priceSource": "https://www.thecommonwanderer.com/blog/tegalalang-rice-terraces-bali"
+        },
+        {
+          "day": 11,
+          "name": "Goa Gajah",
+          "category": "EXPERIENCE",
+          "place": "goa-gajah-and-pura-gunung-lebah",
+          "price": 3.13,
+          "priceNote": "IDR 50k Goa Gajah entry",
+          "priceSource": "https://pickyourtrail.com/attractions/bali/goa-gajah"
+        },
+        {
+          "day": 11,
+          "name": "Tirta Empul Temple",
+          "category": "EXPERIENCE",
+          "place": "tirta-empul-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult",
+          "priceSource": "https://www.indonesia.travel/us-en/travel-ideas/pilgrimage/pura-tirta-empul"
+        },
+        {
+          "day": 11,
+          "name": "The Yoga Barn",
+          "category": "EXPERIENCE",
+          "place": "the-yoga-barn",
+          "price": 9.38,
+          "priceNote": "drop-in class IDR 150k",
+          "priceSource": "https://www.neverendingvoyage.com/yoga-ubud-bali/"
+        },
+        {
+          "day": 12,
+          "name": "Kintamani entrance fee",
+          "category": "TRANSIT",
+          "note": "Have cash ready at the checkpoint.",
+          "place": "kintamani-checkpoint",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult (creator: approx. 50k IDR)"
+        },
+        {
+          "day": 12,
+          "name": "Mount Batur Sunrise Hike",
+          "category": "EXPERIENCE",
+          "note": "2-3 hours up. Creator: book a guided tour.",
+          "place": "mount-batur-sunrise-hike",
+          "price": 37,
+          "priceNote": "small-group tour with breakfast",
+          "priceSource": "https://www.pelago.com/en/activity/ptd2o-mount-batur-sunrise-trekking/"
+        },
+        {
+          "day": 12,
+          "name": "Toya Devasya Hot Springs",
+          "category": "EXPERIENCE",
+          "note": "Soak by Lake Batur after the hike.",
+          "place": "toya-devasya-hot-springs",
+          "price": 12.5,
+          "priceNote": "about IDR 200k day pass",
+          "priceSource": "https://www.findinghotsprings.com/mag/toya-devasya-bali"
+        },
+        {
+          "day": 13,
+          "name": "Penglipuran Village",
+          "category": "EXPERIENCE",
+          "place": "penglipuran-village",
+          "price": 3.13,
+          "priceNote": "IDR 50k per foreign adult",
+          "priceSource": "https://www.baliholidaysecrets.com/penglipuran-village-bali/"
+        },
+        {
+          "day": 13,
+          "name": "Tukad Cepung Waterfall",
+          "category": "EXPERIENCE",
+          "note": "Go in the morning for the light beams.",
+          "place": "tukad-cepung-waterfall",
+          "price": 1.88,
+          "priceNote": "IDR 30k per person, cash",
+          "priceSource": "https://www.baliholidaysecrets.com/tukad-cepung-waterfall/"
+        },
+        {
+          "day": 14,
+          "name": "Sidemen Valley & Bukit Tegeh",
+          "category": "EXPERIENCE",
+          "note": "Creator: pull over at Bukit Tegeh for the best photos of the trip.",
+          "place": "sidemen-bukit-tegeh",
+          "price": 0,
+          "priceNote": "rice terraces free",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 15,
+          "name": "Lempuyang Temple (Gates of Heaven)",
+          "category": "EXPERIENCE",
+          "note": "A bit of a climb.",
+          "place": "gates-of-heaven",
+          "price": 9.38,
+          "priceNote": "IDR 150k entry + ~50k shuttle",
+          "priceSource": "https://www.baliholidaysecrets.com/lempuyang-temple/"
+        },
+        {
+          "day": 15,
+          "name": "Tirta Gangga Water Palace",
+          "category": "EXPERIENCE",
+          "place": "tirta-gangga-water-palace",
+          "price": 5.63,
+          "priceNote": "IDR 90k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/tirta-gangga-water-palace/"
+        },
+        {
+          "day": 15,
+          "name": "Virgin Beach",
+          "category": "EXPERIENCE",
+          "place": "virgin-beach",
+          "price": 0.94,
+          "priceNote": "IDR 15k per visitor",
+          "priceSource": "https://budayabali.com/blue-like-the-sky-the-enchantment-of-virgin-beach-that-soothes-the-eyes"
+        },
+        {
+          "day": 16,
+          "name": "Jemeluk Bay",
+          "category": "EXPERIENCE",
+          "note": "Snorkel straight off the beach.",
+          "place": "jemeluk-bay",
+          "price": 3.13,
+          "priceNote": "mask and snorkel hire from IDR 50k",
+          "priceSource": "https://www.baliholidaysecrets.com/jemeluk-bay-amed/"
+        },
+        {
+          "day": 16,
+          "name": "Japanese Shipwreck",
+          "category": "EXPERIENCE",
+          "note": "Look for the signs to the wreck.",
+          "place": "japanese-shipwreck-amed",
+          "price": 3.75,
+          "priceNote": "IDR 10k parking + gear hire",
+          "priceSource": "https://www.baliholidaysecrets.com/best-snorkelling-spots-in-amed/"
+        },
+        {
+          "day": 16,
+          "name": "Warung Enak",
+          "category": "FOOD",
+          "note": "Nasi goreng and grilled fish. Or Warung Osin.",
+          "place": "warung-enak"
+        },
+        {
+          "day": 17,
+          "name": "USAT Liberty wreck dive",
+          "category": "EXPERIENCE",
+          "note": "With Amed Dive Center or Adventure Divers Bali.",
+          "place": "usat-liberty-wreck",
+          "price": 31.25,
+          "priceNote": "1 fun dive incl. gear, IDR 500k",
+          "priceSource": "https://getmyboat.com/trips/BN9pkGbK"
+        },
+        {
+          "day": 18,
+          "name": "Lovina dolphin tour",
+          "category": "EXPERIENCE",
+          "note": "Leaves at dawn.",
+          "place": "lovina-dolphin-tour",
+          "price": 18.75,
+          "priceNote": "IDR 300k per person, private boat",
+          "priceSource": "https://thebackpackingfamily.com/best-way-to-see-dolphins-in-bali-lovina-bay/"
+        },
+        {
+          "day": 18,
+          "name": "Banjar Hot Springs",
+          "category": "EXPERIENCE",
+          "place": "banjar-hot-springs",
+          "price": 2.81,
+          "priceNote": "IDR 45k per foreigner",
+          "priceSource": "https://www.baliholidaysecrets.com/banjar-hot-springs/"
+        },
+        {
+          "day": 18,
+          "name": "Brahmavihara-Arama",
+          "category": "EXPERIENCE",
+          "place": "brahmavihara-arama",
+          "price": 1.56,
+          "priceNote": "IDR 25k donation",
+          "priceSource": "https://www.baliholidaysecrets.com/brahmavihara-arama/"
+        },
+        {
+          "day": 19,
+          "name": "Gitgit Waterfall",
+          "category": "EXPERIENCE",
+          "note": "Creator: check your brakes before the descent to any waterfall trailhead.",
+          "place": "gitgit-waterfall",
+          "price": 1.25,
+          "priceNote": "IDR 20k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 19,
+          "name": "Munduk Moding Plantation",
+          "category": "STAY",
+          "place": "munduk-moding-plantation",
+          "price": 165,
+          "priceNote": "per night, entry villa (date-dependent)",
+          "priceSource": "https://halalbooking.com/en-us/munduk-moding-plantation-nature-resort/p/45504",
+          "unit": "night"
+        },
+        {
+          "day": 20,
+          "name": "Menjangan Island snorkel",
+          "category": "EXPERIENCE",
+          "note": "In West Bali National Park.",
+          "place": "menjangan-island",
+          "price": 31.25,
+          "priceNote": "about IDR 500k incl. park permits",
+          "priceSource": "https://travelersanddreamers.com/menjangan-island-snorkeling/"
+        },
+        {
+          "day": 20,
+          "name": "Biorock Pemuteran",
+          "category": "EXPERIENCE",
+          "place": "biorock-pemuteran",
+          "price": 0,
+          "priceNote": "free with your own gear",
+          "priceSource": "https://travelersanddreamers.com/pemuteran-bali/"
+        },
+        {
+          "day": 20,
+          "name": "Taman Sari Bali Resort & Spa",
+          "category": "STAY",
+          "note": "Or Matahari Beach Resort, The Menjangan.",
+          "place": "taman-sari-bali-resort",
+          "price": 58,
+          "priceNote": "per night, cheapest room (date-dependent)",
+          "priceSource": "https://ie.hotels.com/ho370954/taman-sari-bali-resort-spa-pemuteran-indonesia",
+          "unit": "night"
+        },
+        {
+          "day": 21,
+          "name": "Drive back to Denpasar",
+          "category": "TRANSIT",
+          "note": "Coast road 4 h, lakes road 5 h, or direct via Tabanan 3.5 h.",
+          "place": "drive-to-denpasar",
+          "price": 65.2,
+          "priceNote": "private car to the airport",
+          "priceSource": "https://www.baliholidaysecrets.com/how-to-get-to-bali-airport/"
+        }
+      ]
+    },
+    {
+      "slug": "bali-on-a-budget-thebrokebackpacker",
+      "title": "Bali on a backpacker budget",
+      "summary": "Two packed days based out of Ubud and Canggu on about $30 a day: terraces, temples and waterfalls, then surf, beach clubs and the Uluwatu fire dance, with optional extras for a third day.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/bali-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Tegallalang Rice Terraces",
+          "category": "EXPERIENCE",
+          "place": "tegalalang-rice-terraces",
+          "price": 1.56,
+          "priceNote": "IDR 25k entry (creator: Rp10,000)",
+          "priceSource": "https://www.thecommonwanderer.com/blog/tegalalang-rice-terraces-bali"
+        },
+        {
+          "day": 1,
+          "name": "Kampung Cafe",
+          "category": "FOOD",
+          "note": "Lunch with a terrace view.",
+          "place": "kampung-cafe"
+        },
+        {
+          "day": 1,
+          "name": "Goa Gajah",
+          "category": "EXPERIENCE",
+          "place": "goa-gajah-and-pura-gunung-lebah",
+          "price": 3.13,
+          "priceNote": "IDR 50k entry (creator: Rp15,000)",
+          "priceSource": "https://pickyourtrail.com/attractions/bali/goa-gajah"
+        },
+        {
+          "day": 1,
+          "name": "Layana Warung",
+          "category": "FOOD",
+          "note": "Vegetarian-friendly.",
+          "place": "layana-warung"
+        },
+        {
+          "day": 1,
+          "name": "Tegenungan Waterfall",
+          "category": "EXPERIENCE",
+          "place": "tegenungan-waterfall",
+          "price": 1.88,
+          "priceNote": "IDR 30k per adult (creator: Rp15,000)",
+          "priceSource": "https://www.destination.com/guides/tegenungan-waterfall-bali"
+        },
+        {
+          "day": 1,
+          "name": "Sacred Monkey Forest Sanctuary",
+          "category": "EXPERIENCE",
+          "place": "sacred-monkey-forest",
+          "price": 8.13,
+          "priceNote": "IDR 130k per adult (creator: about $3.50)",
+          "priceSource": "https://monkeyforestubud.com/visit/"
+        },
+        {
+          "day": 1,
+          "name": "Saraswati Temple",
+          "category": "EXPERIENCE",
+          "note": "On Jalan Raya Ubud with Ubud Palace and the Blanco museum.",
+          "place": "saraswati-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 1,
+          "name": "Ubud Palace",
+          "category": "EXPERIENCE",
+          "note": "Nightly dance shows.",
+          "place": "ubud-palace",
+          "price": 0,
+          "priceNote": "free entry",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 1,
+          "name": "Prasaja by Arang",
+          "category": "FOOD",
+          "note": "Dinner, then Tukies Coconut Shop for dessert.",
+          "place": "prasaja-by-arang"
+        },
+        {
+          "day": 1,
+          "name": "Ubud Traditional Spa",
+          "category": "EXPERIENCE",
+          "place": "ubud-traditional-spa",
+          "price": 15,
+          "priceNote": "60 min from IDR 240k (creator: about $13)",
+          "priceSource": "https://ubudtraditionalspa.com/massage-treatments/"
+        },
+        {
+          "day": 2,
+          "name": "Campuhan Ridge Walk",
+          "category": "EXPERIENCE",
+          "note": "About 2 hours. Start 6:00-7:30 am to beat the heat.",
+          "place": "campuhan-ridge-walk",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Bali Swing",
+          "category": "EXPERIENCE",
+          "note": "Lunch at The Plantation Restaurant nearby.",
+          "place": "bali-swing",
+          "price": 35,
+          "priceNote": "creator: about $35 for unlimited swinging"
+        },
+        {
+          "day": 2,
+          "name": "Ubud Art Market",
+          "category": "EXPERIENCE",
+          "note": "Haggle: it's customary. Bintang at OOPS next door.",
+          "place": "ubud-art-market",
+          "price": 0,
+          "priceNote": "free to enter",
+          "priceSource": "https://pickyourtrail.com/tourism/bali/ubud-art-market-guide"
+        },
+        {
+          "day": 2,
+          "name": "Potato Head Beach Club",
+          "category": "FOOD",
+          "note": "About an hour's drive from Ubud to Seminyak.",
+          "place": "potato-head-beach-club",
+          "price": 15.63,
+          "priceNote": "IDR 250k entry 4:30-7pm, credited to F&B; free earlier",
+          "priceSource": "https://www.trvlogue.com/en/potato-head-beach-club-bali"
+        },
+        {
+          "day": 2,
+          "name": "Surf lesson in Canggu",
+          "category": "EXPERIENCE",
+          "note": "Experienced surfers can rent a board at SandBar for about $4 (2 hours).",
+          "place": "echo-beach-surf-lesson",
+          "price": 45,
+          "priceNote": "creator: lessons from around $45"
+        },
+        {
+          "day": 2,
+          "name": "MyWarung",
+          "category": "FOOD",
+          "place": "mywarung"
+        },
+        {
+          "day": 2,
+          "name": "Waterbom Bali",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Cashless wristband inside. Eat at The Shack or Thaitalian.",
+          "place": "waterbom-bali",
+          "price": 37.19,
+          "priceNote": "IDR 595k day pass (creator: from about $25)",
+          "priceSource": "https://www.baliholidaysecrets.com/waterbom-bali/"
+        },
+        {
+          "day": 2,
+          "name": "Suluban Beach",
+          "category": "EXPERIENCE",
+          "note": "Experienced surfers only. Cold Bintang from the stalls at the bottom.",
+          "place": "suluban-beach",
+          "price": 0.94,
+          "priceNote": "creator: Rp10,000-15,000 parking"
+        },
+        {
+          "day": 2,
+          "name": "Uluwatu Temple",
+          "category": "EXPERIENCE",
+          "note": "Monkeys steal things; you can usually trade them back for fruit.",
+          "place": "uluwatu-temple",
+          "price": 6.25,
+          "priceNote": "IDR 100k per adult (creator: about $2)",
+          "priceSource": "https://www.indonesia.travel/id-id/travel-ideas/pilgrimage/pura-uluwatu/"
+        },
+        {
+          "day": 2,
+          "name": "Kecak Dance Performance",
+          "category": "EXPERIENCE",
+          "note": "6 pm fire dance.",
+          "place": "kecak-dance-performance",
+          "price": 9.38,
+          "priceNote": "IDR 150k ticket (creator: $5)",
+          "priceSource": "https://kura2bus.com/blog/uluwatu-kecak-dance-ticket-price/"
+        },
+        {
+          "day": 2,
+          "name": "Warung Bejana",
+          "category": "FOOD",
+          "note": "About 400 m from the temple.",
+          "place": "warung-bejana"
+        },
+        {
+          "day": 2,
+          "name": "Tribal Bali",
+          "category": "STAY",
+          "note": "Co-working hostel with a pool.",
+          "place": "tribal-bali",
+          "price": 14,
+          "priceNote": "per night, dorm bed; privates from $50",
+          "priceSource": "https://thebrokebackpacker.com/best-hostels-in-bali-indonesia/",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 3,
+          "name": "Pura Besakih",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Creator: go with a guide (about $70 tour with pickup) to avoid scammers.",
+          "place": "pura-besakih",
+          "price": 9.38,
+          "priceNote": "IDR 150k incl. sarong, guide, shuttle (creator: about $1)",
+          "priceSource": "https://www.baliholidaysecrets.com/besakih-temple/"
+        },
+        {
+          "day": 3,
+          "name": "Batur Natural Hot Spring",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "place": "batur-natural-hot-spring",
+          "price": 11.25,
+          "priceNote": "IDR 180k per adult (creator: about $14)",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 3,
+          "name": "Mount Batur Sunrise Hike",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Pickup around 2 am.",
+          "place": "mount-batur-sunrise-hike",
+          "price": 37,
+          "priceNote": "small-group tour with breakfast",
+          "priceSource": "https://www.pelago.com/en/activity/ptd2o-mount-batur-sunrise-trekking/"
+        },
+        {
+          "day": 3,
+          "name": "Tanah Lot",
+          "category": "EXPERIENCE",
+          "sentiment": "OPTIONAL",
+          "note": "Not reachable at high tide: check the tides.",
+          "place": "pura-tanah-lot",
+          "price": 4.69,
+          "priceNote": "IDR 75k per adult (creator: about $4.20)",
+          "priceSource": "https://www.baliholidaysecrets.com/tanah-lot-temple/"
+        },
+        {
+          "day": 3,
+          "name": "La Plancha",
+          "category": "FOOD",
+          "note": "Sunset drinks on the beanbags.",
+          "place": "la-plancha",
+          "price": 12.5,
+          "priceNote": "beanbag min spend about IDR 200k",
+          "priceSource": "https://www.baliholidaysecrets.com/la-plancha/"
+        }
+      ]
+    },
+    {
+      "slug": "bali-7-days-saltinourhair",
+      "title": "7 days in Bali",
+      "summary": "The classic first-timer week: beach clubs in Canggu, three nights in Ubud, a Mount Batur sunrise, a Nusa Penida day trip and the Kecak dance in Uluwatu.",
+      "tier": "MIDRANGE",
+      "days": 7,
+      "creator": "saltinourhair",
+      "sourceUrl": "https://www.saltinourhair.com/bali/bali-itinerary-7-days/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Airport taxi to Canggu",
+          "category": "TRANSIT",
+          "place": "airport-taxi",
+          "price": 18.75,
+          "priceNote": "creator: about IDR 300k (~$20)"
+        },
+        {
+          "day": 1,
+          "name": "Amar Boutique Hotel",
+          "category": "STAY",
+          "note": "Or Cali Villas, Guru Canggu; in Seminyak The Legian, Elysian, Villa Air.",
+          "place": "amar-boutique-hotel",
+          "unit": "night"
+        },
+        {
+          "day": 1,
+          "name": "Canggu beach clubs (La Brisa, The Lawn)",
+          "category": "EXPERIENCE",
+          "note": "Or Potato Head and Mari Beach Club in Seminyak, 20 minutes away.",
+          "place": "canggu-beach-clubs",
+          "price": 0,
+          "priceNote": "free entry; daybeds have min spend",
+          "priceSource": "https://baliuntold.com/destinations/canggu/beach-clubs/"
+        },
+        {
+          "day": 1,
+          "name": "Tanah Lot",
+          "category": "EXPERIENCE",
+          "place": "pura-tanah-lot",
+          "price": 4.69,
+          "priceNote": "IDR 75k per adult (creator: IDR 60,000)",
+          "priceSource": "https://www.baliholidaysecrets.com/tanah-lot-temple/"
+        },
+        {
+          "day": 2,
+          "name": "Taxi to Ubud",
+          "category": "TRANSIT",
+          "note": "Grab or GoJek is slightly cheaper.",
+          "place": "sanur-to-ubud-drive",
+          "price": 15,
+          "priceNote": "creator: $10-20 by taxi"
+        },
+        {
+          "day": 2,
+          "name": "The Kayon Jungle Resort",
+          "category": "STAY",
+          "note": "Or Ubud Valley Boutique, Sapodilla Ubud (cheaper).",
+          "place": "kayon-jungle-resort",
+          "price": 370,
+          "priceNote": "per night, cheapest room (date-dependent)",
+          "priceSource": "https://sg.hotels.com/ho873758656/the-kayon-jungle-resort-by-pramana-payangan-indonesia",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 2,
+          "name": "Tegalalang Rice Terraces",
+          "category": "EXPERIENCE",
+          "place": "tegalalang-rice-terraces",
+          "price": 1.56,
+          "priceNote": "IDR 25k entry; farmer donations extra",
+          "priceSource": "https://www.thecommonwanderer.com/blog/tegalalang-rice-terraces-bali"
+        },
+        {
+          "day": 2,
+          "name": "Ubud Art Market",
+          "category": "EXPERIENCE",
+          "note": "Open daily from 9 am.",
+          "place": "ubud-art-market",
+          "price": 0,
+          "priceNote": "free to enter",
+          "priceSource": "https://pickyourtrail.com/tourism/bali/ubud-art-market-guide"
+        },
+        {
+          "day": 2,
+          "name": "Sacred Monkey Forest Sanctuary",
+          "category": "EXPERIENCE",
+          "place": "sacred-monkey-forest",
+          "price": 8.13,
+          "priceNote": "IDR 130k per adult",
+          "priceSource": "https://monkeyforestubud.com/visit/"
+        },
+        {
+          "day": 3,
+          "name": "Campuhan Ridge Walk",
+          "category": "EXPERIENCE",
+          "place": "campuhan-ridge-walk",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 3,
+          "name": "Tirta Empul Temple",
+          "category": "EXPERIENCE",
+          "place": "tirta-empul-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult",
+          "priceSource": "https://www.indonesia.travel/us-en/travel-ideas/pilgrimage/pura-tirta-empul"
+        },
+        {
+          "day": 3,
+          "name": "Goa Raja Waterfall",
+          "category": "EXPERIENCE",
+          "place": "goa-raja-waterfall",
+          "price": 1.56,
+          "priceNote": "IDR 25k per person",
+          "priceSource": "https://theworldtravelguy.com/goa-raja-waterfall-in-bali-the-king-cave-waterfall/"
+        },
+        {
+          "day": 4,
+          "name": "Mount Batur Sunrise Hike",
+          "category": "EXPERIENCE",
+          "note": "About 1.5 h drive from Ubud. Sunrise or sunset trek, then hot springs. Creator: skip the Luwak coffee.",
+          "place": "mount-batur-sunrise-hike",
+          "price": 37,
+          "priceNote": "small-group tour with breakfast",
+          "priceSource": "https://www.pelago.com/en/activity/ptd2o-mount-batur-sunrise-trekking/"
+        },
+        {
+          "day": 5,
+          "name": "Taxi and ferry to Nusa Penida",
+          "category": "TRANSIT",
+          "place": "ubud-to-nusa-penida-transfer",
+          "price": 15,
+          "priceNote": "creator: roughly $15"
+        },
+        {
+          "day": 5,
+          "name": "West Nusa Penida (Kelingking, Broken Beach, Angel's Billabong, Crystal Bay)",
+          "category": "EXPERIENCE",
+          "note": "Creator: don't get into the Angel's Billabong pool. Snorkel at Crystal Bay.",
+          "place": "west-nusa-penida",
+          "price": 50,
+          "priceNote": "shared day tour incl. boat & lunch",
+          "priceSource": "https://www.expedia.com/things-to-do/bali-nusa-penida-day-trip-west-tour-ticket.a49261655.activity-details"
+        },
+        {
+          "day": 6,
+          "name": "Ferry back and drive to Uluwatu",
+          "category": "TRANSIT",
+          "note": "Ferry to Sanur, then just under an hour's drive.",
+          "place": "ferry-from-sanur-to-nusa-penida",
+          "price": 12.5,
+          "priceNote": "IDR 200k per person, one way",
+          "priceSource": "https://inivie.com/discover-bali/nusa-penida-ferry-schedule-prices-and-how-to-book"
+        },
+        {
+          "day": 6,
+          "name": "Padang Padang Inn",
+          "category": "STAY",
+          "note": "Or Bukal Sari, The Elementum.",
+          "place": "padang-padang-inn",
+          "price": 75,
+          "priceNote": "per night, Standard room (date-dependent)",
+          "priceSource": "https://www.kayak.com/South-Kuta-Hotels-Padang-Padang-Inn.2846169.ksp",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 6,
+          "name": "Uluwatu Temple",
+          "category": "EXPERIENCE",
+          "place": "uluwatu-temple",
+          "price": 6.25,
+          "priceNote": "IDR 100k per adult, sarong included",
+          "priceSource": "https://www.indonesia.travel/id-id/travel-ideas/pilgrimage/pura-uluwatu/"
+        },
+        {
+          "day": 6,
+          "name": "Kecak Dance Performance",
+          "category": "EXPERIENCE",
+          "place": "kecak-dance-performance",
+          "price": 9.38,
+          "priceNote": "IDR 150k ticket; temple entry extra",
+          "priceSource": "https://kura2bus.com/blog/uluwatu-kecak-dance-ticket-price/"
+        },
+        {
+          "day": 7,
+          "name": "Airport taxi",
+          "category": "TRANSIT",
+          "note": "Fly out on day 8.",
+          "place": "airport-taxi",
+          "price": 15,
+          "priceNote": "creator: about $15"
         }
       ]
     }
