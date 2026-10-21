@@ -3,6 +3,9 @@ import { db } from "@/lib/db";
 import type { ItemCategory } from "@/generated/prisma/client";
 import { pickOffer, type CouponCandidate } from "@/lib/coupons";
 
+/** On every cached read of site content; admin saves invalidate it so edits show at once. */
+export const CONTENT_TAG = "content";
+
 const couponSelect = {
   vendorId: true,
   code: true,
@@ -54,6 +57,7 @@ export async function resolveItemOffer(itemId: string) {
 export async function getDestinations() {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   cacheTag("destinations");
   return db.destination.findMany({
     orderBy: { name: "asc" },
@@ -72,6 +76,7 @@ export async function getDestinations() {
 export async function getDestinationSlugs() {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   return db.destination.findMany({ select: { slug: true } });
 }
 
@@ -82,6 +87,7 @@ function itemTotal(item: { priceCents: number | null; quantity: number }) {
 export async function getDestination(slug: string) {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   cacheTag(`destination:${slug}`);
 
   const destination = await db.destination.findUnique({
@@ -172,12 +178,14 @@ export async function getDestination(slug: string) {
 export async function getItinerarySlugs() {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   return db.itinerary.findMany({ select: { slug: true } });
 }
 
 export async function getItinerary(slug: string) {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   cacheTag(`itinerary:${slug}`);
 
   const it = await db.itinerary.findUnique({
@@ -244,12 +252,14 @@ export async function getItinerary(slug: string) {
 export async function getCreatorHandles() {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   return db.creator.findMany({ select: { handle: true } });
 }
 
 export async function getCreator(handle: string) {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   cacheTag(`creator:${handle}`);
   return db.creator.findUnique({
     where: { handle },
@@ -275,6 +285,7 @@ export async function getCreator(handle: string) {
 export async function getEsimPlans(country: string) {
   "use cache";
   cacheLife("hours");
+  cacheTag(CONTENT_TAG);
   cacheTag(`esim:${country}`);
   return db.esimPlan.findMany({
     where: { country },

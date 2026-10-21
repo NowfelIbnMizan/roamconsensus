@@ -1,0 +1,149 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { db } from "@/lib/db";
+import { deleteDestination, deletePlace, saveDestination, saveItinerary, savePlace } from "@/lib/admin/actions";
+import { categoryLabel, tierLabel } from "@/lib/format";
+import { categoryOptions, tierOptions } from "../../../options";
+import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea } from "../../../ui";
+
+export default async function DestinationAdmin({ params }: PageProps<"/admin/destinations/[id]">) {
+  const { id } = await params;
+  const [d, creators] = await Promise.all([
+    db.destination.findUnique({
+      where: { id },
+      include: {
+        itineraries: { orderBy: { title: "asc" }, include: { creator: true, _count: { select: { items: true } } } },
+        places: { orderBy: { name: "asc" }, include: { _count: { select: { items: true } } } },
+      },
+    }),
+    db.creator.findMany({ orderBy: { name: "asc" } }),
+  ]);
+  if (!d) notFound();
+  const creatorOptions = creators.map((c) => ({ value: c.id, label: `${c.name} (@${c.handle})` }));
+
+  return (
+    <>
+      <Link href="/admin" className="text-sm text-muted hover:text-foreground">
+        ← Destinations
+      </Link>
+      <div className="mt-2 flex items-center justify-between gap-4">
+        <h1 className="text-2xl font-semibold">{d.name}</h1>
+        <Link href={`/destinations/${d.slug}`} target="_blank" className="text-sm text-accent underline">
+          View on site
+        </Link>
+      </div>
+
+      <form
+        action={saveDestination}
+        className="mt-4 grid gap-3 rounded-2xl border border-line bg-card p-4 sm:grid-cols-2"
+      >
+        <input type="hidden" name="id" value={d.id} />
+        <Field label="Name" name="name" defaultValue={d.name} required />
+        <Field label="Country" name="country" defaultValue={d.country} required />
+        <TextArea label="Summary" name="summary" defaultValue={d.summary} />
+        <Field label="URL name" name="slug" defaultValue={d.slug} hint="Changing it breaks old links." />
+        <Checkbox label="Sample (fictional demo content)" name="isSample" defaultChecked={d.isSample} />
+        <div className="flex items-center gap-4">
+          <SaveButton />
+        </div>
+      </form>
+      <div className="mt-2 text-right">
+        <DeleteButton action={deleteDestination} id={d.id} what={`${d.name} with all its itineraries and places`} />
+      </div>
+
+      <h2 className="mt-10 text-xl font-semibold">Itineraries</h2>
+      <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
+        {d.itineraries.map((it) => (
+          <li key={it.id}>
+            <Link
+              href={`/admin/itineraries/${it.id}`}
+              className="flex items-center justify-between gap-4 p-4 hover:bg-line/40"
+            >
+              <span>
+                <span className="font-medium">{it.title}</span>{" "}
+                <span className="text-sm text-muted">
+                  by {it.creator.name} · {tierLabel[it.tier]} · {it.days} days
+                </span>
+              </span>
+              <span className="text-sm text-muted">{it._count.items} items</span>
+            </Link>
+          </li>
+        ))}
+        {d.itineraries.length === 0 && <li className="p-4 text-sm text-muted">No itineraries yet.</li>}
+      </ul>
+      <details className="mt-3 rounded-2xl border border-line bg-card p-4">
+        <summary className="cursor-pointer font-medium">Add an itinerary</summary>
+        {creators.length === 0 ? (
+          <p className="mt-3 text-sm text-muted">
+            Add the creator first on the{" "}
+            <Link href="/admin/creators" className="underline">
+              Creators
+            </Link>{" "}
+            page.
+          </p>
+        ) : (
+          <form action={saveItinerary} className="mt-4 grid gap-3 sm:grid-cols-2">
+            <input type="hidden" name="destinationId" value={d.id} />
+            <Field label="Title" name="title" required placeholder={`One week in ${d.name}`} />
+            <Select label="Creator" name="creatorId" options={creatorOptions} />
+            <Select label="Budget tier" name="tier" defaultValue="MIDRANGE" options={tierOptions} />
+            <Field label="Days" name="days" type="number" defaultValue={7} required />
+            <Field label="Creator's post (link)" name="sourceUrl" type="url" required />
+            <Field label="URL name" name="slug" hint="Leave blank to make one from the title." />
+            <TextArea label="Summary" name="summary" />
+            <div>
+              <SaveButton>Add itinerary</SaveButton>
+            </div>
+          </form>
+        )}
+      </details>
+
+      <h2 className="mt-10 text-xl font-semibold">Places</h2>
+      <p className="mt-1 text-sm text-muted">
+        Spots creators recommend. Items that point at the same place count toward its creator consensus. A website makes
+        the venue&apos;s own photo show.
+      </p>
+      <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
+        {d.places.map((p) => (
+          <li key={p.id}>
+            <details className="p-4">
+              <summary className="flex cursor-pointer items-center justify-between gap-4">
+                <span className="font-medium">{p.name}</span>
+                <span className="text-sm text-muted">
+                  {categoryLabel[p.category]} · {p._count.items} items
+                </span>
+              </summary>
+              <form action={savePlace} className="mt-4 grid gap-3 sm:grid-cols-2">
+                <input type="hidden" name="id" value={p.id} />
+                <Field label="Name" name="name" defaultValue={p.name} required />
+                <Select label="Category" name="category" defaultValue={p.category} options={categoryOptions} />
+                <Field label="Website" name="website" type="url" defaultValue={p.website} />
+                <Field label="URL name" name="slug" defaultValue={p.slug} />
+                <TextArea label="Tip" name="tip" defaultValue={p.tip} />
+                <div>
+                  <SaveButton />
+                </div>
+              </form>
+              <div className="mt-2 text-right">
+                <DeleteButton action={deletePlace} id={p.id} what={p.name} />
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
+      <details className="mt-3 rounded-2xl border border-line bg-card p-4">
+        <summary className="cursor-pointer font-medium">Add a place</summary>
+        <form action={savePlace} className="mt-4 grid gap-3 sm:grid-cols-2">
+          <input type="hidden" name="destinationId" value={d.id} />
+          <Field label="Name" name="name" required />
+          <Select label="Category" name="category" defaultValue="EXPERIENCE" options={categoryOptions} />
+          <Field label="Website" name="website" type="url" />
+          <TextArea label="Tip" name="tip" />
+          <div>
+            <SaveButton>Add place</SaveButton>
+          </div>
+        </form>
+      </details>
+    </>
+  );
+}
