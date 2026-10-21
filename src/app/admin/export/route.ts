@@ -68,6 +68,8 @@ export async function GET() {
           blurb: p.blurb,
           tip: p.tip,
           website: p.website,
+          lat: p.lat,
+          lng: p.lng,
         }),
       ),
       creators: [...creators.values()].map((c) =>

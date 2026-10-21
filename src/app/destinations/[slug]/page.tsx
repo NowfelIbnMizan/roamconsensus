@@ -8,6 +8,8 @@ import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
+import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
+import { TripMap, type MapStop } from "@/components/trip-map";
 import { ConsensusFilter } from "./consensus-filter";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
@@ -43,6 +45,27 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   const counts: Record<string, number> = {};
   for (const p of consensus) counts[p.category] = (counts[p.category] ?? 0) + 1;
   const categories = Object.keys(counts) as ItemCategory[];
+
+  // Pins are numbered by list position, so "7" on the map is the 7th spot in the list.
+  const rank = new Map(consensus.map((p, n) => [p.slug, n + 1]));
+  const stops: MapStop[] = consensus.filter(hasPin).map((p) => ({
+    key: p.slug,
+    lat: p.lat,
+    lng: p.lng,
+    label: String(rank.get(p.slug)),
+    color: p.skippedBy.length > p.creators.length ? "#a8a29e" : categoryHex[p.category],
+    title: p.name,
+    subtitle: [
+      p.area,
+      categoryLabel[p.category],
+      creatorCount > 1 ? `${p.creators.length}/${creatorCount} creators` : null,
+    ]
+      .filter(Boolean)
+      .join(" · "),
+    href: googleMapsPlaceUrl(p.name, `${p.area ? `${p.area}, ` : ""}${destination.name}`),
+    cat: p.category,
+    cartId: p.skippedBy.length === 0 ? p.cartItem?.id : undefined,
+  }));
 
   return (
     <>
@@ -99,6 +122,14 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}
         </p>
         <ConsensusFilter categories={categories} counts={counts}>
+          {stops.length > 0 && (
+            <div className="mt-4">
+              <TripMap
+                stops={stops}
+                legend={categories.map((c) => ({ label: categoryLabel[c], color: categoryHex[c] }))}
+              />
+            </div>
+          )}
           <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
             {consensus.map((p) => {
               const all = p.creators.length === creatorCount;
@@ -118,7 +149,18 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <p className="font-semibold leading-snug">{p.name}</p>
+                        <p className="font-semibold leading-snug">
+                          {hasPin(p) && (
+                            <span
+                              className="mr-1.5 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                              style={{ background: categoryHex[p.category] }}
+                              title="Pin number on the map"
+                            >
+                              {rank.get(p.slug)}
+                            </span>
+                          )}
+                          {p.name}
+                        </p>
                         <p className="mt-0.5 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted">
                           {p.area && (
                             <>

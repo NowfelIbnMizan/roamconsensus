@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Map as MapIcon } from "lucide-react";
 import { SampleBanner } from "@/components/sample-banner";
 import { CreatorChip, CreatorSocials } from "@/components/creator";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
@@ -9,6 +9,8 @@ import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, formatPrice, sentimentLabel, tierLabel } from "@/lib/format";
+import { dayColor, googleMapsPlaceUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
+import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
 
 export async function generateStaticParams() {
   return getItinerarySlugs();
@@ -30,6 +32,31 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
   const cartItems = new Map<string, CartItem>(
     it.schedule.flatMap(({ items }) => items.map((i) => [i.id, toCartItem(i, it)])),
   );
+
+  // Each day's stops are numbered in order; the same number shows on the map pin and in the list.
+  const pinNumber = new Map<string, number>();
+  const stops: MapStop[] = [];
+  const groups: MapGroup[] = [];
+  for (const [index, { day, items }] of it.schedule.entries()) {
+    const pinned = items.filter((i) => i.sentiment !== "AVOID").filter(hasPin);
+    pinned.forEach((i, n) => {
+      pinNumber.set(i.id, n + 1);
+      stops.push({
+        key: i.id,
+        lat: i.lat,
+        lng: i.lng,
+        label: String(n + 1),
+        color: dayColor(index),
+        title: i.name,
+        subtitle: `Day ${day} · ${categoryLabel[i.category]}`,
+        href: googleMapsPlaceUrl(i.name, it.destination.name),
+        group: day,
+        cartId: i.id,
+      });
+    });
+    if (pinned.length)
+      groups.push({ id: day, label: `Day ${day}`, color: dayColor(index), routeUrl: googleMapsRouteUrl(pinned) });
+  }
 
   return (
     <>
@@ -63,15 +90,45 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         <AddRouteButton items={[...cartItems.values()].filter((c) => !skipped.has(c.id))} />
       </div>
 
+      {stops.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+            <MapIcon className="size-5 text-accent" aria-hidden /> Where you&apos;ll go
+          </h2>
+          <TripMap stops={stops} groups={groups} connect />
+        </section>
+      )}
+
       <div className="mt-10 space-y-8">
-        {it.schedule.map(({ day, items }) => (
+        {it.schedule.map(({ day, items }, index) => (
           <section key={day}>
-            <h2 className="text-lg font-semibold">Day {day}</h2>
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 className="text-lg font-semibold">Day {day}</h2>
+              {groups.find((g) => g.id === day)?.routeUrl && (
+                <a
+                  href={groups.find((g) => g.id === day)!.routeUrl!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                >
+                  Day {day} route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+                </a>
+              )}
+            </div>
             <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
               {items.map((item) => (
                 <li key={item.id} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 p-4">
                   <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
                     <p className="font-medium">
+                      {pinNumber.has(item.id) && (
+                        <span
+                          className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                          style={{ background: dayColor(index) }}
+                          title="Pin number on the map"
+                        >
+                          {pinNumber.get(item.id)}
+                        </span>
+                      )}
                       {item.name}
                       {item.sentiment === "MUST_VISIT" && (
                         <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">

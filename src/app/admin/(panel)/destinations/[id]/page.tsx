@@ -101,7 +101,8 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
       <h2 className="mt-10 text-xl font-semibold">Places</h2>
       <p className="mt-1 text-sm text-muted">
         Spots creators recommend. Items that point at the same place count toward its creator consensus. A website makes
-        the venue&apos;s own photo show.
+        the venue&apos;s own photo show. For the map pin, open the place in Google Maps, tap Share, copy the link and
+        paste it here.
       </p>
       <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
         {d.places.map((p) => (
@@ -110,7 +111,7 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
               <summary className="flex cursor-pointer items-center justify-between gap-4">
                 <span className="font-medium">{p.name}</span>
                 <span className="text-sm text-muted">
-                  {categoryLabel[p.category]} · {p._count.items} items
+                  {categoryLabel[p.category]} · {p._count.items} items{p.lat === null && " · no map pin"}
                 </span>
               </summary>
               <form action={savePlace} className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -119,6 +120,12 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
                 <Select label="Category" name="category" defaultValue={p.category} options={categoryOptions} />
                 <Field label="Area" name="area" defaultValue={p.area} placeholder="Ubud" />
                 <Field label="Website" name="website" type="url" defaultValue={p.website} />
+                <Field
+                  label="Map pin (coordinates or Google Maps link)"
+                  name="pin"
+                  defaultValue={p.lat !== null && p.lng !== null ? `${p.lat}, ${p.lng}` : null}
+                  placeholder="-8.5069, 115.2625"
+                />
                 <Field label="URL name" name="slug" defaultValue={p.slug} />
                 <TextArea label="About (1-2 sentences)" name="blurb" defaultValue={p.blurb} />
                 <TextArea label="Tip" name="tip" defaultValue={p.tip} />
@@ -141,6 +148,7 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
           <Select label="Category" name="category" defaultValue="EXPERIENCE" options={categoryOptions} />
           <Field label="Area" name="area" placeholder="Ubud" />
           <Field label="Website" name="website" type="url" />
+          <Field label="Map pin (coordinates or Google Maps link)" name="pin" placeholder="-8.5069, 115.2625" />
           <TextArea label="About (1-2 sentences)" name="blurb" />
           <TextArea label="Tip" name="tip" />
           <div>

@@ -83,10 +83,35 @@ export async function savePlace(fd: FormData) {
     blurb: optional(fd, "blurb"),
     tip: optional(fd, "tip"),
     website: optional(fd, "website"),
+    ...(await mapPin(text(fd, "pin"))),
   };
   if (id) await db.place.update({ where: { id }, data });
   else await db.place.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
   published();
+}
+
+/**
+ * "Map pin" field: coordinates ("-8.5069, 115.2625") or a Google Maps link, including maps.app.goo.gl share links.
+ * Blank clears the pin; anything unreadable leaves the saved pin alone.
+ */
+async function mapPin(input: string): Promise<{ lat?: number | null; lng?: number | null }> {
+  if (!input) return { lat: null, lng: null };
+  let s = input;
+  if (/^https?:\/\/(maps\.app\.goo\.gl|goo\.gl)\//.test(s)) {
+    const res = await fetch(s, { redirect: "manual" }).catch(() => null);
+    s = res?.headers.get("location") ?? s;
+  }
+  s = decodeURIComponent(s);
+  // !3d!4d is the place itself; @lat,lng is only where the map was centred.
+  const m =
+    s.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/) ??
+    s.match(/[?&](?:q|query|ll|destination)=(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/) ??
+    s.match(/@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/) ??
+    s.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);
+  if (!m) return {};
+  const lat = Number(m[1]);
+  const lng = Number(m[2]);
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : {};
 }
 
 export async function deletePlace(fd: FormData) {

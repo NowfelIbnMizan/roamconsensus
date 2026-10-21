@@ -154,6 +154,8 @@ export async function getDestination(slug: string) {
         blurb: place.blurb,
         tip: place.tip,
         website: place.website,
+        lat: place.lat,
+        lng: place.lng,
         fromPrice: priced[0]
           ? { cents: priced[0].priceCents!, unit: priced[0].unit, currency: priced[0].currency }
           : null,
@@ -170,6 +172,8 @@ export async function getDestination(slug: string) {
               vendor: pick.vendor?.name ?? null,
               bookUrl: pick.links.find((l) => l.creatorId === null)?.url ?? pick.links[0]?.url ?? null,
               website: place.website,
+              lat: place.lat,
+              lng: place.lng,
               itinerary: { slug: pick.itinerary.slug, title: pick.itinerary.title },
             }
           : null,
@@ -237,7 +241,7 @@ export async function getItinerary(slug: string) {
         orderBy: [{ day: "asc" }, { position: "asc" }],
         include: {
           vendor: { select: { name: true } },
-          place: { select: { slug: true, website: true } },
+          place: { select: { slug: true, website: true, lat: true, lng: true } },
           links: { select: { url: true, creatorId: true } },
         },
       },
@@ -281,6 +285,8 @@ export async function getItinerary(slug: string) {
           vendor: i.vendor?.name ?? null,
           bookUrl: offer?.url ?? null,
           website: i.place?.website ?? null,
+          lat: i.place?.lat ?? null,
+          lng: i.place?.lng ?? null,
           couponCode: offer?.code ?? null,
           creditedTo: offer?.creditedTo ?? null,
         };

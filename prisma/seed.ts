@@ -66,6 +66,8 @@ const Destination = z.object({
       blurb: z.string().optional(),
       tip: z.string().optional(),
       website: url.optional(),
+      lat: z.number().min(-90).max(90).optional(),
+      lng: z.number().min(-180).max(180).optional(),
     }),
   ),
   creators: z.array(
@@ -217,6 +219,8 @@ async function main() {
         blurb: p.blurb ?? null,
         tip: p.tip ?? null,
         website: p.website ?? null,
+        lat: p.lat ?? null,
+        lng: p.lng ?? null,
       };
       const row = await db.place.upsert({
         where: { destinationId_slug: { destinationId: dest.id, slug: p.slug } },

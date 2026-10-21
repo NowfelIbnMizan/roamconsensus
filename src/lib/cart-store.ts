@@ -18,6 +18,8 @@ export type CartItem = {
   bookUrl: string | null;
   website?: string | null; // venue's own site, for items with no booking link
   couponCode?: string | null; // optional: carts saved before codes existed lack it
+  lat?: number | null; // map pin of the item's place; filled in by the cart refresh for older carts
+  lng?: number | null;
   itinerary: { slug: string; title: string };
 };
 
@@ -75,7 +77,11 @@ const subscribeHydration = (cb: () => void) => {
 
 /** True once the cart has loaded from localStorage; false during SSR and the first client render. */
 export function useCartHydrated() {
-  return useSyncExternalStore(subscribeHydration, () => useCart.persist.hasHydrated(), () => false);
+  return useSyncExternalStore(
+    subscribeHydration,
+    () => useCart.persist.hasHydrated(),
+    () => false,
+  );
 }
 
 /** Unpriced items count as 0; callers show them separately. */

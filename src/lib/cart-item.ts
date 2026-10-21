@@ -17,6 +17,8 @@ export function toCartItem(i: ScheduleItem, itinerary: Pick<Itinerary, "slug" | 
     vendor: i.vendor,
     bookUrl: i.bookUrl,
     website: i.website,
+    lat: i.lat,
+    lng: i.lng,
     couponCode: i.couponCode,
     itinerary: { slug: itinerary.slug, title: itinerary.title },
   };

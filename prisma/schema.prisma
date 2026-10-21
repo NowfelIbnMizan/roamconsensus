@@ -122,6 +122,9 @@ model Place {
   tip           String?
   /// Venue's own site; its share image (og:image) is used as the place photo.
   website       String?
+  /// Map pin. Approximate is fine; travellers get "Open in Google Maps" for exact directions.
+  lat           Float?
+  lng           Float?
   destinationId String
   destination   Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
   items         Item[]

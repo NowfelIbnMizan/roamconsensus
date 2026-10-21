@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { ClipboardCopy, Download, ExternalLink, Minus, Plus, Trash2 } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ClipboardCopy, Download, ExternalLink, Map as MapIcon, Minus, Plus, Trash2 } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toNotionMarkdown, toText } from "@/lib/cart-export";
 import { VendorBadge } from "@/components/vendor-badge";
 import { categoryLabel, formatMoney, formatPrice } from "@/lib/format";
+import { categoryHex, googleMapsPinUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
+import { TripMap, type MapStop } from "@/components/trip-map";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 export function CartView() {
@@ -31,6 +33,26 @@ export function CartView() {
       .then((fresh) => fresh && refresh(fresh))
       .catch(() => {});
   }, [hydrated, refresh]);
+
+  // Pins follow the order things were added (a whole route goes in day by day), which is also the Google route order.
+  const { stops, pinNumber, routeUrl } = useMemo(() => {
+    const pinned = items.filter(hasPin);
+    const stops: MapStop[] = pinned.map((i, n) => ({
+      key: i.id,
+      lat: i.lat,
+      lng: i.lng,
+      label: String(n + 1),
+      color: categoryHex[i.category],
+      title: i.name,
+      subtitle: `${categoryLabel[i.category]} · ${i.itinerary.title}`,
+      href: googleMapsPinUrl(i),
+    }));
+    return {
+      stops,
+      pinNumber: new Map(pinned.map((i, n) => [i.id, n + 1])),
+      routeUrl: googleMapsRouteUrl(pinned),
+    };
+  }, [items]);
 
   if (!hydrated) return <p className="text-muted">Loading your cart…</p>;
 
@@ -72,6 +94,38 @@ export function CartView() {
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
       <div className="space-y-6">
+        {stops.length > 0 && (
+          <section>
+            <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 className="flex items-center gap-2 text-lg font-semibold">
+                <MapIcon className="size-5 text-accent" aria-hidden /> Your trip on the map
+              </h2>
+              {routeUrl && stops.length > 1 && (
+                <a
+                  href={routeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                >
+                  Route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+                </a>
+              )}
+            </div>
+            <TripMap
+              stops={stops}
+              legend={[...new Set(items.filter(hasPin).map((i) => i.category))].map((c) => ({
+                label: categoryLabel[c],
+                color: categoryHex[c],
+              }))}
+              className="h-64 sm:h-80"
+            />
+            {stops.length > 11 && (
+              <p className="mt-1 text-xs text-muted">
+                Google Maps routes take 11 stops, so the route shows the first 11.
+              </p>
+            )}
+          </section>
+        )}
         {groupByVendor(items).map((group) => (
           <section key={group.vendor} className="rounded-2xl border border-line bg-card">
             <header className="flex items-center justify-between border-b border-line px-4 py-3">
@@ -86,7 +140,18 @@ export function CartView() {
               {group.items.map((item) => (
                 <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4">
                   <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
-                    <p className="font-medium">{item.name}</p>
+                    <p className="font-medium">
+                      {pinNumber.has(item.id) && (
+                        <span
+                          className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                          style={{ background: categoryHex[item.category] }}
+                          title="Pin number on the map"
+                        >
+                          {pinNumber.get(item.id)}
+                        </span>
+                      )}
+                      {item.name}
+                    </p>
                     <p className="text-xs text-muted">
                       {categoryLabel[item.category]} · from{" "}
                       <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
@@ -136,7 +201,8 @@ export function CartView() {
                         rel="sponsored noopener noreferrer"
                         className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/25 dark:text-emerald-300"
                       >
-                        {item.vendor ? `Book on ${item.vendor}` : "Book"} <ExternalLink className="size-3" aria-hidden />
+                        {item.vendor ? `Book on ${item.vendor}` : "Book"}{" "}
+                        <ExternalLink className="size-3" aria-hidden />
                       </a>
                     ) : (
                       item.website && (
