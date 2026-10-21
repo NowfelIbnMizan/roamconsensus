@@ -38,3 +38,13 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Consensus category filter: rows hide when the wrapper's data-filter names another category. */
+[data-filter="STAY"] [data-cat]:not([data-cat="STAY"]),
+[data-filter="EXPERIENCE"] [data-cat]:not([data-cat="EXPERIENCE"]),
+[data-filter="FOOD"] [data-cat]:not([data-cat="FOOD"]),
+[data-filter="ESIM"] [data-cat]:not([data-cat="ESIM"]),
+[data-filter="GEAR"] [data-cat]:not([data-cat="GEAR"]),
+[data-filter="TRANSIT"] [data-cat]:not([data-cat="TRANSIT"]) {
+  display: none;
+}

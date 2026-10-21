@@ -60,7 +60,15 @@ export async function GET() {
       heroPhotoUrl: d.heroPhotoUrl,
       sample: d.isSample || null,
       places: d.places.map((p) =>
-        clean({ slug: p.slug, name: p.name, category: p.category, tip: p.tip, website: p.website }),
+        clean({
+          slug: p.slug,
+          name: p.name,
+          category: p.category,
+          area: p.area,
+          blurb: p.blurb,
+          tip: p.tip,
+          website: p.website,
+        }),
       ),
       creators: [...creators.values()].map((c) =>
         clean({
@@ -68,6 +76,13 @@ export async function GET() {
           name: c.name,
           platform: c.platform,
           profileUrl: c.profileUrl,
+          instagramUrl: c.instagramUrl,
+          facebookUrl: c.facebookUrl,
+          xUrl: c.xUrl,
+          tiktokUrl: c.tiktokUrl,
+          youtubeUrl: c.youtubeUrl,
+          pinterestUrl: c.pinterestUrl,
+          websiteUrl: c.websiteUrl,
           avatarUrl: c.avatarUrl,
           bio: c.bio,
         }),

@@ -117,8 +117,10 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
                 <input type="hidden" name="id" value={p.id} />
                 <Field label="Name" name="name" defaultValue={p.name} required />
                 <Select label="Category" name="category" defaultValue={p.category} options={categoryOptions} />
+                <Field label="Area" name="area" defaultValue={p.area} placeholder="Ubud" />
                 <Field label="Website" name="website" type="url" defaultValue={p.website} />
                 <Field label="URL name" name="slug" defaultValue={p.slug} />
+                <TextArea label="About (1-2 sentences)" name="blurb" defaultValue={p.blurb} />
                 <TextArea label="Tip" name="tip" defaultValue={p.tip} />
                 <div>
                   <SaveButton />
@@ -137,7 +139,9 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
           <input type="hidden" name="destinationId" value={d.id} />
           <Field label="Name" name="name" required />
           <Select label="Category" name="category" defaultValue="EXPERIENCE" options={categoryOptions} />
+          <Field label="Area" name="area" placeholder="Ubud" />
           <Field label="Website" name="website" type="url" />
+          <TextArea label="About (1-2 sentences)" name="blurb" />
           <TextArea label="Tip" name="tip" />
           <div>
             <SaveButton>Add place</SaveButton>

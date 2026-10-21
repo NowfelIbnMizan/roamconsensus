@@ -72,7 +72,15 @@ model Creator {
   handle         String          @unique
   name           String
   platform       Platform
+  /// Main link: where the creator's name button goes.
   profileUrl     String
+  instagramUrl   String?
+  facebookUrl    String?
+  xUrl           String?
+  tiktokUrl      String?
+  youtubeUrl     String?
+  pinterestUrl   String?
+  websiteUrl     String?
   avatarUrl      String?
   bio            String?
   itineraries    Itinerary[]
@@ -107,6 +115,10 @@ model Place {
   slug          String
   name          String
   category      ItemCategory
+  /// Neighbourhood or island, e.g. "Ubud" or "Nusa Penida".
+  area          String?
+  /// One or two sentences: what it is and why it's worth knowing (history, fame).
+  blurb         String?
   tip           String?
   /// Venue's own site; its share image (og:image) is used as the place photo.
   website       String?

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCreator, getCreatorHandles } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
+import { CreatorChip, CreatorSocials } from "@/components/creator";
 
 export async function generateStaticParams() {
   return getCreatorHandles();
@@ -24,6 +25,10 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
         @{creator.handle} on {creator.platform.toLowerCase()}
       </p>
       {creator.bio && <p className="mt-3">{creator.bio}</p>}
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <CreatorChip creator={creator} />
+        <CreatorSocials creator={creator} />
+      </div>
       <h2 className="mt-10 text-lg font-semibold">Itineraries</h2>
       <ul className="mt-3 space-y-2">
         {creator.itineraries.map((it) => (
