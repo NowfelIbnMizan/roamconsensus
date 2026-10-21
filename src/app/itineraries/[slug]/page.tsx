@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { SampleBanner } from "@/components/sample-banner";
+import { CreatorChip, CreatorSocials } from "@/components/creator";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
@@ -38,18 +39,26 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       </Link>
       <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
       <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
-      <p className="mt-2 text-muted">
-        by{" "}
-        <Link href={`/creators/${it.creator.handle}`} className="underline">
-          {it.creator.name}
-        </Link>{" "}
-        · {it.days} days ·{" "}
-        {it.totalCents > 0 && <>{formatMoney(it.totalCents)} est.{it.unpricedCount > 0 && " for priced items"} · </>}
+      <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
+        by <CreatorChip creator={it.creator} /> · {it.days} days ·{" "}
+        {it.totalCents > 0 && (
+          <>
+            {formatMoney(it.totalCents)} est.{it.unpricedCount > 0 && " for priced items"} ·{" "}
+          </>
+        )}
         <a href={it.sourceUrl} className="underline" rel="noopener noreferrer" target="_blank">
           original
         </a>
       </p>
+      <div className="mt-3">
+        <CreatorSocials creator={it.creator} />
+      </div>
       <p className="mt-3 max-w-2xl">{it.summary}</p>
+      <p className="mt-1 text-sm">
+        <Link href={`/creators/${it.creator.handle}`} className="text-muted underline hover:text-foreground">
+          More from {it.creator.name}
+        </Link>
+      </p>
       <div className="mt-5">
         <AddRouteButton items={[...cartItems.values()].filter((c) => !skipped.has(c.id))} />
       </div>
@@ -97,7 +106,9 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                     )}
                   </div>
                   <div className="flex shrink-0 items-center gap-3">
-                    <span className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}>
+                    <span
+                      className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}
+                    >
                       {formatPrice(item)}
                       {item.priceCents !== null && item.priceNote && (
                         <span className="block text-xs text-muted">{item.priceNote}</span>

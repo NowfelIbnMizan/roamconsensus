@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { deleteCreator, saveCreator } from "@/lib/admin/actions";
+import { SOCIALS } from "@/lib/creator-links";
 import { platformOptions } from "../../options";
 import { DeleteButton, Field, SaveButton, Select, TextArea } from "../../ui";
 
@@ -11,7 +12,16 @@ function CreatorFields({ c }: { c?: Creator }) {
       <Field label="Name" name="name" defaultValue={c?.name} required />
       <Field label="Handle" name="handle" defaultValue={c?.handle} required hint="Without @. Used in the page link." />
       <Select label="Platform" name="platform" defaultValue={c?.platform ?? "INSTAGRAM"} options={platformOptions} />
-      <Field label="Profile link" name="profileUrl" type="url" defaultValue={c?.profileUrl} required />
+      <Field
+        label="Main link"
+        name="profileUrl"
+        type="url"
+        defaultValue={c?.profileUrl}
+        hint="Where the creator's name button goes. Blank = first link below."
+      />
+      {SOCIALS.map((s) => (
+        <Field key={s.key} label={s.label} name={s.key} type="url" defaultValue={c?.[s.key]} />
+      ))}
       <TextArea label="Bio" name="bio" defaultValue={c?.bio} />
     </>
   );

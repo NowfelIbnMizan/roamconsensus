@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { CONTENT_TAG } from "@/lib/data";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
+import { SOCIALS, type SocialKey } from "@/lib/creator-links";
 import type { CouponType, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
 
 // Form helpers: blank inputs become null so clearing a field clears it in the database.
@@ -97,6 +98,10 @@ export async function deletePlace(fd: FormData) {
 export async function saveCreator(fd: FormData) {
   await requireAdmin();
   const id = optional(fd, "id");
+  const socials = Object.fromEntries(SOCIALS.map((s) => [s.key, optional(fd, s.key)])) as Record<
+    SocialKey,
+    string | null
+  >;
   const data = {
     handle: text(fd, "handle")
       .toLowerCase()
@@ -104,8 +109,10 @@ export async function saveCreator(fd: FormData) {
       .replace(/[^a-z0-9.-]/g, ""),
     name: text(fd, "name"),
     platform: text(fd, "platform") as Platform,
-    profileUrl: text(fd, "profileUrl"),
     bio: optional(fd, "bio"),
+    ...socials,
+    // Blank main link falls back to the first social profile given.
+    profileUrl: text(fd, "profileUrl") || SOCIALS.map((s) => socials[s.key]).find(Boolean) || "",
   };
   if (id) await db.creator.update({ where: { id }, data });
   else await db.creator.create({ data });

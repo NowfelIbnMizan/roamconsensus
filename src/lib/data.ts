@@ -2,6 +2,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { db } from "@/lib/db";
 import type { ItemCategory } from "@/generated/prisma/client";
 import { pickOffer, type CouponCandidate } from "@/lib/coupons";
+import { creatorLinkSelect } from "@/lib/creator-links";
 
 /** On every cached read of site content; admin saves invalidate it so edits show at once. */
 export const CONTENT_TAG = "content";
@@ -96,7 +97,7 @@ export async function getDestination(slug: string) {
       itineraries: {
         orderBy: { tier: "asc" },
         include: {
-          creator: { select: { handle: true, name: true, platform: true } },
+          creator: { select: { ...creatorLinkSelect, platform: true } },
           items: { select: { category: true, priceCents: true, quantity: true } },
         },
       },
@@ -105,7 +106,7 @@ export async function getDestination(slug: string) {
           items: {
             select: {
               sentiment: true,
-              itinerary: { select: { creator: { select: { handle: true, name: true } } } },
+              itinerary: { select: { creator: { select: creatorLinkSelect } } },
             },
           },
         },
@@ -124,9 +125,9 @@ export async function getDestination(slug: string) {
         new Map(
           place.items
             .filter((i) => (i.sentiment === "AVOID") === avoid)
-            .map((i) => [i.itinerary.creator.handle, i.itinerary.creator.name]),
+            .map((i) => [i.itinerary.creator.handle, i.itinerary.creator]),
         );
-      const toList = (m: Map<string, string>) => [...m].map(([handle, name]) => ({ handle, name }));
+      const toList = <T,>(m: Map<string, T>) => [...m.values()];
       return {
         slug: place.slug,
         name: place.name,
@@ -192,7 +193,7 @@ export async function getItinerary(slug: string) {
     where: { slug },
     include: {
       destination: { select: { slug: true, name: true, isSample: true } },
-      creator: { select: { id: true, handle: true, name: true, platform: true } },
+      creator: { select: { id: true, ...creatorLinkSelect, platform: true } },
       items: {
         orderBy: [{ day: "asc" }, { position: "asc" }],
         include: {
@@ -219,7 +220,7 @@ export async function getItinerary(slug: string) {
     days: it.days,
     sourceUrl: it.sourceUrl,
     destination: it.destination,
-    creator: { handle: it.creator.handle, name: it.creator.name, platform: it.creator.platform },
+    creator: it.creator,
     totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
     unpricedCount: it.items.filter((i) => i.priceCents === null).length,
     schedule: [...days].map(([day, items]) => ({
@@ -264,11 +265,9 @@ export async function getCreator(handle: string) {
   return db.creator.findUnique({
     where: { handle },
     select: {
-      handle: true,
-      name: true,
+      ...creatorLinkSelect,
       platform: true,
       bio: true,
-      profileUrl: true,
       itineraries: {
         select: {
           slug: true,

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CreatorChip } from "@/components/creator";
 import { notFound } from "next/navigation";
 import { CheckCircle2, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
@@ -21,18 +22,12 @@ export async function generateStaticParams() {
   return getDestinationSlugs();
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps<"/destinations/[slug]">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/destinations/[slug]">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
-  return d
-    ? { title: `${d.name} itineraries compared`, description: d.summary }
-    : {};
+  return d ? { title: `${d.name} itineraries compared`, description: d.summary } : {};
 }
 
-export default async function DestinationPage({
-  params,
-}: PageProps<"/destinations/[slug]">) {
+export default async function DestinationPage({ params }: PageProps<"/destinations/[slug]">) {
   const destination = await getDestination((await params).slug);
   if (!destination) notFound();
   const { creatorCount } = destination;
@@ -46,18 +41,14 @@ export default async function DestinationPage({
         </h2>
         {creatorCount === 1 && (
           <p className="mt-1 text-sm text-muted">
-            From one creator so far. Agreement counts appear once more creators
-            cover {destination.name}.
+            From one creator so far. Agreement counts appear once more creators cover {destination.name}.
           </p>
         )}
         <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
           {destination.consensus.map((p) => {
             const all = p.creators.length === creatorCount;
             return (
-              <li
-                key={p.slug}
-                className="flex flex-col gap-1 p-4 sm:flex-row sm:items-center sm:justify-between"
-              >
+              <li key={p.slug} className="flex flex-col gap-1 p-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex gap-3">
                   <Photo
                     photoKey={placePhotoKey(destination.slug, p)}
@@ -72,20 +63,22 @@ export default async function DestinationPage({
                   />
                   <div>
                     <p className="font-medium">
-                      {p.name}{" "}
-                      <span className="ml-1 text-xs text-muted">
-                        {categoryLabel[p.category]}
-                      </span>
+                      {p.name} <span className="ml-1 text-xs text-muted">{categoryLabel[p.category]}</span>
                     </p>
                     {p.tip && <p className="text-sm text-muted">{p.tip}</p>}
                     {p.creators.length > 0 && (
-                      <p className="text-xs text-muted">
-                        {p.creators.map((c) => c.name).join(", ")}
+                      <p className="mt-1 flex flex-wrap gap-1.5">
+                        {p.creators.map((c) => (
+                          <CreatorChip key={c.handle} creator={c} />
+                        ))}
                       </p>
                     )}
                     {p.skippedBy.length > 0 && (
-                      <p className="text-xs text-red-700 dark:text-red-400">
-                        {p.skippedBy.map((c) => c.name).join(", ")} says skip it
+                      <p className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-red-700 dark:text-red-400">
+                        {p.skippedBy.map((c) => (
+                          <CreatorChip key={c.handle} creator={c} />
+                        ))}
+                        says skip it
                       </p>
                     )}
                     <p className="text-[10px] text-muted">
@@ -123,31 +116,24 @@ export default async function DestinationPage({
               href={`/itineraries/${r.slug}`}
               className="flex flex-col rounded-2xl border border-line bg-card p-5 transition hover:border-accent"
             >
-              <span className="text-xs font-medium uppercase tracking-wide text-accent">
-                {tierLabel[r.tier]}
-              </span>
+              <span className="text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[r.tier]}</span>
               <h3 className="mt-1 font-semibold">{r.title}</h3>
-              <p className="text-sm text-muted">
-                by {r.creator.name} · {r.days} days
+              <p className="mt-1 flex flex-wrap items-center gap-1.5 text-sm text-muted">
+                by <CreatorChip creator={r.creator} link={false} /> · {r.days} days
               </p>
               {r.totalCents > 0 ? (
                 <>
-                  <p className="mt-3 text-2xl font-semibold">
-                    {formatMoney(r.totalCents)}
-                  </p>
+                  <p className="mt-3 text-2xl font-semibold">{formatMoney(r.totalCents)}</p>
                   <p className="mb-4 text-xs text-muted">
                     est. per person
-                    {r.unpricedCount > 0 &&
-                      ` · ${r.unpricedCount} items unpriced`}
+                    {r.unpricedCount > 0 && ` · ${r.unpricedCount} items unpriced`}
                   </p>
                   <div className="mt-auto">
                     <AllocationBar allocation={r.allocation} />
                   </div>
                 </>
               ) : (
-                <p className="mt-3 text-sm text-muted">
-                  Creator didn&apos;t list prices
-                </p>
+                <p className="mt-3 text-sm text-muted">Creator didn&apos;t list prices</p>
               )}
             </Link>
           ))}
