@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CreatorChip } from "@/components/creator";
 import { notFound } from "next/navigation";
-import { CheckCircle2, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
+import { CreatorChip } from "@/components/creator";
+import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { categoryLabel, formatMoney, tierLabel } from "@/lib/format";
+import { ConsensusFilter } from "./consensus-filter";
+import type { ItemCategory } from "@/generated/prisma/enums";
 
 // "West Nusa Penida (Kelingking Beach, …)" searches better without the parenthetical.
 function placeQuery(place: string, destination: string) {
@@ -16,6 +19,11 @@ function placeQuery(place: string, destination: string) {
 // Places with a website get their own cache key so a stock photo cached earlier doesn't shadow the venue's.
 function placePhotoKey(destination: string, place: { slug: string; website: string | null }) {
   return `place:${destination}:${place.slug}${place.website ? ":site" : ""}`;
+}
+
+function fromPriceLabel(p: { cents: number; unit: string | null; currency: string }) {
+  if (p.cents === 0) return "Free";
+  return `from ${formatMoney(p.cents, p.currency)}${p.unit ? `/${p.unit}` : ""}`;
 }
 
 export async function generateStaticParams() {
@@ -30,100 +38,37 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
 export default async function DestinationPage({ params }: PageProps<"/destinations/[slug]">) {
   const destination = await getDestination((await params).slug);
   if (!destination) notFound();
-  const { creatorCount } = destination;
+  const { creatorCount, consensus } = destination;
+
+  const counts: Record<string, number> = {};
+  for (const p of consensus) counts[p.category] = (counts[p.category] ?? 0) + 1;
+  const categories = Object.keys(counts) as ItemCategory[];
 
   return (
     <>
       <section>
-        <h2 className="flex items-center gap-2 text-xl font-semibold">
-          <Users className="size-5 text-accent" aria-hidden />{" "}
-          {creatorCount > 1 ? "Creator consensus" : "Recommended spots"}
-        </h2>
-        {creatorCount === 1 && (
-          <p className="mt-1 text-sm text-muted">
-            From one creator so far. Agreement counts appear once more creators cover {destination.name}.
-          </p>
-        )}
-        <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
-          {destination.consensus.map((p) => {
-            const all = p.creators.length === creatorCount;
-            return (
-              <li key={p.slug} className="flex flex-col gap-1 p-4 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex gap-3">
-                  <Photo
-                    photoKey={placePhotoKey(destination.slug, p)}
-                    query={placeQuery(p.name, destination.name)}
-                    category={p.category}
-                    website={p.website}
-                    alt={p.name}
-                    // Landscape photos cropped to a square need ~2x the box width to stay sharp.
-                    sizes="128px"
-                    credit={false}
-                    className="size-16 shrink-0 rounded-lg"
-                  />
-                  <div>
-                    <p className="font-medium">
-                      {p.name} <span className="ml-1 text-xs text-muted">{categoryLabel[p.category]}</span>
-                    </p>
-                    {p.tip && <p className="text-sm text-muted">{p.tip}</p>}
-                    {p.creators.length > 0 && (
-                      <p className="mt-1 flex flex-wrap gap-1.5">
-                        {p.creators.map((c) => (
-                          <CreatorChip key={c.handle} creator={c} />
-                        ))}
-                      </p>
-                    )}
-                    {p.skippedBy.length > 0 && (
-                      <p className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-red-700 dark:text-red-400">
-                        {p.skippedBy.map((c) => (
-                          <CreatorChip key={c.handle} creator={c} />
-                        ))}
-                        says skip it
-                      </p>
-                    )}
-                    <p className="text-[10px] text-muted">
-                      <PhotoCredit
-                        photoKey={placePhotoKey(destination.slug, p)}
-                        query={placeQuery(p.name, destination.name)}
-                        category={p.category}
-                        website={p.website}
-                      />
-                    </p>
-                  </div>
-                </div>
-                {creatorCount > 1 && p.creators.length > 0 && (
-                  <span
-                    className={`inline-flex shrink-0 items-center gap-1 self-start rounded-full px-3 py-1 text-sm font-medium sm:self-center ${
-                      all ? "bg-accent-soft text-accent" : "bg-line text-muted"
-                    }`}
-                  >
-                    {all && <CheckCircle2 className="size-4" aria-hidden />}
-                    {p.creators.length}/{creatorCount} creators
-                  </span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-
-      <section className="mt-12">
-        <h2 className="text-xl font-semibold">Compare routes</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
+        <h2 className="text-xl font-semibold">Pick your route</h2>
+        <p className="mt-1 text-sm text-muted">
+          Full day-by-day plans from real creators.<span className="md:hidden"> Swipe to compare.</span>
+        </p>
+        <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible">
           {destination.routes.map((r) => (
             <Link
               key={r.slug}
               href={`/itineraries/${r.slug}`}
-              className="flex flex-col rounded-2xl border border-line bg-card p-5 transition hover:border-accent"
+              className="flex min-w-[78%] snap-start flex-col rounded-2xl border border-line bg-card p-5 transition hover:border-accent sm:min-w-[320px] md:min-w-0"
             >
-              <span className="text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[r.tier]}</span>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[r.tier]}</span>
+                <span className="text-xs text-muted">{r.days} days</span>
+              </div>
               <h3 className="mt-1 font-semibold">{r.title}</h3>
               <p className="mt-1 flex flex-wrap items-center gap-1.5 text-sm text-muted">
-                by <CreatorChip creator={r.creator} link={false} /> · {r.days} days
+                by <CreatorChip creator={r.creator} link={false} />
               </p>
               {r.totalCents > 0 ? (
                 <>
-                  <p className="mt-3 text-2xl font-semibold">{formatMoney(r.totalCents)}</p>
+                  <p className="mt-3 text-2xl font-semibold tabular-nums">{formatMoney(r.totalCents)}</p>
                   <p className="mb-4 text-xs text-muted">
                     est. per person
                     {r.unpricedCount > 0 && ` · ${r.unpricedCount} items unpriced`}
@@ -135,9 +80,102 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
               ) : (
                 <p className="mt-3 text-sm text-muted">Creator didn&apos;t list prices</p>
               )}
+              <p className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
+                See the full plan <ArrowRight className="size-4" aria-hidden />
+              </p>
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="flex items-center gap-2 text-xl font-semibold">
+          <Users className="size-5 text-accent" aria-hidden />{" "}
+          {creatorCount > 1 ? "What creators agree on" : "Recommended spots"}
+        </h2>
+        <p className="mt-1 text-sm text-muted">
+          {creatorCount > 1
+            ? "Every spot the creators recommend, most agreed-on first. Tap + to add one to your trip cart."
+            : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}
+        </p>
+        <ConsensusFilter categories={categories} counts={counts}>
+          <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
+            {consensus.map((p) => {
+              const all = p.creators.length === creatorCount;
+              return (
+                <li key={p.slug} data-cat={p.category} className="flex gap-3 p-4 sm:gap-4">
+                  <Photo
+                    photoKey={placePhotoKey(destination.slug, p)}
+                    query={placeQuery(p.name, destination.name)}
+                    category={p.category}
+                    website={p.website}
+                    alt={p.name}
+                    // Landscape photos cropped to a square need ~2x the box width to stay sharp.
+                    sizes="192px"
+                    credit={false}
+                    className="size-20 shrink-0 rounded-xl sm:size-24"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="font-semibold leading-snug">{p.name}</p>
+                        <p className="mt-0.5 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted">
+                          {p.area && (
+                            <>
+                              <MapPin className="size-3" aria-hidden /> {p.area} ·
+                            </>
+                          )}{" "}
+                          {categoryLabel[p.category]}
+                          {creatorCount > 1 && p.creators.length > 0 && (
+                            <span
+                              className={`ml-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-medium ${
+                                all ? "bg-accent-soft text-accent" : "bg-line text-muted"
+                              }`}
+                            >
+                              {all && <CheckCircle2 className="size-3" aria-hidden />}
+                              {p.creators.length}/{creatorCount} creators
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                      <div className="flex shrink-0 flex-col items-end gap-1.5">
+                        {p.cartItem && p.skippedBy.length === 0 && <AddItemButton item={p.cartItem} />}
+                        {p.fromPrice && (
+                          <span className="whitespace-nowrap text-xs font-medium tabular-nums">
+                            {fromPriceLabel(p.fromPrice)}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    {p.blurb && <p className="mt-1.5 line-clamp-3 text-sm text-muted">{p.blurb}</p>}
+                    {p.tip && <p className="mt-1 text-sm text-muted">{p.tip}</p>}
+                    <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                      {p.creators.map((c) => (
+                        <CreatorChip key={c.handle} creator={c} />
+                      ))}
+                      {p.skippedBy.length > 0 && (
+                        <span className="flex flex-wrap items-center gap-1.5 text-xs text-red-700 dark:text-red-400">
+                          {p.skippedBy.map((c) => (
+                            <CreatorChip key={c.handle} creator={c} />
+                          ))}
+                          says skip it
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-1 text-[10px] text-muted">
+                      <PhotoCredit
+                        photoKey={placePhotoKey(destination.slug, p)}
+                        query={placeQuery(p.name, destination.name)}
+                        category={p.category}
+                        website={p.website}
+                      />
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </ConsensusFilter>
       </section>
     </>
   );

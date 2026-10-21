@@ -19,7 +19,10 @@ const couponSelect = {
 } as const;
 
 async function couponsByVendor(vendorIds: string[]) {
-  const coupons = await db.coupon.findMany({ where: { vendorId: { in: vendorIds }, active: true }, select: couponSelect });
+  const coupons = await db.coupon.findMany({
+    where: { vendorId: { in: vendorIds }, active: true },
+    select: couponSelect,
+  });
   const map = new Map<string, CouponCandidate[]>();
   for (const { vendorId, ...c } of coupons) map.set(vendorId, [...(map.get(vendorId) ?? []), c]);
   return map;
@@ -105,8 +108,18 @@ export async function getDestination(slug: string) {
         include: {
           items: {
             select: {
+              id: true,
+              name: true,
+              category: true,
+              priceCents: true,
+              priceNote: true,
+              currency: true,
+              unit: true,
+              quantity: true,
               sentiment: true,
-              itinerary: { select: { creator: { select: creatorLinkSelect } } },
+              vendor: { select: { name: true } },
+              links: { select: { url: true, creatorId: true } },
+              itinerary: { select: { slug: true, title: true, creator: { select: creatorLinkSelect } } },
             },
           },
         },
@@ -127,13 +140,39 @@ export async function getDestination(slug: string) {
             .filter((i) => (i.sentiment === "AVOID") === avoid)
             .map((i) => [i.itinerary.creator.handle, i.itinerary.creator]),
         );
-      const toList = <T,>(m: Map<string, T>) => [...m.values()];
+      const toList = <T>(m: Map<string, T>) => [...m.values()];
+      // The cheapest priced recommendation stands in for the place: its price anchors the card
+      // and it is what the + button puts in the cart.
+      const recommended = place.items.filter((i) => i.sentiment !== "AVOID");
+      const priced = recommended.filter((i) => i.priceCents !== null).sort((a, b) => a.priceCents! - b.priceCents!);
+      const pick = priced[0] ?? recommended[0];
       return {
         slug: place.slug,
         name: place.name,
         category: place.category,
+        area: place.area,
+        blurb: place.blurb,
         tip: place.tip,
         website: place.website,
+        fromPrice: priced[0]
+          ? { cents: priced[0].priceCents!, unit: priced[0].unit, currency: priced[0].currency }
+          : null,
+        cartItem: pick
+          ? {
+              id: pick.id,
+              name: pick.name,
+              category: pick.category,
+              priceCents: pick.priceCents,
+              priceNote: pick.priceNote,
+              currency: pick.currency,
+              unit: pick.unit,
+              quantity: pick.quantity,
+              vendor: pick.vendor?.name ?? null,
+              bookUrl: pick.links.find((l) => l.creatorId === null)?.url ?? pick.links[0]?.url ?? null,
+              website: place.website,
+              itinerary: { slug: pick.itinerary.slug, title: pick.itinerary.title },
+            }
+          : null,
         creators: toList(byCreator(false)),
         skippedBy: toList(byCreator(true)),
       };
@@ -228,23 +267,23 @@ export async function getItinerary(slug: string) {
       items: items.map((i) => {
         const offer = offerFor(i, it.creator, coupons);
         return {
-        id: i.id,
-        name: i.name,
-        note: i.note,
-        category: i.category,
-        priceCents: i.priceCents,
-        priceNote: i.priceNote,
-        priceSourceUrl: i.priceSourceUrl,
-        sentiment: i.sentiment,
-        quantity: i.quantity,
-        unit: i.unit,
-        currency: i.currency,
-        vendor: i.vendor?.name ?? null,
-        bookUrl: offer?.url ?? null,
-        website: i.place?.website ?? null,
-        couponCode: offer?.code ?? null,
-        creditedTo: offer?.creditedTo ?? null,
-      };
+          id: i.id,
+          name: i.name,
+          note: i.note,
+          category: i.category,
+          priceCents: i.priceCents,
+          priceNote: i.priceNote,
+          priceSourceUrl: i.priceSourceUrl,
+          sentiment: i.sentiment,
+          quantity: i.quantity,
+          unit: i.unit,
+          currency: i.currency,
+          vendor: i.vendor?.name ?? null,
+          bookUrl: offer?.url ?? null,
+          website: i.place?.website ?? null,
+          couponCode: offer?.code ?? null,
+          creditedTo: offer?.creditedTo ?? null,
+        };
       }),
     })),
   };

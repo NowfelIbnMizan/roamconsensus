@@ -115,6 +115,10 @@ model Place {
   slug          String
   name          String
   category      ItemCategory
+  /// Neighbourhood or island, e.g. "Ubud" or "Nusa Penida".
+  area          String?
+  /// One or two sentences: what it is and why it's worth knowing (history, fame).
+  blurb         String?
   tip           String?
   /// Venue's own site; its share image (og:image) is used as the place photo.
   website       String?

@@ -57,7 +57,17 @@ const Destination = z.object({
   summary: z.string(),
   heroPhotoUrl: url.optional(),
   sample: z.boolean().default(false),
-  places: z.array(z.object({ slug, name: z.string(), category, tip: z.string().optional(), website: url.optional() })),
+  places: z.array(
+    z.object({
+      slug,
+      name: z.string(),
+      category,
+      area: z.string().optional(),
+      blurb: z.string().optional(),
+      tip: z.string().optional(),
+      website: url.optional(),
+    }),
+  ),
   creators: z.array(
     z.object({
       handle: slug,
@@ -139,18 +149,23 @@ async function main() {
   const problems: string[] = [];
   for (const c of coupons) {
     if (!vendorSlugs.has(c.vendor)) problems.push(`coupons.json ${c.code}: unknown vendor "${c.vendor}"`);
-    if (c.creator && !creatorHandles.has(c.creator)) problems.push(`coupons.json ${c.code}: unknown creator "${c.creator}"`);
+    if (c.creator && !creatorHandles.has(c.creator))
+      problems.push(`coupons.json ${c.code}: unknown creator "${c.creator}"`);
     if (c.type === "CREATOR" && !c.creator) problems.push(`coupons.json ${c.code}: CREATOR coupons need "creator"`);
   }
   for (const d of destinations) {
     const places = new Set(d.places.map((p) => p.slug));
     const creators = new Set(d.creators.map((c) => c.handle));
     for (const it of d.itineraries) {
-      if (!creators.has(it.creator)) problems.push(`${d.slug} ${it.slug}: creator "${it.creator}" not in this file's creators`);
+      if (!creators.has(it.creator))
+        problems.push(`${d.slug} ${it.slug}: creator "${it.creator}" not in this file's creators`);
       for (const item of it.items) {
-        if (item.place && !places.has(item.place)) problems.push(`${d.slug} ${it.slug} "${item.name}": unknown place "${item.place}"`);
-        if (item.vendor && !vendorSlugs.has(item.vendor)) problems.push(`${d.slug} ${it.slug} "${item.name}": unknown vendor "${item.vendor}"`);
-        if ((item.ourUrl || item.creatorUrl) && !item.vendor) problems.push(`${d.slug} ${it.slug} "${item.name}": links need a vendor`);
+        if (item.place && !places.has(item.place))
+          problems.push(`${d.slug} ${it.slug} "${item.name}": unknown place "${item.place}"`);
+        if (item.vendor && !vendorSlugs.has(item.vendor))
+          problems.push(`${d.slug} ${it.slug} "${item.name}": unknown vendor "${item.vendor}"`);
+        if ((item.ourUrl || item.creatorUrl) && !item.vendor)
+          problems.push(`${d.slug} ${it.slug} "${item.name}": links need a vendor`);
       }
     }
   }
@@ -196,7 +211,13 @@ async function main() {
     const placeIds = new Map<string, string>();
     for (const p of places) {
       // Explicit nulls so removing an optional field from the JSON clears it.
-      const fields = { ...p, tip: p.tip ?? null, website: p.website ?? null };
+      const fields = {
+        ...p,
+        area: p.area ?? null,
+        blurb: p.blurb ?? null,
+        tip: p.tip ?? null,
+        website: p.website ?? null,
+      };
       const row = await db.place.upsert({
         where: { destinationId_slug: { destinationId: dest.id, slug: p.slug } },
         create: { ...fields, destinationId: dest.id },
@@ -288,14 +309,16 @@ async function main() {
     where: { handle: { notIn: [...creatorHandles] }, itineraries: { none: {} } },
   });
   if (goneDestinations.count || goneCreators.count) {
-    console.log(`Removed ${goneDestinations.count} destinations and ${goneCreators.count} creators no longer in data/.`);
+    console.log(
+      `Removed ${goneDestinations.count} destinations and ${goneCreators.count} creators no longer in data/.`,
+    );
   }
 
   await db.coupon.createMany({
     data: coupons.map(({ vendor, creator, ...c }) => ({
       ...c,
       vendorId: vendorIds.get(vendor)!,
-      creatorId: creator ? creatorIds.get(creator) ?? null : null,
+      creatorId: creator ? (creatorIds.get(creator) ?? null) : null,
     })),
   });
   console.log(`Loaded ${vendors.length} vendors, ${coupons.length} coupons.`);

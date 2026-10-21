@@ -79,6 +79,8 @@ export async function savePlace(fd: FormData) {
     slug: slugify(text(fd, "slug") || text(fd, "name")),
     name: text(fd, "name"),
     category: text(fd, "category") as ItemCategory,
+    area: optional(fd, "area"),
+    blurb: optional(fd, "blurb"),
     tip: optional(fd, "tip"),
     website: optional(fd, "website"),
   };

@@ -8,194 +8,268 @@
       "slug": "marriotts-bali-nusa-dua-gardens",
       "name": "Marriott's Bali Nusa Dua Gardens",
       "category": "STAY",
+      "area": "Nusa Dua",
+      "blurb": "Resort hotel in Bali's gated Nusa Dua enclave, a short shuttle from the beach. Bookable with Marriott points, which is why points travellers start their trip here.",
       "website": "https://www.marriott.com/en-us/hotels/dpsmv-marriotts-bali-nusa-dua-gardens/overview/"
     },
     {
       "slug": "nusa-dua-beach-geger-beach-pandawa-beach",
       "name": "Nusa Dua Beach / Geger Beach / Pandawa Beach",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Nusa Dua",
+      "blurb": "Three calm, white-sand beaches on the sheltered east side of the Bukit. Pandawa sits below carved limestone cliffs; Geger is the quiet local favourite."
     },
     {
       "slug": "bali-collection",
       "name": "Bali Collection",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Nusa Dua",
+      "blurb": "Open-air shopping and dining complex inside the Nusa Dua resort enclave. Handy for essentials and a stroll rather than a destination in itself."
     },
     {
       "slug": "uluwatu-temple",
       "name": "Uluwatu Temple",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Uluwatu",
+      "blurb": "Thousand-year-old sea temple perched on a 70 m cliff edge at Bali's southwestern tip. One of the island's six holiest temples, famous for sunsets and bold macaques."
     },
     {
       "slug": "kecak-dance-performance",
       "name": "Kecak Dance Performance",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Uluwatu",
+      "blurb": "Traditional fire dance performed at sunset in Uluwatu Temple's clifftop amphitheatre, with a chanting choir of dozens of men instead of instruments. Telling of the Ramayana epic."
     },
     {
       "slug": "bumbu-bali",
       "name": "Bumbu Bali",
       "category": "FOOD",
+      "area": "Tanjung Benoa",
+      "blurb": "Long-running Balinese fine-dining restaurant by chef Heinz von Holzen, known for its rijsttafel set menu and cooking school. A classic for authentic Balinese food.",
       "website": "https://www.balifoods.com"
     },
     {
       "slug": "ferry-from-sanur-to-nusa-penida",
       "name": "Ferry from Sanur to Nusa Penida",
-      "category": "TRANSIT"
+      "category": "TRANSIT",
+      "area": "Sanur",
+      "blurb": "Fast boats cross from Sanur to Nusa Penida in about 45 minutes. Book a morning boat; the strait gets choppy in the afternoon."
     },
     {
       "slug": "west-nusa-penida",
       "name": "West Nusa Penida (Kelingking Beach, Angel's Billabong, Broken Beach, Crystal Bay)",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Nusa Penida",
+      "blurb": "Day-tour circuit of Nusa Penida's west coast: the T-rex-shaped Kelingking cliff, Angel's Billabong rock pool, Broken Beach's natural arch and Crystal Bay for snorkelling."
     },
     {
       "slug": "diamond-beach",
       "name": "Diamond Beach",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Nusa Penida",
+      "blurb": "White-sand cove on Nusa Penida's east coast, reached by a cliff-carved staircase, with palm trees and diamond-shaped rock pinnacles in the surf."
     },
     {
       "slug": "maruti-beach-club",
       "name": "Maruti Beach Club",
-      "category": "FOOD"
+      "category": "FOOD",
+      "area": "Nusa Penida",
+      "blurb": "Laid-back beach club on Nusa Penida where a sunbed comes with a minimum food-and-drink spend. A rest stop between the island's viewpoints."
     },
     {
       "slug": "sanur-to-ubud-drive",
       "name": "Sanur to Ubud Drive",
-      "category": "TRANSIT"
+      "category": "TRANSIT",
+      "area": "Ubud",
+      "blurb": "Private car from the coast up to Ubud, about 90 minutes depending on traffic. Drivers usually stop at sights on request."
     },
     {
       "slug": "ubud-art-market",
       "name": "Ubud Art Market",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Traditional market opposite Ubud's royal palace selling woven bags, sarongs, carvings and art. Free to wander; bargaining is expected."
     },
     {
       "slug": "mount-batur-sunrise-hike",
       "name": "Mount Batur Sunrise Hike",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Kintamani",
+      "blurb": "Pre-dawn hike up a 1,717 m active volcano for sunrise above a sea of clouds and the caldera lake. About two hours up on a well-trodden path with a guide."
     },
     {
       "slug": "tegalalang-rice-terraces",
       "name": "Tegalalang Rice Terraces",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Bali's most photographed rice terraces, carved into a river valley north of Ubud using the island's thousand-year-old subak irrigation system."
     },
     {
       "slug": "goa-gajah-and-pura-gunung-lebah",
       "name": "Goa Gajah & Pura Gunung Lebah",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Goa Gajah, the 9th-century 'Elephant Cave' sanctuary with its carved demon-mouth entrance, paired with the small river-junction temple Pura Gunung Lebah in Ubud."
     },
     {
       "slug": "copper-kitchen-and-bar",
       "name": "Copper Kitchen and Bar",
       "category": "FOOD",
+      "area": "Ubud",
+      "blurb": "Rooftop restaurant at Bisma Eight in Ubud doing modern plates with local produce. A dressier dinner option without resort prices.",
       "website": "https://bisma-eight.com"
     },
     {
       "slug": "alchemy-umah-pizza-warung-di-koi",
       "name": "Alchemy / Umah Pizza / Warung Di Koi",
-      "category": "FOOD"
+      "category": "FOOD",
+      "area": "Ubud",
+      "blurb": "A trio of easy Ubud eats: Alchemy's famous raw-vegan breakfast bar, wood-fired pizza at Umah, and cheap local plates at Warung Di Koi."
     },
     {
       "slug": "no-mas-bar-cp-lounge",
       "name": "No Mas Bar / CP Lounge",
-      "category": "FOOD"
+      "category": "FOOD",
+      "area": "Ubud",
+      "blurb": "Ubud's low-key nightlife pair: cocktails at No Más and late-night drinks and live music at CP Lounge."
     },
     {
       "slug": "ubud-yoga",
       "name": "Ubud Yoga (Radiantly Alive / Ubud Yoga House)",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Drop-in classes at Ubud's best-known studios, Radiantly Alive and Ubud Yoga House, from beginner flows to aerial. Part of why Ubud became Bali's wellness capital."
     },
     {
       "slug": "pura-tanah-lot",
       "name": "Pura Tanah Lot",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Tabanan",
+      "blurb": "16th-century temple on a rock just offshore, cut off at high tide. One of Bali's most sacred sea temples and its most famous sunset silhouette."
     },
     {
       "slug": "canggu-beach-clubs",
       "name": "Canggu Beach Clubs (The Lawn, Finns, La Brisa)",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Canggu",
+      "blurb": "Canggu's beachfront clubs: grassy sunset drinks at The Lawn, pool parties at Finns, and driftwood-chic La Brisa. Entry is free; daybeds carry a minimum spend."
     },
     {
       "slug": "the-shady-shack",
       "name": "The Shady Shack",
       "category": "FOOD",
+      "area": "Canggu",
+      "blurb": "Breezy vegetarian cafe by Canggu's rice fields that became one of Bali's best-known healthy-food spots. Expect smoothie bowls and big veggie burgers.",
       "website": "https://theshadyshackbali.com"
     },
     {
       "slug": "coffee-cartel",
       "name": "Coffee Cartel",
-      "category": "FOOD"
+      "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Instagram-famous Seminyak brunch cafe known for latte art, pastel interiors and health-leaning breakfast plates."
     },
     {
       "slug": "prana-spa",
       "name": "Prana Spa",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Seminyak",
+      "blurb": "Moroccan-Rajasthani styled spa in Seminyak, one of Bali's most elaborate day spas, doing massages, rituals and hammam treatments."
     },
     {
       "slug": "w-hotel",
       "name": "W Hotel",
       "category": "EXPERIENCE",
+      "area": "Seminyak",
+      "blurb": "Flashy beachfront resort on Seminyak's sand, known for its pool scene and Woobar sunsets. The splurge stay of this route.",
       "website": "https://www.marriott.com/en-us/hotels/dpswh-w-bali-seminyak/overview/"
     },
     {
       "slug": "merah-putih",
       "name": "Merah Putih",
       "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Striking high-ceilinged restaurant serving modern Indonesian food; the 10-dish tasting menu tours the archipelago's cuisines.",
       "website": "https://merahputihbali.com"
     },
     {
       "slug": "the-edge",
       "name": "The Edge",
       "category": "FOOD",
+      "area": "Uluwatu",
+      "blurb": "Clifftop resort above Uluwatu whose day pass buys access to the famous glass-edged 'oneeighty' pool hanging over the ocean, with food-and-drink credit included.",
       "website": "https://theedgebali.com"
     },
     {
       "slug": "green-bowl-beach",
       "name": "Green Bowl Beach",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ungasan",
+      "blurb": "Secluded white-sand beach at the bottom of about 300 steps on the Bukit's south coast, shared with surfers and bats in its cliff caves."
     },
     {
       "slug": "sundays-beach-club",
       "name": "Sundays Beach Club",
       "category": "FOOD",
+      "area": "Ungasan",
+      "blurb": "Beach club on a private white-sand cove below the cliffs at Ungasan, reached by inclinator. Day pass includes food-and-drink credit, kayaks and snorkelling.",
       "website": "https://www.sundaysbeachclub.com"
     },
     {
       "slug": "sarong",
       "name": "Sarong",
-      "category": "FOOD"
+      "category": "FOOD",
+      "area": "Seminyak",
+      "blurb": "Elegant Seminyak dining room by chef Will Meyrick doing refined South-East Asian street food. A long-standing special-occasion pick."
     },
     {
       "slug": "ubud-shopping",
       "name": "Ubud Shopping",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Boutique-hopping along Ubud's Jalan Dewi Sita and Hanoman streets: homeware, jewellery and clothes beyond the market stalls."
     },
     {
       "slug": "royal-ubud-palace-fire-show",
       "name": "Royal Ubud Palace Fire Show",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Evening Legong and fire dance performances in the courtyard of Puri Saren Agung, Ubud's royal palace, still home to the town's royal family."
     },
     {
       "slug": "tirta-gangga-water-palace",
       "name": "Tirta Gangga Water Palace",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "East Bali",
+      "blurb": "Former royal water palace in East Bali from 1946, with koi-filled pools, fountains and stepping stones, built around a spring the Balinese hold sacred."
     },
     {
       "slug": "gates-of-heaven",
       "name": "Gates of Heaven (Lempuyang Temple)",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "East Bali",
+      "blurb": "Lempuyang Temple's famous split gate framing Mount Agung. The 'reflection' in photos is a trick done with a mirror under a phone, and queues run for hours."
     },
     {
       "slug": "ubud-rafting",
       "name": "Ubud Rafting",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "White-water rafting on the Ayung River's class II-III rapids through jungle gorges and past waterfalls, with hotel pickup included on most tours."
     },
     {
       "slug": "tegenungan-waterfall",
       "name": "Tegenungan Waterfall",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Powerful 15 m waterfall near Ubud, one of Bali's most visited, with a swimmable pool and a staircase of viewpoints."
     },
     {
       "slug": "tirta-empul-temple",
       "name": "Tirta Empul Temple",
-      "category": "EXPERIENCE"
+      "category": "EXPERIENCE",
+      "area": "Tampaksiring",
+      "blurb": "Thousand-year-old water temple where Balinese Hindus queue through 13 fountain spouts for the melukat purification ritual. Visitors can join with a guide and a sarong."
     }
   ],
   "creators": [

@@ -60,7 +60,15 @@ export async function GET() {
       heroPhotoUrl: d.heroPhotoUrl,
       sample: d.isSample || null,
       places: d.places.map((p) =>
-        clean({ slug: p.slug, name: p.name, category: p.category, tip: p.tip, website: p.website }),
+        clean({
+          slug: p.slug,
+          name: p.name,
+          category: p.category,
+          area: p.area,
+          blurb: p.blurb,
+          tip: p.tip,
+          website: p.website,
+        }),
       ),
       creators: [...creators.values()].map((c) =>
         clean({
