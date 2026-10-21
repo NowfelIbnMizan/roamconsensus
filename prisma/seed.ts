@@ -149,6 +149,14 @@ async function main() {
   }
   if (problems.length) throw new Error(`Data problems:\n  ${problems.join("\n  ")}`);
 
+  // The admin panel owns content once the database has any, so deploys must not overwrite those edits.
+  // FORCE_SEED=1 loads the files anyway (e.g. to restore a backup laid out like data/).
+  const force = process.env.FORCE_SEED === "1" || process.env.SEED_RESET === "1";
+  if (!force && (await db.destination.count()) > 0) {
+    console.log("Database already has content; skipping seed so admin edits are kept. Set FORCE_SEED=1 to load data/.");
+    return;
+  }
+
   if (process.env.SEED_RESET === "1") {
     console.log("SEED_RESET=1: wiping all data first.");
     await db.$transaction([

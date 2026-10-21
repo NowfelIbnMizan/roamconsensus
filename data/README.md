@@ -1,6 +1,8 @@
 # Site data
 
-Everything shown on the site comes from these files. Every Netlify build loads them into the database (`prisma/seed.ts`), so a merged change goes live on the next deploy.
+The live site's content is edited in the admin panel at `/admin` (password: the `ADMIN_PASSWORD` env var in Netlify). The database is the source of truth; these files are only the starter content.
+
+Builds load these files into the database (`prisma/seed.ts`) only when it is empty, so deploys never overwrite admin edits. To load them anyway, for example to restore a backup from the admin's "Download backup" (each key in it is a file path under `data/`), set `FORCE_SEED=1` for one build. That updates matching items and removes destinations that aren't in the files.
 
 - `vendors.json`: booking sites (Agoda, Klook, ...).
 - `coupons.json`: promo codes. `type` is `PLATFORM` (ours), `PUBLIC` (brand promo) or `CREATOR` (needs `creator`). Optional `validFrom` / `validTo` dates.
