@@ -31,9 +31,9 @@ export type MapGroup = { id: number; label: string; color: string; routeUrl?: st
 
 type MapHandle = { L: typeof Leaflet; map: Leaflet.Map; layer: Leaflet.LayerGroup };
 
-const tiles = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
-const attribution =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
+// OpenStreetMap's own tiles: free with attribution, no key (CARTO's basemaps now need one).
+const tiles = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 function popup(s: MapStop) {
   const box = document.createElement("div");
@@ -95,7 +95,7 @@ export function TripMap({
       if (cancelled || !el.current) return;
       // One finger scrolls the page on phones; pinch zooms and pans the map.
       const map = L.map(el.current, { scrollWheelZoom: false, dragging: !L.Browser.mobile });
-      L.tileLayer(tiles, { attribution, subdomains: "abcd", maxZoom: 19 }).addTo(map);
+      L.tileLayer(tiles, { attribution, maxZoom: 19 }).addTo(map);
       handle.current = { L, map, layer: L.layerGroup().addTo(map) };
       setReady(true);
     });
