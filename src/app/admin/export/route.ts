@@ -19,6 +19,7 @@ export async function GET() {
       orderBy: { slug: "asc" },
       include: {
         places: { orderBy: { slug: "asc" } },
+        months: { orderBy: { month: "asc" } },
         itineraries: {
           orderBy: { slug: "asc" },
           include: {
@@ -58,6 +59,12 @@ export async function GET() {
       country: d.country,
       summary: d.summary,
       heroPhotoUrl: d.heroPhotoUrl,
+      climateSourceUrl: d.climateSourceUrl,
+      months: d.months.length
+        ? d.months.map((m) =>
+            clean({ month: m.month, highC: m.highC, lowC: m.lowC, rainMm: m.rainMm, crowd: m.crowd, note: m.note }),
+          )
+        : null,
       sample: d.isSample || null,
       places: d.places.map((p) =>
         clean({

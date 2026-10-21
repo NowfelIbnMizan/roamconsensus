@@ -56,6 +56,19 @@ const Destination = z.object({
   country: z.string(),
   summary: z.string(),
   heroPhotoUrl: url.optional(),
+  climateSourceUrl: url.optional(),
+  months: z
+    .array(
+      z.object({
+        month: z.number().int().min(1).max(12),
+        highC: z.number().int().optional(),
+        lowC: z.number().int().optional(),
+        rainMm: z.number().int().nonnegative().optional(),
+        crowd: z.enum(["LOW", "MEDIUM", "HIGH"]).optional(),
+        note: z.string().optional(),
+      }),
+    )
+    .default([]),
   sample: z.boolean().default(false),
   places: z.array(
     z.object({
@@ -203,12 +216,15 @@ async function main() {
 
   const creatorIds = new Map<string, string>();
   for (const d of destinations) {
-    const { places, creators, itineraries, sample, ...fields } = d;
+    const { places, creators, itineraries, sample, months, ...fields } = d;
     const dest = await db.destination.upsert({
       where: { slug: d.slug },
       create: { ...fields, isSample: sample },
-      update: { ...fields, isSample: sample },
+      update: { ...fields, climateSourceUrl: fields.climateSourceUrl ?? null, isSample: sample },
     });
+
+    await db.destinationMonth.deleteMany({ where: { destinationId: dest.id } });
+    await db.destinationMonth.createMany({ data: months.map((m) => ({ ...m, destinationId: dest.id })) });
 
     const placeIds = new Map<string, string>();
     for (const p of places) {

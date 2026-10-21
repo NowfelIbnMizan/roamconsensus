@@ -1,10 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
-import { deleteDestination, deletePlace, saveDestination, saveItinerary, savePlace } from "@/lib/admin/actions";
+import {
+  deleteDestination,
+  deletePlace,
+  saveDestination,
+  saveItinerary,
+  saveMonths,
+  savePlace,
+} from "@/lib/admin/actions";
+import { monthNames } from "@/lib/seasons";
 import { categoryLabel, tierLabel } from "@/lib/format";
 import { categoryOptions, tierOptions } from "../../../options";
-import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea } from "../../../ui";
+import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea, inputClass } from "../../../ui";
 
 export default async function DestinationAdmin({ params }: PageProps<"/admin/destinations/[id]">) {
   const { id } = await params;
@@ -14,6 +22,7 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
       include: {
         itineraries: { orderBy: { title: "asc" }, include: { creator: true, _count: { select: { items: true } } } },
         places: { orderBy: { name: "asc" }, include: { _count: { select: { items: true } } } },
+        months: true,
       },
     }),
     db.creator.findMany({ orderBy: { name: "asc" } }),
@@ -97,6 +106,76 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
           </form>
         )}
       </details>
+
+      <h2 className="mt-10 text-xl font-semibold">Best time to go</h2>
+      <p className="mt-1 text-sm text-muted">
+        Typical weather and crowds per month, shown on the &quot;When to go&quot; tab. Leave a month blank to hide it.
+      </p>
+      <form action={saveMonths} className="mt-3 rounded-2xl border border-line bg-card p-4">
+        <input type="hidden" name="destinationId" value={d.id} />
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] text-sm">
+            <thead className="text-left text-muted">
+              <tr>
+                <th className="pb-2 font-normal">Month</th>
+                <th className="pb-2 font-normal">High °C</th>
+                <th className="pb-2 font-normal">Low °C</th>
+                <th className="pb-2 font-normal">Rain mm</th>
+                <th className="pb-2 font-normal">Crowds</th>
+                <th className="pb-2 font-normal">Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {monthNames.map((name, i) => {
+                const m = d.months.find((x) => x.month === i + 1);
+                return (
+                  <tr key={name}>
+                    <td className="py-1 pr-2 font-medium">{name}</td>
+                    {(["highC", "lowC", "rainMm"] as const).map((k) => (
+                      <td key={k} className="py-1 pr-2">
+                        <input
+                          name={`${k}${i + 1}`}
+                          type="number"
+                          defaultValue={m?.[k] ?? ""}
+                          aria-label={`${name} ${k}`}
+                          className={`w-20 ${inputClass}`}
+                        />
+                      </td>
+                    ))}
+                    <td className="py-1 pr-2">
+                      <select
+                        name={`crowd${i + 1}`}
+                        defaultValue={m?.crowd ?? ""}
+                        aria-label={`${name} crowds`}
+                        className={inputClass}
+                      >
+                        <option value="">–</option>
+                        <option value="LOW">Quiet</option>
+                        <option value="MEDIUM">Moderate</option>
+                        <option value="HIGH">Busy</option>
+                      </select>
+                    </td>
+                    <td className="py-1">
+                      <input
+                        name={`note${i + 1}`}
+                        defaultValue={m?.note ?? ""}
+                        aria-label={`${name} note`}
+                        className={inputClass}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Field label="Weather source link" name="climateSourceUrl" type="url" defaultValue={d.climateSourceUrl} />
+          <div className="flex items-end">
+            <SaveButton />
+          </div>
+        </div>
+      </form>
 
       <h2 className="mt-10 text-xl font-semibold">Places</h2>
       <p className="mt-1 text-sm text-muted">

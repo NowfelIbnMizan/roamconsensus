@@ -17,6 +17,8 @@ export type MapStop = {
   subtitle?: string;
   /** Google Maps link shown in the pin's popup. */
   href?: string;
+  /** Our own page about the stop, linked from the popup. */
+  page?: string;
   /** Day (or other group) the stop belongs to; groups get their own chip and route line. */
   group?: number;
   /** Category, so the consensus filter chips can hide the pin like its list row. */
@@ -42,6 +44,13 @@ function popup(s: MapStop) {
     const sub = box.appendChild(document.createElement("p"));
     sub.className = "rc-popup-sub";
     sub.textContent = s.subtitle;
+  }
+  if (s.page) {
+    const a = box.appendChild(document.createElement("a"));
+    a.href = s.page;
+    a.className = "rc-popup-link";
+    a.textContent = "What creators say →";
+    box.appendChild(document.createElement("br"));
   }
   if (s.href) {
     const a = box.appendChild(document.createElement("a"));

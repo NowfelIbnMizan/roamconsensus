@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { CONTENT_TAG } from "@/lib/data";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { SOCIALS, type SocialKey } from "@/lib/creator-links";
-import type { CouponType, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
+import type { CouponType, Crowd, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
 
 // Form helpers: blank inputs become null so clearing a field clears it in the database.
 const text = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
@@ -68,6 +68,32 @@ export async function deleteDestination(fd: FormData) {
   await db.destination.delete({ where: { id: text(fd, "id") } });
   published();
   redirect("/admin");
+}
+
+// Best time to go: one form with a row per month. A row left blank removes that month.
+
+export async function saveMonths(fd: FormData) {
+  await requireAdmin();
+  const destinationId = text(fd, "destinationId");
+  const num = (key: string) => (text(fd, key) === "" ? null : int(fd, key));
+  await db.destination.update({
+    where: { id: destinationId },
+    data: { climateSourceUrl: optional(fd, "climateSourceUrl") },
+  });
+  for (let month = 1; month <= 12; month++) {
+    const data = {
+      highC: num(`highC${month}`),
+      lowC: num(`lowC${month}`),
+      rainMm: num(`rainMm${month}`),
+      crowd: (optional(fd, `crowd${month}`) as Crowd | null) ?? null,
+      note: optional(fd, `note${month}`),
+    };
+    const where = { destinationId_month: { destinationId, month } };
+    if (Object.values(data).every((v) => v === null))
+      await db.destinationMonth.deleteMany({ where: { destinationId, month } });
+    else await db.destinationMonth.upsert({ where, create: { ...data, destinationId, month }, update: data });
+  }
+  published();
 }
 
 // Places

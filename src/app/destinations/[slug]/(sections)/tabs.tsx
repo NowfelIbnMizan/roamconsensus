@@ -7,6 +7,7 @@ export function DestinationTabs({ slug }: { slug: string }) {
   const pathname = usePathname();
   const tabs = [
     { href: `/destinations/${slug}`, label: "Itineraries" },
+    { href: `/destinations/${slug}/when`, label: "When to go" },
     { href: `/destinations/${slug}/esim`, label: "eSIM" },
   ];
   return (

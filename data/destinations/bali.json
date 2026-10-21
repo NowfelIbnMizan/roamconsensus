@@ -3,6 +3,105 @@
   "name": "Bali",
   "country": "Indonesia",
   "summary": "Resort beaches in Nusa Dua, cliff temples in Uluwatu, Nusa Penida's coastline, Ubud's rice terraces and volcano sunrises, then Canggu sunsets.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Denpasar#Climate",
+  "months": [
+    {
+      "month": 1,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 345,
+      "crowd": "MEDIUM",
+      "note": "Wet season. Busy over New Year, quiet after."
+    },
+    {
+      "month": 2,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 274,
+      "crowd": "LOW",
+      "note": "Wettest stretch and lowest prices. Short, heavy afternoon storms."
+    },
+    {
+      "month": 3,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 234,
+      "crowd": "LOW",
+      "note": "Nyepi (Day of Silence) usually falls in March: the whole island shuts for 24 hours, airport included. Check the date."
+    },
+    {
+      "month": 4,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 88,
+      "crowd": "MEDIUM",
+      "note": "Dry season begins. Green rice terraces, fair prices."
+    },
+    {
+      "month": 5,
+      "highC": 31,
+      "lowC": 23,
+      "rainMm": 93,
+      "crowd": "MEDIUM",
+      "note": "Dry, green and not yet crowded."
+    },
+    {
+      "month": 6,
+      "highC": 30,
+      "lowC": 23,
+      "rainMm": 53,
+      "crowd": "HIGH",
+      "note": "Dry. School holidays push prices up from late June."
+    },
+    {
+      "month": 7,
+      "highC": 29,
+      "lowC": 22,
+      "rainMm": 55,
+      "crowd": "HIGH",
+      "note": "Peak season: driest, busiest, priciest. Book stays early."
+    },
+    {
+      "month": 8,
+      "highC": 30,
+      "lowC": 22,
+      "rainMm": 25,
+      "crowd": "HIGH",
+      "note": "Peak season continues. Best weather for Nusa Penida boats and Mount Batur."
+    },
+    {
+      "month": 9,
+      "highC": 30,
+      "lowC": 23,
+      "rainMm": 47,
+      "crowd": "MEDIUM",
+      "note": "Still dry with fewer crowds. A sweet spot."
+    },
+    {
+      "month": 10,
+      "highC": 31,
+      "lowC": 23,
+      "rainMm": 63,
+      "crowd": "MEDIUM",
+      "note": "Warm and calm before the rains."
+    },
+    {
+      "month": 11,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 179,
+      "crowd": "LOW",
+      "note": "Rains return. Quiet and cheaper."
+    },
+    {
+      "month": 12,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 276,
+      "crowd": "HIGH",
+      "note": "Wet, and very busy from Christmas to New Year."
+    }
+  ],
   "places": [
     {
       "slug": "marriotts-bali-nusa-dua-gardens",

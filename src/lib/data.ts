@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 import { db } from "@/lib/db";
-import type { ItemCategory } from "@/generated/prisma/client";
+import type { ItemCategory, Prisma } from "@/generated/prisma/client";
 import { pickOffer, type CouponCandidate } from "@/lib/coupons";
 import { creatorLinkSelect } from "@/lib/creator-links";
 
@@ -88,6 +88,77 @@ function itemTotal(item: { priceCents: number | null; quantity: number }) {
   return (item.priceCents ?? 0) * item.quantity;
 }
 
+const placeItemSelect = {
+  id: true,
+  name: true,
+  note: true,
+  day: true,
+  category: true,
+  priceCents: true,
+  priceNote: true,
+  priceSourceUrl: true,
+  currency: true,
+  unit: true,
+  quantity: true,
+  sentiment: true,
+  vendor: { select: { name: true } },
+  links: { select: { url: true, creatorId: true } },
+  itinerary: { select: { slug: true, title: true, creator: { select: creatorLinkSelect } } },
+} as const;
+
+type PlaceWithItems = Prisma.PlaceGetPayload<{ include: { items: { select: typeof placeItemSelect } } }>;
+
+/**
+ * A place as the consensus list shows it. Consensus: how many distinct creators recommend it; AVOID items count
+ * against it instead of for it.
+ */
+function placeSummary(place: PlaceWithItems) {
+  const byCreator = (avoid: boolean) =>
+    new Map(
+      place.items
+        .filter((i) => (i.sentiment === "AVOID") === avoid)
+        .map((i) => [i.itinerary.creator.handle, i.itinerary.creator]),
+    );
+  const toList = <T>(m: Map<string, T>) => [...m.values()];
+  // The cheapest priced recommendation stands in for the place: its price anchors the card
+  // and it is what the + button puts in the cart.
+  const recommended = place.items.filter((i) => i.sentiment !== "AVOID");
+  const priced = recommended.filter((i) => i.priceCents !== null).sort((a, b) => a.priceCents! - b.priceCents!);
+  const pick = priced[0] ?? recommended[0];
+  return {
+    slug: place.slug,
+    name: place.name,
+    category: place.category,
+    area: place.area,
+    blurb: place.blurb,
+    tip: place.tip,
+    website: place.website,
+    lat: place.lat,
+    lng: place.lng,
+    fromPrice: priced[0] ? { cents: priced[0].priceCents!, unit: priced[0].unit, currency: priced[0].currency } : null,
+    cartItem: pick
+      ? {
+          id: pick.id,
+          name: pick.name,
+          category: pick.category,
+          priceCents: pick.priceCents,
+          priceNote: pick.priceNote,
+          currency: pick.currency,
+          unit: pick.unit,
+          quantity: pick.quantity,
+          vendor: pick.vendor?.name ?? null,
+          bookUrl: pick.links.find((l) => l.creatorId === null)?.url ?? pick.links[0]?.url ?? null,
+          website: place.website,
+          lat: place.lat,
+          lng: place.lng,
+          itinerary: { slug: pick.itinerary.slug, title: pick.itinerary.title },
+        }
+      : null,
+    creators: toList(byCreator(false)),
+    skippedBy: toList(byCreator(true)),
+  };
+}
+
 export async function getDestination(slug: string) {
   "use cache";
   cacheLife("hours");
@@ -104,83 +175,16 @@ export async function getDestination(slug: string) {
           items: { select: { category: true, priceCents: true, quantity: true } },
         },
       },
-      places: {
-        include: {
-          items: {
-            select: {
-              id: true,
-              name: true,
-              category: true,
-              priceCents: true,
-              priceNote: true,
-              currency: true,
-              unit: true,
-              quantity: true,
-              sentiment: true,
-              vendor: { select: { name: true } },
-              links: { select: { url: true, creatorId: true } },
-              itinerary: { select: { slug: true, title: true, creator: { select: creatorLinkSelect } } },
-            },
-          },
-        },
-      },
+      months: { orderBy: { month: "asc" }, omit: { id: true, destinationId: true } },
+      places: { include: { items: { select: placeItemSelect } } },
     },
   });
   if (!destination) return null;
 
   const creatorCount = new Set(destination.itineraries.map((i) => i.creatorId)).size;
 
-  // Consensus: how many distinct creators recommend each place. AVOID items
-  // count against a place instead of for it.
   const consensus = destination.places
-    .map((place) => {
-      const byCreator = (avoid: boolean) =>
-        new Map(
-          place.items
-            .filter((i) => (i.sentiment === "AVOID") === avoid)
-            .map((i) => [i.itinerary.creator.handle, i.itinerary.creator]),
-        );
-      const toList = <T>(m: Map<string, T>) => [...m.values()];
-      // The cheapest priced recommendation stands in for the place: its price anchors the card
-      // and it is what the + button puts in the cart.
-      const recommended = place.items.filter((i) => i.sentiment !== "AVOID");
-      const priced = recommended.filter((i) => i.priceCents !== null).sort((a, b) => a.priceCents! - b.priceCents!);
-      const pick = priced[0] ?? recommended[0];
-      return {
-        slug: place.slug,
-        name: place.name,
-        category: place.category,
-        area: place.area,
-        blurb: place.blurb,
-        tip: place.tip,
-        website: place.website,
-        lat: place.lat,
-        lng: place.lng,
-        fromPrice: priced[0]
-          ? { cents: priced[0].priceCents!, unit: priced[0].unit, currency: priced[0].currency }
-          : null,
-        cartItem: pick
-          ? {
-              id: pick.id,
-              name: pick.name,
-              category: pick.category,
-              priceCents: pick.priceCents,
-              priceNote: pick.priceNote,
-              currency: pick.currency,
-              unit: pick.unit,
-              quantity: pick.quantity,
-              vendor: pick.vendor?.name ?? null,
-              bookUrl: pick.links.find((l) => l.creatorId === null)?.url ?? pick.links[0]?.url ?? null,
-              website: place.website,
-              lat: place.lat,
-              lng: place.lng,
-              itinerary: { slug: pick.itinerary.slug, title: pick.itinerary.title },
-            }
-          : null,
-        creators: toList(byCreator(false)),
-        skippedBy: toList(byCreator(true)),
-      };
-    })
+    .map(placeSummary)
     .filter((p) => p.creators.length > 0 || p.skippedBy.length > 0)
     .sort(
       (a, b) =>
@@ -213,9 +217,71 @@ export async function getDestination(slug: string) {
     country: destination.country,
     summary: destination.summary,
     isSample: destination.isSample,
+    climateSourceUrl: destination.climateSourceUrl,
+    months: destination.months,
     creatorCount,
     consensus,
     routes,
+  };
+}
+
+export async function getPlaceParams() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const places = await db.place.findMany({
+    where: { items: { some: {} } },
+    select: { slug: true, destination: { select: { slug: true } } },
+  });
+  return places.map((p) => ({ slug: p.destination.slug, place: p.slug }));
+}
+
+/** One place with everything creators said about it, plus the other pinned places of its destination. */
+export async function getPlace(destinationSlug: string, placeSlug: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  cacheTag(`place:${destinationSlug}:${placeSlug}`);
+
+  const place = await db.place.findFirst({
+    where: { slug: placeSlug, destination: { slug: destinationSlug } },
+    include: {
+      items: { select: placeItemSelect, orderBy: [{ day: "asc" }, { position: "asc" }] },
+      destination: {
+        select: {
+          slug: true,
+          name: true,
+          country: true,
+          itineraries: { select: { creatorId: true } },
+          places: {
+            where: { slug: { not: placeSlug }, lat: { not: null }, items: { some: {} } },
+            select: { slug: true, name: true, category: true, area: true, lat: true, lng: true },
+          },
+        },
+      },
+    },
+  });
+  if (!place || place.items.length === 0) return null;
+
+  return {
+    ...placeSummary(place),
+    destination: { slug: place.destination.slug, name: place.destination.name, country: place.destination.country },
+    creatorCount: new Set(place.destination.itineraries.map((i) => i.creatorId)).size,
+    mentions: place.items.map((i) => ({
+      id: i.id,
+      name: i.name,
+      note: i.note,
+      day: i.day,
+      sentiment: i.sentiment,
+      priceCents: i.priceCents,
+      priceNote: i.priceNote,
+      currency: i.currency,
+      quantity: i.quantity,
+      unit: i.unit,
+      itinerary: { slug: i.itinerary.slug, title: i.itinerary.title },
+      creator: i.itinerary.creator,
+    })),
+    others: place.destination.places.map((p) => ({ ...p, lat: p.lat!, lng: p.lng! })),
   };
 }
 
@@ -272,6 +338,7 @@ export async function getItinerary(slug: string) {
         const offer = offerFor(i, it.creator, coupons);
         return {
           id: i.id,
+          day: i.day,
           name: i.name,
           note: i.note,
           category: i.category,
@@ -285,6 +352,7 @@ export async function getItinerary(slug: string) {
           vendor: i.vendor?.name ?? null,
           bookUrl: offer?.url ?? null,
           website: i.place?.website ?? null,
+          placeSlug: i.place?.slug ?? null,
           lat: i.place?.lat ?? null,
           lng: i.place?.lng ?? null,
           couponCode: offer?.code ?? null,

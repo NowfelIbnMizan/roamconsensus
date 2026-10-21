@@ -8,8 +8,11 @@ import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
-import { categoryLabel, formatMoney, formatPrice, sentimentLabel, tierLabel } from "@/lib/format";
-import { dayColor, googleMapsPlaceUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
+import { categoryLabel, sentimentLabel, tierLabel } from "@/lib/format";
+import { Money, Price } from "@/components/money";
+import { dayColor, dayLegs, googleMapsPlaceUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
+import { DriveSummary, LegHint } from "@/components/road-time";
+import { placeHref } from "@/lib/place";
 import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
 
 export async function generateStaticParams() {
@@ -37,8 +40,10 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
   const pinNumber = new Map<string, number>();
   const stops: MapStop[] = [];
   const groups: MapGroup[] = [];
+  const drive = new Map<number, ReturnType<typeof dayLegs>>();
   for (const [index, { day, items }] of it.schedule.entries()) {
     const pinned = items.filter((i) => i.sentiment !== "AVOID").filter(hasPin);
+    drive.set(day, dayLegs(pinned));
     pinned.forEach((i, n) => {
       pinNumber.set(i.id, n + 1);
       stops.push({
@@ -70,7 +75,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         by <CreatorChip creator={it.creator} /> · {it.days} days ·{" "}
         {it.totalCents > 0 && (
           <>
-            {formatMoney(it.totalCents)} est.{it.unpricedCount > 0 && " for priced items"} ·{" "}
+            <Money cents={it.totalCents} /> est.{it.unpricedCount > 0 && " for priced items"} ·{" "}
           </>
         )}
         <a href={it.sourceUrl} className="underline" rel="noopener noreferrer" target="_blank">
@@ -103,7 +108,9 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         {it.schedule.map(({ day, items }, index) => (
           <section key={day}>
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h2 className="text-lg font-semibold">Day {day}</h2>
+              <h2 className="flex flex-wrap items-center gap-2 text-lg font-semibold">
+                Day {day} <DriveSummary minutes={drive.get(day)?.total ?? 0} />
+              </h2>
               {groups.find((g) => g.id === day)?.routeUrl && (
                 <a
                   href={groups.find((g) => g.id === day)!.routeUrl!}
@@ -129,7 +136,16 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                           {pinNumber.get(item.id)}
                         </span>
                       )}
-                      {item.name}
+                      {item.placeSlug ? (
+                        <Link
+                          href={placeHref(it.destination.slug, item.placeSlug)}
+                          className="hover:text-accent hover:underline"
+                        >
+                          {item.name}
+                        </Link>
+                      ) : (
+                        item.name
+                      )}
                       {item.sentiment === "MUST_VISIT" && (
                         <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
                           {sentimentLabel.MUST_VISIT}
@@ -147,6 +163,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                       )}
                     </p>
                     {item.note && <p className="mt-0.5 text-sm text-muted">{item.note}</p>}
+                    <LegHint leg={drive.get(day)?.legs.get(item.id)} />
                     <p className="mt-0.5 text-xs text-muted">
                       {categoryLabel[item.category]}
                       {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
@@ -166,7 +183,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                     <span
                       className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}
                     >
-                      {formatPrice(item)}
+                      <Price item={item} />
                       {item.priceCents !== null && item.priceNote && (
                         <span className="block text-xs text-muted">{item.priceNote}</span>
                       )}
