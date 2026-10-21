@@ -28,5 +28,20 @@
     "slug": "truely",
     "name": "Truely eSIM",
     "homepage": "https://www.truely.com"
+  },
+  {
+    "slug": "safetywing",
+    "name": "SafetyWing",
+    "homepage": "https://safetywing.com"
+  },
+  {
+    "slug": "marriott",
+    "name": "Marriott",
+    "homepage": "https://www.marriott.com"
+  },
+  {
+    "slug": "12go",
+    "name": "12Go",
+    "homepage": "https://12go.asia"
   }
 ]

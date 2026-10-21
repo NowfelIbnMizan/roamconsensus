@@ -13,7 +13,7 @@ Rules:
 - Items that point at the same `place` slug count toward that place's creator consensus.
 - `price` is in `currency` (default USD), per `unit` x `quantity`. Leave it out when the creator gave none; `priceNote` keeps their wording. If the creator gave none but we found a typical price, set `price` plus `priceSource` (the URL it came from); `priceNote` then says what it covers, and the site labels it "Typical price".
 - `sentiment`: `MUST_VISIT`, `RECOMMENDED`, `OPTIONAL` or `AVOID` (creator says skip it; not counted as a recommendation). `note` holds the creator's key tip.
-- `ourUrl` is our affiliate link, `creatorUrl` is the creator's own link; both need `vendor`.
+- `ourUrl` is our affiliate link, `creatorUrl` is the creator's own link; both need `vendor`. Until an affiliate ID exists, `ourUrl` can be the plain booking page; swap in the affiliate link later. Items with no vendor are grouped in the cart by where you pay (entrance, venue, locally).
 
 Run `npm run db:seed` locally to check a change; mistakes (unknown vendor, place or creator) fail with a clear message.
 
