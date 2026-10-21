@@ -134,4 +134,62 @@ export const esimGuides: Record<string, EsimGuide> = {
       },
     ],
   },
+  Japan: {
+    checked: "October 2026",
+    imei: {
+      title: "Travel eSIM? No registration needed",
+      body: [
+        "Japan has no IMEI or handset registration for visitors. Your phone just needs to be unlocked and support eSIM.",
+        "Data-only travel eSIMs (Airalo, Saily, Holafly, Mobal data) install by QR code with no Japanese ID check.",
+        "Want a Japanese 070/080/090 number? Voice plans like Mobal Voice or Sakura Mobile need passport ID checks. A 2026 law change may extend ID checks to data SIMs too, with no start date yet, so carry your passport.",
+      ],
+      sources: [
+        "https://simology.io/blog/japan-esim-tourists-identity-requirements-app-calling-network-notes-2026",
+        "https://selectra.jp/en/sim/best-esim-japan-tourists",
+        "https://tokyointernationalmeetup.com/japan-sim-card-id-verification-law-2026-guide/",
+      ],
+    },
+    coverage: {
+      intro:
+        "Japan has three big networks, Docomo, KDDI (au) and SoftBank, plus newcomer Rakuten. Most travel eSIMs ride on au or SoftBank; Mobal and Sakura Mobile use Docomo. In Tokyo all three are excellent. Docomo pulls ahead underground, in the mountains and in the countryside.",
+      areas: [
+        {
+          name: "Central Tokyo",
+          note: "Effectively tied above ground on all three. 5G is strongest in the city centers.",
+        },
+        { name: "Tokyo subway", note: "Docomo and au are best underground. SoftBank works but is weaker." },
+        { name: "Shibuya & Shinjuku crowds", note: "Rush-hour crowds slow every network the same way." },
+        { name: "Hakone & Mt Fuji", note: "Docomo and au are the most reliable. SoftBank and Rakuten are patchier." },
+        { name: "Nikko", note: "Docomo is the most dependable, au a close second." },
+        { name: "Kyoto & Osaka by Shinkansen", note: "Fine on all three, with brief drops in tunnels." },
+      ],
+      sources: [
+        "https://www.sakuramobile.jp/blog/japan-sim/data-roaming-in-japan-choosing-a-network-provider-for-your-next-trip/",
+        "https://www.esimpass.com/en/blog/softbank-vs-docomo-japan",
+        "https://simology.io/blog/japan-esim-tourists-identity-requirements-app-calling-network-notes-2026",
+      ],
+    },
+    faq: [
+      {
+        q: "Do I need to register my phone or show a passport?",
+        a: "Not for a data-only travel eSIM. A plan with a Japanese phone number needs an ID check. Rules for data SIMs may tighten in 2026, so keep your passport handy.",
+      },
+      {
+        q: "Is unlimited really unlimited?",
+        a: "Usually not. Saily and Maya slow down after 5 GB a day, Jetpac and aloSIM after 3 GB, Nomad after 2 GB. Holafly caps hotspot use at 1 GB a day.",
+      },
+      {
+        q: "Which network if I'm leaving Tokyo?",
+        a: "For mountains, onsen towns, Nikko or hiking, a Docomo plan (Mobal, Sakura Mobile) or au is safest. For city trips, au or SoftBank plans are fine.",
+      },
+      {
+        q: "Can I tether a laptop?",
+        a: "Most providers allow hotspot (Saily, Nomad, Jetpac, GigSky, Yesim, Mobal, Ubigi). Holafly caps it at 1 GB a day.",
+      },
+      {
+        q: "When should I install the eSIM?",
+        a: "Install it at home on Wi-Fi before you fly. Some plans start counting days at installation, so check the plan's activation rule. Most eSIMs can only be installed once.",
+      },
+    ],
+  },
 };
