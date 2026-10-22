@@ -47,8 +47,10 @@ export function useMoney() {
   const rates = useContext(RatesContext);
   const money = (cents: number, from = "USD") => {
     const c = convertCents(cents, from, code ?? from, rates);
-    // Converted rupiah to the nearest thousand: "IDR 6,616,007" reads as false precision.
-    const step = c.currency !== from && (rates[c.currency] ?? 1) > 100 ? 100_000 : 1;
+    // Converted rupiah and won to the nearest thousand, yen to the nearest ten: "IDR 6,616,007" reads as false
+    // precision.
+    const rate = c.currency !== from ? (rates[c.currency] ?? 1) : 1;
+    const step = rate > 1000 ? 100_000 : rate > 100 ? 1_000 : 1;
     return formatMoney(Math.round(c.cents / step) * step, c.currency);
   };
   return {

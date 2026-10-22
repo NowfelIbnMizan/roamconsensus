@@ -1,0 +1,1346 @@
+{
+  "slug": "singapore",
+  "name": "Singapore",
+  "country": "Singapore",
+  "summary": "Supertrees and cloud forests at Gardens by the Bay, the Marina Bay skyline, hawker centres for every meal, Chinatown, Little India and Kampong Glam, and beach days on Sentosa.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Climate_of_Singapore",
+  "months": [
+    {
+      "month": 1,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 222,
+      "crowd": "HIGH",
+      "note": "Northeast monsoon brings wet, slightly cooler days; Lunar New Year (Jan/Feb) is busy and some shops close."
+    },
+    {
+      "month": 2,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 105,
+      "crowd": "MEDIUM",
+      "note": "Driest month; Lunar New Year festivities fall here in 2026 (17 Feb)."
+    },
+    {
+      "month": 3,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 152,
+      "crowd": "MEDIUM",
+      "note": "Hot inter-monsoon period with afternoon thunderstorms."
+    },
+    {
+      "month": 4,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 164,
+      "crowd": "MEDIUM",
+      "note": "Hot and humid with frequent afternoon storms."
+    },
+    {
+      "month": 5,
+      "highC": 32,
+      "lowC": 26,
+      "rainMm": 164,
+      "crowd": "MEDIUM",
+      "note": "Among the hottest months, with short heavy showers."
+    },
+    {
+      "month": 6,
+      "highC": 32,
+      "lowC": 26,
+      "rainMm": 135,
+      "crowd": "HIGH",
+      "note": "Southwest monsoon starts; school holidays and the Great Singapore Sale make it busier."
+    },
+    {
+      "month": 7,
+      "highC": 31,
+      "lowC": 25,
+      "rainMm": 147,
+      "crowd": "MEDIUM",
+      "note": "Fairly dry; haze from Indonesian fires is possible from July to October."
+    },
+    {
+      "month": 8,
+      "highC": 31,
+      "lowC": 25,
+      "rainMm": 147,
+      "crowd": "HIGH",
+      "note": "National Day (9 Aug) brings parades, fireworks and crowds; watch for haze."
+    },
+    {
+      "month": 9,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 125,
+      "crowd": "MEDIUM",
+      "note": "Relatively dry, but haze can occur."
+    },
+    {
+      "month": 10,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 168,
+      "crowd": "HIGH",
+      "note": "The F1 Singapore Grand Prix night race (moved to early October in 2026) pushes hotel prices up; Deepavali often falls in Oct/Nov."
+    },
+    {
+      "month": 11,
+      "highC": 31,
+      "lowC": 25,
+      "rainMm": 252,
+      "crowd": "MEDIUM",
+      "note": "Inter-monsoon thunderstorms; the northeast monsoon begins and rain increases."
+    },
+    {
+      "month": 12,
+      "highC": 30,
+      "lowC": 24,
+      "rainMm": 332,
+      "crowd": "HIGH",
+      "note": "Wettest month; Christmas lights on Orchard Road and school holidays draw crowds."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Submit the SG Arrival Card",
+      "body": "Every traveller clearing immigration must submit the SG Arrival Card with its electronic health declaration within three days before arrival, counting the arrival day. It is free on the ICA website or the MyICA app. Passengers transiting without clearing immigration are exempt.",
+      "sourceUrl": "https://www.ica.gov.sg/enter-depart/entry_requirements/sg-arrival-card"
+    },
+    {
+      "topic": "Entry",
+      "title": "Avoid paid arrival-card websites",
+      "body": "ICA does not endorse commercial websites that charge to submit the SG Arrival Card for you. Use only the official ICA site or the MyICA app.",
+      "sourceUrl": "https://www.ica.gov.sg/enter-depart/entry_requirements/sg-arrival-card"
+    },
+    {
+      "topic": "Safety",
+      "title": "Vapes are illegal",
+      "body": "Vapes have been banned since 2018, and from 1 September 2025 enforcement got tougher: devices are seized and users are fined. Short-term visitors who reoffend can be banned from entering Singapore again.",
+      "sourceUrl": "https://loyaltylobby.com/2025/08/29/singapore-bans-vapes-visitors-bringing-them-in-face-entry-ban-possible-caning-and-up-to-20-years-in-jail/"
+    },
+    {
+      "topic": "Safety",
+      "title": "Etomidate 'Kpods' count as a drug",
+      "body": "Etomidate is now a Class C drug, with penalties of up to 10 years' jail and a S$20,000 fine for possession or use. Foreigners caught with it, or who test positive, can be deported and banned.",
+      "sourceUrl": "https://loyaltylobby.com/2025/08/29/singapore-bans-vapes-visitors-bringing-them-in-face-entry-ban-possible-caning-and-up-to-20-years-in-jail/"
+    },
+    {
+      "topic": "Safety",
+      "title": "No chewing gum imports",
+      "body": "Importing, buying or selling chewing gum is banned, so leave it at home. The law does not cover chewing it.",
+      "sourceUrl": "https://discoverist.changirecommends.com/tips-trends/5-tourists-shouldnt/"
+    },
+    {
+      "topic": "Safety",
+      "title": "Littering fines are real",
+      "body": "First-time litterers can be fined up to S$300, even for a tissue. Use the bins.",
+      "sourceUrl": "https://discoverist.changirecommends.com/tips-trends/5-tourists-shouldnt/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "No eating or drinking on the MRT",
+      "body": "Eating and drinking, including water, is banned on trains, with fines up to S$500. Stand on the left of escalators.",
+      "sourceUrl": "https://discoverist.changirecommends.com/tips-trends/5-tourists-shouldnt/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Alcohol sales stop at 10:30pm",
+      "body": "Under the Liquor Control Act, shops such as 7-Eleven cannot sell alcohol after 10:30pm. Plan ahead if you want a drink later.",
+      "sourceUrl": "https://discoverist.changirecommends.com/tips-trends/5-tourists-shouldnt/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Tap your own card on MRT and buses",
+      "body": "Foreign contactless Visa and Mastercard cards and mobile wallets work at fare gates with no registration (SimplyGo). Admin fees apply to foreign-issued cards.",
+      "sourceUrl": "https://www.smrt.com.sg/public-transport/getting-around/visiting-singapore/how-to-pay/"
+    },
+    {
+      "topic": "Transport",
+      "title": "EZ-Link card or Tourist Pass",
+      "body": "An adult EZ-Link or NETS FlashPay card costs S$10, including S$5 of stored value, at stations and convenience stores. The Singapore Tourist Pass gives unlimited rides for 1–3 days and is sold at SimplyGo Ticket Offices.",
+      "sourceUrl": "https://www.smrt.com.sg/public-transport/getting-around/visiting-singapore/how-to-pay/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Exact change on buses",
+      "body": "Buses accept cash, but no change is given, so pay the exact fare or tap a card instead.",
+      "sourceUrl": "https://www.smrt.com.sg/public-transport/getting-around/visiting-singapore/how-to-pay/"
+    },
+    {
+      "topic": "Connectivity",
+      "title": "Travel eSIMs need no registration",
+      "body": "Travel eSIMs on Singtel, M1 or StarHub need no passport registration, and coverage is strong across the island, including MRT tunnels and Sentosa.",
+      "sourceUrl": "https://travelsimasia.com/blogs/singapore-guides/singapore-esim-prices-2026"
+    }
+  ],
+  "places": [
+    {
+      "slug": "jewel-rain-vortex",
+      "name": "HSBC Rain Vortex, Jewel Changi Airport",
+      "category": "EXPERIENCE",
+      "area": "Changi",
+      "blurb": "The world's tallest indoor waterfall, inside Jewel's glass dome at Changi Airport.",
+      "lat": 1.3602,
+      "lng": 103.9894
+    },
+    {
+      "slug": "changi-airport",
+      "name": "Singapore Changi Airport",
+      "category": "TRANSIT",
+      "area": "Changi",
+      "blurb": "Singapore's main international airport.",
+      "lat": 1.3644,
+      "lng": 103.9915
+    },
+    {
+      "slug": "chinatown",
+      "name": "Chinatown",
+      "category": "EXPERIENCE",
+      "area": "Outram / Chinatown",
+      "blurb": "Historic district of shophouses, temples and hawker centres around Pagoda Street.",
+      "lat": 1.2836,
+      "lng": 103.8443
+    },
+    {
+      "slug": "maxwell-food-centre",
+      "name": "Maxwell Food Centre",
+      "category": "FOOD",
+      "area": "Chinatown",
+      "blurb": "Popular hawker centre known for Hainanese chicken rice.",
+      "lat": 1.2803,
+      "lng": 103.8448
+    },
+    {
+      "slug": "buddha-tooth-relic-temple",
+      "name": "Buddha Tooth Relic Temple and Museum",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Tang-style Buddhist temple housing a relic said to be the Buddha's tooth.",
+      "lat": 1.2814,
+      "lng": 103.8443
+    },
+    {
+      "slug": "fort-canning-park",
+      "name": "Fort Canning Park",
+      "category": "EXPERIENCE",
+      "area": "Museum District",
+      "blurb": "Historic hilltop park with colonial ruins, gardens and the photogenic Tree Tunnel.",
+      "lat": 1.2945,
+      "lng": 103.846
+    },
+    {
+      "slug": "national-museum-of-singapore",
+      "name": "National Museum of Singapore",
+      "category": "EXPERIENCE",
+      "area": "Museum District",
+      "blurb": "Singapore's oldest museum, covering the nation's history and culture.",
+      "tip": "The Singapore History Gallery closed in November 2025 for upgrading works.",
+      "website": "https://www.nhb.gov.sg/nationalmuseum/plan-your-visit/visitor-information/admissions",
+      "lat": 1.2966,
+      "lng": 103.8485
+    },
+    {
+      "slug": "lau-pa-sat",
+      "name": "Lau Pa Sat",
+      "category": "FOOD",
+      "area": "Downtown Core",
+      "blurb": "Victorian cast-iron market turned hawker centre, known for its evening satay street.",
+      "lat": 1.2806,
+      "lng": 103.8504
+    },
+    {
+      "slug": "capitaspring-sky-garden",
+      "name": "Sky Garden, CapitaSpring",
+      "category": "EXPERIENCE",
+      "area": "Raffles Place",
+      "blurb": "Rooftop garden atop the 280 m CapitaSpring tower with skyline views.",
+      "lat": 1.2843,
+      "lng": 103.85
+    },
+    {
+      "slug": "marina-bay-waterfront-promenade",
+      "name": "Marina Bay Waterfront Promenade",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "A 3.5 km waterfront loop linking Marina Bay's landmarks.",
+      "lat": 1.285,
+      "lng": 103.858
+    },
+    {
+      "slug": "merlion-park",
+      "name": "Merlion Park",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Home of the Merlion statue, Singapore's half-lion, half-fish mascot, facing Marina Bay.",
+      "lat": 1.2868,
+      "lng": 103.8545
+    },
+    {
+      "slug": "spectra-light-and-water-show",
+      "name": "Spectra – A Light & Water Show",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Free nightly outdoor light and water show at the Event Plaza in front of The Shoppes at Marina Bay Sands.",
+      "lat": 1.2838,
+      "lng": 103.8591
+    },
+    {
+      "slug": "marina-bay-sands",
+      "name": "Marina Bay Sands",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Integrated resort with three towers topped by the SkyPark, plus a mall and casino.",
+      "website": "https://www.marinabaysands.com/attractions/sands-skypark.html",
+      "lat": 1.2834,
+      "lng": 103.8607
+    },
+    {
+      "slug": "marina-bay-sands-skypark-observation-deck",
+      "name": "SkyPark Observation Deck, Marina Bay Sands",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Observation deck 57 storeys up with 360-degree city views.",
+      "website": "https://www.marinabaysands.com/attractions/sands-skypark.html",
+      "lat": 1.2826,
+      "lng": 103.8607
+    },
+    {
+      "slug": "artscience-museum",
+      "name": "ArtScience Museum",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Lotus-shaped museum of art, science and digital exhibitions at Marina Bay Sands.",
+      "lat": 1.2863,
+      "lng": 103.8593
+    },
+    {
+      "slug": "gardens-by-the-bay",
+      "name": "Gardens by the Bay",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Waterfront gardens known for the Supertree Grove and the nightly Garden Rhapsody light show.",
+      "tip": "Garden Rhapsody light show at 7:45 pm and 8:45 pm, free.",
+      "website": "https://www.gardensbythebay.com.sg/en/frequently-asked-questions/general.html",
+      "lat": 1.2816,
+      "lng": 103.8636
+    },
+    {
+      "slug": "flower-dome-and-cloud-forest",
+      "name": "Flower Dome & Cloud Forest, Gardens by the Bay",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "Two cooled conservatories: a Mediterranean flower garden and a misty cloud forest with an indoor waterfall.",
+      "website": "https://www.gardensbythebay.com.sg/en/frequently-asked-questions/general.html",
+      "lat": 1.284,
+      "lng": 103.8655
+    },
+    {
+      "slug": "koon-seng-road-shophouses",
+      "name": "Koon Seng Road Peranakan Shophouses",
+      "category": "EXPERIENCE",
+      "area": "Joo Chiat / Katong",
+      "blurb": "Row of pastel-coloured Peranakan terrace houses in the Joo Chiat heritage area.",
+      "lat": 1.3123,
+      "lng": 103.9008
+    },
+    {
+      "slug": "petit-pain",
+      "name": "Petit Pain",
+      "category": "FOOD",
+      "area": "Joo Chiat / Katong (location unverified)",
+      "blurb": "Neighbourhood bakery known for its croissants.",
+      "lat": 1.311,
+      "lng": 103.903
+    },
+    {
+      "slug": "328-katong-laksa",
+      "name": "328 Katong Laksa",
+      "category": "FOOD",
+      "area": "Katong",
+      "blurb": "Long-running stall famous for Katong-style laksa.",
+      "lat": 1.305,
+      "lng": 103.905
+    },
+    {
+      "slug": "sri-veeramakaliamman-temple",
+      "name": "Sri Veeramakaliamman Temple",
+      "category": "EXPERIENCE",
+      "area": "Little India",
+      "blurb": "Colourful Hindu temple on Serangoon Road dedicated to the goddess Kali.",
+      "lat": 1.3075,
+      "lng": 103.853
+    },
+    {
+      "slug": "little-india",
+      "name": "Little India",
+      "category": "EXPERIENCE",
+      "area": "Little India",
+      "blurb": "Lively district of spice shops, sari stores, temples and South Indian food.",
+      "lat": 1.3066,
+      "lng": 103.851
+    },
+    {
+      "slug": "little-india-arcade",
+      "name": "Little India Arcade",
+      "category": "EXPERIENCE",
+      "area": "Little India",
+      "blurb": "Restored shophouse arcade with stalls selling Indian goods and snacks.",
+      "lat": 1.3066,
+      "lng": 103.8507
+    },
+    {
+      "slug": "house-of-tan-teng-niah",
+      "name": "Former House of Tan Teng Niah",
+      "category": "EXPERIENCE",
+      "area": "Little India",
+      "blurb": "Brightly painted 1900 Chinese villa, one of Little India's most photographed buildings.",
+      "lat": 1.3087,
+      "lng": 103.8523
+    },
+    {
+      "slug": "sultan-mosque",
+      "name": "Masjid Sultan",
+      "category": "EXPERIENCE",
+      "area": "Kampong Glam",
+      "blurb": "Golden-domed mosque at the heart of the historic Malay-Muslim quarter.",
+      "lat": 1.3022,
+      "lng": 103.859
+    },
+    {
+      "slug": "arab-street",
+      "name": "Arab Street / Kampong Glam",
+      "category": "EXPERIENCE",
+      "area": "Kampong Glam",
+      "blurb": "Historic quarter of textile shops, cafes and Haji Lane street art.",
+      "lat": 1.3016,
+      "lng": 103.8585
+    },
+    {
+      "slug": "changi-point-ferry-terminal",
+      "name": "Changi Point Ferry Terminal",
+      "category": "TRANSIT",
+      "area": "Changi Village",
+      "blurb": "Terminal for bumboats to Pulau Ubin.",
+      "lat": 1.3893,
+      "lng": 103.9877
+    },
+    {
+      "slug": "pulau-ubin",
+      "name": "Pulau Ubin",
+      "category": "EXPERIENCE",
+      "area": "North-East islands",
+      "blurb": "Rustic island of kampung villages, quarries and cycling trails, including Chek Jawa wetlands.",
+      "lat": 1.4044,
+      "lng": 103.96
+    },
+    {
+      "slug": "singapore-botanic-gardens",
+      "name": "Singapore Botanic Gardens",
+      "category": "EXPERIENCE",
+      "area": "Tanglin",
+      "blurb": "UNESCO-listed tropical garden that is home to the National Orchid Garden.",
+      "website": "https://sbg.nparks.gov.sg/visit/general-info/",
+      "lat": 1.3138,
+      "lng": 103.8159
+    },
+    {
+      "slug": "orchard-road",
+      "name": "Orchard Road",
+      "category": "EXPERIENCE",
+      "area": "Orchard",
+      "blurb": "Singapore's main shopping boulevard, including ION Orchard, Paragon and Ngee Ann City.",
+      "lat": 1.304,
+      "lng": 103.8318
+    },
+    {
+      "slug": "sentosa-express",
+      "name": "Sentosa Express",
+      "category": "TRANSIT",
+      "area": "HarbourFront / Sentosa",
+      "blurb": "Monorail from VivoCity to Sentosa Island.",
+      "lat": 1.2644,
+      "lng": 103.8222
+    },
+    {
+      "slug": "sentosa-island",
+      "name": "Sentosa",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Resort island of beaches, theme parks and hotels just off the south coast.",
+      "lat": 1.2494,
+      "lng": 103.8303
+    },
+    {
+      "slug": "siloso-beach",
+      "name": "Siloso Beach",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Sentosa's livelier beach, with beach clubs and water sports.",
+      "lat": 1.2537,
+      "lng": 103.8125
+    },
+    {
+      "slug": "southernmost-point-continental-asia",
+      "name": "Southernmost Point of Continental Asia",
+      "category": "EXPERIENCE",
+      "area": "Sentosa (Palawan Beach)",
+      "blurb": "Islet off Palawan Beach, reached by a suspension bridge, with lookout towers.",
+      "lat": 1.247,
+      "lng": 103.8226
+    },
+    {
+      "slug": "resorts-world-sentosa",
+      "name": "Resorts World Sentosa",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Integrated resort with Universal Studios, S.E.A. Aquarium, hotels and a casino.",
+      "lat": 1.256,
+      "lng": 103.82
+    },
+    {
+      "slug": "universal-studios-singapore",
+      "name": "Universal Studios Singapore",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Movie theme park at Resorts World Sentosa.",
+      "tip": "Some rides and shows are unavailable until further notice: check before you book.",
+      "website": "https://www.rwsentosa.com/en/attractions/universal-studios-singapore",
+      "lat": 1.254,
+      "lng": 103.8238
+    },
+    {
+      "slug": "southern-ridges",
+      "name": "The Southern Ridges",
+      "category": "EXPERIENCE",
+      "area": "Bukit Merah",
+      "blurb": "10 km chain of parks and elevated walkways, including the wave-shaped Henderson Waves bridge.",
+      "lat": 1.2763,
+      "lng": 103.8155
+    },
+    {
+      "slug": "chinatown-complex-food-centre",
+      "name": "Chinatown Complex Food Centre",
+      "category": "FOOD",
+      "area": "Chinatown",
+      "blurb": "One of Singapore's largest hawker centres, with hundreds of stalls.",
+      "lat": 1.2823,
+      "lng": 103.8431
+    },
+    {
+      "slug": "hong-lim-food-centre",
+      "name": "Hong Lim Market & Food Centre",
+      "category": "FOOD",
+      "area": "Chinatown",
+      "blurb": "Busy hawker centre known for its noodle and curry-chicken stalls.",
+      "lat": 1.2853,
+      "lng": 103.8458
+    },
+    {
+      "slug": "old-airport-road-food-centre",
+      "name": "Old Airport Road Food Centre",
+      "category": "FOOD",
+      "area": "Geylang / Dakota",
+      "blurb": "Large hawker centre with many long-established stalls.",
+      "lat": 1.308,
+      "lng": 103.8857
+    },
+    {
+      "slug": "tiong-bahru-market",
+      "name": "Tiong Bahru Market",
+      "category": "FOOD",
+      "area": "Tiong Bahru",
+      "blurb": "Wet market with an airy upstairs hawker centre in a heritage neighbourhood.",
+      "lat": 1.2851,
+      "lng": 103.8325
+    },
+    {
+      "slug": "geylang-serai-market",
+      "name": "Geylang Serai Market",
+      "category": "FOOD",
+      "area": "Geylang Serai",
+      "blurb": "Malay-Muslim market and hawker centre known for nasi padang and Malay dishes.",
+      "lat": 1.317,
+      "lng": 103.8985
+    },
+    {
+      "slug": "chomp-chomp-food-centre",
+      "name": "Chomp Chomp Food Centre",
+      "category": "FOOD",
+      "area": "Serangoon Gardens",
+      "blurb": "Evening hawker centre known for BBQ stingray and satay.",
+      "lat": 1.3641,
+      "lng": 103.8665
+    },
+    {
+      "slug": "adam-road-food-centre",
+      "name": "Adam Road Food Centre",
+      "category": "FOOD",
+      "area": "Bukit Timah",
+      "blurb": "Small hawker centre known for nasi lemak.",
+      "lat": 1.324,
+      "lng": 103.814
+    },
+    {
+      "slug": "kok-sen-restaurant",
+      "name": "Kok Sen Restaurant",
+      "category": "FOOD",
+      "area": "Chinatown (Keong Saik)",
+      "blurb": "Zi char restaurant serving Cantonese-style home cooking.",
+      "lat": 1.2803,
+      "lng": 103.8418
+    },
+    {
+      "slug": "beach-road-scissor-cut-curry-rice",
+      "name": "Beach Road Scissor Cut Curry Rice",
+      "category": "FOOD",
+      "area": "Jalan Besar",
+      "blurb": "Late-night stall serving Hainanese curry rice with scissor-cut pork chop.",
+      "lat": 1.308,
+      "lng": 103.8574
+    },
+    {
+      "slug": "singapore-zam-zam",
+      "name": "Singapore Zam Zam Restaurant",
+      "category": "FOOD",
+      "area": "Kampong Glam",
+      "blurb": "Murtabak specialist opposite Sultan Mosque, operating since 1908.",
+      "lat": 1.3025,
+      "lng": 103.8586
+    },
+    {
+      "slug": "clarke-quay",
+      "name": "Clarke Quay",
+      "category": "EXPERIENCE",
+      "area": "Singapore River",
+      "blurb": "Riverside quay of restored warehouses housing bars and restaurants.",
+      "lat": 1.2906,
+      "lng": 103.8465
+    },
+    {
+      "slug": "jumbo-seafood-riverside-point",
+      "name": "JUMBO Seafood",
+      "category": "FOOD",
+      "area": "Clarke Quay",
+      "blurb": "Seafood restaurant chain known for chilli crab.",
+      "lat": 1.2899,
+      "lng": 103.8455
+    },
+    {
+      "slug": "newton-food-centre",
+      "name": "Newton Food Centre",
+      "category": "FOOD",
+      "area": "Newton",
+      "blurb": "Open-air hawker centre known for seafood and satay, featured in Crazy Rich Asians.",
+      "lat": 1.3121,
+      "lng": 103.8394
+    },
+    {
+      "slug": "night-safari",
+      "name": "Night Safari",
+      "category": "EXPERIENCE",
+      "area": "Mandai",
+      "blurb": "Nocturnal wildlife park explored by tram and walking trails.",
+      "website": "https://cn.mandai.com/en/tickets-and-passes/single-attractions/night-safari.html",
+      "lat": 1.4021,
+      "lng": 103.788
+    },
+    {
+      "slug": "ulu-ulu-safari-restaurant",
+      "name": "Ulu Ulu Safari Restaurant",
+      "category": "FOOD",
+      "area": "Mandai (Night Safari)",
+      "blurb": "Kampung-themed restaurant at the Night Safari entrance.",
+      "lat": 1.4025,
+      "lng": 103.7885
+    },
+    {
+      "slug": "bird-paradise",
+      "name": "Bird Paradise",
+      "category": "EXPERIENCE",
+      "area": "Mandai",
+      "blurb": "Mandai bird park with walk-through aviaries housing thousands of birds.",
+      "lat": 1.4085,
+      "lng": 103.788
+    },
+    {
+      "slug": "lavo-singapore",
+      "name": "LAVO Italian Restaurant & Rooftop Bar",
+      "category": "FOOD",
+      "area": "Marina Bay Sands (Tower 1, L57)",
+      "blurb": "Italian-American restaurant on top of Marina Bay Sands.",
+      "lat": 1.2826,
+      "lng": 103.8607
+    },
+    {
+      "slug": "ce-la-vi-singapore",
+      "name": "CÉ LA VI Singapore",
+      "category": "FOOD",
+      "area": "Marina Bay Sands (Tower 3, L57)",
+      "blurb": "Rooftop restaurant and skybar on the SkyPark.",
+      "lat": 1.2826,
+      "lng": 103.8613
+    },
+    {
+      "slug": "oasia-hotel-downtown",
+      "name": "Oasia Hotel Downtown, Singapore by Far East Hospitality",
+      "category": "STAY",
+      "area": "Tanjong Pagar",
+      "blurb": "Mid-range hotel in a red-mesh tower covered in greenery.",
+      "lat": 1.2765,
+      "lng": 103.8434
+    },
+    {
+      "slug": "carlton-city-hotel",
+      "name": "Carlton City Hotel Singapore",
+      "category": "STAY",
+      "area": "Tanjong Pagar",
+      "blurb": "Four-star tower hotel near Tanjong Pagar.",
+      "lat": 1.276,
+      "lng": 103.844
+    },
+    {
+      "slug": "marina-bay-sands-hotel",
+      "name": "Marina Bay Sands",
+      "category": "STAY",
+      "area": "Marina Bay",
+      "blurb": "Landmark resort hotel with the rooftop infinity pool, for guests only.",
+      "lat": 1.2834,
+      "lng": 103.8607
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "markwiens",
+      "name": "Mark Wiens",
+      "platform": "BLOG",
+      "profileUrl": "https://www.eatingthaifood.com",
+      "youtubeUrl": "https://www.youtube.com/@MarkWiens",
+      "bio": "Food traveller behind Migrationology and Eating Thai Food."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "singapore-3-days-thebrokebackpacker",
+      "title": "Backpacking Singapore in 3 days",
+      "summary": "Marina Bay, Chinatown, Kampong Glam and Gardens by the Bay, then the Botanic Gardens and Orchard Road, and a day on Sentosa with the Southern Ridges walk.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/weekend-in-singapore",
+      "items": [
+        {
+          "day": 1,
+          "name": "Marina Bay",
+          "category": "EXPERIENCE",
+          "note": "Walk the CBD and its neighbourhoods",
+          "place": "marina-bay-waterfront-promenade"
+        },
+        {
+          "day": 1,
+          "name": "Chinatown",
+          "category": "EXPERIENCE",
+          "note": "Chinatown, Kampong Glam, and the Gardens by the Bay are all within walking distance.",
+          "place": "chinatown"
+        },
+        {
+          "day": 1,
+          "name": "Arab Street / Kampong Glam",
+          "category": "EXPERIENCE",
+          "place": "arab-street"
+        },
+        {
+          "day": 1,
+          "name": "Gardens by the Bay",
+          "category": "EXPERIENCE",
+          "place": "gardens-by-the-bay"
+        },
+        {
+          "day": 2,
+          "name": "Singapore Botanic Gardens",
+          "category": "EXPERIENCE",
+          "place": "singapore-botanic-gardens",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://sbg.nparks.gov.sg/visit/general-info/"
+        },
+        {
+          "day": 2,
+          "name": "Orchard Road",
+          "category": "EXPERIENCE",
+          "note": "There are plenty of consumer options on this road – you'll be able to spend as little or as much as want here.",
+          "place": "orchard-road"
+        },
+        {
+          "day": 3,
+          "name": "Sentosa Express monorail",
+          "category": "TRANSIT",
+          "note": "Getting around the island is free once you're there.",
+          "place": "sentosa-express",
+          "price": 3.13,
+          "priceNote": "4 SGD per adult (creator: $3/ticket)",
+          "priceSource": "https://abigbigworld.sentosa.com.sg/getting-here.html"
+        },
+        {
+          "day": 3,
+          "name": "Sentosa",
+          "category": "EXPERIENCE",
+          "place": "sentosa-island"
+        },
+        {
+          "day": 3,
+          "name": "Southern Ridges",
+          "category": "EXPERIENCE",
+          "note": "Walk close to Sentosa with city views",
+          "place": "southern-ridges"
+        }
+      ]
+    },
+    {
+      "slug": "singapore-3-days-bucketlistly",
+      "title": "3 days in Singapore: an epic itinerary",
+      "summary": "Jewel's Rain Vortex on arrival, Chinatown, Fort Canning and Marina Bay to the Supertree light show, then Peranakan Joo Chiat, Little India and Kampong Glam, and a bike day on Pulau Ubin.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/singapore-3-days-backpacking-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "Oasia Hotel Downtown, Singapore by Far East Hospitality",
+          "category": "STAY",
+          "note": "Creator's mid-range pick. Or Sofitel Singapore City Centre.",
+          "place": "oasia-hotel-downtown",
+          "price": 141,
+          "priceNote": "from, per night (date-dependent)",
+          "priceSource": "https://www.kayak.com/Singapore-Hotels-Oasia-Hotel-Downtown-Singapore.860579.ksp",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Jewel Rain Vortex",
+          "category": "EXPERIENCE",
+          "note": "Arrival evening. Runs 11 am to 10 pm (from 10 am Fri-Sun).",
+          "place": "jewel-rain-vortex"
+        },
+        {
+          "day": 1,
+          "name": "Chinatown",
+          "category": "EXPERIENCE",
+          "note": "Good place to start exploring",
+          "place": "chinatown"
+        },
+        {
+          "day": 1,
+          "name": "Maxwell Food Centre",
+          "category": "FOOD",
+          "note": "Favourite hawker centre for breakfast",
+          "place": "maxwell-food-centre"
+        },
+        {
+          "day": 1,
+          "name": "Buddha Tooth Relic Temple",
+          "category": "EXPERIENCE",
+          "note": "Allow at least 30 minutes",
+          "place": "buddha-tooth-relic-temple"
+        },
+        {
+          "day": 1,
+          "name": "Fort Canning Park",
+          "category": "EXPERIENCE",
+          "note": "Go early or late to avoid midday heat; 1h+",
+          "place": "fort-canning-park"
+        },
+        {
+          "day": 1,
+          "name": "Lau Pa Sat",
+          "category": "FOOD",
+          "note": "Good for lunch",
+          "place": "lau-pa-sat",
+          "priceNote": "creator: quite affordable"
+        },
+        {
+          "day": 1,
+          "name": "Sky Garden, CapitaSpring",
+          "category": "EXPERIENCE",
+          "note": "Free time slots are almost always booked out",
+          "place": "capitaspring-sky-garden",
+          "price": 7.83,
+          "priceNote": "creator: pay 10 SGD for a bar admission ticket (incl. one soft drink)"
+        },
+        {
+          "day": 1,
+          "name": "Marina Bay Waterfront Promenade",
+          "category": "EXPERIENCE",
+          "note": "Stroll before sunset",
+          "place": "marina-bay-waterfront-promenade"
+        },
+        {
+          "day": 1,
+          "name": "Merlion",
+          "category": "EXPERIENCE",
+          "place": "merlion-park"
+        },
+        {
+          "day": 1,
+          "name": "Marina Bay Sands",
+          "category": "EXPERIENCE",
+          "place": "marina-bay-sands"
+        },
+        {
+          "day": 1,
+          "name": "ArtScience Museum",
+          "category": "EXPERIENCE",
+          "place": "artscience-museum"
+        },
+        {
+          "day": 1,
+          "name": "Gardens by the Bay",
+          "category": "EXPERIENCE",
+          "note": "Light shows 7:45 PM and 8:45 PM, ~15 min",
+          "place": "gardens-by-the-bay"
+        },
+        {
+          "day": 1,
+          "name": "Flower Dome and Cloud Forest",
+          "category": "EXPERIENCE",
+          "place": "flower-dome-and-cloud-forest",
+          "price": 36.0,
+          "priceNote": "46 SGD per adult (creator: The ticket is 32 SGD)",
+          "priceSource": "https://www.gardensbythebay.com.sg/en/frequently-asked-questions/general.html"
+        },
+        {
+          "day": 2,
+          "name": "Joo Chiat / Koon Seng Road Peranakan houses",
+          "category": "EXPERIENCE",
+          "note": "Allow 1h+",
+          "place": "koon-seng-road-shophouses"
+        },
+        {
+          "day": 2,
+          "name": "Petit Pain",
+          "category": "FOOD",
+          "note": "the crispiest croissant I have ever tried",
+          "place": "petit-pain"
+        },
+        {
+          "day": 2,
+          "name": "328 Katong Laksa",
+          "category": "FOOD",
+          "note": "Laksa spot Gordon Ramsay visited",
+          "place": "328-katong-laksa"
+        },
+        {
+          "day": 2,
+          "name": "Sri Veeramakaliamman Temple",
+          "category": "EXPERIENCE",
+          "note": "Open 5:30 AM–12 PM and 5 PM–9 PM daily",
+          "place": "sri-veeramakaliamman-temple"
+        },
+        {
+          "day": 2,
+          "name": "Little India Arcade",
+          "category": "EXPERIENCE",
+          "place": "little-india-arcade"
+        },
+        {
+          "day": 2,
+          "name": "Former House of Tan Teng Niah",
+          "category": "EXPERIENCE",
+          "place": "house-of-tan-teng-niah"
+        },
+        {
+          "day": 2,
+          "name": "Sultan Mosque and Arab Street",
+          "category": "EXPERIENCE",
+          "note": "At least an hour; good for dinner",
+          "place": "sultan-mosque"
+        },
+        {
+          "day": 3,
+          "name": "Changi Point Ferry Terminal bumboat",
+          "category": "TRANSIT",
+          "note": "Leaves within ~15 minutes",
+          "place": "changi-point-ferry-terminal",
+          "price": 3.13,
+          "priceNote": "creator: around 4 SGD one way"
+        },
+        {
+          "day": 3,
+          "name": "Pulau Ubin",
+          "category": "EXPERIENCE",
+          "note": "Rent a mountain bike",
+          "place": "pulau-ubin",
+          "price": 7.83,
+          "priceNote": "creator: 10 - 15 SGD for the entire day"
+        }
+      ]
+    },
+    {
+      "slug": "singapore-food-guide-markwiens",
+      "title": "Singapore for food lovers",
+      "summary": "Mark Wiens' favourite hawker centres and restaurants, grouped by area into three days: Chinatown's food centres, Little India and the east side, then BBQ stingray at Chomp Chomp.",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "markwiens",
+      "sourceUrl": "https://migrationology.com/travel-guides/singapore/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Carlton City Hotel Singapore",
+          "category": "STAY",
+          "note": "Creator's high-end pick. Or ibis Singapore on Bencoolen.",
+          "place": "carlton-city-hotel",
+          "price": 200,
+          "priceNote": "creator: about $200 a night for a double",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Chinatown",
+          "category": "EXPERIENCE",
+          "note": "well worth exploring",
+          "place": "chinatown"
+        },
+        {
+          "day": 1,
+          "name": "Chinatown Complex Food Centre",
+          "category": "FOOD",
+          "note": "There's a very popular place to eat claypot rice at the market.",
+          "place": "chinatown-complex-food-centre"
+        },
+        {
+          "day": 1,
+          "name": "Hong Lim Market & Food Centre",
+          "category": "FOOD",
+          "note": "so many food options it will blow your mind",
+          "place": "hong-lim-food-centre"
+        },
+        {
+          "day": 1,
+          "name": "Kok Sen Restaurant",
+          "category": "FOOD",
+          "note": "I think you better go with the small size for just two of you.",
+          "place": "kok-sen-restaurant"
+        },
+        {
+          "day": 1,
+          "name": "Tiong Bahru Market",
+          "category": "FOOD",
+          "note": "still open air, very spacious, nice and clean",
+          "place": "tiong-bahru-market"
+        },
+        {
+          "day": 1,
+          "name": "Gardens by the Bay",
+          "category": "EXPERIENCE",
+          "note": "Supertree Grove is incredible",
+          "place": "gardens-by-the-bay",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Marina Bay Sands SkyPark",
+          "category": "EXPERIENCE",
+          "note": "an impressive view",
+          "place": "marina-bay-sands-skypark-observation-deck",
+          "price": 27.39,
+          "priceNote": "35 SGD per adult (creator: paid entry for non-guests (no amount))",
+          "priceSource": "https://www.marinabaysands.com/attractions/sands-skypark.html"
+        },
+        {
+          "day": 2,
+          "name": "Little India",
+          "category": "EXPERIENCE",
+          "note": "well worth exploring",
+          "place": "little-india"
+        },
+        {
+          "day": 2,
+          "name": "Singapore Zam Zam",
+          "category": "FOOD",
+          "note": "Murtabak since 1908",
+          "place": "singapore-zam-zam"
+        },
+        {
+          "day": 2,
+          "name": "Beach Road Scissor Cut Hainanese Curry Rice",
+          "category": "FOOD",
+          "place": "beach-road-scissor-cut-curry-rice"
+        },
+        {
+          "day": 2,
+          "name": "Old Airport Road Food Centre",
+          "category": "FOOD",
+          "note": "home to some legendary vendors",
+          "place": "old-airport-road-food-centre"
+        },
+        {
+          "day": 2,
+          "name": "Geylang Serai Market",
+          "category": "FOOD",
+          "note": "Indonesian and Malay food",
+          "place": "geylang-serai-market"
+        },
+        {
+          "day": 3,
+          "name": "Singapore Botanic Gardens",
+          "category": "EXPERIENCE",
+          "note": "well worth a walk around",
+          "place": "singapore-botanic-gardens",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://sbg.nparks.gov.sg/visit/general-info/"
+        },
+        {
+          "day": 3,
+          "name": "Adam Road nasi lemak",
+          "category": "FOOD",
+          "place": "adam-road-food-centre"
+        },
+        {
+          "day": 3,
+          "name": "Chomp Chomp Food Centre",
+          "category": "FOOD",
+          "note": "well worth the effort to get here; BBQ sambal stingray",
+          "place": "chomp-chomp-food-centre"
+        }
+      ]
+    },
+    {
+      "slug": "singapore-5-days-luxury-foratravel",
+      "title": "Ultimate 5 days in Singapore",
+      "summary": "Fora advisor Aileen Chan's plan: Orchard Road and chilli crab at Clarke Quay, Little India and the Night Safari, a Sentosa day, Bird Paradise and Marina Bay Sands, and the Botanic Gardens before Jewel.",
+      "tier": "LUXURY",
+      "days": 5,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/KA9KF2/ultimate-5-day-singapore-itinerary-must-sees-and-hidden-gems-aileen-chan",
+      "items": [
+        {
+          "day": 1,
+          "name": "Marina Bay Sands",
+          "category": "STAY",
+          "note": "Advisor's first pick. Or The Fullerton Bay Hotel Singapore, Raffles Singapore or Capella Singapore.",
+          "place": "marina-bay-sands-hotel",
+          "unit": "night",
+          "quantity": 4
+        },
+        {
+          "day": 1,
+          "name": "National Museum of Singapore",
+          "category": "EXPERIENCE",
+          "note": "The Singapore History Gallery closed in November 2025 for upgrading works, so check what's open.",
+          "place": "national-museum-of-singapore",
+          "price": 18.78,
+          "priceNote": "24 SGD per adult",
+          "priceSource": "https://www.nhb.gov.sg/nationalmuseum/plan-your-visit/visitor-information/admissions"
+        },
+        {
+          "day": 1,
+          "name": "Orchard Road",
+          "category": "EXPERIENCE",
+          "note": "Singapore's premier shopping street",
+          "place": "orchard-road"
+        },
+        {
+          "day": 1,
+          "name": "Clarke Quay",
+          "category": "EXPERIENCE",
+          "note": "Riverside district known for its nightlife and exceptional seafood",
+          "place": "clarke-quay"
+        },
+        {
+          "day": 1,
+          "name": "Jumbo Seafood",
+          "category": "FOOD",
+          "note": "Chilli crab and black pepper crab",
+          "place": "jumbo-seafood-riverside-point"
+        },
+        {
+          "day": 1,
+          "name": "Merlion",
+          "category": "EXPERIENCE",
+          "note": "After dinner; walk past The Fullerton and Raffles",
+          "place": "merlion-park"
+        },
+        {
+          "day": 1,
+          "name": "Spectra light & water show",
+          "category": "EXPERIENCE",
+          "note": "check the schedule to catch these enchanting performances!",
+          "place": "spectra-light-and-water-show"
+        },
+        {
+          "day": 2,
+          "name": "Newton Food Centre",
+          "category": "FOOD",
+          "note": "famous for the film Crazy Rich Asians; laksa, prawn mee, chicken rice, bak kut teh, kaya toast",
+          "place": "newton-food-centre"
+        },
+        {
+          "day": 2,
+          "name": "Little India",
+          "category": "EXPERIENCE",
+          "place": "little-india"
+        },
+        {
+          "day": 2,
+          "name": "Kampong Glam",
+          "category": "EXPERIENCE",
+          "place": "arab-street"
+        },
+        {
+          "day": 2,
+          "name": "Chinatown",
+          "category": "EXPERIENCE",
+          "place": "chinatown"
+        },
+        {
+          "day": 2,
+          "name": "Night Safari",
+          "category": "EXPERIENCE",
+          "note": "Open 7:15pm to midnight",
+          "place": "night-safari",
+          "price": 45.39,
+          "priceNote": "58 SGD per adult",
+          "priceSource": "https://cn.mandai.com/en/tickets-and-passes/single-attractions/night-safari.html"
+        },
+        {
+          "day": 2,
+          "name": "Ulu Ulu Safari Restaurant",
+          "category": "FOOD",
+          "note": "reminiscent of the kampungs (villages) of old",
+          "place": "ulu-ulu-safari-restaurant"
+        },
+        {
+          "day": 3,
+          "name": "Sentosa Island",
+          "category": "EXPERIENCE",
+          "note": "~10-minute drive from central Singapore",
+          "place": "sentosa-island"
+        },
+        {
+          "day": 3,
+          "name": "Siloso / Tanjong / Palawan beaches",
+          "category": "EXPERIENCE",
+          "note": "Siloso lively; Tanjong tranquil; Palawan for families",
+          "place": "siloso-beach"
+        },
+        {
+          "day": 3,
+          "name": "Southernmost Point of Continental Asia",
+          "category": "EXPERIENCE",
+          "note": "stunning ocean views",
+          "place": "southernmost-point-continental-asia"
+        },
+        {
+          "day": 3,
+          "name": "Resorts World Sentosa",
+          "category": "EXPERIENCE",
+          "note": "shopping mall and dining options",
+          "place": "resorts-world-sentosa"
+        },
+        {
+          "day": 3,
+          "name": "Universal Studios Singapore",
+          "category": "EXPERIENCE",
+          "place": "universal-studios-singapore"
+        },
+        {
+          "day": 4,
+          "name": "Bird Paradise",
+          "category": "EXPERIENCE",
+          "note": "largest bird park in Asia, home to over 3,500 birds",
+          "place": "bird-paradise",
+          "price": 38.34,
+          "priceNote": "49 SGD per adult",
+          "priceSource": "https://cn.mandai.com/en/tickets-and-passes/single-attractions.html"
+        },
+        {
+          "day": 4,
+          "name": "Marina Bay Sands",
+          "category": "EXPERIENCE",
+          "note": "2–3 hours; casino free for foreigners",
+          "place": "marina-bay-sands"
+        },
+        {
+          "day": 4,
+          "name": "ArtScience Museum",
+          "category": "EXPERIENCE",
+          "note": "About 1 hour",
+          "place": "artscience-museum"
+        },
+        {
+          "day": 4,
+          "name": "Gardens by the Bay",
+          "category": "EXPERIENCE",
+          "note": "About 2 hours; 'Avatar Park'",
+          "place": "gardens-by-the-bay"
+        },
+        {
+          "day": 4,
+          "name": "LAVO Italian Restaurant & Rooftop Bar",
+          "category": "FOOD",
+          "note": "Reservations are recommended as it's a popular spot.",
+          "place": "lavo-singapore"
+        },
+        {
+          "day": 4,
+          "name": "CÉ LA VI",
+          "category": "FOOD",
+          "note": "panoramic views; infinity pool is hotel guests only",
+          "place": "ce-la-vi-singapore"
+        },
+        {
+          "day": 5,
+          "name": "Singapore Botanic Gardens",
+          "category": "EXPERIENCE",
+          "note": "UNESCO site; Orchid, Rainforest and Ginger gardens",
+          "place": "singapore-botanic-gardens",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://sbg.nparks.gov.sg/visit/general-info/"
+        },
+        {
+          "day": 5,
+          "name": "Jewel Changi Airport",
+          "category": "EXPERIENCE",
+          "note": "Arrive 4–6h before flight; re-entry after security needs 6h+",
+          "place": "jewel-rain-vortex"
+        },
+        {
+          "day": 5,
+          "name": "Changi Airport",
+          "category": "TRANSIT",
+          "place": "changi-airport"
+        }
+      ]
+    }
+  ]
+}

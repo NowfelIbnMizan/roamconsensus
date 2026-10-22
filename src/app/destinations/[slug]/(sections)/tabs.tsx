@@ -10,6 +10,7 @@ export function DestinationTabs({ slug }: { slug: string }) {
     { href: `/destinations/${slug}/when`, label: "When to go" },
     { href: `/destinations/${slug}/before`, label: "Before you go" },
     { href: `/destinations/${slug}/compare`, label: "Compare" },
+    { href: `/destinations/${slug}/budget`, label: "Budget" },
     { href: `/destinations/${slug}/esim`, label: "eSIM" },
   ];
   return (

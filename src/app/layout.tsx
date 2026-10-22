@@ -60,6 +60,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link href="/quiz" className="hidden hover:text-foreground sm:inline">
                   Trip quiz
                 </Link>
+                <Link href="/visa" className="hidden hover:text-foreground sm:inline">
+                  Visa check
+                </Link>
                 <Link href="/disclosure" className="hidden hover:text-foreground md:inline">
                   Disclosure
                 </Link>
