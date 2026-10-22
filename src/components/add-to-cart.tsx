@@ -63,7 +63,7 @@ export function AddItemButton({ item }: { item: CartItem }) {
       aria-pressed={added}
       aria-label={added ? `Remove ${item.name} from cart` : `Add ${item.name} to cart`}
       title={added ? "In your cart: click to remove" : "Add to cart"}
-      className={`group inline-flex size-7 items-center justify-center rounded-full border ${
+      className={`group inline-flex size-9 items-center justify-center rounded-full border sm:size-7 ${
         added
           ? "border-accent-soft bg-accent-soft text-accent hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-600"
           : "border-line text-muted hover:border-accent hover:text-accent"

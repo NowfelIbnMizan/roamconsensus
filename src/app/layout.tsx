@@ -7,6 +7,7 @@ import { CartLink } from "@/components/cart-link";
 import { CurrencyPicker, CurrencyProvider } from "@/components/money";
 import { ThemeToggle, themeScript } from "@/components/theme";
 import { InstallApp } from "@/components/install-app";
+import { MobileNav } from "@/components/mobile-nav";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -21,6 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
+  // Lets the bottom tab bar sit above the iPhone home indicator.
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
     { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
@@ -73,13 +76,15 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link
                   href="/search"
                   aria-label="Search"
-                  className="flex size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground"
+                  className="hidden size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground sm:flex"
                 >
                   <Search className="size-4" aria-hidden />
                 </Link>
                 <ThemeToggle />
                 <CurrencyPicker />
-                <CartLink />
+                <span className="hidden sm:inline-flex">
+                  <CartLink />
+                </span>
               </div>
             </nav>
           </header>
@@ -104,10 +109,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 About and contact
               </Link>
             </p>
-            <p className="mx-auto max-w-5xl px-4 pb-6 text-xs text-muted">
+            <p className="mx-auto max-w-5xl px-4 pb-24 text-xs text-muted sm:pb-6">
               <InstallApp />
             </p>
           </footer>
+          <Suspense fallback={null}>
+            <MobileNav />
+          </Suspense>
         </CurrencyProvider>
       </body>
     </html>

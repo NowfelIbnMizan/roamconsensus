@@ -97,3 +97,9 @@ body {
   font-weight: 500;
   color: #0f766e !important;
 }
+
+/* Long lists: the browser skips layout and paint for rows far off screen, which keeps phones responsive. */
+.cv-row {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 140px;
+}
