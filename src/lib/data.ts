@@ -2,6 +2,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { db } from "@/lib/db";
 import type { ItemCategory, Prisma } from "@/generated/prisma/client";
 import { pickOffer, type CouponCandidate } from "@/lib/coupons";
+import { bookingSearch } from "@/lib/booking";
 import { creatorLinkSelect } from "@/lib/creator-links";
 import { vibesOf, type VibeKey } from "@/lib/vibes";
 
@@ -499,6 +500,7 @@ export async function getItinerary(slug: string) {
       day,
       items: items.map((i) => {
         const offer = offerFor(i, it.creator, coupons);
+        const search = offer ? null : bookingSearch(i, it.destination.name);
         return {
           id: i.id,
           day: i.day,
@@ -512,8 +514,11 @@ export async function getItinerary(slug: string) {
           quantity: i.quantity,
           unit: i.unit,
           currency: i.currency,
-          vendor: i.vendor?.name ?? null,
-          bookUrl: offer?.url ?? null,
+          vendor: search ? search.vendor : (i.vendor?.name ?? null),
+          bookUrl: offer?.url ?? search?.url ?? null,
+          /** The link is a search on a booking site, not this exact listing. */
+          bookIsSearch: Boolean(search),
+          couponNote: offer?.description ?? null,
           website: i.place?.website ?? null,
           placeSlug: i.place?.slug ?? null,
           lat: i.place?.lat ?? null,
