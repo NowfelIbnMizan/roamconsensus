@@ -219,6 +219,7 @@ export async function saveItinerary(fd: FormData) {
     tier: text(fd, "tier") as Tier,
     days: Math.max(1, int(fd, "days", 1)),
     sourceUrl: text(fd, "sourceUrl"),
+    editorTake: optional(fd, "editorTake"),
     creatorId: text(fd, "creatorId"),
   };
   const row = id
@@ -380,5 +381,21 @@ export async function saveEsimPlan(fd: FormData) {
 export async function deleteEsimPlan(fd: FormData) {
   await requireAdmin();
   await db.esimPlan.delete({ where: { id: text(fd, "id") } });
+  published();
+}
+
+// About me
+
+export async function saveEditor(fd: FormData) {
+  await requireAdmin();
+  const data = {
+    name: text(fd, "name") || "Nowfel",
+    tagline: optional(fd, "tagline"),
+    bio: text(fd, "bio"),
+    photoUrl: optional(fd, "photoUrl"),
+    email: optional(fd, "email"),
+    instagramUrl: optional(fd, "instagramUrl"),
+  };
+  await db.editor.upsert({ where: { id: "me" }, create: data, update: data });
   published();
 }

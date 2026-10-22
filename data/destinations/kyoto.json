@@ -1,0 +1,1488 @@
+{
+  "slug": "kyoto",
+  "name": "Kyoto",
+  "country": "Japan",
+  "summary": "Golden and silver pavilions, thousands of red torii at Fushimi Inari, the Arashiyama bamboo grove, Gion's lantern-lit lanes and Nishiki Market's food stalls.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Kyoto",
+  "months": [
+    {
+      "month": 1,
+      "highC": 9,
+      "lowC": 2,
+      "rainMm": 53,
+      "crowd": "LOW",
+      "note": "Cold and dry; quiet after the New Year shrine visits in the first days of January."
+    },
+    {
+      "month": 2,
+      "highC": 10,
+      "lowC": 2,
+      "rainMm": 65,
+      "crowd": "LOW",
+      "note": "Coldest stretch with occasional snow on temples; plum blossoms start late in the month."
+    },
+    {
+      "month": 3,
+      "highC": 14,
+      "lowC": 4,
+      "rainMm": 106,
+      "crowd": "MEDIUM",
+      "note": "Warming up; cherry blossoms usually begin in the last week of March and crowds build."
+    },
+    {
+      "month": 4,
+      "highC": 20,
+      "lowC": 9,
+      "rainMm": 117,
+      "crowd": "HIGH",
+      "note": "Peak cherry blossom in early April, one of the busiest times of the year; Golden Week starts on 29 April."
+    },
+    {
+      "month": 5,
+      "highC": 25,
+      "lowC": 14,
+      "rainMm": 151,
+      "crowd": "HIGH",
+      "note": "Golden Week crowds in early May, then pleasant and green; Aoi Matsuri on 15 May."
+    },
+    {
+      "month": 6,
+      "highC": 28,
+      "lowC": 19,
+      "rainMm": 200,
+      "crowd": "MEDIUM",
+      "note": "Rainy season (tsuyu) brings humid, wet days and lighter crowds."
+    },
+    {
+      "month": 7,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 224,
+      "crowd": "HIGH",
+      "note": "Hot and humid; the Gion Matsuri festival runs all month and packs central Kyoto."
+    },
+    {
+      "month": 8,
+      "highC": 34,
+      "lowC": 25,
+      "rainMm": 154,
+      "crowd": "MEDIUM",
+      "note": "Hottest month; Obon and the Gozan Okuribi bonfires (16 Aug) draw domestic crowds."
+    },
+    {
+      "month": 9,
+      "highC": 29,
+      "lowC": 21,
+      "rainMm": 179,
+      "crowd": "MEDIUM",
+      "note": "Still hot, with typhoon season peaking; Silver Week holidays can be busy."
+    },
+    {
+      "month": 10,
+      "highC": 23,
+      "lowC": 14,
+      "rainMm": 143,
+      "crowd": "MEDIUM",
+      "note": "Comfortable autumn weather; Jidai Matsuri on 22 October."
+    },
+    {
+      "month": 11,
+      "highC": 17,
+      "lowC": 8,
+      "rainMm": 74,
+      "crowd": "HIGH",
+      "note": "Autumn leaves peak from mid-November into early December, Kyoto's other busiest season."
+    },
+    {
+      "month": 12,
+      "highC": 12,
+      "lowC": 4,
+      "rainMm": 57,
+      "crowd": "MEDIUM",
+      "note": "Late autumn colour early in the month, then cold; many places close or get busy around New Year."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free for short stays",
+      "body": "Travellers from visa-exempt countries such as the US can stay up to 90 days for tourism without a visa. You need a passport valid for your whole stay and usually proof of onward travel.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Use Visit Japan Web for faster arrival",
+      "body": "Visit Japan Web creates QR codes for immigration and customs that you can scan at automated kiosks on arrival. It is optional in 2026, and paper cards are still accepted. Set up your account about two weeks before you fly.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "JESTA is not needed yet",
+      "body": "Japan passed a law on 29 May 2026 to create JESTA, an electronic travel authorization for visa-exempt visitors, but it will not launch before 2028. Ignore websites that charge for 'early JESTA registration'.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Money",
+      "title": "Departure tax tripled to ¥3,000",
+      "body": "Since 1 July 2026 the International Tourist Tax on leaving Japan is ¥3,000, up from ¥1,000. In most cases it is already included in your airfare.",
+      "sourceUrl": "https://www.japan.travel/en/ca/news/japans-international-tourist-tax-is-increasing/"
+    },
+    {
+      "topic": "Money",
+      "title": "Kyoto's higher hotel tax (from March 2026)",
+      "body": "Since 1 March 2026 Kyoto charges an accommodation tax per person per night based on the room rate: ¥200 under ¥6,000; ¥400 for ¥6,000–19,999; ¥1,000 for ¥20,000–49,999; ¥4,000 for ¥50,000–99,999; and ¥10,000 at ¥100,000 or more. The room rate counts service charges but excludes meals and consumption tax.",
+      "sourceUrl": "https://timeout.com/osaka/news/kyotos-highest-hotel-tax-hike-takes-effect-all-you-need-to-know-030226"
+    },
+    {
+      "topic": "Money",
+      "title": "Tax-free shopping is now a refund at the airport",
+      "body": "From 1 November 2026, visitors pay the full price including tax in shops and get the consumption tax back after customs checks the goods at departure. You must spend at least ¥5,000 per shop per day, and you need your passport plus all items and receipts. Leave time at the airport, because purchases with a missing item or receipt are not refunded.",
+      "sourceUrl": "https://www.japan.travel/en/us/blog/everything-you-need-to-know-japans-new-tax-free-shopping-system/"
+    },
+    {
+      "topic": "Money",
+      "title": "Carry some cash",
+      "body": "Japan still relies heavily on cash, so check whether a place takes cards before you order. You can withdraw yen at most ATMs, at airports or at banks.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Don't tip",
+      "body": "Tipping is not customary in Japan and can cause embarrassment or confusion. The price you see is what you pay.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Get an ICOCA card or mobile ICOCA",
+      "body": "ICOCA works on JR lines, private railways, buses and some taxis in Kansai. It also works at convenience stores and vending machines. It is available in Apple Pay and as Mobile ICOCA on Android, and you can top it up at station machines or convenience stores.",
+      "sourceUrl": "https://kyoto.travel/en/getting-around/basic-knowledge-and-manners-of-public-transportation-in-japan/"
+    },
+    {
+      "topic": "Transport",
+      "title": "How Kyoto buses work",
+      "body": "On Kyoto buses you pay when you get off, and drivers only give change for ¥1,000 notes. IC cards work on most buses but not on Yasaka bus lines. Big suitcases are unwelcome, so send luggage ahead with a delivery service.",
+      "sourceUrl": "https://kyoto.travel/en/getting-around/basic-knowledge-and-manners-of-public-transportation-in-japan/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Gion's private alleys: no photos",
+      "body": "Residents have banned photography in Gion's privately owned alleys and streets, with signs warning of a ¥10,000 fine. Reports say the fine is not legally binding. Don't photograph geiko or maiko without asking first.",
+      "sourceUrl": "https://www.travelweekly.com.au/article/kyotos-famous-gion-neighbourhood-bans-photos-in-private-areas/"
+    },
+    {
+      "topic": "Health",
+      "title": "Check your medicines before you pack",
+      "body": "Without a permit (Yakkan Shoshomei) you can bring up to one month's supply of prescription medicine and two months' of other medicines for personal use. Over-the-counter products with pseudoephedrine (such as Sudafed and Vicks inhalers) or codeine are banned, and stimulants are prohibited. Narcotics and psychotropics need advance permission, so carry your prescription and a doctor's letter.",
+      "sourceUrl": "https://www.miami.us.emb-japan.go.jp/en/medical.html"
+    },
+    {
+      "topic": "Connectivity",
+      "title": "Plugs and voltage",
+      "body": "Japan uses two flat parallel-prong plugs at 100 V AC. Bring an adapter, and check that your devices accept 100 V.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Safety",
+      "title": "Emergency numbers",
+      "body": "Dial 110 for police and 119 for fire or ambulance.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    }
+  ],
+  "places": [
+    {
+      "slug": "kinkaku-ji",
+      "name": "Kinkaku-ji",
+      "category": "EXPERIENCE",
+      "area": "Kita-ku",
+      "blurb": "Zen temple whose gold-leaf pavilion sits over a mirror pond.",
+      "website": "https://www.shokoku-ji.jp/kinkakuji/",
+      "lat": 35.0394,
+      "lng": 135.7292
+    },
+    {
+      "slug": "ginkaku-ji",
+      "name": "Ginkaku-ji",
+      "category": "EXPERIENCE",
+      "area": "Sakyo-ku (Higashiyama)",
+      "blurb": "Zen temple with the Silver Pavilion, a raked-sand garden and a hillside moss walk.",
+      "tip": "Entry went up to 1,000 yen on 1 April 2026.",
+      "website": "https://www.shokoku-ji.jp/ginkakuji/",
+      "lat": 35.027,
+      "lng": 135.7983
+    },
+    {
+      "slug": "kiyomizu-dera",
+      "name": "Kiyomizu-dera",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Hillside temple famed for its wooden stage over the valley and the Otowa spring.",
+      "website": "https://www.kiyomizudera.or.jp/",
+      "lat": 34.9949,
+      "lng": 135.785
+    },
+    {
+      "slug": "nijo-jo",
+      "name": "Nijo Castle",
+      "category": "EXPERIENCE",
+      "area": "Nakagyo-ku",
+      "blurb": "Tokugawa shogun's castle, known for Ninomaru Palace's nightingale floors and its gardens.",
+      "website": "https://nijo-jocastle.city.kyoto.lg.jp/",
+      "lat": 35.0142,
+      "lng": 135.7481
+    },
+    {
+      "slug": "kyoto-imperial-palace",
+      "name": "Kyoto Imperial Palace",
+      "category": "EXPERIENCE",
+      "area": "Kamigyo-ku",
+      "blurb": "Former imperial residence set in the large Kyoto Gyoen park.",
+      "website": "https://sankan.kunaicho.go.jp/guide/kyoto.html",
+      "lat": 35.0254,
+      "lng": 135.7621
+    },
+    {
+      "slug": "camellia-flower-tea-ceremony",
+      "name": "Tea Ceremony Camellia FLOWER",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama (Ninenzaka)",
+      "blurb": "Small English-language tea ceremony house in a machiya near Ninenzaka.",
+      "lat": 34.9983,
+      "lng": 135.7807
+    },
+    {
+      "slug": "nishiki-market",
+      "name": "Nishiki Market",
+      "category": "FOOD",
+      "area": "Nakagyo-ku (Downtown)",
+      "blurb": "Narrow covered food street of about 100+ stalls, nicknamed 'Kyoto's Kitchen'.",
+      "website": "https://www.kyoto-nishiki.or.jp/",
+      "lat": 35.005,
+      "lng": 135.7649
+    },
+    {
+      "slug": "gion",
+      "name": "Gion",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Historic geisha district of teahouses and wooden machiya along Hanamikoji and Shirakawa.",
+      "tip": "No photos in the private side lanes off Hanamikoji: fines are posted.",
+      "lat": 35.0037,
+      "lng": 135.775
+    },
+    {
+      "slug": "gion-corner",
+      "name": "Gion Corner",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama (Gion)",
+      "blurb": "Theatre staging short showcases of maiko dance and traditional arts.",
+      "lat": 35.0002,
+      "lng": 135.7752
+    },
+    {
+      "slug": "yasaka-pagoda-hokan-ji",
+      "name": "Yasaka Pagoda",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Five-storey pagoda that forms Higashiyama's classic sloping-street view.",
+      "lat": 34.9985,
+      "lng": 135.7795
+    },
+    {
+      "slug": "kyoto-international-manga-museum",
+      "name": "Kyoto International Manga Museum",
+      "category": "EXPERIENCE",
+      "area": "Nakagyo-ku (Karasuma Oike)",
+      "blurb": "Manga library and museum in a former elementary school.",
+      "website": "https://kyotomm.jp/en/opentime-cost/",
+      "lat": 35.0117,
+      "lng": 135.7594
+    },
+    {
+      "slug": "kyoto-station-building",
+      "name": "Kyoto Station Building",
+      "category": "EXPERIENCE",
+      "area": "Shimogyo-ku",
+      "blurb": "Hiroshi Hara's 1997 station complex with shops, a rooftop skyway and long escalators.",
+      "lat": 34.9858,
+      "lng": 135.7588
+    },
+    {
+      "slug": "maruyama-park",
+      "name": "Maruyama Park",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Public park behind Yasaka Shrine, known for its lit weeping cherry.",
+      "lat": 35.0036,
+      "lng": 135.7814
+    },
+    {
+      "slug": "fushimi-inari-taisha",
+      "name": "Fushimi Inari Taisha",
+      "category": "EXPERIENCE",
+      "area": "Fushimi-ku",
+      "blurb": "Head Inari shrine with thousands of vermilion torii climbing Mt Inari.",
+      "tip": "Open 24 hours. Go early or late to beat the crowds.",
+      "lat": 34.9671,
+      "lng": 135.7727
+    },
+    {
+      "slug": "iwatayama-monkey-park",
+      "name": "Arashiyama Monkey Park Iwatayama",
+      "category": "EXPERIENCE",
+      "area": "Arashiyama",
+      "blurb": "Hilltop park with free-roaming macaques and city views, reached by a steep 20–30 min climb.",
+      "website": "http://www.monkeypark.jp/",
+      "lat": 35.0103,
+      "lng": 135.6766
+    },
+    {
+      "slug": "kurama-dera",
+      "name": "Kurama-dera",
+      "category": "EXPERIENCE",
+      "area": "Kurama (north Kyoto)",
+      "blurb": "Mountain temple above Kurama village, linked by a forest trail to Kibune.",
+      "lat": 35.118,
+      "lng": 135.771
+    },
+    {
+      "slug": "arashiyama-bamboo-grove",
+      "name": "Arashiyama Bamboo Grove",
+      "category": "EXPERIENCE",
+      "area": "Arashiyama",
+      "blurb": "Path through towering bamboo beside Tenryu-ji and Nonomiya Shrine.",
+      "website": "https://ja.kyoto.travel/tourism/single01.php?category_id=8&tourism_id=2683",
+      "lat": 35.017,
+      "lng": 135.6717
+    },
+    {
+      "slug": "higashi-hongan-ji",
+      "name": "Higashi Hongan-ji",
+      "category": "EXPERIENCE",
+      "area": "Shimogyo-ku",
+      "blurb": "Jodo Shinshu head temple with one of the world's largest wooden halls, near Kyoto Station.",
+      "lat": 34.991,
+      "lng": 135.7584
+    },
+    {
+      "slug": "yasaka-shrine",
+      "name": "Yasaka Shrine",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama (Gion)",
+      "blurb": "Gion's guardian shrine and home of the Gion Matsuri, lit with lanterns at night.",
+      "lat": 35.0037,
+      "lng": 135.7785
+    },
+    {
+      "slug": "ninenzaka-sannenzaka",
+      "name": "Ninenzaka & Sannenzaka",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Preserved stone-stepped lanes of shops and teahouses leading to Kiyomizu-dera.",
+      "lat": 34.9972,
+      "lng": 135.781
+    },
+    {
+      "slug": "philosophers-path",
+      "name": "Philosopher's Path",
+      "category": "EXPERIENCE",
+      "area": "Sakyo-ku",
+      "blurb": "Two-kilometre canal-side stone path between Ginkaku-ji and Nanzen-ji, lined with cherry trees.",
+      "lat": 35.022,
+      "lng": 135.795
+    },
+    {
+      "slug": "eikando",
+      "name": "Eikan-do",
+      "category": "EXPERIENCE",
+      "area": "Sakyo-ku",
+      "blurb": "Temple famed for its autumn maple colours and night illuminations.",
+      "lat": 35.015,
+      "lng": 135.794
+    },
+    {
+      "slug": "heian-jingu",
+      "name": "Heian Jingu",
+      "category": "EXPERIENCE",
+      "area": "Okazaki, Sakyo-ku",
+      "blurb": "1895 shrine with a giant torii and a paid strolling garden.",
+      "lat": 35.016,
+      "lng": 135.7824
+    },
+    {
+      "slug": "yasaka-koshindo",
+      "name": "Yasaka Koshindo",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Tiny temple hung with colourful kukuri-zaru charms.",
+      "lat": 34.9987,
+      "lng": 135.7788
+    },
+    {
+      "slug": "kodai-ji",
+      "name": "Kodai-ji",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Zen temple founded by Hideyoshi's widow, with gardens and a bamboo grove.",
+      "website": "https://www.kodaiji.com/",
+      "lat": 35.0006,
+      "lng": 135.7811
+    },
+    {
+      "slug": "hachidaime-gihey",
+      "name": "Hachidaime Gihey",
+      "category": "FOOD",
+      "area": "Gion",
+      "blurb": "Rice-focused restaurant run by a rice merchant, serving donabe-cooked set meals.",
+      "lat": 35.0034,
+      "lng": 135.7765
+    },
+    {
+      "slug": "kamo-river",
+      "name": "Kamo River",
+      "category": "EXPERIENCE",
+      "area": "Central Kyoto",
+      "blurb": "River through central Kyoto with walking banks and summer dining terraces.",
+      "lat": 35.004,
+      "lng": 135.771
+    },
+    {
+      "slug": "pontocho",
+      "name": "Pontocho",
+      "category": "EXPERIENCE",
+      "area": "Nakagyo-ku",
+      "blurb": "Lantern-lit alley of restaurants and bars along the Kamo River.",
+      "lat": 35.0055,
+      "lng": 135.771
+    },
+    {
+      "slug": "gion-kappa",
+      "name": "Gion Kappa",
+      "category": "FOOD",
+      "area": "Gion (Sueyoshicho)",
+      "blurb": "Late-night izakaya serving kushiyaki skewers.",
+      "lat": 35.005,
+      "lng": 135.7735
+    },
+    {
+      "slug": "tenryu-ji",
+      "name": "Tenryu-ji",
+      "category": "EXPERIENCE",
+      "area": "Arashiyama",
+      "blurb": "Head Rinzai Zen temple with Muso Soseki's 14th-century Sogenchi pond garden.",
+      "website": "https://www.tenryuji.com/en/visit/",
+      "lat": 35.0157,
+      "lng": 135.6738
+    },
+    {
+      "slug": "unagi-hirokawa",
+      "name": "Unagi Hirokawa",
+      "category": "FOOD",
+      "area": "Arashiyama",
+      "blurb": "Popular grilled-eel restaurant near the bamboo grove.",
+      "lat": 35.016,
+      "lng": 135.6745
+    },
+    {
+      "slug": "togetsukyo-bridge",
+      "name": "Togetsukyo Bridge",
+      "category": "EXPERIENCE",
+      "area": "Arashiyama",
+      "blurb": "Wooden-railed bridge over the Katsura River against Arashiyama's hills.",
+      "lat": 35.013,
+      "lng": 135.6778
+    },
+    {
+      "slug": "randen-arashiyama-to-omuro-ninnaji",
+      "name": "Keifuku Randen tram",
+      "category": "TRANSIT",
+      "area": "West Kyoto",
+      "blurb": "One-car streetcar linking Arashiyama with Ninna-ji and Ryoan-ji.",
+      "lat": 35.0153,
+      "lng": 135.6783
+    },
+    {
+      "slug": "ninna-ji",
+      "name": "Ninna-ji",
+      "category": "EXPERIENCE",
+      "area": "Ukyo-ku (Omuro)",
+      "blurb": "Former imperial temple with a palace complex and late-blooming Omuro cherries.",
+      "lat": 35.031,
+      "lng": 135.7137
+    },
+    {
+      "slug": "ryoan-ji",
+      "name": "Ryoan-ji",
+      "category": "EXPERIENCE",
+      "area": "Ukyo-ku",
+      "blurb": "Zen temple with Japan's most famous dry rock garden of 15 stones.",
+      "lat": 35.0345,
+      "lng": 135.7183
+    },
+    {
+      "slug": "kura-sushi-kinkakuji",
+      "name": "Kura Sushi",
+      "category": "FOOD",
+      "area": "Kita-ku",
+      "blurb": "Budget conveyor-belt sushi chain branch.",
+      "lat": 35.032,
+      "lng": 135.731
+    },
+    {
+      "slug": "fushimi-sake-district",
+      "name": "Fushimi Sake District",
+      "category": "EXPERIENCE",
+      "area": "Fushimi-ku",
+      "blurb": "Canal-side brewery quarter (Gekkeikan and others) with tasting rooms.",
+      "lat": 34.932,
+      "lng": 135.761
+    },
+    {
+      "slug": "menya-inoichi-hanare",
+      "name": "Menya Inoichi Hanare",
+      "category": "FOOD",
+      "area": "Shimogyo-ku (downtown)",
+      "blurb": "Michelin-listed dashi-forward ramen shop.",
+      "lat": 35.001,
+      "lng": 135.765
+    },
+    {
+      "slug": "wadachi",
+      "name": "Wadachi",
+      "category": "FOOD",
+      "area": "Gion",
+      "blurb": "Sake-focused izakaya in Gion.",
+      "lat": 35.005,
+      "lng": 135.7745
+    },
+    {
+      "slug": "honke-daiichi-asahi",
+      "name": "Honke Daiichi-Asahi",
+      "category": "FOOD",
+      "area": "Shimogyo-ku (Kyoto Station east)",
+      "blurb": "Long-running shoyu-pork ramen shop with constant queues.",
+      "website": "http://honke-daiichiasahi.com/",
+      "lat": 34.9877,
+      "lng": 135.7623
+    },
+    {
+      "slug": "tempura-endo-yasaka",
+      "name": "Tempura Endo Yasaka",
+      "category": "FOOD",
+      "area": "Higashiyama (Gion)",
+      "blurb": "Upscale tempura counter in a Gion townhouse.",
+      "website": "http://www.beverlyhills-endo.com/",
+      "lat": 34.999,
+      "lng": 135.778
+    },
+    {
+      "slug": "hanamakiya",
+      "name": "Hanamakiya",
+      "category": "FOOD",
+      "area": "Arashiyama",
+      "blurb": "Soba restaurant where noodles are made in view of diners.",
+      "website": "https://r.gnavi.co.jp/ka35700",
+      "lat": 35.0145,
+      "lng": 135.677
+    },
+    {
+      "slug": "monk-kyoto",
+      "name": "Monk",
+      "category": "FOOD",
+      "area": "Sakyo-ku (Philosopher's Path)",
+      "blurb": "Small wood-fired omakase restaurant by the Philosopher's Path.",
+      "website": "https://restaurant-monk.com/",
+      "lat": 35.0205,
+      "lng": 135.795
+    },
+    {
+      "slug": "hanamikoji-street",
+      "name": "Hanamikoji Street",
+      "category": "EXPERIENCE",
+      "area": "Gion",
+      "blurb": "Gion's main teahouse street.",
+      "lat": 35.002,
+      "lng": 135.775
+    },
+    {
+      "slug": "kobe-beef-steak-mouriya-gion",
+      "name": "Kobe Beef Steak Mouriya Gion",
+      "category": "FOOD",
+      "area": "Gion",
+      "blurb": "Teppanyaki steakhouse grilling Kobe beef in front of diners.",
+      "website": "https://www.mouriya.co.jp/gion",
+      "lat": 35.004,
+      "lng": 135.7735
+    },
+    {
+      "slug": "sushi-no-musashi",
+      "name": "Sushi no Musashi",
+      "category": "FOOD",
+      "area": "Nakagyo-ku",
+      "blurb": "Local conveyor-belt sushi chain with colour-coded plates.",
+      "website": "https://sushinomusashi.com/",
+      "lat": 35.0085,
+      "lng": 135.77
+    },
+    {
+      "slug": "maikoya-kyoto-tea-ceremony",
+      "name": "Kimono Tea Ceremony Maikoya Kyoto",
+      "category": "EXPERIENCE",
+      "area": "Kyoto (several branches)",
+      "blurb": "Tea ceremony experiences that include kimono dressing.",
+      "website": "https://mai-ko.com/culture/tea-ceremony/"
+    },
+    {
+      "slug": "len-kyoto",
+      "name": "Len Kyoto Kawaramachi",
+      "category": "STAY",
+      "area": "Shimogyo-ku, near Kamo River",
+      "blurb": "Design hostel with a ground-floor café-bar near the Kamo River.",
+      "lat": 34.9958,
+      "lng": 135.7685
+    },
+    {
+      "slug": "tune-stay-kyoto",
+      "name": "TUNE STAY KYOTO",
+      "category": "STAY",
+      "area": "Shimogyo-ku (Kyoto Station north)",
+      "blurb": "Simple modern hotel a short walk from Kyoto Station.",
+      "lat": 34.9893,
+      "lng": 135.7608
+    },
+    {
+      "slug": "rinn-gion-yasaka",
+      "name": "Rinn Gion Yasaka",
+      "category": "STAY",
+      "area": "Higashiyama (Gion)",
+      "blurb": "Midrange apartment-style hotel near Yasaka Shrine.",
+      "lat": 35.0005,
+      "lng": 135.776
+    },
+    {
+      "slug": "aman-kyoto",
+      "name": "Aman Kyoto",
+      "category": "STAY",
+      "area": "Kita-ku (near Kinkaku-ji)",
+      "blurb": "Secluded luxury resort in a forest garden below Hidari Daimonji.",
+      "lat": 35.048,
+      "lng": 135.7255
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "kyoto-3-days-thebrokebackpacker",
+      "title": "3 days in Kyoto on a budget",
+      "summary": "Kinkaku-ji, Nijo Castle and a tea ceremony, then Gion at dusk, Kiyomizu-dera and the Manga Museum, with Fushimi Inari, the monkey park and the bamboo grove on day three.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/kyoto-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Len Kyoto Kawaramachi",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Sunput Nanajo Mibu or Ethnography Gion Shinmonzen.",
+          "place": "len-kyoto",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Kinkaku-ji",
+          "category": "EXPERIENCE",
+          "note": "Arrive early, gets very crowded",
+          "place": "kinkaku-ji",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult (creator: $4)",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Nijo Castle",
+          "category": "EXPERIENCE",
+          "note": "Get the audio guide; no photos inside",
+          "place": "nijo-jo",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult (creator: $6 for the Nijo Castle, with an extra $4 for entrance to Ninomaru Palace)",
+          "priceSource": "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/"
+        },
+        {
+          "day": 1,
+          "name": "Kyoto Imperial Palace",
+          "category": "EXPERIENCE",
+          "place": "kyoto-imperial-palace",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Tea ceremony at Camellia Flower",
+          "category": "EXPERIENCE",
+          "note": "Staff speak fluent English.",
+          "place": "camellia-flower-tea-ceremony",
+          "price": 27,
+          "priceNote": "creator: $27"
+        },
+        {
+          "day": 1,
+          "name": "Nishiki Market",
+          "category": "FOOD",
+          "note": "Budget street food; allow a few hours.",
+          "place": "nishiki-market",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Gion",
+          "category": "EXPERIENCE",
+          "note": "Early evening when lanterns are lit",
+          "place": "gion",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Geisha dance in Gion",
+          "category": "EXPERIENCE",
+          "note": "Creator suggests a teahouse performance or Gion's annual public dances. Gion Corner stages short shows.",
+          "place": "gion-corner",
+          "price": 18.0,
+          "priceNote": "creator: $18 – $40"
+        },
+        {
+          "day": 2,
+          "name": "Yasaka Pagoda",
+          "category": "EXPERIENCE",
+          "note": "Interior only occasionally open; ask in person",
+          "place": "yasaka-pagoda-hokan-ji",
+          "price": 2.53,
+          "priceNote": "400 JPY per adult (creator: $4)",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 2,
+          "name": "Kiyomizu-dera",
+          "category": "EXPERIENCE",
+          "note": "Wooden stage; don't drink from all three streams (greedy)",
+          "place": "kiyomizu-dera",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult (creator: $6)",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 2,
+          "name": "Kyoto International Manga Museum",
+          "category": "EXPERIENCE",
+          "note": "Building was once a school",
+          "place": "kyoto-international-manga-museum",
+          "price": 7.0,
+          "priceNote": "creator: $7"
+        },
+        {
+          "day": 2,
+          "name": "Kyoto Station Building",
+          "category": "EXPERIENCE",
+          "note": "Shopping, modern architecture",
+          "place": "kyoto-station-building",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kyoto-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Maruyama Park",
+          "category": "EXPERIENCE",
+          "note": "Evening, when the weeping cherry is lit",
+          "place": "maruyama-park",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kyoto-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Ginkaku-ji",
+          "category": "EXPERIENCE",
+          "note": "Less crowded than Kinkaku-ji.",
+          "place": "ginkaku-ji",
+          "price": 6.32,
+          "priceNote": "1,000 JPY per adult (creator: Free)",
+          "priceSource": "https://www.shokoku-ji.jp/ginkakuji/news/%e3%80%90%e9%87%8d%e8%a6%81%e3%80%91%e3%80%80%e5%8f%82%e6%8b%9d%e5%bf%97%e7%b4%8d%e6%96%99%e6%94%b9%e5%ae%9a%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b2026%e5%b9%b44%e6%9c%881%e6%97%a5%e3%82%88/"
+        },
+        {
+          "day": 3,
+          "name": "Fushimi Inari Taisha",
+          "category": "EXPERIENCE",
+          "note": "About 2 hours. Wear comfortable shoes.",
+          "place": "fushimi-inari-taisha",
+          "price": 0.0,
+          "priceNote": "free (creator: $3)",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 3,
+          "name": "Arashiyama Monkey Park Iwatayama",
+          "category": "EXPERIENCE",
+          "note": "Steep ~30 min hike; not wheelchair accessible",
+          "place": "iwatayama-monkey-park",
+          "price": 5.0,
+          "priceNote": "creator: $5"
+        },
+        {
+          "day": 3,
+          "name": "Kurama-dera",
+          "category": "EXPERIENCE",
+          "note": "Half day; hot spring nearby",
+          "place": "kurama-dera",
+          "price": 2.0,
+          "priceNote": "creator: cable car for only ~$2 USD"
+        },
+        {
+          "day": 3,
+          "name": "Arashiyama Bamboo Grove",
+          "category": "EXPERIENCE",
+          "note": "About 1 hr, plus another for the riverside area",
+          "place": "arashiyama-bamboo-grove",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        }
+      ]
+    },
+    {
+      "slug": "kyoto-2-days-bucketlistly",
+      "title": "2 days in Kyoto: a complete guide",
+      "summary": "Higashi Hongan-ji, Nishiki Market, Nijo Castle and sunset in Higashiyama, then the bamboo grove, both pavilions, the Philosopher's Path and Fushimi Inari by evening.",
+      "tier": "BUDGET",
+      "days": 2,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/kyoto-osaka-backpacking-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "TUNE STAY KYOTO",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Piece Hostel Kyoto or Candeo Hotels Kyoto Karasuma Rokkaku.",
+          "place": "tune-stay-kyoto",
+          "unit": "night",
+          "quantity": 1
+        },
+        {
+          "day": 1,
+          "name": "Higashi Hongan-ji",
+          "category": "EXPERIENCE",
+          "note": "10 min walk from Kyoto Station; about 30 min",
+          "place": "higashi-hongan-ji"
+        },
+        {
+          "day": 1,
+          "name": "Nishiki Market",
+          "category": "FOOD",
+          "note": "100+ shops; consider a food tour",
+          "place": "nishiki-market",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Nijo Castle",
+          "category": "EXPERIENCE",
+          "note": "1–2 hrs; walk the trail up the castle walls",
+          "place": "nijo-jo",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult",
+          "priceSource": "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/"
+        },
+        {
+          "day": 1,
+          "name": "Yasaka Shrine",
+          "category": "EXPERIENCE",
+          "note": "Connected to Maruyama Park; lively in the evening",
+          "place": "yasaka-shrine",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Ninenzaka & Sannenzaka",
+          "category": "EXPERIENCE",
+          "note": "Crowded before sunset",
+          "place": "ninenzaka-sannenzaka"
+        },
+        {
+          "day": 1,
+          "name": "Kiyomizu-dera",
+          "category": "EXPERIENCE",
+          "note": "Sunset spot but extremely crowded then",
+          "place": "kiyomizu-dera",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Yasaka Pagoda",
+          "category": "EXPERIENCE",
+          "note": "Photo spot after sunset",
+          "place": "yasaka-pagoda-hokan-ji",
+          "price": 2.53,
+          "priceNote": "400 JPY per adult",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Gion",
+          "category": "FOOD",
+          "note": "Dinner; Gion Matsuri in July",
+          "place": "gion"
+        },
+        {
+          "day": 2,
+          "name": "Arashiyama Bamboo Grove",
+          "category": "EXPERIENCE",
+          "note": "Crowded; explore wider Arashiyama",
+          "place": "arashiyama-bamboo-grove",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Kinkaku-ji",
+          "category": "EXPERIENCE",
+          "note": "Still worth a visit, but the creator prefers the Silver Pavilion.",
+          "place": "kinkaku-ji",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 2,
+          "name": "Ginkaku-ji",
+          "category": "EXPERIENCE",
+          "note": "Fewer crowds, Zen garden, viewpoint",
+          "place": "ginkaku-ji",
+          "price": 6.32,
+          "priceNote": "1,000 JPY per adult",
+          "priceSource": "https://www.shokoku-ji.jp/ginkakuji/news/%e3%80%90%e9%87%8d%e8%a6%81%e3%80%91%e3%80%80%e5%8f%82%e6%8b%9d%e5%bf%97%e7%b4%8d%e6%96%99%e6%94%b9%e5%ae%9a%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b2026%e5%b9%b44%e6%9c%881%e6%97%a5%e3%82%88/"
+        },
+        {
+          "day": 2,
+          "name": "Philosopher's Path",
+          "category": "EXPERIENCE",
+          "note": "Best in cherry blossom and autumn",
+          "place": "philosophers-path"
+        },
+        {
+          "day": 2,
+          "name": "Eikan-do",
+          "category": "EXPERIENCE",
+          "note": "At the end of the path; autumn foliage",
+          "place": "eikando"
+        },
+        {
+          "day": 2,
+          "name": "Heian Jingu",
+          "category": "EXPERIENCE",
+          "note": "30–60 min",
+          "place": "heian-jingu"
+        },
+        {
+          "day": 2,
+          "name": "Fushimi Inari Taisha",
+          "category": "EXPERIENCE",
+          "note": "Evening visit; don't hike to the summit after dark",
+          "place": "fushimi-inari-taisha",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        }
+      ]
+    },
+    {
+      "slug": "kyoto-3-days-willflyforfood",
+      "title": "Kyoto in 3 days, with the food",
+      "summary": "Higashiyama temples and Gion, then Arashiyama, Ryoan-ji and Kinkaku-ji, and a last day of Fushimi sake, Fushimi Inari, Nijo Castle and Ginkaku-ji, with a food stop at every turn.",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Rinn Gion Yasaka",
+          "category": "STAY",
+          "note": "Creator's mid-range pick. Or SOWAKA or Gion Kyoto Miyagawacyo Guesthouse HANAKANZASHI.",
+          "place": "rinn-gion-yasaka",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Kiyomizu-dera",
+          "category": "EXPERIENCE",
+          "note": "Arrive around 8AM; bus to Gojo-zaka, then 15 min uphill",
+          "place": "kiyomizu-dera",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult (creator: Admission: JPY 400)",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Ninenzaka & Sannenzaka",
+          "category": "EXPERIENCE",
+          "note": "Go early; matcha soft serve",
+          "place": "ninenzaka-sannenzaka"
+        },
+        {
+          "day": 1,
+          "name": "Yasaka Pagoda",
+          "category": "EXPERIENCE",
+          "note": "Irregular hours; usually seen from outside",
+          "place": "yasaka-pagoda-hokan-ji",
+          "price": 2.53,
+          "priceNote": "400 JPY per adult",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Yasaka Koshindo",
+          "category": "EXPERIENCE",
+          "note": "Colourful kukuri-zaru monkeys",
+          "place": "yasaka-koshindo",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Kodai-ji",
+          "category": "EXPERIENCE",
+          "place": "kodai-ji",
+          "price": 3.79,
+          "priceNote": "creator: JPY 600 (Kodai-ji and Sho Museum), JPY 900 (Kodai-ji, Sho Museum, and Entokuin)"
+        },
+        {
+          "day": 1,
+          "name": "Yasaka Shrine",
+          "category": "EXPERIENCE",
+          "note": "Maruyama Park next door",
+          "place": "yasaka-shrine",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Hachidaime Gihey",
+          "category": "FOOD",
+          "note": "Accept the rice refill",
+          "place": "hachidaime-gihey",
+          "price": 10.74,
+          "priceNote": "creator: About JPY 1,700 for a lunch set"
+        },
+        {
+          "day": 1,
+          "name": "Gion",
+          "category": "EXPERIENCE",
+          "note": "Street photography; evening food tour",
+          "place": "gion"
+        },
+        {
+          "day": 1,
+          "name": "Kamo River",
+          "category": "EXPERIENCE",
+          "note": "Konbini coffee by the river",
+          "place": "kamo-river"
+        },
+        {
+          "day": 1,
+          "name": "Pontocho",
+          "category": "EXPERIENCE",
+          "note": "Best in the evening",
+          "place": "pontocho"
+        },
+        {
+          "day": 1,
+          "name": "Nishiki Market",
+          "category": "FOOD",
+          "note": "Tako tamago, amazake, matcha",
+          "place": "nishiki-market",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Gion Kappa",
+          "category": "FOOD",
+          "note": "Kushiyaki and beer; closed Mondays",
+          "place": "gion-kappa",
+          "price": 2.46,
+          "priceNote": "creator: About JPY 390 per dish"
+        },
+        {
+          "day": 2,
+          "name": "Arashiyama Bamboo Grove",
+          "category": "EXPERIENCE",
+          "note": "Arrive early",
+          "place": "arashiyama-bamboo-grove",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Tenryu-ji",
+          "category": "EXPERIENCE",
+          "note": "Garden is in its original form",
+          "place": "tenryu-ji",
+          "price": 3.16,
+          "priceNote": "creator: Admission: JPY 500"
+        },
+        {
+          "day": 2,
+          "name": "Unagi Hirokawa",
+          "category": "FOOD",
+          "note": "Reserve; walk-in wait can exceed 1 hr",
+          "place": "unagi-hirokawa",
+          "price": 19.58,
+          "priceNote": "creator: Starts at around JPY 3,100 for unagi donburi"
+        },
+        {
+          "day": 2,
+          "name": "Togetsukyo Bridge",
+          "category": "EXPERIENCE",
+          "note": "Half day; bike rental",
+          "place": "togetsukyo-bridge"
+        },
+        {
+          "day": 2,
+          "name": "Keifuku Randen tram",
+          "category": "TRANSIT",
+          "note": "Keifuku Randen, change at Katabiranotsuji",
+          "place": "randen-arashiyama-to-omuro-ninnaji"
+        },
+        {
+          "day": 2,
+          "name": "Ninna-ji",
+          "category": "EXPERIENCE",
+          "note": "Late-blooming Omuro cherries, mid-April",
+          "place": "ninna-ji",
+          "price": 5.05,
+          "priceNote": "creator: Admission: JPY 800 (Goten palace buildings)"
+        },
+        {
+          "day": 2,
+          "name": "Ryoan-ji",
+          "category": "EXPERIENCE",
+          "note": "Famous 15-stone rock garden.",
+          "place": "ryoan-ji",
+          "price": 3.16,
+          "priceNote": "creator: Admission: JPY 500"
+        },
+        {
+          "day": 2,
+          "name": "Kinkaku-ji",
+          "category": "EXPERIENCE",
+          "note": "Visit near sunset; Bus 59 or 12",
+          "place": "kinkaku-ji",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 2,
+          "name": "Kura Sushi",
+          "category": "FOOD",
+          "note": "About 10 min walk south of Kinkaku-ji",
+          "place": "kura-sushi-kinkakuji",
+          "price": 0.63,
+          "priceNote": "creator: About JPY 100 per plate of sushi"
+        },
+        {
+          "day": 2,
+          "name": "Pontocho",
+          "category": "EXPERIENCE",
+          "note": "Nightcap",
+          "place": "pontocho"
+        },
+        {
+          "day": 3,
+          "name": "Fushimi Sake District",
+          "category": "EXPERIENCE",
+          "note": "Train to Momoyamagoryo-Mae; guided sake tasting",
+          "place": "fushimi-sake-district"
+        },
+        {
+          "day": 3,
+          "name": "Fushimi Inari Taisha",
+          "category": "EXPERIENCE",
+          "note": "Summit hike 2–3 hrs; turn back anytime",
+          "place": "fushimi-inari-taisha",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 3,
+          "name": "Menya Inoichi Hanare",
+          "category": "FOOD",
+          "note": "Shoyu ramen with torched A4 wagyu",
+          "place": "menya-inoichi-hanare",
+          "price": 7.58,
+          "priceNote": "creator: About 1,200 per bowl of ramen"
+        },
+        {
+          "day": 3,
+          "name": "Nijo Castle",
+          "category": "EXPERIENCE",
+          "note": "Nightingale floors; gardens",
+          "place": "nijo-jo",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult (creator: JPY 620 (additional JPY 410 for Ninomaru Palace))",
+          "priceSource": "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/"
+        },
+        {
+          "day": 3,
+          "name": "Ginkaku-ji",
+          "category": "EXPERIENCE",
+          "note": "Bus 204 to Ginkakuji-michi; modest in appearance",
+          "place": "ginkaku-ji",
+          "price": 6.32,
+          "priceNote": "1,000 JPY per adult (creator: Admission: JPY 500)",
+          "priceSource": "https://www.shokoku-ji.jp/ginkakuji/news/%e3%80%90%e9%87%8d%e8%a6%81%e3%80%91%e3%80%80%e5%8f%82%e6%8b%9d%e5%bf%97%e7%b4%8d%e6%96%99%e6%94%b9%e5%ae%9a%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b2026%e5%b9%b44%e6%9c%881%e6%97%a5%e3%82%88/"
+        },
+        {
+          "day": 3,
+          "name": "Wadachi",
+          "category": "FOOD",
+          "note": "Sake and izakaya food in Gion.",
+          "place": "wadachi",
+          "price": 3.16,
+          "priceNote": "creator: JPY 500 (plus tax) per sake flask"
+        }
+      ]
+    },
+    {
+      "slug": "kyoto-5-days-luxury-foratravel",
+      "title": "5 days to discover Kyoto in luxury",
+      "summary": "Fora advisor MaryAlexa Divver's plan: Fushimi Inari and Gion, Kinkaku-ji and Arashiyama, Nijo Castle and an omakase at Monk, Nishiki Market and the Imperial Palace, ending with a tea ceremony.",
+      "tier": "LUXURY",
+      "days": 5,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/LAWJJ3/5-day-itinerary-to-discover-kyoto-maryalexa-divver",
+      "items": [
+        {
+          "day": 1,
+          "name": "Aman Kyoto",
+          "category": "STAY",
+          "note": "Advisor's first pick. Or HOSHINOYA Kyoto, Four Seasons Hotel Kyoto or The Ritz-Carlton, Kyoto.",
+          "place": "aman-kyoto",
+          "unit": "night",
+          "quantity": 4
+        },
+        {
+          "day": 1,
+          "name": "Fushimi Inari Taisha",
+          "category": "EXPERIENCE",
+          "note": "Allow a few hours",
+          "place": "fushimi-inari-taisha",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 1,
+          "name": "Honke Daiichi-Asahi",
+          "category": "FOOD",
+          "note": "Frequent lines; try the miso ramen",
+          "place": "honke-daiichi-asahi"
+        },
+        {
+          "day": 1,
+          "name": "Gion",
+          "category": "EXPERIENCE",
+          "place": "gion"
+        },
+        {
+          "day": 1,
+          "name": "Yasaka Shrine",
+          "category": "EXPERIENCE",
+          "place": "yasaka-shrine",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Tempura Endo Yasaka",
+          "category": "FOOD",
+          "note": "Order the set menu",
+          "place": "tempura-endo-yasaka"
+        },
+        {
+          "day": 2,
+          "name": "Kinkaku-ji",
+          "category": "EXPERIENCE",
+          "place": "kinkaku-ji",
+          "price": 3.16,
+          "priceNote": "500 JPY per adult",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 2,
+          "name": "Hanamakiya",
+          "category": "FOOD",
+          "note": "Watch noodle-making; buy buckwheat tea",
+          "place": "hanamakiya"
+        },
+        {
+          "day": 2,
+          "name": "Arashiyama Bamboo Grove",
+          "category": "EXPERIENCE",
+          "place": "arashiyama-bamboo-grove",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-kyoto-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Tenryu-ji",
+          "category": "EXPERIENCE",
+          "place": "tenryu-ji"
+        },
+        {
+          "day": 2,
+          "name": "Togetsukyo Bridge",
+          "category": "EXPERIENCE",
+          "place": "togetsukyo-bridge"
+        },
+        {
+          "day": 2,
+          "name": "Arashiyama Monkey Park Iwatayama",
+          "category": "EXPERIENCE",
+          "note": "Macaques and city views. Cash only.",
+          "place": "iwatayama-monkey-park"
+        },
+        {
+          "day": 3,
+          "name": "Nijo Castle",
+          "category": "EXPERIENCE",
+          "place": "nijo-jo",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult",
+          "priceSource": "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/"
+        },
+        {
+          "day": 3,
+          "name": "Monk",
+          "category": "FOOD",
+          "note": "Omakase; featured on Chef's Table",
+          "place": "monk-kyoto"
+        },
+        {
+          "day": 3,
+          "name": "Philosopher's Path",
+          "category": "EXPERIENCE",
+          "place": "philosophers-path"
+        },
+        {
+          "day": 3,
+          "name": "Heian Jingu",
+          "category": "EXPERIENCE",
+          "note": "Optional, on the way to Pontocho",
+          "place": "heian-jingu"
+        },
+        {
+          "day": 3,
+          "name": "Pontocho",
+          "category": "EXPERIENCE",
+          "note": "Shops and bars",
+          "place": "pontocho"
+        },
+        {
+          "day": 3,
+          "name": "Hanamikoji Street",
+          "category": "EXPERIENCE",
+          "place": "hanamikoji-street"
+        },
+        {
+          "day": 3,
+          "name": "Kobe Beef Steak Mouriya Gion",
+          "category": "FOOD",
+          "note": "Teppanyaki Kobe beef",
+          "place": "kobe-beef-steak-mouriya-gion"
+        },
+        {
+          "day": 4,
+          "name": "Nishiki Market",
+          "category": "FOOD",
+          "note": "Don't over-order at the first stall",
+          "place": "nishiki-market",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 4,
+          "name": "Kyoto Imperial Palace",
+          "category": "EXPERIENCE",
+          "place": "kyoto-imperial-palace",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.saltinourhair.com/japan/things-to-do-kyoto/"
+        },
+        {
+          "day": 4,
+          "name": "Sushi no Musashi",
+          "category": "FOOD",
+          "note": "Plate colour = price; toro nigiri",
+          "place": "sushi-no-musashi"
+        },
+        {
+          "day": 5,
+          "name": "Kimono Tea Ceremony Maikoya Kyoto",
+          "category": "EXPERIENCE",
+          "note": "Kimono included; reservations recommended",
+          "place": "maikoya-kyoto-tea-ceremony"
+        }
+      ]
+    }
+  ]
+}

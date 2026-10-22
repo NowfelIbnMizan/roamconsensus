@@ -192,4 +192,45 @@ export const esimGuides: Record<string, EsimGuide> = {
       },
     ],
   },
+  Singapore: {
+    checked: "October 2026",
+    imei: {
+      title: "Check your phone is eSIM-ready and unlocked",
+      body: [
+        "Travel eSIMs for Singapore are data-only and need no passport registration. Your phone must support eSIM and be carrier-unlocked.",
+        "Install the eSIM before you fly, but switch on data roaming for it only after you land.",
+      ],
+      sources: ["https://travelsimasia.com/blogs/singapore-guides/singapore-esim-prices-2026"],
+    },
+    coverage: {
+      intro:
+        "All four networks (Singtel, StarHub, M1, Simba) have strong 4G/5G across the island, so any plan works in normal tourist areas.",
+      areas: [
+        { name: "Changi Airport & Jewel", note: "Full coverage from arrival." },
+        { name: "CBD & Marina Bay", note: "Strong 4G/5G." },
+        { name: "MRT network", note: "Coverage continues inside the tunnels." },
+        { name: "Sentosa", note: "Covered by all providers." },
+        { name: "Orchard & Chinatown", note: "Dense urban coverage; free Wi-Fi in malls is common." },
+      ],
+      sources: ["https://travelsimasia.com/blogs/singapore-guides/singapore-esim-prices-2026"],
+    },
+    faq: [
+      {
+        q: "Do I need to register my passport for a travel eSIM?",
+        a: "No. Travel eSIMs for Singapore need no passport registration.",
+      },
+      {
+        q: "Which network is best?",
+        a: "Singtel, StarHub and M1 all give island-wide coverage. Airalo uses Singtel/M1, Holafly uses Singtel, Nomad uses Singtel/StarHub, and Ubigi uses StarHub/Simba.",
+      },
+      {
+        q: "Is unlimited worth it?",
+        a: "Unlimited plans have daily high-speed caps (fair use). For a typical 5–7 day trip, a 5–10 GB plan for $9–16 is usually enough.",
+      },
+      {
+        q: "Can I pay for the MRT with my phone?",
+        a: "Yes. Foreign contactless cards and mobile wallets work at fare gates, though admin fees apply to foreign cards.",
+      },
+    ],
+  },
 };

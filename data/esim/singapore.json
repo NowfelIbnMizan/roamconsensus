@@ -1,0 +1,383 @@
+{
+  "country": "Singapore",
+  "checkedAt": "2026-10-21",
+  "plans": [
+    {
+      "provider": "Airalo",
+      "name": "Singapore 1 GB / 3 days",
+      "dataGb": 1,
+      "days": 3,
+      "price": 4.0,
+      "network": "Singtel/M1",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore 3 GB / 7 days",
+      "dataGb": 3,
+      "days": 7,
+      "price": 7.0,
+      "network": "Singtel/M1",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore 5 GB / 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 10.0,
+      "network": "Singtel/M1",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 16.0,
+      "network": "Singtel/M1",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore 20 GB / 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 23.0,
+      "network": "Singtel/M1",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore 50 GB / 30 days",
+      "dataGb": 50,
+      "days": 30,
+      "price": 48.0,
+      "network": "Singtel/M1",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.5,
+      "network": "Singtel/M1",
+      "speed": "Daily high-speed cap, then reduced",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.0,
+      "network": "Singtel/M1",
+      "speed": "Daily high-speed cap, then reduced",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 48.0,
+      "network": "Singtel/M1",
+      "speed": "Daily high-speed cap, then reduced",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Singapore Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 69.0,
+      "network": "Singtel/M1",
+      "speed": "Daily high-speed cap, then reduced",
+      "url": "https://www.airalo.com/singapore-esim"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Singapore Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.9,
+      "network": "Singtel",
+      "speed": "Fair-use applies",
+      "url": "https://esim.holafly.com/esim-singapore/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Singapore Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 20.5,
+      "network": "Singtel",
+      "speed": "Fair-use applies",
+      "url": "https://esim.holafly.com/esim-singapore/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Singapore Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.5,
+      "network": "Singtel",
+      "speed": "Fair-use applies",
+      "url": "https://esim.holafly.com/esim-singapore/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Singapore Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 37.5,
+      "network": "Singtel",
+      "speed": "Fair-use applies",
+      "url": "https://esim.holafly.com/esim-singapore/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Singapore Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 51.5,
+      "network": "Singtel",
+      "speed": "Fair-use applies",
+      "url": "https://esim.holafly.com/esim-singapore/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Singapore Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 76.5,
+      "network": "Singtel",
+      "speed": "Fair-use applies",
+      "url": "https://esim.holafly.com/esim-singapore/"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore 1 GB / 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.0,
+      "network": "Singtel/StarHub",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore 5 GB / 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 9.0,
+      "network": "Singtel/StarHub",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 14.0,
+      "network": "Singtel/StarHub",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore 20 GB / 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 21.0,
+      "network": "Singtel/StarHub",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore 50 GB / 30 days",
+      "dataGb": 50,
+      "days": 30,
+      "price": 31.0,
+      "network": "Singtel/StarHub",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.0,
+      "network": "Singtel/StarHub",
+      "speed": "High daily allowance (soft unlimited)",
+      "notes": "Promotional tier",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Singapore Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 27.0,
+      "network": "Singtel/StarHub",
+      "speed": "High daily allowance (soft unlimited)",
+      "notes": "Promotional tier",
+      "url": "https://www.nomadesim.com/singapore-eSIM"
+    },
+    {
+      "provider": "Saily",
+      "name": "Singapore 1 GB / 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 3.99,
+      "notes": "Network not disclosed",
+      "url": "https://saily.com/esim-singapore/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Singapore 3 GB / 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 6.99,
+      "notes": "Network not disclosed",
+      "url": "https://saily.com/esim-singapore/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Singapore 5 GB / 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 9.99,
+      "notes": "Network not disclosed",
+      "url": "https://saily.com/esim-singapore/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Singapore 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 15.99,
+      "notes": "Network not disclosed",
+      "url": "https://saily.com/esim-singapore/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Singapore 20 GB / 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 22.99,
+      "notes": "Network not disclosed",
+      "url": "https://saily.com/esim-singapore/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore 1 GB / 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 3.0,
+      "network": "StarHub/Simba",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore 3 GB / 15 days",
+      "dataGb": 3,
+      "days": 15,
+      "price": 6.0,
+      "network": "StarHub/Simba",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore 10 GB / 7 days",
+      "dataGb": 10,
+      "days": 7,
+      "price": 11.0,
+      "network": "StarHub/Simba",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 13.0,
+      "network": "StarHub/Simba",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore 25 GB / 30 days",
+      "dataGb": 25,
+      "days": 30,
+      "price": 22.0,
+      "network": "StarHub/Simba",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 19.0,
+      "network": "StarHub/Simba",
+      "speed": "Fair-use cap",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Singapore Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 49.0,
+      "network": "StarHub/Simba",
+      "speed": "Fair-use cap (high allowance)",
+      "url": "https://cellulardata.ubigi.com/data-plans-and-coverage/ubigi-esim-data-plans/?destination=sgp"
+    },
+    {
+      "provider": "Travelsim Asia (local M1/Singtel)",
+      "name": "Singapore 1 GB / 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 2.99,
+      "network": "M1/Singtel",
+      "speed": "4G, full speed",
+      "url": "https://travelsimasia.com/"
+    },
+    {
+      "provider": "Travelsim Asia (local M1/Singtel)",
+      "name": "Singapore 3 GB / 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 5.49,
+      "network": "M1/Singtel",
+      "url": "https://travelsimasia.com/"
+    },
+    {
+      "provider": "Travelsim Asia (local M1/Singtel)",
+      "name": "Singapore 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 12.99,
+      "network": "M1/Singtel",
+      "url": "https://travelsimasia.com/"
+    },
+    {
+      "provider": "Travelsim Asia (local M1/Singtel)",
+      "name": "Singapore 20 GB / 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 19.99,
+      "network": "M1/Singtel",
+      "url": "https://travelsimasia.com/"
+    },
+    {
+      "provider": "Travelsim Asia (local M1/Singtel)",
+      "name": "Singapore 50 GB / 30 days",
+      "dataGb": 50,
+      "days": 30,
+      "price": 34.99,
+      "network": "M1/Singtel",
+      "url": "https://travelsimasia.com/"
+    }
+  ]
+}

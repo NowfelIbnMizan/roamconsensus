@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { Checklist } from "./checklist";
+import { PassportPicker, VisaResult } from "@/components/visa-check";
+import { visaRules } from "@/lib/visa";
 
 export async function generateStaticParams() {
   return getDestinationSlugs();
@@ -20,7 +22,25 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
 export default async function BeforePage({ params }: PageProps<"/destinations/[slug]/before">) {
   const d = await getDestination((await params).slug);
   if (!d) notFound();
-  if (d.tips.length === 0) return <p className="text-muted">A checklist for {d.name} is coming soon.</p>;
+  const visa = visaRules[d.country];
+  const visaBox = visa && (
+    <section className="mb-8 rounded-2xl border border-line bg-card p-5">
+      <h2 className="text-xl font-semibold">Do I need a visa for {d.country}?</h2>
+      <div className="mt-3">
+        <PassportPicker />
+      </div>
+      <div className="mt-3">
+        <VisaResult country={d.country} rules={visa} />
+      </div>
+    </section>
+  );
+  if (d.tips.length === 0)
+    return (
+      <>
+        {visaBox}
+        <p className="text-muted">A checklist for {d.name} is coming soon.</p>
+      </>
+    );
 
   const topics = [...new Set(d.tips.map((t) => t.topic))].map((topic) => ({
     topic,
@@ -29,6 +49,7 @@ export default async function BeforePage({ params }: PageProps<"/destinations/[s
 
   return (
     <>
+      {visaBox}
       <h2 className="text-xl font-semibold">Before you go to {d.name}</h2>
       <p className="mt-1 text-sm text-muted">Tick things off as you go. Your ticks stay on this device.</p>
       <Checklist slug={d.slug} topics={topics} />

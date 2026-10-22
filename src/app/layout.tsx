@@ -60,8 +60,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link href="/quiz" className="hidden hover:text-foreground sm:inline">
                   Trip quiz
                 </Link>
-                <Link href="/disclosure" className="hidden hover:text-foreground md:inline">
-                  Disclosure
+                <Link href="/visa" className="hidden hover:text-foreground sm:inline">
+                  Visa check
+                </Link>
+                <Link href="/about" className="hidden hover:text-foreground md:inline">
+                  About
                 </Link>
                 <Link
                   href="/search"
@@ -84,7 +87,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/disclosure" className="underline">
                 Full disclosure
               </Link>
-              .
+              {" · "}
+              <Link href="/about" className="underline">
+                About and contact
+              </Link>
             </p>
             <p className="mx-auto max-w-5xl px-4 pb-6 text-xs text-muted">
               <InstallApp />

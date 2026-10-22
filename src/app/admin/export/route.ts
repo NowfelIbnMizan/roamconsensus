@@ -108,6 +108,7 @@ export async function GET() {
         days: it.days,
         creator: it.creator.handle,
         sourceUrl: it.sourceUrl,
+        ...(it.editorTake ? { editorTake: it.editorTake } : {}),
         items: it.items.map((i) =>
           clean({
             day: i.day,

@@ -7,6 +7,9 @@ export const CURRENCIES = [
   { code: "CAD", label: "Canadian dollar" },
   { code: "SGD", label: "Singapore dollar" },
   { code: "IDR", label: "Indonesian rupiah" },
+  { code: "THB", label: "Thai baht" },
+  { code: "JPY", label: "Japanese yen" },
+  { code: "KRW", label: "South Korean won" },
 ] as const;
 
 /** Units of each currency per 1 USD. */
@@ -21,6 +24,9 @@ export const FALLBACK_RATES: Rates = {
   CAD: 1.37,
   SGD: 1.34,
   IDR: 16300,
+  THB: 33.6,
+  JPY: 158,
+  KRW: 1400,
 };
 
 /** Converts minor units (cents) between currencies; an unknown currency is left as is. */

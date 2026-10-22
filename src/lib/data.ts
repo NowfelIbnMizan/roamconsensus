@@ -217,6 +217,7 @@ export async function getDestination(slug: string) {
       slug: it.slug,
       title: it.title,
       summary: it.summary,
+      editorTake: it.editorTake,
       tier: it.tier,
       days: it.days,
       creator: it.creator,
@@ -486,6 +487,7 @@ export async function getItinerary(slug: string) {
     slug: it.slug,
     title: it.title,
     summary: it.summary,
+    editorTake: it.editorTake,
     tier: it.tier,
     days: it.days,
     sourceUrl: it.sourceUrl,
@@ -583,3 +585,28 @@ export async function getEsimPlans(country: string) {
 }
 
 export type EsimPlanRow = Awaited<ReturnType<typeof getEsimPlans>>[number];
+
+/** Nightly stays the creators recommend in a destination, for the budget calculator. */
+export async function getStays(slug: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  cacheTag(`destination:${slug}`);
+  const items = await db.item.findMany({
+    where: { category: "STAY", unit: "night", priceCents: { gt: 0 }, itinerary: { destination: { slug } } },
+    select: {
+      name: true,
+      priceCents: true,
+      currency: true,
+      itinerary: { select: { tier: true, slug: true, creator: { select: { name: true } } } },
+    },
+  });
+  return items.map((i) => ({
+    name: i.name,
+    priceCents: i.priceCents!,
+    currency: i.currency,
+    tier: i.itinerary.tier,
+    itinerary: i.itinerary.slug,
+    creator: i.itinerary.creator.name,
+  }));
+}

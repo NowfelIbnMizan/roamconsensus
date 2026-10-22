@@ -136,6 +136,8 @@ model Itinerary {
   tier          Tier
   days          Int
   sourceUrl     String
+  /// The site owner's own commentary on this itinerary ("Nowfel's take"). Written in the admin panel.
+  editorTake    String?
   destinationId String
   destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
   creatorId     String
@@ -276,4 +278,17 @@ model PhotoCache {
 model SeedLog {
   key      String   @id
   loadedAt DateTime @default(now())
+}
+
+/// The person behind the site, shown on /about and next to their takes on itineraries. One row, id "me".
+model Editor {
+  id           String   @id @default("me")
+  name         String
+  tagline      String?
+  /// Paragraphs separated by blank lines.
+  bio          String
+  photoUrl     String?
+  email        String?
+  instagramUrl String?
+  updatedAt    DateTime @updatedAt
 }

@@ -7,6 +7,7 @@ const links = [
   { href: "/admin/creators", label: "Creators" },
   { href: "/admin/vendors", label: "Booking sites & coupons" },
   { href: "/admin/esim", label: "eSIM plans" },
+  { href: "/admin/about", label: "About me" },
 ];
 
 export default async function PanelLayout({ children }: LayoutProps<"/admin">) {

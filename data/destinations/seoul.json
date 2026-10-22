@@ -1,0 +1,1123 @@
+{
+  "slug": "seoul",
+  "name": "Seoul",
+  "country": "South Korea",
+  "summary": "Joseon palaces and hanok lanes, Gwangjang Market's street food, Namsan's tower views, nights out in Hongdae and Myeongdong, and city-wall hikes on Inwangsan and Bukhansan.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Seoul",
+  "months": [
+    {
+      "month": 1,
+      "highC": 2,
+      "lowC": -6,
+      "rainMm": 17,
+      "crowd": "LOW",
+      "note": "Bitterly cold and dry; good for skiing trips and winter festivals."
+    },
+    {
+      "month": 2,
+      "highC": 5,
+      "lowC": -3,
+      "rainMm": 28,
+      "crowd": "MEDIUM",
+      "note": "Still freezing; Seollal (Lunar New Year, 17 Feb 2026) empties the city as many shops close."
+    },
+    {
+      "month": 3,
+      "highC": 11,
+      "lowC": 2,
+      "rainMm": 37,
+      "crowd": "MEDIUM",
+      "note": "Thawing, with spring yellow dust and fine-dust days."
+    },
+    {
+      "month": 4,
+      "highC": 18,
+      "lowC": 8,
+      "rainMm": 73,
+      "crowd": "HIGH",
+      "note": "Cherry blossom peaks in early April (Yeouido, Seokchon Lake), drawing crowds."
+    },
+    {
+      "month": 5,
+      "highC": 24,
+      "lowC": 14,
+      "rainMm": 104,
+      "crowd": "HIGH",
+      "note": "Warm, sunny and lively, with Buddha's Birthday lantern festivals."
+    },
+    {
+      "month": 6,
+      "highC": 28,
+      "lowC": 19,
+      "rainMm": 130,
+      "crowd": "MEDIUM",
+      "note": "Getting hot; the jangma monsoon arrives late in the month."
+    },
+    {
+      "month": 7,
+      "highC": 29,
+      "lowC": 22,
+      "rainMm": 414,
+      "crowd": "MEDIUM",
+      "note": "Peak monsoon with heavy downpours and high humidity."
+    },
+    {
+      "month": 8,
+      "highC": 30,
+      "lowC": 23,
+      "rainMm": 348,
+      "crowd": "MEDIUM",
+      "note": "Hot and wet; Korean summer holidays fill beaches more than Seoul."
+    },
+    {
+      "month": 9,
+      "highC": 26,
+      "lowC": 18,
+      "rainMm": 142,
+      "crowd": "MEDIUM",
+      "note": "Clearing skies; Chuseok (around 24–26 Sep 2026) brings travel rushes and palace events."
+    },
+    {
+      "month": 10,
+      "highC": 20,
+      "lowC": 11,
+      "rainMm": 52,
+      "crowd": "HIGH",
+      "note": "Crisp and clear with autumn leaves starting; the best weather of the year."
+    },
+    {
+      "month": 11,
+      "highC": 12,
+      "lowC": 4,
+      "rainMm": 51,
+      "crowd": "MEDIUM",
+      "note": "Fall foliage in early November, then quickly colder."
+    },
+    {
+      "month": 12,
+      "highC": 4,
+      "lowC": -3,
+      "rainMm": 23,
+      "crowd": "MEDIUM",
+      "note": "Cold; Christmas lights in Myeongdong and Cheonggyecheon."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "K-ETA waived through 2026",
+      "body": "Korea has extended its temporary K-ETA exemption from 1 January to 31 December 2026 for 67 countries and territories, including the US, UK, most of the EU, Canada, Australia, Japan, Singapore and Taiwan. No extension beyond 2026 has been announced, so check your nationality at k-eta.go.kr.",
+      "sourceUrl": "https://blog.wego.com/south-korea-travel-rules-k-eta-waiver-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "e-Arrival Card is mandatory",
+      "body": "Since 1 January 2026, foreign visitors must submit the free e-Arrival Card at e-arrivalcard.go.kr within 72 hours before arrival and show the QR code at immigration. Paper cards have been discontinued for most visitors. Valid K-ETA holders are exempt.",
+      "sourceUrl": "https://blog.wego.com/south-korea-travel-rules-k-eta-waiver-2026/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Bukchon Hanok Village curfew",
+      "body": "In the Bukchon-ro 11-gil 'red zone', tourists are barred from 5pm to 10am, with fines of up to ₩100,000. Residents and hanok-stay guests are exempt. Other lanes are monitored, so keep your voice down.",
+      "sourceUrl": "https://www.koreatimes.co.kr/www/nation/2025/01/113_385304.html"
+    },
+    {
+      "topic": "Connectivity",
+      "title": "Use Naver Map or KakaoMap",
+      "body": "Google Maps still lacks full walking and driving directions in Korea, and locals rely on Naver and Kakao. Korea has approved exporting map data to Google under strict conditions, but no date has been set for full navigation.",
+      "sourceUrl": "https://www.yahoo.com/news/articles/south-korea-allows-google-export-071150260.html"
+    },
+    {
+      "topic": "Money",
+      "title": "WOWPASS: prepaid card plus T-money",
+      "body": "WOWPASS is a prepaid card you can use at Korean shops that accept local cards, and it has a built-in T-money transit function. The T-money balance is topped up separately from the WOWPASS balance.",
+      "sourceUrl": "https://wowpass.io/en/guide"
+    },
+    {
+      "topic": "Transport",
+      "title": "One card for subway and bus",
+      "body": "With WOWPASS's T-money function, or a standalone T-money card, you can tap through subways and buses without buying separate tickets.",
+      "sourceUrl": "https://wowpass.io/en/guide"
+    },
+    {
+      "topic": "Entry",
+      "title": "Skip the e-Arrival Card and you'll queue",
+      "body": "Travellers who have not filed the e-Arrival Card are sent to self-service kiosks at the airport, which can mean long waits at peak times.",
+      "sourceUrl": "https://blog.wego.com/south-korea-travel-rules-k-eta-waiver-2026/"
+    }
+  ],
+  "places": [
+    {
+      "slug": "gyeongbokgung-palace",
+      "name": "Gyeongbokgung Palace",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "The largest and main royal palace of the Joseon dynasty, with daily gate-guard ceremonies at Gwanghwamun.",
+      "tip": "Free entry if you wear hanbok. Closed Tuesdays.",
+      "website": "https://royal.khs.go.kr",
+      "lat": 37.5796,
+      "lng": 126.977
+    },
+    {
+      "slug": "changdeokgung-palace",
+      "name": "Changdeokgung Palace",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "UNESCO-listed Joseon palace known for its rear Secret Garden (Huwon), visited by guided tour.",
+      "tip": "The Secret Garden is a guided tour for 5,000 KRW more. Closed Mondays.",
+      "website": "https://royal.khs.go.kr",
+      "lat": 37.5794,
+      "lng": 126.991
+    },
+    {
+      "slug": "changgyeonggung-palace",
+      "name": "Changgyeonggung Palace",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Joseon palace adjoining Changdeokgung, with a pond and a Victorian-style glass greenhouse.",
+      "website": "https://royal.khs.go.kr",
+      "lat": 37.5788,
+      "lng": 126.9949
+    },
+    {
+      "slug": "jongmyo-shrine",
+      "name": "Jongmyo Shrine",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "UNESCO-listed royal ancestral shrine of the Joseon kings.",
+      "website": "https://royal.khs.go.kr",
+      "lat": 37.5744,
+      "lng": 126.9942
+    },
+    {
+      "slug": "deoksugung-palace",
+      "name": "Deoksugung Palace",
+      "category": "EXPERIENCE",
+      "area": "Jung-gu",
+      "blurb": "Compact palace mixing Korean halls and Western-style buildings, beside the Deoksugung stone-wall walk.",
+      "website": "https://royal.khs.go.kr",
+      "lat": 37.5658,
+      "lng": 126.9751
+    },
+    {
+      "slug": "bukchon-hanok-village",
+      "name": "Bukchon Hanok Village",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Residential neighborhood of preserved traditional hanok houses between Gyeongbokgung and Changdeokgung.",
+      "tip": "Tourists are barred from the red zone from 5 pm to 10 am, with fines up to 100,000 KRW.",
+      "lat": 37.5826,
+      "lng": 126.9836
+    },
+    {
+      "slug": "insadong",
+      "name": "Insadong",
+      "category": "FOOD",
+      "area": "Jongno-gu",
+      "blurb": "Pedestrian street of galleries, tea houses and traditional craft shops, including the Ssamziegil complex.",
+      "lat": 37.574,
+      "lng": 126.985
+    },
+    {
+      "slug": "jogyesa-temple",
+      "name": "Jogyesa Temple",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Head temple of the Jogye Order of Korean Buddhism and center of the Lotus Lantern Festival.",
+      "lat": 37.574,
+      "lng": 126.9817
+    },
+    {
+      "slug": "gwanghwamun-square",
+      "name": "Gwanghwamun Square",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Central plaza with statues of King Sejong and Admiral Yi Sun-sin and an underground exhibition hall.",
+      "lat": 37.572,
+      "lng": 126.9769
+    },
+    {
+      "slug": "cheonggyecheon-stream",
+      "name": "Cheonggyecheon Stream",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu / Jung-gu",
+      "blurb": "Restored 11 km urban stream with walking paths below street level.",
+      "lat": 37.569,
+      "lng": 126.9787
+    },
+    {
+      "slug": "inwangsan",
+      "name": "Inwangsan Mountain",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu / Seodaemun-gu",
+      "blurb": "Rocky peak traversed by the Seoul City Wall trail with views over the palace district.",
+      "lat": 37.585,
+      "lng": 126.958
+    },
+    {
+      "slug": "gwangjang-market",
+      "name": "Gwangjang Market",
+      "category": "FOOD",
+      "area": "Jongno-gu",
+      "blurb": "One of Seoul's oldest traditional markets, famed for bindaetteok, mayak gimbap and raw-food stalls.",
+      "lat": 37.57,
+      "lng": 126.9996
+    },
+    {
+      "slug": "myeongdong",
+      "name": "Myeongdong",
+      "category": "FOOD",
+      "area": "Jung-gu",
+      "blurb": "Dense shopping district known for cosmetics stores and evening street-food stalls.",
+      "lat": 37.5636,
+      "lng": 126.985
+    },
+    {
+      "slug": "n-seoul-tower",
+      "name": "N Seoul Tower",
+      "category": "EXPERIENCE",
+      "area": "Yongsan-gu (Namsan)",
+      "blurb": "Communications and observation tower atop Namsan, reachable on foot or by the Namsan cable car.",
+      "lat": 37.5512,
+      "lng": 126.9882
+    },
+    {
+      "slug": "hongdae",
+      "name": "Hongdae",
+      "category": "EXPERIENCE",
+      "area": "Mapo-gu",
+      "blurb": "Youthful nightlife and busking district around Hongik University.",
+      "lat": 37.5563,
+      "lng": 126.9236
+    },
+    {
+      "slug": "dongdaemun-design-plaza",
+      "name": "Dongdaemun Design Plaza",
+      "category": "EXPERIENCE",
+      "area": "Jung-gu",
+      "blurb": "Zaha Hadid-designed curving landmark hosting exhibitions, beside the Dongdaemun History & Culture Park.",
+      "lat": 37.5665,
+      "lng": 127.0092
+    },
+    {
+      "slug": "ihwa-mural-village",
+      "name": "Ihwa Mural Village",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Hillside residential neighborhood with murals near Naksan Park and the city wall.",
+      "lat": 37.5791,
+      "lng": 127.0069
+    },
+    {
+      "slug": "coex-mall",
+      "name": "COEX Mall",
+      "category": "EXPERIENCE",
+      "area": "Gangnam-gu (Samseong)",
+      "blurb": "Large underground mall home to the Starfield Library, near Bongeunsa Temple.",
+      "lat": 37.5116,
+      "lng": 127.0595
+    },
+    {
+      "slug": "common-ground",
+      "name": "Common Ground",
+      "category": "FOOD",
+      "area": "Gwangjin-gu (Konkuk Univ.)",
+      "blurb": "Shopping and dining complex built from shipping containers.",
+      "lat": 37.5414,
+      "lng": 127.0659
+    },
+    {
+      "slug": "ewha-womans-university",
+      "name": "Ewha Womans University",
+      "category": "EXPERIENCE",
+      "area": "Seodaemun-gu",
+      "blurb": "University campus known for the sunken ECC building designed by Dominique Perrault.",
+      "lat": 37.5618,
+      "lng": 126.9468
+    },
+    {
+      "slug": "tapgol-park",
+      "name": "Tapgol Park",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Small historic park, site of the 1919 March 1st independence declaration reading, with a ten-story stone pagoda.",
+      "lat": 37.5711,
+      "lng": 126.9882
+    },
+    {
+      "slug": "trickeye-museum-seoul",
+      "name": "Trickeye Museum Seoul",
+      "category": "EXPERIENCE",
+      "area": "Mapo-gu (Hongdae)",
+      "blurb": "Interactive optical-illusion and AR art museum at 20 Hongik-ro 3-gil.",
+      "lat": 37.5537,
+      "lng": 126.9215
+    },
+    {
+      "slug": "bukhansan-national-park",
+      "name": "Bukhansan National Park",
+      "category": "EXPERIENCE",
+      "area": "Northern Seoul / Goyang",
+      "blurb": "Granite mountain park on Seoul's northern edge whose highest peak is Baegundae (836 m).",
+      "lat": 37.6588,
+      "lng": 126.9779
+    },
+    {
+      "slug": "siloam-sauna",
+      "name": "Siloam Sauna",
+      "category": "STAY",
+      "area": "Jung-gu (near Seoul Station)",
+      "blurb": "Large 24-hour jjimjilbang near Seoul Station that is popular with foreign travelers.",
+      "lat": 37.5582,
+      "lng": 126.9675
+    },
+    {
+      "slug": "lotte-world-tower-seoul-sky",
+      "name": "Lotte World Tower – Seoul Sky",
+      "category": "EXPERIENCE",
+      "area": "Songpa-gu (Jamsil)",
+      "blurb": "Observation decks on floors 117–123 of Korea's tallest building, including a glass-floor skydeck.",
+      "lat": 37.5126,
+      "lng": 127.1026
+    },
+    {
+      "slug": "lotte-world-adventure",
+      "name": "Lotte World Adventure",
+      "category": "EXPERIENCE",
+      "area": "Songpa-gu (Jamsil)",
+      "blurb": "Large indoor theme park with an outdoor Magic Island section and an attached folk museum.",
+      "lat": 37.5111,
+      "lng": 127.0982
+    },
+    {
+      "slug": "nami-island",
+      "name": "Nami Island",
+      "category": "EXPERIENCE",
+      "area": "Chuncheon, Gangwon (≈1.5h from Seoul)",
+      "blurb": "River island famed for tree-lined avenues, reached by ferry or zipline from Gapyeong.",
+      "website": "https://namisum-en.imweb.me",
+      "lat": 37.7907,
+      "lng": 127.5254
+    },
+    {
+      "slug": "mmca-seoul",
+      "name": "National Museum of Modern and Contemporary Art Seoul",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "National modern and contemporary art museum between Gyeongbokgung and Bukchon.",
+      "lat": 37.5788,
+      "lng": 126.98
+    },
+    {
+      "slug": "cafe-comma-hapjeong",
+      "name": "Cafe Comma",
+      "category": "FOOD",
+      "area": "Mapo-gu",
+      "blurb": "Multi-floor book cafe run by publisher Munhakdongne.",
+      "lat": 37.5497,
+      "lng": 126.9136
+    },
+    {
+      "slug": "dmz-tour",
+      "name": "DMZ half-day tour",
+      "category": "EXPERIENCE",
+      "area": "Paju, Gyeonggi",
+      "blurb": "Guided tours from Seoul to the Demilitarized Zone border sites.",
+      "tip": "JSA (Panmunjom) tours have been on and off: check the status before you book.",
+      "lat": 37.9167,
+      "lng": 126.697
+    },
+    {
+      "slug": "jihwaja",
+      "name": "Jihwaja",
+      "category": "FOOD",
+      "area": "Jongno-gu",
+      "blurb": "Restaurant serving Joseon royal court cuisine.",
+      "lat": 37.5862,
+      "lng": 126.9693
+    },
+    {
+      "slug": "hanboknam-gyeongbokgung",
+      "name": "Hanboknam Gyeongbokgung",
+      "category": "EXPERIENCE",
+      "area": "Jongno-gu",
+      "blurb": "Hanbok rental shop near Gyeongbokgung Station.",
+      "lat": 37.577,
+      "lng": 126.9735
+    },
+    {
+      "slug": "chatteul-tea-house",
+      "name": "Chatteul Tea House",
+      "category": "FOOD",
+      "area": "Jongno-gu (Bukchon)",
+      "blurb": "Traditional hanok tea house serving tea and rice cakes.",
+      "lat": 37.581,
+      "lng": 126.9845
+    },
+    {
+      "slug": "jongno-pojangmacha",
+      "name": "Jongno 3-ga pojangmacha street",
+      "category": "FOOD",
+      "area": "Jongno-gu",
+      "blurb": "Strip of evening tented street stalls serving snacks and soju.",
+      "lat": 37.571,
+      "lng": 126.992
+    },
+    {
+      "slug": "guerlain-spa-shilla",
+      "name": "Guerlain Spa, The Shilla Seoul",
+      "category": "EXPERIENCE",
+      "area": "Jung-gu",
+      "blurb": "Luxury hotel spa inside The Shilla Seoul.",
+      "lat": 37.5559,
+      "lng": 127.0055
+    },
+    {
+      "slug": "butterfinger-pancakes",
+      "name": "Butterfinger Pancakes",
+      "category": "FOOD",
+      "area": "Gangnam-gu",
+      "blurb": "American-style all-day breakfast chain.",
+      "lat": 37.5235,
+      "lng": 127.029
+    },
+    {
+      "slug": "apgujeong-rodeo",
+      "name": "Apgujeong Rodeo Street",
+      "category": "EXPERIENCE",
+      "area": "Gangnam-gu",
+      "blurb": "Upscale fashion and boutique district.",
+      "lat": 37.5272,
+      "lng": 127.0405
+    },
+    {
+      "slug": "four-seasons-hotel-seoul",
+      "name": "Four Seasons Hotel Seoul",
+      "category": "STAY",
+      "area": "Jongno-gu (Gwanghwamun)",
+      "blurb": "Luxury hotel steps from Gwanghwamun Square.",
+      "lat": 37.5718,
+      "lng": 126.9759
+    },
+    {
+      "slug": "holiday-inn-express-seoul-hongdae",
+      "name": "Holiday Inn Express Seoul Hongdae",
+      "category": "STAY",
+      "area": "Mapo-gu",
+      "blurb": "Midrange IHG hotel beside Hongik University Station.",
+      "lat": 37.5574,
+      "lng": 126.9246
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "theplanetd",
+      "name": "The Planet D",
+      "platform": "BLOG",
+      "profileUrl": "https://theplanetd.com",
+      "bio": "Travel blog. Bangkok guide by Stella Saintis."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "seoul-3-days-thebrokebackpacker",
+      "title": "Backpacking Seoul in 3 days",
+      "summary": "The palaces, Bukchon and a night hike up Namsan, then Myeongdong street food and Hongdae nightlife, and a climb up Bukhansan's Baegundae with a night in a jjimjilbang.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/backpacking-seoul-travel-guide",
+      "items": [
+        {
+          "day": 1,
+          "name": "Dongdaemun Design Plaza",
+          "category": "EXPERIENCE",
+          "note": "Wander the plaza and Dongdaemun History & Culture Park",
+          "place": "dongdaemun-design-plaza",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Changdeokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Palaces aren't the biggest, but the gardens are worth it",
+          "place": "changdeokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Changgyeonggung Palace",
+          "category": "EXPERIENCE",
+          "place": "changgyeonggung-palace",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Jongmyo Shrine",
+          "category": "EXPERIENCE",
+          "note": "Nearby the East Palaces",
+          "place": "jongmyo-shrine",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Bukchon Hanok Village",
+          "category": "EXPERIENCE",
+          "note": "Find a restaurant serving samgyetang for lunch. Visit between 10 am and 5 pm.",
+          "place": "bukchon-hanok-village",
+          "price": 0,
+          "priceNote": "free; fines up to 100,000 KRW in the red zone from 5 pm to 10 am"
+        },
+        {
+          "day": 1,
+          "name": "Gyeongbokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Catch the free changing of the guard at Gwanghwamun around 2 P.M.",
+          "place": "gyeongbokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Ewha Womans University",
+          "category": "EXPERIENCE",
+          "note": "Worth it for the architecture",
+          "place": "ewha-womans-university",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "N Seoul Tower",
+          "category": "EXPERIENCE",
+          "note": "Hike up Namsan for night skyline; cable car if tired",
+          "place": "n-seoul-tower",
+          "price": 19.58,
+          "priceNote": "26,000 KRW per adult (creator: 29,000 won ($20))",
+          "priceSource": "https://wowpass-event.oopy.io/adceab42-13fa-41a3-903b-9c0f57d52173"
+        },
+        {
+          "day": 2,
+          "name": "Tapgol Park",
+          "category": "EXPERIENCE",
+          "note": "Breakfast and people-watching.",
+          "place": "tapgol-park"
+        },
+        {
+          "day": 2,
+          "name": "Myeongdong",
+          "category": "FOOD",
+          "note": "Street food, and shopping if that's your thing",
+          "place": "myeongdong"
+        },
+        {
+          "day": 2,
+          "name": "Trickeye Museum Seoul",
+          "category": "EXPERIENCE",
+          "note": "Optical-illusion / AR exhibits",
+          "place": "trickeye-museum-seoul"
+        },
+        {
+          "day": 2,
+          "name": "Hongdae",
+          "category": "EXPERIENCE",
+          "note": "Nightlife, buskers, noraebang/multi-bang (with Sinchon)",
+          "place": "hongdae"
+        },
+        {
+          "day": 3,
+          "name": "Bukhansan National Park",
+          "category": "EXPERIENCE",
+          "note": "Climb Baegundae (836 m). Line 3 to Gupabal exit 1, then bus 704 to the park entrance.",
+          "place": "bukhansan-national-park"
+        },
+        {
+          "day": 3,
+          "name": "Overnight at Siloam Sauna",
+          "category": "STAY",
+          "note": "A 24-hour jjimjilbang: creator says top-notch and not too touristy. Creator: $10-15 a night.",
+          "place": "siloam-sauna",
+          "price": 10,
+          "priceNote": "creator: $10-$15 overnight"
+        }
+      ]
+    },
+    {
+      "slug": "seoul-3-days-bucketlistly",
+      "title": "3 days in Seoul, backpacking Korea",
+      "summary": "Hongdae on the first evening, then Gyeongbokgung, Bukchon and dinner in Insadong, and Gwangjang Market, DDP and the modern art museum, with an optional hike or DMZ tour.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/two-weeks-south-korea-backpacking-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "Holiday Inn Express Seoul Hongdae",
+          "category": "STAY",
+          "note": "Creator's mid-range pick. Or G Guest House Itaewon or Grand InterContinental Seoul Parnas.",
+          "place": "holiday-inn-express-seoul-hongdae",
+          "price": 109,
+          "priceNote": "from, per night (date-dependent)",
+          "priceSource": "https://www.kayak.com/Seoul-Hotels-Holiday-Inn-Express-Seoul-Hongdae.4078899.ksp",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Hongdae",
+          "category": "EXPERIENCE",
+          "note": "Evening: street food & live performances; busiest on Children's Day",
+          "place": "hongdae"
+        },
+        {
+          "day": 2,
+          "name": "Gyeongbokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Allow about half a day.",
+          "place": "gyeongbokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult (creator: the entrance is free (on Children's Day))",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 2,
+          "name": "Bukchon Hanok Village",
+          "category": "EXPERIENCE",
+          "note": "Residential: visit between 10 am and 5 pm and keep your voice down.",
+          "place": "bukchon-hanok-village",
+          "price": 0,
+          "priceNote": "free; fines up to 100,000 KRW in the red zone from 5 pm to 10 am"
+        },
+        {
+          "day": 2,
+          "name": "Insadong",
+          "category": "FOOD",
+          "note": "Dinner",
+          "place": "insadong"
+        },
+        {
+          "day": 2,
+          "name": "Jogyesa Temple",
+          "category": "EXPERIENCE",
+          "note": "Catch the Lotus Lantern Festival here if your dates overlap.",
+          "place": "jogyesa-temple"
+        },
+        {
+          "day": 3,
+          "name": "Cafe Comma",
+          "category": "FOOD",
+          "note": "Book-themed cafe, coffee & pastries",
+          "place": "cafe-comma-hapjeong"
+        },
+        {
+          "day": 3,
+          "name": "Gwangjang Market",
+          "category": "FOOD",
+          "note": "Try the live octopus",
+          "place": "gwangjang-market"
+        },
+        {
+          "day": 3,
+          "name": "Dongdaemun Design Plaza",
+          "category": "EXPERIENCE",
+          "note": "Pick Dongdaemun Market (shopping) or DDP (architecture)",
+          "place": "dongdaemun-design-plaza"
+        },
+        {
+          "day": 3,
+          "name": "National Museum of Modern and Contemporary Art Seoul",
+          "category": "EXPERIENCE",
+          "note": "Permanent collection / temporary exhibitions",
+          "place": "mmca-seoul"
+        },
+        {
+          "day": 3,
+          "name": "Bukhansan National Park",
+          "category": "EXPERIENCE",
+          "note": "Optional day hike; city views on a clear day.",
+          "place": "bukhansan-national-park"
+        },
+        {
+          "day": 3,
+          "name": "DMZ half-day tour",
+          "category": "EXPERIENCE",
+          "note": "Optional half-day tour.",
+          "place": "dmz-tour"
+        }
+      ]
+    },
+    {
+      "slug": "seoul-3-days-theplanetd",
+      "title": "The ultimate 3 days in Seoul",
+      "summary": "Gyeongbokgung, Bukchon, Insadong and Cheonggyecheon, then the Inwangsan wall hike, Gwangjang Market and sunset at N Seoul Tower, and Changdeokgung, DDP, Ihwa murals and Gangnam.",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "theplanetd",
+      "sourceUrl": "https://theplanetd.com/the-ultimate-seoul-itinerary-3-days-in-seoul",
+      "items": [
+        {
+          "day": 1,
+          "name": "Gyeongbokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Arrive early; guard performance 11am/1pm; free guided tours 11am, 1:30pm, 3:30pm; Hyangwonjeong is a quiet spot",
+          "place": "gyeongbokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Bukchon Hanok Village",
+          "category": "EXPERIENCE",
+          "note": "Residential: visit between 10 am and 5 pm and keep your voice down.",
+          "place": "bukchon-hanok-village",
+          "price": 0,
+          "priceNote": "free; fines up to 100,000 KRW in the red zone from 5 pm to 10 am"
+        },
+        {
+          "day": 1,
+          "name": "Insadong",
+          "category": "EXPERIENCE",
+          "note": "Galleries, tea shops, souvenirs",
+          "place": "insadong",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Jogyesa Temple",
+          "category": "EXPERIENCE",
+          "note": "Chat with English-speaking monks at the foreigners' info centre",
+          "place": "jogyesa-temple",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Gwanghwamun Square",
+          "category": "EXPERIENCE",
+          "note": "Visit the museum under the King Sejong statue",
+          "place": "gwanghwamun-square",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Cheonggyecheon Stream",
+          "category": "EXPERIENCE",
+          "note": "Sunset photos; soak feet in warm weather",
+          "place": "cheonggyecheon-stream",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Inwangsan Mountain",
+          "category": "EXPERIENCE",
+          "note": "~2h along city walls; Muakjae Stn (Line 3) exit 2",
+          "place": "inwangsan",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Gwangjang Market",
+          "category": "FOOD",
+          "note": "Mung bean pancakes & gimbap; pick a busy stall",
+          "place": "gwangjang-market"
+        },
+        {
+          "day": 2,
+          "name": "Myeongdong",
+          "category": "EXPERIENCE",
+          "note": "Shopping; cafes for people-watching",
+          "place": "myeongdong"
+        },
+        {
+          "day": 2,
+          "name": "N Seoul Tower",
+          "category": "EXPERIENCE",
+          "note": "Walk up Namsan instead of taking the cable car, and go at sunset.",
+          "place": "n-seoul-tower",
+          "price": 19.58,
+          "priceNote": "26,000 KRW per adult (creator: Entry 10,000won (just under $9). Cable car return 9,500won)",
+          "priceSource": "https://wowpass-event.oopy.io/adceab42-13fa-41a3-903b-9c0f57d52173"
+        },
+        {
+          "day": 2,
+          "name": "Hongdae",
+          "category": "FOOD",
+          "note": "Korean BBQ, fried chicken, soju, makgeolli, karaoke",
+          "place": "hongdae"
+        },
+        {
+          "day": 3,
+          "name": "Changdeokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Quieter than Gyeongbokgung; Huwon garden lovely in spring",
+          "place": "changdeokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 3,
+          "name": "Dongdaemun Design Plaza",
+          "category": "EXPERIENCE",
+          "note": "Go inside for current exhibitions",
+          "place": "dongdaemun-design-plaza",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Ihwa Mural Village",
+          "category": "EXPERIENCE",
+          "note": "Hyehwa Stn exit 2, ~15 min walk",
+          "place": "ihwa-mural-village"
+        },
+        {
+          "day": 3,
+          "name": "COEX Mall",
+          "category": "EXPERIENCE",
+          "note": "Gangnam: COEX mall and the Starfield Library, then Bongeunsa Temple.",
+          "place": "coex-mall"
+        },
+        {
+          "day": 3,
+          "name": "Common Ground",
+          "category": "FOOD",
+          "note": "Shipping-container shops and food. Good for dinner.",
+          "place": "common-ground",
+          "price": 0,
+          "priceNote": "free (creator)"
+        }
+      ]
+    },
+    {
+      "slug": "seoul-6-days-luxury-foratravel",
+      "title": "Seoul searching: 6 days of culture",
+      "summary": "Fora advisor Tessa Austermuehle's plan: palaces, royal court cuisine and a hanbok day, a trip to Nami Island, spa time at The Shilla, Apgujeong boutiques and a finale at Lotte World and Seoul Sky.",
+      "tier": "LUXURY",
+      "days": 6,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/KWV429/seoul-searching-korea-a-6-day-itinerary-into-cultural-immersion-tessa-austermuehle",
+      "items": [
+        {
+          "day": 1,
+          "name": "Four Seasons Hotel Seoul",
+          "category": "STAY",
+          "note": "Advisor's pick. Or Banyan Tree Club & Spa Seoul.",
+          "place": "four-seasons-hotel-seoul",
+          "price": 394,
+          "priceNote": "from, per night (date-dependent)",
+          "priceSource": "https://www.kayak.com/Seoul-Hotels-Four-Seasons-Hotel-Seoul.840809.ksp",
+          "unit": "night",
+          "quantity": 5
+        },
+        {
+          "day": 1,
+          "name": "Deoksugung Palace",
+          "category": "EXPERIENCE",
+          "note": "Evening stroll on the palace (stone-wall) path as the lights come on",
+          "place": "deoksugung-palace",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Gwangjang Market",
+          "category": "FOOD",
+          "note": "Guided street food tour; often cash-only",
+          "place": "gwangjang-market"
+        },
+        {
+          "day": 2,
+          "name": "Jongmyo Shrine",
+          "category": "EXPERIENCE",
+          "note": "Shaded stone paths",
+          "place": "jongmyo-shrine",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 2,
+          "name": "Changdeokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Explore the Secret Garden",
+          "place": "changdeokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 2,
+          "name": "Jihwaja",
+          "category": "FOOD",
+          "note": "Royal court cuisine in a hanok",
+          "place": "jihwaja"
+        },
+        {
+          "day": 2,
+          "name": "N Seoul Tower",
+          "category": "EXPERIENCE",
+          "note": "Cable car up; love locks or a cocktail at the cafe",
+          "place": "n-seoul-tower",
+          "price": 19.58,
+          "priceNote": "26,000 KRW per adult",
+          "priceSource": "https://wowpass-event.oopy.io/adceab42-13fa-41a3-903b-9c0f57d52173"
+        },
+        {
+          "day": 3,
+          "name": "Hanboknam Gyeongbokgung",
+          "category": "EXPERIENCE",
+          "note": "Rent hanbok for the palace visit",
+          "place": "hanboknam-gyeongbokgung"
+        },
+        {
+          "day": 3,
+          "name": "Gyeongbokgung Palace",
+          "category": "EXPERIENCE",
+          "note": "Guard-changing ritual",
+          "place": "gyeongbokgung-palace",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 3,
+          "name": "Bukchon Hanok Village",
+          "category": "EXPERIENCE",
+          "place": "bukchon-hanok-village",
+          "price": 0,
+          "priceNote": "free; fines up to 100,000 KRW in the red zone from 5 pm to 10 am"
+        },
+        {
+          "day": 3,
+          "name": "Chatteul Tea House",
+          "category": "FOOD",
+          "note": "Green tea & tteok on wooden floors",
+          "place": "chatteul-tea-house"
+        },
+        {
+          "day": 3,
+          "name": "Inwangsan Mountain",
+          "category": "EXPERIENCE",
+          "note": "Sunset hike",
+          "place": "inwangsan"
+        },
+        {
+          "day": 4,
+          "name": "Nami Island",
+          "category": "EXPERIENCE",
+          "note": "About 1.5 hours from Seoul. Rent a bike on the island.",
+          "place": "nami-island",
+          "price": 14.31,
+          "priceNote": "19,000 KRW per adult",
+          "priceSource": "https://namisum-en.imweb.me/163"
+        },
+        {
+          "day": 4,
+          "name": "Cheonggyecheon Stream",
+          "category": "EXPERIENCE",
+          "note": "Evening, lantern reflections",
+          "place": "cheonggyecheon-stream"
+        },
+        {
+          "day": 4,
+          "name": "Jongno 3-ga pojangmacha street",
+          "category": "FOOD",
+          "note": "Street stalls for snacks",
+          "place": "jongno-pojangmacha"
+        },
+        {
+          "day": 4,
+          "name": "Guerlain Spa, The Shilla Seoul",
+          "category": "EXPERIENCE",
+          "note": "Aromatherapy, massage, facials",
+          "place": "guerlain-spa-shilla"
+        },
+        {
+          "day": 5,
+          "name": "Butterfinger Pancakes",
+          "category": "FOOD",
+          "note": "Breakfast",
+          "place": "butterfinger-pancakes"
+        },
+        {
+          "day": 5,
+          "name": "Apgujeong Rodeo Street",
+          "category": "EXPERIENCE",
+          "note": "Boutiques & galleries",
+          "place": "apgujeong-rodeo"
+        },
+        {
+          "day": 5,
+          "name": "Hongdae",
+          "category": "EXPERIENCE",
+          "note": "Retro Game Bar, photo booths",
+          "place": "hongdae"
+        },
+        {
+          "day": 6,
+          "name": "Changgyeonggung Palace",
+          "category": "EXPERIENCE",
+          "note": "Pavilion reflected in pond",
+          "place": "changgyeonggung-palace",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 6,
+          "name": "Lotte World Adventure",
+          "category": "EXPERIENCE",
+          "note": "Rides, parades, folk museum; try tanghulu",
+          "place": "lotte-world-adventure"
+        },
+        {
+          "day": 6,
+          "name": "Lotte World Tower – Seoul Sky",
+          "category": "EXPERIENCE",
+          "note": "Finale views",
+          "place": "lotte-world-tower-seoul-sky",
+          "price": 24.85,
+          "priceNote": "33,000 KRW per adult",
+          "priceSource": "https://www.incorea.it/en/lotte-world-tower-seoul-sky/"
+        }
+      ]
+    }
+  ]
+}
