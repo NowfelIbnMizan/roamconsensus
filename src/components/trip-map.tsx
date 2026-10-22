@@ -91,16 +91,27 @@ export function TripMap({
 
   useEffect(() => {
     let cancelled = false;
-    void import("leaflet").then(({ default: L }) => {
-      if (cancelled || !el.current) return;
-      // One finger scrolls the page on phones; pinch zooms and pans the map.
-      const map = L.map(el.current, { scrollWheelZoom: false, dragging: !L.Browser.mobile });
-      L.tileLayer(tiles, { attribution, maxZoom: 19 }).addTo(map);
-      handle.current = { L, map, layer: L.layerGroup().addTo(map) };
-      setReady(true);
-    });
+    // Leaflet and its pins load only when the map is about to scroll into view, so phones aren't busy building a
+    // map nobody has reached yet.
+    const seen = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        seen.disconnect();
+        void import("leaflet").then(({ default: L }) => {
+          if (cancelled || !el.current) return;
+          // One finger scrolls the page on phones; pinch zooms and pans the map.
+          const map = L.map(el.current, { scrollWheelZoom: false, dragging: !L.Browser.mobile });
+          L.tileLayer(tiles, { attribution, maxZoom: 19 }).addTo(map);
+          handle.current = { L, map, layer: L.layerGroup().addTo(map) };
+          setReady(true);
+        });
+      },
+      { rootMargin: "400px" },
+    );
+    if (el.current) seen.observe(el.current);
     return () => {
       cancelled = true;
+      seen.disconnect();
       handle.current?.map.remove();
       handle.current = null;
       fitted.current = "";

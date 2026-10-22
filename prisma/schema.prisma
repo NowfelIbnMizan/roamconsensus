@@ -292,3 +292,16 @@ model Editor {
   instagramUrl String?
   updatedAt    DateTime @updatedAt
 }
+
+/// People who signed up for email: from the footer form, or by asking for their trip plan by email.
+model Subscriber {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  /// Where they signed up: "footer" or "trip".
+  source         String
+  /// Last trip plan link they asked to have emailed.
+  tripUrl        String?
+  lastEmailedAt  DateTime?
+  unsubscribedAt DateTime?
+  createdAt      DateTime  @default(now())
+}

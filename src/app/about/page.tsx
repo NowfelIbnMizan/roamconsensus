@@ -65,7 +65,7 @@ export default async function AboutPage() {
         </li>
       </ul>
 
-      <h2 className="mt-10 text-xl font-semibold">For creators</h2>
+      <h2 id="for-creators" className="mt-10 scroll-mt-6 text-xl font-semibold">For creators</h2>
       <p className="mt-3">
         RoamConsensus is not affiliated with or endorsed by the creators featured. If you&apos;re one of them and want
         something corrected, your own booking links used for your picks, or your itinerary removed,{" "}

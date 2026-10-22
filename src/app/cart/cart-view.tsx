@@ -9,13 +9,14 @@ import { groupByVendor, toNotionMarkdown, toText } from "@/lib/cart-export";
 import { VendorBadge } from "@/components/vendor-badge";
 import { categoryLabel } from "@/lib/format";
 import { encodeTrip } from "@/lib/share";
+import { EmailSignup } from "@/components/email-signup";
 import { TripMap } from "@/components/trip-map";
 import { DayPlan, planLength, planMap } from "@/components/day-plan";
 import { useMoney } from "@/components/money";
 import { PackingList } from "@/components/packing-list";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
-export function CartView() {
+export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const hydrated = useCartHydrated();
   const { items, budgetCents, tripDays, refresh, remove, setQuantity, setBudget, clear, setDay, move, setTripDays } =
     useCart();
@@ -123,6 +124,16 @@ export function CartView() {
             <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share my trip"}
           </button>
         </div>
+
+        {canEmail && items.length > 0 && (
+          <div className="rounded-2xl border border-line bg-card p-4">
+            <EmailSignup
+              tripPath={`/trip?t=${encodeTrip(items, days)}`}
+              label="Email this trip to yourself, to open on your phone later"
+              button="Email me"
+            />
+          </div>
+        )}
 
         {stops.length > 0 && (
           <section>

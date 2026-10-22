@@ -143,7 +143,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         <p className="mt-1 text-sm text-muted">
           {creatorCount > 1
             ? "Every spot the creators recommend, most agreed-on first. Tap + to add one to your trip cart."
-            : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}
+            : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}{" "}
+          <Link href={`/destinations/${destination.slug}/best`} className="font-medium text-accent hover:underline">
+            Top picks, ranked
+          </Link>
         </p>
         <ConsensusFilter categories={categories} counts={counts}>
           {stops.length > 0 && (
@@ -158,7 +161,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             {consensus.map((p) => {
               const all = p.creators.length === creatorCount;
               return (
-                <li key={p.slug} data-cat={p.category} className="flex gap-3 p-4 sm:gap-4">
+                <li key={p.slug} data-cat={p.category} className="cv-row flex gap-3 p-4 sm:gap-4">
                   <Photo
                     photoKey={placePhotoKey(destination.slug, p)}
                     query={placeQuery(p.name, destination.name)}

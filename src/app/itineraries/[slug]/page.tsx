@@ -15,6 +15,7 @@ import { DriveSummary, LegHint } from "@/components/road-time";
 import { placeHref } from "@/lib/place";
 import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
 import { EditorTake } from "@/components/editor-take";
+import { CouponCode } from "@/components/coupon-code";
 import { getEditor } from "@/lib/editor";
 
 /** "Read the full guide on saltinourhair.com", or "Watch the full video on YouTube". */
@@ -143,7 +144,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
             </div>
             <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
               {items.map((item) => (
-                <li key={item.id} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 p-4">
+                <li key={item.id} className="cv-row flex flex-wrap items-center justify-between gap-x-4 gap-y-2 p-4">
                   <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
                     <p className="font-medium">
                       {pinNumber.has(item.id) && (
@@ -189,16 +190,13 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                     </p>
                     {(item.couponCode || item.creditedTo) && (
                       <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
-                        {item.couponCode && (
-                          <span className="rounded border border-dashed border-accent px-1.5 py-0.5 font-mono text-accent">
-                            {item.couponCode}
-                          </span>
-                        )}
+                        {item.couponCode && <CouponCode code={item.couponCode} note={item.couponNote} />}
+                        {item.couponNote && <span className="text-muted">{item.couponNote}</span>}
                         {item.creditedTo && <span className="text-muted">via {item.creditedTo}&apos;s link</span>}
                       </p>
                     )}
                   </div>
-                  <div className="flex shrink-0 items-center gap-3">
+                  <div className="flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-2 sm:w-auto sm:shrink-0 sm:flex-nowrap sm:justify-end">
                     <span
                       className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}
                     >
@@ -218,17 +216,37 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                         </a>
                       )}
                     </span>
-                    {item.bookUrl && (
-                      <a
-                        href={item.bookUrl}
-                        rel="sponsored noopener noreferrer"
-                        target="_blank"
-                        className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-background"
-                      >
-                        {item.vendor} <ExternalLink className="size-3" aria-hidden />
-                      </a>
-                    )}
-                    {item.sentiment !== "AVOID" && <AddItemButton item={cartItems.get(item.id)!} />}
+                    <div className="ml-auto flex items-center gap-3">
+                      {item.sentiment !== "AVOID" &&
+                        (item.bookUrl ? (
+                          <a
+                            href={item.bookUrl}
+                            rel="sponsored noopener noreferrer"
+                            target="_blank"
+                            title={item.bookIsSearch ? `Search ${item.vendor} for ${item.name}` : undefined}
+                            className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-background hover:opacity-90"
+                          >
+                            {item.bookIsSearch
+                              ? `Find on ${item.vendor}`
+                              : item.vendor
+                                ? `Book on ${item.vendor}`
+                                : "Book"}{" "}
+                            <ExternalLink className="size-3" aria-hidden />
+                          </a>
+                        ) : (
+                          item.website && (
+                            <a
+                              href={item.website}
+                              rel="noopener noreferrer"
+                              target="_blank"
+                              className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-muted hover:text-foreground"
+                            >
+                              Website <ExternalLink className="size-3" aria-hidden />
+                            </a>
+                          )
+                        ))}
+                      {item.sentiment !== "AVOID" && <AddItemButton item={cartItems.get(item.id)!} />}
+                    </div>
                   </div>
                 </li>
               ))}

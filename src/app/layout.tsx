@@ -7,6 +7,8 @@ import { CartLink } from "@/components/cart-link";
 import { CurrencyPicker, CurrencyProvider } from "@/components/money";
 import { ThemeToggle, themeScript } from "@/components/theme";
 import { InstallApp } from "@/components/install-app";
+import { MobileNav } from "@/components/mobile-nav";
+import { EmailSignup } from "@/components/email-signup";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -21,6 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
+  // Lets the bottom tab bar sit above the iPhone home indicator.
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
     { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
@@ -58,8 +62,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link href="/#destinations" className="hidden hover:text-foreground md:inline">
                   Destinations
                 </Link>
-                <Link href="/quiz" className="hidden hover:text-foreground sm:inline">
-                  Trip quiz
+                <Link href="/creators" className="hidden hover:text-foreground md:inline">
+                  Creators
+                </Link>
+                <Link href="/itineraries" className="hidden hover:text-foreground sm:inline">
+                  Find a trip
                 </Link>
                 <Link href="/visa" className="hidden hover:text-foreground sm:inline">
                   Visa check
@@ -70,13 +77,15 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link
                   href="/search"
                   aria-label="Search"
-                  className="flex size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground"
+                  className="hidden size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground sm:flex"
                 >
                   <Search className="size-4" aria-hidden />
                 </Link>
                 <ThemeToggle />
                 <CurrencyPicker />
-                <CartLink />
+                <span className="hidden sm:inline-flex">
+                  <CartLink />
+                </span>
               </div>
             </nav>
           </header>
@@ -86,6 +95,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>
           </main>
           <footer className="border-t border-line">
+            <div className="mx-auto max-w-5xl px-4 pt-6">
+              <div className="max-w-md">
+                <EmailSignup label="New destinations and creator itineraries, by email" button="Sign up" />
+              </div>
+            </div>
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
               Some links are affiliate links: we may earn a commission at no extra cost to you. RoamConsensus is not
               affiliated with the creators featured.{" "}
@@ -93,14 +107,21 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 Full disclosure
               </Link>
               {" · "}
+              <Link href="/creators" className="underline">
+                Creators
+              </Link>
+              {" · "}
               <Link href="/about" className="underline">
                 About and contact
               </Link>
             </p>
-            <p className="mx-auto max-w-5xl px-4 pb-6 text-xs text-muted">
+            <p className="mx-auto max-w-5xl px-4 pb-24 text-xs text-muted sm:pb-6">
               <InstallApp />
             </p>
           </footer>
+          <Suspense fallback={null}>
+            <MobileNav />
+          </Suspense>
         </CurrencyProvider>
       </body>
     </html>

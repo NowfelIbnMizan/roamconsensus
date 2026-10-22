@@ -32,6 +32,12 @@ export default async function Home() {
             <Sparkles className="size-4" aria-hidden /> Find my trip in 3 questions
           </Link>
           <Link
+            href="/itineraries"
+            className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:border-accent"
+          >
+            Trips by length and budget
+          </Link>
+          <Link
             href="#destinations"
             className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:border-accent"
           >
