@@ -128,7 +128,7 @@ export default async function PlacePage({ params }: Props) {
           )}
           <div className="mt-4 flex flex-wrap gap-2">
             {p.cartItem && p.skippedBy.length === 0 && (
-              <AddRouteButton items={[p.cartItem]} label="Add to trip cart" doneLabel="In your trip cart" />
+              <AddRouteButton items={[p.cartItem]} label="Add to trip cart" doneLabel="In your trip cart" removeLabel="Remove from cart" />
             )}
             <a
               href={googleUrl}

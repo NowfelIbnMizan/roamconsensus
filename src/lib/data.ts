@@ -526,6 +526,31 @@ export async function getItinerary(slug: string) {
   };
 }
 
+/** Every creator with their links and itineraries, for the Creators page. */
+export async function getCreators() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  return db.creator.findMany({
+    orderBy: { name: "asc" },
+    select: {
+      ...creatorLinkSelect,
+      platform: true,
+      bio: true,
+      itineraries: {
+        orderBy: [{ destination: { name: "asc" } }, { days: "asc" }],
+        select: {
+          slug: true,
+          title: true,
+          tier: true,
+          days: true,
+          destination: { select: { slug: true, name: true } },
+        },
+      },
+    },
+  });
+}
+
 export async function getCreatorHandles() {
   "use cache";
   cacheLife("hours");
@@ -545,6 +570,7 @@ export async function getCreator(handle: string) {
       platform: true,
       bio: true,
       itineraries: {
+        orderBy: [{ destination: { name: "asc" } }, { days: "asc" }],
         select: {
           slug: true,
           title: true,

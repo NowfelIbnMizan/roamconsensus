@@ -58,6 +58,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link href="/#destinations" className="hidden hover:text-foreground md:inline">
                   Destinations
                 </Link>
+                <Link href="/creators" className="hidden hover:text-foreground md:inline">
+                  Creators
+                </Link>
                 <Link href="/quiz" className="hidden hover:text-foreground sm:inline">
                   Trip quiz
                 </Link>
@@ -91,6 +94,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               affiliated with the creators featured.{" "}
               <Link href="/disclosure" className="underline">
                 Full disclosure
+              </Link>
+              {" · "}
+              <Link href="/creators" className="underline">
+                Creators
               </Link>
               {" · "}
               <Link href="/about" className="underline">
