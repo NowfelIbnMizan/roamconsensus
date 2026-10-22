@@ -14,6 +14,17 @@ import { dayColor, dayLegs, googleMapsPlaceUrl, googleMapsRouteUrl, hasPin } fro
 import { DriveSummary, LegHint } from "@/components/road-time";
 import { placeHref } from "@/lib/place";
 import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
+import { EditorTake } from "@/components/editor-take";
+import { getEditor } from "@/lib/editor";
+
+/** "Read the full guide on saltinourhair.com", or "Watch the full video on YouTube". */
+function fullGuideLabel(url: string) {
+  const host = new URL(url).hostname.replace(/^(www|m)\./, "");
+  if (/youtube\.com|youtu\.be/.test(host)) return "Watch the full video on YouTube";
+  if (/instagram\.com/.test(host)) return "See the full post on Instagram";
+  if (/tiktok\.com/.test(host)) return "Watch the full video on TikTok";
+  return `Read the full guide on ${host}`;
+}
 
 export async function generateStaticParams() {
   return getItinerarySlugs();
@@ -25,8 +36,9 @@ export async function generateMetadata({ params }: PageProps<"/itineraries/[slug
 }
 
 export default async function ItineraryPage({ params }: PageProps<"/itineraries/[slug]">) {
-  const it = await getItinerary((await params).slug);
+  const [it, editor] = await Promise.all([getItinerary((await params).slug), getEditor()]);
   if (!it) notFound();
+  const fullGuide = fullGuideLabel(it.sourceUrl);
 
   // Places the creator says to skip stay listed but out of the route bundle.
   const skipped = new Set(
@@ -72,21 +84,28 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
       <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
       <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
-        by <CreatorChip creator={it.creator} /> · {it.days} days ·{" "}
+        by <CreatorChip creator={it.creator} /> · {it.days} days
         {it.totalCents > 0 && (
           <>
-            <Money cents={it.totalCents} /> est.{it.unpricedCount > 0 && " for priced items"} ·{" "}
+            {" "}
+            · <Money cents={it.totalCents} /> est.{it.unpricedCount > 0 && " for priced items"}
           </>
         )}
-        <a href={it.sourceUrl} className="underline" rel="noopener noreferrer" target="_blank">
-          original
-        </a>
       </p>
       <div className="mt-3">
         <CreatorSocials creator={it.creator} />
       </div>
       <p className="mt-3 max-w-2xl">{it.summary}</p>
-      <p className="mt-1 text-sm">
+      <a
+        href={it.sourceUrl}
+        rel="noopener noreferrer"
+        target="_blank"
+        className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-accent px-4 py-1.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-background"
+      >
+        {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
+      </a>
+      {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
+      <p className="mt-3 text-sm">
         <Link href={`/creators/${it.creator.handle}`} className="text-muted underline hover:text-foreground">
           More from {it.creator.name}
         </Link>
@@ -216,6 +235,21 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
             </ul>
           </section>
         ))}
+      </div>
+
+      <div className="mt-10 rounded-2xl border border-line bg-card p-5">
+        <p className="text-sm text-muted">
+          This is a summary of {it.creator.name}&apos;s itinerary. Their guide has the photos, stories and tips that
+          don&apos;t fit here.
+        </p>
+        <a
+          href={it.sourceUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+          className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-background"
+        >
+          {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
+        </a>
       </div>
     </>
   );

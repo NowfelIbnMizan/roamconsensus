@@ -113,6 +113,7 @@ const Destination = z.object({
       days: z.number().int().positive(),
       creator: slug,
       sourceUrl: url,
+      editorTake: z.string().optional(), // the site owner's own commentary
       items: z.array(
         z.object({
           day: z.number().int().positive(),

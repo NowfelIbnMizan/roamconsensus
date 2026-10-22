@@ -142,6 +142,12 @@ export default async function ItineraryAdmin({ params }: PageProps<"/admin/itine
         <Field label="Creator's post (link)" name="sourceUrl" type="url" defaultValue={it.sourceUrl} required />
         <Field label="URL name" name="slug" defaultValue={it.slug} hint="Changing it breaks old links." />
         <TextArea label="Summary" name="summary" defaultValue={it.summary} />
+        <TextArea
+          label="Your take (shown as your own commentary, with your name)"
+          name="editorTake"
+          defaultValue={it.editorTake}
+          rows={4}
+        />
         <div>
           <SaveButton />
         </div>

@@ -7,6 +7,7 @@ import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
+import { getEditor } from "@/lib/editor";
 import { categoryLabel, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
 import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
 }
 
 export default async function DestinationPage({ params }: PageProps<"/destinations/[slug]">) {
-  const destination = await getDestination((await params).slug);
+  const [destination, editor] = await Promise.all([getDestination((await params).slug), getEditor()]);
   if (!destination) notFound();
   const { creatorCount, consensus } = destination;
 
@@ -104,6 +105,12 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
               <p className="mt-1 flex flex-wrap items-center gap-1.5 text-sm text-muted">
                 by <CreatorChip creator={r.creator} link={false} />
               </p>
+              {r.editorTake && (
+                <p className="mt-2 line-clamp-3 border-l-2 border-accent pl-2 text-sm text-muted">
+                  <span className="font-medium text-foreground">{editor.name}&apos;s take: </span>
+                  {r.editorTake}
+                </p>
+              )}
               {r.totalCents > 0 ? (
                 <>
                   <p className="mt-3 text-2xl font-semibold tabular-nums">
