@@ -8,6 +8,7 @@ import { CurrencyPicker, CurrencyProvider } from "@/components/money";
 import { ThemeToggle, themeScript } from "@/components/theme";
 import { InstallApp } from "@/components/install-app";
 import { MobileNav } from "@/components/mobile-nav";
+import { EmailSignup } from "@/components/email-signup";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -64,8 +65,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <Link href="/creators" className="hidden hover:text-foreground md:inline">
                   Creators
                 </Link>
-                <Link href="/quiz" className="hidden hover:text-foreground sm:inline">
-                  Trip quiz
+                <Link href="/itineraries" className="hidden hover:text-foreground sm:inline">
+                  Find a trip
                 </Link>
                 <Link href="/visa" className="hidden hover:text-foreground sm:inline">
                   Visa check
@@ -94,6 +95,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>
           </main>
           <footer className="border-t border-line">
+            <div className="mx-auto max-w-5xl px-4 pt-6">
+              <div className="max-w-md">
+                <EmailSignup label="New destinations and creator itineraries, by email" button="Sign up" />
+              </div>
+            </div>
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
               Some links are affiliate links: we may earn a commission at no extra cost to you. RoamConsensus is not
               affiliated with the creators featured.{" "}

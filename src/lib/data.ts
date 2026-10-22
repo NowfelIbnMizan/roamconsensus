@@ -371,6 +371,9 @@ export async function getQuizData() {
       destination: it.destination,
       creator: it.creator,
       totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
+      unpricedCount: kept.filter((i) => i.priceCents === null).length,
+      /** Hotels without a price leave the total far too low to compare against a budget. */
+      unpricedStays: kept.filter((i) => i.category === "STAY" && i.priceCents === null).length,
       /** Share of the route's stops matching each vibe, 0–1. */
       vibes: Object.fromEntries(Object.entries(counts).map(([k, n]) => [k, n / Math.max(1, kept.length)])),
     };

@@ -143,7 +143,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         <p className="mt-1 text-sm text-muted">
           {creatorCount > 1
             ? "Every spot the creators recommend, most agreed-on first. Tap + to add one to your trip cart."
-            : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}
+            : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}{" "}
+          <Link href={`/destinations/${destination.slug}/best`} className="font-medium text-accent hover:underline">
+            Top picks, ranked
+          </Link>
         </p>
         <ConsensusFilter categories={categories} counts={counts}>
           {stops.length > 0 && (

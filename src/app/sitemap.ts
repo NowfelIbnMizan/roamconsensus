@@ -16,9 +16,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/visa` },
     { url: `${base}/about` },
     { url: `${base}/creators` },
+    { url: `${base}/itineraries` },
     ...creators.map((c) => ({ url: `${base}/creators/${c.handle}` })),
     ...destinations.flatMap((d) =>
-      ["", "/when", "/before", "/budget", "/esim"].map((tab) => ({ url: `${base}/destinations/${d.slug}${tab}` })),
+      ["", "/best", "/when", "/before", "/budget", "/esim"].map((tab) => ({ url: `${base}/destinations/${d.slug}${tab}` })),
     ),
     ...itineraries.map((i) => ({ url: `${base}/itineraries/${i.slug}` })),
     ...places.map((p) => ({ url: `${base}/destinations/${p.slug}/places/${p.place}` })),
