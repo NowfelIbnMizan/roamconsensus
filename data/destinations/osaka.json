@@ -1,0 +1,1173 @@
+{
+  "slug": "osaka",
+  "name": "Osaka",
+  "country": "Japan",
+  "summary": "Osaka Castle, Dotonbori's neon and street food, Kuromon Market, the Kaiyukan aquarium and Universal Studios Japan, with Kyoto, Nara and Kobe a short train ride away.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Osaka",
+  "months": [
+    {
+      "month": 1,
+      "highC": 10,
+      "lowC": 3,
+      "rainMm": 47,
+      "crowd": "MEDIUM",
+      "note": "Cold and dry; New Year holidays (1–3 Jan) close some businesses and pack shrines."
+    },
+    {
+      "month": 2,
+      "highC": 11,
+      "lowC": 3,
+      "rainMm": 61,
+      "crowd": "LOW",
+      "note": "Coldest stretch and quietest month; good hotel deals."
+    },
+    {
+      "month": 3,
+      "highC": 14,
+      "lowC": 6,
+      "rainMm": 103,
+      "crowd": "HIGH",
+      "note": "Cherry blossoms usually open in late March and hotels fill fast."
+    },
+    {
+      "month": 4,
+      "highC": 20,
+      "lowC": 11,
+      "rainMm": 102,
+      "crowd": "HIGH",
+      "note": "Early-April sakura, then Golden Week from late April brings peak domestic crowds."
+    },
+    {
+      "month": 5,
+      "highC": 25,
+      "lowC": 16,
+      "rainMm": 137,
+      "crowd": "HIGH",
+      "note": "Golden Week runs into early May; pleasant weather afterwards."
+    },
+    {
+      "month": 6,
+      "highC": 28,
+      "lowC": 20,
+      "rainMm": 185,
+      "crowd": "MEDIUM",
+      "note": "Tsuyu rainy season; typhoon season begins."
+    },
+    {
+      "month": 7,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 174,
+      "crowd": "HIGH",
+      "note": "Hot and humid; Tenjin Matsuri (late July) is one of Japan's biggest festivals, and typhoon risk peaks Jul–Sep."
+    },
+    {
+      "month": 8,
+      "highC": 34,
+      "lowC": 26,
+      "rainMm": 113,
+      "crowd": "HIGH",
+      "note": "Hottest month with heatstroke risk; Obon holidays in mid-August crowd trains."
+    },
+    {
+      "month": 9,
+      "highC": 30,
+      "lowC": 22,
+      "rainMm": 153,
+      "crowd": "MEDIUM",
+      "note": "Still hot and at peak typhoon risk; monitor JMA forecasts."
+    },
+    {
+      "month": 10,
+      "highC": 24,
+      "lowC": 16,
+      "rainMm": 136,
+      "crowd": "MEDIUM",
+      "note": "Comfortable autumn weather, with late typhoons possible."
+    },
+    {
+      "month": 11,
+      "highC": 18,
+      "lowC": 10,
+      "rainMm": 73,
+      "crowd": "HIGH",
+      "note": "Autumn leaves season; nearby Kyoto and Nara get very busy."
+    },
+    {
+      "month": 12,
+      "highC": 12,
+      "lowC": 5,
+      "rainMm": 56,
+      "crowd": "MEDIUM",
+      "note": "Cool and dry with winter illuminations."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Money",
+      "title": "Departure tax is now ¥3,000",
+      "body": "Japan's International Tourist Tax rose from ¥1,000 to ¥3,000 per departure on 1 July 2026. It is usually included in your ticket price when you buy the ticket.",
+      "sourceUrl": "https://www.japan.travel/en/ca/news/japans-international-tourist-tax-is-increasing/"
+    },
+    {
+      "topic": "Money",
+      "title": "Osaka accommodation tax",
+      "body": "Since 1 September 2025, Osaka Prefecture charges a tax per person per night based on the room rate. Rooms under ¥5,000 are exempt; ¥5,000 to under ¥15,000 pays ¥200, ¥15,000 to under ¥20,000 pays ¥400, and ¥20,000 or more pays ¥500. It is usually collected at check-in or checkout.",
+      "sourceUrl": "https://osaka-info.jp/en/information/to-tourist/news-lodging-tax/"
+    },
+    {
+      "topic": "Entry",
+      "title": "90 days for UK tourists",
+      "body": "British visitors can enter for tourism or business for up to 90 days without applying in advance. An extension of a further 90 days can be requested at an immigration office.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Health",
+      "title": "Check your medicines",
+      "body": "Japan's anti-stimulant law bans some common medicines, including Vicks inhalers, cold and flu tablets containing pseudoephedrine, and some codeine painkillers. Foreign nationals have been detained and deported for carrying them. Check with a Japanese embassy before packing.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Money",
+      "title": "Carry cash; use 7-Eleven or post office ATMs",
+      "body": "Japan is still largely cash-based, and some cards issued abroad don't work. ATMs at 7-Eleven stores, Japanese post offices and JP Post Bank accept some foreign cards.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Safety",
+      "title": "Typhoon season June–December",
+      "body": "Typhoon season runs from June to December and peaks from July to September. Follow Japan Meteorological Agency (JMA) forecasts and any evacuation orders.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Safety",
+      "title": "Earthquakes and the Visitor Hotline",
+      "body": "Japan is a major earthquake zone, so follow tsunami warnings and staff instructions in hotels and stations. The Japan Visitor Hotline (+81 50 3816 2787) gives emergency help in English.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Safety",
+      "title": "Avoid street touts in nightlife districts",
+      "body": "UK police advice warns of drink spiking and inflated bar bills linked to English-speaking street touts. Don't follow touts into bars, and check menu prices and cover charges first.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Entry",
+      "title": "Use Visit Japan Web for faster arrival",
+      "body": "Visit Japan Web creates QR codes for immigration and customs that you can scan at automated kiosks on arrival. It is optional in 2026, and paper cards are still accepted. Set up your account about two weeks before you fly.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "JESTA is not needed yet",
+      "body": "Japan passed a law on 29 May 2026 to create JESTA, an electronic travel authorization for visa-exempt visitors, but it will not launch before 2028. Ignore websites that charge for 'early JESTA registration'.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Money",
+      "title": "Tax-free shopping is now a refund at the airport",
+      "body": "From 1 November 2026, visitors pay the full price including tax in shops and get the consumption tax back after customs checks the goods at departure. You must spend at least ¥5,000 per shop per day, and you need your passport plus all items and receipts. Leave time at the airport, because purchases with a missing item or receipt are not refunded.",
+      "sourceUrl": "https://www.japan.travel/en/us/blog/everything-you-need-to-know-japans-new-tax-free-shopping-system/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Don't tip",
+      "body": "Tipping is not customary in Japan and can cause embarrassment or confusion. The price you see is what you pay.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Connectivity",
+      "title": "Plugs and voltage",
+      "body": "Japan uses two flat parallel-prong plugs at 100 V AC. Bring an adapter, and check that your devices accept 100 V.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Get an ICOCA card or mobile ICOCA",
+      "body": "ICOCA works on JR lines, private railways, buses and some taxis in Kansai. It also works at convenience stores and vending machines. It is available in Apple Pay and as Mobile ICOCA on Android, and you can top it up at station machines or convenience stores.",
+      "sourceUrl": "https://kyoto.travel/en/getting-around/basic-knowledge-and-manners-of-public-transportation-in-japan/"
+    }
+  ],
+  "places": [
+    {
+      "slug": "hostel-mitsuwaya-osaka",
+      "name": "Hostel Mitsuwaya Osaka",
+      "category": "STAY",
+      "area": "Nipponbashi",
+      "blurb": "Hostel set in a former toy store south of Namba.",
+      "lat": 34.656,
+      "lng": 135.505
+    },
+    {
+      "slug": "konjaku-so-dotonbori-garden-spa-stay",
+      "name": "Konjaku-So Dotonbori Garden SPA Stay",
+      "category": "STAY",
+      "area": "Dotonbori",
+      "blurb": "Japanese-style luxury stay with spa near Dotonbori."
+    },
+    {
+      "slug": "cross-hotel-osaka",
+      "name": "Cross Hotel Osaka",
+      "category": "STAY",
+      "area": "Shinsaibashi/Dotonbori",
+      "blurb": "Design hotel steps from Dotonbori.",
+      "lat": 34.6705,
+      "lng": 135.502
+    },
+    {
+      "slug": "conrad-osaka",
+      "name": "Conrad Osaka",
+      "category": "STAY",
+      "area": "Nakanoshima",
+      "blurb": "Five-star hotel on the upper floors of the Nakanoshima Festival Tower West.",
+      "lat": 34.6929,
+      "lng": 135.492
+    },
+    {
+      "slug": "national-museum-of-art-osaka",
+      "name": "National Museum of Art, Osaka",
+      "category": "EXPERIENCE",
+      "area": "Nakanoshima",
+      "blurb": "Underground contemporary art museum on Nakanoshima.",
+      "lat": 34.6916,
+      "lng": 135.4916
+    },
+    {
+      "slug": "namba-parks",
+      "name": "Namba Parks",
+      "category": "EXPERIENCE",
+      "area": "Namba",
+      "blurb": "Shopping complex with a terraced rooftop garden.",
+      "lat": 34.6614,
+      "lng": 135.502
+    },
+    {
+      "slug": "tempozan-ferris-wheel",
+      "name": "Tempozan Giant Ferris Wheel",
+      "category": "EXPERIENCE",
+      "area": "Osaka Bay (Tempozan)",
+      "blurb": "Large Ferris wheel beside Kaiyukan with bay views.",
+      "lat": 34.6566,
+      "lng": 135.4318
+    },
+    {
+      "slug": "original-pancake-house-osaka",
+      "name": "The Original Pancake House",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "American-style pancake restaurant."
+    },
+    {
+      "slug": "osaka-aquarium-kaiyukan",
+      "name": "Osaka Aquarium Kaiyukan",
+      "category": "EXPERIENCE",
+      "area": "Osaka Bay (Tempozan)",
+      "blurb": "One of the world's largest public aquariums, built around a central Pacific Ocean tank.",
+      "website": "https://www.kaiyukan.com/",
+      "lat": 34.6545,
+      "lng": 135.429
+    },
+    {
+      "slug": "national-bunraku-theatre",
+      "name": "National Bunraku Theatre",
+      "category": "EXPERIENCE",
+      "area": "Nipponbashi",
+      "blurb": "National theatre dedicated to traditional bunraku puppet drama.",
+      "lat": 34.667,
+      "lng": 135.507
+    },
+    {
+      "slug": "osaka-castle",
+      "name": "Osaka Castle",
+      "category": "EXPERIENCE",
+      "area": "Chuo / Osaka Castle Park",
+      "blurb": "Reconstructed 16th-century castle keep housing a history museum, set in a large park.",
+      "lat": 34.6873,
+      "lng": 135.5262
+    },
+    {
+      "slug": "mint-museum-osaka",
+      "name": "Japan Mint Museum",
+      "category": "EXPERIENCE",
+      "area": "Kita / Sakuranomiya",
+      "blurb": "Museum at the Japan Mint, known for its spring cherry-blossom passage.",
+      "lat": 34.6965,
+      "lng": 135.5215
+    },
+    {
+      "slug": "garden-oriental-osaka",
+      "name": "Garden Oriental Osaka",
+      "category": "FOOD",
+      "area": "Kita / Sakuranomiya",
+      "blurb": "Restaurant and wedding venue in a historic building beside the Okawa river.",
+      "lat": 34.6957,
+      "lng": 135.5225
+    },
+    {
+      "slug": "umeda-sky-building",
+      "name": "Umeda Sky Building",
+      "category": "EXPERIENCE",
+      "area": "Umeda",
+      "blurb": "Twin-tower skyscraper joined by an open-air rooftop observatory.",
+      "lat": 34.7053,
+      "lng": 135.4898
+    },
+    {
+      "slug": "osaka-museum-of-history",
+      "name": "Osaka Museum of History",
+      "category": "EXPERIENCE",
+      "area": "Chuo",
+      "blurb": "Museum of Osaka's history with views over Osaka Castle.",
+      "lat": 34.6823,
+      "lng": 135.5194
+    },
+    {
+      "slug": "dotonbori",
+      "name": "Dotonbori",
+      "category": "EXPERIENCE",
+      "area": "Namba",
+      "blurb": "Canal-side entertainment strip known for neon signs and street food.",
+      "lat": 34.6687,
+      "lng": 135.5013
+    },
+    {
+      "slug": "tonbori-river-cruise",
+      "name": "Tonbori River Cruise",
+      "category": "EXPERIENCE",
+      "area": "Dotonbori",
+      "blurb": "Short sightseeing boat ride along the Dotonbori canal.",
+      "lat": 34.669,
+      "lng": 135.5035
+    },
+    {
+      "slug": "expo-70-commemorative-park",
+      "name": "Expo '70 Commemorative Park",
+      "category": "EXPERIENCE",
+      "area": "Suita",
+      "blurb": "Park on the 1970 World Expo site, home to the Tower of the Sun.",
+      "lat": 34.8094,
+      "lng": 135.5323
+    },
+    {
+      "slug": "universal-studios-japan",
+      "name": "Universal Studios Japan",
+      "category": "EXPERIENCE",
+      "area": "Universal City (Konohana)",
+      "blurb": "Theme park including Super Nintendo World and the Wizarding World of Harry Potter.",
+      "tip": "Prices change by date: buy tickets ahead on the official site.",
+      "lat": 34.6654,
+      "lng": 135.4323
+    },
+    {
+      "slug": "cupnoodles-museum-osaka-ikeda",
+      "name": "Cupnoodles Museum Osaka Ikeda",
+      "category": "EXPERIENCE",
+      "area": "Ikeda",
+      "blurb": "Museum on the invention of instant ramen, with a make-your-own cup noodle workshop.",
+      "lat": 34.8183,
+      "lng": 135.429
+    },
+    {
+      "slug": "hattori-ryokuchi-park",
+      "name": "Hattori Ryokuchi Park",
+      "category": "EXPERIENCE",
+      "area": "Toyonaka",
+      "blurb": "Large park with an open-air museum of old Japanese farmhouses.",
+      "lat": 34.7725,
+      "lng": 135.478
+    },
+    {
+      "slug": "abeno-harukas-300",
+      "name": "Harukas 300",
+      "category": "EXPERIENCE",
+      "area": "Tennoji / Abeno",
+      "blurb": "Observation deck at the top of the Abeno Harukas skyscraper.",
+      "lat": 34.6459,
+      "lng": 135.5135
+    },
+    {
+      "slug": "mega-don-quijote-shinsekai",
+      "name": "MEGA Don Quijote Shinsekai",
+      "category": "EXPERIENCE",
+      "area": "Shinsekai",
+      "blurb": "Large discount store open late into the night."
+    },
+    {
+      "slug": "den-den-town",
+      "name": "Den Den Town",
+      "category": "EXPERIENCE",
+      "area": "Nipponbashi",
+      "blurb": "Electronics, anime and hobby shopping district.",
+      "lat": 34.66,
+      "lng": 135.506
+    },
+    {
+      "slug": "kuromon-ichiba-market",
+      "name": "Kuromon Ichiba Market",
+      "category": "FOOD",
+      "area": "Nipponbashi",
+      "blurb": "Covered food market known for seafood and street snacks.",
+      "lat": 34.6655,
+      "lng": 135.5065
+    },
+    {
+      "slug": "okonomiyaki-mizuno",
+      "name": "Okonomiyaki Mizuno",
+      "category": "FOOD",
+      "area": "Dotonbori",
+      "blurb": "Long-running okonomiyaki restaurant on Dotonbori.",
+      "lat": 34.6687,
+      "lng": 135.5025
+    },
+    {
+      "slug": "shinsaibashi-suji",
+      "name": "Shinsaibashi-suji Shopping Street",
+      "category": "EXPERIENCE",
+      "area": "Shinsaibashi",
+      "blurb": "Long covered shopping arcade north of Dotonbori.",
+      "lat": 34.674,
+      "lng": 135.501
+    },
+    {
+      "slug": "hankyu-umeda-depachika",
+      "name": "Hankyu Umeda Main Store food hall",
+      "category": "FOOD",
+      "area": "Umeda",
+      "blurb": "Department-store basement food hall.",
+      "lat": 34.7035,
+      "lng": 135.4995
+    },
+    {
+      "slug": "kura-sushi-osaka",
+      "name": "Kura Sushi",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Conveyor-belt sushi chain; the creator does not name a branch."
+    },
+    {
+      "slug": "takoyaki-doraku-wanaka",
+      "name": "Takoyaki Doraku Wanaka",
+      "category": "FOOD",
+      "area": "Namba / Sennichimae",
+      "blurb": "Popular takoyaki stand.",
+      "lat": 34.666,
+      "lng": 135.504
+    },
+    {
+      "slug": "ippudo-osaka",
+      "name": "Ippudo",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Hakata-style tonkotsu ramen chain; the creator does not name a branch."
+    },
+    {
+      "slug": "minoo-park",
+      "name": "Minoo Park",
+      "category": "EXPERIENCE",
+      "area": "Minoh",
+      "blurb": "Forested quasi-national park with a paved trail to Minoo Waterfall.",
+      "lat": 34.853,
+      "lng": 135.472
+    },
+    {
+      "slug": "hisakunikosendo",
+      "name": "Hisakunikosendo",
+      "category": "FOOD",
+      "area": "Minoh",
+      "blurb": "Shop selling momiji (maple-leaf) tempura."
+    },
+    {
+      "slug": "izakaya-toyo",
+      "name": "Izakaya Toyo",
+      "category": "FOOD",
+      "area": "Kyobashi",
+      "blurb": "Standing izakaya known for its showman owner and seared tuna.",
+      "lat": 34.6965,
+      "lng": 135.534
+    },
+    {
+      "slug": "ichiran-ramen-dotonbori",
+      "name": "Ichiran Ramen Dotonbori",
+      "category": "FOOD",
+      "area": "Dotonbori",
+      "blurb": "Tonkotsu ramen chain with solo booths.",
+      "lat": 34.6688,
+      "lng": 135.503
+    },
+    {
+      "slug": "wagyu-yakiniku-nikukachi",
+      "name": "Wagyu Yakiniku Nikukachi",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Wagyu yakiniku grill restaurant."
+    },
+    {
+      "slug": "alis-kitchen-osaka",
+      "name": "Ali's Kitchen Osaka",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Small halal restaurant."
+    },
+    {
+      "slug": "cinquecento-bar-osaka",
+      "name": "CinqueCento",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Bar serving around 100 cocktails at 500 yen each."
+    },
+    {
+      "slug": "tsutenkaku-tower",
+      "name": "Tsutenkaku Tower",
+      "category": "EXPERIENCE",
+      "area": "Shinsekai",
+      "blurb": "Retro observation tower and landmark of Shinsekai.",
+      "lat": 34.6525,
+      "lng": 135.5063
+    },
+    {
+      "slug": "kushikatsu-daruma",
+      "name": "Kushikatsu Daruma",
+      "category": "FOOD",
+      "area": "Shinsekai",
+      "blurb": "Kushikatsu (deep-fried skewer) chain founded in Shinsekai.",
+      "lat": 34.652,
+      "lng": 135.506
+    },
+    {
+      "slug": "tennoji-park",
+      "name": "Tennoji Park",
+      "category": "EXPERIENCE",
+      "area": "Tennoji",
+      "blurb": "Urban park containing the zoo and the city art museum.",
+      "lat": 34.65,
+      "lng": 135.511
+    },
+    {
+      "slug": "osaka-city-museum-of-fine-arts",
+      "name": "Osaka City Museum of Fine Arts",
+      "category": "EXPERIENCE",
+      "area": "Tennoji",
+      "blurb": "Municipal art museum in Tennoji Park.",
+      "lat": 34.6505,
+      "lng": 135.5095
+    },
+    {
+      "slug": "tennoji-zoo",
+      "name": "Tennoji Zoo",
+      "category": "EXPERIENCE",
+      "area": "Tennoji",
+      "blurb": "Historic city zoo in Tennoji Park.",
+      "lat": 34.651,
+      "lng": 135.5085
+    },
+    {
+      "slug": "kimono-tea-ceremony-maiko-osaka",
+      "name": "Kimono Tea Ceremony Maiko",
+      "category": "EXPERIENCE",
+      "area": "",
+      "blurb": "Tea ceremony experience in kimono."
+    },
+    {
+      "slug": "sushi-hayata",
+      "name": "Sushi Hayata",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Sushi restaurant."
+    },
+    {
+      "slug": "arashiyama",
+      "name": "Arashiyama",
+      "category": "EXPERIENCE",
+      "area": "Kyoto",
+      "blurb": "Kyoto district with a bamboo grove, monkey park and river scenery.",
+      "lat": 35.017,
+      "lng": 135.672
+    },
+    {
+      "slug": "nunobiki-herb-gardens",
+      "name": "Nunobiki Herb Gardens",
+      "category": "EXPERIENCE",
+      "area": "Kobe",
+      "blurb": "Hillside herb gardens in Kobe reached by ropeway.",
+      "lat": 34.7105,
+      "lng": 135.192
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "osaka-3-days-thebrokebackpacker",
+      "title": "Backpacking Osaka in 3 days",
+      "summary": "An art museum, the Tempozan wheel and the Kaiyukan aquarium, then Osaka Castle, Umeda Sky and Dotonbori, and a day at Expo '70 Park or Universal Studios with the Cupnoodles Museum.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/osaka-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Hostel Mitsuwaya Osaka",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Cozy House Namba, Ayana House or Mitsui Garden Hotel Osaka Premier.",
+          "place": "hostel-mitsuwaya-osaka",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "National Museum of Art, Osaka",
+          "category": "EXPERIENCE",
+          "place": "national-museum-of-art-osaka",
+          "price": 2.72,
+          "priceNote": "430 JPY per adult",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Namba Parks",
+          "category": "EXPERIENCE",
+          "place": "namba-parks",
+          "price": 0.0,
+          "priceNote": "free (creator: Entrance is free!)",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Tempozan Giant Ferris Wheel",
+          "category": "EXPERIENCE",
+          "note": "Mt Tempo, Japan's smallest mountain, is nearby",
+          "place": "tempozan-ferris-wheel",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "The Original Pancake House",
+          "category": "FOOD",
+          "note": "Try the Dutch Baby or the coconut pancake",
+          "place": "original-pancake-house-osaka"
+        },
+        {
+          "day": 1,
+          "name": "Osaka Aquarium Kaiyukan",
+          "category": "EXPERIENCE",
+          "note": "Stay for the Night Aquarium",
+          "place": "osaka-aquarium-kaiyukan",
+          "price": 17.05,
+          "priceNote": "2,700 JPY per adult (creator: 2300 yen ($21) for over-16s)",
+          "priceSource": "https://osaka-info.jp/en/spot/osaka-aquarium-kaiyukan/"
+        },
+        {
+          "day": 1,
+          "name": "National Bunraku Theatre",
+          "category": "EXPERIENCE",
+          "place": "national-bunraku-theatre",
+          "priceNote": "creator: Varies per performance but the exhibition hall is free"
+        },
+        {
+          "day": 2,
+          "name": "Osaka Castle",
+          "category": "EXPERIENCE",
+          "note": "Visit in spring for the cherry trees",
+          "place": "osaka-castle",
+          "price": 7.58,
+          "priceNote": "1,200 JPY per adult (creator: 600 yen ($6), under-15s enter for free)",
+          "priceSource": "https://www.trvlogue.com/en/osaka-castle-tickets-guide"
+        },
+        {
+          "day": 2,
+          "name": "Japan Mint Museum",
+          "category": "EXPERIENCE",
+          "note": "Cherry trees form a tunnel for one week each spring",
+          "place": "mint-museum-osaka",
+          "price": 0.0,
+          "priceNote": "free (creator: It's free!)",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Garden Oriental Osaka",
+          "category": "FOOD",
+          "note": "Set menus are well-priced; tranquil setting",
+          "place": "garden-oriental-osaka"
+        },
+        {
+          "day": 2,
+          "name": "Umeda Sky Building",
+          "category": "EXPERIENCE",
+          "note": "The basement has a market of traditional restaurants",
+          "place": "umeda-sky-building",
+          "price": 9.47,
+          "priceNote": "creator: 1500 yen ($14) per adult"
+        },
+        {
+          "day": 2,
+          "name": "Osaka Museum of History",
+          "category": "EXPERIENCE",
+          "place": "osaka-museum-of-history",
+          "price": 3.79,
+          "priceNote": "600 JPY per adult",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Dotonbori",
+          "category": "EXPERIENCE",
+          "place": "dotonbori",
+          "price": 0.0,
+          "priceNote": "free (creator: Canal boat ride is 900 yen ($9) for 12 years old and up)",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Expo '70 Commemorative Park",
+          "category": "EXPERIENCE",
+          "note": "Tower of the Sun; spring cherry blossoms",
+          "place": "expo-70-commemorative-park"
+        },
+        {
+          "day": 3,
+          "name": "Universal Studios Japan",
+          "category": "EXPERIENCE",
+          "place": "universal-studios-japan"
+        },
+        {
+          "day": 3,
+          "name": "Cupnoodles Museum Osaka Ikeda",
+          "category": "EXPERIENCE",
+          "note": "Make your own noodles at My CUPNOODLES Factory",
+          "place": "cupnoodles-museum-osaka-ikeda",
+          "price": 0.0,
+          "priceNote": "free (creator: 300 yen ($3))",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Hattori Ryokuchi Park",
+          "category": "EXPERIENCE",
+          "note": "Open-air museum of old Japanese farmhouses",
+          "place": "hattori-ryokuchi-park"
+        }
+      ]
+    },
+    {
+      "slug": "osaka-3-days-willflyforfood",
+      "title": "Osaka in 3 days, with the food",
+      "summary": "Harukas 300, Kuromon Market, okonomiyaki and Dotonbori, then Osaka Castle, takoyaki, the aquarium and Minoo waterfall, and a day at Universal Studios Japan.",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Konjaku-So Dotonbori Garden SPA Stay",
+          "category": "STAY",
+          "note": "Creator's pick. Or Citadines Namba Osaka or 04village Namba.",
+          "place": "konjaku-so-dotonbori-garden-spa-stay",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Harukas 300",
+          "category": "EXPERIENCE",
+          "note": "If you like observation decks, then you can make Harukas 300 your first stop",
+          "place": "abeno-harukas-300",
+          "price": 9.47,
+          "priceNote": "creator: JPY 1,500"
+        },
+        {
+          "day": 1,
+          "name": "MEGA Don Quijote Shinsekai",
+          "category": "EXPERIENCE",
+          "place": "mega-don-quijote-shinsekai"
+        },
+        {
+          "day": 1,
+          "name": "Den Den Town",
+          "category": "EXPERIENCE",
+          "note": "There's a lot of cheap Japanese street food here as well.",
+          "place": "den-den-town"
+        },
+        {
+          "day": 1,
+          "name": "Kuromon Ichiba Market",
+          "category": "FOOD",
+          "note": "Try not to eat too much",
+          "place": "kuromon-ichiba-market"
+        },
+        {
+          "day": 1,
+          "name": "Okonomiyaki Mizuno",
+          "category": "FOOD",
+          "place": "okonomiyaki-mizuno",
+          "price": 6.13,
+          "priceNote": "creator: Starts at JPY 970 per okonomiyaki"
+        },
+        {
+          "day": 1,
+          "name": "Dotonbori",
+          "category": "EXPERIENCE",
+          "place": "dotonbori",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Shinsaibashi-suji Shopping Street",
+          "category": "EXPERIENCE",
+          "place": "shinsaibashi-suji"
+        },
+        {
+          "day": 1,
+          "name": "Umeda Sky Building",
+          "category": "EXPERIENCE",
+          "place": "umeda-sky-building",
+          "price": 9.47,
+          "priceNote": "creator: JPY 1,500"
+        },
+        {
+          "day": 1,
+          "name": "Hankyu Umeda Main Store food hall",
+          "category": "FOOD",
+          "note": "There are people giving out free tastings at every depachika.",
+          "place": "hankyu-umeda-depachika"
+        },
+        {
+          "day": 1,
+          "name": "Kura Sushi",
+          "category": "FOOD",
+          "place": "kura-sushi-osaka",
+          "price": 0.63,
+          "priceNote": "creator: Around JPY 100 per plate"
+        },
+        {
+          "day": 2,
+          "name": "Osaka Castle",
+          "category": "EXPERIENCE",
+          "place": "osaka-castle",
+          "price": 7.58,
+          "priceNote": "1,200 JPY per adult (creator: JPY 600 (Castle Tower), JPY 200 (Nishinomaru Garden))",
+          "priceSource": "https://www.trvlogue.com/en/osaka-castle-tickets-guide"
+        },
+        {
+          "day": 2,
+          "name": "Takoyaki Doraku Wanaka",
+          "category": "FOOD",
+          "place": "takoyaki-doraku-wanaka",
+          "price": 3.16,
+          "priceNote": "creator: Around JPY 500-800 for 8-15 pcs"
+        },
+        {
+          "day": 2,
+          "name": "Osaka Aquarium Kaiyukan",
+          "category": "EXPERIENCE",
+          "note": "If you're traveling with kids, then the Kaiyukan is a great place",
+          "place": "osaka-aquarium-kaiyukan",
+          "price": 17.05,
+          "priceNote": "2,700 JPY per adult (creator: JPY 2,400)",
+          "priceSource": "https://osaka-info.jp/en/spot/osaka-aquarium-kaiyukan/"
+        },
+        {
+          "day": 2,
+          "name": "Tempozan Giant Ferris Wheel",
+          "category": "EXPERIENCE",
+          "place": "tempozan-ferris-wheel",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Cupnoodles Museum Osaka Ikeda",
+          "category": "EXPERIENCE",
+          "note": "For JPY 400, you can decorate and design your own cup of instant noodles",
+          "place": "cupnoodles-museum-osaka-ikeda",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Ippudo",
+          "category": "FOOD",
+          "place": "ippudo-osaka",
+          "price": 4.99,
+          "priceNote": "creator: Starts at around JPY 790 per bowl of ramen"
+        },
+        {
+          "day": 2,
+          "name": "Minoo Park",
+          "category": "EXPERIENCE",
+          "note": "The trail is paved and almost entirely flat",
+          "place": "minoo-park",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Hisakunikosendo",
+          "category": "FOOD",
+          "place": "hisakunikosendo",
+          "price": 2.53,
+          "priceNote": "creator: About JPY 400-500 for a small pack"
+        },
+        {
+          "day": 2,
+          "name": "Izakaya Toyo",
+          "category": "FOOD",
+          "note": "If you arrive early, then try to get a table near Toyo-san",
+          "place": "izakaya-toyo",
+          "price": 23.62,
+          "priceNote": "creator: JPY 3,740 for the daily special and one large bottle of beer"
+        },
+        {
+          "day": 3,
+          "name": "Universal Studios Japan",
+          "category": "EXPERIENCE",
+          "note": "Will eat up your entire day",
+          "place": "universal-studios-japan",
+          "price": 0.01,
+          "priceNote": "creator: a 1-Day Studio Pass goes for JPY 8,400 for adults"
+        }
+      ]
+    },
+    {
+      "slug": "osaka-5-days-foratravel",
+      "title": "5 days in Osaka",
+      "summary": "Fora advisor Kailin Martin's plan: ramen and a Dotonbori river cruise, Osaka Castle and the aquarium, a day at Universal Studios, Shinsekai's kushikatsu and a kimono tea ceremony, then Umeda Sky.",
+      "tier": "MIDRANGE",
+      "days": 5,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/DK28HT/5-day-osaka-itinerary-kailin-martin",
+      "items": [
+        {
+          "day": 1,
+          "name": "Cross Hotel Osaka",
+          "category": "STAY",
+          "note": "Advisor's pick. Or Moxy Osaka Honmachi, Hotel WBF Namba Motomachi or Hotel Vista Osaka Namba.",
+          "place": "cross-hotel-osaka",
+          "unit": "night",
+          "quantity": 4
+        },
+        {
+          "day": 1,
+          "name": "Ichiran Ramen Dotonbori",
+          "category": "FOOD",
+          "place": "ichiran-ramen-dotonbori"
+        },
+        {
+          "day": 1,
+          "name": "Tonbori River Cruise",
+          "category": "EXPERIENCE",
+          "note": "Would recommend doing this closer to the evening to see all the lights!",
+          "place": "tonbori-river-cruise"
+        },
+        {
+          "day": 1,
+          "name": "Wagyu Yakiniku Nikukachi",
+          "category": "FOOD",
+          "place": "wagyu-yakiniku-nikukachi"
+        },
+        {
+          "day": 2,
+          "name": "Osaka Castle",
+          "category": "EXPERIENCE",
+          "note": "Most places, even Starbucks, don't open until 9 or 10am in the morning.",
+          "place": "osaka-castle",
+          "price": 7.58,
+          "priceNote": "1,200 JPY per adult",
+          "priceSource": "https://www.trvlogue.com/en/osaka-castle-tickets-guide"
+        },
+        {
+          "day": 2,
+          "name": "Osaka Aquarium Kaiyukan",
+          "category": "EXPERIENCE",
+          "place": "osaka-aquarium-kaiyukan",
+          "price": 17.05,
+          "priceNote": "2,700 JPY per adult",
+          "priceSource": "https://osaka-info.jp/en/spot/osaka-aquarium-kaiyukan/"
+        },
+        {
+          "day": 2,
+          "name": "Tempozan Giant Ferris Wheel",
+          "category": "EXPERIENCE",
+          "place": "tempozan-ferris-wheel",
+          "price": 5.05,
+          "priceNote": "800 JPY per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-osaka-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Ali's Kitchen Osaka",
+          "category": "FOOD",
+          "place": "alis-kitchen-osaka"
+        },
+        {
+          "day": 2,
+          "name": "CinqueCento",
+          "category": "FOOD",
+          "place": "cinquecento-bar-osaka",
+          "price": 3.16,
+          "priceNote": "creator: each costing only 500 yen!"
+        },
+        {
+          "day": 3,
+          "name": "Universal Studios Japan",
+          "category": "EXPERIENCE",
+          "note": "This requires separate tickets but does not cost more! Head here first to reserve your time!",
+          "place": "universal-studios-japan"
+        },
+        {
+          "day": 3,
+          "name": "Dotonbori",
+          "category": "FOOD",
+          "place": "dotonbori",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        },
+        {
+          "day": 4,
+          "name": "Tsutenkaku Tower",
+          "category": "EXPERIENCE",
+          "place": "tsutenkaku-tower"
+        },
+        {
+          "day": 4,
+          "name": "Kushikatsu Daruma",
+          "category": "FOOD",
+          "place": "kushikatsu-daruma"
+        },
+        {
+          "day": 4,
+          "name": "Tennoji Park",
+          "category": "EXPERIENCE",
+          "place": "tennoji-park"
+        },
+        {
+          "day": 4,
+          "name": "Osaka City Museum of Fine Arts",
+          "category": "EXPERIENCE",
+          "place": "osaka-city-museum-of-fine-arts"
+        },
+        {
+          "day": 4,
+          "name": "Tennoji Zoo",
+          "category": "EXPERIENCE",
+          "place": "tennoji-zoo"
+        },
+        {
+          "day": 4,
+          "name": "Kimono Tea Ceremony Maiko",
+          "category": "EXPERIENCE",
+          "place": "kimono-tea-ceremony-maiko-osaka"
+        },
+        {
+          "day": 4,
+          "name": "Sushi Hayata",
+          "category": "FOOD",
+          "place": "sushi-hayata"
+        },
+        {
+          "day": 5,
+          "name": "Umeda Sky Building",
+          "category": "EXPERIENCE",
+          "place": "umeda-sky-building"
+        },
+        {
+          "day": 5,
+          "name": "Shinsaibashi-suji Shopping Street",
+          "category": "EXPERIENCE",
+          "place": "shinsaibashi-suji"
+        },
+        {
+          "day": 5,
+          "name": "Osaka Museum of History",
+          "category": "EXPERIENCE",
+          "place": "osaka-museum-of-history",
+          "price": 3.79,
+          "priceNote": "600 JPY per adult",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        }
+      ]
+    },
+    {
+      "slug": "osaka-5-days-luxury-foratravel",
+      "title": "Osaka in luxury, with Kyoto and Kobe",
+      "summary": "Fora advisor Lorraine Villanueva's 5 days: Universal Studios, day trips to Arashiyama in Kyoto and Kobe's Nunobiki Herb Gardens, and an evening in Dotonbori.",
+      "tier": "LUXURY",
+      "days": 5,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/PZ6GAD/5-days-in-japan-osaka-and-day-tours-to-kyoto-and-kobe-lorraine-villanueva",
+      "items": [
+        {
+          "day": 1,
+          "name": "Conrad Osaka",
+          "category": "STAY",
+          "note": "Advisor's pick. Or InterContinental Osaka, Swissôtel Nankai Osaka, Zentis Osaka or The Park Front Hotel at Universal Studios Japan.",
+          "place": "conrad-osaka",
+          "unit": "night",
+          "quantity": 4
+        },
+        {
+          "day": 1,
+          "name": "Universal Studios Japan",
+          "category": "EXPERIENCE",
+          "note": "If you love Super Mario, then you must visit.",
+          "place": "universal-studios-japan"
+        },
+        {
+          "day": 2,
+          "name": "Arashiyama",
+          "category": "EXPERIENCE",
+          "note": "A nice, easy hike to the top",
+          "place": "arashiyama"
+        },
+        {
+          "day": 3,
+          "name": "Nunobiki Herb Gardens",
+          "category": "EXPERIENCE",
+          "place": "nunobiki-herb-gardens",
+          "priceNote": "creator: you pay one price"
+        },
+        {
+          "day": 4,
+          "name": "Dotonbori",
+          "category": "FOOD",
+          "note": "Try all the yummy street food in Dotonbori",
+          "place": "dotonbori",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/osaka-itinerary/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,818 @@
+{
+  "slug": "kuala-lumpur",
+  "name": "Kuala Lumpur",
+  "country": "Malaysia",
+  "summary": "The Petronas Towers and KL Tower, Chinatown and Jalan Alor's hawker stalls, the National Mosque and Islamic Arts Museum, and the Batu Caves steps just outside the city.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Kuala_Lumpur",
+  "months": [
+    {
+      "month": 1,
+      "highC": 33,
+      "lowC": 24,
+      "rainMm": 227,
+      "crowd": "MEDIUM",
+      "note": "Hot and humid with afternoon storms; Chinese New Year can fall in late Jan or Feb."
+    },
+    {
+      "month": 2,
+      "highC": 33,
+      "lowC": 24,
+      "rainMm": 193,
+      "crowd": "MEDIUM",
+      "note": "One of the drier months; Chinese New Year and Thaipusam at Batu Caves draw big crowds."
+    },
+    {
+      "month": 3,
+      "highC": 34,
+      "lowC": 25,
+      "rainMm": 270,
+      "crowd": "MEDIUM",
+      "note": "Ramadan and Hari Raya Aidilfitri fall around Feb–Mar in 2026–2027; expect closures and an exodus to home towns over Raya."
+    },
+    {
+      "month": 4,
+      "highC": 34,
+      "lowC": 25,
+      "rainMm": 302,
+      "crowd": "MEDIUM",
+      "note": "Inter-monsoon month with frequent heavy afternoon thunderstorms."
+    },
+    {
+      "month": 5,
+      "highC": 34,
+      "lowC": 25,
+      "rainMm": 230,
+      "crowd": "MEDIUM",
+      "note": "Hot with regular storms; Hari Raya Haji may fall around here."
+    },
+    {
+      "month": 6,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 146,
+      "crowd": "HIGH",
+      "note": "Drier months, and Gulf and school holiday visitors push up hotel demand."
+    },
+    {
+      "month": 7,
+      "highC": 33,
+      "lowC": 24,
+      "rainMm": 165,
+      "crowd": "HIGH",
+      "note": "Relatively dry; occasional haze from regional fires can reduce air quality."
+    },
+    {
+      "month": 8,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 174,
+      "crowd": "HIGH",
+      "note": "Busy with National Day (31 Aug) events; haze is possible."
+    },
+    {
+      "month": 9,
+      "highC": 33,
+      "lowC": 24,
+      "rainMm": 220,
+      "crowd": "MEDIUM",
+      "note": "Malaysia Day on 16 Sep; rain starts to increase."
+    },
+    {
+      "month": 10,
+      "highC": 33,
+      "lowC": 24,
+      "rainMm": 284,
+      "crowd": "LOW",
+      "note": "Wet inter-monsoon period with heavy afternoon downpours; Deepavali is around Oct–Nov."
+    },
+    {
+      "month": 11,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 356,
+      "crowd": "LOW",
+      "note": "Wettest month; flash floods in the city are possible."
+    },
+    {
+      "month": 12,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 281,
+      "crowd": "MEDIUM",
+      "note": "Rainy, but year-end holidays and mall sales bring visitors."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Fill in the MDAC before you fly",
+      "body": "Travellers entering Malaysia must submit a Malaysia Digital Arrival Card (MDAC) before travel, and airlines may ask for it at check-in. Use only the official site, imigresen-online.imi.gov.my/mdac/main. The Malaysian Immigration website lists who is exempt.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "90-day visa-free stay for UK visitors",
+      "body": "British tourists are normally allowed 90 days on arrival. Other nationalities should check their own allowance. Work, study or longer stays need a visa arranged before travel.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Six months' passport validity",
+      "body": "Your passport must be valid for at least 6 months after your arrival date, undamaged and with no missing pages.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Safety",
+      "title": "Do not overstay",
+      "body": "Even a short overstay can lead to a fine, detention, deportation at your own cost or a ban on returning. Check the stay granted on your entry record.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Safety",
+      "title": "Possible drug test on arrival",
+      "body": "Authorities may require a urine test on arrival. You can be penalised even if the drug was taken in a country where it is legal.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Money",
+      "title": "Declare cash of US$10,000 or more",
+      "body": "You must declare cash or travellers' cheques worth US$10,000 or more. Taking ringgit worth US$10,000 or more into or out of Malaysia needs prior approval.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Health",
+      "title": "Yellow fever certificate if arriving from a risk country",
+      "body": "You need a yellow fever vaccination certificate if you are coming from a country listed as a transmission risk. This does not apply to direct flights from most of Europe or North America.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    }
+  ],
+  "places": [
+    {
+      "slug": "petronas-twin-towers",
+      "name": "PETRONAS Twin Towers",
+      "category": "EXPERIENCE",
+      "area": "KLCC",
+      "blurb": "88-storey twin towers with a Skybridge on levels 41-42 and an observation deck on level 86.",
+      "tip": "The skybridge and observation deck are closed on Mondays. Book a time slot ahead.",
+      "lat": 3.1579,
+      "lng": 101.7116
+    },
+    {
+      "slug": "kl-tower",
+      "name": "KL Tower",
+      "category": "EXPERIENCE",
+      "area": "Bukit Nanas",
+      "blurb": "421 m telecom tower with an observation deck and the open-air Sky Deck.",
+      "lat": 3.1528,
+      "lng": 101.7038
+    },
+    {
+      "slug": "kl-forest-eco-park",
+      "name": "KL Forest Eco Park",
+      "category": "EXPERIENCE",
+      "area": "Bukit Nanas",
+      "blurb": "Rainforest reserve below KL Tower with a canopy walkway.",
+      "lat": 3.1525,
+      "lng": 101.7015
+    },
+    {
+      "slug": "klcc-park",
+      "name": "KLCC Park",
+      "category": "EXPERIENCE",
+      "area": "KLCC",
+      "blurb": "Landscaped park below the Petronas Towers with the Lake Symphony fountain.",
+      "lat": 3.1548,
+      "lng": 101.714
+    },
+    {
+      "slug": "heli-lounge-bar",
+      "name": "Heli Lounge Bar",
+      "category": "FOOD",
+      "area": "Bukit Bintang / Jalan Sultan Ismail",
+      "blurb": "Bar on a rooftop helipad with open skyline views.",
+      "lat": 3.1497,
+      "lng": 101.7065
+    },
+    {
+      "slug": "merdeka-square",
+      "name": "Merdeka Square",
+      "category": "EXPERIENCE",
+      "area": "City Centre",
+      "blurb": "Colonial-era square where independence was declared in 1957, facing the Sultan Abdul Samad Building.",
+      "lat": 3.1478,
+      "lng": 101.6937
+    },
+    {
+      "slug": "perdana-botanical-gardens",
+      "name": "Perdana Botanical Gardens",
+      "category": "EXPERIENCE",
+      "area": "Tasik Perdana",
+      "blurb": "KL's large central park with themed gardens near the National Monument.",
+      "lat": 3.143,
+      "lng": 101.685
+    },
+    {
+      "slug": "national-museum-malaysia",
+      "name": "National Museum",
+      "category": "EXPERIENCE",
+      "area": "Brickfields / Jalan Damansara",
+      "blurb": "Malaysia's national history museum in a Malay-palace-style building.",
+      "lat": 3.1376,
+      "lng": 101.6873
+    },
+    {
+      "slug": "chinatown-petaling-street",
+      "name": "Petaling Street",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Covered market street at the heart of KL's Chinatown.",
+      "lat": 3.1435,
+      "lng": 101.6976
+    },
+    {
+      "slug": "jalan-alor",
+      "name": "Jalan Alor",
+      "category": "FOOD",
+      "area": "Bukit Bintang",
+      "blurb": "Street of open-air food stalls and restaurants, busiest at night.",
+      "lat": 3.1456,
+      "lng": 101.7087
+    },
+    {
+      "slug": "islamic-arts-museum-malaysia",
+      "name": "Islamic Arts Museum Malaysia",
+      "category": "EXPERIENCE",
+      "area": "Perdana Botanical Gardens",
+      "blurb": "Large museum of Islamic decorative arts with over 7,000 artefacts.",
+      "lat": 3.1417,
+      "lng": 101.6895
+    },
+    {
+      "slug": "national-mosque-masjid-negara",
+      "name": "National Mosque",
+      "category": "EXPERIENCE",
+      "area": "Perdana",
+      "blurb": "Modernist national mosque from 1965 with a folded star-shaped roof.",
+      "tip": "Closed to visitors at prayer times. Robes are lent at the door.",
+      "lat": 3.1418,
+      "lng": 101.6918
+    },
+    {
+      "slug": "guan-di-temple",
+      "name": "Guan Di Temple",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Taoist temple from 1886 dedicated to Guan Yu.",
+      "lat": 3.1443,
+      "lng": 101.6964
+    },
+    {
+      "slug": "brickfields-little-india",
+      "name": "Brickfields",
+      "category": "EXPERIENCE",
+      "area": "Brickfields",
+      "blurb": "Indian-Malaysian neighbourhood near KL Sentral.",
+      "lat": 3.1306,
+      "lng": 101.6849
+    },
+    {
+      "slug": "masjid-jamek",
+      "name": "Masjid Jamek Sultan Abdul Samad",
+      "category": "EXPERIENCE",
+      "area": "City Centre",
+      "blurb": "Mosque from 1909 at the confluence of the Klang and Gombak rivers.",
+      "lat": 3.1488,
+      "lng": 101.6957
+    },
+    {
+      "slug": "bukit-bintang",
+      "name": "Bukit Bintang",
+      "category": "EXPERIENCE",
+      "area": "Bukit Bintang",
+      "blurb": "Main shopping and entertainment district.",
+      "lat": 3.1466,
+      "lng": 101.7113
+    },
+    {
+      "slug": "vcr-cafe",
+      "name": "VCR Cafe",
+      "category": "FOOD",
+      "area": "Bukit Bintang (Jalan Galloway)",
+      "blurb": "Specialty coffee cafe in a restored shophouse.",
+      "lat": 3.143,
+      "lng": 101.708
+    },
+    {
+      "slug": "yut-kee",
+      "name": "Yut Kee",
+      "category": "FOOD",
+      "area": "Chow Kit (Jalan Kamunting)",
+      "blurb": "Hainanese kopitiam dating from 1928.",
+      "lat": 3.158,
+      "lng": 101.698
+    },
+    {
+      "slug": "batu-caves",
+      "name": "Batu Caves",
+      "category": "EXPERIENCE",
+      "area": "Gombak, Selangor (about 13 km N)",
+      "blurb": "Limestone cave temples reached by 272 steps, with a giant golden Murugan statue.",
+      "lat": 3.2379,
+      "lng": 101.684
+    },
+    {
+      "slug": "kl-bird-park",
+      "name": "KL Bird Park",
+      "category": "EXPERIENCE",
+      "area": "Perdana Botanical Gardens",
+      "blurb": "Large walk-in free-flight aviary in the Lake Gardens.",
+      "lat": 3.143,
+      "lng": 101.688
+    },
+    {
+      "slug": "suria-klcc",
+      "name": "Suria KLCC",
+      "category": "FOOD",
+      "area": "KLCC",
+      "blurb": "Shopping mall at the base of the Petronas Towers.",
+      "lat": 3.158,
+      "lng": 101.7121
+    },
+    {
+      "slug": "marinis-on-57",
+      "name": "Marini's on 57",
+      "category": "FOOD",
+      "area": "KLCC (Menara 3 Petronas)",
+      "blurb": "57th-floor Italian restaurant and bar facing the Twin Towers.",
+      "lat": 3.1572,
+      "lng": 101.7111
+    },
+    {
+      "slug": "royal-selangor-visitor-centre",
+      "name": "Royal Selangor Visitor Centre",
+      "category": "EXPERIENCE",
+      "area": "Setapak",
+      "blurb": "Pewter maker's factory visitor centre with tours and workshops.",
+      "lat": 3.2007,
+      "lng": 101.7225
+    },
+    {
+      "slug": "pavilion-kl",
+      "name": "Pavilion Kuala Lumpur",
+      "category": "EXPERIENCE",
+      "area": "Bukit Bintang",
+      "blurb": "Large upscale shopping mall.",
+      "lat": 3.149,
+      "lng": 101.7134
+    },
+    {
+      "slug": "kompleks-kraf-kuala-lumpur",
+      "name": "Kompleks Kraf Kuala Lumpur",
+      "category": "EXPERIENCE",
+      "area": "Jalan Conlay",
+      "blurb": "Government crafts centre selling batik, pewter and woodwork.",
+      "lat": 3.1528,
+      "lng": 101.7188
+    },
+    {
+      "slug": "dorms-kl",
+      "name": "Dorms KL",
+      "category": "STAY",
+      "area": "Bukit Bintang (approx.)",
+      "blurb": "Backpacker hostel with free breakfast.",
+      "lat": 3.146,
+      "lng": 101.706
+    },
+    {
+      "slug": "gold3-boutique-hotel",
+      "name": "Gold3 Boutique Hotel",
+      "category": "STAY",
+      "area": "Bukit Bintang (Changkat)",
+      "blurb": "Midrange boutique hotel.",
+      "lat": 3.144,
+      "lng": 101.708
+    },
+    {
+      "slug": "mandarin-oriental-kuala-lumpur",
+      "name": "Mandarin Oriental, Kuala Lumpur",
+      "category": "STAY",
+      "area": "KLCC",
+      "blurb": "Luxury hotel beside KLCC Park and the Twin Towers.",
+      "lat": 3.1555,
+      "lng": 101.713
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "kuala-lumpur-3-days-thebrokebackpacker",
+      "title": "Backpacking Kuala Lumpur in 3 days",
+      "summary": "The Petronas Towers, KL Tower and the forest canopy walk, then Merdeka Square, the Lake Gardens, Chinatown and Jalan Alor, and the Islamic Arts Museum, National Mosque and Little India.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Dorms KL",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Amethyst Love Guesthouse or Grand Hyatt Kuala Lumpur.",
+          "place": "dorms-kl",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "PETRONAS Twin Towers",
+          "category": "EXPERIENCE",
+          "note": "Limited daily tickets: arrive early or book online; closed Mondays",
+          "place": "petronas-twin-towers",
+          "price": 19.6,
+          "priceNote": "80 MYR per adult (creator: $19 USD covers a 45-minute visit to the Observatory Deck, the Skybridge and the gift shop)",
+          "priceSource": "https://blog-v2.pelago.co/?p=5183"
+        },
+        {
+          "day": 1,
+          "name": "KL Tower",
+          "category": "EXPERIENCE",
+          "note": "Sky Deck is about 300 m up with railings only",
+          "place": "kl-tower",
+          "price": 12.0,
+          "priceNote": "creator: $12 USD (Observation Deck); $24 USD (Observation Deck + Sky Deck)"
+        },
+        {
+          "day": 1,
+          "name": "KL Forest Eco Park",
+          "category": "EXPERIENCE",
+          "note": "Canopy walk; no shops inside, so bring a picnic",
+          "place": "kl-forest-eco-park",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "KLCC Park",
+          "category": "EXPERIENCE",
+          "note": "Lake light show at 20:00, 21:00 and 22:00",
+          "place": "klcc-park",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Heli Lounge Bar",
+          "category": "FOOD",
+          "note": "Sunset drinks with skyline views",
+          "place": "heli-lounge-bar",
+          "price": 7.0,
+          "priceNote": "creator: around $7 USD"
+        },
+        {
+          "day": 2,
+          "name": "Merdeka Square",
+          "category": "EXPERIENCE",
+          "note": "Free walking tours at 9:00 Mon/Wed/Sat",
+          "place": "merdeka-square",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Perdana Botanical Gardens",
+          "category": "EXPERIENCE",
+          "note": "Walkable from KL Sentral",
+          "place": "perdana-botanical-gardens",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "National Museum",
+          "category": "EXPERIENCE",
+          "note": "Free English tours at 11:00 Tue/Thu/Sat",
+          "place": "national-museum-malaysia",
+          "price": 1.0,
+          "priceNote": "creator: $1 USD"
+        },
+        {
+          "day": 2,
+          "name": "Petaling Street",
+          "category": "EXPERIENCE",
+          "note": "Haggling is expected",
+          "place": "chinatown-petaling-street",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Jalan Alor",
+          "category": "FOOD",
+          "note": "Go after 17:00; Wong Ah Wah is the more formal option",
+          "place": "jalan-alor",
+          "price": 25.0,
+          "priceNote": "creator: around $25 USD"
+        },
+        {
+          "day": 3,
+          "name": "Islamic Arts Museum Malaysia",
+          "category": "EXPERIENCE",
+          "note": "Architecture and Jewelry galleries",
+          "place": "islamic-arts-museum-malaysia",
+          "price": 14.0,
+          "priceNote": "creator: $14 USD"
+        },
+        {
+          "day": 3,
+          "name": "National Mosque",
+          "category": "EXPERIENCE",
+          "note": "Dress conservatively; no entry to the prayer hall",
+          "place": "national-mosque-masjid-negara",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Guan Di Temple",
+          "category": "EXPERIENCE",
+          "note": "Buy incense in the courtyard",
+          "place": "guan-di-temple",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Brickfields",
+          "category": "EXPERIENCE",
+          "note": "Bazaar at the end of Jalan Tun Sambanthan",
+          "place": "brickfields-little-india"
+        },
+        {
+          "day": 3,
+          "name": "Masjid Jamek Sultan Abdul Samad",
+          "category": "EXPERIENCE",
+          "note": "Photos at dusk; dress conservatively",
+          "place": "masjid-jamek",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-first-timers-travel-guide-to-kuala-lumpur-malaysia/"
+        }
+      ]
+    },
+    {
+      "slug": "kuala-lumpur-2-days-bucketlistly",
+      "title": "Kuala Lumpur in 2 days",
+      "summary": "The KL leg of Pete's Malaysia route: the National Museum, Petronas Towers and Bukit Bintang, with old-school Yut Kee and Jalan Alor for food, then Batu Caves.",
+      "tier": "MIDRANGE",
+      "days": 2,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/malaysia-10-days-backpacking-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "Gold3 Boutique Hotel",
+          "category": "STAY",
+          "note": "Creator's pick. Or Step Inn Guest House or Aloft Kuala Lumpur Sentral.",
+          "place": "gold3-boutique-hotel",
+          "unit": "night",
+          "quantity": 1
+        },
+        {
+          "day": 1,
+          "name": "National Museum",
+          "category": "EXPERIENCE",
+          "note": "If you're interested in Malaysian history",
+          "place": "national-museum-malaysia"
+        },
+        {
+          "day": 1,
+          "name": "PETRONAS Twin Towers",
+          "category": "EXPERIENCE",
+          "place": "petronas-twin-towers",
+          "price": 19.6,
+          "priceNote": "80 MYR per adult",
+          "priceSource": "https://blog-v2.pelago.co/?p=5183"
+        },
+        {
+          "day": 1,
+          "name": "KLCC Park",
+          "category": "EXPERIENCE",
+          "note": "A great place to cool down from the heat of KL",
+          "place": "klcc-park",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Bukit Bintang",
+          "category": "EXPERIENCE",
+          "note": "Worth it even if you're not into shopping",
+          "place": "bukit-bintang"
+        },
+        {
+          "day": 1,
+          "name": "VCR Cafe",
+          "category": "FOOD",
+          "place": "vcr-cafe"
+        },
+        {
+          "day": 1,
+          "name": "Yut Kee",
+          "category": "FOOD",
+          "place": "yut-kee"
+        },
+        {
+          "day": 1,
+          "name": "Jalan Alor",
+          "category": "FOOD",
+          "note": "Go at night",
+          "place": "jalan-alor"
+        },
+        {
+          "day": 2,
+          "name": "Batu Caves",
+          "category": "EXPERIENCE",
+          "note": "272 steps; take the train from KL",
+          "place": "batu-caves"
+        }
+      ]
+    },
+    {
+      "slug": "kuala-lumpur-3-days-luxury-foratravel",
+      "title": "3 culture-filled days in Kuala Lumpur",
+      "summary": "Fora advisor Maru Martinez's plan: the National Museum and Jalan Alor, then the Bird Park, Lake Gardens, National Mosque and dinner at Marini's on 57 facing the towers, and Batu Caves, Royal Selangor pewter and Chinatown.",
+      "tier": "LUXURY",
+      "days": 3,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/DYK9NP/culture-filled-3-day-itinerary-to-discover-kuala-lumpur-maru-martinez",
+      "items": [
+        {
+          "day": 1,
+          "name": "Mandarin Oriental, Kuala Lumpur",
+          "category": "STAY",
+          "note": "Advisor's pick. Or Shangri-La Kuala Lumpur, Traders Hotel Kuala Lumpur, Star Residences KLCC or Aloft Kuala Lumpur Sentral.",
+          "place": "mandarin-oriental-kuala-lumpur",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "National Museum",
+          "category": "EXPERIENCE",
+          "note": "English guided tours are available",
+          "place": "national-museum-malaysia"
+        },
+        {
+          "day": 1,
+          "name": "Jalan Alor",
+          "category": "FOOD",
+          "note": "Liveliest at night",
+          "place": "jalan-alor"
+        },
+        {
+          "day": 1,
+          "name": "Bukit Bintang",
+          "category": "EXPERIENCE",
+          "note": "Night market: bargain for souvenirs",
+          "place": "bukit-bintang"
+        },
+        {
+          "day": 2,
+          "name": "KL Bird Park",
+          "category": "EXPERIENCE",
+          "note": "Go early",
+          "place": "kl-bird-park"
+        },
+        {
+          "day": 2,
+          "name": "Perdana Botanical Gardens",
+          "category": "EXPERIENCE",
+          "note": "Optional (Lake Gardens / Butterfly Park)",
+          "place": "perdana-botanical-gardens",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "National Mosque",
+          "category": "EXPERIENCE",
+          "note": "Cover shoulders and legs; avoid prayer times",
+          "place": "national-mosque-masjid-negara",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Suria KLCC",
+          "category": "FOOD",
+          "note": "Lunch: nasi lemak, roti canai, laksa",
+          "place": "suria-klcc"
+        },
+        {
+          "day": 2,
+          "name": "PETRONAS Twin Towers",
+          "category": "EXPERIENCE",
+          "note": "Skybridge uses timed slots; plan ahead",
+          "place": "petronas-twin-towers",
+          "price": 19.6,
+          "priceNote": "80 MYR per adult",
+          "priceSource": "https://blog-v2.pelago.co/?p=5183"
+        },
+        {
+          "day": 2,
+          "name": "KLCC Park",
+          "category": "EXPERIENCE",
+          "note": "Towers light up at night",
+          "place": "klcc-park",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Marini's on 57",
+          "category": "FOOD",
+          "note": "Dinner option with panoramic views",
+          "place": "marinis-on-57"
+        },
+        {
+          "day": 2,
+          "name": "Heli Lounge Bar",
+          "category": "FOOD",
+          "note": "Reserve in advance",
+          "place": "heli-lounge-bar"
+        },
+        {
+          "day": 3,
+          "name": "Batu Caves",
+          "category": "EXPERIENCE",
+          "note": "Go early; dress modestly; watch for monkeys",
+          "place": "batu-caves"
+        },
+        {
+          "day": 3,
+          "name": "Royal Selangor Visitor Centre",
+          "category": "EXPERIENCE",
+          "note": "Pewter factory tour",
+          "place": "royal-selangor-visitor-centre"
+        },
+        {
+          "day": 3,
+          "name": "Petaling Street",
+          "category": "EXPERIENCE",
+          "note": "Afternoon option",
+          "place": "chinatown-petaling-street",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/kuala-lumpur-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Pavilion Kuala Lumpur",
+          "category": "EXPERIENCE",
+          "note": "Afternoon option",
+          "place": "pavilion-kl"
+        },
+        {
+          "day": 3,
+          "name": "Kompleks Kraf Kuala Lumpur",
+          "category": "EXPERIENCE",
+          "note": "Afternoon option; live craft demonstrations",
+          "place": "kompleks-kraf-kuala-lumpur"
+        }
+      ]
+    }
+  ]
+}

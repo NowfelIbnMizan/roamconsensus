@@ -10,6 +10,8 @@ export const CURRENCIES = [
   { code: "THB", label: "Thai baht" },
   { code: "JPY", label: "Japanese yen" },
   { code: "KRW", label: "South Korean won" },
+  { code: "VND", label: "Vietnamese dong" },
+  { code: "MYR", label: "Malaysian ringgit" },
 ] as const;
 
 /** Units of each currency per 1 USD. */
@@ -23,10 +25,12 @@ export const FALLBACK_RATES: Rates = {
   AUD: 1.52,
   CAD: 1.37,
   SGD: 1.34,
-  IDR: 16300,
+  IDR: 18000,
   THB: 33.6,
   JPY: 158,
   KRW: 1400,
+  VND: 26000,
+  MYR: 4.2,
 };
 
 /** Converts minor units (cents) between currencies; an unknown currency is left as is. */

@@ -233,4 +233,144 @@ export const esimGuides: Record<string, EsimGuide> = {
       },
     ],
   },
+  "South Korea": {
+    checked: "October 2026",
+    imei: {
+      title: "Do you need to register your phone or ID?",
+      body: [
+        "A travel eSIM from Airalo, Holafly, Nomad, Saily or Ubigi is set up in the provider's app or by QR code. No ID registration is needed.",
+        "Local prepaid SIMs and eSIMs from KT, SKT and LG U+ are usually sold to tourists against a passport, often collected at the airport. Check the seller's terms.",
+        "Korea's three carriers are SK Telecom, KT and LG U+. Network matters more than paperwork: SK Telecom is recommended for Jeju, the mountains and rural Gangwon.",
+      ],
+      sources: [
+        "https://travelsimasia.com/blogs/south-korea-guides/south-korea-esim-prices-2026",
+        "https://seoultravelpass.com/en/products/1431-esim-kt-4g-lte-unlimited-data-local-esim",
+      ],
+    },
+    coverage: {
+      intro:
+        "Every major travel eSIM runs on SK Telecom, LG U+ or KT, all with 5G in the cities. Nomad's Korea plans use all three carriers.",
+      areas: [
+        { name: "Seoul", note: "Dense 5G/LTE on all three carriers, including the subway." },
+        { name: "Busan", note: "Named as having strong coverage on Airalo's SK Telecom network." },
+        {
+          name: "Jeju Island",
+          note: "Coverage is good, but SK Telecom is recommended for rural and coastal parts of Jeju.",
+        },
+        {
+          name: "Gangwon (Seoraksan, Gangneung)",
+          note: "For mountains and rural Gangwon, pick an SK Telecom-based eSIM.",
+        },
+        { name: "Gyeongju", note: "A heritage city where LTE/5G is well covered." },
+        { name: "Incheon Airport", note: "Install the eSIM before you fly and activate it on landing." },
+      ],
+      sources: ["https://travelsimasia.com/blogs/south-korea-guides/south-korea-esim-prices-2026"],
+    },
+    faq: [
+      {
+        q: "Can I use Google Maps for directions in Korea?",
+        a: "Not fully. Google Maps does not give full turn-by-turn navigation in Korea, so travellers use Naver Map or KakaoMap. Both need mobile data and use more of it than Google Maps.",
+      },
+      {
+        q: "How much data do I need for a week?",
+        a: "Budget at least 3–5 GB for a one-week trip that relies on maps and translation apps.",
+      },
+      {
+        q: "Which network is best?",
+        a: "SK Telecom has the widest rural reach. For a city-only trip, LG U+ and KT are fine.",
+      },
+      {
+        q: "Unlimited or fixed data?",
+        a: "Unlimited 7-day plans cost about $25–$29 against $9–$12 for 3–10 GB fixed plans. Fixed plans are better value unless you stream or hotspot heavily. Unlimited plans usually have daily high-speed caps.",
+      },
+    ],
+  },
+  Vietnam: {
+    checked: "October 2026",
+    imei: {
+      title: "Registration and ID",
+      body: [
+        "Travel eSIMs are roaming profiles and need no Vietnamese ID registration. Most must be activated within a set window after purchase.",
+        "Local Viettel, Vinaphone and Mobifone SIMs must be registered to the buyer's passport at the point of sale; airport kiosks do this for you.",
+        "Viettel has the widest rural reach. Vinaphone covers the cities and the main tourist route.",
+      ],
+      sources: ["https://travelsimasia.com/blogs/vietnam-guides/vietnam-esim-prices-2026"],
+    },
+    coverage: {
+      intro:
+        "Most travel eSIMs, including Airalo, Holafly and Ubigi, run on Vinaphone, which is strong on the main tourist route. Viettel reaches further into rural areas.",
+      areas: [
+        { name: "Hanoi", note: "Strong coverage on every network." },
+        { name: "Ha Long Bay", note: "On the main tourist route and covered by Vinaphone." },
+        { name: "Hue / Da Nang / Hoi An", note: "Central coast tourist route with good city coverage." },
+        { name: "Ho Chi Minh City", note: "Strong coverage on every network." },
+        { name: "Phu Quoc", note: "Named on the tourist route." },
+        {
+          name: "Ha Giang / Sapa / Mekong Delta",
+          note: "Rural. Airalo (Vinaphone only) does not cover these well, so choose a Viettel-capable eSIM.",
+        },
+      ],
+      sources: ["https://travelsimasia.com/blogs/vietnam-guides/vietnam-esim-prices-2026"],
+    },
+    faq: [
+      {
+        q: "Which eSIM for the Ha Giang Loop or Sapa?",
+        a: "Choose one that includes Viettel, which has the widest rural reach. Vinaphone-only plans are weaker there.",
+      },
+      {
+        q: "Do I need unlimited data?",
+        a: "Usually not. 5 GB for 30 days costs about $9.50–$11. Unlimited plans start around $24–$27.50 per week and have daily caps.",
+      },
+      {
+        q: "Do Grab and Google Maps work in Vietnam?",
+        a: "Yes, and both need mobile data. Install your eSIM before you fly.",
+      },
+      {
+        q: "When should I activate it?",
+        a: "Most plans must be activated within a set window after purchase, so buy it shortly before your trip and activate it on landing.",
+      },
+    ],
+  },
+  Malaysia: {
+    checked: "October 2026",
+    imei: {
+      title: "New SIM registration rules (2026)",
+      body: [
+        "Since February 2026, a Malaysian prepaid SIM from Maxis, CelcomDigi or U Mobile must be registered in person with your passport and visa.",
+        "Tourist lines are cut off after three months.",
+        "These rules do not apply to a roaming travel eSIM, which is not a local SIM and is installed by QR code or app.",
+      ],
+      sources: ["https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"],
+    },
+    coverage: {
+      intro: "Every listed network works well in Peninsular cities. For Sabah and Sarawak, pick a Maxis-based eSIM.",
+      areas: [
+        { name: "Kuala Lumpur", note: "Every listed network works well." },
+        { name: "Penang", note: "Every listed network works well. You can set up at Penang airport." },
+        { name: "Melaka", note: "Every listed network works well." },
+        { name: "Peninsular Malaysia (general)", note: "CelcomDigi is strong across the peninsula." },
+        { name: "Sabah (Kota Kinabalu)", note: "Maxis has the reach in East Malaysia. Choose Airalo, Nomad or Ubigi." },
+        {
+          name: "Sarawak (Kuching)",
+          note: "Maxis is recommended. Saily's coverage there is uncertain because it does not name its network.",
+        },
+      ],
+      sources: ["https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"],
+    },
+    faq: [
+      {
+        q: "Do I need to show my passport for an eSIM?",
+        a: "Not for a travel eSIM. Only local prepaid SIMs need in-person registration with passport and visa (since February 2026).",
+      },
+      {
+        q: "Which eSIM for Borneo?",
+        a: "Choose a Maxis-based eSIM such as Airalo, Nomad or Ubigi. Holafly runs on CelcomDigi.",
+      },
+      { q: "Cheapest option for a week?", a: "1GB/7 days costs from $3.99 (Saily). 3GB/15 days from Ubigi costs $6." },
+      {
+        q: "Is unlimited worth it?",
+        a: "Ubigi's 7-day unlimited is $19 and Holafly's is $27.50. Unlimited plans often have daily fair-use caps.",
+      },
+    ],
+  },
 };

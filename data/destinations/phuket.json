@@ -1,0 +1,1234 @@
+{
+  "slug": "phuket",
+  "name": "Phuket",
+  "country": "Thailand",
+  "summary": "Andaman beaches from Kata to Surin, Phuket Old Town's shophouses and food, Wat Chalong, and boat trips to Phang Nga Bay and Phi Phi's Maya Bay.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Phuket_(city)",
+  "months": [
+    {
+      "month": 1,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 50,
+      "crowd": "HIGH",
+      "note": "Peak season: calm Andaman Sea, sunny and busy."
+    },
+    {
+      "month": 2,
+      "highC": 34,
+      "lowC": 25,
+      "rainMm": 24,
+      "crowd": "HIGH",
+      "note": "Driest month with calm seas; Chinese New Year adds crowds."
+    },
+    {
+      "month": 3,
+      "highC": 34,
+      "lowC": 26,
+      "rainMm": 81,
+      "crowd": "MEDIUM",
+      "note": "Hot and still mostly calm; good diving visibility."
+    },
+    {
+      "month": 4,
+      "highC": 34,
+      "lowC": 26,
+      "rainMm": 135,
+      "crowd": "MEDIUM",
+      "note": "Hot, with Songkran (13–15 Apr) water fights in Patong; monsoon is approaching."
+    },
+    {
+      "month": 5,
+      "highC": 33,
+      "lowC": 26,
+      "rainMm": 237,
+      "crowd": "LOW",
+      "note": "Southwest monsoon starts; red flags and riptides appear on west-coast beaches."
+    },
+    {
+      "month": 6,
+      "highC": 33,
+      "lowC": 26,
+      "rainMm": 249,
+      "crowd": "LOW",
+      "note": "Monsoon season with rough seas; obey red flags and don't swim where they fly."
+    },
+    {
+      "month": 7,
+      "highC": 32,
+      "lowC": 26,
+      "rainMm": 240,
+      "crowd": "MEDIUM",
+      "note": "Monsoon, but there are sunny breaks between storms; riptide drownings happen."
+    },
+    {
+      "month": 8,
+      "highC": 32,
+      "lowC": 26,
+      "rainMm": 309,
+      "crowd": "MEDIUM",
+      "note": "Heavy rain and big swells; some boat trips are cancelled."
+    },
+    {
+      "month": 9,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 350,
+      "crowd": "LOW",
+      "note": "Wettest month and the quietest time; lowest prices."
+    },
+    {
+      "month": 10,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 336,
+      "crowd": "LOW",
+      "note": "Still monsoon; the Vegetarian Festival is often held in Oct (dates vary by lunar calendar)."
+    },
+    {
+      "month": 11,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 178,
+      "crowd": "MEDIUM",
+      "note": "Seas calm as the high season begins; Loy Krathong (November full moon)."
+    },
+    {
+      "month": 12,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 82,
+      "crowd": "HIGH",
+      "note": "Peak season and holiday crowds; book early."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free stays cut to 30 days",
+      "body": "From 15 September 2026 the 60-day visa exemption ended, and passport holders from 60 countries (including the UK, US and Australia) now get 30 days visa-free for tourism. Visa-free entries by land are generally limited to 2 per calendar year.",
+      "sourceUrl": "https://www.tatnews.org/2026/09/thailand-introduces-new-30-day-and-15-day-visa-exemption-rules-from-15-september/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Show funds and an onward ticket",
+      "body": "Visa-exempt visitors may be asked for at least 10,000 baht per person or 20,000 baht per family, plus proof of onward or return travel.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Entry",
+      "title": "Complete the TDAC within 3 days of arrival",
+      "body": "All foreign nationals have needed the Thailand Digital Arrival Card (TDAC) since 1 May 2025. Submit it free in the 3 days before arrival at tdac.immigration.go.th.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Obey red flags on the beach",
+      "body": "People have drowned in strong riptides, especially during the monsoon (roughly May to October on the Andaman coast). Follow beach flags and warning signs, and don't swim when red flags fly.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Jellyfish risk May–October",
+      "body": "Jellyfish are more common from May to October, and some stings can be fatal. Get medical help quickly if you are stung.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Jet-ski and motorbike rental scams",
+      "body": "Never give your passport as a deposit to jet-ski or motorbike rental businesses, which may hold it against made-up damage claims.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Vapes are illegal, including for tourists",
+      "body": "Possessing or using any vape, e-cigarette, pod, e-liquid or heat-not-burn device is illegal, with no exceptions for tourists. Fines typically run 5,000–30,000 baht, plus confiscation and possible detention.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Cannabis is medical-only",
+      "body": "Recreational cannabis is illegal again. Use requires a Thai-issued prescription limited to a 30-day supply, and taking cannabis out of the country without permission brings fines from 30,000 baht per kg.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Transport",
+      "title": "Scooters need an IDP and a helmet",
+      "body": "Carry a 1968 International Driving Permit (IDP) plus your home licence, and wear a helmet, which is required by law. Riding without the right licence can void your insurance.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Insurance and emergency numbers",
+      "body": "Hospitals require a guarantee of payment, so travel insurance is essential. Call 191 for police, fire or ambulance, or 1669 for an ambulance.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Money",
+      "title": "Use ATMs inside banks",
+      "body": "ATM skimming has been reported, so use machines inside bank branches and cover your PIN.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Respect the monarchy and mind what you post",
+      "body": "Criticising the Thai monarchy carries long prison sentences. Posting photos online of people drinking or in clothing seen as inappropriate can also be illegal.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    }
+  ],
+  "places": [
+    {
+      "slug": "the-blanket-hotel-phuket-town",
+      "name": "The Blanket Hotel Phuket Town",
+      "category": "STAY",
+      "area": "Phuket Old Town",
+      "blurb": "Mid-range hotel in Phuket Town."
+    },
+    {
+      "slug": "lub-d-phuket-patong",
+      "name": "Lub d Phuket Patong",
+      "category": "STAY",
+      "area": "Patong",
+      "blurb": "Social hostel and hotel with a pool in Patong.",
+      "lat": 7.892,
+      "lng": 98.296
+    },
+    {
+      "slug": "intercontinental-phuket-resort",
+      "name": "InterContinental Phuket Resort",
+      "category": "STAY",
+      "area": "Kamala",
+      "blurb": "Beachfront luxury resort on Kamala Bay.",
+      "lat": 7.942,
+      "lng": 98.278
+    },
+    {
+      "slug": "banyan-tree-phuket",
+      "name": "Banyan Tree Phuket",
+      "category": "STAY",
+      "area": "Laguna / Bang Tao",
+      "blurb": "All-pool-villa luxury resort in the Laguna complex.",
+      "lat": 8.001,
+      "lng": 98.297
+    },
+    {
+      "slug": "phuket-old-town",
+      "name": "Phuket Old Town",
+      "category": "EXPERIENCE",
+      "area": "Phuket Town",
+      "blurb": "Historic district of Sino-Portuguese shophouses around Thalang Road.",
+      "lat": 7.8846,
+      "lng": 98.388
+    },
+    {
+      "slug": "lock-tien",
+      "name": "Lock Tien Food Court",
+      "category": "FOOD",
+      "area": "Phuket Old Town",
+      "blurb": "Old-style local food court."
+    },
+    {
+      "slug": "one-chun-cafe",
+      "name": "One Chun Cafe & Restaurant",
+      "category": "FOOD",
+      "area": "Phuket Town",
+      "blurb": "Michelin Bib Gourmand restaurant for Phuket-style dishes."
+    },
+    {
+      "slug": "tu-kab-khao",
+      "name": "Tu Kab Khao",
+      "category": "FOOD",
+      "area": "Phuket Old Town",
+      "blurb": "Southern Thai restaurant in a colonial shophouse."
+    },
+    {
+      "slug": "kopitiam-by-wilai",
+      "name": "Kopitiam by Wilai",
+      "category": "FOOD",
+      "area": "Phuket Old Town",
+      "blurb": "Retro café serving local Phuket dishes."
+    },
+    {
+      "slug": "wat-chalong",
+      "name": "Wat Chalong",
+      "category": "EXPERIENCE",
+      "area": "Chalong",
+      "blurb": "Phuket's most important Buddhist temple.",
+      "lat": 7.8467,
+      "lng": 98.3366
+    },
+    {
+      "slug": "big-buddha-phuket",
+      "name": "Big Buddha Phuket",
+      "category": "EXPERIENCE",
+      "area": "Nakkerd Hills (Karon/Chalong)",
+      "blurb": "45 m white marble Buddha statue on a hilltop.",
+      "tip": "The viewpoint was reported closed after the 2024 Kata landslide (Phuket News, Nov 2025). Check it has reopened before you go.",
+      "lat": 7.8278,
+      "lng": 98.3128
+    },
+    {
+      "slug": "nai-harn-beach",
+      "name": "Nai Harn Beach",
+      "category": "EXPERIENCE",
+      "area": "Rawai",
+      "blurb": "Sheltered beach at Phuket's southern tip.",
+      "lat": 7.777,
+      "lng": 98.304
+    },
+    {
+      "slug": "black-rock-viewpoint",
+      "name": "Black Rock Viewpoint",
+      "category": "EXPERIENCE",
+      "area": "Nai Harn",
+      "blurb": "Rocky coastal viewpoint near Nai Harn."
+    },
+    {
+      "slug": "krating-cape",
+      "name": "Krating Cape",
+      "category": "EXPERIENCE",
+      "area": "Nai Harn",
+      "blurb": "Headland hike with sunset views over Nai Harn.",
+      "lat": 7.774,
+      "lng": 98.301
+    },
+    {
+      "slug": "promthep-cape",
+      "name": "Promthep Cape",
+      "category": "EXPERIENCE",
+      "area": "Rawai",
+      "blurb": "Southernmost headland, famous for sunset.",
+      "lat": 7.7623,
+      "lng": 98.3054
+    },
+    {
+      "slug": "phang-nga-bay",
+      "name": "Ao Phang Nga National Park",
+      "category": "EXPERIENCE",
+      "area": "Phang Nga",
+      "blurb": "Bay of limestone karst islands, sea caves and lagoons.",
+      "lat": 8.275,
+      "lng": 98.5
+    },
+    {
+      "slug": "james-bond-island",
+      "name": "James Bond Island",
+      "category": "EXPERIENCE",
+      "area": "Phang Nga Bay",
+      "blurb": "Karst islet made famous by The Man with the Golden Gun.",
+      "lat": 8.2745,
+      "lng": 98.501
+    },
+    {
+      "slug": "koh-panyi",
+      "name": "Koh Panyee",
+      "category": "EXPERIENCE",
+      "area": "Phang Nga Bay",
+      "blurb": "Muslim fishing village built on stilts.",
+      "lat": 8.335,
+      "lng": 98.5
+    },
+    {
+      "slug": "kata-beach",
+      "name": "Kata Beach",
+      "category": "EXPERIENCE",
+      "area": "Kata",
+      "blurb": "Popular west-coast beach.",
+      "lat": 7.8205,
+      "lng": 98.2985
+    },
+    {
+      "slug": "karon-beach",
+      "name": "Karon Beach",
+      "category": "EXPERIENCE",
+      "area": "Karon",
+      "blurb": "Long west-coast beach.",
+      "lat": 7.845,
+      "lng": 98.294
+    },
+    {
+      "slug": "patong-beach",
+      "name": "Patong Beach",
+      "category": "EXPERIENCE",
+      "area": "Patong",
+      "blurb": "Phuket's busiest beach and nightlife hub.",
+      "lat": 7.896,
+      "lng": 98.296
+    },
+    {
+      "slug": "maya-bay",
+      "name": "Maya Bay",
+      "category": "EXPERIENCE",
+      "area": "Hat Noppharat Thara–Mu Ko Phi Phi National Park",
+      "blurb": "Cliff-ringed bay from The Beach; swimming is not allowed.",
+      "tip": "Closed every year from 1 Aug to 30 Sep. National park fee 400 THB. No swimming in the bay.",
+      "lat": 7.678,
+      "lng": 98.766
+    },
+    {
+      "slug": "bamboo-island",
+      "name": "Bamboo Island",
+      "category": "EXPERIENCE",
+      "area": "Phi Phi",
+      "blurb": "Small white-sand island north of Phi Phi Don.",
+      "lat": 7.824,
+      "lng": 98.763
+    },
+    {
+      "slug": "rang-yai-island",
+      "name": "Koh Rang Yai",
+      "category": "EXPERIENCE",
+      "area": "Phang Nga Bay (east of Phuket)",
+      "blurb": "Small island off Phuket's east coast, used for beach day trips."
+    },
+    {
+      "slug": "phuket-sunday-walking-street",
+      "name": "Phuket Sunday Walking Street",
+      "category": "FOOD",
+      "area": "Phuket Old Town",
+      "blurb": "Sunday-evening street market on Thalang Road.",
+      "lat": 7.884,
+      "lng": 98.39
+    },
+    {
+      "slug": "golden-dragon-monument",
+      "name": "Golden Dragon Monument",
+      "category": "EXPERIENCE",
+      "area": "Phuket Town",
+      "blurb": "Dragon monument in a small park in Phuket Town."
+    },
+    {
+      "slug": "kata-noi-beach",
+      "name": "Kata Noi Beach",
+      "category": "EXPERIENCE",
+      "area": "Kata",
+      "blurb": "Quieter beach south of Kata.",
+      "lat": 7.802,
+      "lng": 98.295
+    },
+    {
+      "slug": "laem-hin-pier",
+      "name": "Laem Hin Seafood",
+      "category": "FOOD",
+      "area": "Ko Kaew (east coast)",
+      "blurb": "Seafood restaurants reached by shuttle boat."
+    },
+    {
+      "slug": "bang-pae-waterfall",
+      "name": "Bang Pae Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Thalang",
+      "blurb": "Jungle waterfall in Khao Phra Thaeo wildlife sanctuary.",
+      "lat": 8.04,
+      "lng": 98.399
+    },
+    {
+      "slug": "sirinat-national-park",
+      "name": "Sirinat National Park",
+      "category": "EXPERIENCE",
+      "area": "Nai Yang / Mai Khao",
+      "blurb": "Coastal national park with beaches and mangroves.",
+      "lat": 8.095,
+      "lng": 98.295
+    },
+    {
+      "slug": "bang-tao-beach",
+      "name": "Bang Tao Beach",
+      "category": "EXPERIENCE",
+      "area": "Cherngtalay",
+      "blurb": "6 km beach fronting the Laguna resorts.",
+      "lat": 7.999,
+      "lng": 98.292
+    },
+    {
+      "slug": "banzaan-market",
+      "name": "Banzaan Fresh Market",
+      "category": "FOOD",
+      "area": "Patong",
+      "blurb": "Fresh market with a food court.",
+      "lat": 7.8945,
+      "lng": 98.299
+    },
+    {
+      "slug": "paradise-beach-phuket",
+      "name": "Paradise Beach",
+      "category": "EXPERIENCE",
+      "area": "South of Patong",
+      "blurb": "Small beach-club cove south of Patong.",
+      "lat": 7.867,
+      "lng": 98.282
+    },
+    {
+      "slug": "bangla-road",
+      "name": "Bangla Road",
+      "category": "EXPERIENCE",
+      "area": "Patong",
+      "blurb": "Pedestrian nightlife strip.",
+      "lat": 7.8935,
+      "lng": 98.2965
+    },
+    {
+      "slug": "freedom-beach",
+      "name": "Freedom Beach",
+      "category": "EXPERIENCE",
+      "area": "South of Patong",
+      "blurb": "Secluded beach reached by longtail boat.",
+      "lat": 7.874,
+      "lng": 98.273
+    },
+    {
+      "slug": "surin-beach",
+      "name": "Surin Beach",
+      "category": "EXPERIENCE",
+      "area": "Surin",
+      "blurb": "Upscale west-coast beach.",
+      "lat": 7.976,
+      "lng": 98.279
+    },
+    {
+      "slug": "baba-nest",
+      "name": "Baba Nest",
+      "category": "FOOD",
+      "area": "Cape Panwa",
+      "blurb": "Rooftop sunset bar at Sri Panwa.",
+      "lat": 7.8325,
+      "lng": 98.406
+    },
+    {
+      "slug": "black-ginger-phuket",
+      "name": "Black Ginger",
+      "category": "FOOD",
+      "area": "Nai Yang",
+      "blurb": "Thai restaurant reached by raft at The Slate hotel."
+    },
+    {
+      "slug": "la-gritta",
+      "name": "La Gritta",
+      "category": "FOOD",
+      "area": "Patong",
+      "blurb": "Italian restaurant on the rocks at Amari Phuket."
+    },
+    {
+      "slug": "catch-beach-club",
+      "name": "Catch Beach Club",
+      "category": "EXPERIENCE",
+      "area": "Bang Tao",
+      "blurb": "Beach club on Bang Tao Beach."
+    },
+    {
+      "slug": "banyan-tree-spa-phuket",
+      "name": "Banyan Tree Spa Phuket",
+      "category": "EXPERIENCE",
+      "area": "Laguna / Bang Tao",
+      "blurb": "Resort spa at Banyan Tree Phuket.",
+      "lat": 8.001,
+      "lng": 98.297
+    },
+    {
+      "slug": "suay-cherngtalay",
+      "name": "Suay Cherngtalay",
+      "category": "FOOD",
+      "area": "Cherngtalay",
+      "blurb": "Michelin Plate modern Thai restaurant."
+    },
+    {
+      "slug": "cafe-del-mar-phuket",
+      "name": "Café del Mar Phuket",
+      "category": "EXPERIENCE",
+      "area": "Kamala",
+      "blurb": "Beach club on Kamala Beach."
+    },
+    {
+      "slug": "laem-sing-beach",
+      "name": "Laem Sing Beach",
+      "category": "EXPERIENCE",
+      "area": "Kamala / Surin",
+      "blurb": "Small cove between Kamala and Surin.",
+      "lat": 7.962,
+      "lng": 98.278
+    },
+    {
+      "slug": "chalong-bay-rum-distillery",
+      "name": "Chalong Bay Rum Distillery",
+      "category": "EXPERIENCE",
+      "area": "Chalong",
+      "blurb": "Craft rum distillery offering tours and tastings."
+    },
+    {
+      "slug": "ao-yon-beach",
+      "name": "Ao Yon Beach",
+      "category": "EXPERIENCE",
+      "area": "Cape Panwa",
+      "blurb": "Quiet east-coast beach."
+    },
+    {
+      "slug": "banana-beach-phuket",
+      "name": "Banana Beach",
+      "category": "EXPERIENCE",
+      "area": "Thalang / Kamala north",
+      "blurb": "Small secluded cove on the west coast."
+    }
+  ],
+  "creators": [
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "phuket-7-days-bucketlistly",
+      "title": "7 days in Phuket: beaches, islands and Old Town",
+      "summary": "Old Town food, Wat Chalong and the Big Buddha, the southern viewpoints, Phang Nga Bay and James Bond Island, a beach-hop from Kata to Patong, Phi Phi's Maya Bay and the Sunday walking street.",
+      "tier": "BACKPACKER",
+      "days": 7,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/7-days-backpacking-phuket-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "The Blanket Hotel Phuket Town",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Ritsurin Boutique Hotel, The Memory at On On Hotel, BearPacker Patong Hostel, Pamookkoo or Keemala.",
+          "place": "the-blanket-hotel-phuket-town",
+          "unit": "night",
+          "quantity": 6
+        },
+        {
+          "day": 1,
+          "name": "Phuket Old Town",
+          "category": "EXPERIENCE",
+          "note": "Phuket Old Town is not very big",
+          "place": "phuket-old-town",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Lock Tien Food Court",
+          "category": "FOOD",
+          "place": "lock-tien",
+          "priceNote": "creator: super cheap"
+        },
+        {
+          "day": 1,
+          "name": "One Chun Cafe & Restaurant",
+          "category": "FOOD",
+          "place": "one-chun-cafe"
+        },
+        {
+          "day": 1,
+          "name": "Tu Kab Khao",
+          "category": "FOOD",
+          "place": "tu-kab-khao"
+        },
+        {
+          "day": 1,
+          "name": "Kopitiam by Wilai",
+          "category": "FOOD",
+          "place": "kopitiam-by-wilai"
+        },
+        {
+          "day": 2,
+          "name": "Wat Chalong",
+          "category": "EXPERIENCE",
+          "place": "wat-chalong",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Big Buddha Phuket",
+          "category": "EXPERIENCE",
+          "note": "The viewpoint was reported closed after the 2024 Kata landslide (Phuket News, Nov 2025). Check it has reopened before you go.",
+          "place": "big-buddha-phuket"
+        },
+        {
+          "day": 3,
+          "name": "Nai Harn Beach",
+          "category": "EXPERIENCE",
+          "note": "Isn't crowded at all",
+          "place": "nai-harn-beach"
+        },
+        {
+          "day": 3,
+          "name": "Black Rock Viewpoint",
+          "category": "EXPERIENCE",
+          "place": "black-rock-viewpoint"
+        },
+        {
+          "day": 3,
+          "name": "Krating Cape",
+          "category": "EXPERIENCE",
+          "note": "Hike up from the beach inside The Nai Harn Resort",
+          "place": "krating-cape"
+        },
+        {
+          "day": 3,
+          "name": "Promthep Cape",
+          "category": "EXPERIENCE",
+          "sentiment": "AVOID",
+          "note": "Overcrowded and not as beautiful as it used to be",
+          "place": "promthep-cape",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 4,
+          "name": "Ao Phang Nga National Park",
+          "category": "EXPERIENCE",
+          "note": "Should take the entire day",
+          "place": "phang-nga-bay",
+          "price": 8.92,
+          "priceNote": "300 THB per adult",
+          "priceSource": "https://www.foratravel.com/guides/692957/the-ultimate-10-day-phuket-itinerary-dean-hawkes"
+        },
+        {
+          "day": 4,
+          "name": "James Bond Island",
+          "category": "EXPERIENCE",
+          "place": "james-bond-island"
+        },
+        {
+          "day": 5,
+          "name": "Kata Beach",
+          "category": "EXPERIENCE",
+          "place": "kata-beach"
+        },
+        {
+          "day": 5,
+          "name": "Karon Beach",
+          "category": "EXPERIENCE",
+          "place": "karon-beach"
+        },
+        {
+          "day": 5,
+          "name": "Patong Beach",
+          "category": "EXPERIENCE",
+          "note": "Don't stay there too long",
+          "place": "patong-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 6,
+          "name": "Maya Bay",
+          "category": "EXPERIENCE",
+          "note": "Closed every year from 1 Aug to 30 Sep. National park fee 400 THB.",
+          "place": "maya-bay",
+          "price": 11.9,
+          "priceNote": "400 THB per adult",
+          "priceSource": "https://www.tisland.travel/en/blog/maya-bay-otkryvaetsya-1-oktyabrya-2026"
+        },
+        {
+          "day": 6,
+          "name": "Bamboo Island",
+          "category": "EXPERIENCE",
+          "place": "bamboo-island"
+        },
+        {
+          "day": 6,
+          "name": "Koh Rang Yai",
+          "category": "EXPERIENCE",
+          "place": "rang-yai-island"
+        },
+        {
+          "day": 7,
+          "name": "Phuket Sunday Walking Street",
+          "category": "FOOD",
+          "note": "Starts around 4 PM",
+          "place": "phuket-sunday-walking-street"
+        },
+        {
+          "day": 7,
+          "name": "Golden Dragon Monument",
+          "category": "EXPERIENCE",
+          "place": "golden-dragon-monument"
+        }
+      ]
+    },
+    {
+      "slug": "phuket-3-days-thebrokebackpacker",
+      "title": "The best of Phuket in 3 days",
+      "summary": "Old Town, Wat Chalong, Promthep Cape and seafood at Laem Hin, then waterfalls, Bang Tao and Bangla Road, and Phang Nga Bay with Koh Panyee and James Bond Island.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/phuket-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Lub d Phuket Patong",
+          "category": "STAY",
+          "note": "Creator's pick. Or U Sabai Living Hotel or Phuket Marriott Resort & Spa.",
+          "place": "lub-d-phuket-patong",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Phuket Old Town",
+          "category": "EXPERIENCE",
+          "note": "Expect the unexpected",
+          "place": "phuket-old-town",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Wat Chalong",
+          "category": "EXPERIENCE",
+          "place": "wat-chalong",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Big Buddha Phuket",
+          "category": "EXPERIENCE",
+          "note": "The viewpoint was reported closed after the 2024 Kata landslide (Phuket News, Nov 2025). Check it has reopened before you go.",
+          "place": "big-buddha-phuket",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Kata Noi Beach",
+          "category": "EXPERIENCE",
+          "place": "kata-noi-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Promthep Cape",
+          "category": "EXPERIENCE",
+          "note": "It's not worth staying much longer",
+          "place": "promthep-cape",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Laem Hin Seafood",
+          "category": "FOOD",
+          "place": "laem-hin-pier",
+          "price": 10.0,
+          "priceNote": "creator: Pay for what you buy (<$10)"
+        },
+        {
+          "day": 2,
+          "name": "Bang Pae Waterfall",
+          "category": "EXPERIENCE",
+          "place": "bang-pae-waterfall",
+          "price": 5.95,
+          "priceNote": "200 THB per adult",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Sirinat National Park",
+          "category": "EXPERIENCE",
+          "note": "Pack some snacks for your day before you arrive.",
+          "place": "sirinat-national-park",
+          "price": 5.95,
+          "priceNote": "200 THB per adult",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Bang Tao Beach",
+          "category": "EXPERIENCE",
+          "note": "Head to the southern section for more places to eat",
+          "place": "bang-tao-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Banzaan Fresh Market",
+          "category": "FOOD",
+          "place": "banzaan-market",
+          "price": 0.0,
+          "priceNote": "free (creator: Entrance is free)",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Paradise Beach",
+          "category": "EXPERIENCE",
+          "place": "paradise-beach-phuket",
+          "price": 5.95,
+          "priceNote": "200 THB per adult",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Bangla Road",
+          "category": "EXPERIENCE",
+          "place": "bangla-road",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Patong Beach",
+          "category": "EXPERIENCE",
+          "note": "A love-or-hate thing",
+          "place": "patong-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Ao Phang Nga National Park",
+          "category": "EXPERIENCE",
+          "place": "phang-nga-bay",
+          "price": 8.92,
+          "priceNote": "300 THB per adult (creator: 200 Baht ($6) for entrance, plus boat costs)",
+          "priceSource": "https://www.foratravel.com/guides/692957/the-ultimate-10-day-phuket-itinerary-dean-hawkes"
+        },
+        {
+          "day": 3,
+          "name": "Koh Panyee",
+          "category": "EXPERIENCE",
+          "note": "There is not much else to do",
+          "place": "koh-panyi",
+          "price": 44.62,
+          "priceNote": "creator: Private boat is 1500 Baht (around $40)"
+        },
+        {
+          "day": 3,
+          "name": "James Bond Island",
+          "category": "EXPERIENCE",
+          "note": "Mixed reviews because of the crowds",
+          "place": "james-bond-island",
+          "price": 11.9,
+          "priceNote": "creator: between 400 and 2000 Baht (for a private)"
+        }
+      ]
+    },
+    {
+      "slug": "phuket-3-days-luxury-foratravel",
+      "title": "The perfect 3 days in Phuket",
+      "summary": "Fora advisor Patricia Caruso's plan: Freedom and Surin beaches, Old Town and dinner at Black Ginger, then a speedboat to Maya Bay and Bamboo Island, and Nai Harn with a Banyan Tree spa afternoon.",
+      "tier": "LUXURY",
+      "days": 3,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/DD3SJK/the-perfect-3-day-phuket-itinerary-patricia-caruso",
+      "items": [
+        {
+          "day": 1,
+          "name": "InterContinental Phuket Resort",
+          "category": "STAY",
+          "note": "Advisor's pick. Or Amanpuri, Rosewood Phuket or The Surin Phuket.",
+          "place": "intercontinental-phuket-resort",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Freedom Beach",
+          "category": "EXPERIENCE",
+          "note": "Rent a sunbed and grab a fresh coconut from a local vendor to fully embrace island life!",
+          "place": "freedom-beach"
+        },
+        {
+          "day": 1,
+          "name": "Kata Noi Beach",
+          "category": "EXPERIENCE",
+          "place": "kata-noi-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Surin Beach",
+          "category": "EXPERIENCE",
+          "place": "surin-beach"
+        },
+        {
+          "day": 1,
+          "name": "Big Buddha Phuket",
+          "category": "EXPERIENCE",
+          "note": "The viewpoint was reported closed after the 2024 Kata landslide (Phuket News, Nov 2025). Check it has reopened before you go.",
+          "place": "big-buddha-phuket"
+        },
+        {
+          "day": 1,
+          "name": "Wat Chalong",
+          "category": "EXPERIENCE",
+          "place": "wat-chalong",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Phuket Old Town",
+          "category": "EXPERIENCE",
+          "place": "phuket-old-town",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Tu Kab Khao",
+          "category": "FOOD",
+          "place": "tu-kab-khao"
+        },
+        {
+          "day": 1,
+          "name": "Baba Nest",
+          "category": "FOOD",
+          "place": "baba-nest"
+        },
+        {
+          "day": 1,
+          "name": "Black Ginger",
+          "category": "FOOD",
+          "place": "black-ginger-phuket"
+        },
+        {
+          "day": 1,
+          "name": "Bangla Road",
+          "category": "EXPERIENCE",
+          "place": "bangla-road",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Maya Bay",
+          "category": "EXPERIENCE",
+          "note": "Closed every year from 1 Aug to 30 Sep. National park fee 400 THB.",
+          "place": "maya-bay",
+          "price": 11.9,
+          "priceNote": "400 THB per adult",
+          "priceSource": "https://www.tisland.travel/en/blog/maya-bay-otkryvaetsya-1-oktyabrya-2026"
+        },
+        {
+          "day": 2,
+          "name": "James Bond Island",
+          "category": "EXPERIENCE",
+          "place": "james-bond-island"
+        },
+        {
+          "day": 2,
+          "name": "Bamboo Island",
+          "category": "EXPERIENCE",
+          "place": "bamboo-island"
+        },
+        {
+          "day": 2,
+          "name": "La Gritta",
+          "category": "FOOD",
+          "place": "la-gritta"
+        },
+        {
+          "day": 2,
+          "name": "Catch Beach Club",
+          "category": "EXPERIENCE",
+          "place": "catch-beach-club"
+        },
+        {
+          "day": 3,
+          "name": "Nai Harn Beach",
+          "category": "EXPERIENCE",
+          "place": "nai-harn-beach"
+        },
+        {
+          "day": 3,
+          "name": "Banyan Tree Spa Phuket",
+          "category": "EXPERIENCE",
+          "place": "banyan-tree-spa-phuket"
+        },
+        {
+          "day": 3,
+          "name": "Suay Cherngtalay",
+          "category": "FOOD",
+          "place": "suay-cherngtalay"
+        },
+        {
+          "day": 3,
+          "name": "Café del Mar Phuket",
+          "category": "EXPERIENCE",
+          "place": "cafe-del-mar-phuket"
+        }
+      ]
+    },
+    {
+      "slug": "phuket-10-days-luxury-foratravel",
+      "title": "10 slow days in Phuket",
+      "summary": "Fora advisor Dean Hawkes' plan, one or two things a day: Surin Beach and Catch Beach Club, Phang Nga Bay, a rum distillery, waterfalls and Banana Beach.",
+      "tier": "LUXURY",
+      "days": 10,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/692957/the-ultimate-10-day-phuket-itinerary-dean-hawkes",
+      "items": [
+        {
+          "day": 1,
+          "name": "Banyan Tree Phuket",
+          "category": "STAY",
+          "note": "Advisor's pick. Or La Green Hotel & Residence or Mövenpick Resort Bangtao Beach Phuket.",
+          "place": "banyan-tree-phuket",
+          "unit": "night",
+          "quantity": 9
+        },
+        {
+          "day": 1,
+          "name": "Surin Beach",
+          "category": "EXPERIENCE",
+          "place": "surin-beach"
+        },
+        {
+          "day": 1,
+          "name": "Catch Beach Club",
+          "category": "EXPERIENCE",
+          "place": "catch-beach-club"
+        },
+        {
+          "day": 2,
+          "name": "Big Buddha Phuket",
+          "category": "EXPERIENCE",
+          "note": "The viewpoint was reported closed after the 2024 Kata landslide (Phuket News, Nov 2025). Check it has reopened before you go.",
+          "place": "big-buddha-phuket",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Kata Noi Beach",
+          "category": "EXPERIENCE",
+          "place": "kata-noi-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Ao Phang Nga National Park",
+          "category": "EXPERIENCE",
+          "note": "Early departure beats crowds.",
+          "place": "phang-nga-bay",
+          "price": 8.92,
+          "priceNote": "300 THB per adult",
+          "priceSource": "https://www.foratravel.com/guides/692957/the-ultimate-10-day-phuket-itinerary-dean-hawkes"
+        },
+        {
+          "day": 3,
+          "name": "Koh Panyee",
+          "category": "FOOD",
+          "place": "koh-panyi"
+        },
+        {
+          "day": 4,
+          "name": "Laem Sing Beach",
+          "category": "EXPERIENCE",
+          "note": "Turquoise perfection, almost no development",
+          "place": "laem-sing-beach",
+          "price": 2.97,
+          "priceNote": "creator: 100–200 THB return"
+        },
+        {
+          "day": 4,
+          "name": "Suay Cherngtalay",
+          "category": "FOOD",
+          "place": "suay-cherngtalay"
+        },
+        {
+          "day": 5,
+          "name": "Chalong Bay Rum Distillery",
+          "category": "EXPERIENCE",
+          "note": "Tours at 1/3/5/7 pm; book online",
+          "place": "chalong-bay-rum-distillery"
+        },
+        {
+          "day": 6,
+          "name": "Ao Yon Beach",
+          "category": "EXPERIENCE",
+          "note": "Zero vendors, total calm",
+          "place": "ao-yon-beach"
+        },
+        {
+          "day": 7,
+          "name": "Bang Pae Waterfall",
+          "category": "EXPERIENCE",
+          "note": "Hire a local guide at the visitor center",
+          "place": "bang-pae-waterfall",
+          "price": 5.95,
+          "priceNote": "200 THB per adult (creator: around 300–400THB depending on the group size)",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 8,
+          "name": "Bang Tao Beach",
+          "category": "EXPERIENCE",
+          "place": "bang-tao-beach",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 8,
+          "name": "Surin Beach",
+          "category": "EXPERIENCE",
+          "place": "surin-beach"
+        },
+        {
+          "day": 9,
+          "name": "Phuket Old Town",
+          "category": "EXPERIENCE",
+          "place": "phuket-old-town",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/phuket-itinerary/"
+        },
+        {
+          "day": 9,
+          "name": "One Chun Cafe & Restaurant",
+          "category": "FOOD",
+          "place": "one-chun-cafe"
+        },
+        {
+          "day": 10,
+          "name": "Banana Beach",
+          "category": "EXPERIENCE",
+          "note": "Allow buffer for flight check-in.",
+          "place": "banana-beach-phuket"
+        }
+      ]
+    }
+  ]
+}

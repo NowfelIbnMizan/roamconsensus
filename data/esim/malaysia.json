@@ -1,0 +1,364 @@
+{
+  "country": "Malaysia",
+  "checkedAt": "2026-10-22",
+  "plans": [
+    {
+      "provider": "Airalo",
+      "name": "1GB 3 days",
+      "dataGb": 1,
+      "days": 3,
+      "price": 4.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "3GB 3 days",
+      "dataGb": 3,
+      "days": 3,
+      "price": 7.5,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "3GB 7 days",
+      "dataGb": 3,
+      "days": 7,
+      "price": 8.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "5GB 7 days",
+      "dataGb": 5,
+      "days": 7,
+      "price": 11.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "5GB 15 days",
+      "dataGb": 5,
+      "days": 15,
+      "price": 11.5,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 12.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "10GB 7 days",
+      "dataGb": 10,
+      "days": 7,
+      "price": 19.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "10GB 15 days",
+      "dataGb": 10,
+      "days": 15,
+      "price": 19.5,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 20.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "20GB 15 days",
+      "dataGb": 20,
+      "days": 15,
+      "price": 31.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "20GB 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 32.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "50GB 30 days",
+      "dataGb": 50,
+      "days": 30,
+      "price": 49.0,
+      "network": "Maxis",
+      "url": "https://cdn.airalo.com/malaysia-esim"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.9,
+      "network": "CelcomDigi",
+      "notes": "No stated daily cap",
+      "url": "https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 20.5,
+      "network": "CelcomDigi",
+      "url": "https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.5,
+      "network": "CelcomDigi",
+      "url": "https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 36.5,
+      "network": "CelcomDigi",
+      "url": "https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 50.5,
+      "network": "CelcomDigi",
+      "url": "https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 73.9,
+      "network": "CelcomDigi",
+      "url": "https://travelsimasia.com/blogs/malaysia-guides/malaysia-esim-prices-2026"
+    },
+    {
+      "provider": "Nomad",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 5.0,
+      "network": "Maxis / Digi",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "3GB 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 7.0,
+      "network": "Maxis / Digi",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 11.0,
+      "network": "Maxis / Digi",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 16.0,
+      "network": "Maxis / Digi",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "20GB 45 days",
+      "dataGb": 20,
+      "days": 45,
+      "price": 25.0,
+      "network": "Maxis / Digi",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.0,
+      "speed": "Daily high-speed cap, then throttled",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 33.0,
+      "speed": "Daily high-speed cap, then throttled",
+      "url": "https://www.getnomad.app/malaysia-eSIM"
+    },
+    {
+      "provider": "Saily",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 3.99,
+      "notes": "Network not named",
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "3GB 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 8.99,
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 12.99,
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 21.99,
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "20GB 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 35.99,
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.99,
+      "speed": "5GB/day, then ~1 Mbps",
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 48.99,
+      "speed": "5GB/day, then ~1 Mbps",
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 71.99,
+      "speed": "5GB/day, then ~1 Mbps",
+      "url": "https://saily.com/esim-malaysia/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "3GB 15 days",
+      "dataGb": 3,
+      "days": 15,
+      "price": 6.0,
+      "network": "Maxis / YTL (Yes)",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-3gb-15-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "10GB 7 days",
+      "dataGb": 10,
+      "days": 7,
+      "price": 11.0,
+      "network": "Maxis / YTL (Yes)",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-3gb-15-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 12.0,
+      "network": "Maxis / YTL (Yes)",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-3gb-15-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "25GB 30 days",
+      "dataGb": 25,
+      "days": 30,
+      "price": 22.0,
+      "network": "Maxis / YTL (Yes)",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-3gb-15-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 19.0,
+      "network": "Maxis / YTL (Yes)",
+      "notes": "Cap not stated",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-unlimited-30-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 29.0,
+      "network": "Maxis / YTL (Yes)",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-unlimited-30-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 49.0,
+      "network": "Maxis / YTL (Yes)",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/malaysia-data-plans/malaysia-unlimited-30-days/"
+    }
+  ]
+}

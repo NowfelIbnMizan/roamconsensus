@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { Suspense } from "react";
 import { Compass, Search } from "lucide-react";
 import { CartLink } from "@/components/cart-link";
 import { CurrencyPicker, CurrencyProvider } from "@/components/money";
@@ -79,7 +80,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </nav>
           </header>
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">{children}</main>
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">
+            {/* Pages are prerendered whole; this only shows if a page has to load its data at request time, which
+                otherwise fails with a blocking-route error. */}
+            <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>
+          </main>
           <footer className="border-t border-line">
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
               Some links are affiliate links: we may earn a commission at no extra cost to you. RoamConsensus is not

@@ -1,0 +1,1224 @@
+{
+  "slug": "hanoi",
+  "name": "Hanoi",
+  "country": "Vietnam",
+  "summary": "Hoan Kiem Lake and the Old Quarter's street food, Ho Chi Minh's mausoleum, the Temple of Literature and Hoa Lo Prison, with Ha Long Bay and Trang An a day trip away.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Hanoi",
+  "months": [
+    {
+      "month": 1,
+      "highC": 19,
+      "lowC": 14,
+      "rainMm": 23,
+      "crowd": "MEDIUM",
+      "note": "Cool, grey and drizzly; trips and prices rise ahead of Tet in late Jan or Feb."
+    },
+    {
+      "month": 2,
+      "highC": 20,
+      "lowC": 16,
+      "rainMm": 25,
+      "crowd": "HIGH",
+      "note": "Tet (Lunar New Year) usually falls here; many shops close for days and transport sells out."
+    },
+    {
+      "month": 3,
+      "highC": 23,
+      "lowC": 18,
+      "rainMm": 47,
+      "crowd": "MEDIUM",
+      "note": "Mild and humid with misty drizzle; pleasant for walking the Old Quarter."
+    },
+    {
+      "month": 4,
+      "highC": 28,
+      "lowC": 22,
+      "rainMm": 92,
+      "crowd": "MEDIUM",
+      "note": "Warm spring weather; the 30 Apr–1 May holidays bring domestic crowds."
+    },
+    {
+      "month": 5,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 185,
+      "crowd": "MEDIUM",
+      "note": "Hot, humid start to the wet season with afternoon storms."
+    },
+    {
+      "month": 6,
+      "highC": 33,
+      "lowC": 26,
+      "rainMm": 253,
+      "crowd": "LOW",
+      "note": "Very hot and humid with heavy downpours."
+    },
+    {
+      "month": 7,
+      "highC": 33,
+      "lowC": 27,
+      "rainMm": 280,
+      "crowd": "LOW",
+      "note": "Peak heat and rain; storms from typhoons in the region are possible."
+    },
+    {
+      "month": 8,
+      "highC": 33,
+      "lowC": 26,
+      "rainMm": 309,
+      "crowd": "LOW",
+      "note": "Wettest month; plan indoor backups and expect street flooding."
+    },
+    {
+      "month": 9,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 228,
+      "crowd": "MEDIUM",
+      "note": "Rain eases late in the month; 2 Sep National Day brings domestic travel."
+    },
+    {
+      "month": 10,
+      "highC": 29,
+      "lowC": 23,
+      "rainMm": 141,
+      "crowd": "HIGH",
+      "note": "Autumn is one of the best times to visit: drier, warm and clear."
+    },
+    {
+      "month": 11,
+      "highC": 26,
+      "lowC": 19,
+      "rainMm": 67,
+      "crowd": "HIGH",
+      "note": "Dry and comfortable; peak season for Hanoi and Ha Long Bay."
+    },
+    {
+      "month": 12,
+      "highC": 22,
+      "lowC": 16,
+      "rainMm": 20,
+      "crowd": "MEDIUM",
+      "note": "Cool and dry; bring a jacket for evenings."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "90-day e-visa for all nationalities",
+      "body": "Vietnam's e-visa allows stays of up to 90 days from your declared entry date, with single or multiple entry. The state fee is USD 25 for single entry and USD 50 for multiple entry, and it is non-refundable. Apply only on the official portal, evisa.xuatnhapcanh.gov.vn.",
+      "sourceUrl": "https://vietcetera.com/en/vietnam-visa-immigration-master-guide-2026-comprehensive-legal-practical-framework"
+    },
+    {
+      "topic": "Entry",
+      "title": "45-day visa-free entry for 12 countries",
+      "body": "Citizens of Germany, France, Italy, Spain, the UK, Russia, Japan, South Korea, Denmark, Sweden, Norway and Finland can stay up to 45 days without a visa. This exemption under Resolution 44/NQ-CP runs from 15 March 2025 to 14 March 2028. For a longer stay, get the 90-day e-visa.",
+      "sourceUrl": "https://vietcetera.com/en/vietnam-visa-immigration-master-guide-2026-comprehensive-legal-practical-framework"
+    },
+    {
+      "topic": "Entry",
+      "title": "ASEAN visa-free stays",
+      "body": "Ordinary passport holders from Singapore, Thailand, Malaysia, Indonesia, Cambodia and Laos get 30 days visa-free. Philippine citizens get 21 days, and citizens of Brunei and Myanmar get 14 days.",
+      "sourceUrl": "https://vietcetera.com/en/vietnam-visa-immigration-master-guide-2026-comprehensive-legal-practical-framework"
+    },
+    {
+      "topic": "Entry",
+      "title": "Your hotel registers you with police",
+      "body": "Accommodation providers must report foreign guests to local police within 12 hours of arrival. Hotels usually do this at check-in using your passport. If you stay in a private home, make sure the host registers you.",
+      "sourceUrl": "https://vietcetera.com/en/vietnam-visa-immigration-master-guide-2026-comprehensive-legal-practical-framework"
+    },
+    {
+      "topic": "Safety",
+      "title": "Train Street is officially off-limits",
+      "body": "Commercial activity on Hanoi's Train Street has been banned since October 2019, and tour operators have been told not to bring visitors there. Hanoi has called all cafe activity there a violation, and in February 2026 the authorities agreed to run fewer passenger trains and stop freight trains on this stretch. The only sanctioned viewpoint is the Hoa Xa cafe inside Long Bien Railway Station.",
+      "sourceUrl": "https://vietcetera.com/amp/en/hanoi-cuts-train-services-to-famous-train-street-can-it-remain-a-tourist-magnet"
+    }
+  ],
+  "places": [
+    {
+      "slug": "old-quarter",
+      "name": "Hanoi Old Quarter",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Dense grid of trade-named streets north of Hoan Kiem Lake.",
+      "lat": 21.034,
+      "lng": 105.85
+    },
+    {
+      "slug": "dong-xuan-market",
+      "name": "Dong Xuan Market",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Hanoi's largest covered market, in the north of the Old Quarter.",
+      "lat": 21.0383,
+      "lng": 105.8494
+    },
+    {
+      "slug": "hoan-kiem-lake",
+      "name": "Hoan Kiem Lake",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Central lake with Turtle Tower and Ngoc Son Temple.",
+      "lat": 21.0287,
+      "lng": 105.8524
+    },
+    {
+      "slug": "ngoc-son-temple",
+      "name": "Ngoc Son Temple",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Temple on an islet in Hoan Kiem Lake, reached by the red The Huc Bridge.",
+      "lat": 21.0307,
+      "lng": 105.8524
+    },
+    {
+      "slug": "ma-may-ancient-house",
+      "name": "Ma May Ancient House",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Restored 19th-century merchant tube house in the Old Quarter.",
+      "lat": 21.0346,
+      "lng": 105.853
+    },
+    {
+      "slug": "bach-ma-temple",
+      "name": "Bach Ma Temple",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "One of Hanoi's oldest temples, on Hang Buom Street.",
+      "lat": 21.036,
+      "lng": 105.8516
+    },
+    {
+      "slug": "o-quan-chuong-gate",
+      "name": "O Quan Chuong Gate",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "The last surviving gate of Hanoi's old city walls.",
+      "lat": 21.0372,
+      "lng": 105.8532
+    },
+    {
+      "slug": "long-bien-bridge",
+      "name": "Long Bien Bridge",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem / Long Bien",
+      "blurb": "Early-1900s steel cantilever bridge over the Red River.",
+      "lat": 21.043,
+      "lng": 105.859
+    },
+    {
+      "slug": "ho-chi-minh-mausoleum",
+      "name": "Ho Chi Minh Mausoleum",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh",
+      "blurb": "Granite mausoleum holding Ho Chi Minh's embalmed body, on Ba Dinh Square.",
+      "tip": "Mornings only; closed Mondays and Fridays. Cover shoulders and knees.",
+      "lat": 21.0368,
+      "lng": 105.8346
+    },
+    {
+      "slug": "ho-chi-minh-stilt-house",
+      "name": "Ho Chi Minh's Stilt House",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh",
+      "blurb": "Grounds of the Presidential Palace, with the simple stilt house where Ho Chi Minh lived.",
+      "lat": 21.0398,
+      "lng": 105.8337
+    },
+    {
+      "slug": "one-pillar-pagoda",
+      "name": "One Pillar Pagoda",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh",
+      "blurb": "Small 11th-century-origin pagoda raised on a single stone pillar.",
+      "lat": 21.0359,
+      "lng": 105.8336
+    },
+    {
+      "slug": "vietnam-military-history-museum",
+      "name": "Vietnam Military History Museum",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh (old site) / Nam Tu Liem (new site)",
+      "blurb": "National museum of Vietnam's military history, associated with the Hanoi Flag Tower.",
+      "tip": "The museum moved to a new building on Thang Long Boulevard in late 2024: check the address before you go."
+    },
+    {
+      "slug": "tran-quoc-pagoda",
+      "name": "Tran Quoc Pagoda",
+      "category": "EXPERIENCE",
+      "area": "Tay Ho",
+      "blurb": "Hanoi's oldest pagoda, on a small peninsula in West Lake.",
+      "lat": 21.048,
+      "lng": 105.8368
+    },
+    {
+      "slug": "vietnam-museum-of-ethnology",
+      "name": "Vietnam Museum of Ethnology",
+      "category": "EXPERIENCE",
+      "area": "Cau Giay",
+      "blurb": "Museum of Vietnam's 54 ethnic groups, with full-size traditional houses outdoors.",
+      "lat": 21.0405,
+      "lng": 105.7985
+    },
+    {
+      "slug": "thang-long-water-puppet-theatre",
+      "name": "Thang Long Water Puppet Theatre",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Theatre for traditional water puppetry, by Hoan Kiem Lake.",
+      "website": "https://thanglongwaterpuppet.com",
+      "lat": 21.0318,
+      "lng": 105.8535
+    },
+    {
+      "slug": "temple-of-literature",
+      "name": "Temple of Literature",
+      "category": "EXPERIENCE",
+      "area": "Dong Da",
+      "blurb": "11th-century Confucian temple and site of Vietnam's first national university.",
+      "lat": 21.0285,
+      "lng": 105.8355
+    },
+    {
+      "slug": "st-josephs-cathedral",
+      "name": "St. Joseph's Cathedral",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Neo-Gothic cathedral from 1886.",
+      "lat": 21.0287,
+      "lng": 105.8489
+    },
+    {
+      "slug": "hoa-lo-prison",
+      "name": "Hoa Lo Prison Relic",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Museum in the remaining gatehouse of the French-built prison later called the 'Hanoi Hilton'.",
+      "lat": 21.0253,
+      "lng": 105.8466
+    },
+    {
+      "slug": "hanoi-opera-house",
+      "name": "Hanoi Opera House",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "French colonial opera house from 1911; the interior is open only for performances.",
+      "lat": 21.0243,
+      "lng": 105.8576
+    },
+    {
+      "slug": "ta-hien-beer-street",
+      "name": "Ta Hien Beer Street",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Old Quarter street of bia hoi stalls and bars around Ta Hien and Luong Ngoc Quyen.",
+      "lat": 21.036,
+      "lng": 105.852
+    },
+    {
+      "slug": "perfume-pagoda",
+      "name": "Perfume Pagoda",
+      "category": "EXPERIENCE",
+      "area": "My Duc, about 60 km SW of Hanoi",
+      "blurb": "Buddhist cave-temple complex reached by boat and a short hike.",
+      "lat": 20.617,
+      "lng": 105.746
+    },
+    {
+      "slug": "hanoi-train-street",
+      "name": "Hanoi Train Street",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Narrow residential strip with cafes where trains pass inches from homes.",
+      "tip": "Officially off-limits: Hanoi has banned business on the tracks since 2019 and cut train services in Feb 2026. The sanctioned view is from the cafe inside Long Bien station.",
+      "lat": 21.0306,
+      "lng": 105.8443
+    },
+    {
+      "slug": "cafe-dinh",
+      "name": "Cafe Dinh",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Upstairs cafe off Hoan Kiem Lake, known for egg coffee.",
+      "lat": 21.0317,
+      "lng": 105.853
+    },
+    {
+      "slug": "bun-cha-74-hang-quat",
+      "name": "Bun Cha 74 Hang Quat",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Lunch-only Old Quarter shop for bun cha and crab spring rolls.",
+      "lat": 21.033,
+      "lng": 105.8495
+    },
+    {
+      "slug": "the-railway-hanoi-cafe",
+      "name": "The Railway Hanoi",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Trackside cafe on Train Street.",
+      "lat": 21.0306,
+      "lng": 105.8444
+    },
+    {
+      "slug": "cha-ca-thang-long",
+      "name": "Cha Ca Thang Long",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Restaurant serving cha ca, Hanoi's turmeric-dill fried fish.",
+      "lat": 21.034,
+      "lng": 105.847
+    },
+    {
+      "slug": "phung-hung-mural-street",
+      "name": "Phung Hung Mural Street",
+      "category": "EXPERIENCE",
+      "area": "Hoan Kiem",
+      "blurb": "Railway viaduct arches painted with murals of old Hanoi.",
+      "lat": 21.0335,
+      "lng": 105.846
+    },
+    {
+      "slug": "pho-gia-truyen-bat-dan",
+      "name": "Pho Gia Truyen",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Long-running beef pho shop with a queue-and-pay system.",
+      "lat": 21.0336,
+      "lng": 105.8466
+    },
+    {
+      "slug": "imperial-citadel-of-thang-long",
+      "name": "Imperial Citadel of Thang Long",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh",
+      "blurb": "UNESCO-listed former royal citadel, including wartime command bunkers.",
+      "lat": 21.0352,
+      "lng": 105.84
+    },
+    {
+      "slug": "cong-caphe",
+      "name": "Cong Caphe",
+      "category": "FOOD",
+      "area": "Hoan Kiem (multiple branches)",
+      "blurb": "Retro-themed Vietnamese cafe chain, known for coconut coffee.",
+      "lat": 21.03,
+      "lng": 105.853
+    },
+    {
+      "slug": "banh-my-tram",
+      "name": "Banh My Tram",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Small shop for Hanoi-style pate banh mi.",
+      "lat": 21.03,
+      "lng": 105.846
+    },
+    {
+      "slug": "quan-thanh-temple",
+      "name": "Quan Thanh Temple",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh",
+      "blurb": "Taoist temple near Truc Bach Lake with a large bronze statue.",
+      "lat": 21.043,
+      "lng": 105.837
+    },
+    {
+      "slug": "ca-phe-duy-tri",
+      "name": "Ca Phe Duy Tri",
+      "category": "FOOD",
+      "area": "Tay Ho",
+      "blurb": "Long-running cafe known for yogurt coffee.",
+      "lat": 21.0495,
+      "lng": 105.8425
+    },
+    {
+      "slug": "banh-cuon-ba-xuan",
+      "name": "Banh Cuon Ba Xuan",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Old Quarter stall for steamed rice rolls.",
+      "lat": 21.0345,
+      "lng": 105.8485
+    },
+    {
+      "slug": "bun-bo-nam-bo-bach-phuong",
+      "name": "Bun Bo Nam Bo Bach Phuong",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Shop on Hang Dieu serving bun bo nam bo, a dry beef noodle salad.",
+      "lat": 21.032,
+      "lng": 105.848
+    },
+    {
+      "slug": "ha-long-bay",
+      "name": "Ha Long Bay",
+      "category": "EXPERIENCE",
+      "area": "Quang Ninh, about 170 km E of Hanoi",
+      "blurb": "UNESCO-listed bay of limestone karsts, visited by day trip or overnight cruise.",
+      "lat": 20.9101,
+      "lng": 107.1839
+    },
+    {
+      "slug": "ninh-binh",
+      "name": "Trang An",
+      "category": "EXPERIENCE",
+      "area": "Ninh Binh, about 90 km S of Hanoi",
+      "blurb": "Karst landscape explored by rowing boat through caves and rivers.",
+      "lat": 20.257,
+      "lng": 105.915
+    },
+    {
+      "slug": "bun-cha-huong-lien",
+      "name": "Bun Cha Huong Lien",
+      "category": "FOOD",
+      "area": "Hai Ba Trung",
+      "blurb": "Bun cha restaurant known for the 2016 Obama and Bourdain meal.",
+      "lat": 21.0177,
+      "lng": 105.853
+    },
+    {
+      "slug": "pho-10-ly-quoc-su",
+      "name": "Pho 10 Ly Quoc Su",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Michelin Guide-listed beef pho shop near the cathedral.",
+      "lat": 21.031,
+      "lng": 105.849
+    },
+    {
+      "slug": "pasteur-street-brewing-hanoi",
+      "name": "Pasteur Street Brewing Co.",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Taproom of a Vietnamese craft brewery.",
+      "lat": 21.0293,
+      "lng": 105.8486
+    },
+    {
+      "slug": "tam-vi",
+      "name": "Tam Vi",
+      "category": "FOOD",
+      "area": "Ba Dinh",
+      "blurb": "One-Michelin-star restaurant for northern Vietnamese home cooking in a vintage setting.",
+      "lat": 21.031,
+      "lng": 105.838
+    },
+    {
+      "slug": "lighthouse-sky-bar",
+      "name": "The Lighthouse Sky Bar",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Old Quarter rooftop bar with city and Red River views.",
+      "lat": 21.0371,
+      "lng": 105.8547
+    },
+    {
+      "slug": "cafe-giang",
+      "name": "Cafe Giang",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Family cafe credited with inventing egg coffee.",
+      "lat": 21.0335,
+      "lng": 105.8545
+    },
+    {
+      "slug": "swip-speakeasy",
+      "name": "SWI:P Speakeasy Bar",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "blurb": "Hidden cocktail bar.",
+      "lat": 21.033,
+      "lng": 105.848
+    },
+    {
+      "slug": "old-quarter-view-hanoi-hostel",
+      "name": "Old Quarter View Hanoi Hostel",
+      "category": "STAY",
+      "area": "Hoan Kiem",
+      "blurb": "Social Old Quarter hostel with free breakfast and a free-beer hour.",
+      "lat": 21.0345,
+      "lng": 105.85
+    },
+    {
+      "slug": "hanoi-ecostay",
+      "name": "Hanoi EcoStay",
+      "category": "STAY",
+      "area": "Hoan Kiem",
+      "blurb": "Budget hostel in the Old Quarter.",
+      "lat": 21.0335,
+      "lng": 105.851
+    },
+    {
+      "slug": "capella-hanoi",
+      "name": "Capella Hanoi",
+      "category": "STAY",
+      "area": "Hoan Kiem (French Quarter)",
+      "blurb": "Opera-themed luxury hotel near the Opera House.",
+      "lat": 21.0245,
+      "lng": 105.8566
+    }
+  ],
+  "creators": [
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "hanoi-3-days-thebrokebackpacker",
+      "title": "Backpacking Hanoi in 3 days",
+      "summary": "The Old Quarter, Hoan Kiem Lake and Long Bien Bridge, then Ho Chi Minh's mausoleum, pagodas and a water puppet show, and the Temple of Literature, Hoa Lo Prison and Beer Street.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/hanoi-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Old Quarter View Hanoi Hostel",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Classic Street Hotel or Acoustic Hotel & Spa.",
+          "place": "old-quarter-view-hanoi-hostel",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Hanoi Old Quarter",
+          "category": "EXPERIENCE",
+          "note": "Grab bike to Hoan Kiem Lake and walk; bargain for anything you buy",
+          "place": "old-quarter",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Dong Xuan Market",
+          "category": "EXPERIENCE",
+          "note": "Browsing without buying is fine",
+          "place": "dong-xuan-market",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Hoan Kiem Lake",
+          "category": "EXPERIENCE",
+          "place": "hoan-kiem-lake",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Ngoc Son Temple",
+          "category": "EXPERIENCE",
+          "place": "ngoc-son-temple",
+          "price": 1.16,
+          "priceNote": "30,000 VND per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Ma May Ancient House",
+          "category": "EXPERIENCE",
+          "note": "7-min walk from Ngoc Son Temple",
+          "place": "ma-may-ancient-house",
+          "price": 1.0,
+          "priceNote": "creator: USD $1"
+        },
+        {
+          "day": 1,
+          "name": "Bach Ma Temple",
+          "category": "EXPERIENCE",
+          "place": "bach-ma-temple",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "O Quan Chuong Gate",
+          "category": "EXPERIENCE",
+          "place": "o-quan-chuong-gate",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Long Bien Bridge",
+          "category": "EXPERIENCE",
+          "note": "Good for sunrise or sunset",
+          "place": "long-bien-bridge",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Ho Chi Minh Mausoleum",
+          "category": "EXPERIENCE",
+          "note": "Go early, crowds build by noon; hand over bags; dress respectfully",
+          "place": "ho-chi-minh-mausoleum",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Ho Chi Minh's Stilt House",
+          "category": "EXPERIENCE",
+          "note": "Across the road from the Mausoleum",
+          "place": "ho-chi-minh-stilt-house",
+          "price": 1.55,
+          "priceNote": "40,000 VND per adult (creator: USD $1.5)",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "One Pillar Pagoda",
+          "category": "EXPERIENCE",
+          "note": "Dien Huu Pagoda's bonsai courtyard is next door",
+          "place": "one-pillar-pagoda",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Vietnam Military History Museum",
+          "category": "EXPERIENCE",
+          "place": "vietnam-military-history-museum",
+          "price": 1.55,
+          "priceNote": "40,000 VND per adult (creator: USD $1.5)",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Tran Quoc Pagoda",
+          "category": "EXPERIENCE",
+          "note": "On West Lake; 30-min walk or Grab bike",
+          "place": "tran-quoc-pagoda",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Vietnam Museum of Ethnology",
+          "category": "EXPERIENCE",
+          "note": "Take a Grab bike; Women's Museum only if you have spare time",
+          "place": "vietnam-museum-of-ethnology",
+          "price": 1.55,
+          "priceNote": "40,000 VND per adult (creator: USD $1.5)",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Thang Long Water Puppet Theatre",
+          "category": "EXPERIENCE",
+          "note": "Grab bike back to the Lake area",
+          "place": "thang-long-water-puppet-theatre",
+          "price": 3.86,
+          "priceNote": "100,000 VND per adult (creator: USD $4/$5)",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Temple of Literature",
+          "category": "EXPERIENCE",
+          "note": "It's on the back of the 100,000 dong note",
+          "place": "temple-of-literature",
+          "price": 2.7,
+          "priceNote": "70,000 VND per adult",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 3,
+          "name": "St. Joseph's Cathedral",
+          "category": "EXPERIENCE",
+          "note": "Closes at lunch; check opening times",
+          "place": "st-josephs-cathedral",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Hoa Lo Prison Relic",
+          "category": "EXPERIENCE",
+          "note": "Eye-opening, sobering visit",
+          "place": "hoa-lo-prison",
+          "price": 1.93,
+          "priceNote": "50,000 VND per adult",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 3,
+          "name": "Hanoi Opera House",
+          "category": "EXPERIENCE",
+          "note": "Worth seeing from outside even without a show",
+          "place": "hanoi-opera-house",
+          "price": 17.0,
+          "priceNote": "creator: USD $17"
+        },
+        {
+          "day": 3,
+          "name": "Ta Hien Beer Street",
+          "category": "FOOD",
+          "note": "Evening street food and socializing",
+          "place": "ta-hien-beer-street"
+        },
+        {
+          "day": 3,
+          "name": "Perfume Pagoda",
+          "category": "EXPERIENCE",
+          "note": "About 60 km out; only if you have the time",
+          "place": "perfume-pagoda"
+        },
+        {
+          "day": 3,
+          "name": "Hanoi Train Street",
+          "category": "EXPERIENCE",
+          "note": "Officially off-limits: Hanoi has banned business on the tracks since 2019 and cut train services in Feb 2026. The sanctioned view is from the cafe inside Long Bien station.",
+          "place": "hanoi-train-street",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        }
+      ]
+    },
+    {
+      "slug": "hanoi-3-days-willflyforfood",
+      "title": "3 days in Hanoi, eating your way through",
+      "summary": "Bun cha, pho and egg coffee between Old Quarter sights, Hoa Lo Prison and a water puppet show, then the Citadel and Temple of Literature, and a day trip to Ha Long Bay.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Hanoi EcoStay",
+          "category": "STAY",
+          "note": "Creator's mid-range pick. Or Royal Holiday Hanoi Hotel or Melia Hanoi.",
+          "place": "hanoi-ecostay",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Cafe Dinh",
+          "category": "FOOD",
+          "note": "Less crowded than Cafe Giang",
+          "place": "cafe-dinh",
+          "price": 0.97,
+          "priceNote": "creator: Around VND 25,000 per cup"
+        },
+        {
+          "day": 1,
+          "name": "Hoan Kiem Lake",
+          "category": "EXPERIENCE",
+          "note": "Turtle Tower is not open to visitors",
+          "place": "hoan-kiem-lake",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Ngoc Son Temple",
+          "category": "EXPERIENCE",
+          "note": "The Huc Bridge is free; not much inside the temple",
+          "place": "ngoc-son-temple",
+          "price": 1.16,
+          "priceNote": "30,000 VND per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Bun Cha 74 Hang Quat",
+          "category": "FOOD",
+          "note": "Arrive by 1PM",
+          "place": "bun-cha-74-hang-quat",
+          "price": 1.93,
+          "priceNote": "creator: Around VND 50,000"
+        },
+        {
+          "day": 1,
+          "name": "St. Joseph's Cathedral",
+          "category": "EXPERIENCE",
+          "place": "st-josephs-cathedral",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Hoa Lo Prison Relic",
+          "category": "EXPERIENCE",
+          "note": "Only the gatehouse museum remains",
+          "place": "hoa-lo-prison",
+          "price": 1.93,
+          "priceNote": "50,000 VND per adult (creator: VND 30,000)",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 1,
+          "name": "Hanoi Train Street",
+          "category": "EXPERIENCE",
+          "note": "Officially off-limits: Hanoi has banned business on the tracks since 2019 and cut train services in Feb 2026. The sanctioned view is from the cafe inside Long Bien station.",
+          "place": "hanoi-train-street",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "The Railway Hanoi",
+          "category": "FOOD",
+          "note": "Verify it is still open",
+          "place": "the-railway-hanoi-cafe",
+          "price": 1.55,
+          "priceNote": "creator: Around VND 40,000 for a glass of Vietnamese coffee and a small pastry"
+        },
+        {
+          "day": 1,
+          "name": "Cha Ca Thang Long",
+          "category": "FOOD",
+          "place": "cha-ca-thang-long",
+          "price": 4.98,
+          "priceNote": "creator: Around VND 129,000 per person"
+        },
+        {
+          "day": 1,
+          "name": "Thang Long Water Puppet Theatre",
+          "category": "EXPERIENCE",
+          "note": "Buy at the gate; about 50-min show",
+          "place": "thang-long-water-puppet-theatre",
+          "price": 3.86,
+          "priceNote": "100,000 VND per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Phung Hung Mural Street",
+          "category": "EXPERIENCE",
+          "place": "phung-hung-mural-street",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Ta Hien Beer Street",
+          "category": "FOOD",
+          "note": "One or two bia hoi, then bottled beer",
+          "place": "ta-hien-beer-street",
+          "price": 0.12,
+          "priceNote": "creator: VND 3,000-7,000"
+        },
+        {
+          "day": 2,
+          "name": "Pho Gia Truyen",
+          "category": "FOOD",
+          "note": "Lines are long but move fast",
+          "place": "pho-gia-truyen-bat-dan",
+          "price": 1.55,
+          "priceNote": "creator: Around VND 40,000-50,000 per bowl"
+        },
+        {
+          "day": 2,
+          "name": "Imperial Citadel of Thang Long",
+          "category": "EXPERIENCE",
+          "note": "Closed Mondays; allow about 2 hrs",
+          "place": "imperial-citadel-of-thang-long",
+          "price": 3.86,
+          "priceNote": "100,000 VND per adult (creator: VND 30,000)",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Vietnam Military History Museum",
+          "category": "EXPERIENCE",
+          "note": "Climb the Flag Tower",
+          "place": "vietnam-military-history-museum",
+          "price": 1.55,
+          "priceNote": "40,000 VND per adult",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Cong Caphe",
+          "category": "FOOD",
+          "note": "Coconut coffee",
+          "place": "cong-caphe",
+          "price": 1.74,
+          "priceNote": "creator: About VND 45,000 (small) / VND 59,000 (large)"
+        },
+        {
+          "day": 2,
+          "name": "Banh My Tram",
+          "category": "FOOD",
+          "place": "banh-my-tram",
+          "price": 0.97,
+          "priceNote": "creator: About VND 25,000 per banh mi"
+        },
+        {
+          "day": 2,
+          "name": "Temple of Literature",
+          "category": "EXPERIENCE",
+          "note": "The back buildings are quieter",
+          "place": "temple-of-literature",
+          "price": 2.7,
+          "priceNote": "70,000 VND per adult (creator: VND 30,000)",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Ho Chi Minh Mausoleum",
+          "category": "EXPERIENCE",
+          "note": "Long lines; no photos inside",
+          "place": "ho-chi-minh-mausoleum",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 2,
+          "name": "Quan Thanh Temple",
+          "category": "EXPERIENCE",
+          "note": "A quick stop",
+          "place": "quan-thanh-temple",
+          "price": 0.39,
+          "priceNote": "10,000 VND per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Tran Quoc Pagoda",
+          "category": "EXPERIENCE",
+          "note": "Go before sunset; if you're templed out, just watch the sunset",
+          "place": "tran-quoc-pagoda",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Ca Phe Duy Tri",
+          "category": "FOOD",
+          "note": "Yogurt coffee",
+          "place": "ca-phe-duy-tri",
+          "price": 0.97,
+          "priceNote": "creator: About VND 25,000"
+        },
+        {
+          "day": 2,
+          "name": "Banh Cuon Ba Xuan",
+          "category": "FOOD",
+          "note": "Not very filling",
+          "place": "banh-cuon-ba-xuan",
+          "price": 1.16,
+          "priceNote": "creator: About VND 30,000 for banh cuon"
+        },
+        {
+          "day": 2,
+          "name": "Bun Bo Nam Bo Bach Phuong",
+          "category": "FOOD",
+          "place": "bun-bo-nam-bo-bach-phuong",
+          "price": 2.32,
+          "priceNote": "creator: About VND 60,000 per bowl"
+        },
+        {
+          "day": 3,
+          "name": "Ha Long Bay",
+          "category": "EXPERIENCE",
+          "note": "Full-day trip; an overnight cruise is better if you have time",
+          "place": "ha-long-bay"
+        }
+      ]
+    },
+    {
+      "slug": "hanoi-4-days-luxury-foratravel",
+      "title": "Hanoi in style, with two day trips",
+      "summary": "Fora advisor Danielle Moore's picks: the Old Quarter, Hoa Lo Prison and a water puppet show, day trips to Ha Long Bay and Trang An, and Hanoi's best bun cha and rooftop bars. Her guide isn't a day plan, so we grouped the stops into days.",
+      "tier": "LUXURY",
+      "days": 4,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/UH6AH7/hanoi-exploring-vietnams-bright-and-bustling-capital-danielle-moore",
+      "items": [
+        {
+          "day": 1,
+          "name": "Capella Hanoi",
+          "category": "STAY",
+          "note": "Advisor's pick. Or Sofitel Legend Metropole Hanoi, Hotel de l'Opera Hanoi – MGallery or JW Marriott Hotel Hanoi.",
+          "place": "capella-hanoi",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 1,
+          "name": "Hanoi Old Quarter",
+          "category": "EXPERIENCE",
+          "note": "36 streets, each named for its trade",
+          "place": "old-quarter",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Hoan Kiem Lake",
+          "category": "EXPERIENCE",
+          "note": "The bridge to the temple is a great photo op",
+          "place": "hoan-kiem-lake",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Pho 10 Ly Quoc Su",
+          "category": "FOOD",
+          "note": "Michelin Guide listed",
+          "place": "pho-10-ly-quoc-su"
+        },
+        {
+          "day": 1,
+          "name": "St. Joseph's Cathedral",
+          "category": "EXPERIENCE",
+          "place": "st-josephs-cathedral",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Hoa Lo Prison Relic",
+          "category": "EXPERIENCE",
+          "place": "hoa-lo-prison",
+          "price": 1.93,
+          "priceNote": "50,000 VND per adult",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 1,
+          "name": "Cafe Giang",
+          "category": "FOOD",
+          "note": "The original egg coffee",
+          "place": "cafe-giang"
+        },
+        {
+          "day": 1,
+          "name": "Hanoi Train Street",
+          "category": "EXPERIENCE",
+          "note": "Officially off-limits: Hanoi has banned business on the tracks since 2019 and cut train services in Feb 2026. The sanctioned view is from the cafe inside Long Bien station.",
+          "place": "hanoi-train-street",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Long Bien Bridge",
+          "category": "EXPERIENCE",
+          "note": "Red River views, then the nearby market",
+          "place": "long-bien-bridge",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Thang Long Water Puppet Theatre",
+          "category": "EXPERIENCE",
+          "place": "thang-long-water-puppet-theatre",
+          "price": 3.86,
+          "priceNote": "100,000 VND per adult",
+          "priceSource": "https://www.willflyforfood.net/the-perfect-3-day-hanoi-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "SWI:P Speakeasy Bar",
+          "category": "FOOD",
+          "note": "Hidden bar",
+          "place": "swip-speakeasy"
+        },
+        {
+          "day": 2,
+          "name": "Ha Long Bay",
+          "category": "EXPERIENCE",
+          "note": "Set aside a full day",
+          "place": "ha-long-bay"
+        },
+        {
+          "day": 3,
+          "name": "Trang An",
+          "category": "EXPERIENCE",
+          "note": "All-day tour with a bamboo boat ride and biking",
+          "place": "ninh-binh"
+        },
+        {
+          "day": 4,
+          "name": "Ho Chi Minh Mausoleum",
+          "category": "EXPERIENCE",
+          "place": "ho-chi-minh-mausoleum",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.timetravelturtle.com/vietnam/things-to-do-in-hanoi/"
+        },
+        {
+          "day": 4,
+          "name": "Bun Cha Huong Lien",
+          "category": "FOOD",
+          "note": "The Obama/Bourdain spot; still great",
+          "place": "bun-cha-huong-lien"
+        },
+        {
+          "day": 4,
+          "name": "Tam Vi",
+          "category": "FOOD",
+          "note": "One Michelin star; perfect for a special occasion",
+          "place": "tam-vi"
+        },
+        {
+          "day": 4,
+          "name": "Pasteur Street Brewing Co.",
+          "category": "FOOD",
+          "place": "pasteur-street-brewing-hanoi"
+        },
+        {
+          "day": 4,
+          "name": "The Lighthouse Sky Bar",
+          "category": "FOOD",
+          "place": "lighthouse-sky-bar"
+        }
+      ]
+    }
+  ]
+}

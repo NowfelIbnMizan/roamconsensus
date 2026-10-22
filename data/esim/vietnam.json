@@ -1,0 +1,395 @@
+{
+  "country": "Vietnam",
+  "checkedAt": "2026-10-22",
+  "plans": [
+    {
+      "provider": "Airalo",
+      "name": "1GB 3 days",
+      "dataGb": 1,
+      "days": 3,
+      "price": 4.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "3GB 3 days",
+      "dataGb": 3,
+      "days": 3,
+      "price": 7.5,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "3GB 7 days",
+      "dataGb": 3,
+      "days": 7,
+      "price": 8.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "5GB 7 days",
+      "dataGb": 5,
+      "days": 7,
+      "price": 10.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "5GB 15 days",
+      "dataGb": 5,
+      "days": 15,
+      "price": 10.5,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 11.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "10GB 7 days",
+      "dataGb": 10,
+      "days": 7,
+      "price": 17.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "10GB 15 days",
+      "dataGb": 10,
+      "days": 15,
+      "price": 17.5,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 18.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "20GB 15 days",
+      "dataGb": 20,
+      "days": 15,
+      "price": 28.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "20GB 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 29.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "50GB 30 days",
+      "dataGb": 50,
+      "days": 30,
+      "price": 49.0,
+      "network": "Vinaphone",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.5,
+      "network": "Vinaphone",
+      "speed": "3GB/day, then 1 Mbps",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.0,
+      "network": "Vinaphone",
+      "speed": "3GB/day, then 1 Mbps",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 48.0,
+      "network": "Vinaphone",
+      "speed": "3GB/day, then 1 Mbps",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 69.0,
+      "network": "Vinaphone",
+      "speed": "3GB/day, then 1 Mbps",
+      "url": "https://www.airalo.com/vietnam-esim"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.9,
+      "network": "Vinaphone",
+      "notes": "Fair-use policy not disclosed",
+      "url": "https://esim.holafly.com/esim-vietnam/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 20.5,
+      "network": "Vinaphone",
+      "url": "https://esim.holafly.com/esim-vietnam/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 27.5,
+      "network": "Vinaphone",
+      "url": "https://esim.holafly.com/esim-vietnam/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 37.5,
+      "network": "Vinaphone",
+      "url": "https://esim.holafly.com/esim-vietnam/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 51.5,
+      "network": "Vinaphone",
+      "url": "https://esim.holafly.com/esim-vietnam/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 76.5,
+      "network": "Vinaphone",
+      "url": "https://esim.holafly.com/esim-vietnam/"
+    },
+    {
+      "provider": "Nomad",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 4.0,
+      "network": "MobiFone / Vinaphone / Vietnamobile",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "3GB 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 8.0,
+      "network": "MobiFone / Vinaphone / Vietnamobile",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 10.0,
+      "network": "MobiFone / Vinaphone / Vietnamobile",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 17.0,
+      "network": "MobiFone / Vinaphone / Vietnamobile",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "20GB 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 25.0,
+      "network": "MobiFone / Vinaphone / Vietnamobile",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.0,
+      "speed": "2GB/day, then 512 Kbps",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Nomad",
+      "name": "Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 33.0,
+      "speed": "2GB/day, then 512 Kbps",
+      "url": "https://www.getnomad.app/vietnam-eSIM"
+    },
+    {
+      "provider": "Saily",
+      "name": "1GB 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 3.99,
+      "notes": "Network not publicly listed",
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Saily",
+      "name": "3GB 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 7.99,
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Saily",
+      "name": "5GB 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 10.99,
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Saily",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 17.99,
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.99,
+      "speed": "5GB/day, then 1 Mbps",
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 26.99,
+      "speed": "5GB/day, then 1 Mbps",
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 71.99,
+      "speed": "5GB/day, then 1 Mbps",
+      "url": "https://saily.com/esim-vietnam/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "3GB 15 days",
+      "dataGb": 3,
+      "days": 15,
+      "price": 6.9,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-3gb-15-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "10GB 7 days",
+      "dataGb": 10,
+      "days": 7,
+      "price": 10.9,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-10gb-7-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "10GB 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 12.9,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-10gb-30-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "50GB 30 days",
+      "dataGb": 50,
+      "days": 30,
+      "price": 36.9,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-50gb-30-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 24.0,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-unlimited-7-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 39.9,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-unlimited-15-days/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 54.9,
+      "network": "Vinaphone",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/vietnam-data-plans/vietnam-unlimited-30-days/"
+    }
+  ]
+}

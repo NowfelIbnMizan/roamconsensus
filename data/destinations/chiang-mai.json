@@ -1,0 +1,1007 @@
+{
+  "slug": "chiang-mai",
+  "name": "Chiang Mai",
+  "country": "Thailand",
+  "summary": "Golden temples in and around the moated Old City, Doi Suthep above town, khao soi and night markets, elephant sanctuaries and Doi Inthanon, Thailand's highest peak.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Chiang_Mai",
+  "months": [
+    {
+      "month": 1,
+      "highC": 30,
+      "lowC": 16,
+      "rainMm": 11,
+      "crowd": "HIGH",
+      "note": "Peak season with cool mornings and dry sunny days."
+    },
+    {
+      "month": 2,
+      "highC": 33,
+      "lowC": 17,
+      "rainMm": 10,
+      "crowd": "MEDIUM",
+      "note": "Flower festival early in the month; smoky burning-season haze starts to build."
+    },
+    {
+      "month": 3,
+      "highC": 35,
+      "lowC": 20,
+      "rainMm": 20,
+      "crowd": "LOW",
+      "note": "Burning season makes March often the smokiest month, with hazardous air quality; consider avoiding it."
+    },
+    {
+      "month": 4,
+      "highC": 37,
+      "lowC": 23,
+      "rainMm": 54,
+      "crowd": "HIGH",
+      "note": "Hottest month, often still smoky; Songkran water festival (13–15 Apr) is huge here."
+    },
+    {
+      "month": 5,
+      "highC": 35,
+      "lowC": 24,
+      "rainMm": 168,
+      "crowd": "LOW",
+      "note": "Rains arrive and clear the smoke."
+    },
+    {
+      "month": 6,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 118,
+      "crowd": "LOW",
+      "note": "Green season with afternoon showers; quiet and cheap."
+    },
+    {
+      "month": 7,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 149,
+      "crowd": "LOW",
+      "note": "Rainy season; lush countryside, but some trekking trails are muddy."
+    },
+    {
+      "month": 8,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 223,
+      "crowd": "LOW",
+      "note": "Wettest month; local flooding is possible."
+    },
+    {
+      "month": 9,
+      "highC": 32,
+      "lowC": 24,
+      "rainMm": 207,
+      "crowd": "LOW",
+      "note": "Heavy rain continues; the Ping River can flood."
+    },
+    {
+      "month": 10,
+      "highC": 32,
+      "lowC": 23,
+      "rainMm": 124,
+      "crowd": "MEDIUM",
+      "note": "Rains ease and the high season begins."
+    },
+    {
+      "month": 11,
+      "highC": 31,
+      "lowC": 20,
+      "rainMm": 41,
+      "crowd": "HIGH",
+      "note": "Yi Peng lantern festival and Loy Krathong (November full moon); book months ahead."
+    },
+    {
+      "month": 12,
+      "highC": 29,
+      "lowC": 17,
+      "rainMm": 14,
+      "crowd": "HIGH",
+      "note": "Cool, dry peak season; chilly nights in the mountains."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free stays cut to 30 days",
+      "body": "From 15 September 2026 the 60-day visa exemption ended, and passport holders from 60 countries (including the UK, US and Australia) now get 30 days visa-free for tourism. Visa-free entries by land are generally limited to 2 per calendar year. Seychelles and Mauritius passport holders get 15 days, and visas on arrival apply to citizens of Azerbaijan, Belarus and Serbia.",
+      "sourceUrl": "https://www.tatnews.org/2026/09/thailand-introduces-new-30-day-and-15-day-visa-exemption-rules-from-15-september/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Show funds and an onward ticket",
+      "body": "Visa-exempt visitors may be asked for at least 10,000 baht per person or 20,000 baht per family, plus proof of onward or return travel. The visa-exempt entry covers tourism only, not business.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Entry",
+      "title": "Complete the TDAC within 3 days of arrival",
+      "body": "All foreign nationals have needed the Thailand Digital Arrival Card (TDAC) since 1 May 2025. Submit it free in the 3 days before arrival at tdac.immigration.go.th.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Vapes are illegal, including for tourists",
+      "body": "Possessing or using any vape, e-cigarette, pod, e-liquid or heat-not-burn device is illegal, with no exceptions for tourists. Penalties include confiscation, fines typically of 5,000–30,000 baht and detention. You may have to stay in Thailand until your case is finished.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Cannabis is medical-only",
+      "body": "Recreational cannabis is illegal again. Use is allowed only with a Thai-issued prescription, limited to a 30-day supply. Taking cannabis out of Thailand without permission brings fines from 30,000 baht per kg and possible detention.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Smoke haze in burning season",
+      "body": "Air pollution in Chiang Mai can reach dangerous levels during seasonal smoke from crop and forest burning. This can worsen asthma and sinus conditions. Wikipedia's Chiang Mai article puts the pollution season at roughly December to April and calls March the worst month.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Dengue and other mosquito-borne diseases",
+      "body": "Dengue, Zika and malaria are risks in Thailand, and rabies is also present. Use repellent and get medical help for a high fever.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Insurance and emergency numbers",
+      "body": "Hospitals require a guarantee of payment, so travel insurance is essential. Call 191 for police, fire or ambulance, or 1669 for an ambulance.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Transport",
+      "title": "Scooter rental needs the right licence",
+      "body": "Carry both a 1968 International Driving Permit (IDP) and your home licence, and wear a helmet, which is required by law. Driving without a valid licence can void your travel insurance.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Never leave your passport as a deposit",
+      "body": "Don't hand over your passport as a guarantee to motorbike or other rental shops. They may hold it against claims for damage.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Money",
+      "title": "Use ATMs inside banks",
+      "body": "ATM skimming has been reported, so use machines inside bank branches, cover your PIN and keep sight of your card.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Respect the monarchy and mind what you post",
+      "body": "Criticising the Thai monarchy is a crime carrying long prison sentences, and the law is interpreted broadly. Posting photos online of people drinking or in clothing seen as inappropriate can also be illegal.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    }
+  ],
+  "places": [
+    {
+      "slug": "the-wing-boutique",
+      "name": "The Wing Boutique",
+      "category": "STAY",
+      "area": "",
+      "blurb": "Mid-range boutique hotel."
+    },
+    {
+      "slug": "beautiful-thai-home-airbnb",
+      "name": "Beautiful Thai Home",
+      "category": "STAY",
+      "area": "",
+      "blurb": "Airbnb home rental."
+    },
+    {
+      "slug": "raya-heritage",
+      "name": "Raya Heritage",
+      "category": "STAY",
+      "area": "Mae Ping riverside (north)",
+      "blurb": "Riverside resort with Lanna-inspired design.",
+      "lat": 18.827,
+      "lng": 99.005
+    },
+    {
+      "slug": "wat-lok-moli",
+      "name": "Wat Lok Moli",
+      "category": "EXPERIENCE",
+      "area": "Old City (north)",
+      "blurb": "Temple just north of the old city wall with a large brick chedi.",
+      "lat": 18.7955,
+      "lng": 98.9845
+    },
+    {
+      "slug": "wat-chiang-man",
+      "name": "Wat Chiang Man",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Chiang Mai's oldest temple, founded in 1296, with the elephant-buttressed Chang Lom chedi.",
+      "lat": 18.7942,
+      "lng": 98.9893
+    },
+    {
+      "slug": "wat-chedi-luang",
+      "name": "Wat Chedi Luang",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Temple centred on a massive partially ruined chedi.",
+      "lat": 18.787,
+      "lng": 98.9865
+    },
+    {
+      "slug": "wat-phra-singh",
+      "name": "Wat Phra Singh",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Major Lanna-style temple housing the Phra Buddha Sihing image.",
+      "lat": 18.7886,
+      "lng": 98.9817
+    },
+    {
+      "slug": "wat-phan-tao",
+      "name": "Wat Phan Tao",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Teak-wood temple hall beside Wat Chedi Luang.",
+      "lat": 18.788,
+      "lng": 98.9875
+    },
+    {
+      "slug": "wat-dubphai",
+      "name": "Wat Dubphai",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Small temple in the old city."
+    },
+    {
+      "slug": "khao-soi-lung-prakit",
+      "name": "Khao Soi Lung Prakit",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Khao soi noodle shop."
+    },
+    {
+      "slug": "wat-suan-dok",
+      "name": "Wat Suan Dok",
+      "category": "EXPERIENCE",
+      "area": "Suthep Road",
+      "blurb": "Temple known for its cluster of white royal chedis.",
+      "lat": 18.788,
+      "lng": 98.9675
+    },
+    {
+      "slug": "wat-umong",
+      "name": "Wat Umong",
+      "category": "EXPERIENCE",
+      "area": "Suthep (forest)",
+      "blurb": "Forest temple with ancient meditation tunnels.",
+      "lat": 18.783,
+      "lng": 98.952
+    },
+    {
+      "slug": "wat-pha-lat",
+      "name": "Wat Pha Lat",
+      "category": "EXPERIENCE",
+      "area": "Doi Suthep",
+      "blurb": "Quiet jungle temple on the trail up Doi Suthep.",
+      "lat": 18.8,
+      "lng": 98.933
+    },
+    {
+      "slug": "wat-phra-that-doi-suthep",
+      "name": "Wat Phra That Doi Suthep",
+      "category": "EXPERIENCE",
+      "area": "Doi Suthep",
+      "blurb": "Mountaintop temple reached by a naga staircase, overlooking the city.",
+      "tip": "Cover shoulders and knees. Take the 306 steps or the funicular.",
+      "lat": 18.805,
+      "lng": 98.9216
+    },
+    {
+      "slug": "suki-koka-chang-phueak",
+      "name": "Suki Koka",
+      "category": "FOOD",
+      "area": "Chang Phueak Gate",
+      "blurb": "Evening sukiyaki stall beside Khao Kha Moo Chang Phueak.",
+      "lat": 18.7975,
+      "lng": 98.986
+    },
+    {
+      "slug": "north-gate-jazz-co-op",
+      "name": "North Gate Jazz Co-Op",
+      "category": "EXPERIENCE",
+      "area": "Chang Phueak Gate",
+      "blurb": "Small bar with nightly live jazz.",
+      "lat": 18.797,
+      "lng": 98.9865
+    },
+    {
+      "slug": "pha-chor",
+      "name": "Pha Chor",
+      "category": "EXPERIENCE",
+      "area": "Mae Wang / Doi Inthanon area",
+      "blurb": "Canyon of eroded sandstone cliffs."
+    },
+    {
+      "slug": "mae-ya-waterfall",
+      "name": "Mae Ya Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Doi Inthanon National Park",
+      "blurb": "Tall tiered waterfall in Doi Inthanon National Park."
+    },
+    {
+      "slug": "doi-inthanon-summit",
+      "name": "Doi Inthanon summit",
+      "category": "EXPERIENCE",
+      "area": "Doi Inthanon National Park",
+      "blurb": "Thailand's highest point, with the Ang Ka Nature Trail.",
+      "lat": 18.5885,
+      "lng": 98.487
+    },
+    {
+      "slug": "doi-inthanon-royal-pagodas",
+      "name": "Twin Royal Pagodas",
+      "category": "EXPERIENCE",
+      "area": "Doi Inthanon National Park",
+      "blurb": "Pair of royal chedis with mountain views.",
+      "lat": 18.544,
+      "lng": 98.478
+    },
+    {
+      "slug": "kew-mae-pan-trail",
+      "name": "Kew Mae Pan Nature Trail",
+      "category": "EXPERIENCE",
+      "area": "Doi Inthanon National Park",
+      "blurb": "Ridge trail popular for sunrise; guided walk only.",
+      "lat": 18.553,
+      "lng": 98.481
+    },
+    {
+      "slug": "wachirathan-waterfall",
+      "name": "Wachirathan Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Doi Inthanon National Park",
+      "blurb": "Powerful roadside waterfall in Doi Inthanon National Park."
+    },
+    {
+      "slug": "elephant-nature-park",
+      "name": "Elephant Nature Park",
+      "category": "EXPERIENCE",
+      "area": "Mae Taeng",
+      "blurb": "Elephant rescue and rehabilitation centre north of Chiang Mai.",
+      "lat": 19.2125,
+      "lng": 98.858
+    },
+    {
+      "slug": "chiang-mai-night-bazaar",
+      "name": "Chiang Mai Night Bazaar",
+      "category": "EXPERIENCE",
+      "area": "Chang Khlan",
+      "blurb": "Nightly market for souvenirs and street food.",
+      "lat": 18.785,
+      "lng": 99.0005
+    },
+    {
+      "slug": "chiang-mai-city-arts-cultural-centre",
+      "name": "Chiang Mai City Arts & Cultural Centre",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Museum of Chiang Mai history in a former provincial hall.",
+      "lat": 18.7905,
+      "lng": 98.9877
+    },
+    {
+      "slug": "chiang-mai-national-museum",
+      "name": "Chiang Mai National Museum",
+      "category": "EXPERIENCE",
+      "area": "",
+      "blurb": "Museum of Lanna history and culture."
+    },
+    {
+      "slug": "san-kamphaeng-road",
+      "name": "San Kamphaeng Road handicraft villages",
+      "category": "EXPERIENCE",
+      "area": "San Kamphaeng",
+      "blurb": "Road lined with handicraft workshops and factories."
+    },
+    {
+      "slug": "lanna-folklife-museum",
+      "name": "Lanna Folklife Museum",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Museum of northern Thai daily life and crafts.",
+      "lat": 18.79,
+      "lng": 98.9875
+    },
+    {
+      "slug": "bhubing-palace",
+      "name": "Bhubing Palace",
+      "category": "EXPERIENCE",
+      "area": "Doi Suthep",
+      "blurb": "Royal winter palace with gardens on Doi Suthep.",
+      "lat": 18.805,
+      "lng": 98.899
+    },
+    {
+      "slug": "mae-ping-river",
+      "name": "Mae Ping River",
+      "category": "EXPERIENCE",
+      "area": "Riverside",
+      "blurb": "River through Chiang Mai lined with restaurants and boat trips.",
+      "lat": 18.788,
+      "lng": 99.001
+    },
+    {
+      "slug": "womens-correctional-institution-massage",
+      "name": "Chiang Mai Women's Correctional Institution Massage",
+      "category": "EXPERIENCE",
+      "area": "Old City",
+      "blurb": "Massage centre run by trained inmates and ex-inmates."
+    },
+    {
+      "slug": "terracotta-garden",
+      "name": "Terracotta Garden",
+      "category": "EXPERIENCE",
+      "area": "Riverside / Wat Ket",
+      "blurb": "Garden café filled with terracotta sculptures."
+    },
+    {
+      "slug": "chang-phueak-gate-night-market",
+      "name": "Chang Phueak Gate Night Market",
+      "category": "FOOD",
+      "area": "Chang Phueak Gate",
+      "blurb": "Evening street-food market at the old city's north gate.",
+      "lat": 18.7965,
+      "lng": 98.986
+    },
+    {
+      "slug": "bua-tong-sticky-waterfall",
+      "name": "Bua Tong Sticky Waterfalls",
+      "category": "EXPERIENCE",
+      "area": "Mae Taeng",
+      "blurb": "Limestone waterfall you can climb thanks to grippy mineral deposits.",
+      "lat": 19.064,
+      "lng": 99.079
+    },
+    {
+      "slug": "elephant-jungle-sanctuary",
+      "name": "Elephant Jungle Sanctuary",
+      "category": "EXPERIENCE",
+      "area": "",
+      "blurb": "Elephant experience operator offering half-day visits."
+    },
+    {
+      "slug": "khao-soi-khun-yai",
+      "name": "Khao Soi Khun Yai",
+      "category": "FOOD",
+      "area": "Old City (north)",
+      "blurb": "Small open-air khao soi shop."
+    },
+    {
+      "slug": "tong-tem-toh",
+      "name": "Tong Tem Toh",
+      "category": "FOOD",
+      "area": "Nimmanhaemin",
+      "blurb": "Northern Thai restaurant."
+    },
+    {
+      "slug": "khao-kha-moo-chang-phueak",
+      "name": "Khao Kha Moo Chang Phueak",
+      "category": "FOOD",
+      "area": "Chang Phueak Gate",
+      "blurb": "Evening stall famous for braised pork leg on rice.",
+      "lat": 18.7975,
+      "lng": 98.986
+    },
+    {
+      "slug": "kiat-ocha",
+      "name": "Kiat Ocha",
+      "category": "FOOD",
+      "area": "Old City",
+      "blurb": "Khao man gai shop also known for pork satay."
+    },
+    {
+      "slug": "sp-chicken",
+      "name": "SP Chicken",
+      "category": "FOOD",
+      "area": "Old City",
+      "blurb": "Isan-style rotisserie chicken restaurant."
+    },
+    {
+      "slug": "khao-soi-islam",
+      "name": "Khao Soi Islam",
+      "category": "FOOD",
+      "area": "Night Bazaar area",
+      "blurb": "Halal restaurant serving khao soi and biryani."
+    },
+    {
+      "slug": "huen-phen",
+      "name": "Huen Phen",
+      "category": "FOOD",
+      "area": "Old City",
+      "blurb": "Northern Thai restaurant."
+    },
+    {
+      "slug": "loong-thai",
+      "name": "Loong Thai",
+      "category": "FOOD",
+      "area": "",
+      "blurb": "Spicy curry-and-rice shop."
+    }
+  ],
+  "creators": [
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
+    },
+    {
+      "handle": "foratravel",
+      "name": "Fora Travel",
+      "platform": "BLOG",
+      "profileUrl": "https://www.foratravel.com",
+      "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    },
+    {
+      "handle": "markwiens",
+      "name": "Mark Wiens",
+      "platform": "BLOG",
+      "profileUrl": "https://www.eatingthaifood.com",
+      "youtubeUrl": "https://www.youtube.com/@MarkWiens",
+      "bio": "Food traveller behind Migrationology and Eating Thai Food."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "chiang-mai-3-days-bucketlistly",
+      "title": "Chiang Mai in 3 days: temples, Doi Inthanon and elephants",
+      "summary": "Old City temples, khao soi and Doi Suthep, then a day on Doi Inthanon with waterfalls and the royal pagodas, and a day at Elephant Nature Park.",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/chiang-mai-3-days-backpacking-itinerary",
+      "items": [
+        {
+          "day": 1,
+          "name": "The Wing Boutique",
+          "category": "STAY",
+          "note": "Creator's top pick. Or Your Space Hotel Prasingh or Aksara Heritage.",
+          "place": "the-wing-boutique",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Wat Lok Moli",
+          "category": "EXPERIENCE",
+          "note": "Start as early as you can",
+          "place": "wat-lok-moli"
+        },
+        {
+          "day": 1,
+          "name": "Wat Chiang Man",
+          "category": "EXPERIENCE",
+          "place": "wat-chiang-man"
+        },
+        {
+          "day": 1,
+          "name": "Wat Chedi Luang",
+          "category": "EXPERIENCE",
+          "place": "wat-chedi-luang"
+        },
+        {
+          "day": 1,
+          "name": "Wat Phra Singh",
+          "category": "EXPERIENCE",
+          "place": "wat-phra-singh"
+        },
+        {
+          "day": 1,
+          "name": "Khao Soi Lung Prakit",
+          "category": "FOOD",
+          "note": "Get the beef khao soi",
+          "place": "khao-soi-lung-prakit"
+        },
+        {
+          "day": 1,
+          "name": "Wat Suan Dok",
+          "category": "EXPERIENCE",
+          "place": "wat-suan-dok"
+        },
+        {
+          "day": 1,
+          "name": "Wat Umong",
+          "category": "EXPERIENCE",
+          "place": "wat-umong",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Wat Pha Lat",
+          "category": "EXPERIENCE",
+          "place": "wat-pha-lat"
+        },
+        {
+          "day": 1,
+          "name": "Wat Phra That Doi Suthep",
+          "category": "EXPERIENCE",
+          "note": "300+ steep steps; go for sunset",
+          "place": "wat-phra-that-doi-suthep",
+          "price": 0.89,
+          "priceNote": "30 THB per adult",
+          "priceSource": "https://www.thaiholidayguide.com/attraction/wat-phra-that-doi-suthep/"
+        },
+        {
+          "day": 1,
+          "name": "Suki Koka",
+          "category": "FOOD",
+          "place": "suki-koka-chang-phueak"
+        },
+        {
+          "day": 1,
+          "name": "North Gate Jazz Co-Op",
+          "category": "EXPERIENCE",
+          "place": "north-gate-jazz-co-op"
+        },
+        {
+          "day": 2,
+          "name": "Pha Chor",
+          "category": "EXPERIENCE",
+          "place": "pha-chor"
+        },
+        {
+          "day": 2,
+          "name": "Mae Ya Waterfall",
+          "category": "EXPERIENCE",
+          "place": "mae-ya-waterfall"
+        },
+        {
+          "day": 2,
+          "name": "Doi Inthanon summit",
+          "category": "EXPERIENCE",
+          "place": "doi-inthanon-summit",
+          "price": 8.92,
+          "priceNote": "300 THB per adult",
+          "priceSource": "https://www.bucketlistly.blog/posts/chiang-mai-3-days-backpacking-itinerary"
+        },
+        {
+          "day": 2,
+          "name": "Twin Royal Pagodas",
+          "category": "EXPERIENCE",
+          "place": "doi-inthanon-royal-pagodas"
+        },
+        {
+          "day": 2,
+          "name": "Kew Mae Pan Nature Trail",
+          "category": "EXPERIENCE",
+          "note": "The earlier you are there, the less you will have to wait",
+          "place": "kew-mae-pan-trail"
+        },
+        {
+          "day": 2,
+          "name": "Wachirathan Waterfall",
+          "category": "EXPERIENCE",
+          "place": "wachirathan-waterfall"
+        },
+        {
+          "day": 3,
+          "name": "Elephant Nature Park",
+          "category": "EXPERIENCE",
+          "note": "You won't be able to visit if you haven't booked",
+          "place": "elephant-nature-park",
+          "price": 104.1,
+          "priceNote": "3,500 THB per adult",
+          "priceSource": "https://www.bucketlistly.blog/posts/chiang-mai-3-days-backpacking-itinerary"
+        }
+      ]
+    },
+    {
+      "slug": "chiang-mai-3-days-thebrokebackpacker",
+      "title": "3 days in Chiang Mai on a budget",
+      "summary": "An elephant sanctuary morning, Old City temples and the Night Bazaar, then museums, Wat Umong and Doi Suthep, and Bhubing Palace, the Ping River and a massage by inmates at the women's prison.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Beautiful Thai Home",
+          "category": "STAY",
+          "note": "Creator's pick. Or Arch39 Minimal Art & Craft, The Inside House or S*Trips The Poshtel.",
+          "place": "beautiful-thai-home-airbnb",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Elephant Nature Park",
+          "category": "EXPERIENCE",
+          "note": "Bring water and a hat, and wear closed shoes",
+          "place": "elephant-nature-park",
+          "price": 104.1,
+          "priceNote": "3,500 THB per adult (creator: around $81)",
+          "priceSource": "https://www.bucketlistly.blog/posts/chiang-mai-3-days-backpacking-itinerary"
+        },
+        {
+          "day": 1,
+          "name": "Wat Phra Singh",
+          "category": "EXPERIENCE",
+          "note": "Most temples have a fairly strict dress code which includes covered shoulders and knees.",
+          "place": "wat-phra-singh",
+          "price": 1.0,
+          "priceNote": "creator: $1 USD"
+        },
+        {
+          "day": 1,
+          "name": "Wat Phan Tao",
+          "category": "EXPERIENCE",
+          "place": "wat-phan-tao",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Wat Chedi Luang",
+          "category": "EXPERIENCE",
+          "note": "Talk with a Buddhist monk!",
+          "place": "wat-chedi-luang",
+          "price": 1.0,
+          "priceNote": "creator: $1 USD"
+        },
+        {
+          "day": 1,
+          "name": "Chiang Mai Night Bazaar",
+          "category": "EXPERIENCE",
+          "note": "Bargaining is expected; negotiate with a smile",
+          "place": "chiang-mai-night-bazaar",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Chiang Mai City Arts & Cultural Centre",
+          "category": "EXPERIENCE",
+          "place": "chiang-mai-city-arts-cultural-centre",
+          "price": 3.0,
+          "priceNote": "creator: $3 or $6 USD (depends on ticket)"
+        },
+        {
+          "day": 2,
+          "name": "Chiang Mai National Museum",
+          "category": "EXPERIENCE",
+          "place": "chiang-mai-national-museum",
+          "price": 3.0,
+          "priceNote": "creator: $3 or $6 (depends on ticket)"
+        },
+        {
+          "day": 2,
+          "name": "Wat Umong",
+          "category": "EXPERIENCE",
+          "note": "Get your driver to wait for you as not many vehicles stop here.",
+          "place": "wat-umong",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        },
+        {
+          "day": 2,
+          "name": "Wat Phra That Doi Suthep",
+          "category": "EXPERIENCE",
+          "note": "Try to get here just before sunset.",
+          "place": "wat-phra-that-doi-suthep",
+          "price": 0.89,
+          "priceNote": "30 THB per adult (creator: $2 USD)",
+          "priceSource": "https://www.thaiholidayguide.com/attraction/wat-phra-that-doi-suthep/"
+        },
+        {
+          "day": 2,
+          "name": "San Kamphaeng Road handicraft villages",
+          "category": "EXPERIENCE",
+          "note": "Wear comfortable shoes",
+          "place": "san-kamphaeng-road",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        },
+        {
+          "day": 3,
+          "name": "Lanna Folklife Museum",
+          "category": "EXPERIENCE",
+          "place": "lanna-folklife-museum",
+          "price": 3.0,
+          "priceNote": "creator: $3 or $6 (depending on ticket)"
+        },
+        {
+          "day": 3,
+          "name": "Bhubing Palace",
+          "category": "EXPERIENCE",
+          "note": "Much like the temples, Bhubing Palace has a strict dress code.",
+          "place": "bhubing-palace",
+          "price": 2.0,
+          "priceNote": "creator: $2 USD"
+        },
+        {
+          "day": 3,
+          "name": "Mae Ping River",
+          "category": "EXPERIENCE",
+          "note": "Lunch at The Good View Bar & Restaurant, and take a boat ride",
+          "place": "mae-ping-river",
+          "price": 7.0,
+          "priceNote": "creator: $7"
+        },
+        {
+          "day": 3,
+          "name": "Chiang Mai Women's Correctional Institution Massage",
+          "category": "EXPERIENCE",
+          "place": "womens-correctional-institution-massage",
+          "priceNote": "creator: No set price"
+        },
+        {
+          "day": 3,
+          "name": "Terracotta Garden",
+          "category": "EXPERIENCE",
+          "note": "Call ahead to arrange a pottery workshop",
+          "place": "terracotta-garden",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        }
+      ]
+    },
+    {
+      "slug": "chiang-mai-3-days-luxury-foratravel",
+      "title": "A stylish 3 days in Chiang Mai",
+      "summary": "Fora advisor Mary Aiesi's picks: Old City temples and the Chang Phueak night market, a day climbing the Sticky Waterfalls, and an elephant sanctuary. Her guide isn't a day plan, so we split it into days.",
+      "tier": "LUXURY",
+      "days": 3,
+      "creator": "foratravel",
+      "sourceUrl": "https://www.foratravel.com/guides/F8UEY4/chiang-mai-the-best-way-to-spend-3-days-in-northern-thailand-mary-aiesi",
+      "items": [
+        {
+          "day": 1,
+          "name": "Raya Heritage",
+          "category": "STAY",
+          "note": "Advisor's pick. Or AMANOR Hotel Chiang Mai, Shangri-La Chiang Mai, 137 Pillars House or Aleenta Retreat Chiang Mai.",
+          "place": "raya-heritage",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Wat Lok Moli",
+          "category": "EXPERIENCE",
+          "note": "Within easy walking distance from one another within the gates",
+          "place": "wat-lok-moli"
+        },
+        {
+          "day": 1,
+          "name": "Wat Dubphai",
+          "category": "EXPERIENCE",
+          "place": "wat-dubphai"
+        },
+        {
+          "day": 1,
+          "name": "Wat Phra Singh",
+          "category": "EXPERIENCE",
+          "place": "wat-phra-singh"
+        },
+        {
+          "day": 1,
+          "name": "Wat Phan Tao",
+          "category": "EXPERIENCE",
+          "place": "wat-phan-tao",
+          "price": 0.0,
+          "priceNote": "free",
+          "priceSource": "https://www.thebrokebackpacker.com/chiang-mai-itinerary/"
+        },
+        {
+          "day": 1,
+          "name": "Chang Phueak Gate Night Market",
+          "category": "FOOD",
+          "note": "This is a great way to end any of your activity-packed days in Chiang Mai!",
+          "place": "chang-phueak-gate-night-market"
+        },
+        {
+          "day": 2,
+          "name": "Bua Tong Sticky Waterfalls",
+          "category": "EXPERIENCE",
+          "note": "Be sure to bring your swimsuit!",
+          "place": "bua-tong-sticky-waterfall"
+        },
+        {
+          "day": 3,
+          "name": "Elephant Jungle Sanctuary",
+          "category": "EXPERIENCE",
+          "note": "I cannot recommend this company and activity enough!",
+          "place": "elephant-jungle-sanctuary"
+        }
+      ]
+    },
+    {
+      "slug": "chiang-mai-food-guide-markwiens",
+      "title": "Mark Wiens' best restaurants in Chiang Mai",
+      "summary": "Khao soi, braised pork leg and Northern Thai dishes from Mark's list of favourite restaurants. It's a ranked list, not a plan, so we split it over two days.",
+      "tier": "BUDGET",
+      "days": 2,
+      "creator": "markwiens",
+      "sourceUrl": "https://www.eatingthaifood.com/best-restaurants-in-chiang-mai/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Khao Soi Khun Yai",
+          "category": "FOOD",
+          "note": "Packed with spices, not too sweet, and extremely flavorful",
+          "place": "khao-soi-khun-yai"
+        },
+        {
+          "day": 1,
+          "name": "Tong Tem Toh",
+          "category": "FOOD",
+          "note": "Incredibly vibrant, spicy, and extremely tasty",
+          "place": "tong-tem-toh"
+        },
+        {
+          "day": 1,
+          "name": "Khao Kha Moo Chang Phueak",
+          "category": "FOOD",
+          "note": "Look for the cowboy-hat server",
+          "place": "khao-kha-moo-chang-phueak"
+        },
+        {
+          "day": 1,
+          "name": "Suki Koka",
+          "category": "FOOD",
+          "note": "Author prefers the dry version",
+          "place": "suki-koka-chang-phueak"
+        },
+        {
+          "day": 1,
+          "name": "Kiat Ocha",
+          "category": "FOOD",
+          "note": "Don't miss their pork satay",
+          "place": "kiat-ocha"
+        },
+        {
+          "day": 2,
+          "name": "SP Chicken",
+          "category": "FOOD",
+          "place": "sp-chicken"
+        },
+        {
+          "day": 2,
+          "name": "Khao Soi Islam",
+          "category": "FOOD",
+          "note": "Khao soi is mild; the beef biryani-style rice is the highlight",
+          "place": "khao-soi-islam"
+        },
+        {
+          "day": 2,
+          "name": "Huen Phen",
+          "category": "FOOD",
+          "note": "A good place to try northern Thai food for an affordable meal",
+          "place": "huen-phen"
+        },
+        {
+          "day": 2,
+          "name": "Loong Thai",
+          "category": "FOOD",
+          "note": "Incredibly spicy",
+          "place": "loong-thai"
+        }
+      ]
+    }
+  ]
+}
