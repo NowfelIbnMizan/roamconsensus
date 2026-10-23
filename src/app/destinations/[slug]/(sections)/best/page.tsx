@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { CreatorChip } from "@/components/creator";
 import { Money } from "@/components/money";
 import { Photo } from "@/components/photo";
+import { UpdatedOn } from "@/components/updated-on";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
@@ -63,16 +64,10 @@ export default async function BestPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Link
-        href={`/destinations/${d.slug}`}
-        className="inline-flex items-center gap-1 text-sm text-muted hover:text-foreground"
-      >
-        <ArrowLeft className="size-4" aria-hidden /> {d.name} itineraries
-      </Link>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
         The best of {d.name}, according to {who}
-      </h1>
-      <p className="mt-3 max-w-2xl text-muted">
+      </h2>
+      <p className="mt-2 max-w-2xl text-muted">
         We read {d.routes.length} {d.name} itineraries and counted which places come up again and again. Higher on the
         list means more creators recommend it.
       </p>
@@ -90,7 +85,7 @@ export default async function BestPage({ params }: Props) {
 
       {sections.map((s) => (
         <section key={s.category} id={s.category.toLowerCase()} className="mt-10 scroll-mt-6">
-          <h2 className="text-2xl font-semibold">{s.heading(d.name)}</h2>
+          <h3 className="text-xl font-semibold">{s.heading(d.name)}</h3>
           <ol className="mt-4 space-y-4">
             {s.places.map((p, i) => (
               <li key={p.slug} className="cv-row flex gap-3 rounded-2xl border border-line bg-card p-4 sm:gap-4">
@@ -105,12 +100,12 @@ export default async function BestPage({ params }: Props) {
                   className="size-20 shrink-0 rounded-xl sm:size-28"
                 />
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-semibold leading-snug">
+                  <h4 className="font-semibold leading-snug">
                     <span className="mr-1.5 text-accent">{i + 1}.</span>
                     <Link href={placeHref(d.slug, p.slug)} className="hover:text-accent hover:underline">
                       {p.name}
                     </Link>
-                  </h3>
+                  </h4>
                   <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-xs text-muted">
                     {p.area && (
                       <span className="inline-flex items-center gap-0.5">
@@ -161,6 +156,7 @@ export default async function BestPage({ params }: Props) {
           See {d.name} itineraries
         </Link>
       </div>
+      <UpdatedOn date={d.updatedAt} />
     </>
   );
 }

@@ -6,7 +6,12 @@ import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
-import { getDestination, getDestinationSlugs } from "@/lib/data";
+import { getDestination, getDestinationSlugs, getEsimPlans } from "@/lib/data";
+import { destinationFaq } from "@/lib/faq";
+import { FaqList } from "@/components/faq-list";
+import { UpdatedOn } from "@/components/updated-on";
+import { WeatherCard } from "@/components/weather-card";
+import { getWeather } from "@/lib/weather";
 import { getEditor } from "@/lib/editor";
 import { categoryLabel, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
@@ -40,6 +45,11 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   const [destination, editor] = await Promise.all([getDestination((await params).slug), getEditor()]);
   if (!destination) notFound();
   const { creatorCount, consensus } = destination;
+  const [esimPlans, weather] = await Promise.all([
+    getEsimPlans(destination.country),
+    destination.center ? getWeather(destination.center.lat, destination.center.lng) : null,
+  ]);
+  const faq = destinationFaq(destination, esimPlans);
 
   const counts: Record<string, number> = {};
   for (const p of consensus) counts[p.category] = (counts[p.category] ?? 0) + 1;
@@ -71,6 +81,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
 
   return (
     <>
+      {weather && <WeatherCard name={destination.name} weather={weather} />}
       {best && (
         <Link
           href={`/destinations/${destination.slug}/when`}
@@ -251,6 +262,9 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
           </ul>
         </ConsensusFilter>
       </section>
+
+      <FaqList title={`${destination.name} questions travellers ask`} faq={faq} />
+      <UpdatedOn date={destination.updatedAt} />
     </>
   );
 }

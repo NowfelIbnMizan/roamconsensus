@@ -161,6 +161,14 @@ function placeSummary(place: PlaceWithItems) {
   };
 }
 
+/** Middle of a destination's map pins (median, so one far-off day trip doesn't drag it), for the weather. */
+function center(places: { lat: number | null; lng: number | null }[]) {
+  const pins = places.filter((p) => p.lat !== null && p.lng !== null);
+  if (!pins.length) return null;
+  const median = (xs: number[]) => xs.sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+  return { lat: median(pins.map((p) => p.lat!)), lng: median(pins.map((p) => p.lng!)) };
+}
+
 export async function getDestination(slug: string) {
   "use cache";
   cacheLife("hours");
@@ -241,6 +249,11 @@ export async function getDestination(slug: string) {
     creatorCount,
     consensus,
     routes,
+    center: center(destination.places),
+    /** Latest edit to the destination or any of its itineraries, as an ISO date. */
+    updatedAt: new Date(
+      Math.max(destination.updatedAt.getTime(), ...destination.itineraries.map((i) => i.updatedAt.getTime())),
+    ).toISOString(),
   };
 }
 
@@ -495,6 +508,7 @@ export async function getItinerary(slug: string) {
     tier: it.tier,
     days: it.days,
     sourceUrl: it.sourceUrl,
+    updatedAt: it.updatedAt.toISOString(),
     destination: it.destination,
     creator: it.creator,
     totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),

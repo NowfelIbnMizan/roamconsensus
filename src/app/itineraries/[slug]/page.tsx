@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { UpdatedOn } from "@/components/updated-on";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink, Map as MapIcon } from "lucide-react";
@@ -85,7 +86,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
       <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
       <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
-        by <CreatorChip creator={it.creator} /> · {it.days} days
+        by <CreatorChip creator={it.creator} /> · {it.days} days · <UpdatedOn date={it.updatedAt} className="text-sm" />
         {it.totalCents > 0 && (
           <>
             {" "}

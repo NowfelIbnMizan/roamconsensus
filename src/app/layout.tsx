@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { siteUrl } from "@/lib/email";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -32,6 +33,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  // Makes share-image and canonical URLs absolute.
+  metadataBase: new URL(siteUrl()),
+  openGraph: { siteName: "RoamConsensus", type: "website" },
+  twitter: { card: "summary_large_image" },
   appleWebApp: { capable: true, title: "Roam", statusBarStyle: "default" },
   icons: { apple: "/icons/apple-touch-icon.png" },
   title: { default: "RoamConsensus", template: "%s · RoamConsensus" },

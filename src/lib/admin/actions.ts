@@ -2,10 +2,13 @@
 
 import { updateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { db } from "@/lib/db";
 import { CONTENT_TAG } from "@/lib/data";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { SOCIALS, type SocialKey } from "@/lib/creator-links";
+import { submitToIndexNow } from "@/lib/indexnow";
+import { destinationPaths, sitePaths } from "@/lib/site-paths";
 import type { CouponType, Crowd, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
 
 // Form helpers: blank inputs become null so clearing a field clears it in the database.
@@ -31,9 +34,37 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-/** Every save ends here: refresh the public site's cached pages. */
-function published() {
+/** Every save ends here: refresh the public site's cached pages, then tell Bing which pages changed. */
+function published(paths: string[] = []) {
   updateTag(CONTENT_TAG);
+  if (paths.length) after(() => submitToIndexNow(paths));
+}
+
+/** Marks a destination as just updated (its pages show "Updated <date>") and returns its page paths. */
+async function destinationChanged(id: string) {
+  const { slug } = await db.destination.update({
+    where: { id },
+    data: { updatedAt: new Date() },
+    select: { slug: true },
+  });
+  return destinationPaths(slug);
+}
+
+async function itineraryChanged(id: string) {
+  const it = await db.itinerary.update({
+    where: { id },
+    data: { updatedAt: new Date() },
+    select: { slug: true, destinationId: true },
+  });
+  return [`/itineraries/${it.slug}`, ...(await destinationChanged(it.destinationId))];
+}
+
+/** Admin button: send every public page to IndexNow, e.g. after moving to a new domain. */
+export async function submitAllToIndexNow(_: string | null) {
+  await requireAdmin();
+  return (await submitToIndexNow(await sitePaths()))
+    ? "Sent every page to Bing."
+    : "Bing didn't accept it. Try again later.";
 }
 
 export async function logInAction(_: string | null, fd: FormData) {
@@ -59,7 +90,7 @@ export async function saveDestination(fd: FormData) {
     isSample: checkbox(fd, "isSample"),
   };
   const row = id ? await db.destination.update({ where: { id }, data }) : await db.destination.create({ data });
-  published();
+  published(["/", ...destinationPaths(row.slug)]);
   if (!id) redirect(`/admin/destinations/${row.id}`);
 }
 
@@ -93,7 +124,7 @@ export async function saveMonths(fd: FormData) {
       await db.destinationMonth.deleteMany({ where: { destinationId, month } });
     else await db.destinationMonth.upsert({ where, create: { ...data, destinationId, month }, update: data });
   }
-  published();
+  published(await destinationChanged(destinationId));
 }
 
 // Before you go
@@ -108,15 +139,16 @@ export async function saveTip(fd: FormData) {
     sourceUrl: optional(fd, "sourceUrl"),
     position: int(fd, "position"),
   };
-  if (id) await db.destinationTip.update({ where: { id }, data });
-  else await db.destinationTip.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
-  published();
+  const tip = id
+    ? await db.destinationTip.update({ where: { id }, data })
+    : await db.destinationTip.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
+  published(await destinationChanged(tip.destinationId));
 }
 
 export async function deleteTip(fd: FormData) {
   await requireAdmin();
-  await db.destinationTip.delete({ where: { id: text(fd, "id") } });
-  published();
+  const tip = await db.destinationTip.delete({ where: { id: text(fd, "id") } });
+  published(await destinationChanged(tip.destinationId));
 }
 
 // Places
@@ -134,9 +166,10 @@ export async function savePlace(fd: FormData) {
     website: optional(fd, "website"),
     ...(await mapPin(text(fd, "pin"))),
   };
-  if (id) await db.place.update({ where: { id }, data });
-  else await db.place.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
-  published();
+  const place = id
+    ? await db.place.update({ where: { id }, data })
+    : await db.place.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
+  published(await destinationChanged(place.destinationId));
 }
 
 /**
@@ -165,8 +198,8 @@ async function mapPin(input: string): Promise<{ lat?: number | null; lng?: numbe
 
 export async function deletePlace(fd: FormData) {
   await requireAdmin();
-  await db.place.delete({ where: { id: text(fd, "id") } });
-  published();
+  const place = await db.place.delete({ where: { id: text(fd, "id") } });
+  published(await destinationChanged(place.destinationId));
 }
 
 // Creators
@@ -192,7 +225,7 @@ export async function saveCreator(fd: FormData) {
   };
   if (id) await db.creator.update({ where: { id }, data });
   else await db.creator.create({ data });
-  published();
+  published(["/creators", `/creators/${data.handle}`]);
 }
 
 export async function deleteCreator(fd: FormData) {
@@ -225,14 +258,14 @@ export async function saveItinerary(fd: FormData) {
   const row = id
     ? await db.itinerary.update({ where: { id }, data })
     : await db.itinerary.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
-  published();
+  published([`/itineraries/${row.slug}`, ...(await destinationChanged(row.destinationId))]);
   if (!id) redirect(`/admin/itineraries/${row.id}`);
 }
 
 export async function deleteItinerary(fd: FormData) {
   await requireAdmin();
   const row = await db.itinerary.delete({ where: { id: text(fd, "id") } });
-  published();
+  published([`/itineraries/${row.slug}`, ...(await destinationChanged(row.destinationId))]);
   redirect(`/admin/destinations/${row.destinationId}`);
 }
 
@@ -277,7 +310,7 @@ export async function saveItem(fd: FormData) {
   // Our booking link is the one AffiliateLink without a creator. A link needs a booking site.
   await db.affiliateLink.deleteMany({ where: { itemId, creatorId: null } });
   if (ourUrl && vendorId) await db.affiliateLink.create({ data: { itemId, vendorId, url: ourUrl } });
-  published();
+  published(await itineraryChanged(itineraryId));
 }
 
 async function freeItemId(itineraryId: string, name: string) {
@@ -293,8 +326,8 @@ async function freeItemId(itineraryId: string, name: string) {
 
 export async function deleteItem(fd: FormData) {
   await requireAdmin();
-  await db.item.delete({ where: { id: text(fd, "id") } });
-  published();
+  const item = await db.item.delete({ where: { id: text(fd, "id") } });
+  published(await itineraryChanged(item.itineraryId));
 }
 
 // Vendors

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { db } from "@/lib/db";
 import { saveDestination } from "@/lib/admin/actions";
 import { Checkbox, Field, SaveButton, TextArea } from "../ui";
+import { IndexNowButton } from "./indexnow-button";
 
 export default async function AdminHome() {
   const destinations = await db.destination.findMany({
@@ -53,6 +54,15 @@ export default async function AdminHome() {
           </div>
         </form>
       </details>
+
+      <section className="mt-6 rounded-2xl border border-line bg-card p-4">
+        <h2 className="font-medium">Search engines</h2>
+        <p className="mt-1 text-sm text-muted">
+          Saving here already tells Bing (which feeds ChatGPT search and Copilot) which pages changed. Use this button
+          once after moving to a new domain, or if you added lots of content.
+        </p>
+        <IndexNowButton />
+      </section>
     </>
   );
 }
