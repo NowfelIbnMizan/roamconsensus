@@ -3,6 +3,7 @@
 import { SuitcaseDoodle } from "@/components/art";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
+import { Thumb } from "@/components/thumb";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ClipboardCopy,
@@ -181,20 +182,23 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               <ul className="divide-y divide-line">
                 {group.items.map((item) => (
                   <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4">
-                    <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
-                      <p className="font-medium">{item.name}</p>
-                      <p className="text-xs text-muted">
-                        {categoryLabel[item.category]} · from{" "}
-                        <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
-                          {item.itinerary.title}
-                        </Link>
-                        {item.couponCode && (
-                          <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
-                            {item.couponCode}
-                          </span>
-                        )}
-                      </p>
-                      <StopNote id={item.id} note={item.note} />
+                    <div className="flex min-w-0 basis-full gap-3 sm:basis-auto sm:flex-1">
+                      <Thumb url={item.photoUrl} category={item.category} className="size-14 rounded-xl sm:size-16" />
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium">{item.name}</p>
+                        <p className="text-xs text-muted">
+                          {categoryLabel[item.category]} · from{" "}
+                          <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
+                            {item.itinerary.title}
+                          </Link>
+                          {item.couponCode && (
+                            <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
+                              {item.couponCode}
+                            </span>
+                          )}
+                        </p>
+                        <StopNote id={item.id} note={item.note} />
+                      </div>
                     </div>
                     <div className="mr-auto flex items-center gap-1 sm:mr-0" aria-label={`Quantity for ${item.name}`}>
                       <button

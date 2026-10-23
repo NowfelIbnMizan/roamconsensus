@@ -4,6 +4,7 @@ import { StopNote } from "@/components/stop-note";
 import { SuitcaseDoodle } from "@/components/art";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
+import { Thumb } from "@/components/thumb";
 import { useEffect, useState } from "react";
 import { Check, CloudRain, ExternalLink, Navigation, Plus } from "lucide-react";
 import { lineTotal, useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
@@ -184,8 +185,16 @@ export function TodayView() {
               return (
                 <li
                   key={item.id}
-                  className={`rounded-2xl border bg-card p-4 ${isNext ? "border-accent" : "border-line"} ${isDone ? "opacity-60" : ""}`}
+                  className={`overflow-hidden rounded-2xl border bg-card p-4 ${isNext ? "border-accent" : "border-line"} ${isDone ? "opacity-60" : ""}`}
                 >
+                  {isNext && (
+                    <Thumb
+                      url={item.photoUrl}
+                      category={item.category}
+                      sizes="(min-width: 768px) 720px, 100vw"
+                      className="-mx-4 -mt-4 mb-4 aspect-[16/9] w-[calc(100%+2rem)]"
+                    />
+                  )}
                   <div className="flex items-start gap-3">
                     <button
                       type="button"
@@ -198,6 +207,9 @@ export function TodayView() {
                     >
                       {isDone && <Check className="size-4" aria-hidden />}
                     </button>
+                    {!isNext && (
+                      <Thumb url={item.photoUrl} category={item.category} className="order-last size-16 rounded-xl" />
+                    )}
                     <div className="min-w-0 flex-1">
                       {isNext && <p className="text-xs font-semibold uppercase tracking-wide text-accent">Next</p>}
                       <p className={`font-semibold ${isDone ? "line-through" : ""}`}>{item.name}</p>

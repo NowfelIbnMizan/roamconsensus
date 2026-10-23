@@ -17,6 +17,7 @@ export function toCartItem(i: ScheduleItem, itinerary: Pick<Itinerary, "slug" | 
     vendor: i.vendor,
     bookUrl: i.bookUrl,
     website: i.website,
+    photoUrl: i.photoUrl,
     lat: i.lat,
     lng: i.lng,
     day: i.day,

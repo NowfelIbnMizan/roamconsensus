@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
 import { Photo } from "@/components/photo";
 import { getCreatorHandles, getDestination, getDestinations } from "@/lib/data";
-import { placeHref } from "@/lib/place";
+import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { JourneyDoodle, SquiggleDivider, Stamp, Swoosh } from "@/components/art";
 
 // Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
@@ -39,8 +39,7 @@ export default async function Home() {
             .
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted">
-            We line up itineraries from multiple creators for one destination, show what they all recommend, and let you
-            compare budget, mid-range and luxury routes side by side.
+            Real creator itineraries, lined up city by city. See the spots they all pick, then build your trip.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
             <Link
@@ -63,43 +62,73 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <div className="relative hidden md:block">
-          <JourneyDoodle className="w-full text-foreground/70" />
+        <div className="relative h-72 sm:h-96 md:h-[26rem]">
+          <JourneyDoodle className="absolute inset-0 m-auto w-full text-foreground/25" />
+          {covered.map((d, i) => (
+            // .tape sets position: relative, so the absolute placement lives on a wrapper.
+            <div
+              key={d.slug}
+              className={`absolute w-[46%] md:w-[52%] ${["top-2 left-0", "top-8 right-0 md:top-16", "bottom-0 left-[26%]"][i]}`}
+              style={{ zIndex: i + 1 }}
+            >
+              <Link
+                href={`/destinations/${d.slug}`}
+                className={`polaroid tape block rounded-sm ${i % 2 ? "tape-alt" : ""}`}
+                style={{ rotate: `${[-5, 4, -1.5][i]}deg` }}
+              >
+                <Photo
+                  photoKey={`destination:${d.slug}`}
+                  query={`${d.name} ${d.country}`}
+                  category="DESTINATION"
+                  alt={d.name}
+                  sizes="(min-width: 768px) 280px, 46vw"
+                  credit={false}
+                  priority={i === 0}
+                  className="aspect-[4/3] rounded-[2px]"
+                />
+                <span className="block py-1 text-center font-hand text-lg sm:text-xl">{d.name}</span>
+              </Link>
+            </div>
+          ))}
           <Stamp
             top={`${destinations.length} cities`}
             middle={`${routes} trips`}
             bottom={`${creators.length} creators`}
-            className="absolute -top-2 right-4 size-28 rotate-12"
+            className="absolute right-1 bottom-2 z-10 size-20 rotate-12 sm:size-28"
           />
         </div>
       </section>
-      <div className="flex items-center gap-4 md:hidden">
-        <Stamp
-          top={`${destinations.length} cities`}
-          middle={`${routes} trips`}
-          bottom={`${creators.length} creators`}
-          className="size-20 shrink-0 -rotate-6"
-        />
-        <JourneyDoodle className="h-20 flex-1 text-foreground/70" />
-      </div>
       {examples.length > 0 && (
         <section aria-labelledby="agree-examples" className="mt-6">
           <h2 id="agree-examples" className="font-hand text-2xl text-accent-2">
             For example, creators agree on…
           </h2>
-          <ul className="mt-3 grid gap-3 sm:grid-cols-3">
+          <ul className="-mx-4 mt-3 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
             {examples.map((e) => (
-              <li key={e.slug}>
+              <li key={e.slug} className="w-64 shrink-0 snap-start sm:w-auto">
                 <Link
                   href={placeHref(e.slug, e.place.slug)}
-                  className="block h-full rounded-2xl border border-line bg-card px-4 py-3 transition hover:border-accent"
+                  className="group relative block aspect-[4/3] overflow-hidden rounded-2xl"
                 >
-                  <span className="flex items-center gap-1 text-xs text-muted">
-                    <MapPin className="size-3.5" aria-hidden /> {e.city}
-                  </span>
-                  <span className="mt-0.5 block font-display text-lg font-semibold leading-snug">{e.place.name}</span>
-                  <span className="mt-1 block text-sm text-accent">
-                    {e.place.creators.length} of {e.of} creators recommend it
+                  <Photo
+                    photoKey={placePhotoKey(e.slug, e.place)}
+                    query={placeQuery(e.place.name, e.city)}
+                    category={e.place.category}
+                    website={e.place.website}
+                    alt=""
+                    sizes="(min-width: 640px) 33vw, 256px"
+                    credit={false}
+                    className="size-full transition duration-300 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                  <span className="absolute inset-x-0 bottom-0 p-3.5 text-white">
+                    <span className="flex items-center gap-1 text-xs text-white/85">
+                      <MapPin className="size-3.5" aria-hidden /> {e.city}
+                    </span>
+                    <span className="mt-0.5 block font-display text-lg font-semibold leading-snug">{e.place.name}</span>
+                    <span className="mt-0.5 block font-hand text-lg leading-tight text-[#ffd98a]">
+                      {e.place.creators.length} of {e.of} creators recommend it
+                    </span>
                   </span>
                 </Link>
               </li>

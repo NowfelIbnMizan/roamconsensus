@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Copy, Link2, LogOut, RefreshCw, Share2, ShoppingBag, ThumbsUp, Trash2, Upload } from "lucide-react";
 import { Avatar } from "@/components/account-button";
+import { Thumb } from "@/components/thumb";
 import { AddItemButton } from "@/components/add-to-cart";
 import { authClient, signInWithGoogle } from "@/lib/auth-client";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
@@ -236,7 +237,8 @@ function Group() {
                   >
                     <ThumbsUp className={`size-4 ${i.voted ? "fill-current" : ""}`} aria-hidden /> {i.votes}
                   </button>
-                  <div className="min-w-0 flex-1 basis-48">
+                  <Thumb url={i.item.photoUrl} category={i.item.category} className="size-12 rounded-lg" />
+                  <div className="min-w-0 flex-1 basis-40">
                     <p className="font-medium">{i.item.name}</p>
                     <p className="text-xs text-muted">
                       {categoryLabel[i.item.category]} · from{" "}

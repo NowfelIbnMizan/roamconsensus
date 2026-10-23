@@ -6,6 +6,8 @@ import { CheckCircle2, ChevronRight, Globe, MapPin, Navigation } from "lucide-re
 import { AddRouteButton } from "@/components/add-to-cart";
 import { FavouriteButton } from "@/components/favourite-button";
 import { CreatorChip } from "@/components/creator";
+import { CreatorAvatar } from "@/components/creator-avatar";
+import { Thumb } from "@/components/thumb";
 import { Price } from "@/components/money";
 import { Photo, PhotoCredit } from "@/components/photo";
 import { PhotoGallery } from "@/components/photo-gallery";
@@ -130,6 +132,13 @@ export default async function PlacePage({ params }: Props) {
               {agree} of {p.creatorCount} creators recommend it
             </p>
           )}
+          {agree > 0 && (
+            <div className="mt-3 flex -space-x-2" aria-hidden>
+              {[...new Map(recommended.map((m) => [m.creator.handle, m.creator])).values()].map((c) => (
+                <CreatorAvatar key={c.handle} creator={c} size="sm" className="ring-2 ring-background" />
+              ))}
+            </div>
+          )}
           {p.blurb && <p className="mt-3">{p.blurb}</p>}
           {p.tip && <p className="mt-2 text-sm text-muted">Tip: {p.tip}</p>}
           {p.fromPrice && (
@@ -183,34 +192,37 @@ export default async function PlacePage({ params }: Props) {
         <h2 className="text-xl font-semibold">What creators say</h2>
         <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
           {p.mentions.map((m) => (
-            <li key={m.id} className="p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="flex flex-wrap items-center gap-1.5 text-sm">
-                  <CreatorChip creator={m.creator} />
-                  <span className="text-muted">
-                    Day {m.day} of{" "}
-                    <Link href={`/itineraries/${m.itinerary.slug}`} className="underline hover:text-foreground">
-                      {m.itinerary.title}
-                    </Link>
-                  </span>
-                  {m.sentiment && m.sentiment !== "RECOMMENDED" && (
-                    <span
-                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                        m.sentiment === "AVOID"
-                          ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
-                          : "bg-accent-soft text-accent"
-                      }`}
-                    >
-                      {sentimentLabel[m.sentiment]}
+            <li key={m.id} className="flex gap-3 p-4">
+              <CreatorAvatar creator={m.creator} size="sm" />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="flex flex-wrap items-center gap-1.5 text-sm">
+                    <CreatorChip creator={m.creator} />
+                    <span className="text-muted">
+                      Day {m.day} of{" "}
+                      <Link href={`/itineraries/${m.itinerary.slug}`} className="underline hover:text-foreground">
+                        {m.itinerary.title}
+                      </Link>
                     </span>
-                  )}
-                </p>
-                <span className="text-sm tabular-nums text-muted">
-                  <Price item={m} />
-                </span>
+                    {m.sentiment && m.sentiment !== "RECOMMENDED" && (
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                          m.sentiment === "AVOID"
+                            ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+                            : "bg-accent-soft text-accent"
+                        }`}
+                      >
+                        {sentimentLabel[m.sentiment]}
+                      </span>
+                    )}
+                  </p>
+                  <span className="text-sm tabular-nums text-muted">
+                    <Price item={m} />
+                  </span>
+                </div>
+                {m.name !== p.name && <p className="mt-2 font-medium">{m.name}</p>}
+                {m.note && <p className="mt-1 text-sm text-muted">&ldquo;{m.note}&rdquo;</p>}
               </div>
-              {m.name !== p.name && <p className="mt-2 font-medium">{m.name}</p>}
-              {m.note && <p className="mt-1 text-sm text-muted">&ldquo;{m.note}&rdquo;</p>}
             </li>
           ))}
         </ul>
@@ -227,13 +239,17 @@ export default async function PlacePage({ params }: Props) {
                   <li key={o.slug}>
                     <Link
                       href={placeHref(d.slug, o.slug)}
-                      className="flex items-center gap-3 rounded-xl border border-line bg-card p-3 text-sm hover:border-accent"
+                      className="flex items-center gap-3 rounded-xl border border-line bg-card p-2.5 text-sm hover:border-accent"
                     >
-                      <span
-                        className="inline-flex size-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold text-white"
-                        style={{ background: categoryHex[o.category] }}
-                      >
-                        {n + 1}
+                      <span className="relative shrink-0">
+                        <Thumb url={o.photoUrl} category={o.category} className="size-14 rounded-lg" />
+                        <span
+                          className="absolute -top-1.5 -left-1.5 inline-flex size-5 items-center justify-center rounded-full text-[10px] font-semibold text-white ring-2 ring-card"
+                          style={{ background: categoryHex[o.category] }}
+                          title="Pin number on the map"
+                        >
+                          {n + 1}
+                        </span>
                       </span>
                       <span className="min-w-0 flex-1">
                         <span className="block truncate font-medium">{o.name}</span>
