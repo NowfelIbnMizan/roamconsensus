@@ -1,59 +1,40 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
-type Choice = "system" | "light" | "dark";
+type Choice = "light" | "dark";
 const KEY = "roamconsensus-theme";
+const BAR = { light: "#f5efe4", dark: "#16120d" };
 
-/** Runs in <head> before paint so the page never flashes the wrong theme. Kept in sync with apply() below. */
-export const themeScript = `(function(){try{var c=localStorage.getItem("${KEY}")||"system";var d=c==="dark"||(c==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.dataset.theme=d?"dark":"light";document.documentElement.dataset.themeChoice=c}catch(e){}})()`;
-
-const media = () => matchMedia("(prefers-color-scheme: dark)");
+/**
+ * Runs in <head> before paint so the page never flashes the wrong theme. With no saved choice it follows the device
+ * (old saved "system" values too). It also tints the phone's browser bar to match. Kept in sync with apply() below.
+ */
+export const themeScript = `(function(){try{var c=localStorage.getItem("${KEY}");if(c!=="light"&&c!=="dark")c=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=c;var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=c==="dark"?"${BAR.dark}":"${BAR.light}"}catch(e){}})()`;
 
 function apply(choice: Choice) {
-  const dark = choice === "dark" || (choice === "system" && media().matches);
-  document.documentElement.dataset.theme = dark ? "dark" : "light";
-  document.documentElement.dataset.themeChoice = choice;
+  document.documentElement.dataset.theme = choice;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", BAR[choice]);
 }
 
-const listeners = new Set<() => void>();
-function subscribe(cb: () => void) {
-  listeners.add(cb);
-  const onSystem = () => {
-    if (read() === "system") apply("system");
-  };
-  media().addEventListener("change", onSystem);
-  return () => {
-    listeners.delete(cb);
-    media().removeEventListener("change", onSystem);
-  };
-}
-const read = (): Choice => (document.documentElement.dataset.themeChoice as Choice) || "system";
-
-const next: Record<Choice, Choice> = { system: "light", light: "dark", dark: "system" };
-const icon = { system: Monitor, light: Sun, dark: Moon };
-const label = { system: "Theme: match device", light: "Theme: light", dark: "Theme: dark" };
-
+/** Light/dark switch. The icon is picked by CSS from <html data-theme>, so it is right from the first paint. */
 export function ThemeToggle() {
-  const choice = useSyncExternalStore(subscribe, read, () => "system" as Choice);
-  const Icon = icon[choice];
   return (
     <button
       type="button"
       onClick={() => {
-        const c = next[choice];
+        const next: Choice = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         try {
-          localStorage.setItem(KEY, c);
+          localStorage.setItem(KEY, next);
         } catch {}
-        apply(c);
-        listeners.forEach((l) => l());
+        apply(next);
       }}
-      aria-label={`${label[choice]}. Change theme`}
-      title={label[choice]}
+      aria-label="Switch between light and dark mode"
+      title="Light or dark mode"
       className="flex size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground"
     >
-      <Icon className="size-4" aria-hidden />
+      <Moon className="size-4 dark:hidden" aria-hidden />
+      <Sun className="hidden size-4 dark:block" aria-hidden />
     </button>
   );
 }

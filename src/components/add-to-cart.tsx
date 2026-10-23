@@ -66,7 +66,7 @@ export function AddItemButton({ item }: { item: CartItem }) {
       className={`group inline-flex size-9 items-center justify-center rounded-full border sm:size-7 ${
         added
           ? "border-accent-soft bg-accent-soft text-accent hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-600"
-          : "border-line text-muted hover:border-accent hover:text-accent"
+          : "border-accent bg-card text-accent shadow-[0_2px_0_var(--accent-soft)] hover:bg-accent hover:text-background"
       }`}
     >
       {added ? (
