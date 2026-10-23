@@ -145,7 +145,19 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </Link>
               {" · "}
               <Link href="/about" className="underline">
-                About and contact
+                About
+              </Link>
+              {" · "}
+              <Link href="/contact" className="underline">
+                Contact
+              </Link>
+              {" · "}
+              <Link href="/privacy" className="underline">
+                Privacy
+              </Link>
+              {" · "}
+              <Link href="/terms" className="underline">
+                Terms
               </Link>
             </p>
             <p className="mx-auto max-w-5xl px-4 pb-24 text-xs text-muted sm:pb-6">

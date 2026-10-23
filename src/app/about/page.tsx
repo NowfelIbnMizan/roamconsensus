@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AtSign, Mail } from "lucide-react";
 import { EditorAvatar } from "@/components/editor-take";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import { getEditor, paragraphs } from "@/lib/editor";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AboutPage() {
   const e = await getEditor();
+  const email = e.email || CONTACT_EMAIL;
   return (
     <article className="max-w-2xl">
       <div className="flex items-center gap-4">
@@ -25,25 +27,21 @@ export default async function AboutPage() {
           <p key={i}>{p}</p>
         ))}
       </div>
-      {(e.email || e.instagramUrl) && (
-        <p className="mt-5 flex flex-wrap gap-4 text-sm">
-          {e.email && (
-            <a href={`mailto:${e.email}`} className="inline-flex items-center gap-1.5 text-accent underline">
-              <Mail className="size-4" aria-hidden /> {e.email}
-            </a>
-          )}
-          {e.instagramUrl && (
-            <a
-              href={e.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-accent underline"
-            >
-              <AtSign className="size-4" aria-hidden /> Instagram
-            </a>
-          )}
-        </p>
-      )}
+      <p className="mt-5 flex flex-wrap gap-4 text-sm">
+        <a href={`mailto:${email}`} className="inline-flex items-center gap-1.5 text-accent underline">
+          <Mail className="size-4" aria-hidden /> {email}
+        </a>
+        {e.instagramUrl && (
+          <a
+            href={e.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-accent underline"
+          >
+            <AtSign className="size-4" aria-hidden /> Instagram
+          </a>
+        )}
+      </p>
 
       <h2 className="mt-10 text-xl font-semibold">How Creatour works</h2>
       <ul className="mt-3 list-disc space-y-2 pl-5">
@@ -69,13 +67,9 @@ export default async function AboutPage() {
       <p className="mt-3">
         Creatour is not affiliated with or endorsed by the creators featured. If you&apos;re one of them and want
         something corrected, your own booking links used for your picks, or your itinerary removed,{" "}
-        {e.email ? (
-          <a href={`mailto:${e.email}`} className="text-accent underline">
-            email me
-          </a>
-        ) : (
-          "get in touch"
-        )}{" "}
+        <a href={`mailto:${email}`} className="text-accent underline">
+          email me
+        </a>{" "}
         and I&apos;ll act on it quickly.
       </p>
       <p className="mt-3 text-sm text-muted">
