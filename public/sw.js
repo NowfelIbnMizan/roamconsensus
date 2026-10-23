@@ -1,7 +1,7 @@
 // Offline support: pages are fetched fresh when online and served from cache when not, so a planned
 // trip (the cart lives in localStorage) still opens without signal. Built assets are cached on first use.
-const CACHE = "roam-v1";
-const PRECACHE = ["/", "/cart"];
+const CACHE = "roam-v2";
+const PRECACHE = ["/", "/cart", "/today"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

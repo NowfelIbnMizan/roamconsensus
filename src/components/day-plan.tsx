@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, ChevronUp, ExternalLink, Minus, Plus, Trash2 } from "lucide-react";
+import { ChevronDown, ChevronUp, ExternalLink, Minus, Plane, Plus, Trash2 } from "lucide-react";
 import type { CartItem } from "@/lib/cart-store";
 import { categoryLabel } from "@/lib/format";
 import { dayColor, dayLegs, googleMapsPinUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
 import { DriveSummary, LegHint } from "@/components/road-time";
 import { useMoney } from "@/components/money";
 import type { MapGroup, MapStop } from "@/components/trip-map";
+import { cityOf } from "@/lib/trip";
+import { transferHint, transferLinks } from "@/lib/transfer";
 
 const UNPLANNED = "#a8a29e";
 
@@ -62,6 +64,35 @@ type Edit = {
   setTripDays: (days: number) => void;
 };
 
+/** Between two days in different cities: how far apart they are and where to book the trip between them. */
+function TravelDay({ from, to }: { from: { name: string; last?: CartItem }; to: { name: string; first?: CartItem } }) {
+  const hint = transferHint(
+    from.last && hasPin(from.last) ? from.last : null,
+    to.first && hasPin(to.first) ? to.first : null,
+  );
+  return (
+    <section className="rounded-2xl border border-dashed border-accent/50 bg-accent-soft/40 px-4 py-3">
+      <h3 className="flex items-center gap-2 font-semibold">
+        <Plane className="size-4 text-accent" aria-hidden /> {from.name} to {to.name}
+      </h3>
+      {hint && <p className="mt-0.5 text-sm text-muted">{hint.text}</p>}
+      <div className="mt-2 flex flex-wrap gap-2">
+        {transferLinks(from, to).map((l) => (
+          <a
+            key={l.site}
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 rounded-full border border-line bg-card px-3 py-1 text-xs font-medium hover:border-accent"
+          >
+            {l.label} · {l.site} <ExternalLink className="size-3" aria-hidden />
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /** The traveller's own day-by-day plan. Read-only without `edit` (a shared trip). */
 export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number; edit?: Edit }) {
   const { price } = useMoney();
@@ -97,110 +128,127 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
           </button>
         </div>
       )}
-      {sections.map(({ day, list }) => {
+      {sections.map(({ day, list }, n) => {
         if (day === null && list.length === 0) return null;
+        const city = day === null ? null : cityOf(list);
+        // The last earlier day with stops, to spot a change of city.
+        const before = sections.slice(0, n).findLast((x) => x.day !== null && x.list.length > 0);
+        const prevCity = before ? cityOf(before.list) : null;
+        const moved = city && prevCity && city.slug !== prevCity.slug;
         const pinned = list.filter(hasPin);
         const { legs, total } = dayLegs(pinned);
         const routeUrl = pinned.length > 1 ? googleMapsRouteUrl(pinned) : null;
         let pin = 0;
         return (
-          <section key={day ?? "unplanned"} className="rounded-2xl border border-line bg-card">
-            <header className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-3">
-              <h3 className="flex flex-wrap items-center gap-2 font-semibold">
-                {day === null ? "Not planned yet" : `Day ${day}`}
-                {day !== null && <DriveSummary minutes={total} />}
-              </h3>
-              {routeUrl && (
-                <a
-                  href={routeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                >
-                  Route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
-                </a>
-              )}
-            </header>
-            {list.length === 0 ? (
-              <p className="px-4 py-3 text-sm text-muted">
-                Free day{edit && ". Pick this day on any item to move it here"}.
-              </p>
-            ) : (
-              <ul className="divide-y divide-line">
-                {list.map((item, n) => {
-                  const number = hasPin(item) ? ++pin : null;
-                  return (
-                    <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
-                      <div className="min-w-0 flex-1 basis-56">
-                        <p className="font-medium">
-                          {number !== null && (
-                            <span
-                              className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
-                              style={{ background: day === null ? UNPLANNED : dayColor(day - 1) }}
-                            >
-                              {day === null ? "?" : number}
-                            </span>
-                          )}
-                          {item.name}
-                        </p>
-                        <p className="text-xs text-muted">
-                          {categoryLabel[item.category]} · from{" "}
-                          <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
-                            {item.itinerary.title}
-                          </Link>
-                        </p>
-                        {day !== null && <LegHint leg={legs.get(item.id)} />}
-                      </div>
-                      <span className="text-sm tabular-nums text-muted">{price(item)}</span>
-                      {edit && (
-                        <div className="flex items-center gap-1">
-                          <select
-                            value={day ?? ""}
-                            onChange={(e) => edit.setDay(item.id, e.target.value ? Number(e.target.value) : null)}
-                            aria-label={`Day for ${item.name}`}
-                            className="rounded-lg border border-line bg-background px-2 py-1 text-sm"
-                          >
-                            {Array.from({ length: days }, (_, d) => (
-                              <option key={d} value={d + 1}>
-                                Day {d + 1}
-                              </option>
-                            ))}
-                            <option value="">Not planned</option>
-                          </select>
-                          <button
-                            type="button"
-                            onClick={() => edit.move(item.id, -1)}
-                            disabled={n === 0}
-                            aria-label={`Move ${item.name} earlier`}
-                            className="flex size-7 items-center justify-center rounded-full text-muted hover:text-foreground disabled:opacity-30"
-                          >
-                            <ChevronUp className="size-4" aria-hidden />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => edit.move(item.id, 1)}
-                            disabled={n === list.length - 1}
-                            aria-label={`Move ${item.name} later`}
-                            className="flex size-7 items-center justify-center rounded-full text-muted hover:text-foreground disabled:opacity-30"
-                          >
-                            <ChevronDown className="size-4" aria-hidden />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => edit.remove(item.id)}
-                            aria-label={`Remove ${item.name}`}
-                            className="ml-1 text-muted hover:text-rose-600"
-                          >
-                            <Trash2 className="size-4" aria-hidden />
-                          </button>
-                        </div>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+          <div key={day ?? "unplanned"} className="space-y-4">
+            {moved && before && (
+              <TravelDay
+                from={{ name: prevCity.name, last: before.list.findLast(hasPin) }}
+                to={{ name: city.name, first: list.find(hasPin) }}
+              />
             )}
-          </section>
+            <section className="rounded-2xl border border-line bg-card">
+              <header className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-3">
+                <h3 className="flex flex-wrap items-center gap-2 font-semibold">
+                  {day === null ? "Not planned yet" : `Day ${day}`}
+                  {city &&
+                    sections.some(
+                      (x) => x.day !== null && x.list.some((i) => i.destination && i.destination.slug !== city.slug),
+                    ) && <span className="font-normal text-muted">· {city.name}</span>}
+                  {day !== null && <DriveSummary minutes={total} />}
+                </h3>
+                {routeUrl && (
+                  <a
+                    href={routeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                  >
+                    Route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+                  </a>
+                )}
+              </header>
+              {list.length === 0 ? (
+                <p className="px-4 py-3 text-sm text-muted">
+                  Free day{edit && ". Pick this day on any item to move it here"}.
+                </p>
+              ) : (
+                <ul className="divide-y divide-line">
+                  {list.map((item, n) => {
+                    const number = hasPin(item) ? ++pin : null;
+                    return (
+                      <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
+                        <div className="min-w-0 flex-1 basis-56">
+                          <p className="font-medium">
+                            {number !== null && (
+                              <span
+                                className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                                style={{ background: day === null ? UNPLANNED : dayColor(day - 1) }}
+                              >
+                                {day === null ? "?" : number}
+                              </span>
+                            )}
+                            {item.name}
+                          </p>
+                          <p className="text-xs text-muted">
+                            {categoryLabel[item.category]} · from{" "}
+                            <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
+                              {item.itinerary.title}
+                            </Link>
+                          </p>
+                          {day !== null && <LegHint leg={legs.get(item.id)} />}
+                        </div>
+                        <span className="text-sm tabular-nums text-muted">{price(item)}</span>
+                        {edit && (
+                          <div className="flex items-center gap-1">
+                            <select
+                              value={day ?? ""}
+                              onChange={(e) => edit.setDay(item.id, e.target.value ? Number(e.target.value) : null)}
+                              aria-label={`Day for ${item.name}`}
+                              className="rounded-lg border border-line bg-background px-2 py-1 text-sm"
+                            >
+                              {Array.from({ length: days }, (_, d) => (
+                                <option key={d} value={d + 1}>
+                                  Day {d + 1}
+                                </option>
+                              ))}
+                              <option value="">Not planned</option>
+                            </select>
+                            <button
+                              type="button"
+                              onClick={() => edit.move(item.id, -1)}
+                              disabled={n === 0}
+                              aria-label={`Move ${item.name} earlier`}
+                              className="flex size-7 items-center justify-center rounded-full text-muted hover:text-foreground disabled:opacity-30"
+                            >
+                              <ChevronUp className="size-4" aria-hidden />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => edit.move(item.id, 1)}
+                              disabled={n === list.length - 1}
+                              aria-label={`Move ${item.name} later`}
+                              className="flex size-7 items-center justify-center rounded-full text-muted hover:text-foreground disabled:opacity-30"
+                            >
+                              <ChevronDown className="size-4" aria-hidden />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => edit.remove(item.id)}
+                              aria-label={`Remove ${item.name}`}
+                              className="ml-1 text-muted hover:text-rose-600"
+                            >
+                              <Trash2 className="size-4" aria-hidden />
+                            </button>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </section>
+          </div>
         );
       })}
     </div>

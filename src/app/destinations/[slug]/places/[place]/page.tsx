@@ -6,6 +6,7 @@ import { AddRouteButton } from "@/components/add-to-cart";
 import { CreatorChip } from "@/components/creator";
 import { Price } from "@/components/money";
 import { Photo, PhotoCredit } from "@/components/photo";
+import { PhotoGallery } from "@/components/photo-gallery";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import { getPlace, getPlaceParams } from "@/lib/data";
 import { categoryLabel, sentimentLabel } from "@/lib/format";
@@ -87,15 +88,24 @@ export default async function PlacePage({ params }: Props) {
 
       <div className="mt-4 grid gap-6 md:grid-cols-[1fr_340px]">
         <div>
-          <Photo
-            photoKey={placePhotoKey(d.slug, p)}
-            query={placeQuery(p.name, d.name)}
-            category={p.category}
-            website={p.website}
+          <PhotoGallery
+            main={
+              <Photo
+                photoKey={placePhotoKey(d.slug, p)}
+                query={placeQuery(p.name, d.name)}
+                category={p.category}
+                website={p.website}
+                alt={p.name}
+                sizes="(min-width: 768px) 640px, 100vw"
+                className="h-full"
+                priority
+              />
+            }
+            own={p.photos}
             alt={p.name}
-            sizes="(min-width: 768px) 640px, 100vw"
+            destination={d.slug}
+            place={p.slug}
             className="aspect-[16/10] rounded-2xl"
-            priority
           />
         </div>
         <div>
@@ -128,7 +138,12 @@ export default async function PlacePage({ params }: Props) {
           )}
           <div className="mt-4 flex flex-wrap gap-2">
             {p.cartItem && p.skippedBy.length === 0 && (
-              <AddRouteButton items={[p.cartItem]} label="Add to trip cart" doneLabel="In your trip cart" removeLabel="Remove from cart" />
+              <AddRouteButton
+                items={[p.cartItem]}
+                label="Add to trip cart"
+                doneLabel="In your trip cart"
+                removeLabel="Remove from cart"
+              />
             )}
             <a
               href={googleUrl}

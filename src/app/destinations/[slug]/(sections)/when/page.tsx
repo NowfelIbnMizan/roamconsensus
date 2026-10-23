@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CloudRain, Sun, Users } from "lucide-react";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
+import { WeatherCard } from "@/components/weather-card";
+import { getWeather } from "@/lib/weather";
+import { rainyDayPicks } from "@/lib/indoor";
+import { placeHref } from "@/lib/place";
 import { bestMonths, crowdLabel, monthNames, rateMonth, ratingLabel, type Rating } from "@/lib/seasons";
 
 const ratingStyle: Record<Rating, { bar: string; badge: string }> = {
@@ -26,13 +30,28 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
 export default async function WhenPage({ params }: PageProps<"/destinations/[slug]/when">) {
   const d = await getDestination((await params).slug);
   if (!d) notFound();
-  if (d.months.length === 0) return <p className="text-muted">Month-by-month info for {d.name} is coming soon.</p>;
+  const weather = d.center ? await getWeather(d.center.lat, d.center.lng) : null;
+  const card = weather && (
+    <WeatherCard
+      name={d.name}
+      weather={weather}
+      rainyPicks={rainyDayPicks(d.consensus, 4).map((p) => ({ name: p.name, href: placeHref(d.slug, p.slug) }))}
+    />
+  );
+  if (d.months.length === 0)
+    return (
+      <>
+        {card}
+        <p className="text-muted">Month-by-month info for {d.name} is coming soon.</p>
+      </>
+    );
 
   const best = bestMonths(d.months);
   const maxRain = Math.max(1, ...d.months.map((m) => m.rainMm ?? 0));
 
   return (
     <>
+      {card}
       <h2 className="text-xl font-semibold">Best time to visit {d.name}</h2>
       {best && (
         <p className="mt-1 flex items-center gap-2 text-muted">

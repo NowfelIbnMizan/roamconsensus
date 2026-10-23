@@ -168,3 +168,51 @@ export async function getPhoto(lookup: Lookup): Promise<Photo> {
   else cacheLife("days");
   return photo;
 }
+
+const GALLERY_SIZE = 5;
+
+/**
+ * More shots of a place for its photo gallery: up to five Unsplash results besides the main photo, cached for a week
+ * as "<key>#2" … "<key>#6". Fetched on demand from the place page (not at build) to stay inside Unsplash's hourly limit.
+ */
+export async function findGallery(key: string, query: string, mainUrl?: string): Promise<Photo[]> {
+  const cached = await db.photoCache.findMany({ where: { key: { startsWith: `${key}#` } }, orderBy: { key: "asc" } });
+  if (cached.length && Date.now() - cached[0].fetchedAt.getTime() < CACHE_TTL_MS)
+    return cached.map(({ url, source, attribution, creditUrl }) => ({ url, source, attribution, creditUrl }));
+
+  const auth = process.env.UNSPLASH_ACCESS_KEY;
+  if (!auth) return [];
+  const headers = { Authorization: `Client-ID ${auth}`, "Accept-Version": "v1" };
+  const res = await fetch(
+    `https://api.unsplash.com/search/photos?per_page=${GALLERY_SIZE + 1}&orientation=landscape&query=${encodeURIComponent(query)}`,
+    { headers, signal: AbortSignal.timeout(5000) },
+  ).catch(() => null);
+  if (!res?.ok) {
+    console.warn(`[photos] unsplash gallery "${query}": ${res ? `HTTP ${res.status}` : "fetch failed"}`);
+    return [];
+  }
+  type Result = {
+    urls: { regular: string };
+    links: { download_location: string };
+    user: { name: string; links: { html: string } };
+  };
+  const results = ((await res.json()).results ?? []) as Result[];
+  const photos = results.filter((r) => r.urls.regular !== mainUrl).slice(0, GALLERY_SIZE);
+  // Unsplash API terms: report each photo we start using via its download endpoint.
+  await Promise.all(
+    photos.map((r) =>
+      fetch(r.links.download_location, { headers, signal: AbortSignal.timeout(5000) }).catch(() => null),
+    ),
+  );
+  const gallery: Photo[] = photos.map((r) => ({
+    url: r.urls.regular,
+    source: "UNSPLASH",
+    attribution: `Photo by ${r.user.name} on Unsplash`,
+    creditUrl: `${r.user.links.html}?utm_source=roamconsensus&utm_medium=referral`,
+  }));
+  await db.$transaction([
+    db.photoCache.deleteMany({ where: { key: { startsWith: `${key}#` } } }),
+    ...gallery.map((p, i) => db.photoCache.create({ data: { key: `${key}#${i + 2}`, ...p } })),
+  ]);
+  return gallery;
+}
