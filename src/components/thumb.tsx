@@ -1,0 +1,56 @@
+import Image from "next/image";
+import { BedDouble, Bus, Package, Smartphone, Ticket, Utensils, type LucideIcon } from "lucide-react";
+import type { ItemCategory } from "@/generated/prisma/enums";
+import { categoryHex } from "@/lib/map";
+
+export const categoryIcon: Record<ItemCategory, LucideIcon> = {
+  STAY: BedDouble,
+  EXPERIENCE: Ticket,
+  FOOD: Utensils,
+  TRANSIT: Bus,
+  ESIM: Smartphone,
+  GEAR: Package,
+};
+
+// Hosts the image optimizer may fetch from (next.config.ts); venue sites can be anywhere, so they load as-is.
+export const optimized = (url: string) => /^https:\/\/images\.(unsplash|pexels)\.com\//.test(url);
+
+/**
+ * A stop's photo for lists (itinerary, cart, trip mode). Without one, a tile in the category's colour with its icon,
+ * so a list still reads at a glance. Works in server and client components.
+ */
+export function Thumb({
+  url,
+  category,
+  sizes = "96px",
+  className = "size-20 rounded-xl",
+  priority,
+}: {
+  url?: string | null;
+  category: ItemCategory;
+  sizes?: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  const Icon = categoryIcon[category];
+  return (
+    <div
+      className={`relative shrink-0 overflow-hidden ${className}`}
+      style={url ? undefined : { background: `${categoryHex[category]}1f`, color: categoryHex[category] }}
+    >
+      {url ? (
+        <Image
+          src={url}
+          alt=""
+          fill
+          sizes={sizes}
+          priority={priority}
+          unoptimized={!optimized(url)}
+          className="object-cover"
+        />
+      ) : (
+        <Icon className="absolute inset-0 m-auto size-1/3" aria-hidden />
+      )}
+    </div>
+  );
+}

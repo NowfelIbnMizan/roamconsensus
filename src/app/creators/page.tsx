@@ -5,6 +5,7 @@ import { CreatorAvatar } from "@/components/creator-avatar";
 import { CreatorChip, CreatorSocials } from "@/components/creator";
 import { getCreators } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
+import { Thumb } from "@/components/thumb";
 
 export const metadata: Metadata = {
   title: "Travel creators",
@@ -29,7 +30,7 @@ export default async function CreatorsPage() {
         {creators.map((c) => {
           const destinations = [...new Map(c.itineraries.map((it) => [it.destination.slug, it.destination])).values()];
           return (
-            <li key={c.handle} className="flex flex-col rounded-2xl border border-line p-5">
+            <li key={c.handle} className="flex flex-col rounded-2xl border border-line bg-card p-5">
               <div className="flex items-start gap-4">
                 <CreatorAvatar creator={c} />
                 <div className="min-w-0">
@@ -49,15 +50,18 @@ export default async function CreatorsPage() {
                 <CreatorChip creator={c} />
                 <CreatorSocials creator={c} />
               </div>
-              <ul className="mt-4 space-y-1.5 border-t border-line pt-3 text-sm">
+              <ul className="mt-4 space-y-2 border-t border-line pt-3 text-sm">
                 {c.itineraries.map((it) => (
                   <li key={it.slug}>
-                    <Link href={`/itineraries/${it.slug}`} className="font-medium hover:underline">
-                      {it.title}
-                    </Link>{" "}
-                    <span className="text-muted">
-                      {it.destination.name} · {it.days} {it.days === 1 ? "day" : "days"} · {tierLabel[it.tier]}
-                    </span>
+                    <Link href={`/itineraries/${it.slug}`} className="group flex items-center gap-3">
+                      <Thumb url={it.coverUrl} category="EXPERIENCE" className="size-12 rounded-lg" />
+                      <span className="min-w-0">
+                        <span className="block font-medium group-hover:underline">{it.title}</span>
+                        <span className="text-muted">
+                          {it.destination.name} · {it.days} {it.days === 1 ? "day" : "days"} · {tierLabel[it.tier]}
+                        </span>
+                      </span>
+                    </Link>
                   </li>
                 ))}
               </ul>

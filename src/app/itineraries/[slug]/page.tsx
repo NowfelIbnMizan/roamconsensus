@@ -21,6 +21,8 @@ import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
 import { EditorTake } from "@/components/editor-take";
 import { CouponCode } from "@/components/coupon-code";
 import { getEditor } from "@/lib/editor";
+import { Thumb } from "@/components/thumb";
+import { DayFaces, Snapshots } from "@/components/snapshots";
 
 /** "Read the full guide on saltinourhair.com", or "Watch the full video on YouTube". */
 function fullGuideLabel(url: string) {
@@ -87,8 +89,27 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       <Link href={`/destinations/${it.destination.slug}`} className="text-sm text-muted hover:text-foreground">
         ← {it.destination.name}
       </Link>
-      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
-      <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
+      {it.coverUrl ? (
+        <div className="relative mt-4 h-52 overflow-hidden rounded-2xl sm:h-72">
+          <Thumb
+            url={it.coverUrl}
+            category="EXPERIENCE"
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            className="size-full"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+            <p className="font-hand text-xl text-white/90">{tierLabel[it.tier]}</p>
+            <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{it.title}</h1>
+          </div>
+        </div>
+      ) : (
+        <>
+          <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
+          <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
+        </>
+      )}
       <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
         {/* Each "· part" is one unit, so a wrapped line never starts with a dangling dot. */}
         by <CreatorChip creator={it.creator} /> <span>· {it.days} days</span>{" "}
@@ -105,6 +126,14 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         <CreatorSocials creator={it.creator} />
       </div>
       <p className="mt-3 max-w-2xl">{it.summary}</p>
+      <Snapshots
+        className="mt-6"
+        shots={it.schedule.flatMap(({ day, items }) =>
+          items
+            .filter((i) => i.photoUrl && i.sentiment !== "AVOID")
+            .map((i) => ({ id: i.id, url: i.photoUrl!, caption: i.name, label: `Day ${day}` })),
+        )}
+      />
       <a
         href={it.sourceUrl}
         rel="noopener noreferrer"
@@ -143,6 +172,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
           <section key={day}>
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h2 className="flex flex-wrap items-center gap-2 text-lg font-semibold">
+                <DayFaces urls={items.flatMap((i) => (i.photoUrl && i.sentiment !== "AVOID" ? [i.photoUrl] : []))} />
                 Day {day} <DriveSummary minutes={drive.get(day)?.total ?? 0} />
               </h2>
               {groups.find((g) => g.id === day)?.routeUrl && (
@@ -163,56 +193,63 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                   // Fixed columns (details | price | booking button | add) so every row lines up with the next.
                   className="cv-row grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 p-4 sm:grid-cols-[minmax(0,1fr)_11rem_10.5rem_2.25rem] sm:items-start sm:gap-x-4"
                 >
-                  <div className="col-span-3 min-w-0 sm:col-span-1">
-                    <p className="font-medium">
-                      {pinNumber.has(item.id) && (
-                        <span
-                          className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
-                          style={{ background: dayColor(index) }}
-                          title="Pin number on the map"
-                        >
-                          {pinNumber.get(item.id)}
-                        </span>
-                      )}
-                      {item.placeSlug ? (
-                        <Link
-                          href={placeHref(it.destination.slug, item.placeSlug)}
-                          className="hover:text-accent hover:underline"
-                        >
-                          {item.name}
-                        </Link>
-                      ) : (
-                        item.name
-                      )}
-                      {item.sentiment === "MUST_VISIT" && (
-                        <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
-                          {sentimentLabel.MUST_VISIT}
-                        </span>
-                      )}
-                      {item.sentiment === "OPTIONAL" && (
-                        <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs text-muted">
-                          {sentimentLabel.OPTIONAL}
-                        </span>
-                      )}
-                      {item.sentiment === "AVOID" && (
-                        <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
-                          {sentimentLabel.AVOID}
-                        </span>
-                      )}
-                    </p>
-                    {item.note && <p className="mt-0.5 text-sm text-muted">{item.note}</p>}
-                    <LegHint leg={drive.get(day)?.legs.get(item.id)} />
-                    <p className="mt-0.5 text-xs text-muted">
-                      {categoryLabel[item.category]}
-                      {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
-                    </p>
-                    {(item.couponCode || item.creditedTo) && (
-                      <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
-                        {item.couponCode && <CouponCode code={item.couponCode} note={item.couponNote} />}
-                        {item.couponNote && <span className="text-muted">{item.couponNote}</span>}
-                        {item.creditedTo && <span className="text-muted">via {item.creditedTo}&apos;s link</span>}
+                  <div className="col-span-3 flex min-w-0 gap-3 sm:col-span-1 sm:gap-4">
+                    <Thumb
+                      url={item.photoUrl}
+                      category={item.category}
+                      className={`size-16 rounded-xl sm:size-20 ${item.sentiment === "AVOID" ? "opacity-50 grayscale" : ""}`}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium">
+                        {pinNumber.has(item.id) && (
+                          <span
+                            className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                            style={{ background: dayColor(index) }}
+                            title="Pin number on the map"
+                          >
+                            {pinNumber.get(item.id)}
+                          </span>
+                        )}
+                        {item.placeSlug ? (
+                          <Link
+                            href={placeHref(it.destination.slug, item.placeSlug)}
+                            className="hover:text-accent hover:underline"
+                          >
+                            {item.name}
+                          </Link>
+                        ) : (
+                          item.name
+                        )}
+                        {item.sentiment === "MUST_VISIT" && (
+                          <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
+                            {sentimentLabel.MUST_VISIT}
+                          </span>
+                        )}
+                        {item.sentiment === "OPTIONAL" && (
+                          <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs text-muted">
+                            {sentimentLabel.OPTIONAL}
+                          </span>
+                        )}
+                        {item.sentiment === "AVOID" && (
+                          <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
+                            {sentimentLabel.AVOID}
+                          </span>
+                        )}
                       </p>
-                    )}
+                      {item.note && <p className="mt-0.5 text-sm text-muted">{item.note}</p>}
+                      <LegHint leg={drive.get(day)?.legs.get(item.id)} />
+                      <p className="mt-0.5 text-xs text-muted">
+                        {categoryLabel[item.category]}
+                        {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
+                      </p>
+                      {(item.couponCode || item.creditedTo) && (
+                        <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
+                          {item.couponCode && <CouponCode code={item.couponCode} note={item.couponNote} />}
+                          {item.couponNote && <span className="text-muted">{item.couponNote}</span>}
+                          {item.creditedTo && <span className="text-muted">via {item.creditedTo}&apos;s link</span>}
+                        </p>
+                      )}
+                    </div>
                   </div>
                   <span
                     className={`min-w-0 text-sm tabular-nums [overflow-wrap:anywhere] sm:pt-0.5 sm:text-right ${item.priceCents === null ? "text-muted" : ""}`}

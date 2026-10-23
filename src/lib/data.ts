@@ -5,6 +5,8 @@ import { pickOffer, type CouponCandidate } from "@/lib/coupons";
 import { bookingSearch } from "@/lib/booking";
 import { creatorLinkSelect } from "@/lib/creator-links";
 import { vibesOf, type VibeKey } from "@/lib/vibes";
+import { cachedPhotoUrls } from "@/lib/photos";
+import { placePhotoKey } from "@/lib/place";
 
 /** On every cached read of site content; admin saves invalidate it so edits show at once. */
 export const CONTENT_TAG = "content";
@@ -197,8 +199,9 @@ export async function getDestination(slug: string) {
               priceCents: true,
               quantity: true,
               sentiment: true,
-              place: { select: { slug: true } },
+              place: { select: { slug: true, website: true } },
             },
+            orderBy: [{ day: "asc" }, { position: "asc" }],
           },
         },
       },
@@ -223,7 +226,13 @@ export async function getDestination(slug: string) {
         a.name.localeCompare(b.name),
     );
 
-  const routes = destination.itineraries.map((it) => {
+  // Each route card shows a few of its stops' photos; only photos the site already has, so no stock lookups here.
+  const routePlaces = destination.itineraries.map((it) => [
+    ...new Map(it.items.flatMap((i) => (i.place && i.sentiment !== "AVOID" ? [[i.place.slug, i.place]] : []))).values(),
+  ]);
+  const photos = await cachedPhotoUrls(routePlaces.flat().map((p) => placePhotoKey(slug, p)));
+
+  const routes = destination.itineraries.map((it, n) => {
     const byCategory = new Map<ItemCategory, number>();
     for (const item of it.items) byCategory.set(item.category, (byCategory.get(item.category) ?? 0) + itemTotal(item));
     const totalCents = [...byCategory.values()].reduce((a, b) => a + b, 0);
@@ -231,7 +240,9 @@ export async function getDestination(slug: string) {
       unpricedCount: it.items.filter((i) => i.priceCents === null).length,
       stops: it.items.length,
       /** Places it recommends (not ones it says to skip), for comparing routes. */
-      places: [...new Set(it.items.flatMap((i) => (i.place && i.sentiment !== "AVOID" ? [i.place.slug] : [])))],
+      places: routePlaces[n].map((p) => p.slug),
+      /** Up to three of its stops' photos, in trip order. */
+      photos: routePlaces[n].flatMap((p) => photos.get(placePhotoKey(slug, p)) ?? []).slice(0, 3),
       slug: it.slug,
       title: it.title,
       summary: it.summary,
@@ -296,13 +307,15 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
           itineraries: { select: { creatorId: true } },
           places: {
             where: { slug: { not: placeSlug }, lat: { not: null }, items: { some: {} } },
-            select: { slug: true, name: true, category: true, area: true, lat: true, lng: true },
+            select: { slug: true, name: true, category: true, area: true, lat: true, lng: true, website: true },
           },
         },
       },
     },
   });
   if (!place || place.items.length === 0) return null;
+  const others = place.destination.places;
+  const photos = await cachedPhotoUrls(others.map((p) => placePhotoKey(destinationSlug, p)));
 
   return {
     ...placeSummary(place),
@@ -322,7 +335,12 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
       itinerary: { slug: i.itinerary.slug, title: i.itinerary.title },
       creator: i.itinerary.creator,
     })),
-    others: place.destination.places.map((p) => ({ ...p, lat: p.lat!, lng: p.lng! })),
+    others: others.map((p) => ({
+      ...p,
+      lat: p.lat!,
+      lng: p.lng!,
+      photoUrl: photos.get(placePhotoKey(destinationSlug, p)) ?? null,
+    })),
   };
 }
 
@@ -508,6 +526,9 @@ export async function getItinerary(slug: string) {
 
   const days = new Map<number, typeof it.items>();
   for (const item of it.items) days.set(item.day, [...(days.get(item.day) ?? []), item]);
+  const photoKey = (place: { slug: string; website: string | null }) => placePhotoKey(it.destination.slug, place);
+  const coverKey = `destination:${it.destination.slug}`;
+  const photos = await cachedPhotoUrls([coverKey, ...it.items.flatMap((i) => (i.place ? [photoKey(i.place)] : []))]);
 
   return {
     slug: it.slug,
@@ -519,6 +540,8 @@ export async function getItinerary(slug: string) {
     sourceUrl: it.sourceUrl,
     updatedAt: it.updatedAt.toISOString(),
     destination: it.destination,
+    /** The city's cover photo, if the site already has one. */
+    coverUrl: photos.get(coverKey) ?? null,
     creator: it.creator,
     totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
     unpricedCount: it.items.filter((i) => i.priceCents === null).length,
@@ -547,6 +570,8 @@ export async function getItinerary(slug: string) {
           couponNote: offer?.description ?? null,
           website: i.place?.website ?? null,
           placeSlug: i.place?.slug ?? null,
+          /** The place's photo when the site already has one; lists show a category tile otherwise. */
+          photoUrl: (i.place && photos.get(photoKey(i.place))) ?? null,
           lat: i.place?.lat ?? null,
           lng: i.place?.lng ?? null,
           couponCode: offer?.code ?? null,
@@ -562,7 +587,7 @@ export async function getCreators() {
   "use cache";
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
-  return db.creator.findMany({
+  const creators = await db.creator.findMany({
     orderBy: { name: "asc" },
     select: {
       ...creatorLinkSelect,
@@ -580,6 +605,17 @@ export async function getCreators() {
       },
     },
   });
+  const covers = await cachedPhotoUrls([
+    ...new Set(creators.flatMap((c) => c.itineraries.map((it) => `destination:${it.destination.slug}`))),
+  ]);
+  return creators.map((c) => ({
+    ...c,
+    itineraries: c.itineraries.map((it) => ({
+      ...it,
+      /** The city's cover photo, if the site already has one. */
+      coverUrl: covers.get(`destination:${it.destination.slug}`) ?? null,
+    })),
+  }));
 }
 
 export async function getCreatorHandles() {

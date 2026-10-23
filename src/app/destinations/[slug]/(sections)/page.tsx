@@ -21,6 +21,7 @@ import { TripMap, type MapStop } from "@/components/trip-map";
 import { bestMonths } from "@/lib/seasons";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { FavouriteButton } from "@/components/favourite-button";
+import { Thumb } from "@/components/thumb";
 import { ConsensusFilter } from "./consensus-filter";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
@@ -106,19 +107,34 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
               All {consensus.length} places ↓
             </a>
           </div>
-          <ol className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+          <ol className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0">
             {agreed.map((p, i) => (
-              <li key={p.slug} className="flex items-baseline gap-2.5">
-                <span className="w-4 shrink-0 text-right font-display text-lg font-semibold text-accent-2">{i + 1}</span>
-                <span className="min-w-0">
-                  <Link href={placeHref(destination.slug, p.slug)} className="font-medium hover:text-accent">
-                    {p.name}
-                  </Link>
-                  <span className="text-sm whitespace-nowrap text-muted">
-                    {" "}
-                    · {p.creators.length} of {creatorCount} creators
+              <li key={p.slug} className="w-40 shrink-0 snap-start sm:w-auto">
+                <Link
+                  href={placeHref(destination.slug, p.slug)}
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-xl"
+                >
+                  <Photo
+                    photoKey={placePhotoKey(destination.slug, p)}
+                    query={placeQuery(p.name, destination.name)}
+                    category={p.category}
+                    website={p.website}
+                    alt=""
+                    sizes="(min-width: 640px) 220px, 160px"
+                    credit={false}
+                    className="size-full transition duration-300 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                  <span className="absolute top-2 left-2 flex size-8 items-center justify-center rounded-full bg-background font-display text-lg font-semibold text-accent-2 shadow">
+                    {i + 1}
                   </span>
-                </span>
+                  <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
+                    <span className="block font-semibold leading-tight text-balance">{p.name}</span>
+                    <span className="mt-0.5 block text-xs text-white/85">
+                      {p.creators.length} of {creatorCount} creators
+                    </span>
+                  </span>
+                </Link>
               </li>
             ))}
           </ol>
@@ -158,8 +174,22 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             <Link
               key={r.slug}
               href={`/itineraries/${r.slug}`}
-              className="flex min-w-[78%] snap-start flex-col rounded-2xl border border-line bg-card p-5 transition hover:border-accent sm:min-w-[320px] md:min-w-0"
+              className="flex min-w-[78%] snap-start flex-col overflow-hidden rounded-2xl border border-line bg-card p-5 transition hover:border-accent sm:min-w-[320px] md:min-w-0"
             >
+              {r.photos.length > 0 && (
+                <div className="-mx-5 -mt-5 mb-4 grid h-32 grid-cols-3 gap-0.5">
+                  {r.photos.map((url, n) => (
+                    <Thumb
+                      key={url}
+                      url={url}
+                      category="EXPERIENCE"
+                      sizes="(min-width: 768px) 360px, 80vw"
+                      // One photo fills the strip; two split 2:1; three sit side by side.
+                      className={`h-full ${r.photos.length === 1 ? "col-span-3" : r.photos.length === 2 && n === 0 ? "col-span-2" : ""}`}
+                    />
+                  ))}
+                </div>
+              )}
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[r.tier]}</span>
                 <span className="text-xs text-muted">{r.days} days</span>

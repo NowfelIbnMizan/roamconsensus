@@ -17,6 +17,7 @@ export type CartItem = {
   vendor: string | null;
   bookUrl: string | null;
   website?: string | null; // venue's own site, for items with no booking link
+  photoUrl?: string | null; // the place's photo; filled in by the cart refresh for older carts
   couponCode?: string | null; // optional: carts saved before codes existed lack it
   lat?: number | null; // map pin of the item's place; filled in by the cart refresh for older carts
   lng?: number | null;

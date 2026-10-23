@@ -159,6 +159,19 @@ export async function findPhoto({ key, query, category, postUrl, website }: Look
   return found;
 }
 
+/**
+ * Photo links already found for these keys, without asking any provider. For lists of many stops (itineraries,
+ * carts) where a missing photo just shows the category tile.
+ */
+export async function cachedPhotoUrls(keys: string[]) {
+  if (!keys.length) return new Map<string, string>();
+  const rows = await db.photoCache.findMany({
+    where: { key: { in: [...new Set(keys)] }, source: { not: "PLACEHOLDER" } },
+    select: { key: true, url: true },
+  });
+  return new Map(rows.map((r) => [r.key, r.url]));
+}
+
 /** Cached lookup for server components, so prerendered pages don't re-query providers. */
 export async function getPhoto(lookup: Lookup): Promise<Photo> {
   "use cache";

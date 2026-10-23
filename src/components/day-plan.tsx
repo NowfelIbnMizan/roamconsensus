@@ -1,5 +1,6 @@
 "use client";
 
+import { Thumb } from "@/components/thumb";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
 import { ChevronDown, ChevronUp, ExternalLink, Minus, Plane, Plus, Trash2 } from "lucide-react";
@@ -179,26 +180,33 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                     const number = hasPin(item) ? ++pin : null;
                     return (
                       <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
-                        <div className="min-w-0 flex-1 basis-56">
-                          <p className="font-medium">
-                            {number !== null && (
-                              <span
-                                className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
-                                style={{ background: day === null ? UNPLANNED : dayColor(day - 1) }}
-                              >
-                                {day === null ? "?" : number}
-                              </span>
-                            )}
-                            {item.name}
-                          </p>
-                          <p className="text-xs text-muted">
-                            {categoryLabel[item.category]} · from{" "}
-                            <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
-                              {item.itinerary.title}
-                            </Link>
-                          </p>
-                          {day !== null && <LegHint leg={legs.get(item.id)} />}
-                          <StopNote id={item.id} note={item.note} editable={Boolean(edit)} />
+                        <div className="flex min-w-0 flex-1 basis-56 gap-3">
+                          <Thumb
+                            url={item.photoUrl}
+                            category={item.category}
+                            className="size-12 rounded-lg sm:size-14"
+                          />
+                          <div className="min-w-0 flex-1">
+                            <p className="font-medium">
+                              {number !== null && (
+                                <span
+                                  className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                                  style={{ background: day === null ? UNPLANNED : dayColor(day - 1) }}
+                                >
+                                  {day === null ? "?" : number}
+                                </span>
+                              )}
+                              {item.name}
+                            </p>
+                            <p className="text-xs text-muted">
+                              {categoryLabel[item.category]} · from{" "}
+                              <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
+                                {item.itinerary.title}
+                              </Link>
+                            </p>
+                            {day !== null && <LegHint leg={legs.get(item.id)} />}
+                            <StopNote id={item.id} note={item.note} editable={Boolean(edit)} />
+                          </div>
                         </div>
                         <span className="text-sm tabular-nums text-muted">{price(item)}</span>
                         {edit && (
