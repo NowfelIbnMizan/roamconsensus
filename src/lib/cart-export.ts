@@ -33,7 +33,7 @@ function describe(i: CartItem) {
 
 export function toText(items: CartItem[]) {
   const total = items.reduce((s, i) => s + lineTotal(i), 0);
-  const lines = ["RoamConsensus trip checklist", `Estimated total: ${formatMoney(total)}`, ""];
+  const lines = ["Creatour trip checklist", `Estimated total: ${formatMoney(total)}`, ""];
   for (const g of groupByVendor(items)) {
     lines.push(`${g.vendor} (${formatMoney(g.totalCents)})`);
     for (const i of g.items) lines.push(`[ ] ${describe(i)}${linkFor(i) ? ` ${linkFor(i)}` : ""}`);

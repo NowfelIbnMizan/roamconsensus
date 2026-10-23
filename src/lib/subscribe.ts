@@ -38,7 +38,7 @@ export async function subscribe(_: SubscribeState, fd: FormData): Promise<Subscr
 
   const sent = await sendEmail({
     to: email,
-    subject: "Your trip plan from RoamConsensus",
+    subject: "Your trip plan from Creatour",
     html: tripEmailHtml(tripUrl, email),
   });
   if (!sent) return { ok: false, message: "Couldn't send the email right now. Try again in a bit." };

@@ -10,9 +10,9 @@ export async function GET() {
   const base = siteUrl();
   const destinations = await Promise.all((await getDestinations()).map((d) => getDestination(d.slug)));
   const lines = [
-    "# RoamConsensus",
+    "# Creatour",
     "",
-    "> RoamConsensus compares real travel creators' itineraries for each destination and shows where they agree: which places most creators recommend, which they say to skip, and what each route costs. Every recommendation links to the creator's original guide.",
+    "> Creatour compares real travel creators' itineraries for each destination and shows where they agree: which places most creators recommend, which they say to skip, and what each route costs. Every recommendation links to the creator's original guide.",
     "",
     'How to read the data: a place\'s rank comes from how many different creators recommend it. "3 of 4 creators" means three of the four creators covering that city include it. Prices are typical costs in USD with a source link where the creator gave none.',
     "",

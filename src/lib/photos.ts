@@ -48,7 +48,7 @@ const CONTENT_ATTR = /content=["']([^"']+)["']/i;
 async function fromWebsite(website?: string | null): Promise<Photo | null> {
   if (!website) return null;
   const res = await fetch(website, {
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; RoamConsensus/1.0; +https://roamconsensus-3arq.netlify.app)" },
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; Creatour/1.0; +https://creatour.co)" },
     redirect: "follow",
     signal: AbortSignal.timeout(8000),
   }).catch(() => null);
@@ -97,7 +97,7 @@ async function fromUnsplash(query: string): Promise<Photo | null> {
     url: photo.urls.regular,
     source: "UNSPLASH",
     attribution: `Photo by ${photo.user.name} on Unsplash`,
-    creditUrl: `${photo.user.links.html}?utm_source=roamconsensus&utm_medium=referral`,
+    creditUrl: `${photo.user.links.html}?utm_source=creatour&utm_medium=referral`,
   };
 }
 
@@ -208,7 +208,7 @@ export async function findGallery(key: string, query: string, mainUrl?: string):
     url: r.urls.regular,
     source: "UNSPLASH",
     attribution: `Photo by ${r.user.name} on Unsplash`,
-    creditUrl: `${r.user.links.html}?utm_source=roamconsensus&utm_medium=referral`,
+    creditUrl: `${r.user.links.html}?utm_source=creatour&utm_medium=referral`,
   }));
   await db.$transaction([
     db.photoCache.deleteMany({ where: { key: { startsWith: `${key}#` } } }),

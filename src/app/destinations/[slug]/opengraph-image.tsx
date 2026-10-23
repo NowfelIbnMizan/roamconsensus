@@ -1,7 +1,7 @@
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { ogCard, ogSize } from "@/lib/og";
 
-export const alt = "Destination guide from RoamConsensus";
+export const alt = "Destination guide from Creatour";
 export const size = ogSize;
 export const contentType = "image/png";
 
