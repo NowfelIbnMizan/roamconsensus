@@ -7,6 +7,7 @@ import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import type { QuizData } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
+import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
 
 const LENGTHS = [
@@ -18,6 +19,7 @@ const LENGTHS = [
 ];
 const TIERS: Tier[] = ["BACKPACKER", "BUDGET", "MIDRANGE", "LUXURY"];
 const SORTS = { cheap: "Cheapest", short: "Shortest", long: "Longest" } as const;
+const VIBE_SHARE = 0.15;
 
 /** Every creator route, filtered by trip length, budget, style and destination. Filtering runs in the browser. */
 export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
@@ -27,6 +29,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
   const [tier, setTier] = useState<Tier | "">("");
   const [where, setWhere] = useState("");
   const [sort, setSort] = useState<keyof typeof SORTS>("cheap");
+  const [vibes, setVibes] = useState<VibeKey[]>([]);
 
   const destinations = useMemo(
     () =>
@@ -42,6 +45,8 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
     .filter((r) => r.days >= min && r.days <= max)
     .filter((r) => !tier || r.tier === tier)
     .filter((r) => !where || r.destination.slug === where)
+    // A route fits a vibe when at least 15% of its stops match it; with several picked, any one will do.
+    .filter((r) => !vibes.length || vibes.some((v) => (r.vibes[v] ?? 0) >= VIBE_SHARE))
     // Routes with no prices, or unpriced hotels, can't be judged against a budget, so a budget hides them.
     .filter((r) => maxCents === null || (r.totalCents > 0 && r.unpricedStays === 0 && r.totalCents <= maxCents))
     .sort((a, b) =>
@@ -76,6 +81,25 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
             ))}
           </div>
         </div>
+        <div>
+          <p className="mb-2 text-sm font-medium">What kind of trip?</p>
+          <div className="flex flex-wrap gap-2">
+            {VIBES.map((v) => {
+              const on = vibes.includes(v.key);
+              return (
+                <button
+                  key={v.key}
+                  type="button"
+                  className={chip(on)}
+                  aria-pressed={on}
+                  onClick={() => setVibes(on ? vibes.filter((x) => x !== v.key) : [...vibes, v.key])}
+                >
+                  <span aria-hidden>{v.emoji}</span> {v.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
         <div className="grid gap-4 sm:grid-cols-3">
           <label className="block text-sm">
             <span className="font-medium">Max budget per person ({code})</span>
@@ -105,13 +129,13 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="font-medium">Style</span>
+            <span className="font-medium">Budget style</span>
             <select
               value={tier}
               onChange={(e) => setTier(e.target.value as Tier | "")}
               className="mt-1 w-full rounded-xl border border-line bg-background px-3 py-2"
             >
-              <option value="">Any style</option>
+              <option value="">Any budget</option>
               {TIERS.map((t) => (
                 <option key={t} value={t}>
                   {tierLabel[t]}
@@ -145,7 +169,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
 
       {shown.length === 0 ? (
         <p className="mt-4 rounded-2xl border border-dashed border-line p-6 text-center text-muted">
-          No trips match. Try a longer length or a bigger budget.
+          No trips match. Try fewer trip types, a longer length or a bigger budget.
         </p>
       ) : (
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -165,6 +189,18 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
                 <div className="mt-2 flex flex-wrap items-center gap-1.5 text-sm text-muted">
                   by <CreatorChip creator={r.creator} link={false} />
                 </div>
+                {VIBES.some((v) => (r.vibes[v.key] ?? 0) >= VIBE_SHARE) && (
+                  <p className="mt-2 flex flex-wrap gap-1.5 text-xs">
+                    {VIBES.filter((v) => (r.vibes[v.key] ?? 0) >= VIBE_SHARE).map((v) => (
+                      <span
+                        key={v.key}
+                        className={`rounded-full px-2 py-0.5 ${vibes.includes(v.key) ? "bg-accent-soft font-medium text-accent" : "bg-line text-muted"}`}
+                      >
+                        {v.emoji} {v.label}
+                      </span>
+                    ))}
+                  </p>
+                )}
                 <div className="mt-auto flex items-end justify-between pt-3">
                   <p>
                     {r.totalCents > 0 ? (

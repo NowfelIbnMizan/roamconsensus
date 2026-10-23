@@ -49,6 +49,8 @@ type CartState = {
   setNote: (id: string, note: string) => void;
   /** Moves an item before (-1) or after (+1) the neighbouring item planned for the same day. */
   move: (id: string, dir: -1 | 1) => void;
+  /** Drag and drop: puts an item on a day (null = not planned), just before another item, or last when null. */
+  place: (id: string, day: number | null, before: string | null) => void;
   setTripDays: (days: number) => void;
   refresh: (fresh: Record<string, CartItem>) => void;
   remove: (id: string) => void;
@@ -124,6 +126,15 @@ export const useCart = create<CartState>()(
           while (to >= 0 && to < items.length && (items[to].day ?? null) !== (items[from].day ?? null)) to += dir;
           if (to < 0 || to >= items.length) return {};
           [items[from], items[to]] = [items[to], items[from]];
+          return { items };
+        }),
+      place: (id, day, before) =>
+        set((s) => {
+          const item = s.items.find((i) => i.id === id);
+          if (!item || id === before) return {};
+          const items = s.items.filter((i) => i.id !== id);
+          const at = before ? items.findIndex((i) => i.id === before) : -1;
+          items.splice(at < 0 ? items.length : at, 0, { ...item, day });
           return { items };
         }),
       setTripDays: (tripDays) => set({ tripDays: Math.max(0, Math.min(60, tripDays)) }),

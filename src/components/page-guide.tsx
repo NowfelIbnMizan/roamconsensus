@@ -71,6 +71,7 @@ export function PageGuide({ id, className = "mb-8" }: { id: GuideId; className?:
 const cityTabs: Record<string, GuideId> = {
   "": "city-itineraries",
   best: "city-best",
+  stay: "city-stay",
   when: "city-when",
   before: "city-before",
   compare: "city-compare",

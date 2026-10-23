@@ -33,6 +33,22 @@
   color-scheme: dark;
 }
 
+/* Paper always prints light, whatever theme is on screen. */
+@media print {
+  :root,
+  :root[data-theme="dark"] {
+    --background: #fff;
+    --foreground: #1c1712;
+    --muted: #5b4e3b;
+    --card: #fff;
+    --line: #ddd2bf;
+    --accent: #0f6b62;
+    --accent-2: #ad4a22;
+    --paper-grain: 0;
+    color-scheme: light;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

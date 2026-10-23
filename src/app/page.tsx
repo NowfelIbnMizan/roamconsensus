@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
 import { Photo } from "@/components/photo";
-import { getCreatorHandles, getDestination, getDestinations } from "@/lib/data";
+import { getDestination, getDestinations, getSiteStats } from "@/lib/data";
+import { CreatorAvatar } from "@/components/creator-avatar";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { JourneyDoodle, SquiggleDivider, Stamp, Swoosh } from "@/components/art";
 
@@ -12,7 +13,8 @@ const comingSoon = [
 ];
 
 export default async function Home() {
-  const [destinations, creators] = await Promise.all([getDestinations(), getCreatorHandles()]);
+  const [destinations, stats] = await Promise.all([getDestinations(), getSiteStats()]);
+  const { creators } = stats;
   const routes = destinations.reduce((n, d) => n + d._count.itineraries, 0);
   const live = new Set(destinations.map((d) => d.slug));
   const placeholders = comingSoon.filter((c) => !live.has(c.slug)).slice(0, Math.max(0, 3 - destinations.length));
@@ -29,6 +31,19 @@ export default async function Home() {
     <>
       <section className="relative grid items-center gap-8 py-6 md:grid-cols-[1.15fr_1fr] md:py-10">
         <div>
+          <Link
+            href="/creators"
+            className="mb-4 inline-flex items-center gap-2.5 text-sm text-muted hover:text-foreground"
+          >
+            <span className="flex -space-x-2" aria-hidden>
+              {creators.slice(0, 6).map((c) => (
+                <CreatorAvatar key={c.handle} creator={c} size="sm" className="ring-2 ring-background" />
+              ))}
+            </span>
+            <span>
+              Trips from <strong className="text-foreground">{creators.length} travel creators</strong>
+            </span>
+          </Link>
           <p className="font-hand text-2xl text-accent-2 -rotate-2">your trip, crowd-checked by creators ✈</p>
           <h1 className="mt-1 max-w-2xl text-4xl font-semibold tracking-tight sm:text-6xl">
             See where travel creators{" "}
@@ -95,6 +110,20 @@ export default async function Home() {
           />
         </div>
       </section>
+      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[
+          { n: stats.cities, label: "cities covered" },
+          { n: stats.trips, label: "creator itineraries" },
+          { n: stats.places, label: "places recommended" },
+          { n: stats.stops, label: "stops compared" },
+        ].map((t) => (
+          <div key={t.label} className="rounded-2xl border border-line bg-card px-4 py-3">
+            <dt className="sr-only">{t.label}</dt>
+            <dd className="font-display text-3xl font-semibold tabular-nums">{t.n.toLocaleString("en")}</dd>
+            <dd className="text-sm text-muted">{t.label}</dd>
+          </div>
+        ))}
+      </dl>
       {examples.length > 0 && (
         <section aria-labelledby="agree-examples" className="mt-6">
           <h2 id="agree-examples" className="font-hand text-2xl text-accent-2">

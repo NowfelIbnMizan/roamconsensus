@@ -618,6 +618,21 @@ export async function getCreators() {
   }));
 }
 
+/** Headline numbers for the home page. Places count only those a creator actually recommends. */
+export async function getSiteStats() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const [cities, trips, creators, places, stops] = await Promise.all([
+    db.destination.count(),
+    db.itinerary.count(),
+    db.creator.findMany({ orderBy: { name: "asc" }, select: { handle: true, name: true } }),
+    db.place.count({ where: { items: { some: { sentiment: { not: "AVOID" } } } } }),
+    db.item.count(),
+  ]);
+  return { cities, trips, creators, places, stops };
+}
+
 export async function getCreatorHandles() {
   "use cache";
   cacheLife("hours");
