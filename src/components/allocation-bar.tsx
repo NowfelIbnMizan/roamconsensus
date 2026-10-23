@@ -10,22 +10,36 @@ const colors: Record<ItemCategory, string> = {
   TRANSIT: "bg-stone-500",
 };
 
-export function AllocationBar({ allocation }: { allocation: { category: ItemCategory; pct: number }[] }) {
+/** Spend split by category. `legend={false}` drops the key below the bar; each segment still names itself on hover. */
+export function AllocationBar({
+  allocation,
+  legend = true,
+}: {
+  allocation: { category: ItemCategory; pct: number }[];
+  legend?: boolean;
+}) {
   return (
     <div>
       <div className="flex h-2 overflow-hidden rounded-full bg-line">
         {allocation.map((a) => (
-          <div key={a.category} className={colors[a.category]} style={{ width: `${a.pct}%` }} />
+          <div
+            key={a.category}
+            className={colors[a.category]}
+            style={{ width: `${a.pct}%` }}
+            title={`${categoryLabel[a.category]} ${Math.round(a.pct)}%`}
+          />
         ))}
       </div>
-      <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
-        {allocation.map((a) => (
-          <li key={a.category} className="flex items-center gap-1">
-            <span className={`size-2 rounded-full ${colors[a.category]}`} />
-            {categoryLabel[a.category]} {Math.round(a.pct)}%
-          </li>
-        ))}
-      </ul>
+      {legend && (
+        <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
+          {allocation.map((a) => (
+            <li key={a.category} className="flex items-center gap-1">
+              <span className={`size-2 rounded-full ${colors[a.category]}`} />
+              {categoryLabel[a.category]} {Math.round(a.pct)}%
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

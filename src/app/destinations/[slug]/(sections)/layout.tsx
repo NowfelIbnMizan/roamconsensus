@@ -20,7 +20,7 @@ export default async function DestinationLayout({ children, params }: LayoutProp
           category="DESTINATION"
           alt={destination.name}
           sizes="(min-width: 1024px) 1024px, 100vw"
-          className="aspect-[16/9] rounded-[2px] sm:aspect-[21/9]"
+          className="aspect-[2/1] rounded-[2px] sm:aspect-[21/9]"
           priority
         />
         <Stamp

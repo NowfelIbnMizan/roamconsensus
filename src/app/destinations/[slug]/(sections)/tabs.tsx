@@ -2,11 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function DestinationTabs({ slug }: { slug: string }) {
   const pathname = usePathname();
   const nav = useRef<HTMLElement>(null);
+  // True while tabs sit past the right edge (phones), so the row fades out there as a "scroll for more" cue.
+  const [more, setMore] = useState(false);
+  const check = () => {
+    const el = nav.current;
+    if (el) setMore(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
 
   // On phones the row scrolls sideways; keep the open tab in view.
   useEffect(() => {
@@ -14,7 +20,12 @@ export function DestinationTabs({ slug }: { slug: string }) {
     const tab = el?.querySelector<HTMLElement>("[aria-current=page]");
     // Scrolls the row only (scrollIntoView would also scroll the page).
     if (el && tab) el.scrollLeft = tab.offsetLeft - (el.clientWidth - tab.offsetWidth) / 2;
+    check();
   }, [pathname]);
+  useEffect(() => {
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
   const tabs = [
     { href: `/destinations/${slug}`, label: "Itineraries" },
     { href: `/destinations/${slug}/best`, label: "Top picks" },
@@ -27,9 +38,12 @@ export function DestinationTabs({ slug }: { slug: string }) {
   return (
     <nav
       ref={nav}
+      onScroll={check}
       // Sideways only: overflow-y-hidden stops the 1px underline offset from making the bar scroll up and down,
       // and the scrollbar is hidden since the cut-off tab already shows there's more.
-      className="relative mt-8 mb-8 flex touch-pan-x gap-1 overflow-x-auto overflow-y-hidden overscroll-x-contain border-b border-line [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className={`relative mt-8 mb-8 flex touch-pan-x gap-1 overflow-x-auto overflow-y-hidden overscroll-x-contain border-b border-line [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+        more ? "[mask-image:linear-gradient(to_right,black_75%,transparent)]" : ""
+      }`}
       aria-label="Destination sections"
     >
       {tabs.map((t) => {

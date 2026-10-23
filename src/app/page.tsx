@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
 import { Photo } from "@/components/photo";
-import { getCreatorHandles, getDestinations } from "@/lib/data";
+import { getCreatorHandles, getDestination, getDestinations } from "@/lib/data";
+import { placeHref } from "@/lib/place";
 import { JourneyDoodle, SquiggleDivider, Stamp, Swoosh } from "@/components/art";
 
 // Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
@@ -15,6 +16,14 @@ export default async function Home() {
   const routes = destinations.reduce((n, d) => n + d._count.itineraries, 0);
   const live = new Set(destinations.map((d) => d.slug));
   const placeholders = comingSoon.filter((c) => !live.has(c.slug)).slice(0, Math.max(0, 3 - destinations.length));
+  // Show the idea, not just tell it: the most-shared spot in the three best-covered cities.
+  const covered = [...destinations].sort((a, b) => b._count.itineraries - a._count.itineraries).slice(0, 3);
+  const examples = (await Promise.all(covered.map((d) => getDestination(d.slug))))
+    .map((d) => {
+      const top = d?.consensus.find((p) => p.creators.length >= 2 && p.skippedBy.length === 0);
+      return d && top ? { city: d.name, slug: d.slug, place: top, of: d.creatorCount } : null;
+    })
+    .filter((e) => e !== null);
 
   return (
     <>
@@ -73,7 +82,32 @@ export default async function Home() {
         />
         <JourneyDoodle className="h-20 flex-1 text-foreground/70" />
       </div>
-      <SquiggleDivider className="mt-4 md:mt-6" />
+      {examples.length > 0 && (
+        <section aria-labelledby="agree-examples" className="mt-6">
+          <h2 id="agree-examples" className="font-hand text-2xl text-accent-2">
+            For example, creators agree on…
+          </h2>
+          <ul className="mt-3 grid gap-3 sm:grid-cols-3">
+            {examples.map((e) => (
+              <li key={e.slug}>
+                <Link
+                  href={placeHref(e.slug, e.place.slug)}
+                  className="block h-full rounded-2xl border border-line bg-card px-4 py-3 transition hover:border-accent"
+                >
+                  <span className="flex items-center gap-1 text-xs text-muted">
+                    <MapPin className="size-3.5" aria-hidden /> {e.city}
+                  </span>
+                  <span className="mt-0.5 block font-display text-lg font-semibold leading-snug">{e.place.name}</span>
+                  <span className="mt-1 block text-sm text-accent">
+                    {e.place.creators.length} of {e.of} creators recommend it
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <SquiggleDivider className="mt-6" />
 
       <section id="destinations" className="mt-8 scroll-mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
