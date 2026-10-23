@@ -90,12 +90,15 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
       <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
       <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
-        by <CreatorChip creator={it.creator} /> · {it.days} days · <UpdatedOn date={it.updatedAt} className="text-sm" />
+        {/* Each "· part" is one unit, so a wrapped line never starts with a dangling dot. */}
+        by <CreatorChip creator={it.creator} /> <span>· {it.days} days</span>{" "}
+        <span>
+          · <UpdatedOn date={it.updatedAt} className="text-sm" />
+        </span>
         {it.totalCents > 0 && (
-          <>
-            {" "}
+          <span>
             · <Money cents={it.totalCents} /> est.{it.unpricedCount > 0 && " for priced items"}
-          </>
+          </span>
         )}
       </p>
       <div className="mt-3">

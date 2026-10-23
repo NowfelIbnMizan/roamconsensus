@@ -61,8 +61,8 @@ function Sources({ urls }: { urls: string[] }) {
 
 function ImeiCallout({ imei }: { imei: EsimGuide["imei"] }) {
   return (
-    <aside className="mt-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-      <p className="flex items-center gap-2 font-medium text-emerald-700 dark:text-emerald-300">
+    <section className="mt-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
+      <p className="flex items-center gap-2 font-medium text-emerald-800 dark:text-emerald-300">
         <ShieldCheck className="size-4" aria-hidden /> {imei.title}
       </p>
       <ul className="mt-2 space-y-1 text-sm">
@@ -71,7 +71,7 @@ function ImeiCallout({ imei }: { imei: EsimGuide["imei"] }) {
         ))}
       </ul>
       <Sources urls={imei.sources} />
-    </aside>
+    </section>
   );
 }
 

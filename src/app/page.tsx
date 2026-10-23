@@ -33,7 +33,7 @@ export default async function Home() {
             We line up itineraries from multiple creators for one destination, show what they all recommend, and let you
             compare budget, mid-range and luxury routes side by side.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
             <Link
               href="/quiz"
               className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background"
@@ -42,13 +42,13 @@ export default async function Home() {
             </Link>
             <Link
               href="/itineraries"
-              className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:border-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium hover:border-accent sm:px-5"
             >
               Trips by length and budget
             </Link>
             <Link
               href="#destinations"
-              className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:border-accent"
+              className="hidden items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:border-accent sm:inline-flex"
             >
               Browse destinations
             </Link>
@@ -69,18 +69,18 @@ export default async function Home() {
           top={`${destinations.length} cities`}
           middle={`${routes} trips`}
           bottom={`${creators.length} creators`}
-          className="size-24 shrink-0 -rotate-6"
+          className="size-20 shrink-0 -rotate-6"
         />
-        <JourneyDoodle className="h-28 flex-1 text-foreground/70" />
+        <JourneyDoodle className="h-20 flex-1 text-foreground/70" />
       </div>
-      <SquiggleDivider className="mt-6" />
+      <SquiggleDivider className="mt-4 md:mt-6" />
 
       <section id="destinations" className="mt-8 scroll-mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-3xl font-semibold">Where to next?</h2>
           <p className="font-hand text-xl text-muted">pick a page from the journal ↓</p>
         </div>
-        <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
           {destinations.map((d, i) => (
             <li key={d.slug}>
               <Link
@@ -93,14 +93,14 @@ export default async function Home() {
                   query={`${d.name} ${d.country}`}
                   category="DESTINATION"
                   alt={d.name}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, 50vw"
                   className="aspect-[4/3] rounded-[2px]"
                 />
-                <div className="px-2 pt-3 pb-4">
-                  <div className="flex items-center gap-1 text-sm text-muted">
-                    <MapPin className="size-4" aria-hidden /> {d.country}
+                <div className="px-1 pt-2 pb-3 sm:px-2 sm:pt-3 sm:pb-4">
+                  <div className="flex items-center gap-1 text-xs text-muted sm:text-sm">
+                    <MapPin className="size-3.5 sm:size-4" aria-hidden /> {d.country}
                   </div>
-                  <h3 className="mt-0.5 font-display text-2xl font-semibold">
+                  <h3 className="mt-0.5 font-display text-xl font-semibold sm:text-2xl">
                     {d.name}
                     {d.isSample && (
                       <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200">
@@ -108,8 +108,8 @@ export default async function Home() {
                       </span>
                     )}
                   </h3>
-                  <p className="mt-1 line-clamp-2 text-sm text-muted">{d.summary}</p>
-                  <p className="mt-3 flex items-center gap-1 font-hand text-xl text-accent">
+                  <p className="mt-1 hidden text-sm text-muted sm:line-clamp-2">{d.summary}</p>
+                  <p className="mt-1 flex items-center gap-1 font-hand text-lg text-accent sm:mt-3 sm:text-xl">
                     {d._count.itineraries} itineraries{" "}
                     <ArrowRight className="size-4 transition group-hover:translate-x-0.5" aria-hidden />
                   </p>
@@ -125,7 +125,7 @@ export default async function Home() {
                   query={`${c.name} ${c.country}`}
                   category="DESTINATION"
                   alt=""
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, 50vw"
                   className="aspect-[16/9] opacity-60 grayscale"
                 />
                 <div className="p-5">
