@@ -7,7 +7,7 @@ import { TripFinder } from "./finder";
 export const metadata: Metadata = {
   title: "Find a trip by length and budget",
   description:
-    "Every creator itinerary on RoamConsensus, filtered by how many days you have and what you want to spend.",
+    "Every creator itinerary on Creatour, filtered by how many days you have and what you want to spend.",
 };
 
 export default async function TripsPage() {

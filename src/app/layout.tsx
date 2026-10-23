@@ -38,11 +38,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   // Makes share-image and canonical URLs absolute.
   metadataBase: new URL(siteUrl()),
-  openGraph: { siteName: "RoamConsensus", type: "website" },
+  openGraph: { siteName: "Creatour", type: "website" },
   twitter: { card: "summary_large_image" },
-  appleWebApp: { capable: true, title: "Roam", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "Creatour", statusBarStyle: "default" },
   icons: { apple: "/icons/apple-touch-icon.png" },
-  title: { default: "RoamConsensus", template: "%s · RoamConsensus" },
+  title: { default: "Creatour", template: "%s · Creatour" },
   description: "Compare travel creators' itineraries and see where they agree.",
 };
 
@@ -77,7 +77,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                   aria-hidden
                 />
                 <span className="font-display text-xl font-semibold tracking-tight">
-                  Roam<span className="text-accent italic">Consensus</span>
+                  Crea<span className="text-accent italic">tour</span>
                 </span>
               </Link>
               <div className="flex items-center gap-2 text-sm font-medium text-foreground/75 sm:gap-4">
@@ -130,7 +130,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </div>
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
-              Some links are affiliate links: we may earn a commission at no extra cost to you. RoamConsensus is not
+              Some links are affiliate links: we may earn a commission at no extra cost to you. Creatour is not
               affiliated with the creators featured.{" "}
               <Link href="/disclosure" className="underline">
                 Full disclosure

@@ -19,7 +19,7 @@ export default async function VisaPage() {
     <>
       <h1 className="text-4xl font-semibold tracking-tight">Do I need a visa?</h1>
       <p className="mt-3 max-w-2xl text-muted">
-        Pick your passport to see the entry rules for every destination on RoamConsensus. Your choice stays on this
+        Pick your passport to see the entry rules for every destination on Creatour. Your choice stays on this
         device.
       </p>
       <div className="mt-6">

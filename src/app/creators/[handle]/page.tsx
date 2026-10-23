@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/creators/[handle]">): Promise<Metadata> {
   const c = await getCreator((await params).handle);
-  return c ? { title: c.name, description: c.bio ?? `${c.name}'s travel itineraries on RoamConsensus.` } : {};
+  return c ? { title: c.name, description: c.bio ?? `${c.name}'s travel itineraries on Creatour.` } : {};
 }
 
 export default async function CreatorPage({ params }: PageProps<"/creators/[handle]">) {
@@ -32,7 +32,7 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
           <h1 className="text-3xl font-semibold tracking-tight">{creator.name}</h1>
           <p className="text-muted">
             {creator.itineraries.length} {creator.itineraries.length === 1 ? "itinerary" : "itineraries"} on
-            RoamConsensus
+            Creatour
           </p>
         </div>
       </div>

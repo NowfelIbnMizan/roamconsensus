@@ -1,6 +1,6 @@
 import { ogCard, ogSize } from "@/lib/og";
 
-export const alt = "RoamConsensus: see where travel creators agree";
+export const alt = "Creatour: see where travel creators agree";
 export const size = ogSize;
 export const contentType = "image/png";
 

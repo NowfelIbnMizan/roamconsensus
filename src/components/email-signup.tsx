@@ -39,7 +39,7 @@ export function EmailSignup({ tripPath, label, button }: { tripPath?: string; la
           {state.message}
         </p>
       )}
-      <p className="mt-1.5 text-[11px] text-muted">Only RoamConsensus emails. Unsubscribe anytime.</p>
+      <p className="mt-1.5 text-[11px] text-muted">Only Creatour emails. Unsubscribe anytime.</p>
     </form>
   );
 }

@@ -161,7 +161,7 @@ export async function GET() {
   return new Response(JSON.stringify(files, null, 2), {
     headers: {
       "Content-Type": "application/json",
-      "Content-Disposition": `attachment; filename="roamconsensus-backup-${stamp}.json"`,
+      "Content-Disposition": `attachment; filename="creatour-backup-${stamp}.json"`,
     },
   });
 }

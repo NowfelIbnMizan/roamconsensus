@@ -31,9 +31,9 @@ export function ogCard({ eyebrow, title, detail }: { eyebrow: string; title: str
             fontSize: 30,
           }}
         >
-          R
+          C
         </div>
-        RoamConsensus
+        Creatour
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <div style={{ fontSize: 30, color: "#5eead4", textTransform: "uppercase", letterSpacing: 2 }}>{eyebrow}</div>

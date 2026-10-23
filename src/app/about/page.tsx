@@ -6,7 +6,7 @@ import { getEditor, paragraphs } from "@/lib/editor";
 
 export async function generateMetadata(): Promise<Metadata> {
   const e = await getEditor();
-  return { title: `About ${e.name}`, description: e.tagline ?? `Who runs RoamConsensus and how it works.` };
+  return { title: `About ${e.name}`, description: e.tagline ?? `Who runs Creatour and how it works.` };
 }
 
 export default async function AboutPage() {
@@ -45,7 +45,7 @@ export default async function AboutPage() {
         </p>
       )}
 
-      <h2 className="mt-10 text-xl font-semibold">How RoamConsensus works</h2>
+      <h2 className="mt-10 text-xl font-semibold">How Creatour works</h2>
       <ul className="mt-3 list-disc space-y-2 pl-5">
         <li>I read each creator&apos;s full guide and lay out their stops day by day.</li>
         <li>
@@ -67,7 +67,7 @@ export default async function AboutPage() {
 
       <h2 id="for-creators" className="mt-10 scroll-mt-6 text-xl font-semibold">For creators</h2>
       <p className="mt-3">
-        RoamConsensus is not affiliated with or endorsed by the creators featured. If you&apos;re one of them and want
+        Creatour is not affiliated with or endorsed by the creators featured. If you&apos;re one of them and want
         something corrected, your own booking links used for your picks, or your itinerary removed,{" "}
         {e.email ? (
           <a href={`mailto:${e.email}`} className="text-accent underline">

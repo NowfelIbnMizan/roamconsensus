@@ -60,7 +60,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ slug: stri
           </div>
         ))}
       </div>
-      <div style={{ display: "flex", fontSize: 32, fontWeight: 600, color: "#ccfbf1" }}>RoamConsensus</div>
+      <div style={{ display: "flex", fontSize: 32, fontWeight: 600, color: "#ccfbf1" }}>Creatour</div>
     </div>,
     { width: 1000, height: 1500 },
   );

@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "RoamConsensus",
-    short_name: "Roam",
+    name: "Creatour",
+    short_name: "Creatour",
     description: "Compare travel creators' itineraries and plan your trip.",
     start_url: "/",
     display: "standalone",

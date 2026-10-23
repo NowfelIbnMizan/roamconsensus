@@ -9,7 +9,7 @@ import { tierLabel } from "@/lib/format";
 export const metadata: Metadata = {
   title: "Travel creators",
   description:
-    "The travel bloggers and creators whose itineraries RoamConsensus compares, with their bios, socials and routes.",
+    "The travel bloggers and creators whose itineraries Creatour compares, with their bios, socials and routes.",
 };
 
 export default async function CreatorsPage() {

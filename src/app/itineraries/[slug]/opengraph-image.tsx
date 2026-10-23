@@ -2,7 +2,7 @@ import { getItinerary, getItinerarySlugs } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
 import { ogCard, ogSize } from "@/lib/og";
 
-export const alt = "Creator itinerary on RoamConsensus";
+export const alt = "Creator itinerary on Creatour";
 export const size = ogSize;
 export const contentType = "image/png";
 
