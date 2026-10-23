@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { guidesScript } from "@/lib/guides";
 import { siteUrl } from "@/lib/email";
 import { Caveat, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -63,6 +64,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: guidesScript }} />
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageGuide } from "@/components/page-guide";
 import { YouTubeEmbed } from "@/components/youtube-embed";
 import { youtubeId, youtubeStart } from "@/lib/youtube";
 import { UpdatedOn } from "@/components/updated-on";
@@ -123,6 +124,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       <div className="mt-5">
         <AddRouteButton items={[...cartItems.values()].filter((c) => !skipped.has(c.id))} />
       </div>
+      <PageGuide id="itinerary" className="mt-6" />
 
       {stops.length > 0 && (
         <section className="mt-10">
