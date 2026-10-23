@@ -215,7 +215,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                     )}
                   </div>
                   <span
-                    className={`min-w-0 text-sm tabular-nums sm:pt-0.5 sm:text-right ${item.priceCents === null ? "text-muted" : ""}`}
+                    className={`min-w-0 text-sm tabular-nums [overflow-wrap:anywhere] sm:pt-0.5 sm:text-right ${item.priceCents === null ? "text-muted" : ""}`}
                   >
                     <Price item={item} />
                     {item.priceCents !== null && item.priceNote && (

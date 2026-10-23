@@ -33,6 +33,16 @@ function FromPrice({ p }: { p: { cents: number; unit: string | null; currency: s
   );
 }
 
+/** One line in place of the full bar legend: where most of the money goes. */
+function SpendNote({ allocation }: { allocation: { category: ItemCategory; pct: number }[] }) {
+  const top = allocation.reduce((a, b) => (b.pct > a.pct ? b : a));
+  return (
+    <p className="mt-1.5 text-xs text-muted">
+      Mostly {categoryLabel[top.category].toLowerCase()} ({Math.round(top.pct)}%)
+    </p>
+  );
+}
+
 export async function generateStaticParams() {
   return getDestinationSlugs();
 }
@@ -80,9 +90,39 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   }));
 
   const best = bestMonths(destination.months);
+  // The answer up front: the spots most creators share, before the photo-and-tabs scroll to the full list.
+  const agreed = consensus.filter((p) => p.creators.length >= 2 && p.skippedBy.length === 0).slice(0, 5);
 
   return (
     <>
+      {creatorCount > 1 && agreed.length >= 3 && (
+        <section className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5" aria-labelledby="agreed-heading">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 id="agreed-heading" className="font-hand text-2xl leading-tight text-accent-2">
+              Top 5 the creators agree on
+            </h2>
+            <a href="#agree" className="text-sm font-medium text-accent hover:underline">
+              All {consensus.length} places ↓
+            </a>
+          </div>
+          <ol className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            {agreed.map((p, i) => (
+              <li key={p.slug} className="flex items-baseline gap-2.5">
+                <span className="w-4 shrink-0 text-right font-display text-lg font-semibold text-accent-2">{i + 1}</span>
+                <span className="min-w-0">
+                  <Link href={placeHref(destination.slug, p.slug)} className="font-medium hover:text-accent">
+                    {p.name}
+                  </Link>
+                  <span className="text-sm whitespace-nowrap text-muted">
+                    {" "}
+                    · {p.creators.length} of {creatorCount} creators
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
       {weather && (
         <WeatherCard
           name={destination.name}
@@ -128,7 +168,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                 by <CreatorChip creator={r.creator} link={false} />
               </p>
               {r.editorTake && (
-                <p className="mt-2 line-clamp-3 border-l-2 border-accent pl-2 text-sm text-muted">
+                <p className="mt-2 line-clamp-2 border-l-2 border-accent pl-2 text-sm text-muted">
                   <span className="font-medium text-foreground">{editor.name}&apos;s take: </span>
                   {r.editorTake}
                 </p>
@@ -140,10 +180,11 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                   </p>
                   <p className="mb-4 text-xs text-muted">
                     est. per person
-                    {r.unpricedCount > 0 && ` · ${r.unpricedCount} items unpriced`}
+                    {r.unpricedCount > 0 && ` + ${r.unpricedCount} without prices`}
                   </p>
                   <div className="mt-auto">
-                    <AllocationBar allocation={r.allocation} />
+                    <AllocationBar allocation={r.allocation} legend={false} />
+                    {r.allocation.length > 0 && <SpendNote allocation={r.allocation} />}
                   </div>
                 </>
               ) : (
@@ -157,7 +198,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         </div>
       </section>
 
-      <section className="mt-12">
+      <section id="agree" className="mt-12 scroll-mt-6">
         <h2 className="flex items-center gap-2 text-xl font-semibold">
           <Users className="size-5 text-accent" aria-hidden />{" "}
           {creatorCount > 1 ? "What creators agree on" : "Recommended spots"}

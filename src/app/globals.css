@@ -55,6 +55,13 @@ body {
   color: var(--foreground);
 }
 
+/* Balance the last line of running text so a paragraph never ends on one stranded word. */
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
 /* Paper grain: a faint noise texture over the whole page, behind everything. */
 body::before {
   content: "";
