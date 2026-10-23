@@ -1,6 +1,7 @@
 "use client";
 
 import { SuitcaseDoodle } from "@/components/art";
+import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Check, CloudRain, ExternalLink, Navigation, Plus } from "lucide-react";
@@ -121,6 +122,7 @@ export function TodayView() {
           </button>
         ))}
       </nav>
+      <PageGuide id="today" className="mt-4" />
       {!startDate && (
         <p className="mt-2 text-xs text-muted">
           Set your start date and this page opens on today&apos;s plan by itself.

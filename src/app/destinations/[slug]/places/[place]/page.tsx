@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, ChevronRight, Globe, MapPin, Navigation } from "lucide-react";
@@ -172,6 +173,7 @@ export default async function PlacePage({ params }: Props) {
               website={p.website}
             />
           </p>
+          <PageGuide id="place" className="mt-6" />
         </div>
       </div>
 

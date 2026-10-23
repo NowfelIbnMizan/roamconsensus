@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { getQuizData } from "@/lib/data";
 import { TripFinder } from "./finder";
@@ -21,6 +22,7 @@ export default async function TripsPage() {
         </Link>
         .
       </p>
+      <PageGuide id="finder" className="mt-6" />
       <TripFinder routes={routes} />
     </>
   );

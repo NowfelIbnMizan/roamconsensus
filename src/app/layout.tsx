@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { guidesScript } from "@/lib/guides";
 import { siteUrl } from "@/lib/email";
 import { Caveat, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -32,10 +33,6 @@ const geistMono = Geist_Mono({
 export const viewport: Viewport = {
   // Lets the bottom tab bar sit above the iPhone home indicator.
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5efe4" },
-    { media: "(prefers-color-scheme: dark)", color: "#16120d" },
-  ],
 };
 
 export const metadata: Metadata = {
@@ -62,7 +59,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        {/* The theme script below sets this to the chosen theme's colour. */}
+        <meta name="theme-color" content="#f5efe4" />
+        {/* Paints the right page colour even before the stylesheet arrives. */}
+        <style>{`html{background:#f5efe4}html[data-theme="dark"]{background:#16120d;color-scheme:dark}`}</style>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: guidesScript }} />
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
@@ -78,23 +80,23 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                   Roam<span className="text-accent italic">Consensus</span>
                 </span>
               </Link>
-              <div className="flex items-center gap-2 text-sm text-muted sm:gap-4">
-                <Link href="/#destinations" className="hidden hover:text-foreground md:inline">
+              <div className="flex items-center gap-2 text-sm font-medium text-foreground/75 sm:gap-4">
+                <Link href="/#destinations" className="hidden hover:text-accent md:inline">
                   Destinations
                 </Link>
-                <Link href="/creators" className="hidden hover:text-foreground md:inline">
+                <Link href="/creators" className="hidden hover:text-accent md:inline">
                   Creators
                 </Link>
-                <Link href="/itineraries" className="hidden hover:text-foreground sm:inline">
+                <Link href="/itineraries" className="hidden hover:text-accent sm:inline">
                   Find a trip
                 </Link>
-                <Link href="/visa" className="hidden hover:text-foreground sm:inline">
+                <Link href="/visa" className="hidden hover:text-accent sm:inline">
                   Visa check
                 </Link>
-                <Link href="/blog" className="hidden hover:text-foreground md:inline">
+                <Link href="/blog" className="hidden hover:text-accent md:inline">
                   Blog
                 </Link>
-                <Link href="/about" className="hidden hover:text-foreground md:inline">
+                <Link href="/about" className="hidden hover:text-accent md:inline">
                   About
                 </Link>
                 <Link

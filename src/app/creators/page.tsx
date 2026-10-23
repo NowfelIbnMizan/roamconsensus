@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { CreatorChip, CreatorSocials } from "@/components/creator";
@@ -7,7 +8,8 @@ import { tierLabel } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Travel creators",
-  description: "The travel bloggers and creators whose itineraries RoamConsensus compares, with their bios, socials and routes.",
+  description:
+    "The travel bloggers and creators whose itineraries RoamConsensus compares, with their bios, socials and routes.",
 };
 
 export default async function CreatorsPage() {
@@ -22,6 +24,7 @@ export default async function CreatorsPage() {
         Every route here links back to their full guide, so give them a read and a follow.
       </p>
 
+      <PageGuide id="creators" className="mt-6" />
       <ul className="mt-8 grid gap-4 md:grid-cols-2">
         {creators.map((c) => {
           const destinations = [...new Map(c.itineraries.map((it) => [it.destination.slug, it.destination])).values()];

@@ -9,7 +9,11 @@ export function CartLink() {
   const count = useCart((s) => s.items.length);
 
   return (
-    <Link href="/cart" aria-label="Trip cart" className="relative flex items-center gap-1 hover:text-foreground">
+    <Link
+      href="/cart"
+      aria-label="Trip cart"
+      className="relative flex items-center gap-1.5 rounded-full border border-line px-3 py-1"
+    >
       <ShoppingBag className="size-4" aria-hidden />
       <span className="hidden sm:inline">Trip cart</span>
       {hydrated && count > 0 && (

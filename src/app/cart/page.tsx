@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageGuide } from "@/components/page-guide";
 import { canSendEmail } from "@/lib/email";
 import { CartView } from "./cart-view";
 
@@ -11,6 +12,7 @@ export default function CartPage() {
       <p className="mt-2 mb-8 text-muted">
         Plan it day by day, then book. Prices are estimates from creators&apos; posts.
       </p>
+      <PageGuide id="cart" />
       <CartView canEmail={canSendEmail()} />
     </>
   );

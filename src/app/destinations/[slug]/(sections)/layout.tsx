@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { CityTabGuide } from "@/components/page-guide";
 import { Photo } from "@/components/photo";
 import { SampleBanner } from "@/components/sample-banner";
 import { getDestination } from "@/lib/data";
@@ -33,6 +34,7 @@ export default async function DestinationLayout({ children, params }: LayoutProp
       <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{destination.name}</h1>
       <p className="mt-3 max-w-2xl text-muted">{destination.summary}</p>
       <DestinationTabs slug={destination.slug} />
+      <CityTabGuide slug={destination.slug} />
       {children}
     </>
   );
