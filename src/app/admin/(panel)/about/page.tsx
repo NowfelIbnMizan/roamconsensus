@@ -28,13 +28,6 @@ export default async function AboutAdmin() {
           defaultValue={e.photoUrl}
           hint="Blank = your first initial."
         />
-        <Field
-          label="Contact email"
-          name="email"
-          type="email"
-          defaultValue={e.email}
-          hint="Shown for readers and creators who want an edit or removal."
-        />
         <Field label="Instagram" name="instagramUrl" type="url" defaultValue={e.instagramUrl} />
         <div className="sm:col-span-2">
           <SaveButton />

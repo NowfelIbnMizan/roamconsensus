@@ -12,7 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AboutPage() {
   const e = await getEditor();
-  const email = e.email || CONTACT_EMAIL;
+  // Always the site address: it forwards to the owner's inbox without showing their personal email.
+  const email = CONTACT_EMAIL;
   return (
     <article className="max-w-2xl">
       <div className="flex items-center gap-4">
