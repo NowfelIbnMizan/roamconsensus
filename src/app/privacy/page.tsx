@@ -31,12 +31,17 @@ export default function PrivacyPage() {
       <h2>If you sign in with Google</h2>
       <p>
         Signing in is optional. When you do, Google tells us your name, email address and profile photo, and we keep
-        your trip cart and any trips you save so they show up on all your devices. A sign-in cookie keeps you signed in
-        for up to 90 days; it is only used for that. We never see your Google password, and we don&apos;t ask for access
-        to your contacts, files or anything else.
+        your trip cart (with any notes you add), saved trips and hearted places so they show up on all your devices. A
+        sign-in cookie keeps you signed in for up to 90 days; it is only used for that. We never see your Google
+        password, and we don&apos;t ask for access to your contacts, files or anything else.
       </p>
       <p>
-        You can delete your account and saved trips any time from{" "}
+        If you join or start a group trip, the other people in it see your first name, profile photo, the stops you
+        added and your votes. Your notes stay private. If you turn on trip alerts, we email you at most once a day, and
+        every alert has a link to turn them off.
+      </p>
+      <p>
+        You can delete your account, saved trips and places any time from{" "}
         <Link href="/my-trips" className="underline">
           My trips
         </Link>

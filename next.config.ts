@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
     ],
   },
   partialPrefetching: true,
+  // Share images read their fonts from disk (src/lib/og.tsx), including when a new city or route renders at request time.
+  outputFileTracingIncludes: { "/**/opengraph-image*": ["./src/assets/fonts/**"] },
   turbopack: {
     rules: {
       "*.css": {

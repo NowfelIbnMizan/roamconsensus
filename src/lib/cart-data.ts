@@ -13,7 +13,11 @@ export type CartData = {
 
 // Items are the browser's own snapshots; only what the site reads back to find and refresh them is checked.
 const Item = z
-  .object({ id: z.string().max(300), name: z.string().max(300), itinerary: z.object({ slug: z.string().max(200) }) })
+  .object({
+    id: z.string().max(300),
+    name: z.string().max(300),
+    itinerary: z.object({ slug: z.string().max(200) }).passthrough(),
+  })
   .passthrough();
 
 export const CartDataSchema = z.object({

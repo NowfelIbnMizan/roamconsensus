@@ -2,6 +2,7 @@
 
 import { SuitcaseDoodle } from "@/components/art";
 import Link from "next/link";
+import { StopNote } from "@/components/stop-note";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ClipboardCopy,
@@ -193,6 +194,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                           </span>
                         )}
                       </p>
+                      <StopNote id={item.id} note={item.note} />
                     </div>
                     <div className="mr-auto flex items-center gap-1 sm:mr-0" aria-label={`Quantity for ${item.name}`}>
                       <button

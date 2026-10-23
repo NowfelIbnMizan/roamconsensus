@@ -63,6 +63,7 @@ export const guides = {
   "my-trips": [
     { lead: "Same cart everywhere", text: "Signed in, your trip cart follows you to your phone, laptop and tablet." },
     { lead: "Keep a copy", text: "Save the cart as a named trip, then start a new one. Open it again any time." },
+    { lead: "Plan with friends", text: "Start a group trip and share the link. Everyone adds stops and votes on them." },
   ],
   today: [
     { lead: "Today's plan", text: "Set your start date and this page opens on today's stops by itself." },
