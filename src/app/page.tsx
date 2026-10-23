@@ -62,39 +62,36 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <div className="relative h-72 sm:h-96 md:h-[26rem]">
+        <div className="relative pt-4 pb-24 md:pb-28">
           <JourneyDoodle className="absolute inset-0 m-auto w-full text-foreground/25" />
-          {covered.map((d, i) => (
-            // .tape sets position: relative, so the absolute placement lives on a wrapper.
-            <div
-              key={d.slug}
-              className={`absolute w-[46%] md:w-[52%] ${["top-2 left-0", "top-8 right-0 md:top-16", "bottom-0 left-[26%]"][i]}`}
-              style={{ zIndex: i + 1 }}
-            >
+          {/* A fanned row: neighbours overlap only at the edges, so every caption stays readable. */}
+          <div className="relative flex justify-center">
+            {covered.map((d, i) => (
               <Link
+                key={d.slug}
                 href={`/destinations/${d.slug}`}
-                className={`polaroid tape block rounded-sm ${i % 2 ? "tape-alt" : ""}`}
-                style={{ rotate: `${[-5, 4, -1.5][i]}deg` }}
+                className={`polaroid tape block w-[36%] rounded-sm ${i % 2 ? "tape-alt mt-0" : "mt-8"} ${i ? "-ml-[3%]" : ""}`}
+                style={{ rotate: `${[-6, 2, 6][i]}deg`, zIndex: i === 1 ? 2 : 1 }}
               >
                 <Photo
                   photoKey={`destination:${d.slug}`}
                   query={`${d.name} ${d.country}`}
                   category="DESTINATION"
                   alt={d.name}
-                  sizes="(min-width: 768px) 280px, 46vw"
+                  sizes="(min-width: 768px) 200px, 36vw"
                   credit={false}
                   priority={i === 0}
-                  className="aspect-[4/3] rounded-[2px]"
+                  className="aspect-[4/5] rounded-[2px]"
                 />
-                <span className="block py-1 text-center font-hand text-lg sm:text-xl">{d.name}</span>
+                <span className="block truncate px-1 py-1 text-center font-hand text-lg sm:text-xl">{d.name}</span>
               </Link>
-            </div>
-          ))}
+            ))}
+          </div>
           <Stamp
             top={`${destinations.length} cities`}
             middle={`${routes} trips`}
             bottom={`${creators.length} creators`}
-            className="absolute right-1 bottom-2 z-10 size-20 rotate-12 sm:size-28"
+            className="absolute right-2 bottom-0 z-10 size-20 rotate-12 sm:size-24"
           />
         </div>
       </section>
