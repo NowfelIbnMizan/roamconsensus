@@ -58,6 +58,11 @@ export const guides = {
     { lead: "Plan the days", text: "Set your trip length, then put each item on a day in Day by day." },
     { lead: "Share it", text: "Share my trip makes a link friends can open and copy into their own cart." },
     { lead: "On the road", text: "Trip mode shows just today's stops. It also works offline." },
+    { lead: "Every device", text: "Sign in with Google to see this cart on your phone and laptop." },
+  ],
+  "my-trips": [
+    { lead: "Same cart everywhere", text: "Signed in, your trip cart follows you to your phone, laptop and tablet." },
+    { lead: "Keep a copy", text: "Save the cart as a named trip, then start a new one. Open it again any time." },
   ],
   today: [
     { lead: "Today's plan", text: "Set your start date and this page opens on today's stops by itself." },

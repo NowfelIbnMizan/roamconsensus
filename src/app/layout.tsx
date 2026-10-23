@@ -10,6 +10,9 @@ import { CurrencyPicker, CurrencyProvider } from "@/components/money";
 import { ThemeToggle, themeScript } from "@/components/theme";
 import { InstallApp } from "@/components/install-app";
 import { MobileNav } from "@/components/mobile-nav";
+import { AccountButton } from "@/components/account-button";
+import { CartSync } from "@/components/cart-sync";
+import { googleLoginEnabled } from "@/lib/auth";
 import { VisitorStats } from "@/components/visitor-stats";
 import { EmailSignup } from "@/components/email-signup";
 import { JourneyDoodle } from "@/components/art";
@@ -111,6 +114,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <span className="hidden sm:inline-flex">
                   <CartLink />
                 </span>
+                <AccountButton enabled={googleLoginEnabled()} />
               </div>
             </nav>
           </header>
@@ -166,6 +170,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           </footer>
           <Suspense fallback={null}>
             <MobileNav />
+            {googleLoginEnabled() && <CartSync />}
             {goatcounter && <VisitorStats code={goatcounter} />}
           </Suspense>
         </CurrencyProvider>
