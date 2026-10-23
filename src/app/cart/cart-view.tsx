@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ClipboardCopy, Download, ExternalLink, Map as MapIcon, Minus, Plus, Share2, Trash2 } from "lucide-react";
+import {
+  ClipboardCopy,
+  Download,
+  ExternalLink,
+  Map as MapIcon,
+  Minus,
+  Navigation,
+  Plus,
+  Share2,
+  Trash2,
+} from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toNotionMarkdown, toText } from "@/lib/cart-export";
@@ -116,13 +126,21 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               </button>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={share}
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
-          >
-            <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share my trip"}
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/today"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+            >
+              <Navigation className="size-4" aria-hidden /> Trip mode
+            </Link>
+            <button
+              type="button"
+              onClick={share}
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
+            >
+              <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share my trip"}
+            </button>
+          </div>
         </div>
 
         {canEmail && items.length > 0 && (

@@ -105,7 +105,14 @@ const placeItemSelect = {
   sentiment: true,
   vendor: { select: { name: true } },
   links: { select: { url: true, creatorId: true } },
-  itinerary: { select: { slug: true, title: true, creator: { select: creatorLinkSelect } } },
+  itinerary: {
+    select: {
+      slug: true,
+      title: true,
+      creator: { select: creatorLinkSelect },
+      destination: { select: { slug: true, name: true } },
+    },
+  },
 } as const;
 
 type PlaceWithItems = Prisma.PlaceGetPayload<{ include: { items: { select: typeof placeItemSelect } } }>;
@@ -135,6 +142,7 @@ function placeSummary(place: PlaceWithItems) {
     blurb: place.blurb,
     tip: place.tip,
     website: place.website,
+    photos: place.photos,
     lat: place.lat,
     lng: place.lng,
     fromPrice: priced[0] ? { cents: priced[0].priceCents!, unit: priced[0].unit, currency: priced[0].currency } : null,
@@ -154,6 +162,7 @@ function placeSummary(place: PlaceWithItems) {
           lat: place.lat,
           lng: place.lng,
           itinerary: { slug: pick.itinerary.slug, title: pick.itinerary.title },
+          destination: pick.itinerary.destination,
         }
       : null,
     creators: toList(byCreator(false)),
@@ -657,4 +666,41 @@ export async function getStays(slug: string) {
     itinerary: i.itinerary.slug,
     creator: i.itinerary.creator.name,
   }));
+}
+
+const postSelect = {
+  slug: true,
+  title: true,
+  excerpt: true,
+  coverUrl: true,
+  publishedAt: true,
+  updatedAt: true,
+  destination: { select: { slug: true, name: true } },
+} as const;
+
+const postDates = <T extends { publishedAt: Date | null; updatedAt: Date }>(p: T) => ({
+  ...p,
+  publishedAt: (p.publishedAt ?? p.updatedAt).toISOString(),
+  updatedAt: p.updatedAt.toISOString(),
+});
+
+/** Published blog posts, newest first. Optionally only those about one city. */
+export async function getPosts(destinationSlug?: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const posts = await db.post.findMany({
+    where: { published: true, ...(destinationSlug ? { destination: { slug: destinationSlug } } : {}) },
+    orderBy: { publishedAt: "desc" },
+    select: postSelect,
+  });
+  return posts.map(postDates);
+}
+
+export async function getPost(slug: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const post = await db.post.findUnique({ where: { slug }, select: { ...postSelect, body: true, published: true } });
+  return post?.published ? postDates(post) : null;
 }

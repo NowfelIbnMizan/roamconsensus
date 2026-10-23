@@ -6,12 +6,13 @@ import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
-import { getDestination, getDestinationSlugs, getEsimPlans } from "@/lib/data";
+import { getDestination, getDestinationSlugs, getEsimPlans, getPosts } from "@/lib/data";
 import { destinationFaq } from "@/lib/faq";
 import { FaqList } from "@/components/faq-list";
 import { UpdatedOn } from "@/components/updated-on";
 import { WeatherCard } from "@/components/weather-card";
 import { getWeather } from "@/lib/weather";
+import { rainyDayPicks } from "@/lib/indoor";
 import { getEditor } from "@/lib/editor";
 import { categoryLabel, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
@@ -45,8 +46,9 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   const [destination, editor] = await Promise.all([getDestination((await params).slug), getEditor()]);
   if (!destination) notFound();
   const { creatorCount, consensus } = destination;
-  const [esimPlans, weather] = await Promise.all([
+  const [esimPlans, posts, weather] = await Promise.all([
     getEsimPlans(destination.country),
+    getPosts(destination.slug),
     destination.center ? getWeather(destination.center.lat, destination.center.lng) : null,
   ]);
   const faq = destinationFaq(destination, esimPlans);
@@ -81,7 +83,16 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
 
   return (
     <>
-      {weather && <WeatherCard name={destination.name} weather={weather} />}
+      {weather && (
+        <WeatherCard
+          name={destination.name}
+          weather={weather}
+          rainyPicks={rainyDayPicks(consensus, 4).map((p) => ({
+            name: p.name,
+            href: placeHref(destination.slug, p.slug),
+          }))}
+        />
+      )}
       {best && (
         <Link
           href={`/destinations/${destination.slug}/when`}
@@ -262,6 +273,28 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
           </ul>
         </ConsensusFilter>
       </section>
+
+      {posts.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold">From the blog</h2>
+          <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
+            {posts.slice(0, 5).map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/blog/${p.slug}`}
+                  className="flex items-center justify-between gap-3 p-4 hover:text-accent"
+                >
+                  <span>
+                    <span className="font-medium">{p.title}</span>
+                    {p.excerpt && <span className="mt-0.5 line-clamp-1 block text-sm text-muted">{p.excerpt}</span>}
+                  </span>
+                  <ArrowRight className="size-4 shrink-0" aria-hidden />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <FaqList title={`${destination.name} questions travellers ask`} faq={faq} />
       <UpdatedOn date={destination.updatedAt} />

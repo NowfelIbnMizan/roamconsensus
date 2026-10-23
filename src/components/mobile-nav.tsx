@@ -7,10 +7,20 @@ import { useCart, useCartHydrated } from "@/lib/cart-store";
 
 const tabs = [
   { href: "/", label: "Home", icon: Home, match: (p: string) => p === "/" },
-  { href: "/#destinations", label: "Explore", icon: Compass, match: (p: string) => p.startsWith("/destinations") || p.startsWith("/itineraries") },
+  {
+    href: "/#destinations",
+    label: "Explore",
+    icon: Compass,
+    match: (p: string) => p.startsWith("/destinations") || p.startsWith("/itineraries"),
+  },
   { href: "/creators", label: "Creators", icon: Users, match: (p: string) => p.startsWith("/creators") },
   { href: "/search", label: "Search", icon: Search, match: (p: string) => p.startsWith("/search") },
-  { href: "/cart", label: "Trip", icon: ShoppingBag, match: (p: string) => p.startsWith("/cart") || p.startsWith("/trip") },
+  {
+    href: "/cart",
+    label: "Trip",
+    icon: ShoppingBag,
+    match: (p: string) => p.startsWith("/cart") || p.startsWith("/trip") || p.startsWith("/today"),
+  },
 ];
 
 /** Thumb-reach tab bar on phones, where the header has no room for links. */

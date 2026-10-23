@@ -23,6 +23,8 @@ export type CartItem = {
   /** Day of the traveller's own plan; whole routes come in on the creator's days. */
   day?: number | null;
   itinerary: { slug: string; title: string };
+  /** City the item is in; filled in by the cart refresh for older carts. */
+  destination?: { slug: string; name: string } | null;
 };
 
 type CartState = {
@@ -33,6 +35,12 @@ type CartState = {
   /** Packing list entries the traveller ticked off. */
   packed: string[];
   togglePacked: (item: string) => void;
+  /** First day of the trip (YYYY-MM-DD), so trip mode opens on today's plan. */
+  startDate: string | null;
+  setStartDate: (date: string | null) => void;
+  /** Stops ticked off in trip mode. */
+  done: string[];
+  toggleDone: (id: string) => void;
   add: (items: CartItem[]) => void;
   setDay: (id: string, day: number | null) => void;
   /** Moves an item before (-1) or after (+1) the neighbouring item planned for the same day. */
@@ -54,11 +62,27 @@ export const useCart = create<CartState>()(
       packed: [],
       togglePacked: (item) =>
         set((s) => ({ packed: s.packed.includes(item) ? s.packed.filter((p) => p !== item) : [...s.packed, item] })),
-      // Re-adding an item already in the cart leaves its quantity alone.
+      startDate: null,
+      setStartDate: (startDate) => set({ startDate }),
+      done: [],
+      toggleDone: (id) =>
+        set((s) => ({ done: s.done.includes(id) ? s.done.filter((d) => d !== id) : [...s.done, id] })),
+      // Re-adding an item already in the cart leaves its quantity alone. A route from a new city goes after the
+      // days already planned, so Bangkok then Chiang Mai becomes one trip instead of two overlapping ones.
       add: (incoming) =>
         set((s) => {
           const existing = new Set(s.items.map((i) => i.id));
-          return { items: [...s.items, ...incoming.filter((i) => !existing.has(i.id))] };
+          let added = incoming.filter((i) => !existing.has(i.id));
+          const city = added[0]?.destination?.slug;
+          const newCity =
+            city &&
+            s.items.some((i) => i.destination?.slug && i.destination.slug !== city) &&
+            !s.items.some((i) => i.destination?.slug === city);
+          const offset = Math.max(0, ...s.items.map((i) => i.day ?? 0));
+          if (!newCity || offset === 0 || !added.some((i) => i.day)) return { items: [...s.items, ...added] };
+          added = added.map((i) => (i.day ? { ...i, day: i.day + offset } : i));
+          const lastDay = Math.max(...added.map((i) => i.day ?? 0));
+          return { items: [...s.items, ...added], tripDays: s.tripDays ? Math.max(s.tripDays, lastDay) : 0 };
         }),
       // Swap saved snapshots for current data (prices, links, ids), keeping the traveller's quantity unless the
       // unit changed (a flat price that became per-day should start at the creator's day count).
@@ -94,11 +118,11 @@ export const useCart = create<CartState>()(
           return { items };
         }),
       setTripDays: (tripDays) => set({ tripDays: Math.max(0, Math.min(60, tripDays)) }),
-      remove: (id) => set((s) => ({ items: s.items.filter((i) => i.id !== id) })),
+      remove: (id) => set((s) => ({ items: s.items.filter((i) => i.id !== id), done: s.done.filter((d) => d !== id) })),
       setQuantity: (id, quantity) =>
         set((s) => ({ items: s.items.map((i) => (i.id === id ? { ...i, quantity: Math.max(1, quantity) } : i)) })),
       setBudget: (budgetCents) => set({ budgetCents }),
-      clear: () => set({ items: [] }),
+      clear: () => set({ items: [], done: [] }),
     }),
     { name: "roamconsensus-cart", storage: createJSONStorage(() => localStorage), skipHydration: true },
   ),

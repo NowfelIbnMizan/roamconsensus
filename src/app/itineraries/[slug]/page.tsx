@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { YouTubeEmbed } from "@/components/youtube-embed";
+import { youtubeId, youtubeStart } from "@/lib/youtube";
 import { UpdatedOn } from "@/components/updated-on";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -41,6 +43,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
   const [it, editor] = await Promise.all([getItinerary((await params).slug), getEditor()]);
   if (!it) notFound();
   const fullGuide = fullGuideLabel(it.sourceUrl);
+  const video = youtubeId(it.sourceUrl);
 
   // Places the creator says to skip stay listed but out of the route bundle.
   const skipped = new Set(
@@ -106,6 +109,11 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       >
         {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
       </a>
+      {video && (
+        <div className="mt-5 max-w-2xl">
+          <YouTubeEmbed id={video} title={`${it.title} by ${it.creator.name}`} start={youtubeStart(it.sourceUrl)} />
+        </div>
+      )}
       {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
       <p className="mt-3 text-sm">
         <Link href={`/creators/${it.creator.handle}`} className="text-muted underline hover:text-foreground">
@@ -145,8 +153,12 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
             </div>
             <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
               {items.map((item) => (
-                <li key={item.id} className="cv-row flex flex-wrap items-center justify-between gap-x-4 gap-y-2 p-4">
-                  <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
+                <li
+                  key={item.id}
+                  // Fixed columns (details | price | booking button | add) so every row lines up with the next.
+                  className="cv-row grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 p-4 sm:grid-cols-[minmax(0,1fr)_11rem_10.5rem_2.25rem] sm:items-start sm:gap-x-4"
+                >
+                  <div className="col-span-3 min-w-0 sm:col-span-1">
                     <p className="font-medium">
                       {pinNumber.has(item.id) && (
                         <span
@@ -197,57 +209,57 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                       </p>
                     )}
                   </div>
-                  <div className="flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-2 sm:w-auto sm:shrink-0 sm:flex-nowrap sm:justify-end">
-                    <span
-                      className={`max-w-44 text-sm sm:text-right tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}
-                    >
-                      <Price item={item} />
-                      {item.priceCents !== null && item.priceNote && (
-                        <span className="block text-xs text-muted">{item.priceNote}</span>
-                      )}
-                      {item.priceSourceUrl && (
+                  <span
+                    className={`min-w-0 text-sm tabular-nums sm:pt-0.5 sm:text-right ${item.priceCents === null ? "text-muted" : ""}`}
+                  >
+                    <Price item={item} />
+                    {item.priceCents !== null && item.priceNote && (
+                      <span className="block text-xs text-muted">{item.priceNote}</span>
+                    )}
+                    {item.priceSourceUrl && (
+                      <a
+                        href={item.priceSourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-xs text-muted underline decoration-dotted hover:text-accent"
+                        title="The creator didn't list a price; this is the typical price from this source."
+                      >
+                        Typical price · {new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}
+                      </a>
+                    )}
+                  </span>
+                  <div className="flex justify-end sm:block">
+                    {item.sentiment !== "AVOID" &&
+                      (item.bookUrl ? (
                         <a
-                          href={item.priceSourceUrl}
+                          href={item.bookUrl}
+                          rel="sponsored noopener noreferrer"
                           target="_blank"
-                          rel="noopener noreferrer"
-                          className="block text-xs text-muted underline decoration-dotted hover:text-accent"
-                          title="The creator didn't list a price; this is the typical price from this source."
+                          title={item.bookIsSearch ? `Search ${item.vendor} for ${item.name}` : undefined}
+                          className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-accent px-3 py-1.5 text-xs font-medium whitespace-nowrap text-background hover:opacity-90"
                         >
-                          Typical price · {new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}
+                          {item.bookIsSearch
+                            ? `Find on ${item.vendor}`
+                            : item.vendor
+                              ? `Book on ${item.vendor}`
+                              : "Book"}{" "}
+                          <ExternalLink className="size-3" aria-hidden />
                         </a>
-                      )}
-                    </span>
-                    <div className="ml-auto flex items-center gap-3">
-                      {item.sentiment !== "AVOID" &&
-                        (item.bookUrl ? (
+                      ) : (
+                        item.website && (
                           <a
-                            href={item.bookUrl}
-                            rel="sponsored noopener noreferrer"
+                            href={item.website}
+                            rel="noopener noreferrer"
                             target="_blank"
-                            title={item.bookIsSearch ? `Search ${item.vendor} for ${item.name}` : undefined}
-                            className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-background hover:opacity-90"
+                            className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-line px-3 py-1.5 text-xs text-muted hover:text-foreground"
                           >
-                            {item.bookIsSearch
-                              ? `Find on ${item.vendor}`
-                              : item.vendor
-                                ? `Book on ${item.vendor}`
-                                : "Book"}{" "}
-                            <ExternalLink className="size-3" aria-hidden />
+                            Website <ExternalLink className="size-3" aria-hidden />
                           </a>
-                        ) : (
-                          item.website && (
-                            <a
-                              href={item.website}
-                              rel="noopener noreferrer"
-                              target="_blank"
-                              className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-muted hover:text-foreground"
-                            >
-                              Website <ExternalLink className="size-3" aria-hidden />
-                            </a>
-                          )
-                        ))}
-                      {item.sentiment !== "AVOID" && <AddItemButton item={cartItems.get(item.id)!} />}
-                    </div>
+                        )
+                      ))}
+                  </div>
+                  <div className="flex justify-end">
+                    {item.sentiment !== "AVOID" && <AddItemButton item={cartItems.get(item.id)!} />}
                   </div>
                 </li>
               ))}

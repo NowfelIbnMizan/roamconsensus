@@ -1,4 +1,4 @@
-import { getDestination, getDestinations } from "@/lib/data";
+import { getDestination, getDestinations, getPosts } from "@/lib/data";
 import { siteUrl } from "@/lib/email";
 import { tierLabel } from "@/lib/format";
 
@@ -37,6 +37,11 @@ export async function GET() {
       lines.push(
         `- [${r.title}](${base}/itineraries/${r.slug}): ${d.name}, ${r.days} days, ${tierLabel[r.tier].toLowerCase()}, by ${r.creator.name}`,
       );
+  }
+  const posts = await getPosts();
+  if (posts.length) {
+    lines.push("", "## Blog", "");
+    for (const p of posts) lines.push(`- [${p.title}](${base}/blog/${p.slug})${p.excerpt ? `: ${p.excerpt}` : ""}`);
   }
   lines.push(
     "",

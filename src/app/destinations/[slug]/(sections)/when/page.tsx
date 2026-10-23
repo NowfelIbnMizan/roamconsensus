@@ -4,6 +4,8 @@ import { CloudRain, Sun, Users } from "lucide-react";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { WeatherCard } from "@/components/weather-card";
 import { getWeather } from "@/lib/weather";
+import { rainyDayPicks } from "@/lib/indoor";
+import { placeHref } from "@/lib/place";
 import { bestMonths, crowdLabel, monthNames, rateMonth, ratingLabel, type Rating } from "@/lib/seasons";
 
 const ratingStyle: Record<Rating, { bar: string; badge: string }> = {
@@ -29,7 +31,13 @@ export default async function WhenPage({ params }: PageProps<"/destinations/[slu
   const d = await getDestination((await params).slug);
   if (!d) notFound();
   const weather = d.center ? await getWeather(d.center.lat, d.center.lng) : null;
-  const card = weather && <WeatherCard name={d.name} weather={weather} />;
+  const card = weather && (
+    <WeatherCard
+      name={d.name}
+      weather={weather}
+      rainyPicks={rainyDayPicks(d.consensus, 4).map((p) => ({ name: p.name, href: placeHref(d.slug, p.slug) }))}
+    />
+  );
   if (d.months.length === 0)
     return (
       <>

@@ -1,4 +1,5 @@
 import { Cloud, CloudDrizzle, CloudFog, CloudLightning, CloudRain, Snowflake, Sun } from "lucide-react";
+import Link from "next/link";
 import type { Weather } from "@/lib/weather";
 
 const icons: Record<string, typeof Sun> = {
@@ -18,8 +19,18 @@ const weekday = (date: string) =>
   new Intl.DateTimeFormat("en-GB", { weekday: "short", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
 
 /** Weather now and the next five days, for travellers already there or about to fly. */
-export function WeatherCard({ name, weather }: { name: string; weather: Weather }) {
+export function WeatherCard({
+  name,
+  weather,
+  rainyPicks = [],
+}: {
+  name: string;
+  weather: Weather;
+  /** Indoor backups, shown when rain is likely in the next few days. */
+  rainyPicks?: { name: string; href: string }[];
+}) {
   const { now, days } = weather;
+  const rainSoon = ["Rain", "Thunderstorm", "Drizzle"].includes(now.main) || days.some((d) => d.rainChance >= 60);
   return (
     <section className="mb-8 rounded-2xl border border-line bg-card p-4" aria-label={`Weather in ${name}`}>
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -51,6 +62,19 @@ export function WeatherCard({ name, weather }: { name: string; weather: Weather 
           </ol>
         )}
       </div>
+      {rainSoon && rainyPicks.length > 0 && (
+        <p className="mt-3 text-sm">
+          <span className="font-medium">Rain in the forecast? Indoor picks: </span>
+          {rainyPicks.map((p, i) => (
+            <span key={p.href}>
+              {i > 0 && ", "}
+              <Link href={p.href} className="text-accent hover:underline">
+                {p.name}
+              </Link>
+            </span>
+          ))}
+        </p>
+      )}
       <p className="mt-2 text-[10px] text-muted">
         Forecast by{" "}
         <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer" className="underline">

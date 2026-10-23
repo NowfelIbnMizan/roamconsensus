@@ -182,8 +182,8 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
 
       <h2 className="mt-10 text-xl font-semibold">Before you go</h2>
       <p className="mt-1 text-sm text-muted">
-        Practical checklist on the &quot;Before you go&quot; tab: visa, money, health, etiquette. Same topic = same group;
-        lower order numbers show first.
+        Practical checklist on the &quot;Before you go&quot; tab: visa, money, health, etiquette. Same topic = same
+        group; lower order numbers show first.
       </p>
       <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
         {d.tips.map((t) => (
@@ -257,6 +257,12 @@ export default async function DestinationAdmin({ params }: PageProps<"/admin/des
                 <Field label="URL name" name="slug" defaultValue={p.slug} />
                 <TextArea label="About (1-2 sentences)" name="blurb" defaultValue={p.blurb} />
                 <TextArea label="Tip" name="tip" defaultValue={p.tip} />
+                <TextArea
+                  label="More photos: one image link per line (shown first in the gallery)"
+                  name="photos"
+                  defaultValue={p.photos.join("\n")}
+                  rows={3}
+                />
                 <div>
                   <SaveButton />
                 </div>

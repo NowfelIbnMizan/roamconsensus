@@ -9,6 +9,7 @@ import { CurrencyPicker, CurrencyProvider } from "@/components/money";
 import { ThemeToggle, themeScript } from "@/components/theme";
 import { InstallApp } from "@/components/install-app";
 import { MobileNav } from "@/components/mobile-nav";
+import { VisitorStats } from "@/components/visitor-stats";
 import { EmailSignup } from "@/components/email-signup";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
@@ -43,6 +44,9 @@ export const metadata: Metadata = {
   description: "Compare travel creators' itineraries and see where they agree.",
 };
 
+// GoatCounter site code (the "xyz" in xyz.goatcounter.com); visitor stats stay off until it is set.
+const goatcounter = /^[a-z0-9-]+$/.test(process.env.GOATCOUNTER_CODE ?? "") ? process.env.GOATCOUNTER_CODE : null;
+
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const { rates } = await getRates();
   return (
@@ -75,6 +79,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
                 <Link href="/visa" className="hidden hover:text-foreground sm:inline">
                   Visa check
+                </Link>
+                <Link href="/blog" className="hidden hover:text-foreground md:inline">
+                  Blog
                 </Link>
                 <Link href="/about" className="hidden hover:text-foreground md:inline">
                   About
@@ -116,6 +123,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 Creators
               </Link>
               {" · "}
+              <Link href="/blog" className="underline">
+                Blog
+              </Link>
+              {" · "}
               <Link href="/about" className="underline">
                 About and contact
               </Link>
@@ -126,6 +137,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           </footer>
           <Suspense fallback={null}>
             <MobileNav />
+            {goatcounter && <VisitorStats code={goatcounter} />}
           </Suspense>
         </CurrencyProvider>
       </body>

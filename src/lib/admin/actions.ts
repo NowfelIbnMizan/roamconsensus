@@ -164,6 +164,11 @@ export async function savePlace(fd: FormData) {
     blurb: optional(fd, "blurb"),
     tip: optional(fd, "tip"),
     website: optional(fd, "website"),
+    // One link per line; anything that isn't an https link is dropped.
+    photos: text(fd, "photos")
+      .split(/\s+/)
+      .filter((u) => URL.parse(u)?.protocol === "https:")
+      .slice(0, 12),
     ...(await mapPin(text(fd, "pin"))),
   };
   const place = id
@@ -431,4 +436,35 @@ export async function saveEditor(fd: FormData) {
   };
   await db.editor.upsert({ where: { id: "me" }, create: data, update: data });
   published();
+}
+
+// Blog
+
+export async function savePost(fd: FormData) {
+  await requireAdmin();
+  const id = optional(fd, "id");
+  const live = checkbox(fd, "published");
+  const before = id ? await db.post.findUnique({ where: { id }, select: { publishedAt: true } }) : null;
+  const data = {
+    slug: slugify(text(fd, "slug") || text(fd, "title")),
+    title: text(fd, "title"),
+    excerpt: optional(fd, "excerpt"),
+    body: text(fd, "body"),
+    coverUrl: optional(fd, "coverUrl"),
+    destinationId: optional(fd, "destinationId"),
+    published: live,
+    // The first time a post goes live sets its date; later edits keep it.
+    publishedAt: before?.publishedAt ?? (live ? new Date() : null),
+  };
+  const row = id ? await db.post.update({ where: { id }, data }) : await db.post.create({ data });
+  // Drafts refresh the cache (a post taken offline must disappear) but aren't announced to Bing.
+  published(row.published ? ["/blog", `/blog/${row.slug}`] : []);
+  if (!id) redirect(`/admin/blog/${row.id}`);
+}
+
+export async function deletePost(fd: FormData) {
+  await requireAdmin();
+  const row = await db.post.delete({ where: { id: text(fd, "id") } });
+  published(["/blog", `/blog/${row.slug}`]);
+  redirect("/admin/blog");
 }

@@ -6,6 +6,7 @@ import { CreatorChip } from "@/components/creator";
 import { Money } from "@/components/money";
 import { Photo } from "@/components/photo";
 import { UpdatedOn } from "@/components/updated-on";
+import { siteUrl } from "@/lib/email";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
@@ -71,6 +72,18 @@ export default async function BestPage({ params }: Props) {
         We read {d.routes.length} {d.name} itineraries and counted which places come up again and again. Higher on the
         list means more creators recommend it.
       </p>
+      <a
+        href={`https://www.pinterest.com/pin/create/button/?${new URLSearchParams({
+          url: `${siteUrl()}/destinations/${d.slug}/best`,
+          media: `${siteUrl()}/destinations/${d.slug}/pin`,
+          description: `The best things to do in ${d.name}, according to ${who}`,
+        })}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#e60023] px-4 py-1.5 text-sm font-medium text-white"
+      >
+        Save to Pinterest
+      </a>
       <nav className="mt-4 flex flex-wrap gap-2 text-sm" aria-label="Sections">
         {sections.map((s) => (
           <a
