@@ -19,7 +19,6 @@ export default function DisclosurePage() {
         Creatour is not affiliated with, endorsed by, or sponsored by the creators whose itineraries we
         summarise. Their names and content belong to them, and we link to the original posts.
       </p>
-      <p>As an Amazon Associate we earn from qualifying purchases.</p>
     </article>
   );
 }
