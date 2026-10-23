@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Compare travel creators' itineraries and plan your trip.",
     start_url: "/",
     display: "standalone",
-    background_color: "#faf8f5",
+    background_color: "#f5efe4",
     theme_color: "#0f766e",
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },

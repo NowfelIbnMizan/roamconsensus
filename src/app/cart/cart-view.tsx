@@ -1,5 +1,6 @@
 "use client";
 
+import { SuitcaseDoodle } from "@/components/art";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -60,6 +61,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   if (items.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
+        <SuitcaseDoodle className="mx-auto mb-3 h-24 text-muted" />
         <p className="font-medium">Your trip cart is empty.</p>
         <p className="mt-1 text-sm text-muted">Add a whole route or single items from any itinerary.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">

@@ -3,24 +3,33 @@
 /* Theme comes from data-theme on <html>, set before paint by the script in layout.tsx (system, light or dark). */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+/* Travel-journal palette: paper and ink, a deep teal for actions, terracotta stamps and a mustard sun. */
 :root {
-  --background: #faf8f5;
-  --foreground: #1c1917;
-  --muted: #78716c;
-  --card: #ffffff;
-  --line: #e7e5e4;
-  --accent: #0f766e;
-  --accent-soft: #ccfbf1;
+  --background: #f5efe4;
+  --foreground: #2b2118;
+  --muted: #76664f;
+  --card: #fffcf6;
+  --line: #e7dcc9;
+  --line-strong: #cdbb9c;
+  --accent: #0f6b62;
+  --accent-soft: #d3ece4;
+  --accent-2: #c2562b;
+  --sun: #e8b04b;
+  --paper-grain: 0.05;
 }
 
 :root[data-theme="dark"] {
-  --background: #0c0a09;
-  --foreground: #f5f5f4;
-  --muted: #a8a29e;
-  --card: #1c1917;
-  --line: #292524;
-  --accent: #2dd4bf;
-  --accent-soft: #134e4a;
+  --background: #16120d;
+  --foreground: #f2e9da;
+  --muted: #b3a38a;
+  --card: #211b14;
+  --line: #352b20;
+  --line-strong: #56462f;
+  --accent: #5cc9b8;
+  --accent-soft: #1d3d38;
+  --accent-2: #ee8a5f;
+  --sun: #e2a93f;
+  --paper-grain: 0.06;
   color-scheme: dark;
 }
 
@@ -32,13 +41,89 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-2: var(--accent-2);
+  --color-sun: var(--sun);
+  --color-line-strong: var(--line-strong);
   --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-fraunces);
+  --font-hand: var(--font-caveat);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Paper grain: a faint noise texture over the whole page, behind everything. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--paper-grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Headings in the serif display face, like a printed travel journal. */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Marker highlight behind a word. */
+.marker {
+  background: linear-gradient(
+    transparent 58%,
+    color-mix(in srgb, var(--sun) 55%, transparent) 58% 90%,
+    transparent 90%
+  );
+  padding: 0 0.1em;
+}
+
+/* Strip of washi tape across the top of a photo card. */
+.tape {
+  position: relative;
+}
+.tape::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 84px;
+  height: 22px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: color-mix(in srgb, var(--sun) 55%, transparent);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+  z-index: 2;
+}
+.tape-alt::after {
+  rotate: 4deg;
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* Photo printed with a white border, slightly tilted, straightening on hover. */
+.polaroid {
+  background: var(--card);
+  padding: 10px 10px 0;
+  box-shadow:
+    0 1px 2px rgb(43 33 24 / 0.08),
+    0 8px 24px -12px rgb(43 33 24 / 0.25);
+  transition:
+    rotate 0.25s,
+    translate 0.25s;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .polaroid:hover {
+    rotate: 0deg !important;
+    translate: 0 -3px;
+  }
 }
 
 /* Consensus category filter: rows hide when the wrapper's data-filter names another category. */

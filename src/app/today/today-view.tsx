@@ -1,5 +1,6 @@
 "use client";
 
+import { SuitcaseDoodle } from "@/components/art";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Check, CloudRain, ExternalLink, Navigation, Plus } from "lucide-react";
@@ -57,6 +58,7 @@ export function TodayView() {
   if (items.length === 0)
     return (
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
+        <SuitcaseDoodle className="mx-auto mb-3 h-24 text-muted" />
         <p className="font-medium">No trip planned yet.</p>
         <p className="mt-1 text-sm text-muted">Add a route to your trip cart, then come back here while you travel.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">

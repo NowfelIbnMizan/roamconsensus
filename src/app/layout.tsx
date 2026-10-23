@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteUrl } from "@/lib/email";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Caveat, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Compass, Search } from "lucide-react";
@@ -11,6 +11,7 @@ import { InstallApp } from "@/components/install-app";
 import { MobileNav } from "@/components/mobile-nav";
 import { VisitorStats } from "@/components/visitor-stats";
 import { EmailSignup } from "@/components/email-signup";
+import { JourneyDoodle } from "@/components/art";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -18,6 +19,10 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
+// Headings: a soft, slightly quirky serif. Handwritten notes: Caveat.
+const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], axes: ["SOFT", "WONK", "opsz"] });
+const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"] });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -28,8 +33,8 @@ export const viewport: Viewport = {
   // Lets the bottom tab bar sit above the iPhone home indicator.
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+    { media: "(prefers-color-scheme: light)", color: "#f5efe4" },
+    { media: "(prefers-color-scheme: dark)", color: "#16120d" },
   ],
 };
 
@@ -52,7 +57,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${caveat.variable} h-full antialiased`}
       // The theme script sets data-theme before React loads.
       suppressHydrationWarning
     >
@@ -61,11 +66,17 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
-          <header className="border-b border-line">
+          <header className="border-b border-dashed border-line-strong">
             <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-              <Link href="/" className="flex items-center gap-2 font-semibold">
-                <Compass className="size-5 text-accent" aria-hidden />
-                RoamConsensus
+              <Link href="/" className="group flex items-center gap-2">
+                <Compass
+                  className="size-6 text-accent-2 transition-transform group-hover:rotate-45"
+                  strokeWidth={2.2}
+                  aria-hidden
+                />
+                <span className="font-display text-xl font-semibold tracking-tight">
+                  Roam<span className="text-accent italic">Consensus</span>
+                </span>
               </Link>
               <div className="flex items-center gap-2 text-sm text-muted sm:gap-4">
                 <Link href="/#destinations" className="hidden hover:text-foreground md:inline">
@@ -106,10 +117,14 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 otherwise fails with a blocking-route error. */}
             <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>
           </main>
-          <footer className="border-t border-line">
+          <footer className="border-t border-dashed border-line-strong">
             <div className="mx-auto max-w-5xl px-4 pt-6">
-              <div className="max-w-md">
-                <EmailSignup label="New destinations and creator itineraries, by email" button="Sign up" />
+              <div className="flex items-end justify-between gap-6">
+                <div className="max-w-md flex-1">
+                  <p className="font-hand text-2xl text-accent-2">Wish you were here!</p>
+                  <EmailSignup label="New destinations and creator itineraries, by email" button="Sign up" />
+                </div>
+                <JourneyDoodle className="hidden h-28 w-40 shrink-0 text-muted sm:block" />
               </div>
             </div>
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">

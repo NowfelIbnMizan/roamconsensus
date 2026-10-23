@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SuitcaseDoodle } from "@/components/art";
 import { getPosts } from "@/lib/data";
 import { PostCover, formatDate } from "@/components/post-cover";
 
@@ -17,6 +18,7 @@ export default async function BlogPage() {
       <p className="mt-2 text-muted">Trip ideas and guides, built on what real travel creators recommend.</p>
       {posts.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-dashed border-line p-10 text-center text-muted">
+          <SuitcaseDoodle className="mx-auto mb-3 h-24" />
           First posts coming soon.
         </p>
       ) : (
