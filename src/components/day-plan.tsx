@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { StopNote } from "@/components/stop-note";
 import { ChevronDown, ChevronUp, ExternalLink, Minus, Plane, Plus, Trash2 } from "lucide-react";
 import type { CartItem } from "@/lib/cart-store";
 import { categoryLabel } from "@/lib/format";
@@ -197,6 +198,7 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                             </Link>
                           </p>
                           {day !== null && <LegHint leg={legs.get(item.id)} />}
+                          <StopNote id={item.id} note={item.note} editable={Boolean(edit)} />
                         </div>
                         <span className="text-sm tabular-nums text-muted">{price(item)}</span>
                         {edit && (

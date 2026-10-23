@@ -22,6 +22,8 @@ export type CartItem = {
   lng?: number | null;
   /** Day of the traveller's own plan; whole routes come in on the creator's days. */
   day?: number | null;
+  /** The traveller's own note on this stop, e.g. "book a week ahead". */
+  note?: string;
   itinerary: { slug: string; title: string };
   /** City the item is in; filled in by the cart refresh for older carts. */
   destination?: { slug: string; name: string } | null;
@@ -43,6 +45,7 @@ type CartState = {
   toggleDone: (id: string) => void;
   add: (items: CartItem[]) => void;
   setDay: (id: string, day: number | null) => void;
+  setNote: (id: string, note: string) => void;
   /** Moves an item before (-1) or after (+1) the neighbouring item planned for the same day. */
   move: (id: string, dir: -1 | 1) => void;
   setTripDays: (days: number) => void;
@@ -98,6 +101,7 @@ export const useCart = create<CartState>()(
                   ...f,
                   quantity: f.unit === i.unit ? i.quantity : f.quantity,
                   day: i.day === undefined ? f.day : i.day,
+                  note: i.note,
                 };
             if (seen.has(next.id)) return [];
             seen.add(next.id);
@@ -106,6 +110,10 @@ export const useCart = create<CartState>()(
           return { items };
         }),
       setDay: (id, day) => set((s) => ({ items: s.items.map((i) => (i.id === id ? { ...i, day } : i)) })),
+      setNote: (id, note) =>
+        set((s) => ({
+          items: s.items.map((i) => (i.id === id ? { ...i, note: note.trim().slice(0, 500) || undefined } : i)),
+        })),
       move: (id, dir) =>
         set((s) => {
           const items = [...s.items];

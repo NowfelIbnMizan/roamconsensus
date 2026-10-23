@@ -9,6 +9,7 @@ import { cartData } from "@/components/cart-sync";
 import { authClient, signInWithGoogle } from "@/lib/auth-client";
 import type { CartData } from "@/lib/cart-data";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
+import { AlertsToggle, GroupTrips, SavedPlaces } from "./extras";
 
 type TripRow = { id: string; name: string; updatedAt: string; stops: number; cities: string[] };
 
@@ -22,11 +23,11 @@ function suggestName(items: CartData["items"]) {
   return cities ? `${cities}, ${month}` : `My trip, ${month}`;
 }
 
-export function MyTrips() {
+export function MyTrips({ canEmail }: { canEmail: boolean }) {
   const { data: session, isPending } = authClient.useSession();
   if (isPending) return <p className="text-muted">Loading…</p>;
   if (!session) return <SignedOut />;
-  return <SignedIn user={session.user} />;
+  return <SignedIn user={session.user} canEmail={canEmail} />;
 }
 
 function SignedOut() {
@@ -36,6 +37,7 @@ function SignedOut() {
       <ul className="mt-3 list-disc space-y-1 pl-5 text-muted">
         <li>Your trip cart shows up on your phone and laptop.</li>
         <li>Save trips by name and come back to them.</li>
+        <li>Heart places, add notes, and plan a trip with friends.</li>
         <li>What you added before signing in stays in your cart.</li>
       </ul>
       <button
@@ -57,7 +59,13 @@ function SignedOut() {
   );
 }
 
-function SignedIn({ user }: { user: { name: string; email: string; image?: string | null } }) {
+function SignedIn({
+  user,
+  canEmail,
+}: {
+  user: { name: string; email: string; image?: string | null };
+  canEmail: boolean;
+}) {
   const router = useRouter();
   const hydrated = useCartHydrated();
   const items = useCart((s) => s.items);
@@ -229,6 +237,10 @@ function SignedIn({ user }: { user: { name: string; email: string; image?: strin
           </ul>
         )}
       </section>
+
+      <SavedPlaces />
+      <GroupTrips />
+      <AlertsToggle canEmail={canEmail} />
 
       <section className="border-t border-dashed border-line-strong pt-6">
         <button type="button" onClick={deleteAccount} className="text-sm text-muted underline hover:text-accent-2">

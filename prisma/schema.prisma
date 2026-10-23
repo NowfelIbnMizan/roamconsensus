@@ -330,17 +330,26 @@ model Post {
 
 /// Travellers who signed in with Google. The four auth tables follow Better Auth's schema (src/lib/auth.ts).
 model User {
-  id            String      @id
-  name          String
-  email         String      @unique
-  emailVerified Boolean     @default(false)
-  image         String?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  sessions      Session[]
-  accounts      Account[]
-  cart          UserCart?
-  trips         SavedTrip[]
+  id              String           @id
+  name            String
+  email           String           @unique
+  emailVerified   Boolean          @default(false)
+  image           String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  sessions        Session[]
+  accounts        Account[]
+  cart            UserCart?
+  trips           SavedTrip[]
+  favourites      FavouritePlace[]
+  groupsOwned     GroupTrip[]
+  groups          GroupMember[]
+  groupItems      GroupItem[]
+  groupVotes      GroupVote[]
+  /// Daily email when prices in their cart change or creators add routes for their cart's cities. Off until they opt in.
+  alertsEnabled   Boolean          @default(false)
+  /// Last alert check; only routes added after it count as new.
+  alertsCheckedAt DateTime?
 }
 
 model Session {
@@ -389,11 +398,13 @@ model Verification {
 
 /// The signed-in traveller's trip cart, kept in step with the cart in their browser so it follows them across devices.
 model UserCart {
-  userId    String   @id
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String   @id
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   /// The cart as the browser stores it: items, budget, trip days, start date, packed and done lists.
-  data      Json
-  updatedAt DateTime @updatedAt
+  data        Json
+  /// Item id -> price (cents) when the last alert email went out, to spot price changes since.
+  alertPrices Json?
+  updatedAt   DateTime @updatedAt
 }
 
 /// Named copies of a cart the traveller kept on their "My trips" page.
@@ -407,4 +418,69 @@ model SavedTrip {
   updatedAt DateTime @updatedAt
 
   @@index([userId, updatedAt])
+}
+
+/// Places a signed-in traveller hearted. Keyed by slugs, with a copy of the name so the list reads without a join.
+model FavouritePlace {
+  id              String       @id @default(cuid())
+  userId          String
+  user            User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destination     String
+  destinationName String
+  place           String
+  name            String
+  category        ItemCategory
+  area            String?
+  createdAt       DateTime     @default(now())
+
+  @@unique([userId, destination, place])
+}
+
+/// A trip planned together: anyone with the invite link can join, add stops and vote on them.
+model GroupTrip {
+  id          String        @id @default(cuid())
+  name        String
+  ownerId     String
+  owner       User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  /// Secret part of the invite link; the owner can make a new one to stop old links working.
+  inviteToken String        @unique
+  members     GroupMember[]
+  items       GroupItem[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model GroupMember {
+  groupId  String
+  group    GroupTrip @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  userId   String
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  joinedAt DateTime  @default(now())
+
+  @@id([groupId, userId])
+  @@index([userId])
+}
+
+/// A stop someone put in a group trip. `item` is the cart line as the browser stores it.
+model GroupItem {
+  id        String      @id @default(cuid())
+  groupId   String
+  group     GroupTrip   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  itemId    String
+  item      Json
+  addedById String
+  addedBy   User        @relation(fields: [addedById], references: [id], onDelete: Cascade)
+  votes     GroupVote[]
+  createdAt DateTime    @default(now())
+
+  @@unique([groupId, itemId])
+}
+
+model GroupVote {
+  groupItemId String
+  groupItem   GroupItem @relation(fields: [groupItemId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([groupItemId, userId])
 }

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
 import { type CartData, mergeCarts } from "@/lib/cart-data";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
+import { favouriteKey, useFavourites } from "@/lib/favourites";
 
 // Which account this device's cart already follows. Set after the first sign-in here merges the two carts; from
 // then on the account's copy is the latest, since every change is sent to it.
@@ -36,11 +37,27 @@ const push = (data: CartData, keepalive = false) =>
     keepalive,
   }).catch(() => {});
 
-/** Keeps a signed-in traveller's trip cart the same on every device. Renders nothing. */
+/** Keeps a signed-in traveller's trip cart the same on every device, and loads their ♥ places. Renders nothing. */
 export function CartSync() {
   const hydrated = useCartHydrated();
   const { data: session, isPending } = authClient.useSession();
   const userId = session?.user.id;
+
+  useEffect(() => {
+    if (isPending) return;
+    useFavourites.setState({ enabled: true, signedIn: Boolean(userId), keys: new Set() });
+    if (!userId) return;
+    let stale = false;
+    fetch("/api/account/favourites")
+      .then((res) => (res.ok ? res.json() : []))
+      .catch(() => [])
+      .then((rows: { destination: string; place: string }[]) => {
+        if (!stale) useFavourites.setState({ keys: new Set(rows.map((r) => favouriteKey(r.destination, r.place))) });
+      });
+    return () => {
+      stale = true;
+    };
+  }, [isPending, userId]);
 
   useEffect(() => {
     if (!hydrated || isPending) return;

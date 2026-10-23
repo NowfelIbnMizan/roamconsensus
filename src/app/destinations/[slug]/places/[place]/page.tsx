@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, ChevronRight, Globe, MapPin, Navigation } from "lucide-react";
 import { AddRouteButton } from "@/components/add-to-cart";
+import { FavouriteButton } from "@/components/favourite-button";
 import { CreatorChip } from "@/components/creator";
 import { Price } from "@/components/money";
 import { Photo, PhotoCredit } from "@/components/photo";
@@ -146,6 +147,7 @@ export default async function PlacePage({ params }: Props) {
                 removeLabel="Remove from cart"
               />
             )}
+            <FavouriteButton destination={d.slug} place={p.slug} name={p.name} withLabel />
             <a
               href={googleUrl}
               target="_blank"

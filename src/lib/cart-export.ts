@@ -28,7 +28,7 @@ const linkFor = (i: CartItem) => i.bookUrl ?? i.website ?? null;
 function describe(i: CartItem) {
   const qty = i.unit ? ` (${i.quantity} ${i.unit}${i.quantity > 1 ? "s" : ""})` : i.quantity > 1 ? ` x${i.quantity}` : "";
   const price = formatPrice(i);
-  return `${i.name}${qty}: ${price}${i.couponCode ? ` (code ${i.couponCode})` : ""}`;
+  return `${i.name}${qty}: ${price}${i.couponCode ? ` (code ${i.couponCode})` : ""}${i.note ? ` [note: ${i.note}]` : ""}`;
 }
 
 export function toText(items: CartItem[]) {

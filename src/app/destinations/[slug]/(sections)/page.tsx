@@ -20,6 +20,7 @@ import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import { bestMonths } from "@/lib/seasons";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
+import { FavouriteButton } from "@/components/favourite-button";
 import { ConsensusFilter } from "./consensus-filter";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
@@ -276,7 +277,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                         </p>
                       </div>
                       <div className="flex shrink-0 flex-col items-end gap-1.5">
-                        {p.cartItem && p.skippedBy.length === 0 && <AddItemButton item={p.cartItem} />}
+                        <div className="flex items-center gap-1.5">
+                          <FavouriteButton destination={destination.slug} place={p.slug} name={p.name} />
+                          {p.cartItem && p.skippedBy.length === 0 && <AddItemButton item={p.cartItem} />}
+                        </div>
                         {p.fromPrice && (
                           <span className="whitespace-nowrap text-xs font-medium tabular-nums">
                             <FromPrice p={p.fromPrice} />

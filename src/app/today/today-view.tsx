@@ -1,5 +1,6 @@
 "use client";
 
+import { StopNote } from "@/components/stop-note";
 import { SuitcaseDoodle } from "@/components/art";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
@@ -209,6 +210,7 @@ export function TodayView() {
                           </span>
                         )}
                       </p>
+                      <StopNote id={item.id} note={item.note} editable={false} />
                       <LegHint leg={legs.get(item.id)} />
                       <div className="mt-3 flex flex-wrap gap-2">
                         {hasPin(item) && (
