@@ -22,6 +22,13 @@ function CreatorFields({ c }: { c?: Creator }) {
       {SOCIALS.map((s) => (
         <Field key={s.key} label={s.label} name={s.key} type="url" defaultValue={c?.[s.key]} />
       ))}
+      <Field
+        label="Avatar photo"
+        name="avatarUrl"
+        type="url"
+        defaultValue={c?.avatarUrl}
+        hint="Only with the creator's written OK. Paste an https image link they gave you. Blank = initial."
+      />
       <TextArea label="Bio" name="bio" defaultValue={c?.bio} />
     </>
   );
