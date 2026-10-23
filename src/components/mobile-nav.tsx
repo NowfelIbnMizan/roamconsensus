@@ -19,7 +19,8 @@ const tabs = [
     href: "/cart",
     label: "Trip",
     icon: ShoppingBag,
-    match: (p: string) => p.startsWith("/cart") || p.startsWith("/trip") || p.startsWith("/today"),
+    match: (p: string) =>
+      p.startsWith("/cart") || p.startsWith("/trip") || p.startsWith("/today") || p.startsWith("/my-trips"),
   },
 ];
 

@@ -5,7 +5,8 @@ import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Privacy policy",
-  description: "What Creatour collects, why, and how to have it deleted. Short version: very little, and no cookies.",
+  description:
+    "What Creatour collects, why, and how to have it deleted. Short version: very little, and no tracking cookies.",
 };
 
 export default function PrivacyPage() {
@@ -13,18 +14,33 @@ export default function PrivacyPage() {
     <LegalPage title="Privacy policy" updated="23 October 2026">
       <p>
         <strong>Short version:</strong> you don&apos;t need an account, we set no tracking cookies, your trip cart stays
-        on your own device, and we only keep your email address if you give it to us.
+        on your own device unless you sign in, and we only keep your email address if you give it to us.
       </p>
 
       <h2>What stays on your device</h2>
       <p>
         Your trip cart, day plan, chosen currency, passport (on the visa checker), theme, ticked checklists and hidden
-        tips are saved in your browser&apos;s local storage. They never reach us. Clearing your browser data removes
-        them.
+        tips are saved in your browser&apos;s local storage. Unless you sign in, they never reach us. Clearing your
+        browser data removes them.
       </p>
       <p>
         When you use <em>Share my trip</em>, the plan is packed into the link itself. Whoever you send the link to can
         see it; we don&apos;t store it.
+      </p>
+
+      <h2>If you sign in with Google</h2>
+      <p>
+        Signing in is optional. When you do, Google tells us your name, email address and profile photo, and we keep
+        your trip cart and any trips you save so they show up on all your devices. A sign-in cookie keeps you signed in
+        for up to 90 days; it is only used for that. We never see your Google password, and we don&apos;t ask for access
+        to your contacts, files or anything else.
+      </p>
+      <p>
+        You can delete your account and saved trips any time from{" "}
+        <Link href="/my-trips" className="underline">
+          My trips
+        </Link>
+        . That removes them from our database straight away.
       </p>
 
       <h2>What we collect</h2>
@@ -50,7 +66,8 @@ export default function PrivacyPage() {
 
       <h2>Services we use</h2>
       <ul>
-        <li>Vercel hosts the site. Neon stores our database, including the email list.</li>
+        <li>Vercel hosts the site. Neon stores our database, including the email list and accounts.</li>
+        <li>Google handles signing in, if you choose to.</li>
         <li>Resend sends emails, when you ask for one.</li>
         <li>OpenStreetMap supplies map tiles, so your browser loads them from their servers when you view a map.</li>
         <li>YouTube videos load only when you press play, using YouTube&apos;s privacy-enhanced mode.</li>
