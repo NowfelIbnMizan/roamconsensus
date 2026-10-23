@@ -1,7 +1,7 @@
 import { getCreatorHandles, getDestinationSlugs, getItinerarySlugs, getPlaceParams, getPosts } from "@/lib/data";
 
 /** City tabs that are worth indexing (Compare is interactive, so left out). */
-export const DESTINATION_TABS = ["", "/best", "/when", "/before", "/budget", "/esim"];
+export const DESTINATION_TABS = ["", "/best", "/stay", "/when", "/before", "/budget", "/esim"];
 
 export const destinationPaths = (slug: string) => DESTINATION_TABS.map((tab) => `/destinations/${slug}${tab}`);
 

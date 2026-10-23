@@ -3,7 +3,8 @@
 import { Thumb } from "@/components/thumb";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
-import { ChevronDown, ChevronUp, ExternalLink, Minus, Plane, Plus, Trash2 } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, ChevronUp, ExternalLink, GripVertical, Minus, Plane, Plus, Trash2 } from "lucide-react";
 import type { CartItem } from "@/lib/cart-store";
 import { categoryLabel } from "@/lib/format";
 import { dayColor, dayLegs, googleMapsPinUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
@@ -62,6 +63,7 @@ export function planMap(items: CartItem[], days: number) {
 type Edit = {
   setDay: (id: string, day: number | null) => void;
   move: (id: string, dir: -1 | 1) => void;
+  place: (id: string, day: number | null, before: string | null) => void;
   remove: (id: string) => void;
   setTripDays: (days: number) => void;
 };
@@ -96,8 +98,59 @@ function TravelDay({ from, to }: { from: { name: string; last?: CartItem }; to: 
 }
 
 /** The traveller's own day-by-day plan. Read-only without `edit` (a shared trip). */
+type DropTarget = { day: number | null; before: string | null };
+
+/**
+ * Drag a stop by its grip to another spot or day. Pointer events (not HTML drag and drop) so it works with touch;
+ * the grip has touch-action: none, so the rest of the row still scrolls the page.
+ */
+function useDragStop(place: Edit["place"] | undefined) {
+  const [dragging, setDragging] = useState<string | null>(null);
+  const [target, setTarget] = useState<DropTarget | null>(null);
+
+  const targetAt = (x: number, y: number): DropTarget | null => {
+    const el = document.elementFromPoint(x, y);
+    const day = (v: string | undefined) => (v ? Number(v) : null);
+    const row = el?.closest<HTMLElement>("[data-drop-id]");
+    if (row) {
+      const { top, height } = row.getBoundingClientRect();
+      const upper = y < top + height / 2;
+      return { day: day(row.dataset.dropDay), before: upper ? row.dataset.dropId! : row.dataset.dropNext || null };
+    }
+    const section = el?.closest<HTMLElement>("[data-drop-section]");
+    return section ? { day: day(section.dataset.dropDay), before: null } : null;
+  };
+
+  const grip = (id: string) => ({
+    onPointerDown: (e: React.PointerEvent<HTMLElement>) => {
+      e.currentTarget.setPointerCapture(e.pointerId);
+      setDragging(id);
+      setTarget(null);
+    },
+    onPointerMove: (e: React.PointerEvent<HTMLElement>) => {
+      if (dragging !== id) return;
+      setTarget(targetAt(e.clientX, e.clientY));
+      // Scroll while holding near the top or bottom edge (above the phone tab bar).
+      if (e.clientY < 80) window.scrollBy(0, -14);
+      else if (e.clientY > window.innerHeight - 110) window.scrollBy(0, 14);
+    },
+    onPointerUp: () => {
+      if (dragging && target && place) place(dragging, target.day, target.before);
+      setDragging(null);
+      setTarget(null);
+    },
+    onPointerCancel: () => {
+      setDragging(null);
+      setTarget(null);
+    },
+  });
+
+  return { dragging, target, grip };
+}
+
 export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number; edit?: Edit }) {
   const { price } = useMoney();
+  const { dragging, target, grip } = useDragStop(edit?.place);
   const sections: { day: number | null; list: CartItem[] }[] = [
     ...Array.from({ length: days }, (_, n) => ({ day: n + 1, list: inDay(items, n + 1, days) })),
     { day: null, list: inDay(items, null, days) },
@@ -149,7 +202,15 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                 to={{ name: city.name, first: list.find(hasPin) }}
               />
             )}
-            <section className="rounded-2xl border border-line bg-card">
+            <section
+              data-drop-section
+              data-drop-day={day ?? ""}
+              className={`rounded-2xl border bg-card transition ${
+                dragging && target?.day === day && target.before === null
+                  ? "border-accent ring-2 ring-accent/40"
+                  : "border-line"
+              }`}
+            >
               <header className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-3">
                 <h3 className="flex flex-wrap items-center gap-2 font-semibold">
                   {day === null ? "Not planned yet" : `Day ${day}`}
@@ -179,8 +240,27 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                   {list.map((item, n) => {
                     const number = hasPin(item) ? ++pin : null;
                     return (
-                      <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
+                      <li
+                        key={item.id}
+                        data-drop-id={item.id}
+                        data-drop-day={day ?? ""}
+                        data-drop-next={list[n + 1]?.id ?? ""}
+                        className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 ${
+                          dragging === item.id ? "opacity-40" : ""
+                        } ${dragging && target?.before === item.id && dragging !== item.id ? "shadow-[inset_0_3px_0_var(--accent)]" : ""}`}
+                      >
                         <div className="flex min-w-0 flex-1 basis-56 gap-3">
+                          {edit && (
+                            <button
+                              type="button"
+                              {...grip(item.id)}
+                              aria-label={`Drag ${item.name} to another spot or day`}
+                              title="Drag to move"
+                              className="-ml-2 flex w-6 shrink-0 cursor-grab touch-none items-center justify-center text-muted hover:text-foreground active:cursor-grabbing"
+                            >
+                              <GripVertical className="size-4" aria-hidden />
+                            </button>
+                          )}
                           <Thumb
                             url={item.photoUrl}
                             category={item.category}

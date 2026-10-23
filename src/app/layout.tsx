@@ -71,7 +71,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
-          <header className="border-b border-dashed border-line-strong">
+          <header className="border-b border-dashed border-line-strong print:hidden">
             <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
               <Link href="/" className="group flex items-center gap-2">
                 <Compass
@@ -118,12 +118,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </nav>
           </header>
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 print:py-0">
             {/* Pages are prerendered whole; this only shows if a page has to load its data at request time, which
                 otherwise fails with a blocking-route error. */}
             <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>
           </main>
-          <footer className="border-t border-dashed border-line-strong">
+          <footer className="border-t border-dashed border-line-strong print:hidden">
             <div className="mx-auto max-w-5xl px-4 pt-6">
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-md flex-1">

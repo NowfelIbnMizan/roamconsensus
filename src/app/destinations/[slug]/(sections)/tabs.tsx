@@ -29,6 +29,7 @@ export function DestinationTabs({ slug }: { slug: string }) {
   const tabs = [
     { href: `/destinations/${slug}`, label: "Itineraries" },
     { href: `/destinations/${slug}/best`, label: "Top picks" },
+    { href: `/destinations/${slug}/stay`, label: "Where to stay" },
     { href: `/destinations/${slug}/when`, label: "When to go" },
     { href: `/destinations/${slug}/before`, label: "Before you go" },
     { href: `/destinations/${slug}/compare`, label: "Compare" },

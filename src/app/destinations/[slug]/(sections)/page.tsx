@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, MapPin, Sun, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
-import { getDestination, getDestinationSlugs, getEsimPlans, getPosts } from "@/lib/data";
+import { getDestination, getDestinationSlugs, getEsimPlans, getPosts, getStays } from "@/lib/data";
+import { CityNutshell } from "@/components/city-nutshell";
 import { destinationFaq } from "@/lib/faq";
 import { FaqList } from "@/components/faq-list";
 import { UpdatedOn } from "@/components/updated-on";
@@ -18,7 +19,6 @@ import { categoryLabel, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
 import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
 import { TripMap, type MapStop } from "@/components/trip-map";
-import { bestMonths } from "@/lib/seasons";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { FavouriteButton } from "@/components/favourite-button";
 import { Thumb } from "@/components/thumb";
@@ -58,9 +58,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   const [destination, editor] = await Promise.all([getDestination((await params).slug), getEditor()]);
   if (!destination) notFound();
   const { creatorCount, consensus } = destination;
-  const [esimPlans, posts, weather] = await Promise.all([
+  const [esimPlans, posts, stays, weather] = await Promise.all([
     getEsimPlans(destination.country),
     getPosts(destination.slug),
+    getStays(destination.slug),
     destination.center ? getWeather(destination.center.lat, destination.center.lng) : null,
   ]);
   const faq = destinationFaq(destination, esimPlans);
@@ -91,12 +92,12 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
     cartId: p.skippedBy.length === 0 ? p.cartItem?.id : undefined,
   }));
 
-  const best = bestMonths(destination.months);
   // The answer up front: the spots most creators share, before the photo-and-tabs scroll to the full list.
   const agreed = consensus.filter((p) => p.creators.length >= 2 && p.skippedBy.length === 0).slice(0, 5);
 
   return (
     <>
+      <CityNutshell d={destination} stays={stays} />
       {creatorCount > 1 && agreed.length >= 3 && (
         <section className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5" aria-labelledby="agreed-heading">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -149,20 +150,6 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             href: placeHref(destination.slug, p.slug),
           }))}
         />
-      )}
-      {best && (
-        <Link
-          href={`/destinations/${destination.slug}/when`}
-          className="mb-8 flex items-center gap-2 rounded-2xl border border-line bg-card px-4 py-3 text-sm transition hover:border-accent"
-        >
-          <Sun className="size-4 shrink-0 text-accent" aria-hidden />
-          <span>
-            Best time to go: <strong>{best}</strong>
-          </span>
-          <span className="ml-auto flex items-center gap-1 whitespace-nowrap font-medium text-accent">
-            Month by month <ArrowRight className="size-4" aria-hidden />
-          </span>
-        </Link>
       )}
       <section>
         <h2 className="text-xl font-semibold">Pick your route</h2>

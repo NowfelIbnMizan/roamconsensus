@@ -6,6 +6,8 @@ import { StopNote } from "@/components/stop-note";
 import { Thumb } from "@/components/thumb";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  CalendarDays,
+  CalendarPlus,
   ClipboardCopy,
   Download,
   ExternalLink,
@@ -13,12 +15,13 @@ import {
   Minus,
   Navigation,
   Plus,
+  Printer,
   Share2,
   Trash2,
 } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
-import { groupByVendor, toNotionMarkdown, toText } from "@/lib/cart-export";
+import { groupByVendor, toIcs, toNotionMarkdown, toText } from "@/lib/cart-export";
 import { VendorBadge } from "@/components/vendor-badge";
 import { categoryLabel } from "@/lib/format";
 import { encodeTrip } from "@/lib/share";
@@ -31,8 +34,22 @@ import type { ItemCategory } from "@/generated/prisma/enums";
 
 export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const hydrated = useCartHydrated();
-  const { items, budgetCents, tripDays, refresh, remove, setQuantity, setBudget, clear, setDay, move, setTripDays } =
-    useCart();
+  const {
+    items,
+    budgetCents,
+    tripDays,
+    startDate,
+    refresh,
+    remove,
+    setQuantity,
+    setBudget,
+    clear,
+    setDay,
+    move,
+    place,
+    setTripDays,
+    setStartDate,
+  } = useCart();
   const { money, price, code, toLocal, fromLocal } = useMoney();
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
@@ -83,12 +100,16 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const unpriced = items.filter((i) => i.priceCents === null).length;
   const remaining = budgetCents === null ? null : budgetCents - totalCents;
 
-  function download() {
-    const url = URL.createObjectURL(new Blob([toText(items)], { type: "text/plain" }));
-    const a = Object.assign(document.createElement("a"), { href: url, download: "trip-checklist.txt" });
+  function save(text: string, type: string, name: string) {
+    const url = URL.createObjectURL(new Blob([text], { type }));
+    const a = Object.assign(document.createElement("a"), { href: url, download: name });
     a.click();
     URL.revokeObjectURL(url);
   }
+  const download = () => save(toText(items), "text/plain", "trip-checklist.txt");
+  const planned = items.filter((i) => i.day && i.day <= days).length;
+  const calendar = () =>
+    startDate && save(toIcs(items, startDate, days, location.origin), "text/calendar", "creatour-trip.ics");
 
   async function share() {
     const url = `${location.origin}/trip?t=${encodeTrip(items, days)}`;
@@ -167,7 +188,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
         )}
 
         {view === "plan" ? (
-          <DayPlan items={items} days={days} edit={{ setDay, move, remove, setTripDays }} />
+          <DayPlan items={items} days={days} edit={{ setDay, move, place, remove, setTripDays }} />
         ) : (
           groupByVendor(items).map((group) => (
             <section key={group.vendor} className="rounded-2xl border border-line bg-card">
@@ -310,6 +331,43 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
           <div className="mt-5">
             <AllocationBar allocation={allocation} />
           </div>
+        </div>
+
+        <div className="rounded-2xl border border-line bg-card p-5">
+          <p className="flex items-center gap-2 font-semibold">
+            <CalendarDays className="size-4 text-accent" aria-hidden /> Take it with you
+          </p>
+          <label className="mt-3 block text-sm text-muted" htmlFor="trip-start">
+            Trip starts
+          </label>
+          <input
+            id="trip-start"
+            type="date"
+            value={startDate ?? ""}
+            onChange={(e) => setStartDate(e.target.value || null)}
+            className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
+          />
+          <button
+            type="button"
+            onClick={calendar}
+            disabled={!startDate || planned === 0}
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background disabled:opacity-50"
+          >
+            <CalendarPlus className="size-4" aria-hidden /> Add to my calendar
+          </button>
+          <p className="mt-1.5 text-xs text-muted">
+            {!startDate
+              ? "Pick a start date first."
+              : planned === 0
+                ? "Put stops on days in the day plan first."
+                : `${planned} planned stops as all-day events. Opens in Google, Apple or Outlook calendar.`}
+          </p>
+          <Link
+            href="/cart/print"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
+          >
+            <Printer className="size-4" aria-hidden /> Print or save as PDF
+          </Link>
         </div>
 
         <div className="flex flex-col gap-2">

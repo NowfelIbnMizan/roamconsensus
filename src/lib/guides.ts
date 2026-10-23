@@ -18,6 +18,11 @@ export const guides = {
     { lead: "Save the ones you like", text: "Tap + to add a pick to your trip cart." },
     { lead: "Keep it for later", text: "Save to Pinterest pins this list to your board." },
   ],
+  "city-stay": [
+    { lead: "Areas, not just hotels", text: "Each area is one creators slept in, most-picked first." },
+    { lead: "What's nearby", text: "Nearby counts the other spots creators recommend in that area." },
+    { lead: "Save a stay", text: "Tap + on a hotel to add it to your trip cart." },
+  ],
   "city-when": [
     { lead: "Month by month", text: "Rain, heat and crowds for each month, with the best months marked." },
     { lead: "Plan around it", text: "Pick dates in the best months for drier days and fairer prices." },
@@ -63,7 +68,10 @@ export const guides = {
   "my-trips": [
     { lead: "Same cart everywhere", text: "Signed in, your trip cart follows you to your phone, laptop and tablet." },
     { lead: "Keep a copy", text: "Save the cart as a named trip, then start a new one. Open it again any time." },
-    { lead: "Plan with friends", text: "Start a group trip and share the link. Everyone adds stops and votes on them." },
+    {
+      lead: "Plan with friends",
+      text: "Start a group trip and share the link. Everyone adds stops and votes on them.",
+    },
   ],
   today: [
     { lead: "Today's plan", text: "Set your start date and this page opens on today's stops by itself." },
@@ -71,7 +79,7 @@ export const guides = {
     { lead: "Rainy day?", text: "When rain is forecast, indoor spots creators like show up here." },
   ],
   finder: [
-    { lead: "Find a route", text: "Choose a destination, trip length and style to narrow the list." },
+    { lead: "Find a route", text: "Pick the kind of trip, then a destination, length and budget style." },
     { lead: "Set a budget", text: "Routes over your budget, or with unpriced stays, are hidden." },
   ],
   creators: [
