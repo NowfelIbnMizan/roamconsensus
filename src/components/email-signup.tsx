@@ -23,7 +23,7 @@ export function EmailSignup({ tripPath, label, button }: { tripPath?: string; la
           required
           autoComplete="email"
           placeholder="you@example.com"
-          className="min-w-0 flex-1 rounded-full border border-line bg-background px-4 py-2 text-sm"
+          className="min-w-0 flex-1 rounded-full border border-line bg-background px-4 py-2 text-sm placeholder:text-muted"
         />
         <button
           type="submit"
@@ -39,7 +39,7 @@ export function EmailSignup({ tripPath, label, button }: { tripPath?: string; la
           {state.message}
         </p>
       )}
-      <p className="mt-1.5 text-[11px] text-muted">Only Creatour emails. Unsubscribe anytime.</p>
+      <p className="mt-1.5 text-xs text-muted">Only Creatour emails. Unsubscribe anytime.</p>
     </form>
   );
 }

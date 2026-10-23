@@ -216,7 +216,7 @@ export function TripMap({
           </a>
         )}
       </div>
-      <p className="mt-1 text-[11px] text-muted">Pins are approximate. Tap one for the exact spot in Google Maps.</p>
+      <p className="mt-1 text-xs text-muted">Pins are approximate. Tap one for the exact spot in Google Maps.</p>
     </div>
   );
 }
