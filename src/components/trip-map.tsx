@@ -199,8 +199,8 @@ export function TripMap({
             </li>
           ))}
           {stops.some((s) => s.cartId) && (
-            <li className="flex items-center gap-1">
-              <span className="size-2.5 rounded-full ring-2 ring-foreground ring-offset-1 ring-offset-background" />
+            <li className="flex items-center gap-1.5">
+              <span className="ml-0.5 size-2.5 rounded-full ring-2 ring-foreground ring-offset-1 ring-offset-background" />
               In your cart
             </li>
           )}

@@ -7,13 +7,13 @@
 :root {
   --background: #f5efe4;
   --foreground: #2b2118;
-  --muted: #76664f;
+  --muted: #6a5b45;
   --card: #fffcf6;
   --line: #e7dcc9;
   --line-strong: #cdbb9c;
   --accent: #0f6b62;
   --accent-soft: #d3ece4;
-  --accent-2: #c2562b;
+  --accent-2: #ad4a22;
   --sun: #e8b04b;
   --paper-grain: 0.05;
 }
@@ -133,6 +133,10 @@ h2 {
 [data-filter="ESIM"] [data-cat]:not([data-cat="ESIM"]),
 [data-filter="GEAR"] [data-cat]:not([data-cat="GEAR"]),
 [data-filter="TRANSIT"] [data-cat]:not([data-cat="TRANSIT"]) {
+  display: none;
+}
+/* Under "All", the list shows its first 20 rows until "Show all" (CONSENSUS_PREVIEW in consensus-filter.tsx). */
+[data-filter=""][data-collapsed] [data-cat]:nth-child(n + 21) {
   display: none;
 }
 

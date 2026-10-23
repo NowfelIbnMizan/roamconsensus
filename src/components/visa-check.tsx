@@ -35,8 +35,8 @@ function usePassport() {
 }
 
 const tone: Record<VisaStatus, string> = {
-  VISA_FREE: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
-  HOME: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+  VISA_FREE: "border-emerald-500/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300",
+  HOME: "border-emerald-500/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300",
   VISA_ON_ARRIVAL: "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
   E_VISA: "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
   VISA_REQUIRED: "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300",

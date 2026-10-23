@@ -1,24 +1,24 @@
 import type { ItemCategory } from "@/generated/prisma/enums";
 
-/** Same hues as the allocation bar, so a category reads the same on the map. */
+/** Same hues as the allocation bar, so a category reads the same on the map. Dark enough for white pin numbers. */
 export const categoryHex: Record<ItemCategory, string> = {
-  STAY: "#0d9488",
-  EXPERIENCE: "#f59e0b",
-  FOOD: "#f43f5e",
-  ESIM: "#0ea5e9",
-  GEAR: "#8b5cf6",
-  TRANSIT: "#78716c",
+  STAY: "#0f766e",
+  EXPERIENCE: "#b45309",
+  FOOD: "#e11d48",
+  ESIM: "#0369a1",
+  GEAR: "#7c3aed",
+  TRANSIT: "#57534e",
 };
 
 const dayPalette = [
   "#0f766e",
-  "#ea580c",
+  "#c2410c",
   "#7c3aed",
   "#2563eb",
-  "#db2777",
-  "#65a30d",
-  "#ca8a04",
-  "#0891b2",
+  "#be185d",
+  "#4d7c0f",
+  "#a16207",
+  "#0e7490",
   "#dc2626",
   "#4f46e5",
   "#9333ea",
