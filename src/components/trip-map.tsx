@@ -27,13 +27,23 @@ export type MapStop = {
   cartId?: string;
 };
 
-export type MapGroup = { id: number; label: string; color: string; routeUrl?: string | null };
+export type MapGroup = {
+  id: number;
+  label: string;
+  color: string;
+  routeUrl?: string | null;
+};
 
-type MapHandle = { L: typeof Leaflet; map: Leaflet.Map; layer: Leaflet.LayerGroup };
+type MapHandle = {
+  L: typeof Leaflet;
+  map: Leaflet.Map;
+  layer: Leaflet.LayerGroup;
+};
 
 // OpenStreetMap's own tiles: free with attribution, no key (CARTO's basemaps now need one).
 const tiles = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
-const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 function popup(s: MapStop) {
   const box = document.createElement("div");
@@ -100,7 +110,10 @@ export function TripMap({
         void import("leaflet").then(({ default: L }) => {
           if (cancelled || !el.current) return;
           // One finger scrolls the page on phones; pinch zooms and pans the map.
-          const map = L.map(el.current, { scrollWheelZoom: false, dragging: !L.Browser.mobile });
+          const map = L.map(el.current, {
+            scrollWheelZoom: false,
+            dragging: !L.Browser.mobile,
+          });
           L.tileLayer(tiles, { attribution, maxZoom: 19 }).addTo(map);
           handle.current = { L, map, layer: L.layerGroup().addTo(map) };
           setReady(true);
@@ -144,7 +157,10 @@ export function TripMap({
       label.className = "rc-pin";
       label.style.background = s.color;
       // With every day showing, a pin says which day it belongs to; one day at a time, its stop number.
-      label.textContent = active === null && groups.length > 1 && s.group !== undefined ? `D${s.group}` : s.label;
+      label.textContent =
+        active === null && groups.length > 1 && s.group !== undefined
+          ? `D${s.group}`
+          : s.label;
       if (s.cat) label.dataset.cat = s.cat;
       const icon = L.divIcon({
         className: `rc-pin-wrap${s.cartId && picked.has(s.cartId) ? " rc-pin-picked" : ""}`,
@@ -153,7 +169,11 @@ export function TripMap({
         iconAnchor: [13, 13],
         popupAnchor: [0, -14],
       });
-      const marker = L.marker([s.lat, s.lng], { icon, title: s.title, riseOnHover: true }).addTo(layer);
+      const marker = L.marker([s.lat, s.lng], {
+        icon,
+        title: s.title,
+        riseOnHover: true,
+      }).addTo(layer);
       marker.bindPopup(() => popup(s));
     }
 
@@ -161,7 +181,10 @@ export function TripMap({
     const fitKey = `${active}:${shown.map((s) => s.key).join("|")}`;
     if (shown.length && fitted.current !== fitKey) {
       fitted.current = fitKey;
-      map.fitBounds(L.latLngBounds(shown.map((s) => [s.lat, s.lng])), { padding: [32, 32], maxZoom: 14 });
+      map.fitBounds(L.latLngBounds(shown.map((s) => [s.lat, s.lng])), {
+        padding: [32, 32],
+        maxZoom: 14,
+      });
     }
   }, [ready, stops, groups, connect, active, cartIds, hydrated]);
 
@@ -183,18 +206,29 @@ export function TripMap({
                   : "border border-line bg-card text-muted hover:text-foreground"
               }`}
             >
-              {g.color && <span className="size-2.5 rounded-full" style={{ background: g.color }} />}
+              {g.color && (
+                <span
+                  className="size-2.5 rounded-full"
+                  style={{ background: g.color }}
+                />
+              )}
               {g.label}
             </button>
           ))}
         </div>
       )}
-      <div ref={el} className={`isolate overflow-hidden rounded-2xl border border-line bg-line ${className}`} />
+      <div
+        ref={el}
+        className={`isolate overflow-hidden rounded-2xl border border-line bg-line ${className}`}
+      />
       <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-muted">
         <ul className="flex flex-wrap gap-x-3 gap-y-1">
           {legend.map((l) => (
             <li key={l.label} className="flex items-center gap-1">
-              <span className="size-2.5 rounded-full" style={{ background: l.color }} />
+              <span
+                className="size-2.5 rounded-full"
+                style={{ background: l.color }}
+              />
               {l.label}
             </li>
           ))}
@@ -212,11 +246,14 @@ export function TripMap({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 font-medium text-accent hover:underline"
           >
-            {activeGroup.label} route in Google Maps <ExternalLink className="size-3" aria-hidden />
+            {activeGroup.label} route in Google Maps{" "}
+            <ExternalLink className="size-3" aria-hidden />
           </a>
         )}
       </div>
-      <p className="mt-1 text-xs text-muted">Pins are approximate. Tap one for the exact spot in Google Maps.</p>
+      <p className="fine-print mt-1">
+        Pins are approximate. Tap one for the exact spot in Google Maps.
+      </p>
     </div>
   );
 }

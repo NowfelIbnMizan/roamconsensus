@@ -28,8 +28,8 @@ export function CreatorNoticeLine({
   className?: string;
 }) {
   return (
-    <p className={`flex gap-1.5 text-xs text-muted ${className}`}>
-      <Info className="mt-px size-3.5 shrink-0" aria-hidden />
+    <p className={`fine-print flex gap-1.5 ${className}`}>
+      <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
       <span>
         {full
           ? independentLine(name)

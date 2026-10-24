@@ -131,7 +131,7 @@ export function VisaResult({
               <li key={c}>{c}</li>
             ))}
           </ul>
-          <p className="mt-2 text-xs text-muted">
+          <p className="fine-print mt-2">
             Checked {rules.checked}. Rules change: confirm on the official sites
             before you book.{" "}
             {rules.sources.map((u, i) => (

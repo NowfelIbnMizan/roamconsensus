@@ -2,20 +2,86 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { CalendarDays, MapPin, Plus, Search, X } from "lucide-react";
+import { CalendarDays, Plus, Search, X } from "lucide-react";
 import { DateRange, rangeLabel, tripLength } from "@/components/date-range";
 import { useCart } from "@/lib/cart-store";
 import type { SearchEntry } from "@/lib/data";
 
 const fold = (s: string) =>
   s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
-const order: SearchEntry["kind"][] = [
+const order: Entry["kind"][] = [
+  "Guide",
   "Destination",
   "Spot",
   "Itinerary",
   "Creator",
 ];
 const MAX_CITIES = 4;
+// Few suggestions, so the list never covers the page.
+const MAX_RESULTS = 5;
+
+/** A suggestion: anything in the search index, or a city tab picked out by a topic word ("esim bali"). */
+type Entry = Omit<SearchEntry, "kind"> & {
+  kind: SearchEntry["kind"] | "Guide";
+};
+const kindLabel: Record<Entry["kind"], string> = {
+  Guide: "Guide",
+  Destination: "City",
+  Spot: "Spot",
+  Itinerary: "Route",
+  Creator: "Creator",
+};
+
+// Topic words that lead to a city tab. The first topic found wins, so "best time" means when-to-go, not top picks.
+const TOPICS = [
+  {
+    tab: "esim",
+    label: "eSIM plans",
+    words: ["esim", "sim", "mobile data", "internet"],
+  },
+  {
+    tab: "when",
+    label: "Best time to go",
+    words: ["best time", "when", "weather", "season", "rain", "month"],
+  },
+  {
+    tab: "budget",
+    label: "Budget",
+    words: [
+      "budget",
+      "cost",
+      "price",
+      "money",
+      "how much",
+      "expensive",
+      "cheap",
+    ],
+  },
+  {
+    tab: "stay",
+    label: "Where to stay",
+    words: ["stay", "hotel", "area", "neighbourhood", "neighborhood"],
+  },
+  {
+    tab: "before",
+    label: "Before you go",
+    words: ["visa", "tips", "before", "safety", "scam", "checklist"],
+  },
+  {
+    tab: "best",
+    label: "Top picks",
+    words: ["top", "best", "things to do", "must see", "must-see"],
+  },
+] as const;
+
+// Rotating examples in the empty box, so people see it takes more than city names.
+const EXAMPLES = [
+  "Bali",
+  "eSIM for Japan",
+  "Best time for Bangkok",
+  "Where to stay in Tokyo",
+  "Visa for Vietnam",
+];
 
 type City = { slug: string; name: string; country: string };
 
@@ -31,7 +97,7 @@ export function HomeSearch({ cities }: { cities: City[] }) {
   const setTripDays = useCart((s) => s.setTripDays);
   const [q, setQ] = useState("");
   const [picked, setPicked] = useState<City[]>([]);
-  const [other, setOther] = useState<SearchEntry | null>(null);
+  const [other, setOther] = useState<Entry | null>(null);
   const [start, setStart] = useState<string | null>(null);
   const [end, setEnd] = useState<string | null>(null);
   const [index, setIndex] = useState<SearchEntry[] | null>(null);
@@ -88,6 +154,39 @@ export function HomeSearch({ cities }: { cities: City[] }) {
     sub: c.country,
     text: "",
   });
+  const text = fold(q);
+  // Word starts only, so "stop" isn't "top" and "Bahrain" isn't "rain".
+  const has = (w: string) => new RegExp(`(^|\\s)${w}`).test(text);
+  const topic = TOPICS.find((t) => t.words.some(has));
+  // What's left once the topic words are gone names the place, if any.
+  const rest = topic
+    ? topic.words
+        .reduce((t, w) => t.replace(new RegExp(`(^|\\s)${w}\\S*`), " "), text)
+        .split(/\s+/)
+        .filter(
+          (w) =>
+            w.length > 1 &&
+            ![
+              "for",
+              "in",
+              "to",
+              "the",
+              "of",
+              "visit",
+              "where",
+              "what",
+              "is",
+              "a",
+            ].includes(w),
+        )
+    : words;
+  // Only the leftover words that name a place count, so filler like "good" doesn't hide every city.
+  const inPlace = (c: City, w: string) =>
+    fold(`${c.name} ${c.country}`)
+      .split(/\s+/)
+      .some((p) => p.startsWith(w));
+  const placeWords = rest.filter((w) => cities.some((c) => inPlace(c, w)));
+  const placeMatch = (c: City) => placeWords.every((w) => inPlace(c, w));
   // Cities match from the list we already have, so they show before the index arrives.
   const cityHits = cities
     .filter(
@@ -96,27 +195,65 @@ export function HomeSearch({ cities }: { cities: City[] }) {
         words.every((w) => fold(`${c.name} ${c.country}`).includes(w)),
     )
     .map(cityEntry);
-  // Once a city is in, only more cities make sense; a spot or creator is a different kind of search.
-  const results: SearchEntry[] = (
-    !words.length || picked.length
-      ? cityHits
-      : [
-          ...cityHits,
-          ...(index ?? [])
-            .filter((e) => e.kind !== "Destination")
-            .map((e) => ({ e, text: fold(e.text), title: fold(e.title) }))
-            .filter(({ text }) => words.every((w) => text.includes(w)))
-            .sort(
-              (x, y) =>
-                words.filter((w) => y.title.includes(w)).length -
-                  words.filter((w) => x.title.includes(w)).length ||
-                order.indexOf(x.e.kind) - order.indexOf(y.e.kind),
-            )
-            .map(({ e }) => e),
+  const topicHits: Entry[] =
+    topic && !picked.length
+      ? [
+          ...(topic.tab === "before" && has("visa")
+            ? [
+                {
+                  kind: "Guide" as const,
+                  href: "/visa",
+                  title: "Visa checker",
+                  sub: "Every city, your passport",
+                  text: "",
+                },
+              ]
+            : []),
+          ...(placeWords.length ? cities.filter(placeMatch) : cities).map(
+            (c) => ({
+              kind: "Guide" as const,
+              href: `/destinations/${c.slug}/${topic.tab}`,
+              title: `${c.name}: ${topic.label}`,
+              sub: c.country,
+              text: "",
+            }),
+          ),
         ]
-  ).slice(0, 8);
+      : [];
+  // Once a city is in, only more cities make sense; a spot or creator is a different kind of search.
+  const results: Entry[] = (
+    !words.length
+      ? []
+      : picked.length
+        ? cityHits
+        : [
+            ...topicHits,
+            ...(topic ? [] : cityHits),
+            ...(topic
+              ? []
+              : (index ?? [])
+                  .filter((e) => e.kind !== "Destination")
+                  .map((e) => ({ e, text: fold(e.text), title: fold(e.title) }))
+                  // Every word should match; with long queries, most will do.
+                  .filter(
+                    ({ text }) =>
+                      words.filter((w) => text.includes(w)).length >=
+                      Math.min(
+                        words.length,
+                        Math.max(2, Math.ceil(words.length * 0.6)),
+                      ),
+                  )
+                  .sort(
+                    (x, y) =>
+                      words.filter((w) => y.title.includes(w)).length -
+                        words.filter((w) => x.title.includes(w)).length ||
+                      order.indexOf(x.e.kind) - order.indexOf(y.e.kind),
+                  )
+                  .map(({ e }) => e)),
+          ]
+  ).slice(0, MAX_RESULTS);
 
-  const choose = (r: SearchEntry) => {
+  const choose = (r: Entry) => {
     setHint("");
     setQ("");
     setActive(0);
@@ -164,7 +301,16 @@ export function HomeSearch({ cities }: { cities: City[] }) {
     router.push(`/itineraries?${params}`);
   };
 
-  const showList = open === "where" && results.length > 0;
+  // The list is only there while typing; it never opens on an empty box.
+  const showList = open === "where" && words.length > 0 && results.length > 0;
+  const [example, setExample] = useState(0);
+  useEffect(() => {
+    const t = setInterval(
+      () => setExample((n) => (n + 1) % EXAMPLES.length),
+      2500,
+    );
+    return () => clearInterval(t);
+  }, []);
   const whenLabel = start
     ? `${rangeLabel(start, end)}${end ? ` · ${tripLength(start, end)} days` : ""}`
     : "Add dates";
@@ -185,9 +331,11 @@ export function HomeSearch({ cities }: { cities: City[] }) {
     >
       <div className="grid grid-cols-[1fr_auto] gap-1 rounded-3xl border border-line-strong bg-card p-2 shadow-lg shadow-black/5 sm:flex sm:items-center sm:rounded-full">
         <label className="col-span-2 flex min-w-0 flex-1 items-center gap-3 rounded-full px-4 py-2 focus-within:bg-background focus-within:ring-2 focus-within:ring-accent">
-          <MapPin className="size-5 shrink-0 text-accent" aria-hidden />
+          <Search className="size-5 shrink-0 text-accent" aria-hidden />
           <span className="min-w-0 flex-1">
-            <span className="block text-xs font-semibold">Where to?</span>
+            <span className="block text-xs font-semibold">
+              Search trips, cities and tips
+            </span>
             <span className="flex flex-wrap items-center gap-1">
               {[
                 ...picked.map((c) => ({ key: c.slug, label: c.name })),
@@ -251,8 +399,11 @@ export function HomeSearch({ cities }: { cities: City[] }) {
                     else if (e.key === "Backspace" && !q && picked.length)
                       setPicked(picked.slice(0, -1));
                   }}
+                  onBlur={() => setOpen((o) => (o === "where" ? null : o))}
                   placeholder={
-                    picked.length ? "Add another city" : "Bali, Tokyo, a spot…"
+                    picked.length
+                      ? "Add another city"
+                      : `Try “${EXAMPLES[example]}”`
                   }
                   style={{ outline: "none" }}
                   className="min-w-28 flex-1 bg-transparent py-0.5 text-base placeholder:text-muted"
@@ -282,7 +433,7 @@ export function HomeSearch({ cities }: { cities: City[] }) {
           type="submit"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-medium whitespace-nowrap text-background"
         >
-          <Search className="size-4" aria-hidden /> Find trips
+          <Search className="size-4" aria-hidden /> Search
         </button>
       </div>
       {hint && (
@@ -314,8 +465,8 @@ export function HomeSearch({ cities }: { cities: City[] }) {
               onClick={() => choose(r)}
               className={`flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 ${i === active ? "bg-line/50" : ""}`}
             >
-              <span className="w-20 shrink-0 text-xs font-medium uppercase tracking-wide text-accent">
-                {r.kind}
+              <span className="w-14 shrink-0 text-xs font-medium uppercase tracking-wide text-accent">
+                {kindLabel[r.kind]}
               </span>
               <span className="min-w-0">
                 <span className="block truncate font-medium">{r.title}</span>
