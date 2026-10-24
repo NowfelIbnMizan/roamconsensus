@@ -1,23 +1,53 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-export const metadata: Metadata = { title: "Affiliate disclosure" };
+export const metadata: Metadata = {
+  title: "Disclosure and credits",
+  description: "Who owns the content on Creatour, how creators are credited, and how the site makes money.",
+};
 
 export default function DisclosurePage() {
   return (
     <article className="max-w-2xl space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">Affiliate disclosure</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">Disclosure and credits</h1>
+
+      <h2 id="credits" className="scroll-mt-6 pt-2 text-xl font-semibold">
+        Creators are independent
+      </h2>
       <p>
-        Creatour earns money through affiliate links. When you book a stay, tour, eSIM or product through a link
-        on this site, we may receive a commission from the vendor (for example Agoda, Booking.com, Klook,
-        GetYourGuide, Amazon or Truely). This never changes the price you pay.
+        The travel creators featured on Creatour are independent. They are not affiliated with, sponsored by or
+        partnered with Creatour. Being featured here does not mean a creator endorses Creatour, and it does not mean
+        Creatour endorses everything they publish.
       </p>
       <p>
-        Where a creator has their own code or link and we have no better offer, we send you to the creator&apos;s
-        link and credit them.
+        Creator names, photos, logos, trademarks and itineraries belong to their respective owners. Creatour shows a
+        short summary of each route, credits the creator by name and links to the original guide and their own
+        channels.
       </p>
       <p>
-        Creatour is not affiliated with, endorsed by, or sponsored by the creators whose itineraries we
-        summarise. Their names and content belong to them, and we link to the original posts.
+        <strong>Please support them.</strong> The full guides have the stories, photos and detail that a summary
+        leaves out. Read the originals, follow the creators and share their work.
+      </p>
+      <p>
+        Are you a featured creator? You can ask for a correction, a different photo or link, or for your content to
+        be removed, and it will be handled quickly.{" "}
+        <Link href="/contact" className="underline">
+          Contact us
+        </Link>
+        .
+      </p>
+
+      <h2 className="pt-2 text-xl font-semibold">Photos of places</h2>
+      <p>
+        Place photos come from Unsplash and Pexels (credited to the photographer) or from the venue&apos;s own
+        website. They belong to their owners.
+      </p>
+
+      <h2 className="pt-2 text-xl font-semibold">How Creatour makes money</h2>
+      <p>
+        Right now, Creatour earns nothing from the links on this site. Booking buttons go to ordinary search pages on
+        sites such as Booking.com and GetYourGuide. If that changes and some links start paying a commission, this
+        page will say so, and the price you pay will not change.
       </p>
     </article>
   );

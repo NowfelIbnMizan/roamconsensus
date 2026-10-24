@@ -81,11 +81,11 @@ export default function PrivacyPage() {
 
       <h2>Links to other sites</h2>
       <p>
-        Booking, tour, eSIM and creator links take you to other websites. Some are affiliate links (see our{" "}
+        Booking, tour, eSIM and creator links take you to other websites. If any of them ever become affiliate links (our{" "}
         <Link href="/disclosure" className="underline">
-          affiliate disclosure
+          disclosure and credits
         </Link>
-        ), which means that site may set its own cookie to credit us. Once you leave Creatour, that site&apos;s privacy
+        {" "}page will say so), that site may set its own cookie to credit us. Once you leave Creatour, that site&apos;s privacy
         policy applies.
       </p>
 

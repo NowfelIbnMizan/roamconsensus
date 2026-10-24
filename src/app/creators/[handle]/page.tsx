@@ -8,6 +8,7 @@ import { CreatorSocials } from "@/components/creator";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { Snapshots } from "@/components/snapshots";
 import { Thumb } from "@/components/thumb";
+import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 
 export async function generateStaticParams() {
   return getCreatorHandles();
@@ -53,6 +54,7 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <CreatorSocials creator={creator} />
       </div>
+      <CreatorNoticeLine name={creator.name} className="mt-3 max-w-2xl" />
 
       <dl className="mt-6 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
         {stats.map((s) => (
@@ -114,6 +116,8 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
           );
         })}
       </ul>
+
+      <SupportCreator creator={creator} className="mt-10 max-w-2xl" />
     </>
   );
 }

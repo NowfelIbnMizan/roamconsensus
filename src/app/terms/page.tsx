@@ -36,17 +36,18 @@ export default function TermsPage() {
       <p>
         When you book through a link on Creatour, your contract is with that company (for example a hotel, tour operator
         or eSIM provider). Their terms, prices and refund rules apply, and we can&apos;t help with problems with those
-        bookings. Some links earn us a commission; see the{" "}
+        bookings. How the site makes money is on the{" "}
         <Link href="/disclosure" className="underline">
-          affiliate disclosure
+          disclosure and credits
         </Link>
         .
       </p>
 
       <h2>Creators&apos; content</h2>
       <p>
-        Itineraries, tips and names belong to the creators who made them. We summarise and link to their original posts,
-        and are not affiliated with or endorsed by them. Creators can ask us to correct or remove their content on our{" "}
+        Itineraries, tips, names, photos and logos belong to the creators who made them. We summarise and link to their
+        original posts. The creators are independent: they are not affiliated with Creatour, and being featured does
+        not mean they endorse it. Creators can ask us to correct or remove their content on our{" "}
         <Link href="/contact" className="underline">
           contact page
         </Link>

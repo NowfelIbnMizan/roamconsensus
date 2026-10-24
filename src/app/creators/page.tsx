@@ -6,6 +6,7 @@ import { CreatorSocials } from "@/components/creator";
 import { getCreators } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
 import { Thumb } from "@/components/thumb";
+import { independentLine } from "@/components/creator-notice";
 
 export const metadata: Metadata = {
   title: "Travel creators",
@@ -23,6 +24,12 @@ export default async function CreatorsPage() {
       <p className="mt-2 max-w-2xl text-muted">
         {creators.length} travel creators, {itineraryCount} itineraries. These are the people who did the travelling.
         Every route here links back to their full guide, so give them a read and a follow.
+      </p>
+      <p className="mt-4 max-w-2xl rounded-2xl border border-dashed border-line-strong bg-card px-4 py-3 text-sm">
+        {independentLine()}{" "}
+        <Link href="/disclosure#credits" className="underline">
+          Credits
+        </Link>
       </p>
 
       <PageGuide id="creators" className="mt-6" />

@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink, Map as MapIcon } from "lucide-react";
 import { SampleBanner } from "@/components/sample-banner";
 import { CreatorChip, CreatorSocials } from "@/components/creator";
+import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
@@ -125,6 +126,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       <div className="mt-3">
         <CreatorSocials creator={it.creator} />
       </div>
+      <CreatorNoticeLine name={it.creator.name} className="mt-2 max-w-2xl" />
       <p className="mt-3 max-w-2xl">{it.summary}</p>
       <Snapshots
         className="mt-6"
@@ -310,20 +312,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-line bg-card p-5">
-        <p className="text-sm text-muted">
-          This is a summary of {it.creator.name}&apos;s itinerary. Their guide has the photos, stories and tips that
-          don&apos;t fit here.
-        </p>
-        <a
-          href={it.sourceUrl}
-          rel="noopener noreferrer"
-          target="_blank"
-          className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-background"
-        >
-          {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
-        </a>
-      </div>
+      <SupportCreator creator={it.creator} sourceUrl={it.sourceUrl} className="mt-10" />
     </>
   );
 }

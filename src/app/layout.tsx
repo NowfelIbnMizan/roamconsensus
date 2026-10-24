@@ -134,10 +134,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </div>
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
-              Some links are affiliate links: we may earn a commission at no extra cost to you. Creatour is not
-              affiliated with the creators featured.{" "}
+              Featured creators are independent and not affiliated with Creatour; being featured doesn&apos;t mean
+              they endorse it. Creator names, photos, logos and itineraries belong to their owners. Please visit and
+              support them.{" "}
               <Link href="/disclosure" className="underline">
-                Full disclosure
+                Disclosure &amp; credits
               </Link>
               {" · "}
               <Link href="/creators" className="underline">

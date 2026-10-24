@@ -62,6 +62,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
       </div>
       {creator.bio && <p className="mt-3 line-clamp-4 text-sm text-muted">{creator.bio}</p>}
       <CreatorSocials creator={creator} className="mt-3" />
+      <p className="mt-3 text-xs text-muted">Independent creator. Not affiliated with Creatour and not an endorsement.</p>
       <Link
         href={`/creators/${creator.handle}`}
         className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
