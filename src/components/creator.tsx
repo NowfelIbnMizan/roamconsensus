@@ -14,10 +14,11 @@ type Creator = {
   bio?: string | null;
 } & CreatorLinks;
 
-const pill = "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-sm font-medium ring-1 ring-inset";
+const pill =
+  "inline-flex items-center gap-1.5 rounded-full bg-card py-0.5 pr-2.5 pl-1 text-sm font-medium text-foreground ring-1 ring-line-strong ring-inset";
 
 /**
- * A creator's name as a coloured pill. It links to their Creatour page; a mouse resting on it, or a tap on a phone,
+ * A creator's name as a quiet pill; only the initial carries the creator's colour. It links to their Creatour page; a mouse resting on it, or a tap on a phone,
  * opens a small profile card. With `link` false (inside another link) it is a plain pill.
  */
 export function CreatorChip({ creator, link = true }: { creator: Creator; link?: boolean }) {
@@ -30,7 +31,7 @@ export function CreatorChip({ creator, link = true }: { creator: Creator; link?:
       ) : (
         <span
           aria-hidden
-          className="flex size-4 items-center justify-center rounded-full bg-current/15 text-[10px] font-bold"
+          className={`flex size-4 items-center justify-center rounded-full text-[10px] font-bold ring-0 ${creatorTint(creator.handle)}`}
         >
           {creator.name.charAt(0)}
         </span>
@@ -38,11 +39,11 @@ export function CreatorChip({ creator, link = true }: { creator: Creator; link?:
       {creator.name}
     </>
   );
-  const className = `${pill} ${creatorTint(creator.handle)}`;
+  const className = pill;
   if (!link) return <span className={className}>{content}</span>;
   return (
     <CreatorHover card={<CreatorCard creator={creator} />} label={`About ${creator.name}`}>
-      <Link href={`/creators/${creator.handle}`} className={`${className} hover:ring-2`}>
+      <Link href={`/creators/${creator.handle}`} className={`${className} hover:ring-accent`}>
         {content}
       </Link>
     </CreatorHover>

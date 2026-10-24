@@ -3,19 +3,18 @@
 /* Theme comes from data-theme on <html>, set before paint by the script in layout.tsx (system, light or dark). */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* Travel-journal palette: paper and ink, a deep teal for actions, terracotta stamps and a mustard sun. */
+/* Warm paper and ink, a deep teal for actions and a terracotta accent used sparingly. */
 :root {
-  --background: #f5efe4;
-  --foreground: #2b2118;
+  --background: #f7f3ec;
+  --foreground: #241c14;
   --muted: #6a5b45;
-  --card: #fffcf6;
-  --line: #e7dcc9;
-  --line-strong: #cdbb9c;
+  --card: #fffdf9;
+  --line: #ebe3d5;
+  --line-strong: #d6c8b0;
   --accent: #0f6b62;
   --accent-soft: #d3ece4;
   --accent-2: #ad4a22;
   --sun: #e8b04b;
-  --paper-grain: 0.05;
 }
 
 :root[data-theme="dark"] {
@@ -29,7 +28,6 @@
   --accent-soft: #1d3d38;
   --accent-2: #ee8a5f;
   --sun: #e2a93f;
-  --paper-grain: 0.06;
   color-scheme: dark;
 }
 
@@ -44,7 +42,6 @@
     --line: #ddd2bf;
     --accent: #0f6b62;
     --accent-2: #ad4a22;
-    --paper-grain: 0;
     color-scheme: light;
   }
 }
@@ -62,7 +59,6 @@
   --color-line-strong: var(--line-strong);
   --font-sans: var(--font-geist-sans);
   --font-display: var(--font-fraunces);
-  --font-hand: var(--font-caveat);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -78,74 +74,43 @@ dd {
   text-wrap: pretty;
 }
 
-/* Paper grain: a faint noise texture over the whole page, behind everything. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: var(--paper-grain);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Headings in the serif display face, like a printed travel journal. */
+/* Headings in the serif display face, set calm and tight like a printed guidebook. */
 h1,
 h2 {
   font-family: var(--font-display);
   font-variation-settings:
-    "SOFT" 100,
-    "WONK" 1;
-  letter-spacing: -0.01em;
+    "SOFT" 30,
+    "WONK" 0;
+  letter-spacing: -0.015em;
 }
 
-/* Marker highlight behind a word. */
-.marker {
-  background: linear-gradient(
-    transparent 58%,
-    color-mix(in srgb, var(--sun) 55%, transparent) 58% 90%,
-    transparent 90%
-  );
-  padding: 0 0.1em;
+/* Small label above a heading: the country over a city name, a section's kind. */
+@utility eyebrow {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-/* Strip of washi tape across the top of a photo card. */
-.tape {
-  position: relative;
-}
-.tape::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  width: 84px;
-  height: 22px;
-  translate: -50% 0;
-  rotate: -3deg;
-  background: color-mix(in srgb, var(--sun) 55%, transparent);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
-  z-index: 2;
-}
-.tape-alt::after {
-  rotate: 4deg;
-  background: color-mix(in srgb, var(--accent) 35%, transparent);
-}
-
-/* Photo printed with a white border, slightly tilted, straightening on hover. */
+/* Photo card: photo on top, caption below, a hairline edge and a soft lift on hover. */
 .polaroid {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
   background: var(--card);
-  padding: 10px 10px 0;
-  box-shadow:
-    0 1px 2px rgb(43 33 24 / 0.08),
-    0 8px 24px -12px rgb(43 33 24 / 0.25);
+  box-shadow: 0 1px 2px rgb(36 28 20 / 0.04);
   transition:
-    rotate 0.25s,
-    translate 0.25s;
+    translate 0.2s,
+    box-shadow 0.2s;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .polaroid:hover {
-    rotate: 0deg !important;
-    translate: 0 -3px;
+  a.polaroid:hover,
+  .polaroid:has(a:hover) {
+    translate: 0 -2px;
+    box-shadow: 0 10px 28px -16px rgb(36 28 20 / 0.35);
   }
 }
 
@@ -221,37 +186,25 @@ h2 {
  * each element, which is why hover and press states are restated here.
  */
 
-/* Outline pills (secondary buttons, filter chips, + buttons): solid card, darker edge and a small printed shadow. */
+/* Outline pills (secondary buttons, filter chips): solid card with a clear but quiet edge. */
 :is(a, button).rounded-full.border-line {
-  border-color: color-mix(in srgb, var(--foreground) 32%, transparent);
+  border-color: var(--line-strong);
   background-color: var(--card);
   color: var(--foreground);
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--foreground) 22%, transparent);
 }
 :is(a, button).rounded-full.border-line:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-/* Filled pills (main actions): a raised edge that presses down. */
+/* Filled pills (main actions): flat, a touch darker on hover. */
 :is(a, button).rounded-full:is(.bg-foreground, .bg-accent) {
-  box-shadow: 0 3px 0 rgb(0 0 0 / 0.28);
   transition:
-    translate 0.12s,
-    box-shadow 0.12s,
-    opacity 0.12s;
+    filter 0.15s,
+    opacity 0.15s;
 }
 :is(a, button).rounded-full:is(.bg-foreground, .bg-accent):hover {
-  translate: 0 -1px;
-  box-shadow: 0 4px 0 rgb(0 0 0 / 0.28);
-}
-:is(a, button).rounded-full:is(.bg-foreground, .bg-accent):active {
-  translate: 0 2px;
-  box-shadow: 0 1px 0 rgb(0 0 0 / 0.28);
-}
-:is(a, button).rounded-full:is(.bg-foreground, .bg-accent):disabled {
-  translate: none;
-  box-shadow: none;
+  filter: brightness(1.12);
 }
 
 /* Text links: teal with a thick underline, never grey. */

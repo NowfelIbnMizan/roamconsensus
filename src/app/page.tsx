@@ -5,12 +5,6 @@ import { getDestination, getDestinations, getSiteStats } from "@/lib/data";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { HomeSearch } from "@/components/home-search";
-import {
-  JourneyDoodle,
-  SquiggleDivider,
-  Stamp,
-  Swoosh,
-} from "@/components/art";
 
 // Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
 const comingSoon = [
@@ -80,11 +74,7 @@ export default async function Home() {
           </Link>
           <h1 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-5xl">
             Plan your trip from the routes travel creators{" "}
-            <span className="relative inline-block">
-              agree
-              <Swoosh className="absolute -bottom-2 left-0 h-3 w-full" />
-            </span>{" "}
-            on.
+            <em className="font-medium text-accent">agree</em> on.
           </h1>
           <p className="mt-4 hidden max-w-xl text-muted sm:block">
             Pick a city and how long you have. You get day-by-day creator
@@ -121,74 +111,64 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <div className="relative hidden pt-4 pb-24 md:block md:pb-28">
-          <JourneyDoodle className="absolute inset-0 m-auto w-full text-foreground/25" />
-          {/* A fanned row: neighbours overlap only at the edges, so every caption stays readable. */}
-          <div className="relative flex justify-center">
+        <div className="hidden md:block">
+          {/* One tall photo and two stacked: the three best-covered cities. */}
+          <div className="grid aspect-[5/4] grid-cols-[1.25fr_1fr] grid-rows-2 gap-2.5">
             {covered.map((d, i) => (
               <Link
                 key={d.slug}
                 href={`/destinations/${d.slug}`}
-                className={`polaroid tape block w-[36%] rounded-sm ${i % 2 ? "tape-alt mt-0" : "mt-8"} ${i ? "-ml-[3%]" : ""}`}
-                style={{
-                  rotate: `${[-6, 2, 6][i]}deg`,
-                  zIndex: i === 1 ? 2 : 1,
-                }}
+                className={`group relative block overflow-hidden rounded-2xl ${i === 0 ? "row-span-2" : ""}`}
               >
                 <Photo
                   photoKey={`destination:${d.slug}`}
                   query={`${d.name} ${d.country}`}
                   category="DESTINATION"
                   alt={d.name}
-                  sizes="(min-width: 768px) 200px, 36vw"
+                  sizes="(min-width: 768px) 280px, 40vw"
                   credit={false}
                   priority={i === 0}
-                  className="aspect-[4/5] rounded-[2px]"
+                  className="size-full transition duration-500 group-hover:scale-[1.03]"
                 />
-                <span className="block truncate px-1 py-1 text-center font-hand text-lg sm:text-xl">
+                <span className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent to-45%" />
+                <span className="absolute bottom-3 left-3.5 font-display text-lg font-medium text-white">
                   {d.name}
                 </span>
               </Link>
             ))}
           </div>
-          <Stamp
-            top={`${destinations.length} cities`}
-            middle={`${routes} trips`}
-            bottom={`${creators.length} creators`}
-            className="absolute right-2 bottom-0 z-10 size-20 rotate-12 sm:size-24"
-          />
+          <p className="mt-3 text-center text-sm text-muted tabular-nums">
+            {destinations.length} cities · {routes} routes · {creators.length}{" "}
+            creators
+          </p>
         </div>
       </section>
 
       <section id="destinations" className="mt-4 scroll-mt-6">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-3xl font-semibold">Where to next?</h2>
-          <p className="font-hand text-xl text-muted">
-            {destinations.length} cities, {routes} creator routes
+          <p className="text-sm text-muted tabular-nums">
+            {destinations.length} cities · {routes} creator routes
           </p>
         </div>
-        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
-          {destinations.map((d, i) => (
+        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
+          {destinations.map((d) => (
             <li key={d.slug}>
-              <Link
-                href={`/destinations/${d.slug}`}
-                className={`polaroid tape group block rounded-sm ${i % 2 ? "tape-alt" : ""}`}
-                style={{ rotate: `${[-1.5, 1, -0.5, 1.5, -1, 0.5][i % 6]}deg` }}
-              >
-                <Photo
-                  photoKey={`destination:${d.slug}`}
-                  query={`${d.name} ${d.country}`}
-                  category="DESTINATION"
-                  alt={d.name}
-                  sizes="(min-width: 1024px) 33vw, 50vw"
-                  className="aspect-[4/3] rounded-[2px]"
-                />
-                <div className="px-1 pt-2 pb-3 sm:px-2 sm:pt-3 sm:pb-4">
-                  <div className="flex items-center gap-1 text-xs text-muted sm:text-sm">
-                    <MapPin className="size-3.5 sm:size-4" aria-hidden />{" "}
-                    {d.country}
-                  </div>
-                  <h3 className="mt-0.5 font-display text-xl font-semibold sm:text-2xl">
+              <Link href={`/destinations/${d.slug}`} className="group block">
+                <span className="block overflow-hidden rounded-2xl">
+                  <Photo
+                    photoKey={`destination:${d.slug}`}
+                    query={`${d.name} ${d.country}`}
+                    category="DESTINATION"
+                    alt={d.name}
+                    sizes="(min-width: 1024px) 33vw, 50vw"
+                    credit={false}
+                    className="aspect-[4/3] transition duration-500 group-hover:scale-[1.03]"
+                  />
+                </span>
+                <div className="pt-2.5 sm:pt-3">
+                  <div className="eyebrow">{d.country}</div>
+                  <h3 className="mt-0.5 font-display text-xl font-semibold group-hover:text-accent sm:text-2xl">
                     {d.name}
                     {d.isSample && (
                       <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200">
@@ -199,8 +179,8 @@ export default async function Home() {
                   <p className="mt-1 hidden text-sm text-muted sm:line-clamp-2">
                     {d.summary}
                   </p>
-                  <p className="mt-1 flex items-center gap-1 font-hand text-lg text-accent sm:mt-3 sm:text-xl">
-                    {d._count.itineraries} itineraries{" "}
+                  <p className="mt-1 flex items-center gap-1 text-sm text-muted sm:mt-2">
+                    {d._count.itineraries} routes{" "}
                     <ArrowRight
                       className="size-4 transition group-hover:translate-x-0.5"
                       aria-hidden
@@ -240,10 +220,9 @@ export default async function Home() {
           ))}
         </ul>
       </section>
-      <SquiggleDivider className="mt-10" />
       {examples.length > 0 && (
-        <section aria-labelledby="agree-examples" className="mt-8">
-          <h2 id="agree-examples" className="font-hand text-2xl text-accent-2">
+        <section aria-labelledby="agree-examples" className="mt-16">
+          <h2 id="agree-examples" className="text-2xl font-semibold">
             For example, creators agree on…
           </h2>
           <ul className="-mx-4 mt-3 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
@@ -271,7 +250,7 @@ export default async function Home() {
                     <span className="mt-0.5 block font-display text-lg font-semibold leading-snug">
                       {e.place.name}
                     </span>
-                    <span className="mt-0.5 block font-hand text-lg leading-tight text-[#ffd98a]">
+                    <span className="mt-1 block text-xs text-white/85">
                       {e.place.creators.length} of {e.of} creators recommend it
                     </span>
                   </span>

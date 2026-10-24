@@ -16,7 +16,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/creators/[handle]">): Promise<Metadata> {
   const c = await getCreator((await params).handle);
-  return c ? { title: c.name, description: c.bio ?? `${c.name}'s travel itineraries on Creatour.` } : {};
+  return c
+    ? {
+        title: c.name,
+        description: c.bio ?? `${c.name}'s travel itineraries on Creatour.`,
+      }
+    : {};
 }
 
 export default async function CreatorPage({ params }: PageProps<"/creators/[handle]">) {
@@ -28,13 +33,25 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
   const cities = [...new Map(trips.map((it) => [it.destination.slug, it])).values()];
   const shots = cities.flatMap((it) => {
     const url = it.coverUrl ?? trips.find((t) => t.destination.slug === it.destination.slug && t.photos[0])?.photos[0];
-    return url ? [{ id: it.destination.slug, url, caption: it.destination.name, href: `/itineraries/${it.slug}` }] : [];
+    return url
+      ? [
+          {
+            id: it.destination.slug,
+            url,
+            caption: it.destination.name,
+            href: `/itineraries/${it.slug}`,
+          },
+        ]
+      : [];
   });
   const stats = [
     { value: trips.length, label: trips.length === 1 ? "trip" : "trips" },
     { value: cities.length, label: cities.length === 1 ? "city" : "cities" },
     { value: trips.reduce((n, it) => n + it.days, 0), label: "days of plans" },
-    { value: trips.reduce((n, it) => n + it.places, 0), label: "places picked" },
+    {
+      value: trips.reduce((n, it) => n + it.places, 0),
+      label: "places picked",
+    },
   ];
 
   return (
@@ -70,7 +87,7 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
 
       {shots.length >= 2 && (
         <section className="mt-10">
-          <h2 className="font-hand text-2xl text-accent-2">Where {creator.name} has been</h2>
+          <h2 className="text-xl font-semibold">Where {creator.name} has been</h2>
           <Snapshots shots={shots} />
         </section>
       )}

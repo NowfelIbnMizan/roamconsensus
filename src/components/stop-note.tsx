@@ -50,7 +50,7 @@ export function StopNote({ id, note, editable = true }: { id: string; note?: str
 
   if (note)
     return (
-      <p className="mt-1 flex items-start gap-1.5 font-hand text-lg leading-snug text-accent-2">
+      <p className="mt-1 flex items-start gap-1.5 text-sm italic leading-snug text-accent-2">
         <NotebookPen className="mt-1 size-3.5 shrink-0" aria-hidden />
         <span className="min-w-0 [overflow-wrap:anywhere]">
           {note}

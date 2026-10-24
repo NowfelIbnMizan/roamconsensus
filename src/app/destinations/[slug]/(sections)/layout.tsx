@@ -4,7 +4,6 @@ import { Photo } from "@/components/photo";
 import { SampleBanner } from "@/components/sample-banner";
 import { getDestination } from "@/lib/data";
 import { DestinationTabs } from "./tabs";
-import { Stamp } from "@/components/art";
 
 export default async function DestinationLayout({ children, params }: LayoutProps<"/destinations/[slug]">) {
   const destination = await getDestination((await params).slug);
@@ -13,25 +12,21 @@ export default async function DestinationLayout({ children, params }: LayoutProp
   return (
     <>
       {destination.isSample && <SampleBanner />}
-      <div className="polaroid tape relative mb-8 -rotate-[0.6deg] rounded-sm pb-2.5">
+      <div className="mb-6 overflow-hidden rounded-2xl">
         <Photo
           photoKey={`destination:${destination.slug}`}
           query={`${destination.name} ${destination.country}`}
           category="DESTINATION"
           alt={destination.name}
           sizes="(min-width: 1024px) 1024px, 100vw"
-          className="aspect-[2/1] rounded-[2px] sm:aspect-[21/9]"
+          className="aspect-[2/1] sm:aspect-[21/9]"
           priority
         />
-        <Stamp
-          top={destination.country}
-          middle={destination.name.length > 9 ? `${destination.routes.length} trips` : destination.name}
-          bottom={`${destination.creatorCount} creators`}
-          className="absolute -right-2 -bottom-6 size-24 rotate-12 drop-shadow-sm sm:size-28"
-        />
       </div>
-      <p className="font-hand text-xl text-accent-2">{destination.country}</p>
-      <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{destination.name}</h1>
+      <p className="eyebrow">
+        {destination.country} · {destination.routes.length} routes · {destination.creatorCount} creators
+      </p>
+      <h1 className="mt-1 text-4xl font-semibold tracking-tight sm:text-5xl">{destination.name}</h1>
       <p className="mt-3 max-w-2xl text-muted">{destination.summary}</p>
       <DestinationTabs slug={destination.slug} />
       <CityTabGuide slug={destination.slug} />

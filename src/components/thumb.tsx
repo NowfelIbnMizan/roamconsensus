@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { BedDouble, Bus, Package, Smartphone, Ticket, Utensils, type LucideIcon } from "lucide-react";
 import type { ItemCategory } from "@/generated/prisma/enums";
-import { categoryHex } from "@/lib/map";
 
 export const categoryIcon: Record<ItemCategory, LucideIcon> = {
   STAY: BedDouble,
@@ -16,8 +15,8 @@ export const categoryIcon: Record<ItemCategory, LucideIcon> = {
 export const optimized = (url: string) => /^https:\/\/images\.(unsplash|pexels)\.com\//.test(url);
 
 /**
- * A stop's photo for lists (itinerary, cart, trip mode). Without one, a tile in the category's colour with its icon,
- * so a list still reads at a glance. Works in server and client components.
+ * A stop's photo for lists (itinerary, cart, trip mode). Without one, a quiet tile with the category's icon, so a
+ * list still reads at a glance. Works in server and client components.
  */
 export function Thumb({
   url,
@@ -36,7 +35,7 @@ export function Thumb({
   return (
     <div
       className={`relative shrink-0 overflow-hidden ${className}`}
-      style={url ? undefined : { background: `${categoryHex[category]}1f`, color: categoryHex[category] }}
+      style={url ? undefined : { background: "#a8957a29", color: "#a8957a" }}
     >
       {url ? (
         <Image
@@ -49,7 +48,7 @@ export function Thumb({
           className="object-cover"
         />
       ) : (
-        <Icon className="absolute inset-0 m-auto size-1/3" aria-hidden />
+        <Icon className="absolute inset-0 m-auto size-1/3" strokeWidth={1.25} aria-hidden />
       )}
     </div>
   );

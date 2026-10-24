@@ -152,9 +152,7 @@ export default async function ItineraryPage({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-            <p className="font-hand text-xl text-white/90">
-              {tierLabel[it.tier]}
-            </p>
+            <p className="eyebrow text-white/85">{tierLabel[it.tier]}</p>
             <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
               {it.title}
             </h1>

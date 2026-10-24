@@ -1,19 +1,28 @@
 import { Photo } from "@/components/photo";
 
 export const formatDate = (iso: string) =>
-  new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
-    new Date(iso),
-  );
+  new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(iso));
 
 /** The post's own cover image, else its city's photo. */
 export function PostCover({
   post,
   sizes,
   className = "aspect-[16/9]",
+  credit,
 }: {
-  post: { title: string; coverUrl: string | null; destination: { slug: string; name: string } | null };
+  post: {
+    title: string;
+    coverUrl: string | null;
+    destination: { slug: string; name: string } | null;
+  };
   sizes: string;
   className?: string;
+  credit?: boolean;
 }) {
   if (post.coverUrl)
     // eslint-disable-next-line @next/next/no-img-element -- covers are pasted links from any site
@@ -26,6 +35,7 @@ export function PostCover({
       category="DESTINATION"
       alt=""
       sizes={sizes}
+      credit={credit}
       className={className}
     />
   );

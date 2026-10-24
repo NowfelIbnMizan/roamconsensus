@@ -50,7 +50,10 @@ export function PrintTrip() {
       title: [`Day ${n + 1}`, date(n + 1)].filter(Boolean).join(" · "),
       list: items.filter((i) => i.day === n + 1),
     })),
-    { title: "Not planned yet", list: items.filter((i) => !i.day || i.day > days) },
+    {
+      title: "Not planned yet",
+      list: items.filter((i) => !i.day || i.day > days),
+    },
   ].filter((s) => s.list.length);
   const total = items.reduce((s, i) => s + lineTotal(i), 0);
   const cities = [...new Set(items.flatMap((i) => (i.destination ? [i.destination.name] : [])))];
@@ -70,7 +73,7 @@ export function PrintTrip() {
         </button>
       </div>
       <header className="border-b border-line pb-3">
-        <p className="font-hand text-xl text-accent-2">Creatour trip plan</p>
+        <p className="eyebrow">Creatour trip plan</p>
         <h1 className="text-3xl font-semibold tracking-tight">{cities.join(", ") || "My trip"}</h1>
         <p className="mt-1 text-muted">
           {days} {days === 1 ? "day" : "days"}

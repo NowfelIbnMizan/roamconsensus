@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Camera } from "lucide-react";
 import { getPhoto, type PlaceholderCategory } from "@/lib/photos";
 
 type Props = {
@@ -10,10 +11,13 @@ type Props = {
   alt: string;
   sizes: string;
   className?: string;
-  /** Show the photographer credit over the image. Small thumbnails pass false and use PhotoCredit instead. */
+  /** Photographer credit over the image: a short line, or (false, for small tiles) a camera icon that shows it on hover. */
   credit?: boolean;
   priority?: boolean;
 };
+
+const badge =
+  "absolute right-1.5 bottom-1.5 z-10 flex items-center gap-1 rounded-full bg-black/35 text-[10px] leading-none text-white/90 backdrop-blur-sm";
 
 export async function Photo({
   photoKey,
@@ -42,37 +46,33 @@ export async function Photo({
         unoptimized={unoptimized}
         className="object-cover"
       />
-      {credit && photo.attribution && (
-        <a
-          href={photo.creditUrl ?? undefined}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute right-0 bottom-0 rounded-tl-md bg-black/50 px-1.5 py-0.5 text-[10px] text-white/90 hover:text-white"
-        >
-          {photo.attribution}
-        </a>
-      )}
+      {photo.attribution &&
+        // Small tiles usually sit inside a link, so their credit is a plain icon with the full credit as its tooltip.
+        (credit ? (
+          <a
+            href={photo.creditUrl ?? undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={photo.attribution}
+            className={`${badge} px-1.5 py-1 hover:bg-black/55 hover:text-white`}
+          >
+            <Camera className="size-2.5 shrink-0" aria-hidden />
+            <span className="sr-only">{photo.attribution}</span>
+            <span aria-hidden>{shortCredit(photo.attribution)}</span>
+          </a>
+        ) : (
+          <span title={photo.attribution} className={`${badge} p-1`}>
+            <Camera className="size-2.5" aria-hidden />
+            <span className="sr-only">{photo.attribution}</span>
+          </span>
+        ))}
     </div>
   );
 }
 
-/** Credit line for photos shown too small to carry one. */
-export async function PhotoCredit({
-  photoKey,
-  query,
-  category,
-  website,
-}: Pick<Props, "photoKey" | "query" | "category" | "website">) {
-  const photo = await getPhoto({ key: photoKey, query, category, website });
-  if (!photo.attribution) return null;
-  return (
-    <a
-      href={photo.creditUrl ?? undefined}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:text-accent"
-    >
-      {photo.attribution}
-    </a>
-  );
+/** "Photo by Jane Doe on Unsplash" -> "Jane Doe · Unsplash"; venue photos keep just the site name. */
+function shortCredit(attribution: string) {
+  return attribution
+    .replace(/^Photo (by|from) /, "")
+    .replace(/ on (Unsplash|Pexels)$/, " · $1");
 }

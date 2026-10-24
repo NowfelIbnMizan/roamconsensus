@@ -4,7 +4,7 @@ import { Moon, Sun } from "lucide-react";
 
 type Choice = "light" | "dark";
 const KEY = "roamconsensus-theme";
-const BAR = { light: "#f5efe4", dark: "#16120d" };
+const BAR = { light: "#f7f3ec", dark: "#16120d" };
 
 /**
  * Runs in <head> before paint so the page never flashes the wrong theme. With no saved choice it starts light, the
