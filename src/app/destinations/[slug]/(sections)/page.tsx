@@ -158,10 +158,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         </p>
         <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible">
           {destination.routes.map((r) => (
-            <Link
+            // The title link stretches over the whole card, so the creator name can open its own profile card.
+            <article
               key={r.slug}
-              href={`/itineraries/${r.slug}`}
-              className="flex min-w-[78%] snap-start flex-col overflow-hidden rounded-2xl border border-line bg-card p-5 transition hover:border-accent sm:min-w-[320px] md:min-w-0"
+              className="relative flex min-w-[78%] snap-start flex-col overflow-hidden rounded-2xl border border-line bg-card p-5 transition hover:border-accent sm:min-w-[320px] md:min-w-0 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent"
             >
               {r.photos.length > 0 && (
                 <div className="-mx-5 -mt-5 mb-4 grid h-32 grid-cols-3 gap-0.5">
@@ -181,9 +181,16 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                 <span className="text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[r.tier]}</span>
                 <span className="text-xs text-muted">{r.days} days</span>
               </div>
-              <h3 className="mt-1 font-semibold">{r.title}</h3>
-              <p className="mt-1 flex flex-wrap items-center gap-1.5 text-sm text-muted">
-                by <CreatorChip creator={r.creator} link={false} />
+              <h3 className="mt-1 font-semibold">
+                <Link
+                  href={`/itineraries/${r.slug}`}
+                  className="after:absolute after:inset-0 focus-visible:outline-none"
+                >
+                  {r.title}
+                </Link>
+              </h3>
+              <p className="relative z-10 mt-1 flex flex-wrap items-center gap-1.5 self-start text-sm text-muted">
+                by <CreatorChip creator={r.creator} />
               </p>
               {r.editorTake && (
                 <p className="mt-2 line-clamp-2 border-l-2 border-accent pl-2 text-sm text-muted">
@@ -211,7 +218,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
               <p className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                 See the full plan <ArrowRight className="size-4" aria-hidden />
               </p>
-            </Link>
+            </article>
           ))}
         </div>
       </section>

@@ -17,8 +17,8 @@ type Creator = {
 const pill = "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-sm font-medium ring-1 ring-inset";
 
 /**
- * A creator's name as a coloured pill. It links to their Creatour page, and a mouse resting on it opens a small profile
- * card. With `link` false (inside another link) it is a plain pill.
+ * A creator's name as a coloured pill. It links to their Creatour page; a mouse resting on it, or a tap on a phone,
+ * opens a small profile card. With `link` false (inside another link) it is a plain pill.
  */
 export function CreatorChip({ creator, link = true }: { creator: Creator; link?: boolean }) {
   const content = (
@@ -41,8 +41,8 @@ export function CreatorChip({ creator, link = true }: { creator: Creator; link?:
   const className = `${pill} ${creatorTint(creator.handle)}`;
   if (!link) return <span className={className}>{content}</span>;
   return (
-    <CreatorHover card={<CreatorCard creator={creator} />}>
-      <Link href={`/creators/${creator.handle}`} className={`${className} hover:opacity-80`}>
+    <CreatorHover card={<CreatorCard creator={creator} />} label={`About ${creator.name}`}>
+      <Link href={`/creators/${creator.handle}`} className={`${className} hover:ring-2`}>
         {content}
       </Link>
     </CreatorHover>
@@ -92,7 +92,7 @@ export function CreatorSocials({ creator, className = "" }: { creator: Creator; 
             rel="noopener noreferrer"
             aria-label={`${creator.name} on ${s.label}`}
             title={s.label}
-            className={`flex size-9 items-center justify-center rounded-full transition-opacity hover:opacity-80 ${s.tint}`}
+            className={`flex size-9 items-center justify-center rounded-full ring-current/30 ring-inset hover:ring-2 ${s.tint}`}
           >
             <SocialIcon social={s.key} />
           </a>

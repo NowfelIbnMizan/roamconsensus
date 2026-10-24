@@ -175,19 +175,23 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">
           {shown.map((r) => (
             <li key={r.slug}>
-              <Link
-                href={`/itineraries/${r.slug}`}
-                className="flex h-full flex-col rounded-2xl border border-line bg-card p-4 transition hover:border-accent"
-              >
+              <article className="relative flex h-full flex-col rounded-2xl border border-line bg-card p-4 transition hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-medium uppercase tracking-wide text-accent">{r.destination.name}</span>
                   <span className="text-muted">
                     {r.days} {r.days === 1 ? "day" : "days"} · {tierLabel[r.tier]}
                   </span>
                 </div>
-                <h2 className="mt-1 font-semibold">{r.title}</h2>
-                <div className="mt-2 flex flex-wrap items-center gap-1.5 text-sm text-muted">
-                  by <CreatorChip creator={r.creator} link={false} />
+                <h2 className="mt-1 font-semibold">
+                  <Link
+                    href={`/itineraries/${r.slug}`}
+                    className="after:absolute after:inset-0 focus-visible:outline-none"
+                  >
+                    {r.title}
+                  </Link>
+                </h2>
+                <div className="relative z-10 mt-2 flex flex-wrap items-center gap-1.5 self-start text-sm text-muted">
+                  by <CreatorChip creator={r.creator} />
                 </div>
                 {VIBES.some((v) => (r.vibes[v.key] ?? 0) >= VIBE_SHARE) && (
                   <p className="mt-2 flex flex-wrap gap-1.5 text-xs">
@@ -217,7 +221,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
                   </p>
                   <ArrowRight className="size-4 text-accent" aria-hidden />
                 </div>
-              </Link>
+              </article>
             </li>
           ))}
         </ul>

@@ -202,9 +202,8 @@ export function Quiz({ data }: { data: QuizData }) {
         <ol className="mt-4 space-y-3">
           {ranked.map((r, n) => (
             <li key={r.slug}>
-              <Link
-                href={`/itineraries/${r.slug}`}
-                className={`flex flex-wrap items-center gap-4 rounded-2xl border bg-card p-5 transition hover:border-accent ${
+              <article
+                className={`relative flex flex-wrap items-center gap-4 rounded-2xl border bg-card p-5 transition hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent ${
                   n === 0 ? "border-accent" : "border-line"
                 }`}
               >
@@ -218,16 +217,25 @@ export function Quiz({ data }: { data: QuizData }) {
                 </div>
                 <div className="min-w-0 flex-1">
                   {n === 0 && <p className="text-xs font-medium uppercase tracking-wide text-accent">Top pick</p>}
-                  <p className="font-semibold">{r.title}</p>
+                  <p className="font-semibold">
+                    <Link
+                      href={`/itineraries/${r.slug}`}
+                      className="after:absolute after:inset-0 focus-visible:outline-none"
+                    >
+                      {r.title}
+                    </Link>
+                  </p>
                   <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-sm text-muted">
-                    <CreatorChip creator={r.creator} link={false} /> · {r.destination.name} · {r.days} days ·{" "}
-                    {tierLabel[r.tier]}
+                    <span className="relative z-10">
+                      <CreatorChip creator={r.creator} />
+                    </span>{" "}
+                    · {r.destination.name} · {r.days} days · {tierLabel[r.tier]}
                     {r.totalCents > 0 && ` · ${money(r.totalCents)}`}
                   </p>
                   {r.reasons.length > 0 && <p className="mt-1 text-sm">{r.reasons.join(" · ")}</p>}
                 </div>
                 <ArrowRight className="size-5 text-muted" aria-hidden />
-              </Link>
+              </article>
             </li>
           ))}
         </ol>
