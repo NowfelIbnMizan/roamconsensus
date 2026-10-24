@@ -2,25 +2,39 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Compass, Home, Search, ShoppingBag, Users } from "lucide-react";
+import { Compass, Search, ShoppingBag, Users } from "lucide-react";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 
 const tabs = [
-  { href: "/", label: "Home", icon: Home, match: (p: string) => p === "/" },
+  // Home is the search box, so one tab covers both.
+  {
+    href: "/#plan",
+    label: "Plan",
+    icon: Search,
+    match: (p: string) => p === "/",
+  },
   {
     href: "/#destinations",
     label: "Explore",
     icon: Compass,
-    match: (p: string) => p.startsWith("/destinations") || p.startsWith("/itineraries"),
+    match: (p: string) =>
+      p.startsWith("/destinations") || p.startsWith("/itineraries"),
   },
-  { href: "/creators", label: "Creators", icon: Users, match: (p: string) => p.startsWith("/creators") },
-  { href: "/search", label: "Search", icon: Search, match: (p: string) => p.startsWith("/search") },
+  {
+    href: "/creators",
+    label: "Creators",
+    icon: Users,
+    match: (p: string) => p.startsWith("/creators"),
+  },
   {
     href: "/cart",
     label: "Trip",
     icon: ShoppingBag,
     match: (p: string) =>
-      p.startsWith("/cart") || p.startsWith("/trip") || p.startsWith("/today") || p.startsWith("/my-trips"),
+      p.startsWith("/cart") ||
+      p.startsWith("/trip") ||
+      p.startsWith("/today") ||
+      p.startsWith("/my-trips"),
   },
 ];
 
@@ -36,7 +50,7 @@ export function MobileNav() {
       aria-label="Main"
       className="fixed inset-x-0 bottom-0 z-[1100] border-t border-line bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden print:hidden"
     >
-      <ul className="grid grid-cols-5">
+      <ul className="grid grid-cols-4">
         {tabs.map(({ href, label, icon: Icon, match }) => {
           const active = match(pathname);
           return (

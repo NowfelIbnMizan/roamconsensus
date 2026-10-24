@@ -6,7 +6,13 @@ import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
-import { getDestination, getDestinationSlugs, getEsimPlans, getPosts, getStays } from "@/lib/data";
+import {
+  getDestination,
+  getDestinationSlugs,
+  getEsimPlans,
+  getPosts,
+  getStays,
+} from "@/lib/data";
 import { CityNutshell } from "@/components/city-nutshell";
 import { destinationFaq } from "@/lib/faq";
 import { FaqList } from "@/components/faq-list";
@@ -25,7 +31,11 @@ import { Thumb } from "@/components/thumb";
 import { ConsensusFilter } from "./consensus-filter";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
-function FromPrice({ p }: { p: { cents: number; unit: string | null; currency: string } }) {
+function FromPrice({
+  p,
+}: {
+  p: { cents: number; unit: string | null; currency: string };
+}) {
   if (p.cents === 0) return "Free";
   return (
     <>
@@ -36,11 +46,16 @@ function FromPrice({ p }: { p: { cents: number; unit: string | null; currency: s
 }
 
 /** One line in place of the full bar legend: where most of the money goes. */
-function SpendNote({ allocation }: { allocation: { category: ItemCategory; pct: number }[] }) {
+function SpendNote({
+  allocation,
+}: {
+  allocation: { category: ItemCategory; pct: number }[];
+}) {
   const top = allocation.reduce((a, b) => (b.pct > a.pct ? b : a));
   return (
     <p className="mt-1.5 text-xs text-muted">
-      Mostly {categoryLabel[top.category].toLowerCase()} ({Math.round(top.pct)}%)
+      Mostly {categoryLabel[top.category].toLowerCase()} ({Math.round(top.pct)}
+      %)
     </p>
   );
 }
@@ -49,20 +64,31 @@ export async function generateStaticParams() {
   return getDestinationSlugs();
 }
 
-export async function generateMetadata({ params }: PageProps<"/destinations/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/destinations/[slug]">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
-  return d ? { title: `${d.name} itineraries compared`, description: d.summary } : {};
+  return d
+    ? { title: `${d.name} itineraries compared`, description: d.summary }
+    : {};
 }
 
-export default async function DestinationPage({ params }: PageProps<"/destinations/[slug]">) {
-  const [destination, editor] = await Promise.all([getDestination((await params).slug), getEditor()]);
+export default async function DestinationPage({
+  params,
+}: PageProps<"/destinations/[slug]">) {
+  const [destination, editor] = await Promise.all([
+    getDestination((await params).slug),
+    getEditor(),
+  ]);
   if (!destination) notFound();
   const { creatorCount, consensus } = destination;
   const [esimPlans, posts, stays, weather] = await Promise.all([
     getEsimPlans(destination.country),
     getPosts(destination.slug),
     getStays(destination.slug),
-    destination.center ? getWeather(destination.center.lat, destination.center.lng) : null,
+    destination.center
+      ? getWeather(destination.center.lat, destination.center.lng)
+      : null,
   ]);
   const faq = destinationFaq(destination, esimPlans);
 
@@ -77,7 +103,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
     lat: p.lat,
     lng: p.lng,
     label: String(rank.get(p.slug)),
-    color: p.skippedBy.length > p.creators.length ? "#a8a29e" : categoryHex[p.category],
+    color:
+      p.skippedBy.length > p.creators.length
+        ? "#a8a29e"
+        : categoryHex[p.category],
     title: p.name,
     subtitle: [
       p.area,
@@ -86,25 +115,39 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
     ]
       .filter(Boolean)
       .join(" · "),
-    href: googleMapsPlaceUrl(p.name, `${p.area ? `${p.area}, ` : ""}${destination.name}`),
+    href: googleMapsPlaceUrl(
+      p.name,
+      `${p.area ? `${p.area}, ` : ""}${destination.name}`,
+    ),
     cat: p.category,
     page: placeHref(destination.slug, p.slug),
     cartId: p.skippedBy.length === 0 ? p.cartItem?.id : undefined,
   }));
 
   // The answer up front: the spots most creators share, before the photo-and-tabs scroll to the full list.
-  const agreed = consensus.filter((p) => p.creators.length >= 2 && p.skippedBy.length === 0).slice(0, 5);
+  const agreed = consensus
+    .filter((p) => p.creators.length >= 2 && p.skippedBy.length === 0)
+    .slice(0, 5);
 
   return (
     <>
       <CityNutshell d={destination} stays={stays} />
       {creatorCount > 1 && agreed.length >= 3 && (
-        <section className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5" aria-labelledby="agreed-heading">
+        <section
+          className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5"
+          aria-labelledby="agreed-heading"
+        >
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2 id="agreed-heading" className="font-hand text-2xl leading-tight text-accent-2">
+            <h2
+              id="agreed-heading"
+              className="font-hand text-2xl leading-tight text-accent-2"
+            >
               Top 5 the creators agree on
             </h2>
-            <a href="#agree" className="text-sm font-medium text-accent hover:underline">
+            <a
+              href="#agree"
+              className="text-sm font-medium text-accent hover:underline"
+            >
               All {consensus.length} places ↓
             </a>
           </div>
@@ -130,7 +173,9 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                     {i + 1}
                   </span>
                   <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
-                    <span className="block font-semibold leading-tight text-balance">{p.name}</span>
+                    <span className="block font-semibold leading-tight text-balance">
+                      {p.name}
+                    </span>
                     <span className="mt-0.5 block text-xs text-white/85">
                       {p.creators.length} of {creatorCount} creators
                     </span>
@@ -154,7 +199,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
       <section>
         <h2 className="text-xl font-semibold">Pick your route</h2>
         <p className="mt-1 text-sm text-muted">
-          Full day-by-day plans from independent creators (not affiliated with Creatour).
+          Day-by-day plans from independent creators.
           <span className="md:hidden"> Swipe to compare.</span>
         </p>
         <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible">
@@ -179,7 +224,9 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                 </div>
               )}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[r.tier]}</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-accent">
+                  {tierLabel[r.tier]}
+                </span>
                 <span className="text-xs text-muted">{r.days} days</span>
               </div>
               <h3 className="mt-1 font-semibold">
@@ -195,7 +242,9 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
               </p>
               {r.editorTake && (
                 <p className="mt-2 line-clamp-2 border-l-2 border-accent pl-2 text-sm text-muted">
-                  <span className="font-medium text-foreground">{editor.name}&apos;s take: </span>
+                  <span className="font-medium text-foreground">
+                    {editor.name}&apos;s take:{" "}
+                  </span>
                   {r.editorTake}
                 </p>
               )}
@@ -206,15 +255,20 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                   </p>
                   <p className="mb-4 text-xs text-muted">
                     est. per person
-                    {r.unpricedCount > 0 && ` + ${r.unpricedCount} without prices`}
+                    {r.unpricedCount > 0 &&
+                      ` + ${r.unpricedCount} without prices`}
                   </p>
                   <div className="mt-auto">
                     <AllocationBar allocation={r.allocation} legend={false} />
-                    {r.allocation.length > 0 && <SpendNote allocation={r.allocation} />}
+                    {r.allocation.length > 0 && (
+                      <SpendNote allocation={r.allocation} />
+                    )}
                   </div>
                 </>
               ) : (
-                <p className="mt-3 text-sm text-muted">Creator didn&apos;t list prices</p>
+                <p className="mt-3 text-sm text-muted">
+                  Creator didn&apos;t list prices
+                </p>
               )}
               <p className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                 See the full plan <ArrowRight className="size-4" aria-hidden />
@@ -231,9 +285,12 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         </h2>
         <p className="mt-1 text-sm text-muted">
           {creatorCount > 1
-            ? "Every spot the creators recommend, most agreed-on first. Tap + to add one to your trip cart."
-            : `From one creator so far. Agreement counts appear once more creators cover ${destination.name}.`}{" "}
-          <Link href={`/destinations/${destination.slug}/best`} className="font-medium text-accent hover:underline">
+            ? "Most agreed-on first. Tap + to save one."
+            : `From one creator so far.`}{" "}
+          <Link
+            href={`/destinations/${destination.slug}/best`}
+            className="font-medium text-accent hover:underline"
+          >
             Top picks, ranked
           </Link>
         </p>
@@ -242,7 +299,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             <div className="mt-4">
               <TripMap
                 stops={stops}
-                legend={categories.map((c) => ({ label: categoryLabel[c], color: categoryHex[c] }))}
+                legend={categories.map((c) => ({
+                  label: categoryLabel[c],
+                  color: categoryHex[c],
+                }))}
               />
             </div>
           )}
@@ -250,7 +310,11 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
             {consensus.map((p) => {
               const all = p.creators.length === creatorCount;
               return (
-                <li key={p.slug} data-cat={p.category} className="cv-row flex gap-3 p-4 sm:gap-4">
+                <li
+                  key={p.slug}
+                  data-cat={p.category}
+                  className="cv-row flex gap-3 p-4 sm:gap-4"
+                >
                   <Photo
                     photoKey={placePhotoKey(destination.slug, p)}
                     query={placeQuery(p.name, destination.name)}
@@ -285,17 +349,22 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                         <p className="mt-0.5 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted">
                           {p.area && (
                             <>
-                              <MapPin className="size-3" aria-hidden /> {p.area} ·
+                              <MapPin className="size-3" aria-hidden /> {p.area}{" "}
+                              ·
                             </>
                           )}{" "}
                           {categoryLabel[p.category]}
                           {creatorCount > 1 && p.creators.length > 0 && (
                             <span
                               className={`ml-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-medium ${
-                                all ? "bg-accent-soft text-accent" : "bg-line text-muted"
+                                all
+                                  ? "bg-accent-soft text-accent"
+                                  : "bg-line text-muted"
                               }`}
                             >
-                              {all && <CheckCircle2 className="size-3" aria-hidden />}
+                              {all && (
+                                <CheckCircle2 className="size-3" aria-hidden />
+                              )}
                               {p.creators.length}/{creatorCount} creators
                             </span>
                           )}
@@ -303,8 +372,14 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                       </div>
                       <div className="flex shrink-0 flex-col items-end gap-1.5">
                         <div className="flex items-center gap-1.5">
-                          <FavouriteButton destination={destination.slug} place={p.slug} name={p.name} />
-                          {p.cartItem && p.skippedBy.length === 0 && <AddItemButton item={p.cartItem} />}
+                          <FavouriteButton
+                            destination={destination.slug}
+                            place={p.slug}
+                            name={p.name}
+                          />
+                          {p.cartItem && p.skippedBy.length === 0 && (
+                            <AddItemButton item={p.cartItem} />
+                          )}
                         </div>
                         {p.fromPrice && (
                           <span className="whitespace-nowrap text-xs font-medium tabular-nums">
@@ -313,8 +388,14 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                         )}
                       </div>
                     </div>
-                    {p.blurb && <p className="mt-1.5 line-clamp-3 text-sm text-muted">{p.blurb}</p>}
-                    {p.tip && <p className="mt-1 text-sm text-muted">{p.tip}</p>}
+                    {p.blurb && (
+                      <p className="mt-1.5 line-clamp-3 text-sm text-muted">
+                        {p.blurb}
+                      </p>
+                    )}
+                    {p.tip && (
+                      <p className="mt-1 text-sm text-muted">{p.tip}</p>
+                    )}
                     <div className="mt-2 flex flex-wrap items-center gap-1.5">
                       {p.creators.map((c) => (
                         <CreatorChip key={c.handle} creator={c} />
@@ -356,7 +437,11 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                 >
                   <span>
                     <span className="font-medium">{p.title}</span>
-                    {p.excerpt && <span className="mt-0.5 line-clamp-1 block text-sm text-muted">{p.excerpt}</span>}
+                    {p.excerpt && (
+                      <span className="mt-0.5 line-clamp-1 block text-sm text-muted">
+                        {p.excerpt}
+                      </span>
+                    )}
                   </span>
                   <ArrowRight className="size-4 shrink-0" aria-hidden />
                 </Link>
@@ -366,7 +451,10 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         </section>
       )}
 
-      <FaqList title={`${destination.name} questions travellers ask`} faq={faq} />
+      <FaqList
+        title={`${destination.name} questions travellers ask`}
+        faq={faq}
+      />
       <UpdatedOn date={destination.updatedAt} />
     </>
   );

@@ -13,8 +13,14 @@ const nextConfig: NextConfig = {
     ],
   },
   partialPrefetching: true,
+  // Search lives in the home page's "Where to?" box now; old links keep their ?q= (Next passes the query along).
+  redirects: async () => [
+    { source: "/search", destination: "/#plan", permanent: true },
+  ],
   // Share images read their fonts from disk (src/lib/og.tsx), including when a new city or route renders at request time.
-  outputFileTracingIncludes: { "/**/opengraph-image*": ["./src/assets/fonts/**"] },
+  outputFileTracingIncludes: {
+    "/**/opengraph-image*": ["./src/assets/fonts/**"],
+  },
   turbopack: {
     rules: {
       "*.css": {

@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, SlidersHorizontal } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  ChevronDown,
+  SlidersHorizontal,
+} from "lucide-react";
 import { addDays, rangeLabel } from "@/components/date-range";
 import { CreatorChip } from "@/components/creator";
+import { Thumb } from "@/components/thumb";
 import { useMoney } from "@/components/money";
 import type { QuizData } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
@@ -33,6 +39,8 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
   } | null>(null);
   const [sort, setSort] = useState<keyof typeof SORTS>("cheap");
   const [vibes, setVibes] = useState<VibeKey[]>([]);
+  // On phones the filters fold away so the routes come first.
+  const [filters, setFilters] = useState(false);
 
   // The home page search links here with ?where=bali,bangkok&days=12&start=2026-11-03 (or an older ?length=).
   useEffect(() => {
@@ -44,7 +52,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
     if (w.length) setWhere(w);
     if (days > 0) {
       setTrip({ days, start: q.get("start") });
-      // -1: the "fits my trip" filter, routes no longer than each city's share of the days.
+      // -1: the "fits my trip" filter, routes up to a day longer than each city's share of the days.
       setLength(-1);
     } else if (l > 0 && l < LENGTHS.length) setLength(l);
   }, []);
@@ -60,13 +68,13 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
   );
 
   const maxCents = budget ? fromLocal(Number(budget)) : null;
-  // Each city gets an even share of the trip's days.
+  // Each city gets an even share of the trip's days. A route one day longer still fits: a day is easy to trim.
   const fitDays = trip
     ? Math.max(1, Math.round(trip.days / Math.max(1, where.length)))
     : null;
   const { min, max } =
     length === -1 && fitDays
-      ? { min: 1, max: fitDays }
+      ? { min: 1, max: fitDays + 1 }
       : (LENGTHS[length] ?? LENGTHS[0]);
   const shown = routes
     .filter((r) => r.days >= min && r.days <= max)
@@ -93,12 +101,25 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
 
   const card = (r: (typeof routes)[number]) => (
     <li key={r.slug}>
-      <article className="relative flex h-full flex-col rounded-2xl border border-line bg-card p-4 transition hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card p-4 transition hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
+        {r.photoUrl && (
+          <Thumb
+            url={r.photoUrl}
+            category="EXPERIENCE"
+            sizes="(min-width: 640px) 480px, 100vw"
+            className="-mx-4 -mt-4 mb-3 h-28 w-[calc(100%+2rem)]"
+          />
+        )}
         <div className="flex items-center justify-between text-xs">
           <span className="font-medium uppercase tracking-wide text-accent">
             {r.destination.name}
           </span>
           <span className="text-muted">
+            {length === -1 && fitDays && r.days > fitDays && (
+              <span className="mr-1.5 rounded-full bg-line px-1.5 py-0.5">
+                1 day over
+              </span>
+            )}
             {r.days} {r.days === 1 ? "day" : "days"} · {tierLabel[r.tier]}
           </span>
         </div>
@@ -161,6 +182,13 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
     (w) => destinations.find((d) => d.slug === w)?.name ?? w,
   );
   const perCity = where.length > 1 ? fitDays : null;
+  const active = [
+    length !== 0,
+    where.length > 0,
+    vibes.length > 0,
+    budget !== "",
+    tier !== "",
+  ].filter(Boolean).length;
 
   return (
     <div className="mt-6">
@@ -184,7 +212,27 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
           </p>
         </div>
       )}
-      <div className="space-y-4 rounded-2xl border border-line bg-card p-4 sm:p-5">
+      <button
+        type="button"
+        aria-expanded={filters}
+        onClick={() => setFilters(!filters)}
+        className="flex w-full items-center gap-2 rounded-2xl border border-line bg-card px-4 py-3 text-sm font-medium sm:hidden"
+      >
+        <SlidersHorizontal className="size-4 text-accent" aria-hidden />
+        Filters
+        {active > 0 && (
+          <span className="rounded-full bg-accent px-1.5 text-xs leading-5 text-background">
+            {active}
+          </span>
+        )}
+        <ChevronDown
+          className={`ml-auto size-4 transition ${filters ? "rotate-180" : ""}`}
+          aria-hidden
+        />
+      </button>
+      <div
+        className={`mt-2 space-y-4 rounded-2xl border border-line bg-card p-4 sm:mt-0 sm:block sm:p-5 ${filters ? "" : "hidden"}`}
+      >
         <div>
           <p className="mb-2 text-sm font-medium">Trip length</p>
           <div className="flex flex-wrap gap-2">

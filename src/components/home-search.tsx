@@ -51,6 +51,27 @@ export function HomeSearch({ cities }: { cities: City[] }) {
       .catch(() => (loading.current = false));
   };
 
+  // The "Plan" tab and old /search links land on /#plan, with any ?q= the visitor had typed.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    const go = () => {
+      input.current?.focus({ preventScroll: true });
+      box.current?.scrollIntoView({ block: "center" });
+    };
+    if (q) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- the URL is only readable after mount on a static page
+      setQ(q);
+      load();
+    }
+    if (q || window.location.hash === "#plan") go();
+    // Tapping "Plan" while already here doesn't remount, so catch the click itself.
+    const tap = (e: MouseEvent) =>
+      (e.target as Element).closest?.('a[href="/#plan"]') && setTimeout(go);
+    document.addEventListener("click", tap);
+    return () => document.removeEventListener("click", tap);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- once, on arrival
+  }, []);
+
   useEffect(() => {
     const away = (e: PointerEvent) =>
       !box.current?.contains(e.target as Node) && setOpen(null);
@@ -113,15 +134,25 @@ export function HomeSearch({ cities }: { cities: City[] }) {
 
   const find = () => {
     if (other) return router.push(other.href);
-    if (!picked.length) {
-      if (words.length)
-        return router.push(`/search?q=${encodeURIComponent(q)}`);
-      setHint("Pick a city first");
-      setOpen("where");
-      return input.current?.focus();
+    let trip = picked;
+    if (!trip.length) {
+      // Typed but didn't pick: take the best match, so Enter or "Find trips" always goes somewhere.
+      const top = words.length ? results[0] : undefined;
+      if (top && top.kind !== "Destination") return router.push(top.href);
+      const city = top && cities.find((c) => top.href.endsWith(`/${c.slug}`));
+      if (!city) {
+        setHint(
+          words.length
+            ? "No match. Try a city, like Bali"
+            : "Pick a city first",
+        );
+        setOpen("where");
+        return input.current?.focus();
+      }
+      trip = [city];
     }
     const params = new URLSearchParams({
-      where: picked.map((c) => c.slug).join(","),
+      where: trip.map((c) => c.slug).join(","),
     });
     if (start && end) {
       params.set("days", String(tripLength(start, end)));
@@ -140,10 +171,13 @@ export function HomeSearch({ cities }: { cities: City[] }) {
   return (
     <form
       ref={box}
+      id="plan"
       role="search"
       onSubmit={(e) => {
         e.preventDefault();
-        if (showList && words.length && results[active])
+        // Enter in the box picks the highlighted match; the "Find trips" button always searches.
+        const fromButton = (e.nativeEvent as SubmitEvent).submitter !== null;
+        if (!fromButton && showList && words.length && results[active])
           choose(results[active]);
         else find();
       }}
@@ -195,12 +229,10 @@ export function HomeSearch({ cities }: { cities: City[] }) {
                     setOpen("where");
                     // On a phone the keyboard covers half the screen, so bring the box and its results to the top.
                     if (window.matchMedia("(max-width: 639px)").matches)
-                      e.currentTarget
-                        .closest("form")
-                        ?.scrollIntoView({
-                          behavior: "smooth",
-                          block: "start",
-                        });
+                      e.currentTarget.closest("form")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
                   }}
                   onChange={(e) => {
                     setQ(e.target.value);
