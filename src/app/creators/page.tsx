@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { CreatorAvatar } from "@/components/creator-avatar";
-import { CreatorChip, CreatorSocials } from "@/components/creator";
+import { CreatorSocials } from "@/components/creator";
 import { getCreators } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
 import { Thumb } from "@/components/thumb";
@@ -47,7 +47,6 @@ export default async function CreatorsPage() {
               </div>
               {c.bio && <p className="mt-3 text-sm">{c.bio}</p>}
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                <CreatorChip creator={c} />
                 <CreatorSocials creator={c} />
               </div>
               <ul className="mt-4 space-y-2 border-t border-line pt-3 text-sm">

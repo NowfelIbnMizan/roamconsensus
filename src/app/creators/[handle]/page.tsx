@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { getCreator, getCreatorHandles } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
-import { CreatorChip, CreatorSocials } from "@/components/creator";
+import { CreatorSocials } from "@/components/creator";
 import { CreatorAvatar } from "@/components/creator-avatar";
 
 export async function generateStaticParams() {
@@ -31,14 +31,12 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">{creator.name}</h1>
           <p className="text-muted">
-            {creator.itineraries.length} {creator.itineraries.length === 1 ? "itinerary" : "itineraries"} on
-            Creatour
+            {creator.itineraries.length} {creator.itineraries.length === 1 ? "itinerary" : "itineraries"} on Creatour
           </p>
         </div>
       </div>
       {creator.bio && <p className="mt-4 max-w-2xl">{creator.bio}</p>}
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <CreatorChip creator={creator} />
         <CreatorSocials creator={creator} />
       </div>
       <h2 className="mt-10 text-lg font-semibold">Itineraries</h2>
