@@ -154,7 +154,8 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
       <section>
         <h2 className="text-xl font-semibold">Pick your route</h2>
         <p className="mt-1 text-sm text-muted">
-          Full day-by-day plans from real creators.<span className="md:hidden"> Swipe to compare.</span>
+          Full day-by-day plans from independent creators (not affiliated with Creatour).
+          <span className="md:hidden"> Swipe to compare.</span>
         </p>
         <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible">
           {destination.routes.map((r) => (

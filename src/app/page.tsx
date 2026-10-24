@@ -45,7 +45,7 @@ export default async function Home() {
               </span>
             )}
             <span>
-              Trips from <strong className="text-foreground">{creators.length} travel creators</strong>
+              Trips from <strong className="text-foreground">{creators.length} independent travel creators</strong>
             </span>
           </Link>
           <p className="font-hand text-2xl text-accent-2 -rotate-2">your trip, crowd-checked by creators ✈</p>

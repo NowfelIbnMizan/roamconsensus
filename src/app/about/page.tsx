@@ -76,7 +76,7 @@ export default async function AboutPage() {
       <p className="mt-3 text-sm text-muted">
         How the site makes money:{" "}
         <Link href="/disclosure" className="underline">
-          affiliate disclosure
+          disclosure and credits
         </Link>
         .
       </p>
