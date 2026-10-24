@@ -138,7 +138,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               they endorse it. Creator names, photos, logos and itineraries belong to their owners. Please visit and
               support them.{" "}
               <Link href="/disclosure" className="underline">
-                Disclosure &amp; credits
+                Credits
               </Link>
               {" · "}
               <Link href="/creators" className="underline">

@@ -69,7 +69,7 @@ export default function ContactPage() {
         </Link>{" "}
         and{" "}
         <Link href="/disclosure" className="underline">
-          disclosure and credits
+          credits
         </Link>
         .
       </p>
