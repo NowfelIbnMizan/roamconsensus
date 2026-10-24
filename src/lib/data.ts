@@ -645,7 +645,7 @@ export async function getCreator(handle: string) {
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
   cacheTag(`creator:${handle}`);
-  return db.creator.findUnique({
+  const creator = await db.creator.findUnique({
     where: { handle },
     select: {
       ...creatorLinkSelect,
@@ -658,11 +658,36 @@ export async function getCreator(handle: string) {
           title: true,
           tier: true,
           days: true,
-          destination: { select: { name: true } },
+          destination: { select: { slug: true, name: true } },
+          items: {
+            select: { sentiment: true, place: { select: { slug: true, website: true } } },
+            orderBy: [{ day: "asc" }, { position: "asc" }],
+          },
         },
       },
     },
   });
+  if (!creator) return null;
+
+  // Photos the site already has (no stock lookups): each trip's stops, and each city's cover.
+  const stopsOf = creator.itineraries.map((it) => [
+    ...new Map(it.items.flatMap((i) => (i.place && i.sentiment !== "AVOID" ? [[i.place.slug, i.place]] : []))).values(),
+  ]);
+  const photos = await cachedPhotoUrls([
+    ...new Set(creator.itineraries.map((it) => `destination:${it.destination.slug}`)),
+    ...creator.itineraries.flatMap((it, n) => stopsOf[n].map((p) => placePhotoKey(it.destination.slug, p))),
+  ]);
+  return {
+    ...creator,
+    itineraries: creator.itineraries.map(({ items, ...it }, n) => ({
+      ...it,
+      stops: items.length,
+      places: stopsOf[n].length,
+      coverUrl: photos.get(`destination:${it.destination.slug}`) ?? null,
+      /** Up to three of its stops' photos, in trip order. */
+      photos: stopsOf[n].flatMap((p) => photos.get(placePhotoKey(it.destination.slug, p)) ?? []).slice(0, 3),
+    })),
+  };
 }
 
 export async function getEsimPlans(country: string) {
