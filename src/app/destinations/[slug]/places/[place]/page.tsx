@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CheckCircle2, ChevronRight, Globe, MapPin, Navigation } from "lucide-react";
+import {
+  CheckCircle2,
+  ChevronRight,
+  Globe,
+  MapPin,
+  Navigation,
+} from "lucide-react";
 import { AddRouteButton } from "@/components/add-to-cart";
 import { FavouriteButton } from "@/components/favourite-button";
 import { CreatorChip } from "@/components/creator";
@@ -14,7 +20,14 @@ import { PhotoGallery } from "@/components/photo-gallery";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import { getPlace, getPlaceParams } from "@/lib/data";
 import { categoryLabel, sentimentLabel } from "@/lib/format";
-import { categoryHex, distanceKm, driveMinutes, formatMinutes, googleMapsPlaceUrl, hasPin } from "@/lib/map";
+import {
+  categoryHex,
+  distanceKm,
+  driveMinutes,
+  formatMinutes,
+  googleMapsPlaceUrl,
+  hasPin,
+} from "@/lib/map";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 
 type Props = PageProps<"/destinations/[slug]/places/[place]">;
@@ -34,11 +47,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const where = [p.area, p.destination.name].filter(Boolean).join(", ");
   return {
     title: `${p.name}, ${where}: what travel creators say`,
-    description: p.blurb ?? `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`,
+    description:
+      p.blurb ??
+      `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`,
   };
 }
 
-const schemaType = { STAY: "LodgingBusiness", FOOD: "Restaurant" } as Record<string, string>;
+const schemaType = { STAY: "LodgingBusiness", FOOD: "Restaurant" } as Record<
+  string,
+  string
+>;
 
 export default async function PlacePage({ params }: Props) {
   const p = await load(params);
@@ -58,7 +76,15 @@ export default async function PlacePage({ params }: Props) {
     : [];
   const stops: MapStop[] = hasPin(p)
     ? [
-        { key: p.slug, lat: p.lat, lng: p.lng, label: "★", color: "#1c1917", title: p.name, href: googleUrl },
+        {
+          key: p.slug,
+          lat: p.lat,
+          lng: p.lng,
+          label: "★",
+          color: "#1c1917",
+          title: p.name,
+          href: googleUrl,
+        },
         ...nearby.map((o, n) => ({
           key: o.slug,
           lat: o.lat,
@@ -66,8 +92,13 @@ export default async function PlacePage({ params }: Props) {
           label: String(n + 1),
           color: categoryHex[o.category],
           title: o.name,
-          subtitle: [o.area, categoryLabel[o.category]].filter(Boolean).join(" · "),
-          href: googleMapsPlaceUrl(o.name, `${o.area ? `${o.area}, ` : ""}${d.name}`),
+          subtitle: [o.area, categoryLabel[o.category]]
+            .filter(Boolean)
+            .join(" · "),
+          href: googleMapsPlaceUrl(
+            o.name,
+            `${o.area ? `${o.area}, ` : ""}${d.name}`,
+          ),
           page: placeHref(d.slug, o.slug),
         })),
       ]
@@ -79,14 +110,26 @@ export default async function PlacePage({ params }: Props) {
     name: p.name,
     description: p.blurb ?? undefined,
     url: p.website ?? undefined,
-    address: { "@type": "PostalAddress", addressLocality: p.area ?? d.name, addressCountry: d.country },
-    geo: hasPin(p) ? { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng } : undefined,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: p.area ?? d.name,
+      addressCountry: d.country,
+    },
+    geo: hasPin(p)
+      ? { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng }
+      : undefined,
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Link href={`/destinations/${d.slug}`} className="text-sm text-muted hover:text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Link
+        href={`/destinations/${d.slug}`}
+        className="text-sm text-muted hover:text-foreground"
+      >
         ← {d.name}
       </Link>
 
@@ -105,7 +148,7 @@ export default async function PlacePage({ params }: Props) {
                 priority
               />
             }
-            own={p.photos}
+            own={p.photos.slice(1)}
             alt={p.name}
             destination={d.slug}
             place={p.slug}
@@ -121,21 +164,36 @@ export default async function PlacePage({ params }: Props) {
             )}{" "}
             {categoryLabel[p.category]}
           </p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">{p.name}</h1>
+          <h1 className="mt-1 text-3xl font-semibold tracking-tight">
+            {p.name}
+          </h1>
           {p.creatorCount > 1 && agree > 0 && (
             <p
               className={`mt-2 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-sm font-medium ${
-                agree === p.creatorCount ? "bg-accent-soft text-accent" : "bg-line text-muted"
+                agree === p.creatorCount
+                  ? "bg-accent-soft text-accent"
+                  : "bg-line text-muted"
               }`}
             >
-              {agree === p.creatorCount && <CheckCircle2 className="size-4" aria-hidden />}
+              {agree === p.creatorCount && (
+                <CheckCircle2 className="size-4" aria-hidden />
+              )}
               {agree} of {p.creatorCount} creators recommend it
             </p>
           )}
           {agree > 0 && (
             <div className="mt-3 flex -space-x-2" aria-hidden>
-              {[...new Map(recommended.map((m) => [m.creator.handle, m.creator])).values()].map((c) => (
-                <CreatorAvatar key={c.handle} creator={c} size="sm" className="ring-2 ring-background" />
+              {[
+                ...new Map(
+                  recommended.map((m) => [m.creator.handle, m.creator]),
+                ).values(),
+              ].map((c) => (
+                <CreatorAvatar
+                  key={c.handle}
+                  creator={c}
+                  size="sm"
+                  className="ring-2 ring-background"
+                />
               ))}
             </div>
           )}
@@ -143,8 +201,18 @@ export default async function PlacePage({ params }: Props) {
           {p.tip && <p className="mt-2 text-sm text-muted">Tip: {p.tip}</p>}
           {p.fromPrice && (
             <p className="mt-3 text-lg font-semibold tabular-nums">
-              <Price item={{ priceCents: p.fromPrice.cents, quantity: 1, currency: p.fromPrice.currency }} />
-              {p.fromPrice.unit && <span className="text-sm font-normal text-muted">/{p.fromPrice.unit}</span>}
+              <Price
+                item={{
+                  priceCents: p.fromPrice.cents,
+                  quantity: 1,
+                  currency: p.fromPrice.currency,
+                }}
+              />
+              {p.fromPrice.unit && (
+                <span className="text-sm font-normal text-muted">
+                  /{p.fromPrice.unit}
+                </span>
+              )}
             </p>
           )}
           <div className="mt-4 flex flex-wrap gap-2">
@@ -156,7 +224,12 @@ export default async function PlacePage({ params }: Props) {
                 removeLabel="Remove from cart"
               />
             )}
-            <FavouriteButton destination={d.slug} place={p.slug} name={p.name} withLabel />
+            <FavouriteButton
+              destination={d.slug}
+              place={p.slug}
+              name={p.name}
+              withLabel
+            />
             <a
               href={googleUrl}
               target="_blank"
@@ -200,7 +273,10 @@ export default async function PlacePage({ params }: Props) {
                     <CreatorChip creator={m.creator} />
                     <span className="text-muted">
                       Day {m.day} of{" "}
-                      <Link href={`/itineraries/${m.itinerary.slug}`} className="underline hover:text-foreground">
+                      <Link
+                        href={`/itineraries/${m.itinerary.slug}`}
+                        className="underline hover:text-foreground"
+                      >
                         {m.itinerary.title}
                       </Link>
                     </span>
@@ -220,8 +296,14 @@ export default async function PlacePage({ params }: Props) {
                     <Price item={m} />
                   </span>
                 </div>
-                {m.name !== p.name && <p className="mt-2 font-medium">{m.name}</p>}
-                {m.note && <p className="mt-1 text-sm text-muted">&ldquo;{m.note}&rdquo;</p>}
+                {m.name !== p.name && (
+                  <p className="mt-2 font-medium">{m.name}</p>
+                )}
+                {m.note && (
+                  <p className="mt-1 text-sm text-muted">
+                    &ldquo;{m.note}&rdquo;
+                  </p>
+                )}
               </div>
             </li>
           ))}
@@ -230,7 +312,9 @@ export default async function PlacePage({ params }: Props) {
 
       {stops.length > 0 && (
         <section className="mt-10">
-          <h2 className="text-xl font-semibold">On the map{nearby.length > 0 && " and nearby"}</h2>
+          <h2 className="text-xl font-semibold">
+            On the map{nearby.length > 0 && " and nearby"}
+          </h2>
           <div className="mt-3 grid gap-4 md:grid-cols-[1fr_300px]">
             <TripMap stops={stops} className="h-72" />
             {nearby.length > 0 && (
@@ -242,7 +326,11 @@ export default async function PlacePage({ params }: Props) {
                       className="flex items-center gap-3 rounded-xl border border-line bg-card p-2.5 text-sm hover:border-accent"
                     >
                       <span className="relative shrink-0">
-                        <Thumb url={o.photoUrl} category={o.category} className="size-14 rounded-lg" />
+                        <Thumb
+                          url={o.photoUrl}
+                          category={o.category}
+                          className="size-14 rounded-lg"
+                        />
                         <span
                           className="absolute -top-1.5 -left-1.5 inline-flex size-5 items-center justify-center rounded-full text-[10px] font-semibold text-white ring-2 ring-card"
                           style={{ background: categoryHex[o.category] }}
@@ -252,13 +340,22 @@ export default async function PlacePage({ params }: Props) {
                         </span>
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate font-medium">{o.name}</span>
+                        <span className="block truncate font-medium">
+                          {o.name}
+                        </span>
                         <span className="text-xs text-muted">
-                          ~{formatMinutes(driveMinutes(p as { lat: number; lng: number }, o).minutes)} drive ·{" "}
-                          {categoryLabel[o.category]}
+                          ~
+                          {formatMinutes(
+                            driveMinutes(p as { lat: number; lng: number }, o)
+                              .minutes,
+                          )}{" "}
+                          drive · {categoryLabel[o.category]}
                         </span>
                       </span>
-                      <ChevronRight className="size-4 shrink-0 text-muted" aria-hidden />
+                      <ChevronRight
+                        className="size-4 shrink-0 text-muted"
+                        aria-hidden
+                      />
                     </Link>
                   </li>
                 ))}

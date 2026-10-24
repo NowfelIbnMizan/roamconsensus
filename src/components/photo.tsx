@@ -29,7 +29,8 @@ export async function Photo({
   const photo = await getPhoto({ key: photoKey, query, category, website });
   const isPlaceholder = photo.source === "PLACEHOLDER";
   // Venue images can be on any host, so they skip the optimizer rather than opening it to every domain.
-  const unoptimized = isPlaceholder || photo.source === "WEBSITE";
+  const unoptimized =
+    isPlaceholder || photo.source === "WEBSITE" || photo.source === "MANUAL";
   return (
     <div className={`relative overflow-hidden bg-line ${className}`}>
       <Image
@@ -65,7 +66,12 @@ export async function PhotoCredit({
   const photo = await getPhoto({ key: photoKey, query, category, website });
   if (!photo.attribution) return null;
   return (
-    <a href={photo.creditUrl ?? undefined} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+    <a
+      href={photo.creditUrl ?? undefined}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-accent"
+    >
       {photo.attribution}
     </a>
   );

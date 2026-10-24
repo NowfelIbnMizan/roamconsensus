@@ -85,6 +85,8 @@ enum PhotoSource {
   UNSPLASH
   PEXELS
   PLACEHOLDER
+  /// Picked by hand in admin (the place's first photo link); never replaced by a search.
+  MANUAL
 }
 
 model Destination {
@@ -164,7 +166,7 @@ model Place {
   tip           String?
   /// Venue's own site; its share image (og:image) is used as the place photo.
   website       String?
-  /// Extra photo links added in admin, shown first in the place's photo gallery.
+  /// Photo links added in admin. The first is the place's main photo; all show first in its gallery.
   photos        String[]     @default([])
   /// Map pin. Approximate is fine; travellers get "Open in Google Maps" for exact directions.
   lat           Float?
