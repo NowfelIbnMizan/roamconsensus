@@ -118,7 +118,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </nav>
           </header>
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 print:py-0">
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:py-10 print:py-0">
             {/* Pages are prerendered whole; this only shows if a page has to load its data at request time, which
                 otherwise fails with a blocking-route error. */}
             <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronRight, Search } from "lucide-react";
 import type { SearchEntry } from "@/lib/data";
 
@@ -11,6 +11,11 @@ const order: SearchEntry["kind"][] = ["Destination", "Spot", "Itinerary", "Creat
 
 export function SearchBox({ index }: { index: SearchEntry[] }) {
   const [q, setQ] = useState("");
+  // The home page search sends its words here as ?q=.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the URL is only readable after mount on a static page
+    setQ(new URLSearchParams(window.location.search).get("q") ?? "");
+  }, []);
   const words = fold(q).split(/\s+/).filter(Boolean);
   // Every word must appear; a hit in the title ranks above one only in the description.
   const results = words.length
