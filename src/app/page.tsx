@@ -15,6 +15,8 @@ const comingSoon = [
 export default async function Home() {
   const [destinations, stats] = await Promise.all([getDestinations(), getSiteStats()]);
   const { creators } = stats;
+  // Letter circles look like a placeholder, so the faces row waits until a few creators have agreed to a photo.
+  const faces = creators.filter((c) => c.avatarUrl);
   const routes = destinations.reduce((n, d) => n + d._count.itineraries, 0);
   const live = new Set(destinations.map((d) => d.slug));
   const placeholders = comingSoon.filter((c) => !live.has(c.slug)).slice(0, Math.max(0, 3 - destinations.length));
@@ -35,11 +37,13 @@ export default async function Home() {
             href="/creators"
             className="mb-4 inline-flex items-center gap-2.5 text-sm text-muted hover:text-foreground"
           >
-            <span className="flex -space-x-2" aria-hidden>
-              {creators.slice(0, 6).map((c) => (
-                <CreatorAvatar key={c.handle} creator={c} size="sm" className="ring-2 ring-background" />
-              ))}
-            </span>
+            {faces.length >= 3 && (
+              <span className="flex -space-x-2" aria-hidden>
+                {faces.slice(0, 6).map((c) => (
+                  <CreatorAvatar key={c.handle} creator={c} size="sm" className="ring-2 ring-background" />
+                ))}
+              </span>
+            )}
             <span>
               Trips from <strong className="text-foreground">{creators.length} travel creators</strong>
             </span>
