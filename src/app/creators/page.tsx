@@ -26,7 +26,7 @@ export default async function CreatorsPage() {
         Every route here links back to their full guide, so give them a read and a follow.
       </p>
       <p className="mt-4 max-w-2xl rounded-2xl border border-dashed border-line-strong bg-card px-4 py-3 text-sm">
-        {independentLine()}{" "}
+        Collected by a fellow traveller, from what creators share publicly. {independentLine()}{" "}
         <Link href="/disclosure#credits" className="underline">
           Credits
         </Link>
