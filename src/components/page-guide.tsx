@@ -26,7 +26,7 @@ export function PageGuide({
         />
       </summary>
       <aside
-        className="@container mt-3 -rotate-[0.4deg] rounded-sm border border-sun/40 bg-sun/15 px-5 py-4 shadow-[0_6px_18px_-12px_rgb(43_33_24/0.4)]"
+        className="@container mt-3 rounded-2xl border border-line bg-card px-5 py-4"
         aria-label="How this page works"
       >
         <ul className="grid gap-x-6 gap-y-2 text-sm @xl:grid-cols-2">

@@ -6,7 +6,7 @@ import { AllocationBar } from "@/components/allocation-bar";
 import { AgreePill } from "@/components/agree-pill";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
-import { Photo, PhotoCredit } from "@/components/photo";
+import { Photo } from "@/components/photo";
 import {
   getDestination,
   getDestinationSlugs,
@@ -139,10 +139,7 @@ export default async function DestinationPage({
           aria-labelledby="agreed-heading"
         >
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2
-              id="agreed-heading"
-              className="font-hand text-2xl leading-tight text-accent-2"
-            >
+            <h2 id="agreed-heading" className="text-xl font-semibold">
               Top 5 the creators agree on
             </h2>
             <a
@@ -170,7 +167,7 @@ export default async function DestinationPage({
                     className="size-full transition duration-300 group-hover:scale-105"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                  <span className="absolute top-2 left-2 flex size-8 items-center justify-center rounded-full bg-background font-display text-lg font-semibold text-accent-2 shadow">
+                  <span className="absolute top-2.5 left-3 font-display text-2xl font-semibold text-white drop-shadow">
                     {i + 1}
                   </span>
                   <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
@@ -375,7 +372,7 @@ export default async function DestinationPage({
                       </div>
                     </div>
                     {p.blurb && (
-                      <p className="mt-1.5 line-clamp-3 text-sm text-muted">
+                      <p className="mt-1.5 line-clamp-2 text-sm text-muted">
                         {p.blurb}
                       </p>
                     )}
@@ -388,14 +385,6 @@ export default async function DestinationPage({
                       total={creatorCount}
                       skippedBy={p.skippedBy}
                     />
-                    <p className="mt-1 text-[10px] text-muted">
-                      <PhotoCredit
-                        photoKey={placePhotoKey(destination.slug, p)}
-                        query={placeQuery(p.name, destination.name)}
-                        category={p.category}
-                        website={p.website}
-                      />
-                    </p>
                   </div>
                 </li>
               );

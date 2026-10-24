@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteUrl } from "@/lib/email";
-import { Caveat, Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Compass, Search } from "lucide-react";
@@ -14,7 +14,6 @@ import { CartSync } from "@/components/cart-sync";
 import { googleLoginEnabled } from "@/lib/auth";
 import { VisitorStats } from "@/components/visitor-stats";
 import { EmailSignup } from "@/components/email-signup";
-import { JourneyDoodle } from "@/components/art";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -23,13 +22,12 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-// Headings: a soft, slightly quirky serif. Handwritten notes: Caveat.
+// Headings: a warm serif.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   axes: ["SOFT", "WONK", "opsz"],
 });
-const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"] });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -62,20 +60,20 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${caveat.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
       // The theme script sets data-theme before React loads.
       suppressHydrationWarning
     >
       <head>
         {/* The theme script below sets this to the chosen theme's colour. */}
-        <meta name="theme-color" content="#f5efe4" />
+        <meta name="theme-color" content="#f7f3ec" />
         {/* Paints the right page colour even before the stylesheet arrives. */}
-        <style>{`html{background:#f5efe4}html[data-theme="dark"]{background:#16120d;color-scheme:dark}`}</style>
+        <style>{`html{background:#f7f3ec}html[data-theme="dark"]{background:#16120d;color-scheme:dark}`}</style>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
-          <header className="border-b border-dashed border-line-strong print:hidden">
+          <header className="border-b border-line print:hidden">
             <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
               <Link href="/" className="group flex items-center gap-2">
                 <Compass
@@ -147,19 +145,18 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               {children}
             </Suspense>
           </main>
-          <footer className="border-t border-dashed border-line-strong print:hidden">
+          <footer className="mt-8 border-t border-line print:hidden">
             <div className="mx-auto max-w-5xl px-4 pt-6">
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-md flex-1">
-                  <p className="font-hand text-2xl text-accent-2">
-                    Wish you were here!
+                  <p className="font-display text-xl font-semibold">
+                    Wish you were here
                   </p>
                   <EmailSignup
                     label="New destinations and creator itineraries, by email"
                     button="Sign up"
                   />
                 </div>
-                <JourneyDoodle className="hidden h-28 w-40 shrink-0 text-muted sm:block" />
               </div>
             </div>
             <p className="fine-print mx-auto max-w-5xl px-4 py-6">

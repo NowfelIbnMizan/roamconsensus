@@ -1,7 +1,7 @@
 "use client";
 
 import { StopNote } from "@/components/stop-note";
-import { SuitcaseDoodle } from "@/components/art";
+import { Luggage } from "lucide-react";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { Thumb } from "@/components/thumb";
@@ -18,7 +18,13 @@ import { dayLegs, googleMapsRouteUrl, hasPin } from "@/lib/map";
 import type { Weather } from "@/lib/weather";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
-type RainyPick = { name: string; area: string | null; category: ItemCategory; href: string; cartItem: CartItem | null };
+type RainyPick = {
+  name: string;
+  area: string | null;
+  category: ItemCategory;
+  href: string;
+  cartItem: CartItem | null;
+};
 type CityInfo = { weather: Weather | null; rainyPicks: RainyPick[] };
 
 const DAY_MS = 86_400_000;
@@ -61,7 +67,7 @@ export function TodayView() {
   if (items.length === 0)
     return (
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
-        <SuitcaseDoodle className="mx-auto mb-3 h-24 text-muted" />
+        <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">No trip planned yet.</p>
         <p className="mt-1 text-sm text-muted">Add a route to your trip cart, then come back here while you travel.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">

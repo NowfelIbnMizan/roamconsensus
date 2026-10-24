@@ -15,7 +15,7 @@ import { CreatorChip } from "@/components/creator";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { Thumb } from "@/components/thumb";
 import { Price } from "@/components/money";
-import { Photo, PhotoCredit } from "@/components/photo";
+import { Photo } from "@/components/photo";
 import { PhotoGallery } from "@/components/photo-gallery";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import { getPlace, getPlaceParams } from "@/lib/data";
@@ -249,14 +249,6 @@ export default async function PlacePage({ params }: Props) {
               </a>
             )}
           </div>
-          <p className="mt-2 text-[10px] text-muted">
-            <PhotoCredit
-              photoKey={placePhotoKey(d.slug, p)}
-              query={placeQuery(p.name, d.name)}
-              category={p.category}
-              website={p.website}
-            />
-          </p>
           <PageGuide id="place" className="mt-6" />
         </div>
       </div>

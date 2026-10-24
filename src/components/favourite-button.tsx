@@ -27,11 +27,17 @@ export function FavouriteButton({
       aria-pressed={signedIn ? on : undefined}
       aria-label={withLabel ? undefined : label}
       title={signedIn ? label : "Sign in to save favourites"}
-      className={`inline-flex items-center justify-center gap-1.5 rounded-full border text-sm ${
-        withLabel ? "px-4 py-2" : "size-8"
-      } ${on ? "border-accent-2/40 bg-accent-2/10 text-accent-2" : "border-line text-muted hover:text-accent-2"}`}
+      className={`inline-flex items-center justify-center gap-1.5 rounded-full text-sm transition-colors ${
+        withLabel
+          ? `border px-4 py-2 ${on ? "border-accent-2/40 bg-accent-2/10" : "border-line"}`
+          : "-m-1.5 size-10 hover:bg-accent-2/10"
+      } ${on ? "text-accent-2" : "text-muted hover:text-accent-2"}`}
     >
-      <Heart className={`size-4 ${on ? "fill-current" : ""}`} aria-hidden />
+      <Heart
+        className={`${withLabel ? "size-4" : "size-5"} ${on ? "fill-current" : ""}`}
+        strokeWidth={1.75}
+        aria-hidden
+      />
       {withLabel && (on ? "Saved" : "Save")}
     </button>
   );

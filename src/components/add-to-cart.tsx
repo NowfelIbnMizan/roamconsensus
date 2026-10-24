@@ -63,19 +63,18 @@ export function AddItemButton({ item }: { item: CartItem }) {
       aria-pressed={added}
       aria-label={added ? `Remove ${item.name} from cart` : `Add ${item.name} to cart`}
       title={added ? "In your cart: click to remove" : "Add to cart"}
-      className={`group inline-flex size-9 items-center justify-center rounded-full border sm:size-7 ${
-        added
-          ? "border-accent-soft bg-accent-soft text-accent hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-600"
-          : "border-accent bg-card text-accent shadow-[0_2px_0_var(--accent-soft)] hover:bg-accent hover:text-background"
+      // Bare icon, no ring: the hover wash shows the tap area.
+      className={`group -m-1.5 inline-flex size-10 items-center justify-center rounded-full transition-colors ${
+        added ? "text-accent hover:bg-red-500/10 hover:text-red-600" : "text-accent hover:bg-accent-soft"
       }`}
     >
       {added ? (
         <>
-          <Check className="size-4 group-hover:hidden" aria-hidden />
-          <X className="hidden size-4 group-hover:block" aria-hidden />
+          <Check className="size-5 group-hover:hidden" strokeWidth={2.25} aria-hidden />
+          <X className="hidden size-5 group-hover:block" aria-hidden />
         </>
       ) : (
-        <Plus className="size-4" aria-hidden />
+        <Plus className="size-5" strokeWidth={1.75} aria-hidden />
       )}
     </button>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SuitcaseDoodle } from "@/components/art";
+import { Luggage } from "lucide-react";
 import { getPosts } from "@/lib/data";
 import { PostCover, formatDate } from "@/components/post-cover";
 
@@ -18,7 +18,7 @@ export default async function BlogPage() {
       <p className="mt-2 text-muted">Trip ideas and guides, built on what real travel creators recommend.</p>
       {posts.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-dashed border-line p-10 text-center text-muted">
-          <SuitcaseDoodle className="mx-auto mb-3 h-24" />
+          <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
           First posts coming soon.
         </p>
       ) : (
@@ -29,7 +29,7 @@ export default async function BlogPage() {
                 href={`/blog/${p.slug}`}
                 className="group block overflow-hidden rounded-2xl border border-line bg-card transition hover:border-accent"
               >
-                <PostCover post={p} sizes="(min-width: 640px) 50vw, 100vw" />
+                <PostCover post={p} sizes="(min-width: 640px) 50vw, 100vw" credit={false} />
                 <div className="p-5">
                   <p className="text-xs text-muted">
                     {formatDate(p.publishedAt)}

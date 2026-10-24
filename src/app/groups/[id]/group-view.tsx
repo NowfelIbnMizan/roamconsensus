@@ -109,14 +109,20 @@ function Group() {
 
   async function removeItem(itemId: string, name: string) {
     if (!confirm(`Remove ${name} from the group trip for everyone?`)) return;
-    await fetch(`/api/groups/${id}/items?${new URLSearchParams({ itemId })}`, { method: "DELETE" });
+    await fetch(`/api/groups/${id}/items?${new URLSearchParams({ itemId })}`, {
+      method: "DELETE",
+    });
     void load();
   }
 
   async function copyInvite() {
     try {
       if (navigator.share)
-        await navigator.share({ title: group!.name, text: "Plan this trip with me", url: inviteUrl });
+        await navigator.share({
+          title: group!.name,
+          text: "Plan this trip with me",
+          url: inviteUrl,
+        });
       else {
         await navigator.clipboard.writeText(inviteUrl);
         setMessage("Invite link copied.");
@@ -147,7 +153,7 @@ function Group() {
   return (
     <div className="space-y-8">
       <header>
-        <p className="font-hand text-xl text-accent-2">Group trip</p>
+        <p className="eyebrow">Group trip</p>
         <h1 className="text-3xl font-semibold tracking-tight">{group.name}</h1>
         <ul className="mt-3 flex flex-wrap items-center gap-2" aria-label="People in this trip">
           {group.members.map((m) => (

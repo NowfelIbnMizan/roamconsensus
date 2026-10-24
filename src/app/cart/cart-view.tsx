@@ -1,6 +1,6 @@
 "use client";
 
-import { SuitcaseDoodle } from "@/components/art";
+import { Luggage } from "lucide-react";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
 import { Thumb } from "@/components/thumb";
@@ -65,7 +65,13 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
     fetch("/api/cart/refresh", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: saved.map((i) => ({ id: i.id, name: i.name, slug: i.itinerary.slug })) }),
+      body: JSON.stringify({
+        items: saved.map((i) => ({
+          id: i.id,
+          name: i.name,
+          slug: i.itinerary.slug,
+        })),
+      }),
     })
       .then((r) => (r.ok ? r.json() : null))
       .then((fresh) => fresh && refresh(fresh))
@@ -80,7 +86,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   if (items.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
-        <SuitcaseDoodle className="mx-auto mb-3 h-24 text-muted" />
+        <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">Your trip cart is empty.</p>
         <p className="mt-1 text-sm text-muted">Add a whole route or single items from any itinerary.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
@@ -94,7 +100,10 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const byCategory = new Map<ItemCategory, number>();
   for (const i of items) byCategory.set(i.category, (byCategory.get(i.category) ?? 0) + lineTotal(i));
   const allocation = [...byCategory]
-    .map(([category, cents]) => ({ category, pct: totalCents ? (cents / totalCents) * 100 : 0 }))
+    .map(([category, cents]) => ({
+      category,
+      pct: totalCents ? (cents / totalCents) * 100 : 0,
+    }))
     .filter((a) => a.pct > 0)
     .sort((a, b) => b.pct - a.pct);
   const unpriced = items.filter((i) => i.priceCents === null).length;
@@ -102,7 +111,10 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
 
   function save(text: string, type: string, name: string) {
     const url = URL.createObjectURL(new Blob([text], { type }));
-    const a = Object.assign(document.createElement("a"), { href: url, download: name });
+    const a = Object.assign(document.createElement("a"), {
+      href: url,
+      download: name,
+    });
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -319,7 +331,9 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               <div className="mt-3 h-2 overflow-hidden rounded-full bg-line">
                 <div
                   className={remaining < 0 ? "h-full bg-rose-500" : "h-full bg-accent"}
-                  style={{ width: `${Math.min(100, budgetCents ? (totalCents / budgetCents) * 100 : 100)}%` }}
+                  style={{
+                    width: `${Math.min(100, budgetCents ? (totalCents / budgetCents) * 100 : 100)}%`,
+                  }}
                 />
               </div>
               <p className={`mt-1 text-sm ${remaining < 0 ? "text-rose-600" : "text-muted"}`}>

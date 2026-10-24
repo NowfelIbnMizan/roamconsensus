@@ -127,7 +127,7 @@ export function CityNutshell({ d, stays }: { d: Destination; stays: Stays }) {
 
   return (
     <section className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5" aria-labelledby="nutshell-heading">
-      <h2 id="nutshell-heading" className="font-hand text-2xl leading-tight text-accent-2">
+      <h2 id="nutshell-heading" className="text-xl font-semibold">
         {d.name} in a nutshell
       </h2>
       <dl className="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">

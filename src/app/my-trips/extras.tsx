@@ -55,7 +55,7 @@ export function SavedPlaces() {
       ) : (
         [...byCity].map(([city, places]) => (
           <div key={city} className="mt-3">
-            <h3 className="font-hand text-xl text-accent-2">{city}</h3>
+            <h3 className="font-display text-lg font-semibold">{city}</h3>
             <ul className="mt-1 divide-y divide-line rounded-2xl border border-line bg-card">
               {places.map((f) => (
                 <li key={f.place} className="flex items-center gap-3 px-4 py-2.5">
@@ -81,7 +81,13 @@ export function SavedPlaces() {
   );
 }
 
-type GroupRow = { id: string; name: string; members: number; stops: number; isOwner: boolean };
+type GroupRow = {
+  id: string;
+  name: string;
+  members: number;
+  stops: number;
+  isOwner: boolean;
+};
 
 export function GroupTrips() {
   const router = useRouter();
