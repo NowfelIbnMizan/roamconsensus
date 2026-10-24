@@ -19,7 +19,11 @@ export default async function PanelLayout({ children }: LayoutProps<"/admin">) {
       <nav className="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-line pb-4 text-sm">
         <span className="font-semibold">Admin</span>
         {links.map((l) => (
-          <Link key={l.href} href={l.href} className="text-muted hover:text-foreground">
+          <Link
+            key={l.href}
+            href={l.href}
+            className="text-muted hover:text-foreground"
+          >
             {l.label}
           </Link>
         ))}

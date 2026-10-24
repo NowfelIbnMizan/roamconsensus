@@ -12,22 +12,62 @@ const hotspotOptions = [
 function PlanFields({ p, country }: { p?: Plan; country?: string }) {
   return (
     <>
-      <Field label="Country" name="country" defaultValue={p?.country ?? country} required />
-      <Field label="Provider" name="provider" defaultValue={p?.provider} required placeholder="Airalo" />
+      <Field
+        label="Country"
+        name="country"
+        defaultValue={p?.country ?? country}
+        required
+      />
+      <Field
+        label="Provider"
+        name="provider"
+        defaultValue={p?.provider}
+        required
+        placeholder="Airalo"
+      />
       <Field label="Plan name" name="name" defaultValue={p?.name} required />
       <Field
         label="Data (GB)"
         name="dataGb"
         type="number"
         step="0.1"
-        defaultValue={p ? (p.dataMb === null ? "" : +(p.dataMb / 1024).toFixed(2)) : ""}
+        defaultValue={
+          p ? (p.dataMb === null ? "" : +(p.dataMb / 1024).toFixed(2)) : ""
+        }
         hint="Blank = unlimited."
       />
-      <Field label="Days" name="days" type="number" defaultValue={p?.days ?? 7} required />
-      <Field label="Price" name="price" type="number" step="0.01" defaultValue={p ? p.priceCents / 100 : ""} required />
-      <Field label="Currency" name="currency" defaultValue={p?.currency ?? "USD"} />
-      <Field label="Network" name="network" defaultValue={p?.network} placeholder="Telkomsel" />
-      <Field label="Speed" name="speed" defaultValue={p?.speed} placeholder="4G/5G" />
+      <Field
+        label="Days"
+        name="days"
+        type="number"
+        defaultValue={p?.days ?? 7}
+        required
+      />
+      <Field
+        label="Price"
+        name="price"
+        type="number"
+        step="0.01"
+        defaultValue={p ? p.priceCents / 100 : ""}
+        required
+      />
+      <Field
+        label="Currency"
+        name="currency"
+        defaultValue={p?.currency ?? "USD"}
+      />
+      <Field
+        label="Network"
+        name="network"
+        defaultValue={p?.network}
+        placeholder="Telkomsel"
+      />
+      <Field
+        label="Speed"
+        name="speed"
+        defaultValue={p?.speed}
+        placeholder="4G/5G"
+      />
       <Select
         label="Hotspot"
         name="hotspot"
@@ -36,8 +76,19 @@ function PlanFields({ p, country }: { p?: Plan; country?: string }) {
         blank="Unknown"
       />
       <Field label="Notes" name="notes" defaultValue={p?.notes} />
-      <Field label="Buy link" name="url" type="url" defaultValue={p?.url} required />
-      <Field label="Price source (link)" name="sourceUrl" type="url" defaultValue={p?.sourceUrl} />
+      <Field
+        label="Buy link"
+        name="url"
+        type="url"
+        defaultValue={p?.url}
+        required
+      />
+      <Field
+        label="Price source (link)"
+        name="sourceUrl"
+        type="url"
+        defaultValue={p?.sourceUrl}
+      />
     </>
   );
 }
@@ -52,7 +103,8 @@ export default async function EsimAdmin() {
     <>
       <h1 className="text-2xl font-semibold">eSIM plans</h1>
       <p className="mt-1 text-sm text-muted">
-        Shown on the eSIM tab of every destination in that country. Saving a plan marks its price as checked today.
+        Shown on the eSIM tab of every destination in that country. Saving a
+        plan marks its price as checked today.
       </p>
       {countries.map((country) => (
         <section key={country} className="mt-6">
@@ -68,9 +120,14 @@ export default async function EsimAdmin() {
                         <span className="font-medium">{p.provider}</span>{" "}
                         <span className="text-sm text-muted">{p.name}</span>
                       </span>
-                      <span className="text-sm text-muted tabular-nums">${(p.priceCents / 100).toFixed(2)}</span>
+                      <span className="text-sm text-muted tabular-nums">
+                        ${(p.priceCents / 100).toFixed(2)}
+                      </span>
                     </summary>
-                    <form action={saveEsimPlan} className="mt-4 grid gap-3 sm:grid-cols-3">
+                    <form
+                      action={saveEsimPlan}
+                      className="mt-4 grid gap-3 sm:grid-cols-3"
+                    >
                       <input type="hidden" name="id" value={p.id} />
                       <PlanFields p={p} />
                       <div className="self-end">
@@ -78,7 +135,11 @@ export default async function EsimAdmin() {
                       </div>
                     </form>
                     <div className="mt-2 text-right">
-                      <DeleteButton action={deleteEsimPlan} id={p.id} what={`${p.provider} ${p.name}`} />
+                      <DeleteButton
+                        action={deleteEsimPlan}
+                        id={p.id}
+                        what={`${p.provider} ${p.name}`}
+                      />
                     </div>
                   </details>
                 </li>

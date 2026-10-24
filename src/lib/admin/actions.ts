@@ -9,7 +9,17 @@ import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { SOCIALS, type SocialKey } from "@/lib/creator-links";
 import { submitToIndexNow } from "@/lib/indexnow";
 import { destinationPaths, sitePaths } from "@/lib/site-paths";
-import type { CouponType, Crowd, ItemCategory, Platform, Sentiment, Tier } from "@/generated/prisma/enums";
+import type {
+  CouponType,
+  Crowd,
+  ItemCategory,
+  PhotoSource,
+  Platform,
+  Sentiment,
+  Tier,
+} from "@/generated/prisma/enums";
+import { findPhoto } from "@/lib/photos";
+import { placePhotoKey, placeQuery } from "@/lib/place";
 
 // Form helpers: blank inputs become null so clearing a field clears it in the database.
 const text = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
@@ -26,7 +36,8 @@ const cents = (fd: FormData, key: string) => {
   return Number.isFinite(n) ? Math.round(n * 100) : null;
 };
 const checkbox = (fd: FormData, key: string) => fd.get(key) === "on";
-const date = (fd: FormData, key: string) => (text(fd, key) ? new Date(text(fd, key)) : null);
+const date = (fd: FormData, key: string) =>
+  text(fd, key) ? new Date(text(fd, key)) : null;
 const slugify = (s: string) =>
   s
     .normalize("NFKD")
@@ -56,7 +67,10 @@ async function itineraryChanged(id: string) {
     data: { updatedAt: new Date() },
     select: { slug: true, destinationId: true },
   });
-  return [`/itineraries/${it.slug}`, ...(await destinationChanged(it.destinationId))];
+  return [
+    `/itineraries/${it.slug}`,
+    ...(await destinationChanged(it.destinationId)),
+  ];
 }
 
 /** Admin button: send every public page to IndexNow, e.g. after moving to a new domain. */
@@ -89,7 +103,9 @@ export async function saveDestination(fd: FormData) {
     summary: text(fd, "summary"),
     isSample: checkbox(fd, "isSample"),
   };
-  const row = id ? await db.destination.update({ where: { id }, data }) : await db.destination.create({ data });
+  const row = id
+    ? await db.destination.update({ where: { id }, data })
+    : await db.destination.create({ data });
   published(["/", ...destinationPaths(row.slug)]);
   if (!id) redirect(`/admin/destinations/${row.id}`);
 }
@@ -122,7 +138,12 @@ export async function saveMonths(fd: FormData) {
     const where = { destinationId_month: { destinationId, month } };
     if (Object.values(data).every((v) => v === null))
       await db.destinationMonth.deleteMany({ where: { destinationId, month } });
-    else await db.destinationMonth.upsert({ where, create: { ...data, destinationId, month }, update: data });
+    else
+      await db.destinationMonth.upsert({
+        where,
+        create: { ...data, destinationId, month },
+        update: data,
+      });
   }
   published(await destinationChanged(destinationId));
 }
@@ -141,7 +162,9 @@ export async function saveTip(fd: FormData) {
   };
   const tip = id
     ? await db.destinationTip.update({ where: { id }, data })
-    : await db.destinationTip.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
+    : await db.destinationTip.create({
+        data: { ...data, destinationId: text(fd, "destinationId") },
+      });
   published(await destinationChanged(tip.destinationId));
 }
 
@@ -173,15 +196,130 @@ export async function savePlace(fd: FormData) {
   };
   const place = id
     ? await db.place.update({ where: { id }, data })
-    : await db.place.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
+    : await db.place.create({
+        data: { ...data, destinationId: text(fd, "destinationId") },
+      });
+  await saveOwnPhoto(place);
   published(await destinationChanged(place.destinationId));
+}
+
+/** The first photo link typed in admin replaces the stock photo; clearing the links lets the stock search run again. */
+async function saveOwnPhoto(place: {
+  slug: string;
+  destinationId: string;
+  photos: string[];
+}) {
+  const { slug } = await db.destination.findUniqueOrThrow({
+    where: { id: place.destinationId },
+    select: { slug: true },
+  });
+  // Both variants, so the photo sticks even if the website field is added or cleared later.
+  const keys = [
+    placePhotoKey(slug, { slug: place.slug, website: null }),
+    placePhotoKey(slug, { slug: place.slug, website: "x" }),
+  ];
+  const [url] = place.photos;
+  if (!url) {
+    await db.photoCache.deleteMany({
+      where: { key: { in: keys }, source: "MANUAL" },
+    });
+    return;
+  }
+  const row = {
+    url,
+    source: "MANUAL" as const,
+    attribution: null,
+    creditUrl: null,
+    fetchedAt: new Date(),
+  };
+  await Promise.all(
+    keys.map((key) =>
+      db.photoCache.upsert({
+        where: { key },
+        create: { key, ...row },
+        update: row,
+      }),
+    ),
+  );
+}
+
+/** Photos found before the match check, re-searched in small batches so the free Unsplash limit isn't hit. */
+const RECHECK_SINCE = new Date("2026-10-25T00:00:00Z");
+const RECHECK_BATCH = 20;
+
+export async function recheckPhotos(_: string | null) {
+  await requireAdmin();
+  const stale = {
+    key: { startsWith: "place:" },
+    NOT: { key: { contains: "#" } },
+    source: { in: ["UNSPLASH", "PEXELS"] as PhotoSource[] },
+    fetchedAt: { lt: RECHECK_SINCE },
+  };
+  const rows = await db.photoCache.findMany({
+    where: stale,
+    take: RECHECK_BATCH,
+    orderBy: { key: "asc" },
+  });
+  let changed = 0;
+  let done = 0;
+  for (const row of rows) {
+    const [, dest, slug] = row.key.split(":");
+    const place = await db.place.findFirst({
+      where: { slug, destination: { slug: dest } },
+      select: {
+        name: true,
+        category: true,
+        website: true,
+        destination: { select: { name: true } },
+      },
+    });
+    if (!place) {
+      await db.photoCache.delete({ where: { key: row.key } });
+      done++;
+      continue;
+    }
+    // Expire the row so findPhoto searches again with the match check.
+    await db.photoCache.update({
+      where: { key: row.key },
+      data: { fetchedAt: new Date(0) },
+    });
+    const photo = await findPhoto({
+      key: row.key,
+      query: placeQuery(place.name, place.destination.name),
+      category: place.category,
+      website: row.key.endsWith(":site") ? place.website : null,
+    });
+    const fresh = await db.photoCache.findUnique({ where: { key: row.key } });
+    if (!fresh || fresh.fetchedAt.getTime() === 0) {
+      // Provider down or rate-limited: put the old photo back and stop for now.
+      await db.photoCache.update({
+        where: { key: row.key },
+        data: { fetchedAt: row.fetchedAt },
+      });
+      break;
+    }
+    await db.photoCache.deleteMany({
+      where: { key: { startsWith: `${row.key}#` } },
+    });
+    if (photo.url !== row.url) changed++;
+    done++;
+  }
+  const left = await db.photoCache.count({ where: stale });
+  if (done) published([]);
+  if (!done && rows.length)
+    return "Photo search is busy (free limit). Try again in an hour.";
+  return left
+    ? `Checked ${done}, changed ${changed}. ${left} left: press again in an hour.`
+    : `Checked ${done}, changed ${changed}. All photos checked.`;
 }
 
 /**
  * "Map pin" field: coordinates ("-8.5069, 115.2625") or a Google Maps link, including maps.app.goo.gl share links.
  * Blank clears the pin; anything unreadable leaves the saved pin alone.
  */
-async function mapPin(input: string): Promise<{ lat?: number | null; lng?: number | null }> {
+async function mapPin(
+  input: string,
+): Promise<{ lat?: number | null; lng?: number | null }> {
   if (!input) return { lat: null, lng: null };
   let s = input;
   if (/^https?:\/\/(maps\.app\.goo\.gl|goo\.gl)\//.test(s)) {
@@ -192,7 +330,9 @@ async function mapPin(input: string): Promise<{ lat?: number | null; lng?: numbe
   // !3d!4d is the place itself; @lat,lng is only where the map was centred.
   const m =
     s.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/) ??
-    s.match(/[?&](?:q|query|ll|destination)=(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/) ??
+    s.match(
+      /[?&](?:q|query|ll|destination)=(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/,
+    ) ??
     s.match(/@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/) ??
     s.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);
   if (!m) return {};
@@ -212,10 +352,9 @@ export async function deletePlace(fd: FormData) {
 export async function saveCreator(fd: FormData) {
   await requireAdmin();
   const id = optional(fd, "id");
-  const socials = Object.fromEntries(SOCIALS.map((s) => [s.key, optional(fd, s.key)])) as Record<
-    SocialKey,
-    string | null
-  >;
+  const socials = Object.fromEntries(
+    SOCIALS.map((s) => [s.key, optional(fd, s.key)]),
+  ) as Record<SocialKey, string | null>;
   const avatarUrl = optional(fd, "avatarUrl");
   const data = {
     handle: text(fd, "handle")
@@ -229,7 +368,10 @@ export async function saveCreator(fd: FormData) {
     avatarUrl: avatarUrl?.startsWith("https://") ? avatarUrl : null,
     ...socials,
     // Blank main link falls back to the first social profile given.
-    profileUrl: text(fd, "profileUrl") || SOCIALS.map((s) => socials[s.key]).find(Boolean) || "",
+    profileUrl:
+      text(fd, "profileUrl") ||
+      SOCIALS.map((s) => socials[s.key]).find(Boolean) ||
+      "",
   };
   if (id) await db.creator.update({ where: { id }, data });
   else await db.creator.create({ data });
@@ -265,15 +407,23 @@ export async function saveItinerary(fd: FormData) {
   };
   const row = id
     ? await db.itinerary.update({ where: { id }, data })
-    : await db.itinerary.create({ data: { ...data, destinationId: text(fd, "destinationId") } });
-  published([`/itineraries/${row.slug}`, ...(await destinationChanged(row.destinationId))]);
+    : await db.itinerary.create({
+        data: { ...data, destinationId: text(fd, "destinationId") },
+      });
+  published([
+    `/itineraries/${row.slug}`,
+    ...(await destinationChanged(row.destinationId)),
+  ]);
   if (!id) redirect(`/admin/itineraries/${row.id}`);
 }
 
 export async function deleteItinerary(fd: FormData) {
   await requireAdmin();
   const row = await db.itinerary.delete({ where: { id: text(fd, "id") } });
-  published([`/itineraries/${row.slug}`, ...(await destinationChanged(row.destinationId))]);
+  published([
+    `/itineraries/${row.slug}`,
+    ...(await destinationChanged(row.destinationId)),
+  ]);
   redirect(`/admin/destinations/${row.destinationId}`);
 }
 
@@ -317,15 +467,24 @@ export async function saveItem(fd: FormData) {
 
   // Our booking link is the one AffiliateLink without a creator. A link needs a booking site.
   await db.affiliateLink.deleteMany({ where: { itemId, creatorId: null } });
-  if (ourUrl && vendorId) await db.affiliateLink.create({ data: { itemId, vendorId, url: ourUrl } });
+  if (ourUrl && vendorId)
+    await db.affiliateLink.create({ data: { itemId, vendorId, url: ourUrl } });
   published(await itineraryChanged(itineraryId));
 }
 
 async function freeItemId(itineraryId: string, name: string) {
-  const { slug } = await db.itinerary.findUniqueOrThrow({ where: { id: itineraryId }, select: { slug: true } });
+  const { slug } = await db.itinerary.findUniqueOrThrow({
+    where: { id: itineraryId },
+    select: { slug: true },
+  });
   const base = `${slug}--${slugify(name) || "item"}`;
   const taken = new Set(
-    (await db.item.findMany({ where: { id: { startsWith: base } }, select: { id: true } })).map((i) => i.id),
+    (
+      await db.item.findMany({
+        where: { id: { startsWith: base } },
+        select: { id: true },
+      })
+    ).map((i) => i.id),
   );
   let id = base;
   for (let n = 2; taken.has(id); n++) id = `${base}-${n}`;
@@ -447,7 +606,9 @@ export async function savePost(fd: FormData) {
   await requireAdmin();
   const id = optional(fd, "id");
   const live = checkbox(fd, "published");
-  const before = id ? await db.post.findUnique({ where: { id }, select: { publishedAt: true } }) : null;
+  const before = id
+    ? await db.post.findUnique({ where: { id }, select: { publishedAt: true } })
+    : null;
   const data = {
     slug: slugify(text(fd, "slug") || text(fd, "title")),
     title: text(fd, "title"),
@@ -459,7 +620,9 @@ export async function savePost(fd: FormData) {
     // The first time a post goes live sets its date; later edits keep it.
     publishedAt: before?.publishedAt ?? (live ? new Date() : null),
   };
-  const row = id ? await db.post.update({ where: { id }, data }) : await db.post.create({ data });
+  const row = id
+    ? await db.post.update({ where: { id }, data })
+    : await db.post.create({ data });
   // Drafts refresh the cache (a post taken offline must disappear) but aren't announced to Bing.
   published(row.published ? ["/blog", `/blog/${row.slug}`] : []);
   if (!id) redirect(`/admin/blog/${row.id}`);
