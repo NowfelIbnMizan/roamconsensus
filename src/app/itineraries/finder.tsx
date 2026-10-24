@@ -1,22 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import type { QuizData } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
+import { LENGTHS } from "@/lib/trip-lengths";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
 
-const LENGTHS = [
-  { label: "Any length", min: 0, max: Infinity },
-  { label: "1–3 days", min: 1, max: 3 },
-  { label: "4–7 days", min: 4, max: 7 },
-  { label: "8–14 days", min: 8, max: 14 },
-  { label: "15+ days", min: 15, max: Infinity },
-];
 const TIERS: Tier[] = ["BACKPACKER", "BUDGET", "MIDRANGE", "LUXURY"];
 const SORTS = { cheap: "Cheapest", short: "Shortest", long: "Longest" } as const;
 const VIBE_SHARE = 0.15;
@@ -30,6 +24,16 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
   const [where, setWhere] = useState("");
   const [sort, setSort] = useState<keyof typeof SORTS>("cheap");
   const [vibes, setVibes] = useState<VibeKey[]>([]);
+
+  // The home page planner links here with ?where=<city>&length=<bucket>.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const w = q.get("where");
+    const l = Number(q.get("length"));
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the URL is only readable after mount on a static page
+    if (w) setWhere(w);
+    if (l > 0 && l < LENGTHS.length) setLength(l);
+  }, []);
 
   const destinations = useMemo(
     () =>
