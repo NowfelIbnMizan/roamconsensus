@@ -61,7 +61,7 @@ export default async function BeforePage({
         Tick as you go. Saved on this device.
       </p>
       <Checklist slug={d.slug} topics={topics} />
-      <p className="mt-6 text-xs text-muted">
+      <p className="fine-print mt-6">
         Rules and fees change. Check the official links before you travel.
       </p>
     </>

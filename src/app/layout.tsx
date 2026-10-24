@@ -162,7 +162,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 <JourneyDoodle className="hidden h-28 w-40 shrink-0 text-muted sm:block" />
               </div>
             </div>
-            <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
+            <p className="fine-print mx-auto max-w-5xl px-4 py-6">
               Featured creators are independent and not affiliated with
               Creatour; being featured doesn&apos;t mean they endorse it.
               Creator names, photos, logos and itineraries belong to their

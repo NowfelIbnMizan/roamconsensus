@@ -405,7 +405,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
       ) : (
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">{shown.map(card)}</ul>
       )}
-      <p className="mt-4 text-xs text-muted">
+      <p className="fine-print mt-4">
         Budgets are the creators&apos; listed prices for stays, activities and
         transport. Flights not included.
       </p>

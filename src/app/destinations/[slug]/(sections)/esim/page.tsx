@@ -153,7 +153,7 @@ function Guide({ guide, place }: { guide: EsimGuide; place: string }) {
             </details>
           ))}
         </div>
-        <p className="mt-3 text-xs text-muted">
+        <p className="fine-print mt-3">
           Checked {guide.checked}. Rules and coverage change; confirm with your
           provider.
         </p>
