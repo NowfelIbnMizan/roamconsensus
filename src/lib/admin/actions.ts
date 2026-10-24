@@ -216,6 +216,7 @@ export async function saveCreator(fd: FormData) {
     SocialKey,
     string | null
   >;
+  const avatarUrl = optional(fd, "avatarUrl");
   const data = {
     handle: text(fd, "handle")
       .toLowerCase()
@@ -224,6 +225,8 @@ export async function saveCreator(fd: FormData) {
     name: text(fd, "name"),
     platform: text(fd, "platform") as Platform,
     bio: optional(fd, "bio"),
+    // Only ever a photo the creator agreed to; https so it never breaks the page's mixed-content rules.
+    avatarUrl: avatarUrl?.startsWith("https://") ? avatarUrl : null,
     ...socials,
     // Blank main link falls back to the first social profile given.
     profileUrl: text(fd, "profileUrl") || SOCIALS.map((s) => socials[s.key]).find(Boolean) || "",

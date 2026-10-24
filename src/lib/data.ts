@@ -626,7 +626,7 @@ export async function getSiteStats() {
   const [cities, trips, creators, places, stops] = await Promise.all([
     db.destination.count(),
     db.itinerary.count(),
-    db.creator.findMany({ orderBy: { name: "asc" }, select: { handle: true, name: true } }),
+    db.creator.findMany({ orderBy: { name: "asc" }, select: { handle: true, name: true, avatarUrl: true } }),
     db.place.count({ where: { items: { some: { sentiment: { not: "AVOID" } } } } }),
     db.item.count(),
   ]);
