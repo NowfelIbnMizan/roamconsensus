@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin } from "lucide-react";
-import { CreatorChip } from "@/components/creator";
+import { AgreePill } from "@/components/agree-pill";
 import { Money } from "@/components/money";
 import { Photo } from "@/components/photo";
 import { UpdatedOn } from "@/components/updated-on";
@@ -15,15 +15,25 @@ type Props = PageProps<"/destinations/[slug]/best">;
 type Destination = NonNullable<Awaited<ReturnType<typeof getDestination>>>;
 
 // Ranked lists people search for, each with how many entries to show.
-const SECTIONS: { category: ItemCategory; heading: (name: string) => string; limit: number }[] = [
-  { category: "EXPERIENCE", heading: (n) => `Best things to do in ${n}`, limit: 15 },
+const SECTIONS: {
+  category: ItemCategory;
+  heading: (name: string) => string;
+  limit: number;
+}[] = [
+  {
+    category: "EXPERIENCE",
+    heading: (n) => `Best things to do in ${n}`,
+    limit: 15,
+  },
   { category: "FOOD", heading: (n) => `Where to eat in ${n}`, limit: 10 },
   { category: "STAY", heading: (n) => `Where to stay in ${n}`, limit: 8 },
 ];
 
 /** Recommended (never "skip it") places of one category, most creators first. */
 function ranked(d: Destination, category: ItemCategory, limit: number) {
-  return d.consensus.filter((p) => p.category === category && p.creators.length > 0).slice(0, limit);
+  return d.consensus
+    .filter((p) => p.category === category && p.creators.length > 0)
+    .slice(0, limit);
 }
 
 export async function generateStaticParams() {
@@ -34,7 +44,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const d = await getDestination((await params).slug);
   if (!d) return {};
   const count = ranked(d, "EXPERIENCE", 15).length;
-  const who = d.creatorCount > 1 ? `${d.creatorCount} travel creators` : "a travel creator";
+  const who =
+    d.creatorCount > 1
+      ? `${d.creatorCount} travel creators`
+      : "a travel creator";
   return {
     title: `${count} best things to do in ${d.name}, according to ${who}`,
     description: `The spots ${who} recommend most in ${d.name}: things to do, where to eat and where to stay, with prices and who recommends each one.`,
@@ -45,10 +58,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BestPage({ params }: Props) {
   const d = await getDestination((await params).slug);
   if (!d) notFound();
-  const who = d.creatorCount > 1 ? `${d.creatorCount} travel creators` : "a travel creator";
-  const sections = SECTIONS.map((s) => ({ ...s, places: ranked(d, s.category, s.limit) })).filter(
-    (s) => s.places.length,
-  );
+  const who =
+    d.creatorCount > 1
+      ? `${d.creatorCount} travel creators`
+      : "a travel creator";
+  const sections = SECTIONS.map((s) => ({
+    ...s,
+    places: ranked(d, s.category, s.limit),
+  })).filter((s) => s.places.length);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,20 +81,26 @@ export default async function BestPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
         The best of {d.name}, according to {who}
       </h2>
       <p className="mt-2 max-w-2xl text-muted">
-        We read {d.routes.length} {d.name} itineraries and counted which places come up again and again. Higher on the
-        list means more creators recommend it.
+        We read {d.routes.length} {d.name} itineraries and counted which places
+        come up again and again. Higher on the list means more creators
+        recommend it.
       </p>
       <a
-        href={`https://www.pinterest.com/pin/create/button/?${new URLSearchParams({
-          url: `${siteUrl()}/destinations/${d.slug}/best`,
-          media: `${siteUrl()}/destinations/${d.slug}/pin`,
-          description: `The best things to do in ${d.name}, according to ${who}`,
-        })}`}
+        href={`https://www.pinterest.com/pin/create/button/?${new URLSearchParams(
+          {
+            url: `${siteUrl()}/destinations/${d.slug}/best`,
+            media: `${siteUrl()}/destinations/${d.slug}/pin`,
+            description: `The best things to do in ${d.name}, according to ${who}`,
+          },
+        )}`}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#e60023] px-4 py-1.5 text-sm font-medium text-white"
@@ -97,11 +120,18 @@ export default async function BestPage({ params }: Props) {
       </nav>
 
       {sections.map((s) => (
-        <section key={s.category} id={s.category.toLowerCase()} className="mt-10 scroll-mt-6">
+        <section
+          key={s.category}
+          id={s.category.toLowerCase()}
+          className="mt-10 scroll-mt-6"
+        >
           <h3 className="text-xl font-semibold">{s.heading(d.name)}</h3>
           <ol className="mt-4 space-y-4">
             {s.places.map((p, i) => (
-              <li key={p.slug} className="cv-row flex gap-3 rounded-2xl border border-line bg-card p-4 sm:gap-4">
+              <li
+                key={p.slug}
+                className="cv-row flex gap-3 rounded-2xl border border-line bg-card p-4 sm:gap-4"
+              >
                 <Photo
                   photoKey={placePhotoKey(d.slug, p)}
                   query={placeQuery(p.name, d.name)}
@@ -115,7 +145,10 @@ export default async function BestPage({ params }: Props) {
                 <div className="min-w-0 flex-1">
                   <h4 className="font-semibold leading-snug">
                     <span className="mr-1.5 text-accent">{i + 1}.</span>
-                    <Link href={placeHref(d.slug, p.slug)} className="hover:text-accent hover:underline">
+                    <Link
+                      href={placeHref(d.slug, p.slug)}
+                      className="hover:text-accent hover:underline"
+                    >
                       {p.name}
                     </Link>
                   </h4>
@@ -125,18 +158,17 @@ export default async function BestPage({ params }: Props) {
                         <MapPin className="size-3" aria-hidden /> {p.area}
                       </span>
                     )}
-                    {d.creatorCount > 1 && (
-                      <span>
-                        {p.creators.length} of {d.creatorCount} creators recommend
-                      </span>
-                    )}
                     {p.fromPrice && (
                       <span>
                         {p.fromPrice.cents === 0 ? (
                           "Free"
                         ) : (
                           <>
-                            from <Money cents={p.fromPrice.cents} currency={p.fromPrice.currency} />
+                            from{" "}
+                            <Money
+                              cents={p.fromPrice.cents}
+                              currency={p.fromPrice.currency}
+                            />
                             {p.fromPrice.unit && `/${p.fromPrice.unit}`}
                           </>
                         )}
@@ -144,12 +176,14 @@ export default async function BestPage({ params }: Props) {
                     )}
                   </p>
                   {p.blurb && <p className="mt-1.5 text-sm">{p.blurb}</p>}
-                  {p.tip && <p className="mt-1 text-sm text-muted">Tip: {p.tip}</p>}
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {p.creators.map((c) => (
-                      <CreatorChip key={c.handle} creator={c} />
-                    ))}
-                  </div>
+                  {p.tip && (
+                    <p className="mt-1 text-sm text-muted">Tip: {p.tip}</p>
+                  )}
+                  <AgreePill
+                    className="mt-2"
+                    creators={p.creators}
+                    total={d.creatorCount}
+                  />
                 </div>
               </li>
             ))}

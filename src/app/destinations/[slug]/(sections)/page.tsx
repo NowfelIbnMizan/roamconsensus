@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, MapPin, Users } from "lucide-react";
+import { ArrowRight, MapPin, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
+import { AgreePill } from "@/components/agree-pill";
 import { CreatorChip } from "@/components/creator";
 import { AddItemButton } from "@/components/add-to-cart";
 import { Photo, PhotoCredit } from "@/components/photo";
@@ -308,7 +309,6 @@ export default async function DestinationPage({
           )}
           <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
             {consensus.map((p) => {
-              const all = p.creators.length === creatorCount;
               return (
                 <li
                   key={p.slug}
@@ -348,26 +348,12 @@ export default async function DestinationPage({
                         </p>
                         <p className="mt-0.5 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted">
                           {p.area && (
-                            <>
+                            <span className="inline-flex items-center gap-0.5 whitespace-nowrap">
                               <MapPin className="size-3" aria-hidden /> {p.area}{" "}
                               ·
-                            </>
+                            </span>
                           )}{" "}
                           {categoryLabel[p.category]}
-                          {creatorCount > 1 && p.creators.length > 0 && (
-                            <span
-                              className={`ml-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-medium ${
-                                all
-                                  ? "bg-accent-soft text-accent"
-                                  : "bg-line text-muted"
-                              }`}
-                            >
-                              {all && (
-                                <CheckCircle2 className="size-3" aria-hidden />
-                              )}
-                              {p.creators.length}/{creatorCount} creators
-                            </span>
-                          )}
                         </p>
                       </div>
                       <div className="flex shrink-0 flex-col items-end gap-1.5">
@@ -396,19 +382,12 @@ export default async function DestinationPage({
                     {p.tip && (
                       <p className="mt-1 text-sm text-muted">{p.tip}</p>
                     )}
-                    <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                      {p.creators.map((c) => (
-                        <CreatorChip key={c.handle} creator={c} />
-                      ))}
-                      {p.skippedBy.length > 0 && (
-                        <span className="flex flex-wrap items-center gap-1.5 text-xs text-red-700 dark:text-red-400">
-                          {p.skippedBy.map((c) => (
-                            <CreatorChip key={c.handle} creator={c} />
-                          ))}
-                          says skip it
-                        </span>
-                      )}
-                    </div>
+                    <AgreePill
+                      className="mt-2"
+                      creators={p.creators}
+                      total={creatorCount}
+                      skippedBy={p.skippedBy}
+                    />
                     <p className="mt-1 text-[10px] text-muted">
                       <PhotoCredit
                         photoKey={placePhotoKey(destination.slug, p)}
