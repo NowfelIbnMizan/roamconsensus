@@ -2,29 +2,45 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { CalendarDays, MapPin, Search } from "lucide-react";
+import { CalendarDays, MapPin, Plus, Search, X } from "lucide-react";
+import { DateRange, rangeLabel, tripLength } from "@/components/date-range";
+import { useCart } from "@/lib/cart-store";
 import type { SearchEntry } from "@/lib/data";
-import { LENGTHS } from "@/lib/trip-lengths";
 
-const fold = (s: string) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
-const order: SearchEntry["kind"][] = ["Destination", "Spot", "Itinerary", "Creator"];
+const fold = (s: string) =>
+  s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const order: SearchEntry["kind"][] = [
+  "Destination",
+  "Spot",
+  "Itinerary",
+  "Creator",
+];
+const MAX_CITIES = 4;
 
 type City = { slug: string; name: string; country: string };
 
 /**
- * The home page's first thing: where are you going, and for how long. A city plus a length goes straight to matching
- * creator routes; typing anything else (a spot, a creator, a route) searches the whole site as you type.
+ * The home page's first thing: where are you going (one city or several), and when. Picking from the list only
+ * fills the box; "Find trips" opens matching creator routes, split across the cities when there are several.
+ * A spot, route or creator picked instead opens its own page.
  */
 export function HomeSearch({ cities }: { cities: City[] }) {
   const router = useRouter();
   const listId = useId();
+  const setStartDate = useCart((s) => s.setStartDate);
+  const setTripDays = useCart((s) => s.setTripDays);
   const [q, setQ] = useState("");
-  const [length, setLength] = useState(0);
+  const [picked, setPicked] = useState<City[]>([]);
+  const [other, setOther] = useState<SearchEntry | null>(null);
+  const [start, setStart] = useState<string | null>(null);
+  const [end, setEnd] = useState<string | null>(null);
   const [index, setIndex] = useState<SearchEntry[] | null>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<"where" | "when" | null>(null);
   const [active, setActive] = useState(0);
+  const [hint, setHint] = useState("");
   const loading = useRef(false);
   const box = useRef<HTMLFormElement>(null);
+  const input = useRef<HTMLInputElement>(null);
 
   const load = () => {
     if (index || loading.current) return;
@@ -36,51 +52,100 @@ export function HomeSearch({ cities }: { cities: City[] }) {
   };
 
   useEffect(() => {
-    const away = (e: PointerEvent) => !box.current?.contains(e.target as Node) && setOpen(false);
+    const away = (e: PointerEvent) =>
+      !box.current?.contains(e.target as Node) && setOpen(null);
     document.addEventListener("pointerdown", away);
     return () => document.removeEventListener("pointerdown", away);
   }, []);
 
   const words = fold(q).split(/\s+/).filter(Boolean);
+  const chosen = new Set(picked.map((c) => c.slug));
+  const cityEntry = (c: City): SearchEntry => ({
+    kind: "Destination",
+    href: `/destinations/${c.slug}`,
+    title: c.name,
+    sub: c.country,
+    text: "",
+  });
   // Cities match from the list we already have, so they show before the index arrives.
   const cityHits = cities
-    .filter((c) => words.every((w) => fold(`${c.name} ${c.country}`).includes(w)))
-    .map((c) => ({ kind: "Destination" as const, href: `/destinations/${c.slug}`, title: c.name, sub: c.country, text: "" }));
-  const results: SearchEntry[] = !words.length
-    ? cities.map((c) => ({ kind: "Destination", href: `/destinations/${c.slug}`, title: c.name, sub: c.country, text: "" }))
-    : [
-        ...cityHits,
-        ...(index ?? [])
-          .filter((e) => e.kind !== "Destination")
-          .map((e) => ({ e, text: fold(e.text), title: fold(e.title) }))
-          .filter(({ text }) => words.every((w) => text.includes(w)))
-          .sort(
-            (x, y) =>
-              words.filter((w) => y.title.includes(w)).length - words.filter((w) => x.title.includes(w)).length ||
-              order.indexOf(x.e.kind) - order.indexOf(y.e.kind),
-          )
-          .map(({ e }) => e),
-      ].slice(0, 8);
+    .filter(
+      (c) =>
+        !chosen.has(c.slug) &&
+        words.every((w) => fold(`${c.name} ${c.country}`).includes(w)),
+    )
+    .map(cityEntry);
+  // Once a city is in, only more cities make sense; a spot or creator is a different kind of search.
+  const results: SearchEntry[] = (
+    !words.length || picked.length
+      ? cityHits
+      : [
+          ...cityHits,
+          ...(index ?? [])
+            .filter((e) => e.kind !== "Destination")
+            .map((e) => ({ e, text: fold(e.text), title: fold(e.title) }))
+            .filter(({ text }) => words.every((w) => text.includes(w)))
+            .sort(
+              (x, y) =>
+                words.filter((w) => y.title.includes(w)).length -
+                  words.filter((w) => x.title.includes(w)).length ||
+                order.indexOf(x.e.kind) - order.indexOf(y.e.kind),
+            )
+            .map(({ e }) => e),
+        ]
+  ).slice(0, 8);
 
-  /** A city with a trip length opens the matching routes; anything else opens its own page. */
-  const go = (r: SearchEntry | undefined) => {
-    if (!r) {
-      if (words.length) router.push(`/search?q=${encodeURIComponent(q)}`);
-      else router.push(length ? `/itineraries?length=${length}` : "/itineraries");
-      return;
+  const choose = (r: SearchEntry) => {
+    setHint("");
+    setQ("");
+    setActive(0);
+    if (r.kind === "Destination") {
+      const city = cities.find((c) => r.href.endsWith(`/${c.slug}`));
+      if (city && picked.length < MAX_CITIES) setPicked([...picked, city]);
+      setOther(null);
+      input.current?.focus();
+    } else {
+      setOther(r);
+      setPicked([]);
+      setOpen(null);
     }
-    const city = r.kind === "Destination" ? r.href.split("/").pop() : null;
-    router.push(city && length ? `/itineraries?where=${city}&length=${length}` : r.href);
   };
 
-  const showList = open && results.length > 0;
+  const find = () => {
+    if (other) return router.push(other.href);
+    if (!picked.length) {
+      if (words.length)
+        return router.push(`/search?q=${encodeURIComponent(q)}`);
+      setHint("Pick a city first");
+      setOpen("where");
+      return input.current?.focus();
+    }
+    const params = new URLSearchParams({
+      where: picked.map((c) => c.slug).join(","),
+    });
+    if (start && end) {
+      params.set("days", String(tripLength(start, end)));
+      params.set("start", start);
+      // The trip cart and trip mode use the same dates, so the plan starts on the right day.
+      setStartDate(start);
+      setTripDays(tripLength(start, end));
+    }
+    router.push(`/itineraries?${params}`);
+  };
+
+  const showList = open === "where" && results.length > 0;
+  const whenLabel = start
+    ? `${rangeLabel(start, end)}${end ? ` · ${tripLength(start, end)} days` : ""}`
+    : "Add dates";
   return (
     <form
       ref={box}
       role="search"
       onSubmit={(e) => {
         e.preventDefault();
-        go(words.length ? results[active] : undefined);
+        if (showList && words.length && results[active])
+          choose(results[active]);
+        else find();
       }}
       className="relative mt-5 max-w-2xl scroll-mt-4"
     >
@@ -89,60 +154,98 @@ export function HomeSearch({ cities }: { cities: City[] }) {
           <MapPin className="size-5 shrink-0 text-accent" aria-hidden />
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-semibold">Where to?</span>
-            <input
-              type="search"
-              value={q}
-              role="combobox"
-              aria-expanded={showList}
-              aria-controls={listId}
-              aria-autocomplete="list"
-              aria-activedescendant={showList ? `${listId}-${active}` : undefined}
-              onFocus={(e) => {
-                load();
-                setOpen(true);
-                // On a phone the keyboard covers half the screen, so bring the box and its results to the top.
-                if (window.matchMedia("(max-width: 639px)").matches)
-                  e.currentTarget.closest("form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              onChange={(e) => {
-                setQ(e.target.value);
-                setActive(0);
-                setOpen(true);
-                load();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "ArrowDown") {
-                  e.preventDefault();
-                  setActive((a) => Math.min(a + 1, results.length - 1));
-                } else if (e.key === "ArrowUp") {
-                  e.preventDefault();
-                  setActive((a) => Math.max(a - 1, 0));
-                } else if (e.key === "Escape") setOpen(false);
-              }}
-              placeholder="Bali, Tokyo, a spot…"
-              style={{ outline: "none" }}
-              className="w-full bg-transparent text-base placeholder:text-muted"
-            />
+            <span className="flex flex-wrap items-center gap-1">
+              {[
+                ...picked.map((c) => ({ key: c.slug, label: c.name })),
+                ...(other ? [{ key: "", label: other.title }] : []),
+              ].map((c) => (
+                <span
+                  key={c.key}
+                  className="inline-flex items-center gap-0.5 rounded-full bg-accent-soft py-0.5 pr-1 pl-2.5 text-sm font-medium text-accent"
+                >
+                  {c.label}
+                  <button
+                    type="button"
+                    aria-label={`Remove ${c.label}`}
+                    onClick={() =>
+                      c.key
+                        ? setPicked(picked.filter((p) => p.slug !== c.key))
+                        : setOther(null)
+                    }
+                    className="flex size-5 items-center justify-center rounded-full hover:bg-accent/15"
+                  >
+                    <X className="size-3" aria-hidden />
+                  </button>
+                </span>
+              ))}
+              {!other && picked.length < MAX_CITIES && (
+                <input
+                  ref={input}
+                  type="search"
+                  value={q}
+                  role="combobox"
+                  aria-expanded={showList}
+                  aria-controls={listId}
+                  aria-autocomplete="list"
+                  aria-activedescendant={
+                    showList ? `${listId}-${active}` : undefined
+                  }
+                  onFocus={(e) => {
+                    load();
+                    setOpen("where");
+                    // On a phone the keyboard covers half the screen, so bring the box and its results to the top.
+                    if (window.matchMedia("(max-width: 639px)").matches)
+                      e.currentTarget
+                        .closest("form")
+                        ?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+                  }}
+                  onChange={(e) => {
+                    setQ(e.target.value);
+                    setActive(0);
+                    setOpen("where");
+                    load();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowDown") {
+                      e.preventDefault();
+                      setActive((a) => Math.min(a + 1, results.length - 1));
+                    } else if (e.key === "ArrowUp") {
+                      e.preventDefault();
+                      setActive((a) => Math.max(a - 1, 0));
+                    } else if (e.key === "Escape") setOpen(null);
+                    else if (e.key === "Backspace" && !q && picked.length)
+                      setPicked(picked.slice(0, -1));
+                  }}
+                  placeholder={
+                    picked.length ? "Add another city" : "Bali, Tokyo, a spot…"
+                  }
+                  style={{ outline: "none" }}
+                  className="min-w-28 flex-1 bg-transparent py-0.5 text-base placeholder:text-muted"
+                />
+              )}
+            </span>
           </span>
         </label>
         <span aria-hidden className="hidden h-8 w-px bg-line sm:block" />
-        <label className="flex items-center gap-3 rounded-full px-4 py-2 focus-within:bg-background">
+        <button
+          type="button"
+          aria-expanded={open === "when"}
+          onClick={() => setOpen(open === "when" ? null : "when")}
+          className="flex items-center gap-3 rounded-full px-4 py-2 text-left hover:bg-background"
+        >
           <CalendarDays className="size-5 shrink-0 text-accent" aria-hidden />
           <span>
-            <span className="block text-xs font-semibold">How long?</span>
-            <select
-              value={length}
-              onChange={(e) => setLength(Number(e.target.value))}
-              className="bg-transparent text-base outline-none"
+            <span className="block text-xs font-semibold">When?</span>
+            <span
+              className={`block text-base whitespace-nowrap ${start ? "" : "text-muted"}`}
             >
-              {LENGTHS.map((l, i) => (
-                <option key={l.label} value={i}>
-                  {i ? l.label : "Any length"}
-                </option>
-              ))}
-            </select>
+              {whenLabel}
+            </span>
           </span>
-        </label>
+        </button>
         <button
           type="submit"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-medium whitespace-nowrap text-background"
@@ -150,12 +253,24 @@ export function HomeSearch({ cities }: { cities: City[] }) {
           <Search className="size-4" aria-hidden /> Find trips
         </button>
       </div>
+      {hint && (
+        <p className="mt-2 px-4 text-sm text-accent-2" role="alert">
+          {hint}
+        </p>
+      )}
+
       {showList && (
         <ul
           id={listId}
           role="listbox"
           className="absolute inset-x-0 top-full z-30 mt-2 max-h-96 overflow-auto rounded-2xl border border-line bg-card p-1 shadow-xl"
         >
+          {picked.length > 0 && (
+            <li className="flex items-center gap-1.5 px-3 pt-2 pb-1 text-xs text-muted">
+              <Plus className="size-3.5" aria-hidden /> Add another city to
+              combine them in one trip
+            </li>
+          )}
           {results.map((r, i) => (
             <li
               key={r.href}
@@ -163,18 +278,53 @@ export function HomeSearch({ cities }: { cities: City[] }) {
               role="option"
               aria-selected={i === active}
               onPointerEnter={() => setActive(i)}
-              onClick={() => go(r)}
+              onPointerDown={(e) => e.preventDefault()}
+              onClick={() => choose(r)}
               className={`flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 ${i === active ? "bg-line/50" : ""}`}
             >
-              <span className="w-20 shrink-0 text-xs font-medium uppercase tracking-wide text-accent">{r.kind}</span>
+              <span className="w-20 shrink-0 text-xs font-medium uppercase tracking-wide text-accent">
+                {r.kind}
+              </span>
               <span className="min-w-0">
                 <span className="block truncate font-medium">{r.title}</span>
-                <span className="block truncate text-sm text-muted">{r.sub}</span>
+                <span className="block truncate text-sm text-muted">
+                  {r.sub}
+                </span>
               </span>
             </li>
           ))}
-          {words.length > 0 && !index && <li className="px-3 py-2 text-sm text-muted">Searching…</li>}
+          {words.length > 0 && !index && !picked.length && (
+            <li className="px-3 py-2 text-sm text-muted">Searching…</li>
+          )}
         </ul>
+      )}
+
+      {open === "when" && (
+        <div className="absolute inset-x-0 top-full z-30 mt-2 rounded-2xl border border-line bg-card p-4 shadow-xl sm:p-5">
+          <DateRange
+            start={start}
+            end={end}
+            onChange={(s, e) => {
+              setStart(s);
+              setEnd(e);
+              if (s && e) setOpen(null);
+            }}
+          />
+          {start && (
+            <div className="mt-2 flex justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setStart(null);
+                  setEnd(null);
+                }}
+                className="text-sm text-muted underline hover:text-foreground"
+              >
+                Clear dates
+              </button>
+            </div>
+          )}
+        </div>
       )}
     </form>
   );
