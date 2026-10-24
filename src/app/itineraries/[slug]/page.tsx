@@ -5,7 +5,14 @@ import { youtubeId, youtubeStart } from "@/lib/youtube";
 import { UpdatedOn } from "@/components/updated-on";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ExternalLink, Map as MapIcon } from "lucide-react";
+import {
+  CalendarDays,
+  ExternalLink,
+  Map as MapIcon,
+  MapPin,
+  Star,
+  Wallet,
+} from "lucide-react";
 import { SampleBanner } from "@/components/sample-banner";
 import { CreatorChip, CreatorSocials } from "@/components/creator";
 import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
@@ -15,7 +22,13 @@ import { toCartItem } from "@/lib/cart-item";
 import { getItinerary, getItinerarySlugs } from "@/lib/data";
 import { categoryLabel, sentimentLabel, tierLabel } from "@/lib/format";
 import { Money, Price } from "@/components/money";
-import { dayColor, dayLegs, googleMapsPlaceUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
+import {
+  dayColor,
+  dayLegs,
+  googleMapsPlaceUrl,
+  googleMapsRouteUrl,
+  hasPin,
+} from "@/lib/map";
 import { DriveSummary, LegHint } from "@/components/road-time";
 import { placeHref } from "@/lib/place";
 import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
@@ -28,7 +41,8 @@ import { DayFaces, Snapshots } from "@/components/snapshots";
 /** "Read the full guide on saltinourhair.com", or "Watch the full video on YouTube". */
 function fullGuideLabel(url: string) {
   const host = new URL(url).hostname.replace(/^(www|m)\./, "");
-  if (/youtube\.com|youtu\.be/.test(host)) return "Watch the full video on YouTube";
+  if (/youtube\.com|youtu\.be/.test(host))
+    return "Watch the full video on YouTube";
   if (/instagram\.com/.test(host)) return "See the full post on Instagram";
   if (/tiktok\.com/.test(host)) return "Watch the full video on TikTok";
   return `Read the full guide on ${host}`;
@@ -38,23 +52,34 @@ export async function generateStaticParams() {
   return getItinerarySlugs();
 }
 
-export async function generateMetadata({ params }: PageProps<"/itineraries/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/itineraries/[slug]">): Promise<Metadata> {
   const it = await getItinerary((await params).slug);
   return it ? { title: it.title, description: it.summary } : {};
 }
 
-export default async function ItineraryPage({ params }: PageProps<"/itineraries/[slug]">) {
-  const [it, editor] = await Promise.all([getItinerary((await params).slug), getEditor()]);
+export default async function ItineraryPage({
+  params,
+}: PageProps<"/itineraries/[slug]">) {
+  const [it, editor] = await Promise.all([
+    getItinerary((await params).slug),
+    getEditor(),
+  ]);
   if (!it) notFound();
   const fullGuide = fullGuideLabel(it.sourceUrl);
   const video = youtubeId(it.sourceUrl);
 
   // Places the creator says to skip stay listed but out of the route bundle.
   const skipped = new Set(
-    it.schedule.flatMap(({ items }) => items.filter((i) => i.sentiment === "AVOID").map((i) => i.id)),
+    it.schedule.flatMap(({ items }) =>
+      items.filter((i) => i.sentiment === "AVOID").map((i) => i.id),
+    ),
   );
   const cartItems = new Map<string, CartItem>(
-    it.schedule.flatMap(({ items }) => items.map((i) => [i.id, toCartItem(i, it)])),
+    it.schedule.flatMap(({ items }) =>
+      items.map((i) => [i.id, toCartItem(i, it)]),
+    ),
   );
 
   // Each day's stops are numbered in order; the same number shows on the map pin and in the list.
@@ -81,13 +106,39 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       });
     });
     if (pinned.length)
-      groups.push({ id: day, label: `Day ${day}`, color: dayColor(index), routeUrl: googleMapsRouteUrl(pinned) });
+      groups.push({
+        id: day,
+        label: `Day ${day}`,
+        color: dayColor(index),
+        routeUrl: googleMapsRouteUrl(pinned),
+      });
   }
+
+  const kept = it.schedule.flatMap(({ items }) =>
+    items.filter((i) => i.sentiment !== "AVOID"),
+  );
+  // The route at a glance, so the numbers read before any paragraph does.
+  const glance = [
+    {
+      icon: CalendarDays,
+      value: `${it.days}`,
+      label: it.days === 1 ? "day" : "days",
+    },
+    { icon: MapPin, value: `${kept.length}`, label: "stops" },
+    {
+      icon: Star,
+      value: `${kept.filter((i) => i.sentiment === "MUST_VISIT").length}`,
+      label: "must-sees",
+    },
+  ];
 
   return (
     <>
       {it.destination.isSample && <SampleBanner />}
-      <Link href={`/destinations/${it.destination.slug}`} className="text-sm text-muted hover:text-foreground">
+      <Link
+        href={`/destinations/${it.destination.slug}`}
+        className="text-sm text-muted hover:text-foreground"
+      >
         ← {it.destination.name}
       </Link>
       {it.coverUrl ? (
@@ -101,28 +152,58 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-            <p className="font-hand text-xl text-white/90">{tierLabel[it.tier]}</p>
-            <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{it.title}</h1>
+            <p className="font-hand text-xl text-white/90">
+              {tierLabel[it.tier]}
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              {it.title}
+            </h1>
           </div>
         </div>
       ) : (
         <>
-          <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">{tierLabel[it.tier]}</p>
+          <p className="mt-4 text-xs font-medium uppercase tracking-wide text-accent">
+            {tierLabel[it.tier]}
+          </p>
           <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
         </>
       )}
       <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
         {/* Each "· part" is one unit, so a wrapped line never starts with a dangling dot. */}
-        by <CreatorChip creator={it.creator} /> <span>· {it.days} days</span>{" "}
+        by <CreatorChip creator={it.creator} />{" "}
         <span>
           · <UpdatedOn date={it.updatedAt} className="text-sm" />
         </span>
-        {it.totalCents > 0 && (
-          <span>
-            · <Money cents={it.totalCents} /> est.{it.unpricedCount > 0 && " for priced items"}
-          </span>
-        )}
       </p>
+      <dl className="mt-4 grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4">
+        {glance.map(({ icon: Icon, value, label }) => (
+          <div
+            key={label}
+            className="flex items-center gap-2.5 rounded-2xl border border-line bg-card px-3 py-2.5"
+          >
+            <Icon className="size-5 shrink-0 text-accent" aria-hidden />
+            <div className="flex flex-col-reverse">
+              <dt className="text-xs text-muted">{label}</dt>
+              <dd className="text-lg leading-tight font-semibold tabular-nums">
+                {value}
+              </dd>
+            </div>
+          </div>
+        ))}
+        {it.totalCents > 0 && (
+          <div className="flex items-center gap-2.5 rounded-2xl border border-line bg-card px-3 py-2.5">
+            <Wallet className="size-5 shrink-0 text-accent" aria-hidden />
+            <div className="flex flex-col-reverse">
+              <dt className="text-xs text-muted">
+                {it.unpricedCount > 0 ? "priced items" : "est. total"}
+              </dt>
+              <dd className="text-lg leading-tight font-semibold tabular-nums">
+                <Money cents={it.totalCents} />
+              </dd>
+            </div>
+          </div>
+        )}
+      </dl>
       <div className="mt-3">
         <CreatorSocials creator={it.creator} />
       </div>
@@ -133,7 +214,12 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         shots={it.schedule.flatMap(({ day, items }) =>
           items
             .filter((i) => i.photoUrl && i.sentiment !== "AVOID")
-            .map((i) => ({ id: i.id, url: i.photoUrl!, caption: i.name, label: `Day ${day}` })),
+            .map((i) => ({
+              id: i.id,
+              url: i.photoUrl!,
+              caption: i.name,
+              label: `Day ${day}`,
+            })),
         )}
       />
       <a
@@ -146,24 +232,34 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
       </a>
       {video && (
         <div className="mt-5 max-w-2xl">
-          <YouTubeEmbed id={video} title={`${it.title} by ${it.creator.name}`} start={youtubeStart(it.sourceUrl)} />
+          <YouTubeEmbed
+            id={video}
+            title={`${it.title} by ${it.creator.name}`}
+            start={youtubeStart(it.sourceUrl)}
+          />
         </div>
       )}
       {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
       <p className="mt-3 text-sm">
-        <Link href={`/creators/${it.creator.handle}`} className="text-muted underline hover:text-foreground">
+        <Link
+          href={`/creators/${it.creator.handle}`}
+          className="text-muted underline hover:text-foreground"
+        >
           More from {it.creator.name}
         </Link>
       </p>
       <div className="mt-5">
-        <AddRouteButton items={[...cartItems.values()].filter((c) => !skipped.has(c.id))} />
+        <AddRouteButton
+          items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
+        />
       </div>
       <PageGuide id="itinerary" className="mt-6" />
 
       {stops.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-            <MapIcon className="size-5 text-accent" aria-hidden /> Where you&apos;ll go
+            <MapIcon className="size-5 text-accent" aria-hidden /> Where
+            you&apos;ll go
           </h2>
           <TripMap stops={stops} groups={groups} connect />
         </section>
@@ -174,7 +270,11 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
           <section key={day}>
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h2 className="flex flex-wrap items-center gap-2 text-lg font-semibold">
-                <DayFaces urls={items.flatMap((i) => (i.photoUrl && i.sentiment !== "AVOID" ? [i.photoUrl] : []))} />
+                <DayFaces
+                  urls={items.flatMap((i) =>
+                    i.photoUrl && i.sentiment !== "AVOID" ? [i.photoUrl] : [],
+                  )}
+                />
                 Day {day} <DriveSummary minutes={drive.get(day)?.total ?? 0} />
               </h2>
               {groups.find((g) => g.id === day)?.routeUrl && (
@@ -184,7 +284,7 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
                 >
-                  Day {day} route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+                  Open in Maps <ExternalLink className="size-3.5" aria-hidden />
                 </a>
               )}
             </div>
@@ -214,7 +314,10 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                         )}
                         {item.placeSlug ? (
                           <Link
-                            href={placeHref(it.destination.slug, item.placeSlug)}
+                            href={placeHref(
+                              it.destination.slug,
+                              item.placeSlug,
+                            )}
                             className="hover:text-accent hover:underline"
                           >
                             {item.name}
@@ -238,17 +341,37 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                           </span>
                         )}
                       </p>
-                      {item.note && <p className="mt-0.5 text-sm text-muted">{item.note}</p>}
+                      {item.note && (
+                        <p className="mt-0.5 line-clamp-2 text-sm text-muted">
+                          {item.note}
+                        </p>
+                      )}
                       <LegHint leg={drive.get(day)?.legs.get(item.id)} />
-                      <p className="mt-0.5 text-xs text-muted">
-                        {categoryLabel[item.category]}
-                        {item.unit && ` · ${item.quantity} ${item.unit}${item.quantity > 1 ? "s" : ""}`}
-                      </p>
+                      {/* The thumbnail already shows the kind of stop, so only a quantity needs words. */}
+                      {item.unit && (
+                        <p className="mt-0.5 text-xs text-muted">
+                          {item.quantity} {item.unit}
+                          {item.quantity > 1 ? "s" : ""}
+                        </p>
+                      )}
                       {(item.couponCode || item.creditedTo) && (
                         <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
-                          {item.couponCode && <CouponCode code={item.couponCode} note={item.couponNote} />}
-                          {item.couponNote && <span className="text-muted">{item.couponNote}</span>}
-                          {item.creditedTo && <span className="text-muted">via {item.creditedTo}&apos;s link</span>}
+                          {item.couponCode && (
+                            <CouponCode
+                              code={item.couponCode}
+                              note={item.couponNote}
+                            />
+                          )}
+                          {item.couponNote && (
+                            <span className="text-muted">
+                              {item.couponNote}
+                            </span>
+                          )}
+                          {item.creditedTo && (
+                            <span className="text-muted">
+                              via {item.creditedTo}&apos;s link
+                            </span>
+                          )}
                         </p>
                       )}
                     </div>
@@ -258,7 +381,9 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                   >
                     <Price item={item} />
                     {item.priceCents !== null && item.priceNote && (
-                      <span className="block text-xs text-muted">{item.priceNote}</span>
+                      <span className="block line-clamp-2 text-xs text-muted">
+                        {item.priceNote}
+                      </span>
                     )}
                     {item.priceSourceUrl && (
                       <a
@@ -266,9 +391,9 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block text-xs text-muted underline decoration-dotted hover:text-accent"
-                        title="The creator didn't list a price; this is the typical price from this source."
+                        title={`The creator didn't list a price; this is the typical price from ${new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}.`}
                       >
-                        Typical price · {new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}
+                        Typical price
                       </a>
                     )}
                   </span>
@@ -279,7 +404,11 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                           href={item.bookUrl}
                           rel="sponsored noopener noreferrer"
                           target="_blank"
-                          title={item.bookIsSearch ? `Search ${item.vendor} for ${item.name}` : undefined}
+                          title={
+                            item.bookIsSearch
+                              ? `Search ${item.vendor} for ${item.name}`
+                              : undefined
+                          }
                           className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-accent px-3 py-1.5 text-xs font-medium whitespace-nowrap text-background hover:opacity-90"
                         >
                           {item.bookIsSearch
@@ -297,13 +426,16 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
                             target="_blank"
                             className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-line px-3 py-1.5 text-xs text-muted hover:text-foreground"
                           >
-                            Website <ExternalLink className="size-3" aria-hidden />
+                            Website{" "}
+                            <ExternalLink className="size-3" aria-hidden />
                           </a>
                         )
                       ))}
                   </div>
                   <div className="flex justify-end">
-                    {item.sentiment !== "AVOID" && <AddItemButton item={cartItems.get(item.id)!} />}
+                    {item.sentiment !== "AVOID" && (
+                      <AddItemButton item={cartItems.get(item.id)!} />
+                    )}
                   </div>
                 </li>
               ))}
@@ -312,7 +444,11 @@ export default async function ItineraryPage({ params }: PageProps<"/itineraries/
         ))}
       </div>
 
-      <SupportCreator creator={it.creator} sourceUrl={it.sourceUrl} className="mt-10" />
+      <SupportCreator
+        creator={it.creator}
+        sourceUrl={it.sourceUrl}
+        className="mt-10"
+      />
     </>
   );
 }

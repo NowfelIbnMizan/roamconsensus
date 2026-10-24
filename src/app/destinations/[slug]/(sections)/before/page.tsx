@@ -9,7 +9,9 @@ export async function generateStaticParams() {
   return getDestinationSlugs();
 }
 
-export async function generateMetadata({ params }: PageProps<"/destinations/[slug]/before">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/destinations/[slug]/before">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
   return d
     ? {
@@ -19,13 +21,17 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
     : {};
 }
 
-export default async function BeforePage({ params }: PageProps<"/destinations/[slug]/before">) {
+export default async function BeforePage({
+  params,
+}: PageProps<"/destinations/[slug]/before">) {
   const d = await getDestination((await params).slug);
   if (!d) notFound();
   const visa = visaRules[d.country];
   const visaBox = visa && (
     <section className="mb-8 rounded-2xl border border-line bg-card p-5">
-      <h2 className="text-xl font-semibold">Do I need a visa for {d.country}?</h2>
+      <h2 className="text-xl font-semibold">
+        Do I need a visa for {d.country}?
+      </h2>
       <div className="mt-3">
         <PassportPicker />
       </div>
@@ -51,9 +57,13 @@ export default async function BeforePage({ params }: PageProps<"/destinations/[s
     <>
       {visaBox}
       <h2 className="text-xl font-semibold">Before you go to {d.name}</h2>
-      <p className="mt-1 text-sm text-muted">Tick things off as you go. Your ticks stay on this device.</p>
+      <p className="mt-1 text-sm text-muted">
+        Tick as you go. Saved on this device.
+      </p>
       <Checklist slug={d.slug} topics={topics} />
-      <p className="mt-6 text-xs text-muted">Rules and fees change. Check the official links before you travel.</p>
+      <p className="mt-6 text-xs text-muted">
+        Rules and fees change. Check the official links before you travel.
+      </p>
     </>
   );
 }

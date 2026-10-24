@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { guidesScript } from "@/lib/guides";
 import { siteUrl } from "@/lib/email";
 import { Caveat, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -25,7 +24,11 @@ const geistSans = Geist({
 });
 
 // Headings: a soft, slightly quirky serif. Handwritten notes: Caveat.
-const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], axes: ["SOFT", "WONK", "opsz"] });
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+});
 const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"] });
 
 const geistMono = Geist_Mono({
@@ -50,7 +53,9 @@ export const metadata: Metadata = {
 };
 
 // GoatCounter site code (the "xyz" in xyz.goatcounter.com); visitor stats stay off until it is set.
-const goatcounter = /^[a-z0-9-]+$/.test(process.env.GOATCOUNTER_CODE ?? "") ? process.env.GOATCOUNTER_CODE : null;
+const goatcounter = /^[a-z0-9-]+$/.test(process.env.GOATCOUNTER_CODE ?? "")
+  ? process.env.GOATCOUNTER_CODE
+  : null;
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const { rates } = await getRates();
@@ -67,7 +72,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         {/* Paints the right page colour even before the stylesheet arrives. */}
         <style>{`html{background:#f5efe4}html[data-theme="dark"]{background:#16120d;color-scheme:dark}`}</style>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script dangerouslySetInnerHTML={{ __html: guidesScript }} />
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
@@ -84,27 +88,45 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </span>
               </Link>
               <div className="flex items-center gap-2 text-sm font-medium text-foreground/75 sm:gap-4">
-                <Link href="/#destinations" className="hidden hover:text-accent md:inline">
+                <Link
+                  href="/#destinations"
+                  className="hidden hover:text-accent md:inline"
+                >
                   Destinations
                 </Link>
-                <Link href="/creators" className="hidden hover:text-accent md:inline">
+                <Link
+                  href="/creators"
+                  className="hidden hover:text-accent md:inline"
+                >
                   Creators
                 </Link>
-                <Link href="/itineraries" className="hidden hover:text-accent sm:inline">
+                <Link
+                  href="/itineraries"
+                  className="hidden hover:text-accent sm:inline"
+                >
                   Find a trip
                 </Link>
-                <Link href="/visa" className="hidden hover:text-accent sm:inline">
+                <Link
+                  href="/visa"
+                  className="hidden hover:text-accent sm:inline"
+                >
                   Visa check
                 </Link>
-                <Link href="/blog" className="hidden hover:text-accent md:inline">
+                <Link
+                  href="/blog"
+                  className="hidden hover:text-accent md:inline"
+                >
                   Blog
                 </Link>
-                <Link href="/about" className="hidden hover:text-accent md:inline">
+                <Link
+                  href="/about"
+                  className="hidden hover:text-accent md:inline"
+                >
                   About
                 </Link>
                 <Link
-                  href="/search"
-                  aria-label="Search"
+                  href="/#plan"
+                  aria-label="Search trips, places and creators"
                   className="hidden size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground sm:flex"
                 >
                   <Search className="size-4" aria-hidden />
@@ -121,22 +143,30 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:py-10 print:py-0">
             {/* Pages are prerendered whole; this only shows if a page has to load its data at request time, which
                 otherwise fails with a blocking-route error. */}
-            <Suspense fallback={<p className="text-muted">Loading…</p>}>{children}</Suspense>
+            <Suspense fallback={<p className="text-muted">Loading…</p>}>
+              {children}
+            </Suspense>
           </main>
           <footer className="border-t border-dashed border-line-strong print:hidden">
             <div className="mx-auto max-w-5xl px-4 pt-6">
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-md flex-1">
-                  <p className="font-hand text-2xl text-accent-2">Wish you were here!</p>
-                  <EmailSignup label="New destinations and creator itineraries, by email" button="Sign up" />
+                  <p className="font-hand text-2xl text-accent-2">
+                    Wish you were here!
+                  </p>
+                  <EmailSignup
+                    label="New destinations and creator itineraries, by email"
+                    button="Sign up"
+                  />
                 </div>
                 <JourneyDoodle className="hidden h-28 w-40 shrink-0 text-muted sm:block" />
               </div>
             </div>
             <p className="mx-auto max-w-5xl px-4 py-6 text-xs text-muted">
-              Featured creators are independent and not affiliated with Creatour; being featured doesn&apos;t mean
-              they endorse it. Creator names, photos, logos and itineraries belong to their owners. Please visit and
-              support them.{" "}
+              Featured creators are independent and not affiliated with
+              Creatour; being featured doesn&apos;t mean they endorse it.
+              Creator names, photos, logos and itineraries belong to their
+              owners. Please visit and support them.{" "}
               <Link href="/disclosure" className="underline">
                 Credits
               </Link>

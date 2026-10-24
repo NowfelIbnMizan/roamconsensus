@@ -16,11 +16,10 @@ export default async function TripsPage() {
     <>
       <h1 className="text-3xl font-semibold tracking-tight">Find a trip</h1>
       <p className="mt-1 text-muted">
-        Pick how long you have and what you want to spend. Not sure?{" "}
+        Your days, your budget.{" "}
         <Link href="/quiz" className="underline">
-          Take the 3-question quiz
+          Not sure? 3 quick questions
         </Link>
-        .
       </p>
       <PageGuide id="finder" className="mt-6" />
       <TripFinder routes={routes} />

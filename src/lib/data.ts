@@ -28,7 +28,8 @@ async function couponsByVendor(vendorIds: string[]) {
     select: couponSelect,
   });
   const map = new Map<string, CouponCandidate[]>();
-  for (const { vendorId, ...c } of coupons) map.set(vendorId, [...(map.get(vendorId) ?? []), c]);
+  for (const { vendorId, ...c } of coupons)
+    map.set(vendorId, [...(map.get(vendorId) ?? []), c]);
   return map;
 }
 
@@ -117,7 +118,9 @@ const placeItemSelect = {
   },
 } as const;
 
-type PlaceWithItems = Prisma.PlaceGetPayload<{ include: { items: { select: typeof placeItemSelect } } }>;
+type PlaceWithItems = Prisma.PlaceGetPayload<{
+  include: { items: { select: typeof placeItemSelect } };
+}>;
 
 /**
  * A place as the consensus list shows it. Consensus: how many distinct creators recommend it; AVOID items count
@@ -134,7 +137,9 @@ function placeSummary(place: PlaceWithItems) {
   // The cheapest priced recommendation stands in for the place: its price anchors the card
   // and it is what the + button puts in the cart.
   const recommended = place.items.filter((i) => i.sentiment !== "AVOID");
-  const priced = recommended.filter((i) => i.priceCents !== null).sort((a, b) => a.priceCents! - b.priceCents!);
+  const priced = recommended
+    .filter((i) => i.priceCents !== null)
+    .sort((a, b) => a.priceCents! - b.priceCents!);
   const pick = priced[0] ?? recommended[0];
   return {
     slug: place.slug,
@@ -147,7 +152,13 @@ function placeSummary(place: PlaceWithItems) {
     photos: place.photos,
     lat: place.lat,
     lng: place.lng,
-    fromPrice: priced[0] ? { cents: priced[0].priceCents!, unit: priced[0].unit, currency: priced[0].currency } : null,
+    fromPrice: priced[0]
+      ? {
+          cents: priced[0].priceCents!,
+          unit: priced[0].unit,
+          currency: priced[0].currency,
+        }
+      : null,
     cartItem: pick
       ? {
           id: pick.id,
@@ -159,7 +170,10 @@ function placeSummary(place: PlaceWithItems) {
           unit: pick.unit,
           quantity: pick.quantity,
           vendor: pick.vendor?.name ?? null,
-          bookUrl: pick.links.find((l) => l.creatorId === null)?.url ?? pick.links[0]?.url ?? null,
+          bookUrl:
+            pick.links.find((l) => l.creatorId === null)?.url ??
+            pick.links[0]?.url ??
+            null,
           website: place.website,
           lat: place.lat,
           lng: place.lng,
@@ -176,8 +190,12 @@ function placeSummary(place: PlaceWithItems) {
 function center(places: { lat: number | null; lng: number | null }[]) {
   const pins = places.filter((p) => p.lat !== null && p.lng !== null);
   if (!pins.length) return null;
-  const median = (xs: number[]) => xs.sort((a, b) => a - b)[Math.floor(xs.length / 2)];
-  return { lat: median(pins.map((p) => p.lat!)), lng: median(pins.map((p) => p.lng!)) };
+  const median = (xs: number[]) =>
+    xs.sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+  return {
+    lat: median(pins.map((p) => p.lat!)),
+    lng: median(pins.map((p) => p.lng!)),
+  };
 }
 
 export async function getDestination(slug: string) {
@@ -205,36 +223,58 @@ export async function getDestination(slug: string) {
           },
         },
       },
-      months: { orderBy: { month: "asc" }, omit: { id: true, destinationId: true } },
+      months: {
+        orderBy: { month: "asc" },
+        omit: { id: true, destinationId: true },
+      },
       tips: {
         orderBy: { position: "asc" },
-        select: { id: true, topic: true, title: true, body: true, sourceUrl: true },
+        select: {
+          id: true,
+          topic: true,
+          title: true,
+          body: true,
+          sourceUrl: true,
+        },
       },
       places: { include: { items: { select: placeItemSelect } } },
     },
   });
   if (!destination) return null;
 
-  const creatorCount = new Set(destination.itineraries.map((i) => i.creatorId)).size;
+  const creatorCount = new Set(destination.itineraries.map((i) => i.creatorId))
+    .size;
 
   const consensus = destination.places
     .map(placeSummary)
     .filter((p) => p.creators.length > 0 || p.skippedBy.length > 0)
     .sort(
       (a, b) =>
-        b.creators.length - b.skippedBy.length - (a.creators.length - a.skippedBy.length) ||
+        b.creators.length -
+          b.skippedBy.length -
+          (a.creators.length - a.skippedBy.length) ||
         a.name.localeCompare(b.name),
     );
 
   // Each route card shows a few of its stops' photos; only photos the site already has, so no stock lookups here.
   const routePlaces = destination.itineraries.map((it) => [
-    ...new Map(it.items.flatMap((i) => (i.place && i.sentiment !== "AVOID" ? [[i.place.slug, i.place]] : []))).values(),
+    ...new Map(
+      it.items.flatMap((i) =>
+        i.place && i.sentiment !== "AVOID" ? [[i.place.slug, i.place]] : [],
+      ),
+    ).values(),
   ]);
-  const photos = await cachedPhotoUrls(routePlaces.flat().map((p) => placePhotoKey(slug, p)));
+  const photos = await cachedPhotoUrls(
+    routePlaces.flat().map((p) => placePhotoKey(slug, p)),
+  );
 
   const routes = destination.itineraries.map((it, n) => {
     const byCategory = new Map<ItemCategory, number>();
-    for (const item of it.items) byCategory.set(item.category, (byCategory.get(item.category) ?? 0) + itemTotal(item));
+    for (const item of it.items)
+      byCategory.set(
+        item.category,
+        (byCategory.get(item.category) ?? 0) + itemTotal(item),
+      );
     const totalCents = [...byCategory.values()].reduce((a, b) => a + b, 0);
     return {
       unpricedCount: it.items.filter((i) => i.priceCents === null).length,
@@ -242,7 +282,9 @@ export async function getDestination(slug: string) {
       /** Places it recommends (not ones it says to skip), for comparing routes. */
       places: routePlaces[n].map((p) => p.slug),
       /** Up to three of its stops' photos, in trip order. */
-      photos: routePlaces[n].flatMap((p) => photos.get(placePhotoKey(slug, p)) ?? []).slice(0, 3),
+      photos: routePlaces[n]
+        .flatMap((p) => photos.get(placePhotoKey(slug, p)) ?? [])
+        .slice(0, 3),
       slug: it.slug,
       title: it.title,
       summary: it.summary,
@@ -252,7 +294,11 @@ export async function getDestination(slug: string) {
       creator: it.creator,
       totalCents,
       allocation: [...byCategory]
-        .map(([category, cents]) => ({ category, cents, pct: totalCents ? (cents / totalCents) * 100 : 0 }))
+        .map(([category, cents]) => ({
+          category,
+          cents,
+          pct: totalCents ? (cents / totalCents) * 100 : 0,
+        }))
         .sort((a, b) => b.cents - a.cents),
     };
   });
@@ -272,7 +318,10 @@ export async function getDestination(slug: string) {
     center: center(destination.places),
     /** Latest edit to the destination or any of its itineraries, as an ISO date. */
     updatedAt: new Date(
-      Math.max(destination.updatedAt.getTime(), ...destination.itineraries.map((i) => i.updatedAt.getTime())),
+      Math.max(
+        destination.updatedAt.getTime(),
+        ...destination.itineraries.map((i) => i.updatedAt.getTime()),
+      ),
     ).toISOString(),
   };
 }
@@ -298,7 +347,10 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
   const place = await db.place.findFirst({
     where: { slug: placeSlug, destination: { slug: destinationSlug } },
     include: {
-      items: { select: placeItemSelect, orderBy: [{ day: "asc" }, { position: "asc" }] },
+      items: {
+        select: placeItemSelect,
+        orderBy: [{ day: "asc" }, { position: "asc" }],
+      },
       destination: {
         select: {
           slug: true,
@@ -306,8 +358,20 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
           country: true,
           itineraries: { select: { creatorId: true } },
           places: {
-            where: { slug: { not: placeSlug }, lat: { not: null }, items: { some: {} } },
-            select: { slug: true, name: true, category: true, area: true, lat: true, lng: true, website: true },
+            where: {
+              slug: { not: placeSlug },
+              lat: { not: null },
+              items: { some: {} },
+            },
+            select: {
+              slug: true,
+              name: true,
+              category: true,
+              area: true,
+              lat: true,
+              lng: true,
+              website: true,
+            },
           },
         },
       },
@@ -315,12 +379,19 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
   });
   if (!place || place.items.length === 0) return null;
   const others = place.destination.places;
-  const photos = await cachedPhotoUrls(others.map((p) => placePhotoKey(destinationSlug, p)));
+  const photos = await cachedPhotoUrls(
+    others.map((p) => placePhotoKey(destinationSlug, p)),
+  );
 
   return {
     ...placeSummary(place),
-    destination: { slug: place.destination.slug, name: place.destination.name, country: place.destination.country },
-    creatorCount: new Set(place.destination.itineraries.map((i) => i.creatorId)).size,
+    destination: {
+      slug: place.destination.slug,
+      name: place.destination.name,
+      country: place.destination.country,
+    },
+    creatorCount: new Set(place.destination.itineraries.map((i) => i.creatorId))
+      .size,
     mentions: place.items.map((i) => ({
       id: i.id,
       name: i.name,
@@ -362,12 +433,30 @@ export async function getQuizData() {
           priceCents: true,
           quantity: true,
           sentiment: true,
-          place: { select: { slug: true, name: true, area: true, blurb: true, category: true } },
+          place: {
+            select: {
+              slug: true,
+              name: true,
+              area: true,
+              blurb: true,
+              category: true,
+              website: true,
+            },
+          },
         },
       },
     },
   });
 
+  // One photo per route card: its first must-see with a photo, else any stop's, else the city cover.
+  const photos = await cachedPhotoUrls([
+    ...itineraries.map((it) => `destination:${it.destination.slug}`),
+    ...itineraries.flatMap((it) =>
+      it.items.flatMap((i) =>
+        i.place ? [placePhotoKey(it.destination.slug, i.place)] : [],
+      ),
+    ),
+  ]);
   const places = new Map<
     string,
     {
@@ -384,7 +473,9 @@ export async function getQuizData() {
     const counts: Record<string, number> = {};
     const kept = it.items.filter((i) => i.sentiment !== "AVOID");
     for (const i of kept) {
-      const text = [i.name, i.note, i.place?.name, i.place?.blurb].filter(Boolean).join(" ");
+      const text = [i.name, i.note, i.place?.name, i.place?.blurb]
+        .filter(Boolean)
+        .join(" ");
       const vibes = vibesOf(text, i.category);
       for (const v of vibes) counts[v] = (counts[v] ?? 0) + 1;
       if (i.place) {
@@ -403,9 +494,22 @@ export async function getQuizData() {
         places.set(key, p);
       }
     }
+    const photoOf = (i: (typeof kept)[number]) =>
+      i.place
+        ? photos.get(placePhotoKey(it.destination.slug, i.place))
+        : undefined;
+    const photoUrl =
+      kept
+        .filter((i) => i.sentiment === "MUST_VISIT")
+        .map(photoOf)
+        .find(Boolean) ??
+      kept.map(photoOf).find(Boolean) ??
+      photos.get(`destination:${it.destination.slug}`) ??
+      null;
     return {
       slug: it.slug,
       title: it.title,
+      photoUrl,
       tier: it.tier,
       days: it.days,
       destination: it.destination,
@@ -413,15 +517,25 @@ export async function getQuizData() {
       totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
       unpricedCount: kept.filter((i) => i.priceCents === null).length,
       /** Hotels without a price leave the total far too low to compare against a budget. */
-      unpricedStays: kept.filter((i) => i.category === "STAY" && i.priceCents === null).length,
+      unpricedStays: kept.filter(
+        (i) => i.category === "STAY" && i.priceCents === null,
+      ).length,
       /** Share of the route's stops matching each vibe, 0–1. */
-      vibes: Object.fromEntries(Object.entries(counts).map(([k, n]) => [k, n / Math.max(1, kept.length)])),
+      vibes: Object.fromEntries(
+        Object.entries(counts).map(([k, n]) => [
+          k,
+          n / Math.max(1, kept.length),
+        ]),
+      ),
     };
   });
 
   return {
     routes,
-    places: [...places.values()].map(({ creators, ...p }) => ({ ...p, creatorCount: creators.size })),
+    places: [...places.values()].map(({ creators, ...p }) => ({
+      ...p,
+      creatorCount: creators.size,
+    })),
   };
 }
 
@@ -433,7 +547,9 @@ export async function getSearchIndex() {
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
   const [destinations, places, creators, itineraries] = await Promise.all([
-    db.destination.findMany({ select: { slug: true, name: true, country: true, summary: true } }),
+    db.destination.findMany({
+      select: { slug: true, name: true, country: true, summary: true },
+    }),
     db.place.findMany({
       where: { items: { some: {} } },
       select: {
@@ -445,7 +561,10 @@ export async function getSearchIndex() {
         destination: { select: { slug: true, name: true } },
       },
     }),
-    db.creator.findMany({ where: { itineraries: { some: {} } }, select: { handle: true, name: true, bio: true } }),
+    db.creator.findMany({
+      where: { itineraries: { some: {} } },
+      select: { handle: true, name: true, bio: true },
+    }),
     db.itinerary.findMany({
       select: {
         slug: true,
@@ -513,7 +632,9 @@ export async function getItinerary(slug: string) {
         orderBy: [{ day: "asc" }, { position: "asc" }],
         include: {
           vendor: { select: { name: true } },
-          place: { select: { slug: true, website: true, lat: true, lng: true } },
+          place: {
+            select: { slug: true, website: true, lat: true, lng: true },
+          },
           links: { select: { url: true, creatorId: true } },
         },
       },
@@ -522,13 +643,20 @@ export async function getItinerary(slug: string) {
   if (!it) return null;
 
   // Resolved when the page is cached (hourly), so a code can outlive its validTo by up to the cache lifetime.
-  const coupons = await couponsByVendor([...new Set(it.items.flatMap((i) => (i.vendorId ? [i.vendorId] : [])))]);
+  const coupons = await couponsByVendor([
+    ...new Set(it.items.flatMap((i) => (i.vendorId ? [i.vendorId] : []))),
+  ]);
 
   const days = new Map<number, typeof it.items>();
-  for (const item of it.items) days.set(item.day, [...(days.get(item.day) ?? []), item]);
-  const photoKey = (place: { slug: string; website: string | null }) => placePhotoKey(it.destination.slug, place);
+  for (const item of it.items)
+    days.set(item.day, [...(days.get(item.day) ?? []), item]);
+  const photoKey = (place: { slug: string; website: string | null }) =>
+    placePhotoKey(it.destination.slug, place);
   const coverKey = `destination:${it.destination.slug}`;
-  const photos = await cachedPhotoUrls([coverKey, ...it.items.flatMap((i) => (i.place ? [photoKey(i.place)] : []))]);
+  const photos = await cachedPhotoUrls([
+    coverKey,
+    ...it.items.flatMap((i) => (i.place ? [photoKey(i.place)] : [])),
+  ]);
 
   return {
     slug: it.slug,
@@ -606,7 +734,11 @@ export async function getCreators() {
     },
   });
   const covers = await cachedPhotoUrls([
-    ...new Set(creators.flatMap((c) => c.itineraries.map((it) => `destination:${it.destination.slug}`))),
+    ...new Set(
+      creators.flatMap((c) =>
+        c.itineraries.map((it) => `destination:${it.destination.slug}`),
+      ),
+    ),
   ]);
   return creators.map((c) => ({
     ...c,
@@ -626,8 +758,13 @@ export async function getSiteStats() {
   const [cities, trips, creators, places, stops] = await Promise.all([
     db.destination.count(),
     db.itinerary.count(),
-    db.creator.findMany({ orderBy: { name: "asc" }, select: { handle: true, name: true, avatarUrl: true } }),
-    db.place.count({ where: { items: { some: { sentiment: { not: "AVOID" } } } } }),
+    db.creator.findMany({
+      orderBy: { name: "asc" },
+      select: { handle: true, name: true, avatarUrl: true },
+    }),
+    db.place.count({
+      where: { items: { some: { sentiment: { not: "AVOID" } } } },
+    }),
     db.item.count(),
   ]);
   return { cities, trips, creators, places, stops };
@@ -660,7 +797,10 @@ export async function getCreator(handle: string) {
           days: true,
           destination: { select: { slug: true, name: true } },
           items: {
-            select: { sentiment: true, place: { select: { slug: true, website: true } } },
+            select: {
+              sentiment: true,
+              place: { select: { slug: true, website: true } },
+            },
             orderBy: [{ day: "asc" }, { position: "asc" }],
           },
         },
@@ -671,11 +811,19 @@ export async function getCreator(handle: string) {
 
   // Photos the site already has (no stock lookups): each trip's stops, and each city's cover.
   const stopsOf = creator.itineraries.map((it) => [
-    ...new Map(it.items.flatMap((i) => (i.place && i.sentiment !== "AVOID" ? [[i.place.slug, i.place]] : []))).values(),
+    ...new Map(
+      it.items.flatMap((i) =>
+        i.place && i.sentiment !== "AVOID" ? [[i.place.slug, i.place]] : [],
+      ),
+    ).values(),
   ]);
   const photos = await cachedPhotoUrls([
-    ...new Set(creator.itineraries.map((it) => `destination:${it.destination.slug}`)),
-    ...creator.itineraries.flatMap((it, n) => stopsOf[n].map((p) => placePhotoKey(it.destination.slug, p))),
+    ...new Set(
+      creator.itineraries.map((it) => `destination:${it.destination.slug}`),
+    ),
+    ...creator.itineraries.flatMap((it, n) =>
+      stopsOf[n].map((p) => placePhotoKey(it.destination.slug, p)),
+    ),
   ]);
   return {
     ...creator,
@@ -685,7 +833,9 @@ export async function getCreator(handle: string) {
       places: stopsOf[n].length,
       coverUrl: photos.get(`destination:${it.destination.slug}`) ?? null,
       /** Up to three of its stops' photos, in trip order. */
-      photos: stopsOf[n].flatMap((p) => photos.get(placePhotoKey(it.destination.slug, p)) ?? []).slice(0, 3),
+      photos: stopsOf[n]
+        .flatMap((p) => photos.get(placePhotoKey(it.destination.slug, p)) ?? [])
+        .slice(0, 3),
     })),
   };
 }
@@ -726,12 +876,19 @@ export async function getStays(slug: string) {
   cacheTag(CONTENT_TAG);
   cacheTag(`destination:${slug}`);
   const items = await db.item.findMany({
-    where: { category: "STAY", unit: "night", priceCents: { gt: 0 }, itinerary: { destination: { slug } } },
+    where: {
+      category: "STAY",
+      unit: "night",
+      priceCents: { gt: 0 },
+      itinerary: { destination: { slug } },
+    },
     select: {
       name: true,
       priceCents: true,
       currency: true,
-      itinerary: { select: { tier: true, slug: true, creator: { select: { name: true } } } },
+      itinerary: {
+        select: { tier: true, slug: true, creator: { select: { name: true } } },
+      },
     },
   });
   return items.map((i) => ({
@@ -754,7 +911,9 @@ const postSelect = {
   destination: { select: { slug: true, name: true } },
 } as const;
 
-const postDates = <T extends { publishedAt: Date | null; updatedAt: Date }>(p: T) => ({
+const postDates = <T extends { publishedAt: Date | null; updatedAt: Date }>(
+  p: T,
+) => ({
   ...p,
   publishedAt: (p.publishedAt ?? p.updatedAt).toISOString(),
   updatedAt: p.updatedAt.toISOString(),
@@ -766,7 +925,10 @@ export async function getPosts(destinationSlug?: string) {
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
   const posts = await db.post.findMany({
-    where: { published: true, ...(destinationSlug ? { destination: { slug: destinationSlug } } : {}) },
+    where: {
+      published: true,
+      ...(destinationSlug ? { destination: { slug: destinationSlug } } : {}),
+    },
     orderBy: { publishedAt: "desc" },
     select: postSelect,
   });
@@ -777,6 +939,9 @@ export async function getPost(slug: string) {
   "use cache";
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
-  const post = await db.post.findUnique({ where: { slug }, select: { ...postSelect, body: true, published: true } });
+  const post = await db.post.findUnique({
+    where: { slug },
+    select: { ...postSelect, body: true, published: true },
+  });
   return post?.published ? postDates(post) : null;
 }
