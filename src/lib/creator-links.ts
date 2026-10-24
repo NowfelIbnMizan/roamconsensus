@@ -18,8 +18,9 @@ export const creatorLinkSelect = {
   name: true,
   profileUrl: true,
   avatarUrl: true,
+  bio: true,
   ...Object.fromEntries(SOCIALS.map((s) => [s.key, true])),
-} as { handle: true; name: true; profileUrl: true; avatarUrl: true } & { [K in SocialKey]: true };
+} as { handle: true; name: true; profileUrl: true; avatarUrl: true; bio: true } & { [K in SocialKey]: true };
 
 // Each creator keeps one colour everywhere, so two names side by side read as two people.
 const TINTS = [
