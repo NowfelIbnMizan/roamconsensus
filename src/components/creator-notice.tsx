@@ -71,3 +71,19 @@ export function SupportCreator({
     </aside>
   );
 }
+
+/** Who runs the site and how the routes are gathered, in the owner's own voice. */
+export function FellowTraveller({ name, className = "" }: { name: string; className?: string }) {
+  return (
+    <aside className={`rounded-2xl border border-dashed border-line-strong bg-card p-5 ${className}`}>
+      <p className="font-semibold">Made by a fellow traveller</p>
+      <p className="mt-2 text-sm">
+        Creatour is a one-person project by {name}. I travel a lot, and I love learning from travel creators. I collect
+        itineraries they&apos;ve shared publicly online, summarise them, and put them side by side so travellers can see
+        where they agree. The creators are independent and haven&apos;t reviewed or endorsed this site. Picks, notes and
+        &ldquo;my take&rdquo; comments are my own opinion. Their full guides are always better than my summary, so please
+        read them, follow them and support their work.
+      </p>
+    </aside>
+  );
+}

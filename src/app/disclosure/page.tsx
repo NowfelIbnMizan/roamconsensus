@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FellowTraveller } from "@/components/creator-notice";
+import { getEditor } from "@/lib/editor";
 
 export const metadata: Metadata = {
   title: "Credits",
   description: "Who owns the content on Creatour and how creators are credited.",
 };
 
-export default function DisclosurePage() {
+export default async function DisclosurePage() {
+  const e = await getEditor();
   return (
     <article className="max-w-2xl space-y-4">
       <h1 className="text-3xl font-semibold tracking-tight">Credits</h1>
+      <FellowTraveller name={e.name} />
 
       <h2 id="credits" className="scroll-mt-6 pt-2 text-xl font-semibold">
         Creators are independent

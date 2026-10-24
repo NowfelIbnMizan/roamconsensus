@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AtSign, Mail } from "lucide-react";
+import { FellowTraveller } from "@/components/creator-notice";
 import { EditorAvatar } from "@/components/editor-take";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { getEditor, paragraphs } from "@/lib/editor";
@@ -22,6 +23,7 @@ export default async function AboutPage() {
           {e.tagline && <p className="mt-1 text-muted">{e.tagline}</p>}
         </div>
       </div>
+      <FellowTraveller name={e.name} className="mt-6" />
       <div className="mt-6 space-y-4">
         {paragraphs(e.bio).map((p, i) => (
           <p key={i}>{p}</p>
