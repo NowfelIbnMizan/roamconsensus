@@ -44,7 +44,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
     if (w.length) setWhere(w);
     if (days > 0) {
       setTrip({ days, start: q.get("start") });
-      // -1: the "fits my trip" filter, routes no longer than each city's share of the days.
+      // -1: the "fits my trip" filter, routes up to a day longer than each city's share of the days.
       setLength(-1);
     } else if (l > 0 && l < LENGTHS.length) setLength(l);
   }, []);
@@ -60,13 +60,13 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
   );
 
   const maxCents = budget ? fromLocal(Number(budget)) : null;
-  // Each city gets an even share of the trip's days.
+  // Each city gets an even share of the trip's days. A route one day longer still fits: a day is easy to trim.
   const fitDays = trip
     ? Math.max(1, Math.round(trip.days / Math.max(1, where.length)))
     : null;
   const { min, max } =
     length === -1 && fitDays
-      ? { min: 1, max: fitDays }
+      ? { min: 1, max: fitDays + 1 }
       : (LENGTHS[length] ?? LENGTHS[0]);
   const shown = routes
     .filter((r) => r.days >= min && r.days <= max)
@@ -99,6 +99,11 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
             {r.destination.name}
           </span>
           <span className="text-muted">
+            {length === -1 && fitDays && r.days > fitDays && (
+              <span className="mr-1.5 rounded-full bg-line px-1.5 py-0.5">
+                1 day over
+              </span>
+            )}
             {r.days} {r.days === 1 ? "day" : "days"} · {tierLabel[r.tier]}
           </span>
         </div>
