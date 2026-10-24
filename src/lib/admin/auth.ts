@@ -1,6 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { auth, currentUser } from "@/lib/auth";
 
 const COOKIE = "rc_admin";
 
@@ -17,10 +18,23 @@ function same(a: string, b: string) {
   return x.length === y.length && timingSafeEqual(x, y);
 }
 
+/** Google accounts that get into the admin with no password, from ADMIN_EMAILS (comma-separated) in Vercel. */
+function adminEmails() {
+  return (process.env.ADMIN_EMAILS ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+/** Signed in with the admin password, or with Google as one of ADMIN_EMAILS (Google has verified the address). */
 export async function isAdmin() {
   const expected = token();
   const value = (await cookies()).get(COOKIE)?.value;
-  return Boolean(expected && value && same(value, expected));
+  if (expected && value && same(value, expected)) return true;
+  const emails = adminEmails();
+  if (emails.length === 0) return false;
+  const user = await currentUser().catch(() => null);
+  return Boolean(user?.emailVerified && emails.includes(user.email.toLowerCase()));
 }
 
 export async function requireAdmin() {
@@ -41,6 +55,8 @@ export async function logIn(password: string) {
   return true;
 }
 
+/** Ends the password cookie and the Google session too, or a Google admin would land straight back in. */
 export async function logOut() {
   (await cookies()).delete(COOKIE);
+  await auth.api.signOut({ headers: await headers() }).catch(() => {});
 }

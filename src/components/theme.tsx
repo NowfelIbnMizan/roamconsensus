@@ -7,10 +7,10 @@ const KEY = "roamconsensus-theme";
 const BAR = { light: "#f5efe4", dark: "#16120d" };
 
 /**
- * Runs in <head> before paint so the page never flashes the wrong theme. With no saved choice it follows the device
- * (old saved "system" values too). It also tints the phone's browser bar to match. Kept in sync with apply() below.
+ * Runs in <head> before paint so the page never flashes the wrong theme. With no saved choice it starts light, the
+ * paper look the site is designed around (old saved "system" values too). It also tints the phone's browser bar to match. Kept in sync with apply() below.
  */
-export const themeScript = `(function(){try{var c=localStorage.getItem("${KEY}");if(c!=="light"&&c!=="dark")c=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=c;var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=c==="dark"?"${BAR.dark}":"${BAR.light}"}catch(e){}})()`;
+export const themeScript = `(function(){try{var c=localStorage.getItem("${KEY}");if(c!=="dark")c="light";document.documentElement.dataset.theme=c;var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=c==="dark"?"${BAR.dark}":"${BAR.light}"}catch(e){}})()`;
 
 function apply(choice: Choice) {
   document.documentElement.dataset.theme = choice;

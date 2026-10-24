@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Suspense } from "react";
+import { Settings } from "lucide-react";
 import { PageGuide } from "@/components/page-guide";
+import { isAdmin } from "@/lib/admin/auth";
 import { googleLoginEnabled } from "@/lib/auth";
 import { canSendEmail } from "@/lib/email";
 import { MyTrips } from "./my-trips";
 
 export const metadata: Metadata = { title: "My trips", robots: { index: false } };
+
+/** Shortcut into the admin for the site owner's Google account (ADMIN_EMAILS). */
+async function AdminLink() {
+  if (!(await isAdmin())) return null;
+  return (
+    <Link
+      href="/admin"
+      className="mb-6 inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-medium hover:border-accent hover:text-accent"
+    >
+      <Settings className="size-4" aria-hidden /> Open admin
+    </Link>
+  );
+}
 
 export default function MyTripsPage() {
   return (
@@ -13,6 +30,9 @@ export default function MyTripsPage() {
       <p className="mt-2 mb-8 text-muted">
         Your trip cart on every device, saved trips and places, and trips planned with friends.
       </p>
+      <Suspense>
+        <AdminLink />
+      </Suspense>
       <PageGuide id="my-trips" />
       {googleLoginEnabled() ? (
         <MyTrips canEmail={canSendEmail()} />
