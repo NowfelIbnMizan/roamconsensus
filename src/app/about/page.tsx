@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AtSign, Mail } from "lucide-react";
 import { EditorAvatar } from "@/components/editor-take";
 import { CONTACT_EMAIL } from "@/lib/contact";
@@ -72,13 +71,6 @@ export default async function AboutPage() {
           email me
         </a>{" "}
         and I&apos;ll act on it quickly.
-      </p>
-      <p className="mt-3 text-sm text-muted">
-        How the site makes money:{" "}
-        <Link href="/disclosure" className="underline">
-          disclosure and credits
-        </Link>
-        .
       </p>
     </article>
   );

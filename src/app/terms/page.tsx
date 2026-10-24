@@ -36,11 +36,7 @@ export default function TermsPage() {
       <p>
         When you book through a link on Creatour, your contract is with that company (for example a hotel, tour operator
         or eSIM provider). Their terms, prices and refund rules apply, and we can&apos;t help with problems with those
-        bookings. How the site makes money is on the{" "}
-        <Link href="/disclosure" className="underline">
-          disclosure and credits
-        </Link>
-        .
+        bookings.
       </p>
 
       <h2>Creators&apos; content</h2>

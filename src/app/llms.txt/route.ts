@@ -50,7 +50,7 @@ export async function GET() {
     `- [All creators](${base}/creators)`,
     `- [Trip finder by length and budget](${base}/itineraries)`,
     `- [Visa checker](${base}/visa)`,
-    `- [About and disclosure](${base}/about)`,
+    `- [About](${base}/about)`,
     "",
   );
   return new Response(lines.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });

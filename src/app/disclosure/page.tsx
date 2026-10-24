@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Disclosure and credits",
-  description: "Who owns the content on Creatour, how creators are credited, and how the site makes money.",
+  title: "Credits",
+  description: "Who owns the content on Creatour and how creators are credited.",
 };
 
 export default function DisclosurePage() {
   return (
     <article className="max-w-2xl space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">Disclosure and credits</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">Credits</h1>
 
       <h2 id="credits" className="scroll-mt-6 pt-2 text-xl font-semibold">
         Creators are independent
@@ -41,13 +41,6 @@ export default function DisclosurePage() {
       <p>
         Place photos come from Unsplash and Pexels (credited to the photographer) or from the venue&apos;s own
         website. They belong to their owners.
-      </p>
-
-      <h2 className="pt-2 text-xl font-semibold">How Creatour makes money</h2>
-      <p>
-        Right now, Creatour earns nothing from the links on this site. Booking buttons go to ordinary search pages on
-        sites such as Booking.com and GetYourGuide. If that changes and some links start paying a commission, this
-        page will say so, and the price you pay will not change.
       </p>
     </article>
   );
