@@ -335,14 +335,34 @@
       "checkedAt": "2026-10-25"
     },
     {
-      "slug": "alchemy-umah-pizza-warung-di-koi",
-      "name": "Alchemy / Umah Pizza / Warung Di Koi",
+      "slug": "alchemy",
+      "name": "Alchemy",
+      "category": "FOOD",
+      "area": "Penestanan",
+      "blurb": "Raw-vegan cafe in Penestanan, known for its build-your-own salad and breakfast bar.",
+      "lat": -8.508,
+      "lng": 115.251,
+      "website": "https://www.alchemybali.co/home",
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "umah-pizza",
+      "name": "Umah Pizza",
       "category": "FOOD",
       "area": "Ubud",
-      "blurb": "A trio of easy Ubud eats: Alchemy's famous raw-vegan breakfast bar, wood-fired pizza at Umah, and cheap local plates at Warung Di Koi.",
-      "lat": -8.5056,
-      "lng": 115.2556,
-      "website": "https://www.alchemybali.co/home"
+      "blurb": "Small wood-fired pizza place on Jalan Bisma.",
+      "lat": -8.507059,
+      "lng": 115.259179,
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "warung-de-koi",
+      "name": "Warung de Koi",
+      "category": "FOOD",
+      "area": "Tampaksiring",
+      "blurb": "Local warung on the road to Tirta Empul temple, about 15 km north-east of Ubud.",
+      "lat": -8.4175,
+      "lng": 115.31722
     },
     {
       "slug": "no-mas-bar-cp-lounge",
@@ -478,7 +498,10 @@
       "area": "Seminyak",
       "blurb": "Elegant Seminyak dining room by chef Will Meyrick doing refined South-East Asian street food. A long-standing special-occasion pick.",
       "lat": -8.678,
-      "lng": 115.1615
+      "lng": 115.1615,
+      "closed": true,
+      "checkedAt": "2026-10-25",
+      "tip": "Closed: Sarong's own site says it will reopen next year in a new location."
     },
     {
       "slug": "ubud-shopping",
@@ -1491,14 +1514,30 @@
         },
         {
           "day": 4,
-          "name": "Alchemy / Umah Pizza / Warung Di Koi",
+          "name": "Alchemy",
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
-          "note": "Great diverse eats: Alchemy for raw/vegan, Umah for cozy pizza, and Warung Di Koi for solid mie goreng.",
-          "place": "alchemy-umah-pizza-warung-di-koi",
+          "note": "Alchemy for raw/vegan.",
+          "place": "alchemy",
           "price": 5.94,
           "priceNote": "per person, Alchemy breakfast bar",
           "priceSource": "https://www.alchemybali.com/menu"
+        },
+        {
+          "day": 4,
+          "name": "Umah Pizza",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Umah for cozy pizza.",
+          "place": "umah-pizza"
+        },
+        {
+          "day": 4,
+          "name": "Warung Di Koi",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Warung Di Koi for solid mie goreng.",
+          "place": "warung-de-koi"
         },
         {
           "day": 4,
