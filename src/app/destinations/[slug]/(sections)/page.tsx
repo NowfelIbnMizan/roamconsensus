@@ -30,7 +30,7 @@ import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { FavouriteButton } from "@/components/favourite-button";
 import { Thumb } from "@/components/thumb";
 import { ConsensusFilter } from "./consensus-filter";
-import { PlaceFlip } from "./place-flip";
+import { PlaceHover } from "./place-hover";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 function FromPrice({
@@ -330,27 +330,61 @@ export default async function DestinationPage({
                 >
                   <div className="relative">
                     {p.blurb || p.tip ? (
-                      <PlaceFlip
+                      <PlaceHover
+                        href={placeHref(destination.slug, p.slug)}
                         name={p.name}
-                        about={
-                          <>
+                        card={
+                          <div className="max-h-[60vh] overflow-y-auto">
+                            <p className="eyebrow">
+                              {p.area && `${p.area} · `}
+                              {categoryLabel[p.category]}
+                            </p>
+                            <p className="mt-1 font-display text-lg font-semibold leading-snug">
+                              {p.name}
+                            </p>
+                            {p.fromPrice && (
+                              <p className="text-sm text-muted tabular-nums">
+                                <FromPrice p={p.fromPrice} />
+                              </p>
+                            )}
                             {p.blurb && (
-                              <span className="line-clamp-6 sm:line-clamp-5">
-                                {p.blurb}
-                              </span>
+                              <p className="mt-2 text-sm">{p.blurb}</p>
                             )}
                             {p.tip && (
-                              <span className="mt-1.5 line-clamp-3 text-white/80">
-                                Tip: {p.tip}
-                              </span>
+                              <p className="mt-2 text-sm text-muted">
+                                <span className="font-medium text-foreground">
+                                  Tip:
+                                </span>{" "}
+                                {p.tip}
+                              </p>
                             )}
-                          </>
+                            {p.creators.length > 0 && (
+                              <p className="mt-3 text-xs text-muted">
+                                {creatorCount > 1
+                                  ? `${p.creators.length} of ${creatorCount} creators recommend it`
+                                  : `Picked by ${p.creators[0].name}`}
+                              </p>
+                            )}
+                            <Link
+                              href={placeHref(destination.slug, p.slug)}
+                              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                            >
+                              Open place{" "}
+                              <ArrowRight className="size-4" aria-hidden />
+                            </Link>
+                          </div>
                         }
                       >
                         {photo}
-                      </PlaceFlip>
+                      </PlaceHover>
                     ) : (
-                      <div className="overflow-hidden rounded-2xl">{photo}</div>
+                      <Link
+                        href={placeHref(destination.slug, p.slug)}
+                        aria-label={p.name}
+                        className="block overflow-hidden rounded-2xl"
+                      >
+                        {photo}
+                      </Link>
                     )}
                     {hasPin(p) && (
                       <span
