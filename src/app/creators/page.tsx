@@ -33,7 +33,7 @@ export default async function CreatorsPage() {
       <CreatorNoticeLine className="mt-3 max-w-2xl" />
 
       <PageGuide id="creators" className="mt-6" />
-      <ul className="mt-8 grid gap-4 md:grid-cols-2">
+      <ul className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {creators.map((c) => {
           const destinations = [
             ...new Map(
