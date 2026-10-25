@@ -18,10 +18,12 @@ export function CreatorHover({
   children,
   card,
   label,
+  className = "inline-flex",
 }: {
   children: React.ReactNode;
   card: React.ReactNode;
   label: string;
+  className?: string;
 }) {
   const anchor = useRef<HTMLSpanElement>(null);
   const sheet = useRef<HTMLDivElement>(null);
@@ -64,7 +66,7 @@ export function CreatorHover({
     <>
       <span
         ref={anchor}
-        className="inline-flex"
+        className={className}
         onPointerDown={(e) => (pointer.current = e.pointerType)}
         onPointerEnter={(e) => e.pointerType === "mouse" && later(hover, 350)}
         onPointerLeave={(e) => e.pointerType === "mouse" && later(close, 200)}
