@@ -135,7 +135,7 @@ export default async function ItineraryPage({
   }
 
   const kept = it.schedule.flatMap(({ items }) =>
-    items.filter((i) => i.sentiment !== "AVOID"),
+    items.filter((i) => i.sentiment !== "AVOID" && !i.closedNote),
   );
   const priced = kept.filter((i) => i.priceCents !== null).length;
   // The route at a glance, so the numbers read before any paragraph does.
@@ -368,9 +368,14 @@ export default async function ItineraryPage({
                             </span>
                           )}
                         </p>
-                        {item.closedNote && item.closedNote !== item.note && (
+                        {item.closedNote && (
                           <p className="mt-1 text-xs font-medium text-red-700 dark:text-red-300">
-                            {item.closedNote}
+                            <span className="mr-1.5 rounded-full bg-red-100 px-2 py-0.5 dark:bg-red-950">
+                              Closed
+                            </span>
+                            {item.closedNote !== "Closed" &&
+                              item.closedNote !== item.note &&
+                              item.closedNote}
                           </p>
                         )}
                         {item.note && (
@@ -430,6 +435,8 @@ export default async function ItineraryPage({
                           title={`The creator didn't list a price; this is the typical price from ${new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}.`}
                         >
                           Typical price
+                          {item.priceCheckedAt &&
+                            ` · checked ${new Date(item.priceCheckedAt).toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" })}`}
                         </a>
                       )}
                     </span>

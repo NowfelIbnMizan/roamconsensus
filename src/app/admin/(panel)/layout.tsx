@@ -4,6 +4,7 @@ import { logOutAction } from "@/lib/admin/actions";
 
 const links = [
   { href: "/admin", label: "Destinations" },
+  { href: "/admin/health", label: "City health" },
   { href: "/admin/creators", label: "Creators" },
   { href: "/admin/vendors", label: "Booking sites & coupons" },
   { href: "/admin/esim", label: "eSIM plans" },

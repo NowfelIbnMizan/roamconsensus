@@ -196,6 +196,8 @@ export async function savePlace(fd: FormData) {
       .filter((u) => URL.parse(u)?.protocol === "https:")
       .slice(0, 12),
     ...(await mapPin(text(fd, "pin"))),
+    closed: checkbox(fd, "closed"),
+    ...(checkbox(fd, "checkedNow") && { checkedAt: new Date() }),
   };
   const place = id
     ? await db.place.update({ where: { id }, data })
@@ -454,13 +456,37 @@ export async function saveItem(fd: FormData) {
     vendorId,
   };
   const ourUrl = optional(fd, "ourUrl");
+  // A researched price is dated when it (or its source) changes, so "checked Oct 2026" stays honest.
+  const before = id
+    ? await db.item.findUnique({
+        where: { id },
+        select: {
+          priceCents: true,
+          priceSourceUrl: true,
+          priceCheckedAt: true,
+        },
+      })
+    : null;
+  const priceCheckedAt = !data.priceSourceUrl
+    ? null
+    : before &&
+        before.priceCents === data.priceCents &&
+        before.priceSourceUrl === data.priceSourceUrl
+      ? before.priceCheckedAt
+      : new Date();
 
   const itemId = id
-    ? (await db.item.update({ where: { id }, data })).id
+    ? (
+        await db.item.update({
+          where: { id },
+          data: { ...data, priceCheckedAt },
+        })
+      ).id
     : (
         await db.item.create({
           data: {
             ...data,
+            priceCheckedAt,
             // Same id scheme as the seed, so carts can match items by id.
             id: await freeItemId(itineraryId, data.name),
             itineraryId,

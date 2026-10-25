@@ -478,7 +478,8 @@
       "tip": "Closed for refurbishment until 22 April 2027.",
       "website": "https://www.miraikan.jst.go.jp/en/",
       "lat": 35.6192,
-      "lng": 139.7765
+      "lng": 139.7765,
+      "closed": true
     },
     {
       "slug": "teamlab-borderless",

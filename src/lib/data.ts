@@ -89,8 +89,16 @@ export async function getDestinationSlugs() {
   return db.destination.findMany({ select: { slug: true } });
 }
 
-function itemTotal(item: { priceCents: number | null; quantity: number }) {
-  return (item.priceCents ?? 0) * item.quantity;
+type Costed = {
+  priceCents: number | null;
+  quantity: number;
+  place?: { closed: boolean } | null;
+};
+/** Closed places stay on the creator's route (it's their route) but count toward neither its cost nor its gaps. */
+const counted = (item: Costed) => !item.place?.closed;
+const isUnpriced = (item: Costed) => item.priceCents === null && counted(item);
+function itemTotal(item: Costed) {
+  return counted(item) ? (item.priceCents ?? 0) * item.quantity : 0;
 }
 
 const placeItemSelect = {
@@ -217,7 +225,7 @@ export async function getDestination(slug: string) {
               priceCents: true,
               quantity: true,
               sentiment: true,
-              place: { select: { slug: true, website: true } },
+              place: { select: { slug: true, website: true, closed: true } },
             },
             orderBy: [{ day: "asc" }, { position: "asc" }],
           },
@@ -277,8 +285,8 @@ export async function getDestination(slug: string) {
       );
     const totalCents = [...byCategory.values()].reduce((a, b) => a + b, 0);
     return {
-      unpricedCount: it.items.filter((i) => i.priceCents === null).length,
-      stops: it.items.length,
+      unpricedCount: it.items.filter(isUnpriced).length,
+      stops: it.items.filter(counted).length,
       /** Places it recommends (not ones it says to skip), for comparing routes. */
       places: routePlaces[n].map((p) => p.slug),
       /** Up to three of its stops' photos, in trip order. */
@@ -441,6 +449,7 @@ export async function getQuizData() {
               blurb: true,
               category: true,
               website: true,
+              closed: true,
             },
           },
         },
@@ -516,12 +525,11 @@ export async function getQuizData() {
       destination: it.destination,
       creator: it.creator,
       totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
-      unpricedCount: kept.filter((i) => i.priceCents === null).length,
-      stops: kept.length,
+      unpricedCount: kept.filter(isUnpriced).length,
+      stops: kept.filter(counted).length,
       /** Hotels without a price leave the total far too low to compare against a budget. */
-      unpricedStays: kept.filter(
-        (i) => i.category === "STAY" && i.priceCents === null,
-      ).length,
+      unpricedStays: kept.filter((i) => i.category === "STAY" && isUnpriced(i))
+        .length,
       /** Share of the route's stops matching each vibe, 0–1. */
       vibes: Object.fromEntries(
         Object.entries(counts).map(([k, n]) => [
@@ -641,6 +649,7 @@ export async function getItinerary(slug: string) {
               lat: true,
               lng: true,
               tip: true,
+              closed: true,
             },
           },
           links: { select: { url: true, creatorId: true } },
@@ -680,7 +689,7 @@ export async function getItinerary(slug: string) {
     coverUrl: photos.get(coverKey) ?? null,
     creator: it.creator,
     totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
-    unpricedCount: it.items.filter((i) => i.priceCents === null).length,
+    unpricedCount: it.items.filter(isUnpriced).length,
     schedule: [...days].map(([day, items]) => ({
       day,
       items: items.map((i) => {
@@ -695,6 +704,7 @@ export async function getItinerary(slug: string) {
           priceCents: i.priceCents,
           priceNote: i.priceNote,
           priceSourceUrl: i.priceSourceUrl,
+          priceCheckedAt: i.priceCheckedAt?.toISOString() ?? null,
           sentiment: i.sentiment,
           quantity: i.quantity,
           unit: i.unit,
@@ -706,11 +716,8 @@ export async function getItinerary(slug: string) {
           couponNote: offer?.description ?? null,
           website: i.place?.website ?? null,
           placeSlug: i.place?.slug ?? null,
-          /** The place's tip when it says the place is closed (set in Admin > destination > Places). */
-          closedNote:
-            i.place?.tip && /\bclosed\b/i.test(i.place.tip)
-              ? i.place.tip
-              : null,
+          /** Set when the place is marked closed in Admin > destination > Places: its tip, or just "Closed". */
+          closedNote: i.place?.closed ? (i.place.tip ?? "Closed") : null,
           /** The place's photo when the site already has one; lists show a category tile otherwise. */
           photoUrl: (i.place && photos.get(photoKey(i.place))) ?? null,
           lat: i.place?.lat ?? null,
