@@ -28,10 +28,7 @@ export default async function BudgetPage({ params }: PageProps<"/destinations/[s
   return (
     <>
       <h2 className="text-xl font-semibold">How much does {d.name} cost?</h2>
-      <p className="mt-1 max-w-2xl text-sm text-muted">
-        Pick your trip length and style. Hotels come from the creators&apos; own picks; food, transport and sights use
-        typical daily spend from the sources below.
-      </p>
+      <p className="mt-1 text-sm text-muted">Set your days and people, then compare travel styles.</p>
       <BudgetCalculator guide={guide} stays={stays} place={d.name} />
     </>
   );
