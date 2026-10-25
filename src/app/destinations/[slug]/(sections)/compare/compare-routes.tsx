@@ -2,16 +2,29 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Check } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
+import { Thumb } from "@/components/thumb";
 import type { getDestination } from "@/lib/data";
 import { tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 type Route = NonNullable<Awaited<ReturnType<typeof getDestination>>>["routes"][number];
+type Places = Record<string, { name: string; category: ItemCategory; photo: string | null }>;
 
+const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
+
+const SORTS = {
+  agreed: "Most agreed",
+  cheap: "Cheapest a day",
+  short: "Shortest",
+} as const;
+type Sort = keyof typeof SORTS;
+
+/** Every route in one table; tick two to see which spots they share. */
 export function CompareRoutes({
   destination,
   routes,
@@ -19,105 +32,193 @@ export function CompareRoutes({
 }: {
   destination: string;
   routes: Route[];
-  places: Record<string, { name: string; category: ItemCategory }>;
+  places: Places;
 }) {
-  const [pick, setPick] = useState([routes[0].slug, routes[1].slug]);
   const { money } = useMoney();
-  const [a, b] = pick.map((slug) => routes.find((r) => r.slug === slug)!);
-  const inA = new Set(a.places);
-  const inB = new Set(b.places);
-  const both = a.places.filter((p) => inB.has(p));
-  const onlyA = a.places.filter((p) => !inB.has(p));
-  const onlyB = b.places.filter((p) => !inA.has(p));
+  const [sort, setSort] = useState<Sort>("agreed");
+  const [ticked, setTicked] = useState([routes[0].slug, routes[1].slug]);
 
-  const rows: { label: string; value: (r: Route) => React.ReactNode }[] = [
-    { label: "Style", value: (r) => tierLabel[r.tier] },
-    { label: "Days", value: (r) => r.days },
-    { label: "Total", value: (r) => (r.totalCents ? money(r.totalCents) : "Not listed") },
-    { label: "Per day", value: (r) => (r.totalCents ? money(Math.round(r.totalCents / r.days)) : "–") },
-    { label: "Stops", value: (r) => r.stops },
-    { label: "Spend", value: (r) => (r.totalCents ? <AllocationBar allocation={r.allocation} /> : "–") },
-  ];
+  // How many of a route's spots at least one other route also picks.
+  const agreed = new Map(
+    routes.map((r) => [r.slug, r.places.filter((p) => routes.some((x) => x !== r && x.places.includes(p))).length]),
+  );
+  const key = (r: Route) =>
+    sort === "agreed" ? -agreed.get(r.slug)! : sort === "cheap" ? (perDay(r) ?? Infinity) : r.days;
+  const rows = [...routes].sort((x, y) => key(x) - key(y));
+  // Ticking a third route drops the oldest pick, so two stay compared.
+  const toggle = (slug: string) =>
+    setTicked(ticked.includes(slug) ? ticked.filter((t) => t !== slug) : [...ticked, slug].slice(-2));
 
-  const list = (slugs: string[], empty: string) =>
-    slugs.length === 0 ? (
-      <p className="text-sm text-muted">{empty}</p>
-    ) : (
-      <ul className="space-y-1 text-sm">
-        {slugs.map((s) => (
-          <li key={s}>
-            <Link href={placeHref(destination, s)} className="hover:text-accent hover:underline">
-              {places[s]?.name ?? s}
-            </Link>
-          </li>
-        ))}
-      </ul>
+  const pair = ticked.map((slug) => routes.find((r) => r.slug === slug)!);
+  const [a, b] = pair;
+  const both = b ? a.places.filter((p) => b.places.includes(p)) : [];
+  const groups = b
+    ? [
+        { title: `Both include · ${both.length}`, slugs: both, empty: "No spots in common.", shared: true },
+        ...[a, b].map((r, n) => {
+          const other = n ? a : b;
+          const slugs = r.places.filter((p) => !other.places.includes(p));
+          return { title: `Only ${r.creator.name} · ${slugs.length}`, slugs, empty: "Nothing unique.", shared: false };
+        }),
+      ]
+    : [];
+
+  const price = (r: Route) => (perDay(r) ? money(perDay(r)!) : "Not listed");
+  const missing = (r: Route) =>
+    r.unpricedCount > 0 && perDay(r) ? <span className="block text-xs text-muted">{r.unpricedCount} not priced</span> : null;
+
+  const Tick = ({ r }: { r: Route }) => {
+    const on = ticked.includes(r.slug);
+    return (
+      <button
+        type="button"
+        aria-pressed={on}
+        aria-label={`Compare ${r.title}`}
+        onClick={() => toggle(r.slug)}
+        className={`flex size-6 shrink-0 items-center justify-center rounded-md border ${
+          on ? "border-accent bg-accent text-background" : "border-line-strong bg-card hover:border-accent"
+        }`}
+      >
+        {on && <Check className="size-4" aria-hidden />}
+      </button>
     );
+  };
 
   return (
-    <div className="mt-5 space-y-6">
-      <div className="overflow-x-auto rounded-2xl border border-line bg-card">
-        <table className="w-full min-w-[520px] text-sm">
+    <div className="mt-5">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-sm text-muted">Sort</span>
+        {(Object.keys(SORTS) as Sort[]).map((k) => (
+          <button
+            key={k}
+            type="button"
+            aria-pressed={sort === k}
+            onClick={() => setSort(k)}
+            className={`rounded-full border px-3 py-1 text-sm ${
+              sort === k ? "border-accent bg-accent-soft font-medium" : "border-line bg-card hover:border-accent"
+            }`}
+          >
+            {SORTS[k]}
+          </button>
+        ))}
+        <span className="w-full text-sm text-muted sm:ml-auto sm:w-auto">Tick two to compare</span>
+      </div>
+
+      <div className="mt-3 hidden overflow-hidden rounded-2xl border border-line bg-card md:block">
+        <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-line">
-              <th className="w-24 p-3" />
-              {[0, 1].map((n) => (
-                <th key={n} className="p-3 text-left align-top font-normal">
-                  <select
-                    value={pick[n]}
-                    onChange={(e) => setPick(n === 0 ? [e.target.value, pick[1]] : [pick[0], e.target.value])}
-                    aria-label={`Route ${n + 1}`}
-                    className="w-full rounded-lg border border-line bg-background px-2 py-1.5 font-medium"
-                  >
-                    {routes.map((r) => (
-                      <option key={r.slug} value={r.slug}>
-                        {r.title}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="mt-2 flex items-center gap-2">
-                    <CreatorChip creator={(n === 0 ? a : b).creator} />
-                    <Link href={`/itineraries/${(n === 0 ? a : b).slug}`} className="text-xs text-accent underline">
-                      Full plan
-                    </Link>
-                  </div>
-                </th>
-              ))}
+            <tr className="border-b border-line text-left text-muted">
+              <th className="w-12 p-3">
+                <span className="sr-only">Compare</span>
+              </th>
+              <th className="p-3 font-medium">Route</th>
+              <th className="p-3 font-medium">Style</th>
+              <th className="p-3 font-medium">Days</th>
+              <th className="p-3 font-medium">Per day</th>
+              <th className="p-3 font-medium">Stops</th>
+              <th className="p-3 font-medium">Spots others agree on</th>
+              <th className="w-48 p-3 font-medium">Spend</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-line">
-            {rows.map((row) => (
-              <tr key={row.label}>
-                <td className="p-3 text-muted">{row.label}</td>
-                <td className="p-3 font-medium tabular-nums">{row.value(a)}</td>
-                <td className="p-3 font-medium tabular-nums">{row.value(b)}</td>
+            {rows.map((r) => (
+              <tr key={r.slug} className={ticked.includes(r.slug) ? "bg-accent-soft/40" : ""}>
+                <td className="p-3">
+                  <Tick r={r} />
+                </td>
+                <td className="p-3">
+                  <Link href={`/itineraries/${r.slug}`} className="font-medium hover:text-accent hover:underline">
+                    {r.title}
+                  </Link>
+                  <div className="mt-1">
+                    <CreatorChip creator={r.creator} />
+                  </div>
+                </td>
+                <td className="p-3">{tierLabel[r.tier]}</td>
+                <td className="p-3 tabular-nums">{r.days}</td>
+                <td className="p-3 tabular-nums">
+                  {price(r)}
+                  {missing(r)}
+                </td>
+                <td className="p-3 tabular-nums">{r.stops}</td>
+                <td className="p-3 tabular-nums">
+                  {agreed.get(r.slug)} of {r.places.length}
+                </td>
+                <td className="p-3">
+                  {r.totalCents ? <AllocationBar allocation={r.allocation} legend={false} /> : "–"}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        <section className="rounded-2xl border border-accent bg-accent-soft/40 p-4">
-          <h3 className="font-semibold">Both include ({both.length})</h3>
-          <p className="mb-2 text-xs text-muted">Safe bets: two creators picked them.</p>
-          {list(both, "No spots in common.")}
-        </section>
-        <section className="rounded-2xl border border-line bg-card p-4">
-          <h3 className="font-semibold">
-            Only {a.creator.name} ({onlyA.length})
-          </h3>
-          <p className="mb-2 text-xs text-muted">{a.title}</p>
-          {list(onlyA, "Nothing unique.")}
-        </section>
-        <section className="rounded-2xl border border-line bg-card p-4">
-          <h3 className="font-semibold">
-            Only {b.creator.name} ({onlyB.length})
-          </h3>
-          <p className="mb-2 text-xs text-muted">{b.title}</p>
-          {list(onlyB, "Nothing unique.")}
-        </section>
-      </div>
+      <ul className="mt-3 space-y-2 md:hidden">
+        {rows.map((r) => (
+          <li
+            key={r.slug}
+            className={`flex gap-3 rounded-2xl border p-3 ${
+              ticked.includes(r.slug) ? "border-accent bg-accent-soft/40" : "border-line bg-card"
+            }`}
+          >
+            <Tick r={r} />
+            <div className="min-w-0 flex-1">
+              <Link href={`/itineraries/${r.slug}`} className="font-medium">
+                {r.title}
+              </Link>
+              <div className="mt-1">
+                <CreatorChip creator={r.creator} />
+              </div>
+              <p className="mt-1 text-xs text-muted">
+                {tierLabel[r.tier]} · {r.days} days · {perDay(r) ? `${money(perDay(r)!)}/day` : "price not listed"} ·{" "}
+                {agreed.get(r.slug)} agreed spots
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {b ? (
+        <div className="mt-6 grid items-start gap-4 md:grid-cols-3">
+          {groups.map((g) => (
+            <section
+              key={g.title}
+              className={`rounded-2xl border p-4 ${g.shared ? "border-accent bg-accent-soft/40" : "border-line bg-card"}`}
+            >
+              <h3 className="font-semibold">{g.title}</h3>
+              {g.shared && <p className="text-xs text-muted">Safe bets: two creators picked them.</p>}
+              {g.slugs.length ? (
+                <ul className="mt-2 grid gap-1">
+                  {g.slugs.map((s) => (
+                    <li key={s}>
+                      <Link
+                        href={placeHref(destination, s)}
+                        className="group flex items-center gap-2 rounded-xl p-1 hover:bg-accent-soft"
+                      >
+                        <Thumb
+                          url={places[s]?.photo}
+                          category={places[s]?.category ?? "EXPERIENCE"}
+                          className="size-10 rounded-lg"
+                          sizes="40px"
+                        />
+                        <span className="min-w-0 text-sm leading-tight group-hover:text-accent">
+                          {places[s]?.name ?? s}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-muted">{g.empty}</p>
+              )}
+            </section>
+          ))}
+        </div>
+      ) : (
+        <p className="mt-6 rounded-2xl border border-line bg-card p-4 text-sm text-muted">
+          Tick {2 - pair.length} more route{pair.length ? "" : "s"} to see which spots they share.
+        </p>
+      )}
     </div>
   );
 }

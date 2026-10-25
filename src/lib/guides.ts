@@ -72,12 +72,12 @@ export const guides = {
   ],
   "city-compare": [
     {
-      lead: "Two routes side by side",
-      text: "Pick any two creator routes to compare days, style and cost.",
+      lead: "Every route at a glance",
+      text: "Sort the routes by agreement, cost a day or length.",
     },
     {
       lead: "Spot the overlap",
-      text: "See which places both creators include and which only one does.",
+      text: "Tick two routes to see which places both include and which only one does.",
     },
   ],
   "city-budget": [
