@@ -473,10 +473,11 @@ export async function getQuizData() {
     const counts: Record<string, number> = {};
     const kept = it.items.filter((i) => i.sentiment !== "AVOID");
     for (const i of kept) {
-      const text = [i.name, i.note, i.place?.name, i.place?.blurb]
-        .filter(Boolean)
-        .join(" ");
-      const vibes = vibesOf(text, i.category);
+      const vibes = vibesOf(
+        [i.name, i.place?.name].filter(Boolean).join(" "),
+        [i.note, i.place?.blurb].filter(Boolean).join(" "),
+        i.category,
+      );
       for (const v of vibes) counts[v] = (counts[v] ?? 0) + 1;
       if (i.place) {
         const key = `${it.destination.slug}/${i.place.slug}`;
@@ -516,6 +517,7 @@ export async function getQuizData() {
       creator: it.creator,
       totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
       unpricedCount: kept.filter((i) => i.priceCents === null).length,
+      stops: kept.length,
       /** Hotels without a price leave the total far too low to compare against a budget. */
       unpricedStays: kept.filter(
         (i) => i.category === "STAY" && i.priceCents === null,
@@ -633,7 +635,13 @@ export async function getItinerary(slug: string) {
         include: {
           vendor: { select: { name: true } },
           place: {
-            select: { slug: true, website: true, lat: true, lng: true },
+            select: {
+              slug: true,
+              website: true,
+              lat: true,
+              lng: true,
+              tip: true,
+            },
           },
           links: { select: { url: true, creatorId: true } },
         },
@@ -698,6 +706,11 @@ export async function getItinerary(slug: string) {
           couponNote: offer?.description ?? null,
           website: i.place?.website ?? null,
           placeSlug: i.place?.slug ?? null,
+          /** The place's tip when it says the place is closed (set in Admin > destination > Places). */
+          closedNote:
+            i.place?.tip && /\bclosed\b/i.test(i.place.tip)
+              ? i.place.tip
+              : null,
           /** The place's photo when the site already has one; lists show a category tile otherwise. */
           photoUrl: (i.place && photos.get(photoKey(i.place))) ?? null,
           lat: i.place?.lat ?? null,

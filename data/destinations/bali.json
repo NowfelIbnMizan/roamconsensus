@@ -1555,7 +1555,8 @@
           "sentiment": "RECOMMENDED",
           "note": "Pick up souvenirs like the popular twine bags and local household products.",
           "place": "ubud-shopping",
-          "priceNote": "varies by shop"
+          "priceNote": "free to browse",
+          "price": 0
         },
         {
           "day": 5,

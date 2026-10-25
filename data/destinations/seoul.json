@@ -630,7 +630,9 @@
           "name": "Tapgol Park",
           "category": "EXPERIENCE",
           "note": "Breakfast and people-watching.",
-          "place": "tapgol-park"
+          "place": "tapgol-park",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 2,
@@ -651,14 +653,18 @@
           "name": "Hongdae",
           "category": "EXPERIENCE",
           "note": "Nightlife, buskers, noraebang/multi-bang (with Sinchon)",
-          "place": "hongdae"
+          "place": "hongdae",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 3,
           "name": "Bukhansan National Park",
           "category": "EXPERIENCE",
           "note": "Climb Baegundae (836 m). Line 3 to Gupabal exit 1, then bus 704 to the park entrance.",
-          "place": "bukhansan-national-park"
+          "place": "bukhansan-national-park",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 3,
@@ -675,7 +681,7 @@
       "slug": "seoul-3-days-bucketlistly",
       "title": "3 days in Seoul, backpacking Korea",
       "summary": "Hongdae on the first evening, then Gyeongbokgung, Bukchon and dinner in Insadong, and Gwangjang Market, DDP and the modern art museum, with an optional hike or DMZ tour.",
-      "tier": "BUDGET",
+      "tier": "MIDRANGE",
       "days": 3,
       "creator": "bucketlistly",
       "sourceUrl": "https://www.bucketlistly.blog/posts/two-weeks-south-korea-backpacking-itinerary",
@@ -697,7 +703,9 @@
           "name": "Hongdae",
           "category": "EXPERIENCE",
           "note": "Evening: street food & live performances; busiest on Children's Day",
-          "place": "hongdae"
+          "place": "hongdae",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
@@ -730,7 +738,9 @@
           "name": "Jogyesa Temple",
           "category": "EXPERIENCE",
           "note": "Catch the Lotus Lantern Festival here if your dates overlap.",
-          "place": "jogyesa-temple"
+          "place": "jogyesa-temple",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 3,
@@ -751,7 +761,9 @@
           "name": "Dongdaemun Design Plaza",
           "category": "EXPERIENCE",
           "note": "Pick Dongdaemun Market (shopping) or DDP (architecture)",
-          "place": "dongdaemun-design-plaza"
+          "place": "dongdaemun-design-plaza",
+          "price": 0,
+          "priceNote": "free to walk around; exhibitions extra"
         },
         {
           "day": 3,
@@ -765,7 +777,9 @@
           "name": "Bukhansan National Park",
           "category": "EXPERIENCE",
           "note": "Optional day hike; city views on a clear day.",
-          "place": "bukhansan-national-park"
+          "place": "bukhansan-national-park",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 3,
@@ -861,7 +875,9 @@
           "name": "Myeongdong",
           "category": "EXPERIENCE",
           "note": "Shopping; cafes for people-watching",
-          "place": "myeongdong"
+          "place": "myeongdong",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
@@ -904,14 +920,18 @@
           "name": "Ihwa Mural Village",
           "category": "EXPERIENCE",
           "note": "Hyehwa Stn exit 2, ~15 min walk",
-          "place": "ihwa-mural-village"
+          "place": "ihwa-mural-village",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
           "name": "COEX Mall",
           "category": "EXPERIENCE",
           "note": "Gangnam: COEX mall and the Starfield Library, then Bongeunsa Temple.",
-          "place": "coex-mall"
+          "place": "coex-mall",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 3,
@@ -1036,7 +1056,9 @@
           "name": "Inwangsan Mountain",
           "category": "EXPERIENCE",
           "note": "Sunset hike",
-          "place": "inwangsan"
+          "place": "inwangsan",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 4,
@@ -1053,7 +1075,9 @@
           "name": "Cheonggyecheon Stream",
           "category": "EXPERIENCE",
           "note": "Evening, lantern reflections",
-          "place": "cheonggyecheon-stream"
+          "place": "cheonggyecheon-stream",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 4,
@@ -1081,14 +1105,18 @@
           "name": "Apgujeong Rodeo Street",
           "category": "EXPERIENCE",
           "note": "Boutiques & galleries",
-          "place": "apgujeong-rodeo"
+          "place": "apgujeong-rodeo",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 5,
           "name": "Hongdae",
           "category": "EXPERIENCE",
           "note": "Retro Game Bar, photo booths",
-          "place": "hongdae"
+          "place": "hongdae",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 6,

@@ -574,7 +574,9 @@
           "name": "Brickfields",
           "category": "EXPERIENCE",
           "note": "Bazaar at the end of Jalan Tun Sambanthan",
-          "place": "brickfields-little-india"
+          "place": "brickfields-little-india",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 3,
@@ -592,7 +594,7 @@
       "slug": "kuala-lumpur-2-days-bucketlistly",
       "title": "Kuala Lumpur in 2 days",
       "summary": "The KL leg of Pete's Malaysia route: the National Museum, Petronas Towers and Bukit Bintang, with old-school Yut Kee and Jalan Alor for food, then Batu Caves.",
-      "tier": "MIDRANGE",
+      "tier": "BUDGET",
       "days": 2,
       "creator": "bucketlistly",
       "sourceUrl": "https://www.bucketlistly.blog/posts/malaysia-10-days-backpacking-itinerary",
@@ -637,7 +639,9 @@
           "name": "Bukit Bintang",
           "category": "EXPERIENCE",
           "note": "Worth it even if you're not into shopping",
-          "place": "bukit-bintang"
+          "place": "bukit-bintang",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -663,7 +667,9 @@
           "name": "Batu Caves",
           "category": "EXPERIENCE",
           "note": "272 steps; take the train from KL",
-          "place": "batu-caves"
+          "place": "batu-caves",
+          "price": 0,
+          "priceNote": "free entry to the main cave"
         }
       ]
     },
@@ -704,7 +710,9 @@
           "name": "Bukit Bintang",
           "category": "EXPERIENCE",
           "note": "Night market: bargain for souvenirs",
-          "place": "bukit-bintang"
+          "place": "bukit-bintang",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
@@ -779,14 +787,18 @@
           "name": "Batu Caves",
           "category": "EXPERIENCE",
           "note": "Go early; dress modestly; watch for monkeys",
-          "place": "batu-caves"
+          "place": "batu-caves",
+          "price": 0,
+          "priceNote": "free entry to the main cave"
         },
         {
           "day": 3,
           "name": "Royal Selangor Visitor Centre",
           "category": "EXPERIENCE",
           "note": "Pewter factory tour",
-          "place": "royal-selangor-visitor-centre"
+          "place": "royal-selangor-visitor-centre",
+          "price": 0,
+          "priceNote": "free entry and tour"
         },
         {
           "day": 3,
@@ -803,14 +815,18 @@
           "name": "Pavilion Kuala Lumpur",
           "category": "EXPERIENCE",
           "note": "Afternoon option",
-          "place": "pavilion-kl"
+          "place": "pavilion-kl",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 3,
           "name": "Kompleks Kraf Kuala Lumpur",
           "category": "EXPERIENCE",
           "note": "Afternoon option; live craft demonstrations",
-          "place": "kompleks-kraf-kuala-lumpur"
+          "place": "kompleks-kraf-kuala-lumpur",
+          "price": 0,
+          "priceNote": "free entry"
         }
       ]
     }

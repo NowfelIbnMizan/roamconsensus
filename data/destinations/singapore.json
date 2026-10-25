@@ -703,7 +703,7 @@
     },
     {
       "slug": "marina-bay-sands-hotel",
-      "name": "Marina Bay Sands",
+      "name": "Marina Bay Sands (hotel)",
       "category": "STAY",
       "area": "Marina Bay",
       "blurb": "Landmark resort hotel with the rooftop infinity pool, for guests only.",
@@ -757,26 +757,34 @@
           "name": "Marina Bay",
           "category": "EXPERIENCE",
           "note": "Walk the CBD and its neighbourhoods",
-          "place": "marina-bay-waterfront-promenade"
+          "place": "marina-bay-waterfront-promenade",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
           "name": "Chinatown",
           "category": "EXPERIENCE",
           "note": "Chinatown, Kampong Glam, and the Gardens by the Bay are all within walking distance.",
-          "place": "chinatown"
+          "place": "chinatown",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
           "name": "Arab Street / Kampong Glam",
           "category": "EXPERIENCE",
-          "place": "arab-street"
+          "place": "arab-street",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
           "name": "Gardens by the Bay",
           "category": "EXPERIENCE",
-          "place": "gardens-by-the-bay"
+          "place": "gardens-by-the-bay",
+          "price": 0,
+          "priceNote": "free outdoor gardens; domes extra"
         },
         {
           "day": 2,
@@ -792,7 +800,9 @@
           "name": "Orchard Road",
           "category": "EXPERIENCE",
           "note": "There are plenty of consumer options on this road – you'll be able to spend as little or as much as want here.",
-          "place": "orchard-road"
+          "place": "orchard-road",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 3,
@@ -815,7 +825,9 @@
           "name": "Southern Ridges",
           "category": "EXPERIENCE",
           "note": "Walk close to Sentosa with city views",
-          "place": "southern-ridges"
+          "place": "southern-ridges",
+          "price": 0,
+          "priceNote": "free"
         }
       ]
     },
@@ -823,7 +835,7 @@
       "slug": "singapore-3-days-bucketlistly",
       "title": "3 days in Singapore: an epic itinerary",
       "summary": "Jewel's Rain Vortex on arrival, Chinatown, Fort Canning and Marina Bay to the Supertree light show, then Peranakan Joo Chiat, Little India and Kampong Glam, and a bike day on Pulau Ubin.",
-      "tier": "BUDGET",
+      "tier": "MIDRANGE",
       "days": 3,
       "creator": "bucketlistly",
       "sourceUrl": "https://www.bucketlistly.blog/posts/singapore-3-days-backpacking-itinerary",
@@ -845,14 +857,18 @@
           "name": "Jewel Rain Vortex",
           "category": "EXPERIENCE",
           "note": "Arrival evening. Runs 11 am to 10 pm (from 10 am Fri-Sun).",
-          "place": "jewel-rain-vortex"
+          "place": "jewel-rain-vortex",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
           "name": "Chinatown",
           "category": "EXPERIENCE",
           "note": "Good place to start exploring",
-          "place": "chinatown"
+          "place": "chinatown",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -866,14 +882,18 @@
           "name": "Buddha Tooth Relic Temple",
           "category": "EXPERIENCE",
           "note": "Allow at least 30 minutes",
-          "place": "buddha-tooth-relic-temple"
+          "place": "buddha-tooth-relic-temple",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
           "name": "Fort Canning Park",
           "category": "EXPERIENCE",
           "note": "Go early or late to avoid midday heat; 1h+",
-          "place": "fort-canning-park"
+          "place": "fort-canning-park",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
@@ -897,19 +917,25 @@
           "name": "Marina Bay Waterfront Promenade",
           "category": "EXPERIENCE",
           "note": "Stroll before sunset",
-          "place": "marina-bay-waterfront-promenade"
+          "place": "marina-bay-waterfront-promenade",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
           "name": "Merlion",
           "category": "EXPERIENCE",
-          "place": "merlion-park"
+          "place": "merlion-park",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
           "name": "Marina Bay Sands",
           "category": "EXPERIENCE",
-          "place": "marina-bay-sands"
+          "place": "marina-bay-sands",
+          "price": 0,
+          "priceNote": "free to walk around; SkyPark extra"
         },
         {
           "day": 1,
@@ -922,7 +948,9 @@
           "name": "Gardens by the Bay",
           "category": "EXPERIENCE",
           "note": "Light shows 7:45 PM and 8:45 PM, ~15 min",
-          "place": "gardens-by-the-bay"
+          "place": "gardens-by-the-bay",
+          "price": 0,
+          "priceNote": "free outdoor gardens; domes extra"
         },
         {
           "day": 1,
@@ -938,7 +966,9 @@
           "name": "Joo Chiat / Koon Seng Road Peranakan houses",
           "category": "EXPERIENCE",
           "note": "Allow 1h+",
-          "place": "koon-seng-road-shophouses"
+          "place": "koon-seng-road-shophouses",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 2,
@@ -959,26 +989,34 @@
           "name": "Sri Veeramakaliamman Temple",
           "category": "EXPERIENCE",
           "note": "Open 5:30 AM–12 PM and 5 PM–9 PM daily",
-          "place": "sri-veeramakaliamman-temple"
+          "place": "sri-veeramakaliamman-temple",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 2,
           "name": "Little India Arcade",
           "category": "EXPERIENCE",
-          "place": "little-india-arcade"
+          "place": "little-india-arcade",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 2,
           "name": "Former House of Tan Teng Niah",
           "category": "EXPERIENCE",
-          "place": "house-of-tan-teng-niah"
+          "place": "house-of-tan-teng-niah",
+          "price": 0,
+          "priceNote": "free (outside only)"
         },
         {
           "day": 2,
           "name": "Sultan Mosque and Arab Street",
           "category": "EXPERIENCE",
           "note": "At least an hour; good for dinner",
-          "place": "sultan-mosque"
+          "place": "sultan-mosque",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 3,
@@ -1025,7 +1063,9 @@
           "name": "Chinatown",
           "category": "EXPERIENCE",
           "note": "well worth exploring",
-          "place": "chinatown"
+          "place": "chinatown",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -1079,7 +1119,9 @@
           "name": "Little India",
           "category": "EXPERIENCE",
           "note": "well worth exploring",
-          "place": "little-india"
+          "place": "little-india",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
@@ -1166,14 +1208,18 @@
           "name": "Orchard Road",
           "category": "EXPERIENCE",
           "note": "Singapore's premier shopping street",
-          "place": "orchard-road"
+          "place": "orchard-road",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 1,
           "name": "Clarke Quay",
           "category": "EXPERIENCE",
           "note": "Riverside district known for its nightlife and exceptional seafood",
-          "place": "clarke-quay"
+          "place": "clarke-quay",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -1187,14 +1233,18 @@
           "name": "Merlion",
           "category": "EXPERIENCE",
           "note": "After dinner; walk past The Fullerton and Raffles",
-          "place": "merlion-park"
+          "place": "merlion-park",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
           "name": "Spectra light & water show",
           "category": "EXPERIENCE",
           "note": "check the schedule to catch these enchanting performances!",
-          "place": "spectra-light-and-water-show"
+          "place": "spectra-light-and-water-show",
+          "price": 0,
+          "priceNote": "free show"
         },
         {
           "day": 2,
@@ -1207,19 +1257,25 @@
           "day": 2,
           "name": "Little India",
           "category": "EXPERIENCE",
-          "place": "little-india"
+          "place": "little-india",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
           "name": "Kampong Glam",
           "category": "EXPERIENCE",
-          "place": "arab-street"
+          "place": "arab-street",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
           "name": "Chinatown",
           "category": "EXPERIENCE",
-          "place": "chinatown"
+          "place": "chinatown",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
@@ -1250,14 +1306,18 @@
           "name": "Siloso / Tanjong / Palawan beaches",
           "category": "EXPERIENCE",
           "note": "Siloso lively; Tanjong tranquil; Palawan for families",
-          "place": "siloso-beach"
+          "place": "siloso-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
           "name": "Southernmost Point of Continental Asia",
           "category": "EXPERIENCE",
           "note": "stunning ocean views",
-          "place": "southernmost-point-continental-asia"
+          "place": "southernmost-point-continental-asia",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
@@ -1301,7 +1361,9 @@
           "name": "Gardens by the Bay",
           "category": "EXPERIENCE",
           "note": "About 2 hours; 'Avatar Park'",
-          "place": "gardens-by-the-bay"
+          "place": "gardens-by-the-bay",
+          "price": 0,
+          "priceNote": "free outdoor gardens; domes extra"
         },
         {
           "day": 4,
@@ -1332,7 +1394,9 @@
           "name": "Jewel Changi Airport",
           "category": "EXPERIENCE",
           "note": "Arrive 4–6h before flight; re-entry after security needs 6h+",
-          "place": "jewel-rain-vortex"
+          "place": "jewel-rain-vortex",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 5,

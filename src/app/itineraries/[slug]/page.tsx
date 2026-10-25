@@ -5,6 +5,7 @@ import { YouTubeEmbed } from "@/components/youtube-embed";
 import { youtubeId, youtubeStart } from "@/lib/youtube";
 import { UpdatedOn } from "@/components/updated-on";
 import Link from "next/link";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import {
   CalendarDays,
@@ -47,6 +48,24 @@ function fullGuideLabel(url: string) {
   if (/instagram\.com/.test(host)) return "See the full post on Instagram";
   if (/tiktok\.com/.test(host)) return "Watch the full video on TikTok";
   return `Read the full guide on ${host}`;
+}
+
+/** Day numbers the creator gives no plan for, before schedule[index] (or, past the end, up to the route's length). */
+function restDays(schedule: { day: number }[], index: number, days: number) {
+  const from = (schedule[index - 1]?.day ?? 0) + 1;
+  const to = schedule[index]?.day ?? days + 1;
+  return Array.from({ length: Math.max(0, to - from) }, (_, n) => from + n);
+}
+
+function FreeDay({ day, creator }: { day: number; creator: string }) {
+  return (
+    <section>
+      <h2 className="text-lg font-semibold">Day {day}</h2>
+      <p className="mt-3 rounded-2xl border border-dashed border-line px-4 py-3 text-sm text-muted">
+        Free day: {creator} gives no plan for it.
+      </p>
+    </section>
+  );
 }
 
 export async function generateStaticParams() {
@@ -118,6 +137,7 @@ export default async function ItineraryPage({
   const kept = it.schedule.flatMap(({ items }) =>
     items.filter((i) => i.sentiment !== "AVOID"),
   );
+  const priced = kept.filter((i) => i.priceCents !== null).length;
   // The route at a glance, so the numbers read before any paragraph does.
   const glance = [
     {
@@ -194,7 +214,9 @@ export default async function ItineraryPage({
             <Wallet className="size-5 shrink-0 text-accent" aria-hidden />
             <div className="flex flex-col-reverse">
               <dt className="text-xs text-muted">
-                {it.unpricedCount > 0 ? "priced items" : "est. total"}
+                {priced < kept.length
+                  ? `${priced} of ${kept.length} stops priced`
+                  : "est. total"}
               </dt>
               <dd className="text-lg leading-tight font-semibold tabular-nums">
                 <Money cents={it.totalCents} />
@@ -266,178 +288,199 @@ export default async function ItineraryPage({
 
       <div className="mt-10 space-y-8">
         {it.schedule.map(({ day, items }, index) => (
-          <section key={day}>
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h2 className="flex flex-wrap items-center gap-2 text-lg font-semibold">
-                <DayFaces
-                  urls={items.flatMap((i) =>
-                    i.photoUrl && i.sentiment !== "AVOID" ? [i.photoUrl] : [],
-                  )}
-                />
-                Day {day} <DriveSummary minutes={drive.get(day)?.total ?? 0} />
-              </h2>
-              {groups.find((g) => g.id === day)?.routeUrl && (
-                <a
-                  href={groups.find((g) => g.id === day)!.routeUrl!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                >
-                  Open in Maps <ExternalLink className="size-3.5" aria-hidden />
-                </a>
-              )}
-            </div>
-            <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
-              {items.map((item) => (
-                <li
-                  key={item.id}
-                  // Fixed columns (details | price | booking button | add) so every row lines up with the next.
-                  className="cv-row grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 p-4 sm:grid-cols-[minmax(0,1fr)_11rem_10.5rem_2.25rem] sm:items-start sm:gap-x-4"
-                >
-                  <div className="col-span-3 flex min-w-0 gap-3 sm:col-span-1 sm:gap-4">
-                    <Thumb
-                      url={item.photoUrl}
-                      category={item.category}
-                      className={`size-16 rounded-xl sm:size-20 ${item.sentiment === "AVOID" ? "opacity-50 grayscale" : ""}`}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <p className="font-medium">
-                        {pinNumber.has(item.id) && (
-                          <span
-                            className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
-                            style={{ background: dayColor(index) }}
-                            title="Pin number on the map"
-                          >
-                            {pinNumber.get(item.id)}
-                          </span>
-                        )}
-                        {item.placeSlug ? (
-                          <Link
-                            href={placeHref(
-                              it.destination.slug,
-                              item.placeSlug,
-                            )}
-                            className="hover:text-accent hover:underline"
-                          >
-                            {item.name}
-                          </Link>
-                        ) : (
-                          item.name
-                        )}
-                        {item.sentiment === "MUST_VISIT" && (
-                          <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
-                            {sentimentLabel.MUST_VISIT}
-                          </span>
-                        )}
-                        {item.sentiment === "OPTIONAL" && (
-                          <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs text-muted">
-                            {sentimentLabel.OPTIONAL}
-                          </span>
-                        )}
-                        {item.sentiment === "AVOID" && (
-                          <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
-                            {sentimentLabel.AVOID}
-                          </span>
-                        )}
-                      </p>
-                      {item.note && (
-                        <ReadMore text={item.note} className="mt-0.5" />
-                      )}
-                      <LegHint leg={drive.get(day)?.legs.get(item.id)} />
-                      {/* The thumbnail already shows the kind of stop, so only a quantity needs words. */}
-                      {item.unit && (
-                        <p className="mt-0.5 text-xs text-muted">
-                          {item.quantity} {item.unit}
-                          {item.quantity > 1 ? "s" : ""}
-                        </p>
-                      )}
-                      {(item.couponCode || item.creditedTo) && (
-                        <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
-                          {item.couponCode && (
-                            <CouponCode
-                              code={item.couponCode}
-                              note={item.couponNote}
-                            />
-                          )}
-                          {item.couponNote && (
-                            <span className="text-muted">
-                              {item.couponNote}
-                            </span>
-                          )}
-                          {item.creditedTo && (
-                            <span className="text-muted">
-                              via {item.creditedTo}&apos;s link
-                            </span>
-                          )}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <span
-                    className={`min-w-0 text-sm tabular-nums [overflow-wrap:anywhere] sm:pt-0.5 sm:text-right ${item.priceCents === null ? "text-muted" : ""}`}
+          <Fragment key={day}>
+            {restDays(it.schedule, index, it.days).map((rest) => (
+              <FreeDay key={rest} day={rest} creator={it.creator.name} />
+            ))}
+            <section>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h2 className="flex flex-wrap items-center gap-2 text-lg font-semibold">
+                  <DayFaces
+                    urls={items.flatMap((i) =>
+                      i.photoUrl && i.sentiment !== "AVOID" ? [i.photoUrl] : [],
+                    )}
+                  />
+                  Day {day}{" "}
+                  <DriveSummary minutes={drive.get(day)?.total ?? 0} />
+                </h2>
+                {groups.find((g) => g.id === day)?.routeUrl && (
+                  <a
+                    href={groups.find((g) => g.id === day)!.routeUrl!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
                   >
-                    <Price item={item} />
-                    {item.priceCents !== null && item.priceNote && (
-                      <span className="block line-clamp-2 text-xs text-muted">
-                        {item.priceNote}
-                      </span>
-                    )}
-                    {item.priceSourceUrl && (
-                      <a
-                        href={item.priceSourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-xs text-muted underline decoration-dotted hover:text-accent"
-                        title={`The creator didn't list a price; this is the typical price from ${new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}.`}
-                      >
-                        Typical price
-                      </a>
-                    )}
-                  </span>
-                  <div className="flex justify-end sm:block">
-                    {item.sentiment !== "AVOID" &&
-                      (item.bookUrl ? (
+                    Open in Maps{" "}
+                    <ExternalLink className="size-3.5" aria-hidden />
+                  </a>
+                )}
+              </div>
+              <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
+                {items.map((item) => (
+                  <li
+                    key={item.id}
+                    // Fixed columns (details | price | booking button | add) so every row lines up with the next.
+                    className="cv-row grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-2 p-4 sm:grid-cols-[minmax(0,1fr)_11rem_10.5rem_2.25rem] sm:items-start sm:gap-x-4"
+                  >
+                    <div className="col-span-3 flex min-w-0 gap-3 sm:col-span-1 sm:gap-4">
+                      <Thumb
+                        url={item.photoUrl}
+                        category={item.category}
+                        className={`size-16 rounded-xl sm:size-20 ${item.sentiment === "AVOID" ? "opacity-50 grayscale" : ""}`}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium">
+                          {pinNumber.has(item.id) && (
+                            <span
+                              className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
+                              style={{ background: dayColor(index) }}
+                              title="Pin number on the map"
+                            >
+                              {pinNumber.get(item.id)}
+                            </span>
+                          )}
+                          {item.placeSlug ? (
+                            <Link
+                              href={placeHref(
+                                it.destination.slug,
+                                item.placeSlug,
+                              )}
+                              className="hover:text-accent hover:underline"
+                            >
+                              {item.name}
+                            </Link>
+                          ) : (
+                            item.name
+                          )}
+                          {item.sentiment === "MUST_VISIT" && (
+                            <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
+                              {sentimentLabel.MUST_VISIT}
+                            </span>
+                          )}
+                          {item.sentiment === "OPTIONAL" && (
+                            <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs text-muted">
+                              {sentimentLabel.OPTIONAL}
+                            </span>
+                          )}
+                          {item.sentiment === "AVOID" && (
+                            <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
+                              {sentimentLabel.AVOID}
+                            </span>
+                          )}
+                        </p>
+                        {item.closedNote && item.closedNote !== item.note && (
+                          <p className="mt-1 text-xs font-medium text-red-700 dark:text-red-300">
+                            {item.closedNote}
+                          </p>
+                        )}
+                        {item.note && (
+                          <ReadMore text={item.note} className="mt-0.5" />
+                        )}
+                        <LegHint leg={drive.get(day)?.legs.get(item.id)} />
+                        {/* The thumbnail already shows the kind of stop, so only a quantity needs words. */}
+                        {item.unit && (
+                          <p className="mt-0.5 text-xs text-muted">
+                            {item.quantity} {item.unit}
+                            {item.quantity > 1 ? "s" : ""}
+                          </p>
+                        )}
+                        {(item.couponCode || item.creditedTo) && (
+                          <p className="mt-1 flex flex-wrap items-center gap-2 text-xs">
+                            {item.couponCode && (
+                              <CouponCode
+                                code={item.couponCode}
+                                note={item.couponNote}
+                              />
+                            )}
+                            {item.couponNote && (
+                              <span className="text-muted">
+                                {item.couponNote}
+                              </span>
+                            )}
+                            {item.creditedTo && (
+                              <span className="text-muted">
+                                via {item.creditedTo}&apos;s link
+                              </span>
+                            )}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <span
+                      className={`min-w-0 text-sm tabular-nums [overflow-wrap:anywhere] sm:pt-0.5 sm:text-right ${item.priceCents === null ? "text-muted" : ""}`}
+                    >
+                      <Price item={item} />
+                      {item.priceCents !== null &&
+                        item.priceNote &&
+                        // "Free" already says it.
+                        !(
+                          item.priceCents === 0 &&
+                          /^free\b.{0,15}$/i.test(item.priceNote)
+                        ) && (
+                          <span className="block line-clamp-2 text-xs text-muted">
+                            {item.priceNote}
+                          </span>
+                        )}
+                      {item.priceSourceUrl && (
                         <a
-                          href={item.bookUrl}
-                          rel="sponsored noopener noreferrer"
+                          href={item.priceSourceUrl}
                           target="_blank"
-                          title={
-                            item.bookIsSearch
-                              ? `Search ${item.vendor} for ${item.name}`
-                              : undefined
-                          }
-                          className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-accent px-3 py-1.5 text-xs font-medium whitespace-nowrap text-background hover:opacity-90"
+                          rel="noopener noreferrer"
+                          className="block text-xs text-muted underline decoration-dotted hover:text-accent"
+                          title={`The creator didn't list a price; this is the typical price from ${new URL(item.priceSourceUrl).hostname.replace(/^www\./, "")}.`}
                         >
-                          {item.bookIsSearch
-                            ? `Find on ${item.vendor}`
-                            : item.vendor
-                              ? `Book on ${item.vendor}`
-                              : "Book"}{" "}
-                          <ExternalLink className="size-3" aria-hidden />
+                          Typical price
                         </a>
-                      ) : (
-                        item.website && (
+                      )}
+                    </span>
+                    <div className="flex justify-end sm:block">
+                      {item.sentiment !== "AVOID" &&
+                        (item.bookUrl ? (
                           <a
-                            href={item.website}
-                            rel="noopener noreferrer"
+                            href={item.bookUrl}
+                            rel="sponsored noopener noreferrer"
                             target="_blank"
-                            className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-line px-3 py-1.5 text-xs text-muted hover:text-foreground"
+                            title={
+                              item.bookIsSearch
+                                ? `Search ${item.vendor} for ${item.name}`
+                                : undefined
+                            }
+                            className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-accent px-3 py-1.5 text-xs font-medium whitespace-nowrap text-background hover:opacity-90"
                           >
-                            Website{" "}
+                            {item.bookIsSearch
+                              ? `Find on ${item.vendor}`
+                              : item.vendor
+                                ? `Book on ${item.vendor}`
+                                : "Book"}{" "}
                             <ExternalLink className="size-3" aria-hidden />
                           </a>
-                        )
-                      ))}
-                  </div>
-                  <div className="flex justify-end">
-                    {item.sentiment !== "AVOID" && (
-                      <AddItemButton item={cartItems.get(item.id)!} />
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
+                        ) : (
+                          item.website && (
+                            <a
+                              href={item.website}
+                              rel="noopener noreferrer"
+                              target="_blank"
+                              className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-line px-3 py-1.5 text-xs text-muted hover:text-foreground"
+                            >
+                              Website{" "}
+                              <ExternalLink className="size-3" aria-hidden />
+                            </a>
+                          )
+                        ))}
+                    </div>
+                    <div className="flex justify-end">
+                      {item.sentiment !== "AVOID" && (
+                        <AddItemButton item={cartItems.get(item.id)!} />
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </Fragment>
+        ))}
+        {restDays(it.schedule, it.schedule.length, it.days).map((rest) => (
+          <FreeDay key={rest} day={rest} creator={it.creator.name} />
         ))}
       </div>
 
