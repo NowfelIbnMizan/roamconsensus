@@ -55,6 +55,17 @@ const goatcounter = /^[a-z0-9-]+$/.test(process.env.GOATCOUNTER_CODE ?? "")
   ? process.env.GOATCOUNTER_CODE
   : null;
 
+const FOOTER_LINKS = [
+  ["/creators", "Creators"],
+  ["/visa", "Visa check"],
+  ["/blog", "Blog"],
+  ["/about", "About"],
+  ["/disclosure", "Credits"],
+  ["/contact", "Contact"],
+  ["/privacy", "Privacy"],
+  ["/terms", "Terms"],
+] as const;
+
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const { rates } = await getRates();
   return (
@@ -147,43 +158,28 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </div>
               </div>
             </div>
-            <p className="fine-print mx-auto max-w-7xl px-4 py-6">
-              Featured creators are independent and not affiliated with
-              Creatour; being featured doesn&apos;t mean they endorse it.
-              Creator names, photos, logos and itineraries belong to their
-              owners. Please visit and support them.{" "}
-              <Link href="/disclosure" className="underline">
-                Credits
-              </Link>
-              {" · "}
-              <Link href="/creators" className="underline">
-                Creators
-              </Link>
-              {" · "}
-              <Link href="/visa" className="underline">
-                Visa check
-              </Link>
-              {" · "}
-              <Link href="/blog" className="underline">
-                Blog
-              </Link>
-              {" · "}
-              <Link href="/about" className="underline">
-                About
-              </Link>
-              {" · "}
-              <Link href="/contact" className="underline">
-                Contact
-              </Link>
-              {" · "}
-              <Link href="/privacy" className="underline">
-                Privacy
-              </Link>
-              {" · "}
-              <Link href="/terms" className="underline">
-                Terms
-              </Link>
-            </p>
+            <div className="mx-auto max-w-7xl px-4 py-6">
+              <nav aria-label="Footer">
+                <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                  {FOOTER_LINKS.map(([href, label]) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className="text-muted hover:text-accent hover:underline"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <p className="fine-print mt-4">
+                Featured creators are independent and not affiliated with
+                Creatour; being featured doesn&apos;t mean they endorse it.
+                Creator names, photos, logos and itineraries belong to their
+                owners. Please visit and support them.
+              </p>
+            </div>
             <p className="mx-auto max-w-7xl px-4 pb-24 text-xs text-muted sm:pb-6">
               <InstallApp />
             </p>
