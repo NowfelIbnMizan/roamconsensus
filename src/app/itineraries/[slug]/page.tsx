@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageGuide } from "@/components/page-guide";
+import { ReadMore } from "@/components/read-more";
 import { YouTubeEmbed } from "@/components/youtube-embed";
 import { youtubeId, youtubeStart } from "@/lib/youtube";
 import { UpdatedOn } from "@/components/updated-on";
@@ -340,9 +341,7 @@ export default async function ItineraryPage({
                         )}
                       </p>
                       {item.note && (
-                        <p className="mt-0.5 line-clamp-2 text-sm text-muted">
-                          {item.note}
-                        </p>
+                        <ReadMore text={item.note} className="mt-0.5" />
                       )}
                       <LegHint leg={drive.get(day)?.legs.get(item.id)} />
                       {/* The thumbnail already shows the kind of stop, so only a quantity needs words. */}

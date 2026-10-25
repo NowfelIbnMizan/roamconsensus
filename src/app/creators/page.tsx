@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageGuide } from "@/components/page-guide";
+import { ReadMore } from "@/components/read-more";
 import Link from "next/link";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { CreatorSocials } from "@/components/creator";
@@ -64,9 +65,7 @@ export default async function CreatorsPage() {
                   </p>
                 </div>
               </div>
-              {c.bio && (
-                <p className="mt-3 line-clamp-2 text-sm text-muted">{c.bio}</p>
-              )}
+              {c.bio && <ReadMore text={c.bio} className="mt-3" />}
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <CreatorSocials creator={c} />
               </div>

@@ -399,7 +399,13 @@ export function HomeSearch({ cities }: { cities: City[] }) {
                     else if (e.key === "Backspace" && !q && picked.length)
                       setPicked(picked.slice(0, -1));
                   }}
-                  onBlur={() => setOpen((o) => (o === "where" ? null : o))}
+                  // iPhones blur the box before a tap on a suggestion lands, so only close when focus moves
+                  // somewhere else on the page; taps outside close it through the pointerdown listener.
+                  onBlur={(e) => {
+                    const to = e.relatedTarget as Node | null;
+                    if (to && !box.current?.contains(to))
+                      setOpen((o) => (o === "where" ? null : o));
+                  }}
                   placeholder={
                     picked.length
                       ? "Add another city"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ReadMore } from "@/components/read-more";
 import { notFound } from "next/navigation";
 import { ArrowRight, MapPin, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
@@ -371,11 +372,7 @@ export default async function DestinationPage({
                         )}
                       </div>
                     </div>
-                    {p.blurb && (
-                      <p className="mt-1.5 line-clamp-2 text-sm text-muted">
-                        {p.blurb}
-                      </p>
-                    )}
+                    {p.blurb && <ReadMore text={p.blurb} className="mt-1.5" />}
                     {p.tip && (
                       <p className="mt-1 text-sm text-muted">{p.tip}</p>
                     )}
