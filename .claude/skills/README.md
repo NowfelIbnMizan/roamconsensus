@@ -10,4 +10,4 @@ Design skills Claude Code loads when working in this repo. Copied unchanged from
 
 `impeccable/scripts/impeccable` downloads its engine binary from the impeccable GitHub releases (checksum-verified) into `~/.impeccable` on first use. If that fails, the skill falls back to reading the project files directly.
 
-Keep the site's travel-journal look (see `src/components/art.tsx` and the palette in `src/app/globals.css`) when applying these.
+Keep the site's premium look (flat pills, palette in `src/app/globals.css`; see root `CLAUDE.md`) when applying these.
