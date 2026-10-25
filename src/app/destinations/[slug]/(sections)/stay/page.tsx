@@ -135,9 +135,9 @@ export default async function StayPage({ params }: Props) {
                     )}
                   </p>
                 </div>
-                <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                <ul className="mt-3 divide-y divide-line">
                   {a.stays.map((p) => (
-                    <li key={p.slug} className="flex min-w-0 items-center gap-3">
+                    <li key={p.slug} className="flex min-w-0 items-center gap-3 py-2.5 first:pt-0 last:pb-0">
                       <Photo
                         photoKey={placePhotoKey(d.slug, p)}
                         query={placeQuery(p.name, d.name)}
