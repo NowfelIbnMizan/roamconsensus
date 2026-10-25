@@ -5,7 +5,8 @@ import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
 import { useState } from "react";
 import { ChevronDown, ChevronUp, ExternalLink, GripVertical, Minus, Plane, Plus, Trash2 } from "lucide-react";
-import type { CartItem } from "@/lib/cart-store";
+import { lineTotal, type CartItem } from "@/lib/cart-store";
+import { StopDetails } from "@/components/stop-details";
 import { categoryLabel } from "@/lib/format";
 import { dayColor, dayLegs, googleMapsPinUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
 import { DriveSummary, LegHint } from "@/components/road-time";
@@ -44,7 +45,12 @@ export function planMap(items: CartItem[], days: number) {
       }),
     );
     if (pinned.length)
-      groups.push({ id: d, label: `Day ${d}`, color: dayColor(d - 1), routeUrl: googleMapsRouteUrl(pinned) });
+      groups.push({
+        id: d,
+        label: `Day ${d}`,
+        color: dayColor(d - 1),
+        routeUrl: googleMapsRouteUrl(pinned),
+      });
   }
   for (const i of inDay(items, null, days).filter(hasPin))
     stops.push({
@@ -115,7 +121,10 @@ function useDragStop(place: Edit["place"] | undefined) {
     if (row) {
       const { top, height } = row.getBoundingClientRect();
       const upper = y < top + height / 2;
-      return { day: day(row.dataset.dropDay), before: upper ? row.dataset.dropId! : row.dataset.dropNext || null };
+      return {
+        day: day(row.dataset.dropDay),
+        before: upper ? row.dataset.dropId! : row.dataset.dropNext || null,
+      };
     }
     const section = el?.closest<HTMLElement>("[data-drop-section]");
     return section ? { day: day(section.dataset.dropDay), before: null } : null;
@@ -149,10 +158,13 @@ function useDragStop(place: Edit["place"] | undefined) {
 }
 
 export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number; edit?: Edit }) {
-  const { price } = useMoney();
+  const { price, money } = useMoney();
   const { dragging, target, grip } = useDragStop(edit?.place);
   const sections: { day: number | null; list: CartItem[] }[] = [
-    ...Array.from({ length: days }, (_, n) => ({ day: n + 1, list: inDay(items, n + 1, days) })),
+    ...Array.from({ length: days }, (_, n) => ({
+      day: n + 1,
+      list: inDay(items, n + 1, days),
+    })),
     { day: null, list: inDay(items, null, days) },
   ];
 
@@ -193,151 +205,218 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
         const pinned = list.filter(hasPin);
         const { legs, total } = dayLegs(pinned);
         const routeUrl = pinned.length > 1 ? googleMapsRouteUrl(pinned) : null;
+        const cost = list.reduce((sum, i) => sum + lineTotal(i), 0);
         let pin = 0;
         return (
           <div key={day ?? "unplanned"} className="space-y-4">
             {moved && before && (
               <TravelDay
-                from={{ name: prevCity.name, last: before.list.findLast(hasPin) }}
+                from={{
+                  name: prevCity.name,
+                  last: before.list.findLast(hasPin),
+                }}
                 to={{ name: city.name, first: list.find(hasPin) }}
               />
             )}
-            <section
+            {/* Each day folds to one line, like a creator's route; the first day and the unplanned stops start open. */}
+            <details
+              open={n === 0 || day === null}
               data-drop-section
               data-drop-day={day ?? ""}
-              className={`rounded-2xl border bg-card transition ${
+              className={`group rounded-2xl border bg-card transition ${
                 dragging && target?.day === day && target.before === null
                   ? "border-accent ring-2 ring-accent/40"
                   : "border-line"
               }`}
             >
-              <header className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-3">
-                <h3 className="flex flex-wrap items-center gap-2 font-semibold">
-                  {day === null ? "Not planned yet" : `Day ${day}`}
-                  {city &&
-                    sections.some(
-                      (x) => x.day !== null && x.list.some((i) => i.destination && i.destination.slug !== city.slug),
-                    ) && <span className="font-normal text-muted">· {city.name}</span>}
-                  {day !== null && <DriveSummary minutes={total} />}
-                </h3>
-                {routeUrl && (
-                  <a
-                    href={routeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                  >
-                    Route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
-                  </a>
-                )}
-              </header>
+              <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
+                <span
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
+                  style={{
+                    background: day === null ? UNPLANNED : dayColor(day - 1),
+                  }}
+                  aria-hidden
+                >
+                  {day ?? "?"}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <h3 className="font-semibold">
+                      {day === null ? "Not planned yet" : `Day ${day}`}
+                      {city &&
+                        sections.some(
+                          (x) =>
+                            x.day !== null && x.list.some((i) => i.destination && i.destination.slug !== city.slug),
+                        ) && <span className="font-normal text-muted"> · {city.name}</span>}
+                    </h3>
+                    <span className="text-sm text-muted tabular-nums">
+                      {list.length === 0 ? "Free day" : `${list.length} ${list.length === 1 ? "stop" : "stops"}`}
+                      {cost > 0 && ` · ${money(cost)}`}
+                    </span>
+                    {day !== null && <DriveSummary minutes={total} />}
+                  </span>
+                  {list.length > 0 && (
+                    <span className="mt-0.5 block truncate text-sm text-muted group-open:hidden">
+                      {list.map((i) => i.name).join(" · ")}
+                    </span>
+                  )}
+                </span>
+                <ChevronDown className="size-5 shrink-0 text-muted transition group-open:rotate-180" aria-hidden />
+              </summary>
               {list.length === 0 ? (
-                <p className="px-4 py-3 text-sm text-muted">
-                  Free day{edit && ". Pick this day on any item to move it here"}.
+                <p className="border-t border-line px-4 py-3 text-sm text-muted">
+                  Nothing planned
+                  {edit && ". Drag a stop here, or pick this day on any stop"}.
                 </p>
               ) : (
-                <ul className="divide-y divide-line">
+                <ul className="divide-y divide-line border-t border-line px-2 sm:px-3">
                   {list.map((item, n) => {
                     const number = hasPin(item) ? ++pin : null;
+                    const link = item.bookUrl ?? item.website ?? null;
                     return (
                       <li
                         key={item.id}
                         data-drop-id={item.id}
                         data-drop-day={day ?? ""}
                         data-drop-next={list[n + 1]?.id ?? ""}
-                        className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 ${
-                          dragging === item.id ? "opacity-40" : ""
-                        } ${dragging && target?.before === item.id && dragging !== item.id ? "shadow-[inset_0_3px_0_var(--accent)]" : ""}`}
+                        className={`flex items-center gap-1 py-2 ${dragging === item.id ? "opacity-40" : ""} ${
+                          dragging && target?.before === item.id && dragging !== item.id
+                            ? "shadow-[inset_0_3px_0_var(--accent)]"
+                            : ""
+                        }`}
                       >
-                        <div className="flex min-w-0 flex-1 basis-56 gap-3">
-                          {edit && (
-                            <button
-                              type="button"
-                              {...grip(item.id)}
-                              aria-label={`Drag ${item.name} to another spot or day`}
-                              title="Drag to move"
-                              className="-ml-2 flex w-6 shrink-0 cursor-grab touch-none items-center justify-center text-muted hover:text-foreground active:cursor-grabbing"
-                            >
-                              <GripVertical className="size-4" aria-hidden />
-                            </button>
-                          )}
-                          <Thumb
-                            url={item.photoUrl}
-                            category={item.category}
-                            className="size-12 rounded-lg sm:size-14"
-                          />
-                          <div className="min-w-0 flex-1">
-                            <p className="font-medium">
-                              {number !== null && (
-                                <span
-                                  className="mr-2 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
-                                  style={{ background: day === null ? UNPLANNED : dayColor(day - 1) }}
-                                >
-                                  {day === null ? "?" : number}
+                        {edit && (
+                          <button
+                            type="button"
+                            {...grip(item.id)}
+                            aria-label={`Drag ${item.name} to another spot or day`}
+                            title="Drag to move"
+                            className="flex h-12 w-6 shrink-0 cursor-grab touch-none items-center justify-center text-muted hover:text-foreground active:cursor-grabbing"
+                          >
+                            <GripVertical className="size-4" aria-hidden />
+                          </button>
+                        )}
+                        <StopDetails
+                          label={item.name}
+                          row={
+                            <>
+                              <span className="relative shrink-0 p-1">
+                                <Thumb url={item.photoUrl} category={item.category} className="size-12 rounded-lg" />
+                                {number !== null && (
+                                  <span
+                                    className="absolute top-0 left-0 inline-flex size-5 items-center justify-center rounded-full text-[11px] font-semibold text-white ring-2 ring-card"
+                                    style={{
+                                      background: day === null ? UNPLANNED : dayColor(day - 1),
+                                    }}
+                                  >
+                                    {day === null ? "?" : number}
+                                  </span>
+                                )}
+                              </span>
+                              <span className="min-w-0 flex-1 py-1">
+                                <span className="block truncate font-medium">{item.name}</span>
+                                <span className="block truncate text-sm text-muted">
+                                  {item.note ? (
+                                    <span className="italic text-accent-2">{item.note}</span>
+                                  ) : (
+                                    item.itinerary.title
+                                  )}
                                 </span>
-                              )}
-                              {item.name}
-                            </p>
-                            <p className="text-xs text-muted">
-                              {categoryLabel[item.category]} · from{" "}
+                              </span>
+                              <span
+                                className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-24 truncate text-muted" : ""}`}
+                              >
+                                {price(item)}
+                              </span>
+                            </>
+                          }
+                        >
+                          <div className="pr-8">
+                            <p className="eyebrow">{categoryLabel[item.category]}</p>
+                            <p className="mt-1 font-display text-xl leading-snug font-semibold">{item.name}</p>
+                            <p className="mt-1 text-sm text-muted">
+                              From{" "}
                               <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
                                 {item.itinerary.title}
                               </Link>
                             </p>
                             {day !== null && <LegHint leg={legs.get(item.id)} />}
+                            <p className="mt-3 text-lg font-semibold tabular-nums">{price(item)}</p>
                             <StopNote id={item.id} note={item.note} editable={Boolean(edit)} />
+                            {link && (
+                              <a
+                                href={link}
+                                target="_blank"
+                                rel={item.bookUrl ? "sponsored noopener noreferrer" : "noopener noreferrer"}
+                                className="mt-4 flex w-fit items-center gap-1 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background hover:opacity-90"
+                              >
+                                {item.bookUrl ? (item.vendor ? `Book on ${item.vendor}` : "Book") : "Website"}{" "}
+                                <ExternalLink className="size-3.5" aria-hidden />
+                              </a>
+                            )}
+                            {edit && (
+                              <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-line pt-4">
+                                <label className="sr-only" htmlFor={`day-${item.id}`}>
+                                  Day
+                                </label>
+                                <select
+                                  id={`day-${item.id}`}
+                                  value={day ?? ""}
+                                  onChange={(e) => edit.setDay(item.id, e.target.value ? Number(e.target.value) : null)}
+                                  className="rounded-lg border border-line bg-background px-2 py-1.5 text-sm"
+                                >
+                                  {Array.from({ length: days }, (_, d) => (
+                                    <option key={d} value={d + 1}>
+                                      Day {d + 1}
+                                    </option>
+                                  ))}
+                                  <option value="">Not planned</option>
+                                </select>
+                                <button
+                                  type="button"
+                                  onClick={() => edit.move(item.id, -1)}
+                                  disabled={n === 0}
+                                  className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1.5 text-sm disabled:opacity-30"
+                                >
+                                  <ChevronUp className="size-4" aria-hidden /> Earlier
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => edit.move(item.id, 1)}
+                                  disabled={n === list.length - 1}
+                                  className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1.5 text-sm disabled:opacity-30"
+                                >
+                                  <ChevronDown className="size-4" aria-hidden /> Later
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => edit.remove(item.id)}
+                                  className="ml-auto inline-flex items-center gap-1 text-sm text-muted hover:text-rose-600"
+                                >
+                                  <Trash2 className="size-4" aria-hidden /> Remove
+                                </button>
+                              </div>
+                            )}
                           </div>
-                        </div>
-                        <span className="text-sm tabular-nums text-muted">{price(item)}</span>
-                        {edit && (
-                          <div className="flex items-center gap-1">
-                            <select
-                              value={day ?? ""}
-                              onChange={(e) => edit.setDay(item.id, e.target.value ? Number(e.target.value) : null)}
-                              aria-label={`Day for ${item.name}`}
-                              className="rounded-lg border border-line bg-background px-2 py-1 text-sm"
-                            >
-                              {Array.from({ length: days }, (_, d) => (
-                                <option key={d} value={d + 1}>
-                                  Day {d + 1}
-                                </option>
-                              ))}
-                              <option value="">Not planned</option>
-                            </select>
-                            <button
-                              type="button"
-                              onClick={() => edit.move(item.id, -1)}
-                              disabled={n === 0}
-                              aria-label={`Move ${item.name} earlier`}
-                              className="flex size-7 items-center justify-center rounded-full text-muted hover:text-foreground disabled:opacity-30"
-                            >
-                              <ChevronUp className="size-4" aria-hidden />
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => edit.move(item.id, 1)}
-                              disabled={n === list.length - 1}
-                              aria-label={`Move ${item.name} later`}
-                              className="flex size-7 items-center justify-center rounded-full text-muted hover:text-foreground disabled:opacity-30"
-                            >
-                              <ChevronDown className="size-4" aria-hidden />
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => edit.remove(item.id)}
-                              aria-label={`Remove ${item.name}`}
-                              className="ml-1 text-muted hover:text-rose-600"
-                            >
-                              <Trash2 className="size-4" aria-hidden />
-                            </button>
-                          </div>
-                        )}
+                        </StopDetails>
                       </li>
                     );
                   })}
                 </ul>
               )}
-            </section>
+              {routeUrl && (
+                <p className="border-t border-line px-4 py-3 text-sm">
+                  <a
+                    href={routeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-medium text-accent hover:underline"
+                  >
+                    Route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+                  </a>
+                </p>
+              )}
+            </details>
           </div>
         );
       })}
