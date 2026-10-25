@@ -11,10 +11,13 @@ export function StopDetails({
   label,
   row,
   children,
+  className = "flex min-w-0 flex-1 items-center gap-3 rounded-xl text-left transition hover:bg-line/40 focus-visible:outline-2 focus-visible:outline-accent",
 }: {
   label: string;
   row: ReactNode;
   children: ReactNode;
+  /** The trigger's classes; a plain row by default. */
+  className?: string;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   return (
@@ -24,7 +27,7 @@ export function StopDetails({
         onClick={() => dialog.current?.showModal()}
         aria-haspopup="dialog"
         aria-label={`${label}: details`}
-        className="flex min-w-0 flex-1 items-center gap-3 rounded-xl text-left transition hover:bg-line/40 focus-visible:outline-2 focus-visible:outline-accent"
+        className={className}
       >
         {row}
       </button>
