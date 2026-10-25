@@ -387,163 +387,171 @@ export default async function ItineraryPage({
       </div>
       <PageGuide id="itinerary" className="mt-6" />
 
-      {stops.length > 0 && (
-        <section className="mt-10">
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-            <MapIcon className="size-5 text-accent" aria-hidden /> Where
-            you&apos;ll go
-          </h2>
-          <TripMap stops={stops} groups={groups} connect />
-        </section>
-      )}
+      {/* On wide screens the map sits beside the days and stays in view while you scroll them. */}
+      <div className="lg:mt-10 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">
+        {stops.length > 0 && (
+          <section className="mt-10 lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:mt-0">
+            <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+              <MapIcon className="size-5 text-accent" aria-hidden /> Where
+              you&apos;ll go
+            </h2>
+            <TripMap
+              stops={stops}
+              groups={groups}
+              connect
+              className="h-72 sm:h-96 lg:h-[calc(100vh-11rem)]"
+            />
+          </section>
+        )}
 
-      <div className="mt-10 space-y-3">
-        {it.schedule.map(({ day, items }, index) => {
-          const going = items.filter(
-            (i) => i.sentiment !== "AVOID" && !i.closedNote,
-          );
-          const cost = going.reduce(
-            (n, i) => n + (i.priceCents ?? 0) * i.quantity,
-            0,
-          );
-          const routeUrl = groups.find((g) => g.id === day)?.routeUrl;
-          return (
-            <Fragment key={day}>
-              {restDays(it.schedule, index, it.days).map((rest) => (
-                <FreeDay key={rest} day={rest} creator={it.creator.name} />
-              ))}
-              {/* Each day folds to one line (its numbers and stops), so the whole route scans at a glance. */}
-              <details
-                open={index === 0}
-                className="group rounded-2xl border border-line bg-card"
-              >
-                <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
-                  <span
-                    className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-                    style={{ background: dayColor(index) }}
-                    aria-hidden
-                  >
-                    {day}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <h2 className="font-semibold">Day {day}</h2>
-                      <span className="text-sm text-muted tabular-nums">
-                        {going.length} {going.length === 1 ? "stop" : "stops"}
-                        {cost > 0 && (
-                          <>
-                            {" · "}
-                            <Money cents={cost} />
-                          </>
-                        )}
-                      </span>
-                      <DriveSummary minutes={drive.get(day)?.total ?? 0} />
+        <div className="mt-10 space-y-3 lg:col-start-1 lg:row-start-1 lg:mt-0">
+          {it.schedule.map(({ day, items }, index) => {
+            const going = items.filter(
+              (i) => i.sentiment !== "AVOID" && !i.closedNote,
+            );
+            const cost = going.reduce(
+              (n, i) => n + (i.priceCents ?? 0) * i.quantity,
+              0,
+            );
+            const routeUrl = groups.find((g) => g.id === day)?.routeUrl;
+            return (
+              <Fragment key={day}>
+                {restDays(it.schedule, index, it.days).map((rest) => (
+                  <FreeDay key={rest} day={rest} creator={it.creator.name} />
+                ))}
+                {/* Each day folds to one line (its numbers and stops), so the whole route scans at a glance. */}
+                <details
+                  open={index === 0}
+                  className="group rounded-2xl border border-line bg-card"
+                >
+                  <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
+                    <span
+                      className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
+                      style={{ background: dayColor(index) }}
+                      aria-hidden
+                    >
+                      {day}
                     </span>
-                    <span className="mt-0.5 block truncate text-sm text-muted group-open:hidden">
-                      {going.map((i) => i.name).join(" · ")}
-                    </span>
-                  </span>
-                  <ChevronDown
-                    className="size-5 shrink-0 text-muted transition group-open:rotate-180"
-                    aria-hidden
-                  />
-                </summary>
-                <ul className="divide-y divide-line border-t border-line px-2 sm:px-3">
-                  {items.map((item) => {
-                    const skip = item.sentiment === "AVOID";
-                    return (
-                      <li
-                        key={item.id}
-                        className="flex items-center gap-2 py-2"
-                      >
-                        <StopDetails
-                          label={item.name}
-                          row={
+                    <span className="min-w-0 flex-1">
+                      <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <h2 className="font-semibold">Day {day}</h2>
+                        <span className="text-sm text-muted tabular-nums">
+                          {going.length} {going.length === 1 ? "stop" : "stops"}
+                          {cost > 0 && (
                             <>
-                              <span className="relative shrink-0 p-1">
-                                <Thumb
-                                  url={item.photoUrl}
-                                  category={item.category}
-                                  className={`size-14 rounded-lg ${skip ? "opacity-50 grayscale" : ""}`}
-                                />
-                                {pinNumber.has(item.id) && (
-                                  <span
-                                    className="absolute top-0 left-0 inline-flex size-5 items-center justify-center rounded-full text-[11px] font-semibold text-white ring-2 ring-card"
-                                    style={{ background: dayColor(index) }}
-                                    title="Pin number on the map"
-                                  >
-                                    {pinNumber.get(item.id)}
-                                  </span>
-                                )}
-                              </span>
-                              <span className="min-w-0 flex-1 py-1">
-                                <span className="block font-medium leading-snug">
-                                  {item.name}
-                                  {item.sentiment === "MUST_VISIT" && (
-                                    <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
-                                      {sentimentLabel.MUST_VISIT}
-                                    </span>
-                                  )}
-                                  {skip && (
-                                    <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
-                                      {sentimentLabel.AVOID}
-                                    </span>
-                                  )}
-                                  {item.closedNote && (
-                                    <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
-                                      Closed
+                              {" · "}
+                              <Money cents={cost} />
+                            </>
+                          )}
+                        </span>
+                        <DriveSummary minutes={drive.get(day)?.total ?? 0} />
+                      </span>
+                      <span className="mt-0.5 block truncate text-sm text-muted group-open:hidden">
+                        {going.map((i) => i.name).join(" · ")}
+                      </span>
+                    </span>
+                    <ChevronDown
+                      className="size-5 shrink-0 text-muted transition group-open:rotate-180"
+                      aria-hidden
+                    />
+                  </summary>
+                  <ul className="divide-y divide-line border-t border-line px-2 sm:px-3">
+                    {items.map((item) => {
+                      const skip = item.sentiment === "AVOID";
+                      return (
+                        <li
+                          key={item.id}
+                          className="flex items-center gap-2 py-2"
+                        >
+                          <StopDetails
+                            label={item.name}
+                            row={
+                              <>
+                                <span className="relative shrink-0 p-1">
+                                  <Thumb
+                                    url={item.photoUrl}
+                                    category={item.category}
+                                    className={`size-14 rounded-lg ${skip ? "opacity-50 grayscale" : ""}`}
+                                  />
+                                  {pinNumber.has(item.id) && (
+                                    <span
+                                      className="absolute top-0 left-0 inline-flex size-5 items-center justify-center rounded-full text-[11px] font-semibold text-white ring-2 ring-card"
+                                      style={{ background: dayColor(index) }}
+                                      title="Pin number on the map"
+                                    >
+                                      {pinNumber.get(item.id)}
                                     </span>
                                   )}
                                 </span>
-                                {item.note && (
-                                  <span className="block truncate text-sm text-muted">
-                                    {item.note}
+                                <span className="min-w-0 flex-1 py-1">
+                                  <span className="block font-medium leading-snug">
+                                    {item.name}
+                                    {item.sentiment === "MUST_VISIT" && (
+                                      <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
+                                        {sentimentLabel.MUST_VISIT}
+                                      </span>
+                                    )}
+                                    {skip && (
+                                      <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
+                                        {sentimentLabel.AVOID}
+                                      </span>
+                                    )}
+                                    {item.closedNote && (
+                                      <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
+                                        Closed
+                                      </span>
+                                    )}
                                   </span>
-                                )}
-                              </span>
-                              <span
-                                className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-24 truncate text-muted" : ""}`}
-                              >
-                                <Price item={item} />
-                              </span>
-                            </>
-                          }
-                        >
-                          <StopCard
-                            item={item}
-                            destination={it.destination.slug}
-                            leg={drive.get(day)?.legs.get(item.id)}
-                          />
-                        </StopDetails>
-                        <div className="shrink-0">
-                          {!skip && (
-                            <AddItemButton item={cartItems.get(item.id)!} />
-                          )}
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-                {routeUrl && (
-                  <p className="border-t border-line px-4 py-3 text-sm">
-                    <a
-                      href={routeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-medium text-accent hover:underline"
-                    >
-                      Open Day {day} in Google Maps{" "}
-                      <ExternalLink className="size-3.5" aria-hidden />
-                    </a>
-                  </p>
-                )}
-              </details>
-            </Fragment>
-          );
-        })}
-        {restDays(it.schedule, it.schedule.length, it.days).map((rest) => (
-          <FreeDay key={rest} day={rest} creator={it.creator.name} />
-        ))}
+                                  {item.note && (
+                                    <span className="block truncate text-sm text-muted">
+                                      {item.note}
+                                    </span>
+                                  )}
+                                </span>
+                                <span
+                                  className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-24 truncate text-muted" : ""}`}
+                                >
+                                  <Price item={item} />
+                                </span>
+                              </>
+                            }
+                          >
+                            <StopCard
+                              item={item}
+                              destination={it.destination.slug}
+                              leg={drive.get(day)?.legs.get(item.id)}
+                            />
+                          </StopDetails>
+                          <div className="shrink-0">
+                            {!skip && (
+                              <AddItemButton item={cartItems.get(item.id)!} />
+                            )}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  {routeUrl && (
+                    <p className="border-t border-line px-4 py-3 text-sm">
+                      <a
+                        href={routeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-medium text-accent hover:underline"
+                      >
+                        Open Day {day} in Google Maps{" "}
+                        <ExternalLink className="size-3.5" aria-hidden />
+                      </a>
+                    </p>
+                  )}
+                </details>
+              </Fragment>
+            );
+          })}
+          {restDays(it.schedule, it.schedule.length, it.days).map((rest) => (
+            <FreeDay key={rest} day={rest} creator={it.creator.name} />
+          ))}
+        </div>
       </div>
 
       <SupportCreator

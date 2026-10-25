@@ -142,9 +142,11 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   }
 
   return (
-    <div className="max-w-4xl space-y-6">
+    // On wide screens the map takes the right column and stays in view; everything else stacks on the left. The last row
+    // takes any spare height so short carts don't spread out.
+    <div className="space-y-6 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:grid-rows-[auto_auto_1fr] lg:items-start lg:gap-x-8 lg:gap-y-6 lg:space-y-0">
       {/* The trip in one card: total, length, budget, and every tool behind ⋯ instead of a sidebar of boxes. */}
-      <section className="rounded-2xl border border-line bg-card p-4 sm:p-5">
+      <section className="rounded-2xl border border-line bg-card p-4 sm:p-5 lg:col-start-1">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
           <div>
             <p className="text-3xl font-semibold tabular-nums">{money(totalCents)}</p>
@@ -270,15 +272,15 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
       </section>
 
       {stops.length > 0 && (
-        <section>
+        <section className="lg:sticky lg:top-4 lg:col-start-2 lg:row-span-3 lg:row-start-1">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
             <MapIcon className="size-5 text-accent" aria-hidden /> Your trip on the map
           </h2>
-          <TripMap stops={stops} groups={groups} connect className="h-64 sm:h-80" />
+          <TripMap stops={stops} groups={groups} connect className="h-64 sm:h-80 lg:h-[calc(100vh-11rem)]" />
         </section>
       )}
 
-      <div className="flex rounded-full border border-line bg-card p-1 text-sm w-fit" role="tablist">
+      <div className="flex rounded-full border border-line bg-card p-1 text-sm w-fit lg:col-start-1" role="tablist">
         {(
           [
             ["plan", "Day by day"],
@@ -298,108 +300,110 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
         ))}
       </div>
 
-      {view === "plan" ? (
-        <DayPlan items={items} days={days} edit={{ setDay, move, place, remove, setTripDays }} />
-      ) : (
-        groupByVendor(items).map((group) => (
-          <section key={group.vendor} className="rounded-2xl border border-line bg-card">
-            <header className="flex items-center justify-between border-b border-line px-4 py-3">
-              <h2>
-                <VendorBadge name={group.vendor} bookable={group.items[0].vendor !== null} />
-              </h2>
-              <span className="text-sm tabular-nums text-muted">
-                {group.items.some((i) => i.priceCents !== null) ? money(group.totalCents) : "Price on site"}
-              </span>
-            </header>
-            <ul className="divide-y divide-line">
-              {group.items.map((item) => (
-                <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4">
-                  <div className="flex min-w-0 basis-full gap-3 sm:basis-auto sm:flex-1">
-                    <Thumb url={item.photoUrl} category={item.category} className="size-14 rounded-xl sm:size-16" />
-                    <div className="min-w-0 flex-1">
-                      <p className="font-medium">{item.name}</p>
-                      <p className="text-xs text-muted">
-                        {categoryLabel[item.category]} · from{" "}
-                        <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
-                          {item.itinerary.title}
-                        </Link>
-                        {item.couponCode && (
-                          <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
-                            {item.couponCode}
-                          </span>
-                        )}
-                      </p>
-                      <StopNote id={item.id} note={item.note} />
+      <div className="space-y-6 lg:col-start-1">
+        {view === "plan" ? (
+          <DayPlan items={items} days={days} edit={{ setDay, move, place, remove, setTripDays }} />
+        ) : (
+          groupByVendor(items).map((group) => (
+            <section key={group.vendor} className="rounded-2xl border border-line bg-card">
+              <header className="flex items-center justify-between border-b border-line px-4 py-3">
+                <h2>
+                  <VendorBadge name={group.vendor} bookable={group.items[0].vendor !== null} />
+                </h2>
+                <span className="text-sm tabular-nums text-muted">
+                  {group.items.some((i) => i.priceCents !== null) ? money(group.totalCents) : "Price on site"}
+                </span>
+              </header>
+              <ul className="divide-y divide-line">
+                {group.items.map((item) => (
+                  <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4">
+                    <div className="flex min-w-0 basis-full gap-3 sm:basis-auto sm:flex-1">
+                      <Thumb url={item.photoUrl} category={item.category} className="size-14 rounded-xl sm:size-16" />
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium">{item.name}</p>
+                        <p className="text-xs text-muted">
+                          {categoryLabel[item.category]} · from{" "}
+                          <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
+                            {item.itinerary.title}
+                          </Link>
+                          {item.couponCode && (
+                            <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
+                              {item.couponCode}
+                            </span>
+                          )}
+                        </p>
+                        <StopNote id={item.id} note={item.note} />
+                      </div>
                     </div>
-                  </div>
-                  <div className="mr-auto flex items-center gap-1 sm:mr-0" aria-label={`Quantity for ${item.name}`}>
-                    <button
-                      type="button"
-                      onClick={() => setQuantity(item.id, item.quantity - 1)}
-                      disabled={item.quantity <= 1}
-                      aria-label="Decrease"
-                      className="flex size-7 items-center justify-center rounded-full border border-line disabled:opacity-40"
-                    >
-                      <Minus className="size-3" aria-hidden />
-                    </button>
-                    <span className="w-16 text-center text-sm tabular-nums">
-                      {item.quantity} {item.unit ? `${item.unit}${item.quantity > 1 ? "s" : ""}` : ""}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setQuantity(item.id, item.quantity + 1)}
-                      aria-label="Increase"
-                      className="flex size-7 items-center justify-center rounded-full border border-line"
-                    >
-                      <Plus className="size-3" aria-hidden />
-                    </button>
-                  </div>
-                  {item.priceCents === null ? (
-                    <span className="max-w-40 rounded-full bg-amber-500/15 px-2 py-0.5 text-right text-xs text-amber-700 dark:text-amber-300">
-                      {item.priceNote ?? "Varies · pay on site"}
-                    </span>
-                  ) : (
-                    <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">{price(item)}</span>
-                  )}
-                  <div className="flex items-center gap-2">
-                    {item.bookUrl ? (
-                      <a
-                        href={item.bookUrl}
-                        target="_blank"
-                        rel="sponsored noopener noreferrer"
-                        className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/25 dark:text-emerald-300"
+                    <div className="mr-auto flex items-center gap-1 sm:mr-0" aria-label={`Quantity for ${item.name}`}>
+                      <button
+                        type="button"
+                        onClick={() => setQuantity(item.id, item.quantity - 1)}
+                        disabled={item.quantity <= 1}
+                        aria-label="Decrease"
+                        className="flex size-7 items-center justify-center rounded-full border border-line disabled:opacity-40"
                       >
-                        {item.vendor ? `Book on ${item.vendor}` : "Book"}{" "}
-                        <ExternalLink className="size-3" aria-hidden />
-                      </a>
+                        <Minus className="size-3" aria-hidden />
+                      </button>
+                      <span className="w-16 text-center text-sm tabular-nums">
+                        {item.quantity} {item.unit ? `${item.unit}${item.quantity > 1 ? "s" : ""}` : ""}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setQuantity(item.id, item.quantity + 1)}
+                        aria-label="Increase"
+                        className="flex size-7 items-center justify-center rounded-full border border-line"
+                      >
+                        <Plus className="size-3" aria-hidden />
+                      </button>
+                    </div>
+                    {item.priceCents === null ? (
+                      <span className="max-w-40 rounded-full bg-amber-500/15 px-2 py-0.5 text-right text-xs text-amber-700 dark:text-amber-300">
+                        {item.priceNote ?? "Varies · pay on site"}
+                      </span>
                     ) : (
-                      item.website && (
-                        <a
-                          href={item.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-muted hover:text-foreground"
-                        >
-                          Website <ExternalLink className="size-3" aria-hidden />
-                        </a>
-                      )
+                      <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">{price(item)}</span>
                     )}
-                    <button
-                      type="button"
-                      onClick={() => remove(item.id)}
-                      aria-label={`Remove ${item.name}`}
-                      className="text-muted hover:text-rose-600"
-                    >
-                      <Trash2 className="size-4" aria-hidden />
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      )}
-      <PackingList items={items} />
+                    <div className="flex items-center gap-2">
+                      {item.bookUrl ? (
+                        <a
+                          href={item.bookUrl}
+                          target="_blank"
+                          rel="sponsored noopener noreferrer"
+                          className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/25 dark:text-emerald-300"
+                        >
+                          {item.vendor ? `Book on ${item.vendor}` : "Book"}{" "}
+                          <ExternalLink className="size-3" aria-hidden />
+                        </a>
+                      ) : (
+                        item.website && (
+                          <a
+                            href={item.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-muted hover:text-foreground"
+                          >
+                            Website <ExternalLink className="size-3" aria-hidden />
+                          </a>
+                        )
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => remove(item.id)}
+                        aria-label={`Remove ${item.name}`}
+                        className="text-muted hover:text-rose-600"
+                      >
+                        <Trash2 className="size-4" aria-hidden />
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        )}
+        <PackingList items={items} />
+      </div>
     </div>
   );
 }
