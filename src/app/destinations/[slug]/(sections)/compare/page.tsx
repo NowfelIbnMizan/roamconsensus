@@ -16,11 +16,11 @@ export default async function ComparePage({ params }: PageProps<"/destinations/[
   const d = await getDestination((await params).slug);
   if (!d) notFound();
   if (d.routes.length < 2) return <p className="text-muted">Comparing needs two routes. More are coming soon.</p>;
-  const places = Object.fromEntries(d.consensus.map((p) => [p.slug, { name: p.name, category: p.category }]));
+  const places = Object.fromEntries(d.consensus.map((p) => [p.slug, { name: p.name, category: p.category, photo: p.photos[0] ?? null }]));
   return (
     <>
-      <h2 className="text-xl font-semibold">Compare routes side by side</h2>
-      <p className="mt-1 text-sm text-muted">Cost, pace and which spots both creators pick.</p>
+      <h2 className="text-xl font-semibold">Which {d.name} route is for you?</h2>
+      <p className="mt-1 text-sm text-muted">Every creator route at a glance. Tick two to see which spots they share.</p>
       <CompareRoutes destination={d.slug} routes={d.routes} places={places} />
     </>
   );
