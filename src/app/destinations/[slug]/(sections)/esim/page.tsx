@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs, getEsimPlans } from "@/lib/data";
 import { esimGuides, type EsimGuide } from "@/lib/esim-guides";
-import { EsimTable } from "./esim-table";
-import { ChevronDown, ShieldCheck } from "lucide-react";
+import { PlanPicker } from "./plan-picker";
+import { ChevronDown, ShieldCheck, Signal, Wifi } from "lucide-react";
+import type { ReactNode } from "react";
 
 export async function generateStaticParams() {
   return getDestinationSlugs();
@@ -42,20 +43,25 @@ export default async function EsimPage({
   return (
     <section>
       <h2 className="text-xl font-semibold">
-        {destination.country} eSIM plans
+        Get online in {destination.name}
       </h2>
       <p className="mt-1 max-w-2xl text-sm text-muted">
-        {plans.length} plans · {new Set(plans.map((p) => p.provider)).size}{" "}
-        providers · work all over {destination.country}. Prices checked{" "}
+        {plans.length} eSIM plans from{" "}
+        {new Set(plans.map((p) => p.provider)).size} providers. Two taps to find
+        yours.
+      </p>
+      <PlanPicker plans={plans} />
+      {guide && <Guide guide={guide} place={destination.name} />}
+      <p className="fine-print mt-6">
+        Prices checked{" "}
         {checked.toLocaleDateString("en-US", {
           month: "short",
           year: "numeric",
-        })}
-        : confirm before you buy.
+        })}{" "}
+        from provider sites: confirm before you buy.
+        {guide &&
+          ` Phone and signal notes checked ${guide.checked}; rules change.`}
       </p>
-      {guide && <ImeiCallout imei={guide.imei} />}
-      <EsimTable plans={plans} />
-      {guide && <Guide guide={guide} place={destination.name} />}
     </section>
   );
 }
@@ -83,28 +89,31 @@ function Sources({ urls }: { urls: string[] }) {
   );
 }
 
-function ImeiCallout({ imei }: { imei: EsimGuide["imei"] }) {
+function Fold({
+  icon,
+  title,
+  children,
+}: {
+  icon: ReactNode;
+  title: string;
+  children: ReactNode;
+}) {
   return (
-    // The headline is the answer; the detail opens on tap.
-    <details className="group mt-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-      <summary className="flex cursor-pointer list-none items-center gap-2 font-medium text-emerald-800 dark:text-emerald-300 [&::-webkit-details-marker]:hidden">
-        <ShieldCheck className="size-4 shrink-0" aria-hidden />{" "}
-        <span className="flex-1">{imei.title}</span>
+    <details className="group rounded-2xl border border-line bg-card">
+      <summary className="flex cursor-pointer list-none items-center gap-2 p-4 font-medium [&::-webkit-details-marker]:hidden">
+        {icon}
+        <span>{title}</span>
         <ChevronDown
-          className="size-4 shrink-0 transition group-open:rotate-180"
+          className="ml-auto size-4 shrink-0 transition group-open:rotate-180"
           aria-hidden
         />
       </summary>
-      <ul className="mt-2 space-y-1 text-sm">
-        {imei.body.map((line) => (
-          <li key={line}>{line}</li>
-        ))}
-      </ul>
-      <Sources urls={imei.sources} />
+      <div className="px-4 pb-4 text-sm">{children}</div>
     </details>
   );
 }
 
+/** Phone check, signal by area and FAQ as three folds, side by side on PC. */
 function Guide({ guide, place }: { guide: EsimGuide; place: string }) {
   const faqSchema = {
     "@context": "https://schema.org",
@@ -117,47 +126,53 @@ function Guide({ guide, place }: { guide: EsimGuide; place: string }) {
   };
   return (
     <>
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold">
-          {place} coverage &amp; signal guide
-        </h2>
-        <p className="mt-1 max-w-2xl text-sm text-muted">
-          {guide.coverage.intro}
-        </p>
-        <dl className="mt-4 grid gap-3 sm:grid-cols-2">
-          {guide.coverage.areas.map((a) => (
-            <div
-              key={a.name}
-              className="rounded-xl border border-line bg-card p-4"
-            >
-              <dt className="font-medium">{a.name}</dt>
-              <dd className="mt-1 text-sm text-muted">{a.note}</dd>
-            </div>
-          ))}
-        </dl>
-        <Sources urls={guide.coverage.sources} />
-      </section>
-
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold">eSIM questions</h2>
-        <div className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
-          {guide.faq.map((f) => (
-            <details key={f.q} className="group p-4">
-              <summary className="cursor-pointer list-none font-medium marker:hidden">
-                {f.q}
-                <span className="float-right text-muted group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="mt-2 text-sm text-muted">{f.a}</p>
-            </details>
-          ))}
-        </div>
-        <p className="fine-print mt-3">
-          Checked {guide.checked}. Rules and coverage change; confirm with your
-          provider.
-        </p>
-      </section>
+      <div className="mt-8 grid items-start gap-3 lg:grid-cols-3">
+        <Fold
+          icon={
+            <ShieldCheck
+              className="size-4 shrink-0 text-emerald-700"
+              aria-hidden
+            />
+          }
+          title="Will my phone work?"
+        >
+          <p className="font-medium">{guide.imei.title}</p>
+          <ul className="mt-1 space-y-1 text-muted">
+            {guide.imei.body.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+          <Sources urls={guide.imei.sources} />
+        </Fold>
+        <Fold
+          icon={<Signal className="size-4 shrink-0 text-accent" aria-hidden />}
+          title={`Signal around ${place}`}
+        >
+          <p className="text-muted">{guide.coverage.intro}</p>
+          <dl className="mt-3 space-y-2">
+            {guide.coverage.areas.map((a) => (
+              <div key={a.name}>
+                <dt className="font-medium">{a.name}</dt>
+                <dd className="text-muted">{a.note}</dd>
+              </div>
+            ))}
+          </dl>
+          <Sources urls={guide.coverage.sources} />
+        </Fold>
+        <Fold
+          icon={<Wifi className="size-4 shrink-0 text-accent" aria-hidden />}
+          title={`eSIM questions · ${guide.faq.length}`}
+        >
+          <dl className="space-y-3">
+            {guide.faq.map((f) => (
+              <div key={f.q}>
+                <dt className="font-medium">{f.q}</dt>
+                <dd className="mt-0.5 text-muted">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </Fold>
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
