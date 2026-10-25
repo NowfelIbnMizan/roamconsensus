@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import {
-  ArrowRight,
-  CalendarDays,
-  ChevronDown,
-  SlidersHorizontal,
-} from "lucide-react";
+import { ChevronDown, SlidersHorizontal } from "lucide-react";
+import { StopDetails } from "@/components/stop-details";
 import { addDays, rangeLabel } from "@/components/date-range";
 import { CreatorChip } from "@/components/creator";
 import { Thumb } from "@/components/thumb";
@@ -27,7 +23,14 @@ const SORTS = {
 const VIBE_SHARE = 0.15;
 
 /** Every creator route, filtered by trip length, budget, style and destination. Filtering runs in the browser. */
-export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
+export function TripFinder({
+  routes,
+  guide,
+}: {
+  routes: QuizData["routes"];
+  /** The "How this works" note, shown under the heading. */
+  guide?: React.ReactNode;
+}) {
   const { money, code, fromLocal } = useMoney();
   const [length, setLength] = useState(0);
   const [budget, setBudget] = useState("");
@@ -39,8 +42,6 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
   } | null>(null);
   const [sort, setSort] = useState<keyof typeof SORTS>("cheap");
   const [vibes, setVibes] = useState<VibeKey[]>([]);
-  // On phones the filters fold away so the routes come first.
-  const [filters, setFilters] = useState(false);
 
   // The home page search links here with ?where=bali,bangkok&days=12&start=2026-11-03 (or an older ?length=).
   useEffect(() => {
@@ -104,80 +105,92 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
             (a.totalCents || Infinity) - (b.totalCents || Infinity),
     );
 
-  const card = (r: (typeof routes)[number]) => (
-    <li key={r.slug}>
-      <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card p-4 transition hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
-        {r.photoUrl && (
-          <Thumb
-            url={r.photoUrl}
-            category="EXPERIENCE"
-            sizes="(min-width: 640px) 480px, 100vw"
-            className="-mx-4 -mt-4 mb-3 h-28 w-[calc(100%+2rem)]"
-          />
+  // One row per route with the numbers lined up, so routes compare at a glance.
+  const row = (r: (typeof routes)[number]) => (
+    <li
+      key={r.slug}
+      className="relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 px-3 py-3 transition hover:bg-line/30 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent sm:grid-cols-[minmax(0,1fr)_4.5rem_7rem_8rem] sm:px-4"
+    >
+      <div className="flex min-w-0 items-center gap-3">
+        <Thumb
+          url={r.photoUrl}
+          category="EXPERIENCE"
+          sizes="64px"
+          className="size-14 shrink-0 rounded-lg sm:size-16"
+        />
+        <div className="min-w-0">
+          {where.length === 0 && (
+            <p className="text-xs font-medium uppercase tracking-wide text-accent">
+              {r.destination.name}
+            </p>
+          )}
+          <h2 className="line-clamp-2 font-medium sm:truncate">
+            <Link
+              href={`/itineraries/${r.slug}`}
+              className="after:absolute after:inset-0 focus-visible:outline-none"
+            >
+              {r.title}
+            </Link>
+          </h2>
+          <div className="relative z-10 flex min-w-0 items-center gap-1.5 text-sm whitespace-nowrap text-muted">
+            <CreatorChip creator={r.creator} />
+            <span className="hidden truncate sm:inline">
+              {VIBES.filter((v) => (r.vibes[v.key] ?? 0) >= VIBE_SHARE).map(
+                (v) => (
+                  <span key={v.key} title={v.label} aria-label={v.label}>
+                    {v.emoji}
+                  </span>
+                ),
+              )}
+            </span>
+          </div>
+          <p className="text-xs text-muted sm:hidden">
+            {r.days} {r.days === 1 ? "day" : "days"} · {tierLabel[r.tier]} ·{" "}
+            {r.stops} stops
+            {length === -1 && fitDays && r.days > fitDays && " · 1 day over"}
+          </p>
+        </div>
+      </div>
+      <span className="hidden tabular-nums sm:block">
+        {r.days}
+        {length === -1 && fitDays && r.days > fitDays && (
+          <span className="block text-xs text-muted">1 day over</span>
         )}
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-medium uppercase tracking-wide text-accent">
-            {r.destination.name}
-          </span>
-          <span className="text-muted">
-            {length === -1 && fitDays && r.days > fitDays && (
-              <span className="mr-1.5 rounded-full bg-line px-1.5 py-0.5">
-                1 day over
+      </span>
+      <span className="hidden text-sm text-muted sm:block">
+        {tierLabel[r.tier]}
+      </span>
+      <span className="text-right">
+        {r.totalCents > 0 && mostlyPriced(r) ? (
+          <>
+            <span className="block text-lg font-semibold tabular-nums">
+              {money(r.totalCents)}
+            </span>
+            {r.unpricedCount > 0 && (
+              <span className="block text-xs text-muted">
+                + {r.unpricedCount} unpriced
               </span>
             )}
-            {r.days} {r.days === 1 ? "day" : "days"} · {tierLabel[r.tier]}
+          </>
+        ) : (
+          <span className="block max-w-24 text-xs text-muted">
+            {r.totalCents > 0 ? "Partly priced" : "Prices not listed"}
           </span>
-        </div>
-        <h2 className="mt-1 font-semibold">
-          <Link
-            href={`/itineraries/${r.slug}`}
-            className="after:absolute after:inset-0 focus-visible:outline-none"
-          >
-            {r.title}
-          </Link>
-        </h2>
-        <div className="relative z-10 mt-2 flex flex-wrap items-center gap-1.5 self-start text-sm text-muted">
-          by <CreatorChip creator={r.creator} />
-        </div>
-        {VIBES.some((v) => (r.vibes[v.key] ?? 0) >= VIBE_SHARE) && (
-          <p className="mt-2 flex flex-wrap gap-1.5 text-xs">
-            {VIBES.filter((v) => (r.vibes[v.key] ?? 0) >= VIBE_SHARE).map(
-              (v) => (
-                <span
-                  key={v.key}
-                  className={`rounded-full px-2 py-0.5 ${vibes.includes(v.key) ? "bg-accent-soft font-medium text-accent" : "bg-line text-muted"}`}
-                >
-                  {v.emoji} {v.label}
-                </span>
-              ),
-            )}
-          </p>
         )}
-        <div className="mt-auto flex items-end justify-between pt-3">
-          <p>
-            {r.totalCents > 0 && mostlyPriced(r) ? (
-              <>
-                <span className="text-xl font-semibold tabular-nums">
-                  {money(r.totalCents)}
-                </span>
-                <span className="text-xs text-muted">
-                  {" "}
-                  est. per person
-                  {r.unpricedCount > 0 && ` + ${r.unpricedCount} unpriced`}
-                </span>
-              </>
-            ) : (
-              <span className="text-sm text-muted">
-                {r.totalCents > 0
-                  ? `Partly priced (${r.stops - r.unpricedCount} of ${r.stops} stops)`
-                  : "Prices not listed"}
-              </span>
-            )}
-          </p>
-          <ArrowRight className="size-4 text-accent" aria-hidden />
-        </div>
-      </article>
+      </span>
     </li>
+  );
+
+  const list = (rs: typeof routes) => (
+    <div className="mt-3 overflow-hidden rounded-2xl border border-line bg-card">
+      <div className="hidden grid-cols-[minmax(0,1fr)_4.5rem_7rem_8rem] gap-4 border-b border-line px-4 py-2 text-xs text-muted sm:grid">
+        <span>Route</span>
+        <span>Days</span>
+        <span>Style</span>
+        <span className="text-right">Est. per person</span>
+      </div>
+      <ul className="divide-y divide-line">{rs.map(row)}</ul>
+    </div>
   );
 
   const chip = (on: boolean) =>
@@ -186,64 +199,114 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
         ? "bg-foreground font-medium text-background"
         : "border border-line bg-card text-muted hover:text-foreground"
     }`;
+  const pill = (on: boolean) =>
+    `inline-flex shrink-0 items-center gap-1 rounded-full px-3.5 py-2 text-sm transition ${
+      on
+        ? "bg-foreground font-medium text-background"
+        : "border border-line bg-card hover:border-accent"
+    }`;
 
   const names = where.map(
     (w) => destinations.find((d) => d.slug === w)?.name ?? w,
   );
   const perCity = where.length > 1 ? fitDays : null;
-  const active = [
-    length !== 0,
-    where.length > 0,
-    vibes.length > 0,
-    budget !== "",
-    tier !== "",
-  ].filter(Boolean).length;
+  const lengthLabel =
+    length === -1 && fitDays
+      ? `Fits ${fitDays} days${where.length > 1 ? " per city" : ""}`
+      : LENGTHS[length].label;
+  const budgetLabel = budget
+    ? `Under ${money(fromLocal(Number(budget)))}`
+    : tier
+      ? tierLabel[tier]
+      : "Any budget";
+
+  // Each filter is a pill that opens its picker; choices apply at once and "Show trips" closes it.
+  const picker = (
+    label: string,
+    on: boolean,
+    title: string,
+    body: React.ReactNode,
+  ) => (
+    <StopDetails
+      label={title}
+      className={pill(on)}
+      row={
+        <>
+          {label} <ChevronDown className="size-3.5" aria-hidden />
+        </>
+      }
+    >
+      <p className="pr-8 font-display text-xl font-semibold">{title}</p>
+      <div className="mt-4">{body}</div>
+      <form method="dialog" className="mt-5">
+        <button className="w-full rounded-full bg-accent px-4 py-2.5 text-sm font-medium text-background">
+          Show {shown.length} {shown.length === 1 ? "trip" : "trips"}
+        </button>
+      </form>
+    </StopDetails>
+  );
 
   return (
-    <div className="mt-6">
-      {(trip || where.length > 1) && (
-        <div className="mb-4 flex gap-3 rounded-2xl bg-accent-soft p-4 text-sm">
-          <CalendarDays
-            className="mt-0.5 size-5 shrink-0 text-accent"
-            aria-hidden
-          />
-          <p>
-            <strong>
-              {names.join(" + ") || "Your trip"}
-              {trip && ` · ${trip.days} days`}
-              {trip?.start &&
-                ` (${rangeLabel(trip.start, addDays(trip.start, trip.days - 1))})`}
-            </strong>
-            <br />
-            {where.length > 1
-              ? `${perCity ? `About ${perCity} days in each. ` : ""}Pick one route per city and add each to your trip: the trip planner puts them back to back.`
-              : "Showing routes that fit your trip. Add one to your trip and the planner lays it out day by day."}
-          </p>
-        </div>
-      )}
-      <button
-        type="button"
-        aria-expanded={filters}
-        onClick={() => setFilters(!filters)}
-        className="flex w-full items-center gap-2 rounded-2xl border border-line bg-card px-4 py-3 text-sm font-medium sm:hidden"
-      >
-        <SlidersHorizontal className="size-4 text-accent" aria-hidden />
-        Filters
-        {active > 0 && (
-          <span className="rounded-full bg-accent px-1.5 text-xs leading-5 text-background">
-            {active}
-          </span>
+    <div>
+      <h1 className="text-3xl font-semibold tracking-tight">
+        {shown.length} {shown.length === 1 ? "trip" : "trips"}
+        {names.length > 0 && ` in ${names.join(" + ")}`}
+      </h1>
+      <p className="mt-1 text-muted">
+        {trip
+          ? `${trip.days} days${trip.start ? ` · ${rangeLabel(trip.start, addDays(trip.start, trip.days - 1))}` : ""}${perCity ? ` · about ${perCity} in each city` : ""}`
+          : "Your days, your budget."}{" "}
+        <Link href="/quiz" className="underline">
+          Not sure? 3 quick questions
+        </Link>
+      </p>
+      {guide}
+
+      <div className="sticky top-0 z-20 -mx-4 mt-4 flex gap-2 overflow-x-auto bg-background/95 px-4 py-2 backdrop-blur">
+        {picker(
+          names.length ? names.join(" + ") : "Anywhere",
+          where.length > 0,
+          "Where?",
+          <>
+            <p className="mb-2 text-sm text-muted">
+              Pick more than one to combine cities.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                className={chip(!where.length)}
+                aria-pressed={!where.length}
+                onClick={() => setWhere([])}
+              >
+                Anywhere
+              </button>
+              {destinations.map((d) => {
+                const on = where.includes(d.slug);
+                return (
+                  <button
+                    key={d.slug}
+                    type="button"
+                    className={chip(on)}
+                    aria-pressed={on}
+                    onClick={() =>
+                      setWhere(
+                        on
+                          ? where.filter((x) => x !== d.slug)
+                          : [...where, d.slug],
+                      )
+                    }
+                  >
+                    {d.name}
+                  </button>
+                );
+              })}
+            </div>
+          </>,
         )}
-        <ChevronDown
-          className={`ml-auto size-4 transition ${filters ? "rotate-180" : ""}`}
-          aria-hidden
-        />
-      </button>
-      <div
-        className={`mt-2 space-y-4 rounded-2xl border border-line bg-card p-4 sm:mt-0 sm:block sm:p-5 ${filters ? "" : "hidden"}`}
-      >
-        <div>
-          <p className="mb-2 text-sm font-medium">Trip length</p>
+        {picker(
+          lengthLabel,
+          length !== 0,
+          "Trip length",
           <div className="flex flex-wrap gap-2">
             {fitDays && (
               <button
@@ -266,48 +329,61 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
                 {l.label}
               </button>
             ))}
-          </div>
-        </div>
-        <div>
-          <p className="mb-2 text-sm font-medium">
-            Where?{" "}
-            <span className="font-normal text-muted">
-              Pick more than one to combine cities
-            </span>
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              className={chip(!where.length)}
-              aria-pressed={!where.length}
-              onClick={() => setWhere([])}
-            >
-              Anywhere
-            </button>
-            {destinations.map((d) => {
-              const on = where.includes(d.slug);
-              return (
+          </div>,
+        )}
+        {picker(
+          budgetLabel,
+          budget !== "" || tier !== "",
+          "Budget",
+          <div className="grid gap-4">
+            <label className="block text-sm">
+              <span className="font-medium">
+                Max budget per person ({code})
+              </span>
+              <input
+                type="number"
+                inputMode="numeric"
+                min={0}
+                placeholder="Any"
+                value={budget}
+                onChange={(e) => setBudget(e.target.value)}
+                className="mt-1 w-full rounded-xl border border-line bg-background px-3 py-2"
+              />
+            </label>
+            <div>
+              <p className="mb-2 text-sm font-medium">Budget style</p>
+              <div className="flex flex-wrap gap-2">
                 <button
-                  key={d.slug}
                   type="button"
-                  className={chip(on)}
-                  aria-pressed={on}
-                  onClick={() =>
-                    setWhere(
-                      on
-                        ? where.filter((x) => x !== d.slug)
-                        : [...where, d.slug],
-                    )
-                  }
+                  className={chip(tier === "")}
+                  aria-pressed={tier === ""}
+                  onClick={() => setTier("")}
                 >
-                  {d.name}
+                  Any
                 </button>
-              );
-            })}
-          </div>
-        </div>
-        <div>
-          <p className="mb-2 text-sm font-medium">What kind of trip?</p>
+                {TIERS.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    className={chip(tier === t)}
+                    aria-pressed={tier === t}
+                    onClick={() => setTier(t)}
+                  >
+                    {tierLabel[t]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>,
+        )}
+        {picker(
+          vibes.length
+            ? VIBES.filter((v) => vibes.includes(v.key))
+                .map((v) => v.emoji)
+                .join(" ")
+            : "Trip type",
+          vibes.length > 0,
+          "What kind of trip?",
           <div className="flex flex-wrap gap-2">
             {VIBES.map((v) => {
               const on = vibes.includes(v.key);
@@ -327,43 +403,18 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
                 </button>
               );
             })}
-          </div>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block text-sm">
-            <span className="font-medium">Max budget per person ({code})</span>
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              placeholder="Any"
-              value={budget}
-              onChange={(e) => setBudget(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-line bg-background px-3 py-2"
-            />
-          </label>
-          <label className="block text-sm">
-            <span className="font-medium">Budget style</span>
-            <select
-              value={tier}
-              onChange={(e) => setTier(e.target.value as Tier | "")}
-              className="mt-1 w-full rounded-xl border border-line bg-background px-3 py-2"
-            >
-              <option value="">Any budget</option>
-              {TIERS.map((t) => (
-                <option key={t} value={t}>
-                  {tierLabel[t]}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+          </div>,
+        )}
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm text-muted" aria-live="polite">
-          {shown.length} {shown.length === 1 ? "trip" : "trips"}
-        </p>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+        {where.length > 1 ? (
+          <p className="text-sm text-muted">
+            Pick one route per city: your trip plan puts them back to back.
+          </p>
+        ) : (
+          <span />
+        )}
         <label className="flex items-center gap-2 text-sm text-muted">
           <SlidersHorizontal className="size-4" aria-hidden />
           <select
@@ -400,9 +451,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
                 </span>
               </h2>
               {inCity.length ? (
-                <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-                  {inCity.map(card)}
-                </ul>
+                list(inCity)
               ) : (
                 <p className="mt-2 text-sm text-muted">
                   No {name} routes match. Try another trip length.
@@ -412,7 +461,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
           );
         })
       ) : (
-        <ul className="mt-3 grid gap-3 sm:grid-cols-2">{shown.map(card)}</ul>
+        list(shown)
       )}
       <p className="fine-print mt-4">
         Budgets are the creators&apos; listed prices for stays, activities and
