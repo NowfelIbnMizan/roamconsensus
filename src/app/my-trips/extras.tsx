@@ -46,7 +46,7 @@ export function SavedPlaces() {
   return (
     <section>
       <h2 className="flex items-center gap-2 text-xl font-semibold">
-        <Heart className="size-5 text-accent-2" aria-hidden /> Saved places
+        <Heart className="size-5 text-accent-2" aria-hidden /> Saved places{rows?.length ? ` · ${rows.length}` : ""}
       </h2>
       {rows === null ? (
         <p className="mt-2 text-muted">Loading…</p>
@@ -55,8 +55,10 @@ export function SavedPlaces() {
       ) : (
         [...byCity].map(([city, places]) => (
           <div key={city} className="mt-3">
-            <h3 className="font-display text-lg font-semibold">{city}</h3>
-            <ul className="mt-1 divide-y divide-line rounded-2xl border border-line bg-card">
+            <h3 className="eyebrow">
+              {city} · {places.length}
+            </h3>
+            <ul className="mt-2 divide-y divide-line rounded-2xl border border-line bg-card">
               {places.map((f) => (
                 <li key={f.place} className="flex items-center gap-3 px-4 py-2.5">
                   <div className="min-w-0 flex-1">
@@ -113,9 +115,7 @@ export function GroupTrips() {
       <h2 className="flex items-center gap-2 text-xl font-semibold">
         <Users className="size-5 text-accent" aria-hidden /> Plan with friends
       </h2>
-      <p className="mt-1 text-muted">
-        Start a group trip, send friends the link, and everyone adds stops and votes 👍 on them.
-      </p>
+      <p className="mt-1 text-sm text-muted">Share a link. Everyone adds stops and votes on them.</p>
       {groups && groups.length > 0 && (
         <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
           {groups.map((g) => (
@@ -130,7 +130,7 @@ export function GroupTrips() {
           ))}
         </ul>
       )}
-      <form onSubmit={start} className="mt-4 max-w-lg rounded-2xl border border-line bg-card p-4">
+      <form onSubmit={start} className="mt-4 rounded-2xl border border-line bg-card p-4">
         <label htmlFor="group-name" className="text-sm font-medium">
           Start a group trip
         </label>
@@ -184,10 +184,7 @@ export function AlertsToggle({ canEmail }: { canEmail: boolean }) {
 
   return (
     <section>
-      <h2 className="flex items-center gap-2 text-xl font-semibold">
-        <Bell className="size-5 text-accent" aria-hidden /> Trip alerts
-      </h2>
-      <label className="mt-2 flex max-w-lg cursor-pointer items-start gap-3 rounded-2xl border border-line bg-card p-4">
+      <label className="flex max-w-lg cursor-pointer items-start gap-3">
         <input
           type="checkbox"
           checked={enabled}
@@ -196,7 +193,9 @@ export function AlertsToggle({ canEmail }: { canEmail: boolean }) {
           className="mt-1 size-4 accent-[var(--accent)]"
         />
         <span>
-          <span className="font-medium">Email me about my trip</span>
+          <span className="inline-flex items-center gap-1.5 font-medium">
+            <Bell className="size-4 text-accent" aria-hidden /> Email me about my trip
+          </span>
           <span className="block text-sm text-muted">
             Once a day at most: when prices change for stops in your trip cart, or creators add new routes for your
             cities.
