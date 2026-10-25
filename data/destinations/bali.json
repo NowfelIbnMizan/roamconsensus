@@ -185,13 +185,33 @@
       "checkedAt": "2026-10-25"
     },
     {
-      "slug": "nusa-dua-beach-geger-beach-pandawa-beach",
-      "name": "Nusa Dua Beach / Geger Beach / Pandawa Beach",
+      "slug": "nusa-dua-beach",
+      "name": "Nusa Dua Beach",
       "category": "EXPERIENCE",
       "area": "Nusa Dua",
-      "blurb": "Three calm, white-sand beaches on the sheltered east side of the Bukit. Pandawa sits below carved limestone cliffs; Geger is the quiet local favourite.",
+      "blurb": "Calm, white-sand resort beach on the sheltered east side of the Bukit, with a paved promenade.",
       "lat": -8.7953,
       "lng": 115.2335,
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "geger-beach",
+      "name": "Geger Beach",
+      "category": "EXPERIENCE",
+      "area": "Nusa Dua",
+      "blurb": "Quiet local favourite at the south end of Nusa Dua, with seaweed farms at low tide.",
+      "lat": -8.8183,
+      "lng": 115.2289,
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "pandawa-beach",
+      "name": "Pandawa Beach",
+      "category": "EXPERIENCE",
+      "area": "Kutuh",
+      "blurb": "White-sand beach below carved limestone cliffs, reached by a road cut through the rock.",
+      "lat": -8.8456,
+      "lng": 115.1869,
       "checkedAt": "2026-10-25"
     },
     {
@@ -365,24 +385,47 @@
       "lng": 115.31722
     },
     {
-      "slug": "no-mas-bar-cp-lounge",
-      "name": "No Mas Bar / CP Lounge",
+      "slug": "no-mas",
+      "name": "No Más",
       "category": "FOOD",
       "area": "Ubud",
-      "blurb": "Ubud's low-key nightlife pair: cocktails at No Más and late-night drinks and live music at CP Lounge.",
-      "lat": -8.513,
-      "lng": 115.261,
-      "website": "https://bisma-eight.com/",
+      "blurb": "Loud, late cocktail bar just off Jalan Monkey Forest.",
+      "lat": -8.513955,
+      "lng": 115.260546,
+      "website": "http://www.nomasubud.com/",
       "checkedAt": "2026-10-25"
     },
     {
-      "slug": "ubud-yoga",
-      "name": "Ubud Yoga (Radiantly Alive / Ubud Yoga House)",
+      "slug": "cp-lounge",
+      "name": "CP Lounge",
+      "category": "FOOD",
+      "area": "Ubud",
+      "blurb": "Late-night bar and club on Jalan Monkey Forest with live music, open until 3am.",
+      "lat": -8.510774,
+      "lng": 115.261539,
+      "website": "http://cp-lounge.com/",
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "radiantly-alive",
+      "name": "Radiantly Alive",
       "category": "EXPERIENCE",
       "area": "Ubud",
-      "blurb": "Drop-in classes at Ubud's best-known studios, Radiantly Alive and Ubud Yoga House, from beginner flows to aerial. Part of why Ubud became Bali's wellness capital.",
+      "blurb": "Big open-air yoga studio on Jalan Jembawan in central Ubud, with drop-in classes from beginner flows to aerial.",
       "lat": -8.511,
       "lng": 115.264,
+      "checkedAt": "2026-10-25",
+      "website": "https://www.radiantlyalive.com/"
+    },
+    {
+      "slug": "ubud-yoga-house",
+      "name": "Ubud Yoga House",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Small studio in the rice fields of Subak Sokwayah, a 10-minute walk from Jalan Raya.",
+      "lat": -8.4995,
+      "lng": 115.2585,
+      "website": "http://ubudyogahouse.com/",
       "checkedAt": "2026-10-25"
     },
     {
@@ -1343,13 +1386,29 @@
         },
         {
           "day": 1,
-          "name": "Nusa Dua Beach / Geger Beach / Pandawa Beach",
+          "name": "Nusa Dua Beach",
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Guaranteed beach time with reserved hotel cabanas or space on the sand for non-guests.",
-          "place": "nusa-dua-beach-geger-beach-pandawa-beach",
+          "place": "nusa-dua-beach",
+          "price": 0,
+          "priceNote": "Free public beach"
+        },
+        {
+          "day": 1,
+          "name": "Geger Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "place": "geger-beach"
+        },
+        {
+          "day": 1,
+          "name": "Pandawa Beach",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "place": "pandawa-beach",
           "price": 1.56,
-          "priceNote": "Pandawa entry; Nusa Dua free, Geger ~IDR 5k",
+          "priceNote": "entry",
           "priceSource": "https://inivie.com/discover-bali/pantai-pandawa-bali"
         },
         {
@@ -1541,24 +1600,41 @@
         },
         {
           "day": 4,
-          "name": "No Mas Bar / CP Lounge",
+          "name": "No Más",
           "category": "FOOD",
           "sentiment": "RECOMMENDED",
           "note": "Vibrant nightlife spots for grabbing drinks, dancing to live music, and mingling.",
-          "place": "no-mas-bar-cp-lounge",
+          "place": "no-mas",
           "price": 10.94,
           "priceNote": "per cocktail at No Más",
           "priceSource": "https://whatsnewindonesia.com/bali/ultimate-guide/party-guide-ubud"
         },
         {
+          "day": 4,
+          "name": "CP Lounge",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "place": "cp-lounge"
+        },
+        {
           "day": 6,
-          "name": "Ubud Yoga (Radiantly Alive / Ubud Yoga House)",
+          "name": "Radiantly Alive",
           "category": "EXPERIENCE",
           "sentiment": "RECOMMENDED",
           "note": "Take a class in open-air studios with natural lighting and views of rice terraces.",
-          "place": "ubud-yoga",
+          "place": "radiantly-alive",
           "price": 9.38,
-          "priceNote": "drop-in class, Ubud Yoga House",
+          "priceNote": "Rp 150k drop-in class",
+          "priceSource": "https://www.neverendingvoyage.com/yoga-ubud-bali/"
+        },
+        {
+          "day": 6,
+          "name": "Ubud Yoga House",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "place": "ubud-yoga-house",
+          "price": 9.38,
+          "priceNote": "Rp 150k drop-in class",
           "priceSource": "https://www.neverendingvoyage.com/yoga-ubud-bali/"
         },
         {
@@ -1943,10 +2019,9 @@
           "name": "Nusa Dua Beach",
           "category": "EXPERIENCE",
           "note": "Security checks at the resort gate.",
-          "place": "nusa-dua-beach-geger-beach-pandawa-beach",
-          "price": 1.56,
-          "priceNote": "Pandawa entry; Nusa Dua free, Geger ~IDR 5k",
-          "priceSource": "https://inivie.com/discover-bali/pantai-pandawa-bali"
+          "place": "nusa-dua-beach",
+          "price": 0,
+          "priceNote": "Free public beach"
         },
         {
           "day": 4,
