@@ -731,7 +731,9 @@
           "name": "Insadong",
           "category": "FOOD",
           "note": "Dinner",
-          "place": "insadong"
+          "place": "insadong",
+          "price": 0,
+          "priceNote": "free to walk around; tea houses extra"
         },
         {
           "day": 2,
@@ -754,7 +756,10 @@
           "name": "Gwangjang Market",
           "category": "FOOD",
           "note": "Try the live octopus",
-          "place": "gwangjang-market"
+          "place": "gwangjang-market",
+          "price": 3.57,
+          "priceNote": "KRW 5,000, mung bean pancake",
+          "priceSource": "https://www.seoultourism.org/gwangjang-market-food-guide/"
         },
         {
           "day": 3,
@@ -980,7 +985,10 @@
           "name": "Gwangjang Market",
           "category": "FOOD",
           "note": "Guided street food tour; often cash-only",
-          "place": "gwangjang-market"
+          "place": "gwangjang-market",
+          "price": 3.57,
+          "priceNote": "KRW 5,000, mung bean pancake",
+          "priceSource": "https://www.seoultourism.org/gwangjang-market-food-guide/"
         },
         {
           "day": 2,
@@ -1133,7 +1141,10 @@
           "name": "Lotte World Adventure",
           "category": "EXPERIENCE",
           "note": "Rides, parades, folk museum; try tanghulu",
-          "place": "lotte-world-adventure"
+          "place": "lotte-world-adventure",
+          "price": 37.14,
+          "priceNote": "KRW 52,000 per adult, 1 day",
+          "priceSource": "https://thisiskoreatours.com/project/lotte-world/"
         },
         {
           "day": 6,

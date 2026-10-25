@@ -1011,14 +1011,20 @@
           "day": 1,
           "name": "Ichiran Ramen Dotonbori",
           "category": "FOOD",
-          "place": "ichiran-ramen-dotonbori"
+          "place": "ichiran-ramen-dotonbori",
+          "price": 8.76,
+          "priceNote": "about CAD 12 a bowl",
+          "priceSource": "https://www.shermansfoodadventures.com/2025/12/ichiran-ramen-dotonbori-south.html"
         },
         {
           "day": 1,
           "name": "Tonbori River Cruise",
           "category": "EXPERIENCE",
           "note": "Would recommend doing this closer to the evening to see all the lights!",
-          "place": "tonbori-river-cruise"
+          "place": "tonbori-river-cruise",
+          "price": 12.66,
+          "priceNote": "JPY 2,000 per adult",
+          "priceSource": "https://osaka-info.jp/en/spot/tombori-river-cruise/"
         },
         {
           "day": 1,
@@ -1073,7 +1079,10 @@
           "name": "Universal Studios Japan",
           "category": "EXPERIENCE",
           "note": "This requires separate tickets but does not cost more! Head here first to reserve your time!",
-          "place": "universal-studios-japan"
+          "place": "universal-studios-japan",
+          "price": 54.43,
+          "priceNote": "1-day Studio Pass, from JPY 8,600 (date-dependent)",
+          "priceSource": "https://japlanease.com/universal-studios-japan-tickets-explained-simply/"
         },
         {
           "day": 3,
@@ -1088,13 +1097,19 @@
           "day": 4,
           "name": "Tsutenkaku Tower",
           "category": "EXPERIENCE",
-          "place": "tsutenkaku-tower"
+          "place": "tsutenkaku-tower",
+          "price": 7.59,
+          "priceNote": "JPY 1,200 per adult, main deck",
+          "priceSource": "https://www.japantowers.jp/en/tsutenkaku_tower/"
         },
         {
           "day": 4,
           "name": "Kushikatsu Daruma",
           "category": "FOOD",
-          "place": "kushikatsu-daruma"
+          "place": "kushikatsu-daruma",
+          "price": 12.66,
+          "priceNote": "about JPY 1,500-2,500 per person",
+          "priceSource": "https://www.gltjp.com/en/directory/item/11883"
         },
         {
           "day": 4,
@@ -1114,7 +1129,10 @@
           "day": 4,
           "name": "Tennoji Zoo",
           "category": "EXPERIENCE",
-          "place": "tennoji-zoo"
+          "place": "tennoji-zoo",
+          "price": 3.16,
+          "priceNote": "JPY 500 per adult",
+          "priceSource": "https://www.tennojizoo.jp/en/"
         },
         {
           "day": 4,
@@ -1132,7 +1150,10 @@
           "day": 5,
           "name": "Umeda Sky Building",
           "category": "EXPERIENCE",
-          "place": "umeda-sky-building"
+          "place": "umeda-sky-building",
+          "price": 12.66,
+          "priceNote": "JPY 2,000 per adult",
+          "priceSource": "https://enjoy-osaka-kyoto-kobe.com/?p=16145"
         },
         {
           "day": 5,
@@ -1176,7 +1197,10 @@
           "name": "Universal Studios Japan",
           "category": "EXPERIENCE",
           "note": "If you love Super Mario, then you must visit.",
-          "place": "universal-studios-japan"
+          "place": "universal-studios-japan",
+          "price": 54.43,
+          "priceNote": "1-day Studio Pass, from JPY 8,600 (date-dependent)",
+          "priceSource": "https://japlanease.com/universal-studios-japan-tickets-explained-simply/"
         },
         {
           "day": 2,
@@ -1192,7 +1216,9 @@
           "name": "Nunobiki Herb Gardens",
           "category": "EXPERIENCE",
           "place": "nunobiki-herb-gardens",
-          "priceNote": "creator: you pay one price"
+          "priceNote": "JPY 2,500 ropeway round trip plus gardens",
+          "price": 15.82,
+          "priceSource": "https://www.kobeherb.com/en/hours-of-operation-and-fares/"
         },
         {
           "day": 4,

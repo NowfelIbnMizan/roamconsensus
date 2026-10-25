@@ -1133,7 +1133,10 @@
           "name": "Cafe Giang",
           "category": "FOOD",
           "note": "The original egg coffee",
-          "place": "cafe-giang"
+          "place": "cafe-giang",
+          "price": 2.12,
+          "priceNote": "VND 50,000-60,000, egg coffee",
+          "priceSource": "https://jackfruitadventure.com/try-the-5-best-egg-coffee-in-hanoi/"
         },
         {
           "day": 1,
@@ -1176,14 +1179,20 @@
           "name": "Ha Long Bay",
           "category": "EXPERIENCE",
           "note": "Set aside a full day",
-          "place": "ha-long-bay"
+          "place": "ha-long-bay",
+          "price": 65,
+          "priceNote": "day cruise from USD 65 per person; Hanoi transfer extra",
+          "priceSource": "https://www.indochinatour.com/vietnam-guide/halong-bay-cruise-price.html"
         },
         {
           "day": 3,
           "name": "Trang An",
           "category": "EXPERIENCE",
           "note": "All-day tour with a bamboo boat ride and biking",
-          "place": "ninh-binh"
+          "place": "ninh-binh",
+          "price": 9.62,
+          "priceNote": "VND 250,000 per adult, boat trip",
+          "priceSource": "https://vietnamdrive.com/ticket-prices-to-visit-attractions-at-trang-an-landscape-complex-in-ninh-binh"
         },
         {
           "day": 4,
@@ -1199,7 +1208,10 @@
           "name": "Bun Cha Huong Lien",
           "category": "FOOD",
           "note": "The Obama/Bourdain spot; still great",
-          "place": "bun-cha-huong-lien"
+          "place": "bun-cha-huong-lien",
+          "price": 3.85,
+          "priceNote": "Obama combo, about VND 100,000",
+          "priceSource": "https://www.vietnamtourism.com/en/where-did-obama-and-bourdain-eat-in-vietnam-the-complete-guide-to-every-restaurant-they-visited"
         },
         {
           "day": 4,

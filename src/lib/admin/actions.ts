@@ -20,6 +20,9 @@ import type {
 } from "@/generated/prisma/enums";
 import { findPhoto } from "@/lib/photos";
 import { placePhotoKey, placeQuery } from "@/lib/place";
+import { ImportData } from "@/lib/content-schema";
+import { checkContent } from "@/lib/content-check";
+import { loadItinerary } from "@/lib/content-load";
 
 // Form helpers: blank inputs become null so clearing a field clears it in the database.
 const text = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
@@ -633,4 +636,174 @@ export async function deletePost(fd: FormData) {
   const row = await db.post.delete({ where: { id: text(fd, "id") } });
   published(["/blog", `/blog/${row.slug}`]);
   redirect("/admin/blog");
+}
+
+// Import: paste itineraries in the data/ format (see data/README.md), check them, then add them.
+
+export type ImportResult = {
+  problems: string[];
+  warnings: string[];
+  summary: string;
+  /** Links to the itineraries just added; empty after a check. */
+  added: { title: string; href: string }[];
+} | null;
+
+export async function importItineraries(
+  _: ImportResult,
+  fd: FormData,
+): Promise<ImportResult> {
+  await requireAdmin();
+  const destinationId = text(fd, "destinationId");
+  const save = text(fd, "mode") === "import";
+  const fail = (problem: string) => ({
+    problems: [problem],
+    warnings: [],
+    summary: "",
+    added: [],
+  });
+
+  let raw: unknown;
+  try {
+    raw = JSON.parse(text(fd, "json"));
+  } catch (e) {
+    return fail(`That isn't valid JSON: ${e instanceof Error ? e.message : e}`);
+  }
+  // One itinerary on its own is fine too.
+  if (raw && typeof raw === "object" && "items" in raw)
+    raw = { itineraries: [raw] };
+  const parsed = ImportData.safeParse(raw);
+  if (!parsed.success)
+    return {
+      problems: parsed.error.issues
+        .slice(0, 20)
+        .map((i) => `${i.path.join(".") || "file"}: ${i.message}`),
+      warnings: [],
+      summary: "",
+      added: [],
+    };
+  const { places, creators, itineraries } = parsed.data;
+
+  const dest = await db.destination.findUniqueOrThrow({
+    where: { id: destinationId },
+    include: { places: true },
+  });
+  const [dbCreators, vendors, taken] = await Promise.all([
+    db.creator.findMany({ select: { id: true, handle: true } }),
+    db.vendor.findMany({ select: { id: true, slug: true } }),
+    db.itinerary.findMany({
+      where: { slug: { in: itineraries.map((it) => it.slug) } },
+      select: { slug: true },
+    }),
+  ]);
+
+  const problems: string[] = [];
+  const dbPlaces = new Map(dest.places.map((p) => [p.slug, p]));
+  const dbPlaceNames = new Map(
+    dest.places.map((p) => [p.name.trim().toLowerCase(), p.slug]),
+  );
+  const newPlaces = places.filter((p) => !dbPlaces.has(p.slug));
+  for (const p of newPlaces) {
+    const same = dbPlaceNames.get(p.name.trim().toLowerCase());
+    if (same)
+      problems.push(
+        `Place "${p.name}" already exists as "${same}"; point the items at that slug instead.`,
+      );
+  }
+  const creatorHandles = new Set([
+    ...dbCreators.map((c) => c.handle),
+    ...creators.map((c) => c.handle),
+  ]);
+  const vendorSlugs = new Set(vendors.map((v) => v.slug));
+  const placeSlugs = new Set([
+    ...dbPlaces.keys(),
+    ...newPlaces.map((p) => p.slug),
+  ]);
+  for (const t of taken)
+    problems.push(
+      `An itinerary called "${t.slug}" already exists; give this one another slug.`,
+    );
+  for (const it of itineraries) {
+    if (!creatorHandles.has(it.creator))
+      problems.push(
+        `${it.slug}: creator "${it.creator}" is new; add them under "creators" (or on the Creators page).`,
+      );
+    for (const i of it.items) {
+      if (i.place && !placeSlugs.has(i.place))
+        problems.push(
+          `${it.slug} "${i.name}": place "${i.place}" isn't in ${dest.name}; add it under "places".`,
+        );
+      if (i.vendor && !vendorSlugs.has(i.vendor))
+        problems.push(
+          `${it.slug} "${i.name}": unknown booking site "${i.vendor}".`,
+        );
+      if ((i.ourUrl || i.creatorUrl) && !i.vendor)
+        problems.push(`${it.slug} "${i.name}": booking links need a "vendor".`);
+    }
+  }
+
+  // The same checks as `npm run check:data`, on the new itineraries and the places they use.
+  const used = new Set(
+    itineraries.flatMap((it) =>
+      it.items.flatMap((i) => (i.place ? [i.place] : [])),
+    ),
+  );
+  const quality = checkContent(
+    {
+      slug: dest.slug,
+      places: [
+        ...newPlaces,
+        ...dest.places
+          .filter((p) => used.has(p.slug))
+          .map((p) => ({
+            ...p,
+            lat: p.lat ?? undefined,
+            lng: p.lng ?? undefined,
+            website: p.website ?? undefined,
+          })),
+      ],
+      itineraries,
+    },
+    { unusedPlaces: false },
+  );
+  problems.push(...quality.problems);
+
+  const stops = itineraries.reduce((n, it) => n + it.items.length, 0);
+  const summary =
+    `${itineraries.length} itinerar${itineraries.length === 1 ? "y" : "ies"} with ${stops} stops` +
+    `, ${newPlaces.length} new place${newPlaces.length === 1 ? "" : "s"}` +
+    `, ${creators.filter((c) => !dbCreators.some((d) => d.handle === c.handle)).length} new creator(s).`;
+  if (!save || problems.length)
+    return { problems, warnings: quality.warnings, summary, added: [] };
+
+  const placeIds = new Map(dest.places.map((p) => [p.slug, p.id]));
+  for (const p of newPlaces)
+    placeIds.set(
+      p.slug,
+      (await db.place.create({ data: { ...p, destinationId: dest.id } })).id,
+    );
+  const creatorIds = new Map(dbCreators.map((c) => [c.handle, c.id]));
+  for (const c of creators)
+    if (!creatorIds.has(c.handle))
+      creatorIds.set(c.handle, (await db.creator.create({ data: c })).id);
+  const vendorIds = new Map(vendors.map((v) => [v.slug, v.id]));
+  for (const it of itineraries)
+    await loadItinerary(db, it, dest.id, creatorIds, placeIds, vendorIds);
+  // So a later deploy with the same itinerary in data/ doesn't add it twice.
+  await db.seedLog.createMany({
+    data: itineraries.map((it) => ({ key: `itinerary:${it.slug}` })),
+    skipDuplicates: true,
+  });
+  published([
+    ...itineraries.map((it) => `/itineraries/${it.slug}`),
+    ...(await destinationChanged(dest.id)),
+  ]);
+  return {
+    problems: [],
+    warnings: quality.warnings,
+    summary: `Added ${summary}`,
+    added: itineraries.map((it) => ({
+      title: it.title,
+      href: `/itineraries/${it.slug}`,
+    })),
+  };
 }

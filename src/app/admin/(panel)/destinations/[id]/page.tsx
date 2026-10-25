@@ -12,6 +12,7 @@ import {
   saveTip,
 } from "@/lib/admin/actions";
 import { monthNames } from "@/lib/seasons";
+import { ImportBox } from "./import-box";
 import { categoryLabel, tierLabel } from "@/lib/format";
 import { categoryOptions, tierOptions } from "../../../options";
 import {
@@ -183,6 +184,13 @@ export default async function DestinationAdmin({
             </div>
           </form>
         )}
+      </details>
+
+      <details className="mt-3 rounded-2xl border border-line bg-card p-4">
+        <summary className="cursor-pointer font-medium">
+          Import itineraries (paste JSON)
+        </summary>
+        <ImportBox destinationId={d.id} />
       </details>
 
       <h2 className="mt-10 text-xl font-semibold">Best time to go</h2>
