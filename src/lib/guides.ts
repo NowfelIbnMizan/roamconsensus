@@ -97,11 +97,11 @@ export const guides = {
   "city-esim": [
     {
       lead: "Mobile data on arrival",
-      text: "Compare eSIM plans for the country. Sort by price or filter by provider.",
+      text: "Pick your trip length and how much you use your phone. You get the cheapest plan, the best value and an unlimited option.",
     },
     {
-      lead: "How much data?",
-      text: "The estimator turns your daily phone use into gigabytes.",
+      lead: "Want to compare?",
+      text: "Open the full list to see every plan that fits.",
     },
     {
       lead: "Check your phone first",
