@@ -32,3 +32,6 @@ UPDATE "Item" SET "priceCents" = 1339, "priceNote" = '฿450 distillery visit', 
 UPDATE "Item" SET "priceCents" = 789, "priceNote" = 'mains ฿120–390', "priceSourceUrl" = 'https://www.phuket101.net/th/one-chun-th/', "priceCheckedAt" = '2026-10-25' WHERE "id" = 'phuket-10-days-luxury-foratravel--one-chun-cafe-restaurant' AND "priceCents" IS NULL;
 -- Checked: no source publishes a price for these.
 UPDATE "Item" SET "priceCheckedAt" = '2026-10-25' WHERE "priceCents" IS NULL AND "id" IN ('phuket-3-days-luxury-foratravel--cafe-del-mar-phuket', 'phuket-10-days-luxury-foratravel--koh-panyee');
+
+-- Second pass on places the first pass could not confirm.
+UPDATE "Place" p SET "checkedAt" = '2026-10-25' FROM "Destination" d WHERE d.id = p."destinationId" AND d.slug = 'phuket' AND p.slug IN ('bamboo-island', 'bang-pae-waterfall', 'bangla-road', 'golden-dragon-monument', 'promthep-cape', 'wat-chalong', 'banzaan-market');

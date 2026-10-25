@@ -279,7 +279,8 @@
       "area": "Chalong",
       "blurb": "Phuket's most important Buddhist temple.",
       "lat": 7.8467,
-      "lng": 98.3366
+      "lng": 98.3366,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "big-buddha-phuket",
@@ -328,7 +329,8 @@
       "area": "Rawai",
       "blurb": "Southernmost headland, famous for sunset.",
       "lat": 7.7623,
-      "lng": 98.3054
+      "lng": 98.3054,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "phang-nga-bay",
@@ -410,7 +412,8 @@
       "area": "Phi Phi",
       "blurb": "Small white-sand island north of Phi Phi Don.",
       "lat": 7.824,
-      "lng": 98.763
+      "lng": 98.763,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "rang-yai-island",
@@ -439,7 +442,8 @@
       "area": "Phuket Town",
       "blurb": "Dragon monument in a small park in Phuket Town.",
       "lat": 7.8869,
-      "lng": 98.394
+      "lng": 98.394,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kata-noi-beach",
@@ -468,7 +472,8 @@
       "area": "Thalang",
       "blurb": "Jungle waterfall in Khao Phra Thaeo wildlife sanctuary.",
       "lat": 8.04,
-      "lng": 98.399
+      "lng": 98.399,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sirinat-national-park",
@@ -497,7 +502,8 @@
       "area": "Patong",
       "blurb": "Fresh market with a food court.",
       "lat": 7.8945,
-      "lng": 98.299
+      "lng": 98.299,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "paradise-beach-phuket",
@@ -516,7 +522,8 @@
       "area": "Patong",
       "blurb": "Pedestrian nightlife strip.",
       "lat": 7.8935,
-      "lng": 98.2965
+      "lng": 98.2965,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "freedom-beach",
