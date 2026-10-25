@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin } from "lucide-react";
+import { AddItemButton } from "@/components/add-to-cart";
 import { AgreePill } from "@/components/agree-pill";
 import { Money } from "@/components/money";
 import { Photo } from "@/components/photo";
@@ -13,20 +14,33 @@ import type { ItemCategory } from "@/generated/prisma/enums";
 
 type Props = PageProps<"/destinations/[slug]/best">;
 type Destination = NonNullable<Awaited<ReturnType<typeof getDestination>>>;
+type Place = Destination["consensus"][number];
 
 // Ranked lists people search for, each with how many entries to show.
 const SECTIONS: {
   category: ItemCategory;
+  short: string;
   heading: (name: string) => string;
   limit: number;
 }[] = [
   {
     category: "EXPERIENCE",
+    short: "Things to do",
     heading: (n) => `Best things to do in ${n}`,
     limit: 15,
   },
-  { category: "FOOD", heading: (n) => `Where to eat in ${n}`, limit: 10 },
-  { category: "STAY", heading: (n) => `Where to stay in ${n}`, limit: 8 },
+  {
+    category: "FOOD",
+    short: "Eat",
+    heading: (n) => `Where to eat in ${n}`,
+    limit: 10,
+  },
+  {
+    category: "STAY",
+    short: "Stay",
+    heading: (n) => `Where to stay in ${n}`,
+    limit: 8,
+  },
 ];
 
 /** Recommended (never "skip it") places of one category, most creators first. */
@@ -34,6 +48,77 @@ function ranked(d: Destination, category: ItemCategory, limit: number) {
   return d.consensus
     .filter((p) => p.category === category && p.creators.length > 0)
     .slice(0, limit);
+}
+
+function PlacePhoto({
+  d,
+  p,
+  sizes,
+  className,
+}: {
+  d: Destination;
+  p: Place;
+  sizes: string;
+  className: string;
+}) {
+  return (
+    <Photo
+      photoKey={placePhotoKey(d.slug, p)}
+      query={placeQuery(p.name, d.name)}
+      category={p.category}
+      website={p.website}
+      alt={p.name}
+      sizes={sizes}
+      credit={false}
+      className={className}
+    />
+  );
+}
+
+/** Rank, name and the add-to-trip button, shared by the big and small cards. */
+function PickTitle({ d, p, n }: { d: Destination; p: Place; n: number }) {
+  return (
+    <div className="flex items-start justify-between gap-2">
+      <h4 className="font-semibold leading-snug">
+        <span className="mr-1.5 text-accent">{n}.</span>
+        <Link
+          href={placeHref(d.slug, p.slug)}
+          className="hover:text-accent hover:underline"
+        >
+          {p.name}
+        </Link>
+      </h4>
+      {p.cartItem && <AddItemButton item={p.cartItem} />}
+    </div>
+  );
+}
+
+function PickMeta({ p }: { p: Place }) {
+  return (
+    <p className="flex flex-wrap items-center gap-x-2 text-xs text-muted">
+      {p.area && (
+        <span className="inline-flex items-center gap-0.5">
+          <MapPin className="size-3" aria-hidden /> {p.area}
+        </span>
+      )}
+      {p.fromPrice && (
+        <span>
+          {p.fromPrice.cents === 0 ? (
+            "Free"
+          ) : (
+            <>
+              from{" "}
+              <Money
+                cents={p.fromPrice.cents}
+                currency={p.fromPrice.currency}
+              />
+              {p.fromPrice.unit && `/${p.fromPrice.unit}`}
+            </>
+          )}
+        </span>
+      )}
+    </p>
+  );
 }
 
 export async function generateStaticParams() {
@@ -85,36 +170,39 @@ export default async function BestPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-        The best of {d.name}, according to {who}
-      </h2>
-      <p className="mt-2 max-w-2xl text-muted">
-        We read {d.routes.length} {d.name} itineraries and counted which places
-        come up again and again. Higher on the list means more creators
-        recommend it.
-      </p>
-      <a
-        href={`https://www.pinterest.com/pin/create/button/?${new URLSearchParams(
-          {
-            url: `${siteUrl()}/destinations/${d.slug}/best`,
-            media: `${siteUrl()}/destinations/${d.slug}/pin`,
-            description: `The best things to do in ${d.name}, according to ${who}`,
-          },
-        )}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#e60023] px-4 py-1.5 text-sm font-medium text-white"
-      >
-        Save to Pinterest
-      </a>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            The best of {d.name}, according to {who}
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-muted">
+            Ranked by how many of {d.routes.length} {d.name} itineraries
+            recommend each spot.
+          </p>
+        </div>
+        <a
+          href={`https://www.pinterest.com/pin/create/button/?${new URLSearchParams(
+            {
+              url: `${siteUrl()}/destinations/${d.slug}/best`,
+              media: `${siteUrl()}/destinations/${d.slug}/pin`,
+              description: `The best things to do in ${d.name}, according to ${who}`,
+            },
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full bg-[#e60023] px-4 py-1.5 text-sm font-medium text-white"
+        >
+          Save to Pinterest
+        </a>
+      </div>
       <nav className="mt-4 flex flex-wrap gap-2 text-sm" aria-label="Sections">
         {sections.map((s) => (
           <a
             key={s.category}
             href={`#${s.category.toLowerCase()}`}
-            className="rounded-full border border-line px-3 py-1 hover:border-accent"
+            className="rounded-full border border-line bg-card px-3 py-1 hover:border-accent"
           >
-            {s.heading(d.name)}
+            {s.short} · {s.places.length}
           </a>
         ))}
       </nav>
@@ -126,68 +214,53 @@ export default async function BestPage({ params }: Props) {
           className="mt-10 scroll-mt-6"
         >
           <h3 className="text-xl font-semibold">{s.heading(d.name)}</h3>
-          <ol className="mt-4 space-y-4">
-            {s.places.map((p, i) => (
+          {/* The top three get big photo cards; the rest stay short. */}
+          <ol className="mt-4 grid gap-3 md:grid-cols-3">
+            {s.places.slice(0, 3).map((p, i) => (
               <li
                 key={p.slug}
-                className="cv-row flex gap-3 rounded-2xl border border-line bg-card p-4 sm:gap-4"
+                className="overflow-hidden rounded-2xl border border-line bg-card"
               >
-                <Photo
-                  photoKey={placePhotoKey(d.slug, p)}
-                  query={placeQuery(p.name, d.name)}
-                  category={p.category}
-                  website={p.website}
-                  alt={p.name}
-                  sizes="192px"
-                  credit={false}
-                  className="size-20 shrink-0 rounded-xl sm:size-28"
+                <PlacePhoto
+                  d={d}
+                  p={p}
+                  sizes="(min-width: 768px) 420px, 100vw"
+                  className="aspect-[4/3] w-full"
                 />
-                <div className="min-w-0 flex-1">
-                  <h4 className="font-semibold leading-snug">
-                    <span className="mr-1.5 text-accent">{i + 1}.</span>
-                    <Link
-                      href={placeHref(d.slug, p.slug)}
-                      className="hover:text-accent hover:underline"
-                    >
-                      {p.name}
-                    </Link>
-                  </h4>
-                  <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-xs text-muted">
-                    {p.area && (
-                      <span className="inline-flex items-center gap-0.5">
-                        <MapPin className="size-3" aria-hidden /> {p.area}
-                      </span>
-                    )}
-                    {p.fromPrice && (
-                      <span>
-                        {p.fromPrice.cents === 0 ? (
-                          "Free"
-                        ) : (
-                          <>
-                            from{" "}
-                            <Money
-                              cents={p.fromPrice.cents}
-                              currency={p.fromPrice.currency}
-                            />
-                            {p.fromPrice.unit && `/${p.fromPrice.unit}`}
-                          </>
-                        )}
-                      </span>
-                    )}
-                  </p>
-                  {p.blurb && <p className="mt-1.5 text-sm">{p.blurb}</p>}
-                  {p.tip && (
-                    <p className="mt-1 text-sm text-muted">Tip: {p.tip}</p>
-                  )}
-                  <AgreePill
-                    className="mt-2"
-                    creators={p.creators}
-                    total={d.creatorCount}
-                  />
+                <div className="space-y-1.5 p-4">
+                  <PickTitle d={d} p={p} n={i + 1} />
+                  <PickMeta p={p} />
+                  {p.blurb && <p className="line-clamp-3 text-sm">{p.blurb}</p>}
+                  <AgreePill creators={p.creators} total={d.creatorCount} />
                 </div>
               </li>
             ))}
           </ol>
+          {s.places.length > 3 && (
+            <ol
+              start={4}
+              className="mt-3 grid gap-x-6 gap-y-1 rounded-2xl border border-line bg-card p-2 md:grid-cols-2"
+            >
+              {s.places.slice(3).map((p, i) => (
+                <li
+                  key={p.slug}
+                  className="cv-row flex min-w-0 items-center gap-3 rounded-xl p-2"
+                >
+                  <PlacePhoto
+                    d={d}
+                    p={p}
+                    sizes="112px"
+                    className="size-14 shrink-0 rounded-lg"
+                  />
+                  <div className="min-w-0 flex-1 space-y-0.5">
+                    <PickTitle d={d} p={p} n={i + 4} />
+                    <PickMeta p={p} />
+                    <AgreePill creators={p.creators} total={d.creatorCount} />
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
         </section>
       ))}
 
