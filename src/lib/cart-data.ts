@@ -47,10 +47,18 @@ export async function readCartBody(
   }
 }
 
-/** One line for a saved trip: its cities and stop count. */
+/** A saved trip's card: its cities, stop and day counts, and a cover from the first stop with a photo. */
 export function describeTrip(data: CartData) {
   const cities = [...new Set(data.items.map((i) => i.destination?.name).filter(Boolean))] as string[];
-  return { stops: data.items.length, cities };
+  const days = data.tripDays || Math.max(0, ...data.items.map((i) => i.day ?? 0));
+  const cover = data.items.find((i) => i.photoUrl) ?? data.items[0];
+  return {
+    stops: data.items.length,
+    cities,
+    days,
+    photoUrl: cover?.photoUrl ?? null,
+    category: cover?.category ?? "EXPERIENCE",
+  };
 }
 
 const union = (a: string[], b: string[]) => [...new Set([...a, ...b])];

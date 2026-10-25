@@ -26,10 +26,7 @@ async function AdminLink() {
 export default function MyTripsPage() {
   return (
     <>
-      <h1 className="text-3xl font-semibold tracking-tight">My trips</h1>
-      <p className="mt-2 mb-8 text-muted">
-        Your trip cart on every device, saved trips and places, and trips planned with friends.
-      </p>
+      <h1 className="mb-6 text-3xl font-semibold tracking-tight">My trips</h1>
       <Suspense>
         <AdminLink />
       </Suspense>
