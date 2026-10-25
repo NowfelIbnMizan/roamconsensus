@@ -746,6 +746,7 @@ export async function getCreators() {
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
   const creators = await db.creator.findMany({
+    where: { itineraries: { some: {} } },
     orderBy: { name: "asc" },
     select: {
       ...creatorLinkSelect,
@@ -788,7 +789,9 @@ export async function getSiteStats() {
   const [cities, trips, creators, places, stops] = await Promise.all([
     db.destination.count(),
     db.itinerary.count(),
+    // Only creators with a route on the site; one whose routes were all deleted shouldn't count.
     db.creator.findMany({
+      where: { itineraries: { some: {} } },
       orderBy: { name: "asc" },
       select: { handle: true, name: true, avatarUrl: true },
     }),
