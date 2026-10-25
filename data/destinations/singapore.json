@@ -1465,7 +1465,10 @@
           "name": "Marina Bay Sands",
           "category": "EXPERIENCE",
           "note": "2–3 hours; casino free for foreigners",
-          "place": "marina-bay-sands"
+          "place": "marina-bay-sands",
+          "price": 27.34,
+          "priceNote": "S$35 SkyPark Observation Deck (non-peak)",
+          "priceSource": "https://www.marinabaysands.com/attractions/sands-skypark.html"
         },
         {
           "day": 4,
