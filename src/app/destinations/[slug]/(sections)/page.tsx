@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ReadMore } from "@/components/read-more";
 import { notFound } from "next/navigation";
-import { ArrowRight, MapPin, Users } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { AgreePill } from "@/components/agree-pill";
 import { CreatorChip } from "@/components/creator";
@@ -31,6 +30,7 @@ import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { FavouriteButton } from "@/components/favourite-button";
 import { Thumb } from "@/components/thumb";
 import { ConsensusFilter } from "./consensus-filter";
+import { PlaceFlip } from "./place-flip";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 function FromPrice({
@@ -307,84 +307,91 @@ export default async function DestinationPage({
               />
             </div>
           )}
-          <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
+          <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 lg:grid-cols-4">
             {consensus.map((p) => {
+              const photo = (
+                <Photo
+                  photoKey={placePhotoKey(destination.slug, p)}
+                  query={placeQuery(p.name, destination.name)}
+                  category={p.category}
+                  website={p.website}
+                  alt={p.name}
+                  sizes="(min-width: 1024px) 240px, (min-width: 640px) 33vw, 50vw"
+                  credit={false}
+                  className="aspect-square w-full sm:aspect-[4/3]"
+                />
+              );
               return (
                 <li
                   key={p.slug}
                   data-cat={p.category}
-                  className="cv-row flex gap-3 p-4 sm:gap-4"
+                  className="cv-row flex flex-col"
+                  style={{ containIntrinsicSize: "auto 300px" }}
                 >
-                  <Photo
-                    photoKey={placePhotoKey(destination.slug, p)}
-                    query={placeQuery(p.name, destination.name)}
-                    category={p.category}
-                    website={p.website}
-                    alt={p.name}
-                    // Landscape photos cropped to a square need ~2x the box width to stay sharp.
-                    sizes="192px"
-                    credit={false}
-                    className="size-20 shrink-0 rounded-xl sm:size-24"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="font-semibold leading-snug">
-                          {hasPin(p) && (
-                            <span
-                              className="mr-1.5 inline-flex size-5 items-center justify-center rounded-full align-[1px] text-[11px] font-semibold text-white"
-                              style={{ background: categoryHex[p.category] }}
-                              title="Pin number on the map"
-                            >
-                              {rank.get(p.slug)}
-                            </span>
-                          )}
-                          <Link
-                            href={placeHref(destination.slug, p.slug)}
-                            className="hover:text-accent hover:underline"
-                          >
-                            {p.name}
-                          </Link>
-                        </p>
-                        <p className="mt-0.5 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted">
-                          {p.area && (
-                            <span className="inline-flex items-center gap-0.5 whitespace-nowrap">
-                              <MapPin className="size-3" aria-hidden /> {p.area}{" "}
-                              ·
-                            </span>
-                          )}{" "}
-                          {categoryLabel[p.category]}
-                        </p>
-                      </div>
-                      <div className="flex shrink-0 flex-col items-end gap-1.5">
-                        <div className="flex items-center gap-1.5">
-                          <FavouriteButton
-                            destination={destination.slug}
-                            place={p.slug}
-                            name={p.name}
-                          />
-                          {p.cartItem && p.skippedBy.length === 0 && (
-                            <AddItemButton item={p.cartItem} />
-                          )}
-                        </div>
-                        {p.fromPrice && (
-                          <span className="whitespace-nowrap text-xs font-medium tabular-nums">
-                            <FromPrice p={p.fromPrice} />
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    {p.blurb && <ReadMore text={p.blurb} className="mt-1.5" />}
-                    {p.tip && (
-                      <p className="mt-1 text-sm text-muted">{p.tip}</p>
+                  <div className="relative">
+                    {p.blurb || p.tip ? (
+                      <PlaceFlip
+                        name={p.name}
+                        about={
+                          <>
+                            {p.blurb && (
+                              <span className="line-clamp-6 sm:line-clamp-5">
+                                {p.blurb}
+                              </span>
+                            )}
+                            {p.tip && (
+                              <span className="mt-1.5 line-clamp-3 text-white/80">
+                                Tip: {p.tip}
+                              </span>
+                            )}
+                          </>
+                        }
+                      >
+                        {photo}
+                      </PlaceFlip>
+                    ) : (
+                      <div className="overflow-hidden rounded-2xl">{photo}</div>
                     )}
-                    <AgreePill
-                      className="mt-2"
-                      creators={p.creators}
-                      total={creatorCount}
-                      skippedBy={p.skippedBy}
-                    />
+                    {hasPin(p) && (
+                      <span
+                        className="pointer-events-none absolute top-2 left-2 z-[3] inline-flex size-6 items-center justify-center rounded-full text-xs font-semibold text-white ring-2 ring-white/80"
+                        style={{ background: categoryHex[p.category] }}
+                        title="Pin number on the map"
+                      >
+                        {rank.get(p.slug)}
+                      </span>
+                    )}
+                    <div className="absolute top-1.5 right-1.5 z-[3] flex items-center rounded-full bg-card/90 px-1 backdrop-blur">
+                      <FavouriteButton
+                        destination={destination.slug}
+                        place={p.slug}
+                        name={p.name}
+                      />
+                      {p.cartItem && p.skippedBy.length === 0 && (
+                        <AddItemButton item={p.cartItem} />
+                      )}
+                    </div>
                   </div>
+                  <p className="eyebrow mt-2.5 truncate">
+                    {p.area ?? categoryLabel[p.category]}
+                  </p>
+                  <Link
+                    href={placeHref(destination.slug, p.slug)}
+                    className="mt-0.5 font-semibold leading-snug hover:text-accent hover:underline"
+                  >
+                    {p.name}
+                  </Link>
+                  {p.fromPrice && (
+                    <p className="mt-0.5 text-sm text-muted tabular-nums">
+                      <FromPrice p={p.fromPrice} />
+                    </p>
+                  )}
+                  <AgreePill
+                    className="mt-1"
+                    creators={p.creators}
+                    total={creatorCount}
+                    skippedBy={p.skippedBy}
+                  />
                 </li>
               );
             })}
