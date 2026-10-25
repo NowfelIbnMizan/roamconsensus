@@ -13,7 +13,7 @@ import { LegHint } from "@/components/road-time";
 import { WeatherCard } from "@/components/weather-card";
 import { useMoney } from "@/components/money";
 import { categoryLabel } from "@/lib/format";
-import { cityOf } from "@/lib/trip";
+import { cityOf, tripDayToday } from "@/lib/trip";
 import { dayLegs, googleMapsRouteUrl, hasPin } from "@/lib/map";
 import type { Weather } from "@/lib/weather";
 import type { ItemCategory } from "@/generated/prisma/enums";
@@ -26,19 +26,6 @@ type RainyPick = {
   cartItem: CartItem | null;
 };
 type CityInfo = { weather: Weather | null; rainyPicks: RainyPick[] };
-
-const DAY_MS = 86_400_000;
-const localToday = () => {
-  const d = new Date();
-  return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
-};
-
-/** Which trip day today is, from the start date; null before the trip starts, after it ends, or with no date. */
-function tripDayToday(startDate: string | null, days: number) {
-  if (!startDate) return null;
-  const n = Math.floor((localToday() - Date.parse(`${startDate}T00:00:00Z`)) / DAY_MS) + 1;
-  return n >= 1 && n <= days ? n : null;
-}
 
 const directionsUrl = (p: { lat: number; lng: number }) =>
   `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;
