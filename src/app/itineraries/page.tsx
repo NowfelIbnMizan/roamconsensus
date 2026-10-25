@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageGuide } from "@/components/page-guide";
-import Link from "next/link";
 import { getQuizData } from "@/lib/data";
 import { TripFinder } from "./finder";
 
@@ -13,16 +12,9 @@ export const metadata: Metadata = {
 export default async function TripsPage() {
   const { routes } = await getQuizData();
   return (
-    <>
-      <h1 className="text-3xl font-semibold tracking-tight">Find a trip</h1>
-      <p className="mt-1 text-muted">
-        Your days, your budget.{" "}
-        <Link href="/quiz" className="underline">
-          Not sure? 3 quick questions
-        </Link>
-      </p>
-      <PageGuide id="finder" className="mt-6" />
-      <TripFinder routes={routes} />
-    </>
+    <TripFinder
+      routes={routes}
+      guide={<PageGuide id="finder" className="mt-4" />}
+    />
   );
 }
