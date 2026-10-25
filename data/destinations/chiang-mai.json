@@ -182,7 +182,9 @@
       "name": "The Wing Boutique",
       "category": "STAY",
       "area": "",
-      "blurb": "Mid-range boutique hotel."
+      "blurb": "Mid-range boutique hotel.",
+      "lat": 18.7846,
+      "lng": 98.9831
     },
     {
       "slug": "beautiful-thai-home-airbnb",
@@ -250,14 +252,18 @@
       "name": "Wat Dubphai",
       "category": "EXPERIENCE",
       "area": "Old City",
-      "blurb": "Small temple in the old city."
+      "blurb": "Small temple in the old city.",
+      "lat": 18.7905,
+      "lng": 98.9842
     },
     {
       "slug": "khao-soi-lung-prakit",
       "name": "Khao Soi Lung Prakit",
       "category": "FOOD",
       "area": "",
-      "blurb": "Khao soi noodle shop."
+      "blurb": "Khao soi noodle shop.",
+      "lat": 18.7958,
+      "lng": 99.0006
     },
     {
       "slug": "wat-suan-dok",
@@ -319,14 +325,18 @@
       "name": "Pha Chor",
       "category": "EXPERIENCE",
       "area": "Mae Wang / Doi Inthanon area",
-      "blurb": "Canyon of eroded sandstone cliffs."
+      "blurb": "Canyon of eroded sandstone cliffs.",
+      "lat": 18.4537,
+      "lng": 98.6741
     },
     {
       "slug": "mae-ya-waterfall",
       "name": "Mae Ya Waterfall",
       "category": "EXPERIENCE",
       "area": "Doi Inthanon National Park",
-      "blurb": "Tall tiered waterfall in Doi Inthanon National Park."
+      "blurb": "Tall tiered waterfall in Doi Inthanon National Park.",
+      "lat": 18.4927,
+      "lng": 98.6075
     },
     {
       "slug": "doi-inthanon-summit",
@@ -360,7 +370,9 @@
       "name": "Wachirathan Waterfall",
       "category": "EXPERIENCE",
       "area": "Doi Inthanon National Park",
-      "blurb": "Powerful roadside waterfall in Doi Inthanon National Park."
+      "blurb": "Powerful roadside waterfall in Doi Inthanon National Park.",
+      "lat": 18.5426,
+      "lng": 98.601
     },
     {
       "slug": "elephant-nature-park",
@@ -394,14 +406,18 @@
       "name": "Chiang Mai National Museum",
       "category": "EXPERIENCE",
       "area": "",
-      "blurb": "Museum of Lanna history and culture."
+      "blurb": "Museum of Lanna history and culture.",
+      "lat": 18.8114,
+      "lng": 98.9793
     },
     {
       "slug": "san-kamphaeng-road",
       "name": "San Kamphaeng Road handicraft villages",
       "category": "EXPERIENCE",
       "area": "San Kamphaeng",
-      "blurb": "Road lined with handicraft workshops and factories."
+      "blurb": "Road lined with handicraft workshops and factories.",
+      "lat": 18.7745,
+      "lng": 99.073
     },
     {
       "slug": "lanna-folklife-museum",
@@ -435,14 +451,18 @@
       "name": "Chiang Mai Women's Correctional Institution Massage",
       "category": "EXPERIENCE",
       "area": "Old City",
-      "blurb": "Massage centre run by trained inmates and ex-inmates."
+      "blurb": "Massage centre run by trained inmates and ex-inmates.",
+      "lat": 18.7908,
+      "lng": 98.9878
     },
     {
       "slug": "terracotta-garden",
       "name": "Terracotta Garden",
       "category": "EXPERIENCE",
       "area": "Riverside / Wat Ket",
-      "blurb": "Garden café filled with terracotta sculptures."
+      "blurb": "Garden café filled with terracotta sculptures.",
+      "lat": 18.7826,
+      "lng": 99.0007
     },
     {
       "slug": "chang-phueak-gate-night-market",
@@ -467,21 +487,27 @@
       "name": "Elephant Jungle Sanctuary",
       "category": "EXPERIENCE",
       "area": "",
-      "blurb": "Elephant experience operator offering half-day visits."
+      "blurb": "Elephant experience operator offering half-day visits.",
+      "lat": 18.9442,
+      "lng": 98.8597
     },
     {
       "slug": "khao-soi-khun-yai",
       "name": "Khao Soi Khun Yai",
       "category": "FOOD",
       "area": "Old City (north)",
-      "blurb": "Small open-air khao soi shop."
+      "blurb": "Small open-air khao soi shop.",
+      "lat": 18.7976,
+      "lng": 98.9846
     },
     {
       "slug": "tong-tem-toh",
       "name": "Tong Tem Toh",
       "category": "FOOD",
       "area": "Nimmanhaemin",
-      "blurb": "Northern Thai restaurant."
+      "blurb": "Northern Thai restaurant.",
+      "lat": 18.7986,
+      "lng": 98.9676
     },
     {
       "slug": "khao-kha-moo-chang-phueak",
@@ -497,35 +523,45 @@
       "name": "Kiat Ocha",
       "category": "FOOD",
       "area": "Old City",
-      "blurb": "Khao man gai shop also known for pork satay."
+      "blurb": "Khao man gai shop also known for pork satay.",
+      "lat": 18.7896,
+      "lng": 98.9892
     },
     {
       "slug": "sp-chicken",
       "name": "SP Chicken",
       "category": "FOOD",
       "area": "Old City",
-      "blurb": "Isan-style rotisserie chicken restaurant."
+      "blurb": "Isan-style rotisserie chicken restaurant.",
+      "lat": 18.7866,
+      "lng": 98.9838
     },
     {
       "slug": "khao-soi-islam",
       "name": "Khao Soi Islam",
       "category": "FOOD",
       "area": "Night Bazaar area",
-      "blurb": "Halal restaurant serving khao soi and biryani."
+      "blurb": "Halal restaurant serving khao soi and biryani.",
+      "lat": 18.7881,
+      "lng": 99.0003
     },
     {
       "slug": "huen-phen",
       "name": "Huen Phen",
       "category": "FOOD",
       "area": "Old City",
-      "blurb": "Northern Thai restaurant."
+      "blurb": "Northern Thai restaurant.",
+      "lat": 18.7843,
+      "lng": 98.9857
     },
     {
       "slug": "loong-thai",
       "name": "Loong Thai",
       "category": "FOOD",
       "area": "",
-      "blurb": "Spicy curry-and-rice shop."
+      "blurb": "Spicy curry-and-rice shop.",
+      "lat": 18.8018,
+      "lng": 98.9563
     }
   ],
   "creators": [
@@ -564,7 +600,7 @@
       "slug": "chiang-mai-3-days-bucketlistly",
       "title": "Chiang Mai in 3 days: temples, Doi Inthanon and elephants",
       "summary": "Old City temples, khao soi and Doi Suthep, then a day on Doi Inthanon with waterfalls and the royal pagodas, and a day at Elephant Nature Park.",
-      "tier": "BACKPACKER",
+      "tier": "BUDGET",
       "days": 3,
       "creator": "bucketlistly",
       "sourceUrl": "https://www.bucketlistly.blog/posts/chiang-mai-3-days-backpacking-itinerary",
@@ -589,7 +625,9 @@
           "day": 1,
           "name": "Wat Chiang Man",
           "category": "EXPERIENCE",
-          "place": "wat-chiang-man"
+          "place": "wat-chiang-man",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
@@ -629,7 +667,9 @@
           "day": 1,
           "name": "Wat Pha Lat",
           "category": "EXPERIENCE",
-          "place": "wat-pha-lat"
+          "place": "wat-pha-lat",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
@@ -651,7 +691,9 @@
           "day": 1,
           "name": "North Gate Jazz Co-Op",
           "category": "EXPERIENCE",
-          "place": "north-gate-jazz-co-op"
+          "place": "north-gate-jazz-co-op",
+          "price": 0,
+          "priceNote": "free entry, drinks extra"
         },
         {
           "day": 2,
@@ -890,7 +932,9 @@
           "day": 1,
           "name": "Wat Dubphai",
           "category": "EXPERIENCE",
-          "place": "wat-dubphai"
+          "place": "wat-dubphai",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
@@ -919,7 +963,9 @@
           "name": "Bua Tong Sticky Waterfalls",
           "category": "EXPERIENCE",
           "note": "Be sure to bring your swimsuit!",
-          "place": "bua-tong-sticky-waterfall"
+          "place": "bua-tong-sticky-waterfall",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 3,
@@ -999,7 +1045,10 @@
           "name": "Loong Thai",
           "category": "FOOD",
           "note": "Incredibly spicy",
-          "place": "loong-thai"
+          "place": "loong-thai",
+          "price": 1.19,
+          "priceNote": "about THB 40 per plate",
+          "priceSource": "https://www.eatingthaifood.com/restaurants/loong-thai-curry-chiang-mai/"
         }
       ]
     }

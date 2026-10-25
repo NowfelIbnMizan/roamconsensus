@@ -23,7 +23,7 @@ import { WeatherCard } from "@/components/weather-card";
 import { getWeather } from "@/lib/weather";
 import { rainyDayPicks } from "@/lib/indoor";
 import { getEditor } from "@/lib/editor";
-import { categoryLabel, tierLabel } from "@/lib/format";
+import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
 import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
 import { TripMap, type MapStop } from "@/components/trip-map";
@@ -247,7 +247,7 @@ export default async function DestinationPage({
                   {r.editorTake}
                 </p>
               )}
-              {r.totalCents > 0 ? (
+              {r.totalCents > 0 && mostlyPriced(r) ? (
                 <>
                   <p className="mt-3 text-2xl font-semibold tabular-nums">
                     <Money cents={r.totalCents} />
@@ -266,7 +266,9 @@ export default async function DestinationPage({
                 </>
               ) : (
                 <p className="mt-3 text-sm text-muted">
-                  Creator didn&apos;t list prices
+                  {r.totalCents > 0
+                    ? `Partly priced (${r.stops - r.unpricedCount} of ${r.stops} stops)`
+                    : "Creator didn't list prices"}
                 </p>
               )}
               <p className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">

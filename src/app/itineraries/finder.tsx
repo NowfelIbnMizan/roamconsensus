@@ -13,7 +13,7 @@ import { CreatorChip } from "@/components/creator";
 import { Thumb } from "@/components/thumb";
 import { useMoney } from "@/components/money";
 import type { QuizData } from "@/lib/data";
-import { tierLabel } from "@/lib/format";
+import { mostlyPriced, tierLabel } from "@/lib/format";
 import { LENGTHS } from "@/lib/trip-lengths";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
@@ -85,18 +85,23 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
       (r) =>
         !vibes.length || vibes.some((v) => (r.vibes[v] ?? 0) >= VIBE_SHARE),
     )
-    // Routes with no prices, or unpriced hotels, can't be judged against a budget, so a budget hides them.
+    // Routes with few prices, or unpriced hotels, can't be judged against a budget, so a budget hides them.
     .filter(
       (r) =>
         maxCents === null ||
-        (r.totalCents > 0 && r.unpricedStays === 0 && r.totalCents <= maxCents),
+        (mostlyPriced(r) &&
+          r.unpricedStays === 0 &&
+          r.totalCents > 0 &&
+          r.totalCents <= maxCents),
     )
     .sort((a, b) =>
       sort === "short"
         ? a.days - b.days
         : sort === "long"
           ? b.days - a.days
-          : (a.totalCents || Infinity) - (b.totalCents || Infinity),
+          : // Partly priced routes look cheap only because their prices are missing, so they go last.
+            Number(!mostlyPriced(a)) - Number(!mostlyPriced(b)) ||
+            (a.totalCents || Infinity) - (b.totalCents || Infinity),
     );
 
   const card = (r: (typeof routes)[number]) => (
@@ -150,7 +155,7 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
         )}
         <div className="mt-auto flex items-end justify-between pt-3">
           <p>
-            {r.totalCents > 0 ? (
+            {r.totalCents > 0 && mostlyPriced(r) ? (
               <>
                 <span className="text-xl font-semibold tabular-nums">
                   {money(r.totalCents)}
@@ -162,7 +167,11 @@ export function TripFinder({ routes }: { routes: QuizData["routes"] }) {
                 </span>
               </>
             ) : (
-              <span className="text-sm text-muted">Prices not listed</span>
+              <span className="text-sm text-muted">
+                {r.totalCents > 0
+                  ? `Partly priced (${r.stops - r.unpricedCount} of ${r.stops} stops)`
+                  : "Prices not listed"}
+              </span>
             )}
           </p>
           <ArrowRight className="size-4 text-accent" aria-hidden />

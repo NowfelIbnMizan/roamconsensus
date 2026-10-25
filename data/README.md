@@ -19,6 +19,8 @@ Rules:
 
 Run `npm run db:seed` locally to check a change; mistakes (unknown vendor, place or creator) fail with a clear message.
 
+Then run `npm run check:data`: it fails on places without a map pin, duplicate places and titles that don't match the route's length, and warns about gaps worth filling (free days, few prices, missing websites, a trip style that doesn't match the hotel price).
+
 ## eSIM plans
 
 `data/esim/<country>.json` holds eSIM plans for one country (`"country"` must match the destinations' `country`), shown on each destination's eSIM tab. Each plan: `provider`, `name`, `dataGb` (null = unlimited), `days`, `price` (USD), optional `network`, `speed`, `hotspot`, `notes`, plus `url` (where to buy) and `sourceUrl` (where the price was seen). Update `checkedAt` when prices are rechecked.

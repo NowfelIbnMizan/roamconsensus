@@ -203,7 +203,9 @@
       "name": "Konjaku-So Dotonbori Garden SPA Stay",
       "category": "STAY",
       "area": "Dotonbori",
-      "blurb": "Japanese-style luxury stay with spa near Dotonbori."
+      "blurb": "Japanese-style luxury stay with spa near Dotonbori.",
+      "lat": 34.6691,
+      "lng": 135.5019
     },
     {
       "slug": "cross-hotel-osaka",
@@ -255,7 +257,9 @@
       "name": "The Original Pancake House",
       "category": "FOOD",
       "area": "",
-      "blurb": "American-style pancake restaurant."
+      "blurb": "American-style pancake restaurant.",
+      "lat": 34.7058,
+      "lng": 135.4979
     },
     {
       "slug": "osaka-aquarium-kaiyukan",
@@ -390,7 +394,9 @@
       "name": "MEGA Don Quijote Shinsekai",
       "category": "EXPERIENCE",
       "area": "Shinsekai",
-      "blurb": "Large discount store open late into the night."
+      "blurb": "Large discount store open late into the night.",
+      "lat": 34.6519,
+      "lng": 135.5056
     },
     {
       "slug": "den-den-town",
@@ -442,7 +448,9 @@
       "name": "Kura Sushi",
       "category": "FOOD",
       "area": "",
-      "blurb": "Conveyor-belt sushi chain; the creator does not name a branch."
+      "blurb": "Conveyor-belt sushi chain; the creator does not name a branch.",
+      "lat": 34.6686,
+      "lng": 135.5015
     },
     {
       "slug": "takoyaki-doraku-wanaka",
@@ -458,7 +466,9 @@
       "name": "Ippudo",
       "category": "FOOD",
       "area": "",
-      "blurb": "Hakata-style tonkotsu ramen chain; the creator does not name a branch."
+      "blurb": "Hakata-style tonkotsu ramen chain; the creator does not name a branch.",
+      "lat": 34.6661,
+      "lng": 135.5011
     },
     {
       "slug": "minoo-park",
@@ -474,7 +484,9 @@
       "name": "Hisakunikosendo",
       "category": "FOOD",
       "area": "Minoh",
-      "blurb": "Shop selling momiji (maple-leaf) tempura."
+      "blurb": "Shop selling momiji (maple-leaf) tempura.",
+      "lat": 34.8355,
+      "lng": 135.4722
     },
     {
       "slug": "izakaya-toyo",
@@ -499,21 +511,27 @@
       "name": "Wagyu Yakiniku Nikukachi",
       "category": "FOOD",
       "area": "",
-      "blurb": "Wagyu yakiniku grill restaurant."
+      "blurb": "Wagyu yakiniku grill restaurant.",
+      "lat": 34.6652,
+      "lng": 135.5043
     },
     {
       "slug": "alis-kitchen-osaka",
       "name": "Ali's Kitchen Osaka",
       "category": "FOOD",
       "area": "",
-      "blurb": "Small halal restaurant."
+      "blurb": "Small halal restaurant.",
+      "lat": 34.6641,
+      "lng": 135.5052
     },
     {
       "slug": "cinquecento-bar-osaka",
       "name": "CinqueCento",
       "category": "FOOD",
       "area": "",
-      "blurb": "Bar serving around 100 cocktails at 500 yen each."
+      "blurb": "Bar serving around 100 cocktails at 500 yen each.",
+      "lat": 34.6694,
+      "lng": 135.5004
     },
     {
       "slug": "tsutenkaku-tower",
@@ -565,14 +583,19 @@
       "name": "Kimono Tea Ceremony Maiko",
       "category": "EXPERIENCE",
       "area": "",
-      "blurb": "Tea ceremony experience in kimono."
+      "blurb": "Tea ceremony experience in kimono.",
+      "lat": 34.6745,
+      "lng": 135.5011
     },
     {
       "slug": "sushi-hayata",
       "name": "Sushi Hayata",
       "category": "FOOD",
       "area": "",
-      "blurb": "Sushi restaurant."
+      "blurb": "Sushi restaurant.",
+      "lat": 34.6812,
+      "lng": 135.4996,
+      "tip": "Closed for good in February 2025 (Inside Osaka)."
     },
     {
       "slug": "arashiyama",
@@ -769,7 +792,9 @@
           "name": "Hattori Ryokuchi Park",
           "category": "EXPERIENCE",
           "note": "Open-air museum of old Japanese farmhouses",
-          "place": "hattori-ryokuchi-park"
+          "place": "hattori-ryokuchi-park",
+          "price": 0,
+          "priceNote": "free entry"
         }
       ]
     },
@@ -804,14 +829,18 @@
           "day": 1,
           "name": "MEGA Don Quijote Shinsekai",
           "category": "EXPERIENCE",
-          "place": "mega-don-quijote-shinsekai"
+          "place": "mega-don-quijote-shinsekai",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 1,
           "name": "Den Den Town",
           "category": "EXPERIENCE",
           "note": "There's a lot of cheap Japanese street food here as well.",
-          "place": "den-den-town"
+          "place": "den-den-town",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 1,
@@ -841,7 +870,9 @@
           "day": 1,
           "name": "Shinsaibashi-suji Shopping Street",
           "category": "EXPERIENCE",
-          "place": "shinsaibashi-suji"
+          "place": "shinsaibashi-suji",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 1,
@@ -962,7 +993,7 @@
       "slug": "osaka-5-days-foratravel",
       "title": "5 days in Osaka",
       "summary": "Fora advisor Kailin Martin's plan: ramen and a Dotonbori river cruise, Osaka Castle and the aquarium, a day at Universal Studios, Shinsekai's kushikatsu and a kimono tea ceremony, then Umeda Sky.",
-      "tier": "MIDRANGE",
+      "tier": "BUDGET",
       "days": 5,
       "creator": "foratravel",
       "sourceUrl": "https://www.foratravel.com/guides/DK28HT/5-day-osaka-itinerary-kailin-martin",
@@ -1069,7 +1100,9 @@
           "day": 4,
           "name": "Tennoji Park",
           "category": "EXPERIENCE",
-          "place": "tennoji-park"
+          "place": "tennoji-park",
+          "price": 0,
+          "priceNote": "free entry; Keitakuen garden extra"
         },
         {
           "day": 4,
@@ -1105,7 +1138,9 @@
           "day": 5,
           "name": "Shinsaibashi-suji Shopping Street",
           "category": "EXPERIENCE",
-          "place": "shinsaibashi-suji"
+          "place": "shinsaibashi-suji",
+          "price": 0,
+          "priceNote": "free to browse"
         },
         {
           "day": 5,
@@ -1148,7 +1183,9 @@
           "name": "Arashiyama",
           "category": "EXPERIENCE",
           "note": "A nice, easy hike to the top",
-          "place": "arashiyama"
+          "place": "arashiyama",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 3,

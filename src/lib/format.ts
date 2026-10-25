@@ -21,6 +21,15 @@ export function formatPrice(item: {
   return formatMoney(item.priceCents * item.quantity, item.currency);
 }
 
+/** Below this share of priced stops a route's total says little, so it shows as "Partly priced" instead. */
+export const PRICED_ENOUGH = 0.7;
+
+export function mostlyPriced(route: { unpricedCount: number; stops: number }) {
+  return (
+    route.stops > 0 && 1 - route.unpricedCount / route.stops >= PRICED_ENOUGH
+  );
+}
+
 export const sentimentLabel = {
   MUST_VISIT: "Must visit",
   RECOMMENDED: "Recommended",

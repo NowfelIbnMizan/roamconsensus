@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, RotateCcw, Sparkles } from "lucide-react";
 import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import type { QuizData } from "@/lib/data";
-import { categoryLabel, tierLabel } from "@/lib/format";
+import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
@@ -20,7 +20,11 @@ const DAYS = [
 const TIERS: (Tier | "ANY")[] = ["BACKPACKER", "BUDGET", "MIDRANGE", "LUXURY", "ANY"];
 const tierOrder: Tier[] = ["BACKPACKER", "BUDGET", "MIDRANGE", "LUXURY"];
 
-type Answers = { days: number | null; tier: Tier | "ANY" | null; vibes: VibeKey[] };
+type Answers = {
+  days: number | null;
+  tier: Tier | "ANY" | null;
+  vibes: VibeKey[];
+};
 
 /** 0–100: vibes count most, then trip length, then budget style. */
 function score(route: QuizData["routes"][number], a: Answers) {
@@ -178,7 +182,10 @@ export function Quiz({ data }: { data: QuizData }) {
     .sort((x, y) => y.pct - x.pct)
     .slice(0, 3);
   const spots = data.places
-    .map((p) => ({ ...p, hits: p.vibes.filter((v) => a.vibes.includes(v)).length }))
+    .map((p) => ({
+      ...p,
+      hits: p.vibes.filter((v) => a.vibes.includes(v)).length,
+    }))
     .filter((p) => p.hits > 0)
     .sort((x, y) => y.hits - x.hits || y.creatorCount - x.creatorCount || x.name.localeCompare(y.name))
     .slice(0, 8);
@@ -230,7 +237,7 @@ export function Quiz({ data }: { data: QuizData }) {
                       <CreatorChip creator={r.creator} />
                     </span>{" "}
                     · {r.destination.name} · {r.days} days · {tierLabel[r.tier]}
-                    {r.totalCents > 0 && ` · ${money(r.totalCents)}`}
+                    {r.totalCents > 0 && mostlyPriced(r) && ` · ${money(r.totalCents)}`}
                   </p>
                   {r.reasons.length > 0 && <p className="mt-1 text-sm">{r.reasons.join(" · ")}</p>}
                 </div>

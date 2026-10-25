@@ -241,7 +241,9 @@
       "category": "EXPERIENCE",
       "area": "Ba Dinh (old site) / Nam Tu Liem (new site)",
       "blurb": "National museum of Vietnam's military history, associated with the Hanoi Flag Tower.",
-      "tip": "The museum moved to a new building on Thang Long Boulevard in late 2024: check the address before you go."
+      "tip": "The museum moved to a new building on Thang Long Boulevard in late 2024: check the address before you go.",
+      "lat": 21.0322,
+      "lng": 105.8398
     },
     {
       "slug": "tran-quoc-pagoda",

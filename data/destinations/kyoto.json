@@ -629,7 +629,9 @@
       "category": "EXPERIENCE",
       "area": "Kyoto (several branches)",
       "blurb": "Tea ceremony experiences that include kimono dressing.",
-      "website": "https://mai-ko.com/culture/tea-ceremony/"
+      "website": "https://mai-ko.com/culture/tea-ceremony/",
+      "lat": 35.0039,
+      "lng": 135.7746
     },
     {
       "slug": "len-kyoto",
@@ -905,7 +907,9 @@
           "name": "Higashi Hongan-ji",
           "category": "EXPERIENCE",
           "note": "10 min walk from Kyoto Station; about 30 min",
-          "place": "higashi-hongan-ji"
+          "place": "higashi-hongan-ji",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
@@ -942,7 +946,9 @@
           "name": "Ninenzaka & Sannenzaka",
           "category": "EXPERIENCE",
           "note": "Crowded before sunset",
-          "place": "ninenzaka-sannenzaka"
+          "place": "ninenzaka-sannenzaka",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -969,7 +975,9 @@
           "name": "Gion",
           "category": "FOOD",
           "note": "Dinner; Gion Matsuri in July",
-          "place": "gion"
+          "place": "gion",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 2,
@@ -1006,7 +1014,9 @@
           "name": "Philosopher's Path",
           "category": "EXPERIENCE",
           "note": "Best in cherry blossom and autumn",
-          "place": "philosophers-path"
+          "place": "philosophers-path",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 2,
@@ -1020,7 +1030,9 @@
           "name": "Heian Jingu",
           "category": "EXPERIENCE",
           "note": "30–60 min",
-          "place": "heian-jingu"
+          "place": "heian-jingu",
+          "price": 0,
+          "priceNote": "free entry to the grounds; garden extra"
         },
         {
           "day": 2,
@@ -1067,7 +1079,9 @@
           "name": "Ninenzaka & Sannenzaka",
           "category": "EXPERIENCE",
           "note": "Go early; matcha soft serve",
-          "place": "ninenzaka-sannenzaka"
+          "place": "ninenzaka-sannenzaka",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -1121,21 +1135,27 @@
           "name": "Gion",
           "category": "EXPERIENCE",
           "note": "Street photography; evening food tour",
-          "place": "gion"
+          "place": "gion",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
           "name": "Kamo River",
           "category": "EXPERIENCE",
           "note": "Konbini coffee by the river",
-          "place": "kamo-river"
+          "place": "kamo-river",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
           "name": "Pontocho",
           "category": "EXPERIENCE",
           "note": "Best in the evening",
-          "place": "pontocho"
+          "place": "pontocho",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -1189,7 +1209,9 @@
           "name": "Togetsukyo Bridge",
           "category": "EXPERIENCE",
           "note": "Half day; bike rental",
-          "place": "togetsukyo-bridge"
+          "place": "togetsukyo-bridge",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 2,
@@ -1240,14 +1262,18 @@
           "name": "Pontocho",
           "category": "EXPERIENCE",
           "note": "Nightcap",
-          "place": "pontocho"
+          "place": "pontocho",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 3,
           "name": "Fushimi Sake District",
           "category": "EXPERIENCE",
           "note": "Train to Momoyamagoryo-Mae; guided sake tasting",
-          "place": "fushimi-sake-district"
+          "place": "fushimi-sake-district",
+          "price": 0,
+          "priceNote": "free to walk around; tastings extra"
         },
         {
           "day": 3,
@@ -1338,7 +1364,9 @@
           "day": 1,
           "name": "Gion",
           "category": "EXPERIENCE",
-          "place": "gion"
+          "place": "gion",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 1,
@@ -1391,7 +1419,9 @@
           "day": 2,
           "name": "Togetsukyo Bridge",
           "category": "EXPERIENCE",
-          "place": "togetsukyo-bridge"
+          "place": "togetsukyo-bridge",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 2,
@@ -1420,27 +1450,35 @@
           "day": 3,
           "name": "Philosopher's Path",
           "category": "EXPERIENCE",
-          "place": "philosophers-path"
+          "place": "philosophers-path",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
           "name": "Heian Jingu",
           "category": "EXPERIENCE",
           "note": "Optional, on the way to Pontocho",
-          "place": "heian-jingu"
+          "place": "heian-jingu",
+          "price": 0,
+          "priceNote": "free entry to the grounds; garden extra"
         },
         {
           "day": 3,
           "name": "Pontocho",
           "category": "EXPERIENCE",
           "note": "Shops and bars",
-          "place": "pontocho"
+          "place": "pontocho",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 3,
           "name": "Hanamikoji Street",
           "category": "EXPERIENCE",
-          "place": "hanamikoji-street"
+          "place": "hanamikoji-street",
+          "price": 0,
+          "priceNote": "free to walk around"
         },
         {
           "day": 3,

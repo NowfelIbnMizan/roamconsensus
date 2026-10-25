@@ -182,7 +182,9 @@
       "name": "The Blanket Hotel Phuket Town",
       "category": "STAY",
       "area": "Phuket Old Town",
-      "blurb": "Mid-range hotel in Phuket Town."
+      "blurb": "Mid-range hotel in Phuket Town.",
+      "lat": 7.8857,
+      "lng": 98.3879
     },
     {
       "slug": "lub-d-phuket-patong",
@@ -225,28 +227,36 @@
       "name": "Lock Tien Food Court",
       "category": "FOOD",
       "area": "Phuket Old Town",
-      "blurb": "Old-style local food court."
+      "blurb": "Old-style local food court.",
+      "lat": 7.8846,
+      "lng": 98.3889
     },
     {
       "slug": "one-chun-cafe",
       "name": "One Chun Cafe & Restaurant",
       "category": "FOOD",
       "area": "Phuket Town",
-      "blurb": "Michelin Bib Gourmand restaurant for Phuket-style dishes."
+      "blurb": "Michelin Bib Gourmand restaurant for Phuket-style dishes.",
+      "lat": 7.8893,
+      "lng": 98.3916
     },
     {
       "slug": "tu-kab-khao",
       "name": "Tu Kab Khao",
       "category": "FOOD",
       "area": "Phuket Old Town",
-      "blurb": "Southern Thai restaurant in a colonial shophouse."
+      "blurb": "Southern Thai restaurant in a colonial shophouse.",
+      "lat": 7.8879,
+      "lng": 98.3906
     },
     {
       "slug": "kopitiam-by-wilai",
       "name": "Kopitiam by Wilai",
       "category": "FOOD",
       "area": "Phuket Old Town",
-      "blurb": "Retro café serving local Phuket dishes."
+      "blurb": "Retro café serving local Phuket dishes.",
+      "lat": 7.8851,
+      "lng": 98.3871
     },
     {
       "slug": "wat-chalong",
@@ -263,7 +273,7 @@
       "category": "EXPERIENCE",
       "area": "Nakkerd Hills (Karon/Chalong)",
       "blurb": "45 m white marble Buddha statue on a hilltop.",
-      "tip": "The viewpoint was reported closed after the 2024 Kata landslide (Phuket News, Nov 2025). Check it has reopened before you go.",
+      "tip": "The viewpoint has been closed since the August 2024 landslide (Phuket News, July 2025). Check it has reopened before you go.",
       "lat": 7.8278,
       "lng": 98.3128
     },
@@ -281,7 +291,9 @@
       "name": "Black Rock Viewpoint",
       "category": "EXPERIENCE",
       "area": "Nai Harn",
-      "blurb": "Rocky coastal viewpoint near Nai Harn."
+      "blurb": "Rocky coastal viewpoint near Nai Harn.",
+      "lat": 7.7663,
+      "lng": 98.3046
     },
     {
       "slug": "krating-cape",
@@ -379,7 +391,9 @@
       "name": "Koh Rang Yai",
       "category": "EXPERIENCE",
       "area": "Phang Nga Bay (east of Phuket)",
-      "blurb": "Small island off Phuket's east coast, used for beach day trips."
+      "blurb": "Small island off Phuket's east coast, used for beach day trips.",
+      "lat": 7.9535,
+      "lng": 98.4602
     },
     {
       "slug": "phuket-sunday-walking-street",
@@ -395,7 +409,9 @@
       "name": "Golden Dragon Monument",
       "category": "EXPERIENCE",
       "area": "Phuket Town",
-      "blurb": "Dragon monument in a small park in Phuket Town."
+      "blurb": "Dragon monument in a small park in Phuket Town.",
+      "lat": 7.8869,
+      "lng": 98.394
     },
     {
       "slug": "kata-noi-beach",
@@ -411,7 +427,9 @@
       "name": "Laem Hin Seafood",
       "category": "FOOD",
       "area": "Ko Kaew (east coast)",
-      "blurb": "Seafood restaurants reached by shuttle boat."
+      "blurb": "Seafood restaurants reached by shuttle boat.",
+      "lat": 7.9574,
+      "lng": 98.4056
     },
     {
       "slug": "bang-pae-waterfall",
@@ -499,21 +517,27 @@
       "name": "Black Ginger",
       "category": "FOOD",
       "area": "Nai Yang",
-      "blurb": "Thai restaurant reached by raft at The Slate hotel."
+      "blurb": "Thai restaurant reached by raft at The Slate hotel.",
+      "lat": 8.0896,
+      "lng": 98.3003
     },
     {
       "slug": "la-gritta",
       "name": "La Gritta",
       "category": "FOOD",
       "area": "Patong",
-      "blurb": "Italian restaurant on the rocks at Amari Phuket."
+      "blurb": "Italian restaurant on the rocks at Amari Phuket.",
+      "lat": 7.8791,
+      "lng": 98.2771
     },
     {
       "slug": "catch-beach-club",
       "name": "Catch Beach Club",
       "category": "EXPERIENCE",
       "area": "Bang Tao",
-      "blurb": "Beach club on Bang Tao Beach."
+      "blurb": "Beach club on Bang Tao Beach.",
+      "lat": 7.9943,
+      "lng": 98.2949
     },
     {
       "slug": "banyan-tree-spa-phuket",
@@ -529,14 +553,18 @@
       "name": "Suay Cherngtalay",
       "category": "FOOD",
       "area": "Cherngtalay",
-      "blurb": "Michelin Plate modern Thai restaurant."
+      "blurb": "Michelin Plate modern Thai restaurant.",
+      "lat": 7.9992,
+      "lng": 98.3112
     },
     {
       "slug": "cafe-del-mar-phuket",
       "name": "Café del Mar Phuket",
       "category": "EXPERIENCE",
       "area": "Kamala",
-      "blurb": "Beach club on Kamala Beach."
+      "blurb": "Beach club on Kamala Beach.",
+      "lat": 7.9641,
+      "lng": 98.2771
     },
     {
       "slug": "laem-sing-beach",
@@ -552,21 +580,27 @@
       "name": "Chalong Bay Rum Distillery",
       "category": "EXPERIENCE",
       "area": "Chalong",
-      "blurb": "Craft rum distillery offering tours and tastings."
+      "blurb": "Craft rum distillery offering tours and tastings.",
+      "lat": 7.8459,
+      "lng": 98.3459
     },
     {
       "slug": "ao-yon-beach",
       "name": "Ao Yon Beach",
       "category": "EXPERIENCE",
       "area": "Cape Panwa",
-      "blurb": "Quiet east-coast beach."
+      "blurb": "Quiet east-coast beach.",
+      "lat": 7.8031,
+      "lng": 98.4049
     },
     {
       "slug": "banana-beach-phuket",
       "name": "Banana Beach",
       "category": "EXPERIENCE",
       "area": "Thalang / Kamala north",
-      "blurb": "Small secluded cove on the west coast."
+      "blurb": "Small secluded cove on the west coast.",
+      "lat": 8.0388,
+      "lng": 98.2771
     }
   ],
   "creators": [
@@ -597,7 +631,7 @@
       "slug": "phuket-7-days-bucketlistly",
       "title": "7 days in Phuket: beaches, islands and Old Town",
       "summary": "Old Town food, Wat Chalong and the Big Buddha, the southern viewpoints, Phang Nga Bay and James Bond Island, a beach-hop from Kata to Patong, Phi Phi's Maya Bay and the Sunday walking street.",
-      "tier": "BACKPACKER",
+      "tier": "BUDGET",
       "days": 7,
       "creator": "bucketlistly",
       "sourceUrl": "https://www.bucketlistly.blog/posts/7-days-backpacking-phuket-itinerary",
@@ -667,20 +701,26 @@
           "name": "Nai Harn Beach",
           "category": "EXPERIENCE",
           "note": "Isn't crowded at all",
-          "place": "nai-harn-beach"
+          "place": "nai-harn-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
           "name": "Black Rock Viewpoint",
           "category": "EXPERIENCE",
-          "place": "black-rock-viewpoint"
+          "place": "black-rock-viewpoint",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
           "name": "Krating Cape",
           "category": "EXPERIENCE",
           "note": "Hike up from the beach inside The Nai Harn Resort",
-          "place": "krating-cape"
+          "place": "krating-cape",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
@@ -713,13 +753,17 @@
           "day": 5,
           "name": "Kata Beach",
           "category": "EXPERIENCE",
-          "place": "kata-beach"
+          "place": "kata-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 5,
           "name": "Karon Beach",
           "category": "EXPERIENCE",
-          "place": "karon-beach"
+          "place": "karon-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 5,
@@ -764,7 +808,9 @@
           "day": 7,
           "name": "Golden Dragon Monument",
           "category": "EXPERIENCE",
-          "place": "golden-dragon-monument"
+          "place": "golden-dragon-monument",
+          "price": 0,
+          "priceNote": "free"
         }
       ]
     },
@@ -772,7 +818,7 @@
       "slug": "phuket-3-days-thebrokebackpacker",
       "title": "The best of Phuket in 3 days",
       "summary": "Old Town, Wat Chalong, Promthep Cape and seafood at Laem Hin, then waterfalls, Bang Tao and Bangla Road, and Phang Nga Bay with Koh Panyee and James Bond Island.",
-      "tier": "BUDGET",
+      "tier": "BACKPACKER",
       "days": 3,
       "creator": "thebrokebackpacker",
       "sourceUrl": "https://www.thebrokebackpacker.com/phuket-itinerary/",
@@ -974,7 +1020,9 @@
           "day": 1,
           "name": "Surin Beach",
           "category": "EXPERIENCE",
-          "place": "surin-beach"
+          "place": "surin-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
@@ -1066,7 +1114,9 @@
           "day": 3,
           "name": "Nai Harn Beach",
           "category": "EXPERIENCE",
-          "place": "nai-harn-beach"
+          "place": "nai-harn-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 3,
@@ -1110,7 +1160,9 @@
           "day": 1,
           "name": "Surin Beach",
           "category": "EXPERIENCE",
-          "place": "surin-beach"
+          "place": "surin-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 1,
@@ -1179,7 +1231,9 @@
           "name": "Ao Yon Beach",
           "category": "EXPERIENCE",
           "note": "Zero vendors, total calm",
-          "place": "ao-yon-beach"
+          "place": "ao-yon-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 7,
@@ -1204,7 +1258,9 @@
           "day": 8,
           "name": "Surin Beach",
           "category": "EXPERIENCE",
-          "place": "surin-beach"
+          "place": "surin-beach",
+          "price": 0,
+          "priceNote": "free"
         },
         {
           "day": 9,
@@ -1226,7 +1282,9 @@
           "name": "Banana Beach",
           "category": "EXPERIENCE",
           "note": "Allow buffer for flight check-in.",
-          "place": "banana-beach-phuket"
+          "place": "banana-beach-phuket",
+          "price": 0,
+          "priceNote": "free"
         }
       ]
     }
