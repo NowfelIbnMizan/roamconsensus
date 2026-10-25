@@ -181,7 +181,8 @@
       "blurb": "Resort hotel in Bali's gated Nusa Dua enclave, a short shuttle from the beach. Bookable with Marriott points, which is why points travellers start their trip here.",
       "website": "https://www.marriott.com/en-us/hotels/dpsmv-marriotts-bali-nusa-dua-gardens/overview/",
       "lat": -8.8062,
-      "lng": 115.2252
+      "lng": 115.2252,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "nusa-dua-beach-geger-beach-pandawa-beach",
@@ -190,7 +191,8 @@
       "area": "Nusa Dua",
       "blurb": "Three calm, white-sand beaches on the sheltered east side of the Bukit. Pandawa sits below carved limestone cliffs; Geger is the quiet local favourite.",
       "lat": -8.7953,
-      "lng": 115.2335
+      "lng": 115.2335,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bali-collection",
@@ -208,7 +210,8 @@
       "area": "Uluwatu",
       "blurb": "Thousand-year-old sea temple perched on a 70 m cliff edge at Bali's southwestern tip. One of the island's six holiest temples, famous for sunsets and bold macaques.",
       "lat": -8.8291,
-      "lng": 115.0849
+      "lng": 115.0849,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kecak-dance-performance",
@@ -217,7 +220,8 @@
       "area": "Uluwatu",
       "blurb": "Traditional fire dance performed at sunset in Uluwatu Temple's clifftop amphitheatre, with a chanting choir of dozens of men instead of instruments. Telling of the Ramayana epic.",
       "lat": -8.8285,
-      "lng": 115.0857
+      "lng": 115.0857,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bumbu-bali",
@@ -225,9 +229,10 @@
       "category": "FOOD",
       "area": "Tanjung Benoa",
       "blurb": "Long-running Balinese fine-dining restaurant by chef Heinz von Holzen, known for its rijsttafel set menu and cooking school. A classic for authentic Balinese food.",
-      "website": "https://www.balifoods.com",
+      "website": "https://www.artcafebumbubali.com/",
       "lat": -8.7716,
-      "lng": 115.2213
+      "lng": 115.2213,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ferry-from-sanur-to-nusa-penida",
@@ -236,7 +241,8 @@
       "area": "Sanur",
       "blurb": "Fast boats cross from Sanur to Nusa Penida in about 45 minutes. Book a morning boat; the strait gets choppy in the afternoon.",
       "lat": -8.6795,
-      "lng": 115.2638
+      "lng": 115.2638,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "west-nusa-penida",
@@ -245,7 +251,8 @@
       "area": "Nusa Penida",
       "blurb": "Day-tour circuit of Nusa Penida's west coast: the T-rex-shaped Kelingking cliff, Angel's Billabong rock pool, Broken Beach's natural arch and Crystal Bay for snorkelling.",
       "lat": -8.7503,
-      "lng": 115.4746
+      "lng": 115.4746,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "diamond-beach",
@@ -254,7 +261,8 @@
       "area": "Nusa Penida",
       "blurb": "White-sand cove on Nusa Penida's east coast, reached by a cliff-carved staircase, with palm trees and diamond-shaped rock pinnacles in the surf.",
       "lat": -8.7681,
-      "lng": 115.6203
+      "lng": 115.6203,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "maruti-beach-club",
@@ -263,14 +271,17 @@
       "area": "Nusa Penida",
       "blurb": "Laid-back beach club on Nusa Penida where a sunbed comes with a minimum food-and-drink spend. A rest stop between the island's viewpoints.",
       "lat": -8.6826,
-      "lng": 115.4887
+      "lng": 115.4887,
+      "website": "https://www.marutibeachclubs.com/beach-club",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sanur-to-ubud-drive",
       "name": "Sanur to Ubud Drive",
       "category": "TRANSIT",
       "area": "Ubud",
-      "blurb": "Private car from the coast up to Ubud, about 90 minutes depending on traffic. Drivers usually stop at sights on request."
+      "blurb": "Private car from the coast up to Ubud, about 90 minutes depending on traffic. Drivers usually stop at sights on request.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ubud-art-market",
@@ -279,7 +290,8 @@
       "area": "Ubud",
       "blurb": "Traditional market opposite Ubud's royal palace selling woven bags, sarongs, carvings and art. Free to wander; bargaining is expected.",
       "lat": -8.5073,
-      "lng": 115.263
+      "lng": 115.263,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mount-batur-sunrise-hike",
@@ -288,7 +300,8 @@
       "area": "Kintamani",
       "blurb": "Pre-dawn hike up a 1,717 m active volcano for sunrise above a sea of clouds and the caldera lake. About two hours up on a well-trodden path with a guide.",
       "lat": -8.242,
-      "lng": 115.375
+      "lng": 115.375,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tegalalang-rice-terraces",
@@ -297,7 +310,8 @@
       "area": "Ubud",
       "blurb": "Bali's most photographed rice terraces, carved into a river valley north of Ubud using the island's thousand-year-old subak irrigation system.",
       "lat": -8.4335,
-      "lng": 115.2788
+      "lng": 115.2788,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "goa-gajah-and-pura-gunung-lebah",
@@ -306,7 +320,8 @@
       "area": "Ubud",
       "blurb": "Goa Gajah, the 9th-century 'Elephant Cave' sanctuary with its carved demon-mouth entrance, paired with the small river-junction temple Pura Gunung Lebah in Ubud.",
       "lat": -8.5232,
-      "lng": 115.2873
+      "lng": 115.2873,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "copper-kitchen-and-bar",
@@ -314,9 +329,10 @@
       "category": "FOOD",
       "area": "Ubud",
       "blurb": "Rooftop restaurant at Bisma Eight in Ubud doing modern plates with local produce. A dressier dinner option without resort prices.",
-      "website": "https://bisma-eight.com",
+      "website": "https://www.copperubud.com/",
       "lat": -8.5025,
-      "lng": 115.256
+      "lng": 115.256,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "alchemy-umah-pizza-warung-di-koi",
@@ -325,7 +341,8 @@
       "area": "Ubud",
       "blurb": "A trio of easy Ubud eats: Alchemy's famous raw-vegan breakfast bar, wood-fired pizza at Umah, and cheap local plates at Warung Di Koi.",
       "lat": -8.5056,
-      "lng": 115.2556
+      "lng": 115.2556,
+      "website": "https://www.alchemybali.co/home"
     },
     {
       "slug": "no-mas-bar-cp-lounge",
@@ -334,7 +351,9 @@
       "area": "Ubud",
       "blurb": "Ubud's low-key nightlife pair: cocktails at No Más and late-night drinks and live music at CP Lounge.",
       "lat": -8.513,
-      "lng": 115.261
+      "lng": 115.261,
+      "website": "https://bisma-eight.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ubud-yoga",
@@ -343,7 +362,8 @@
       "area": "Ubud",
       "blurb": "Drop-in classes at Ubud's best-known studios, Radiantly Alive and Ubud Yoga House, from beginner flows to aerial. Part of why Ubud became Bali's wellness capital.",
       "lat": -8.511,
-      "lng": 115.264
+      "lng": 115.264,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pura-tanah-lot",
@@ -352,7 +372,8 @@
       "area": "Tabanan",
       "blurb": "16th-century temple on a rock just offshore, cut off at high tide. One of Bali's most sacred sea temples and its most famous sunset silhouette.",
       "lat": -8.6212,
-      "lng": 115.0868
+      "lng": 115.0868,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "canggu-beach-clubs",
@@ -361,7 +382,8 @@
       "area": "Canggu",
       "blurb": "Canggu's beachfront clubs: grassy sunset drinks at The Lawn, pool parties at Finns, and driftwood-chic La Brisa. Entry is free; daybeds carry a minimum spend.",
       "lat": -8.6611,
-      "lng": 115.1386
+      "lng": 115.1386,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "the-shady-shack",
@@ -371,7 +393,8 @@
       "blurb": "Breezy vegetarian cafe by Canggu's rice fields that became one of Bali's best-known healthy-food spots. Expect smoothie bowls and big veggie burgers.",
       "website": "https://theshadyshackbali.com",
       "lat": -8.6455,
-      "lng": 115.1388
+      "lng": 115.1388,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "coffee-cartel",
@@ -380,7 +403,9 @@
       "area": "Seminyak",
       "blurb": "Instagram-famous Seminyak brunch cafe known for latte art, pastel interiors and health-leaning breakfast plates.",
       "lat": -8.6845,
-      "lng": 115.162
+      "lng": 115.162,
+      "website": "https://www.coffeecartelbali.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "prana-spa",
@@ -389,7 +414,8 @@
       "area": "Seminyak",
       "blurb": "Moroccan-Rajasthani styled spa in Seminyak, one of Bali's most elaborate day spas, doing massages, rituals and hammam treatments.",
       "lat": -8.686,
-      "lng": 115.164
+      "lng": 115.164,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "w-hotel",
@@ -399,7 +425,8 @@
       "blurb": "Flashy beachfront resort on Seminyak's sand, known for its pool scene and Woobar sunsets. The splurge stay of this route.",
       "website": "https://www.marriott.com/en-us/hotels/dpswh-w-bali-seminyak/overview/",
       "lat": -8.6795,
-      "lng": 115.1532
+      "lng": 115.1532,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "merah-putih",
@@ -409,7 +436,8 @@
       "blurb": "Striking high-ceilinged restaurant serving modern Indonesian food; the 10-dish tasting menu tours the archipelago's cuisines.",
       "website": "https://merahputihbali.com",
       "lat": -8.6738,
-      "lng": 115.16
+      "lng": 115.16,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "the-edge",
@@ -419,7 +447,8 @@
       "blurb": "Clifftop resort above Uluwatu whose day pass buys access to the famous glass-edged 'oneeighty' pool hanging over the ocean, with food-and-drink credit included.",
       "website": "https://theedgebali.com",
       "lat": -8.8384,
-      "lng": 115.1294
+      "lng": 115.1294,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "green-bowl-beach",
@@ -428,7 +457,8 @@
       "area": "Ungasan",
       "blurb": "Secluded white-sand beach at the bottom of about 300 steps on the Bukit's south coast, shared with surfers and bats in its cliff caves.",
       "lat": -8.8487,
-      "lng": 115.169
+      "lng": 115.169,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sundays-beach-club",
@@ -438,7 +468,8 @@
       "blurb": "Beach club on a private white-sand cove below the cliffs at Ungasan, reached by inclinator. Day pass includes food-and-drink credit, kayaks and snorkelling.",
       "website": "https://www.sundaysbeachclub.com",
       "lat": -8.8467,
-      "lng": 115.1525
+      "lng": 115.1525,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sarong",
@@ -456,16 +487,18 @@
       "area": "Ubud",
       "blurb": "Boutique-hopping along Ubud's Jalan Dewi Sita and Hanoman streets: homeware, jewellery and clothes beyond the market stalls.",
       "lat": -8.507,
-      "lng": 115.262
+      "lng": 115.262,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "royal-ubud-palace-fire-show",
-      "name": "Royal Ubud Palace Fire Show",
+      "name": "Ubud Palace evening dance",
       "category": "EXPERIENCE",
       "area": "Ubud",
-      "blurb": "Evening Legong and fire dance performances in the courtyard of Puri Saren Agung, Ubud's royal palace, still home to the town's royal family.",
+      "blurb": "Evening Legong and Barong dance performances in the courtyard of Puri Saren Agung, Ubud's royal palace, still home to the town's royal family.",
       "lat": -8.5068,
-      "lng": 115.2627
+      "lng": 115.2627,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tirta-gangga-water-palace",
@@ -474,7 +507,8 @@
       "area": "East Bali",
       "blurb": "Former royal water palace in East Bali from 1946, with koi-filled pools, fountains and stepping stones, built around a spring the Balinese hold sacred.",
       "lat": -8.412,
-      "lng": 115.587
+      "lng": 115.587,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "gates-of-heaven",
@@ -483,7 +517,8 @@
       "area": "East Bali",
       "blurb": "Lempuyang Temple's famous split gate framing Mount Agung. The 'reflection' in photos is a trick done with a mirror under a phone, and queues run for hours.",
       "lat": -8.3906,
-      "lng": 115.6311
+      "lng": 115.6311,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ubud-rafting",
@@ -492,7 +527,8 @@
       "area": "Ubud",
       "blurb": "White-water rafting on the Ayung River's class II-III rapids through jungle gorges and past waterfalls, with hotel pickup included on most tours.",
       "lat": -8.49,
-      "lng": 115.24
+      "lng": 115.24,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tegenungan-waterfall",
@@ -501,7 +537,8 @@
       "area": "Ubud",
       "blurb": "Powerful 15 m waterfall near Ubud, one of Bali's most visited, with a swimmable pool and a staircase of viewpoints.",
       "lat": -8.5752,
-      "lng": 115.2899
+      "lng": 115.2899,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tirta-empul-temple",
@@ -510,7 +547,8 @@
       "area": "Tampaksiring",
       "blurb": "Thousand-year-old water temple where Balinese Hindus queue through 13 fountain spouts for the melukat purification ritual. Visitors can join with a guide and a sarong.",
       "lat": -8.4153,
-      "lng": 115.3155
+      "lng": 115.3155,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bajra-sandhi-monument",
@@ -519,7 +557,8 @@
       "area": "Denpasar",
       "blurb": "A large monument in Renon's Niti Mandala park honouring the Balinese struggle for independence, with a history museum of dioramas and a 360-degree viewing deck at the top.",
       "lat": -8.6721,
-      "lng": 115.2337
+      "lng": 115.2337,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pasar-badung",
@@ -528,7 +567,8 @@
       "area": "Denpasar",
       "blurb": "Denpasar's biggest traditional market, beside the Badung River: several floors of produce, spices, temple offerings and textiles sold to locals.",
       "lat": -8.6553,
-      "lng": 115.2125
+      "lng": 115.2125,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "warung-blanjong",
@@ -538,7 +578,8 @@
       "blurb": "Family-run Sanur warung known for nasi campur and Balinese home cooking.",
       "website": "https://warungblanjong.shop",
       "lat": -8.7065,
-      "lng": 115.2565
+      "lng": 115.2565,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sanur-beach",
@@ -547,7 +588,8 @@
       "area": "Sanur",
       "blurb": "Calm, reef-protected beach on Bali's east coast with a long beachfront path. Known for sunrises and easy family swimming.",
       "lat": -8.678,
-      "lng": 115.2633
+      "lng": 115.2633,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "puri-santrian",
@@ -557,7 +599,8 @@
       "blurb": "Long-running beachfront resort in Sanur with tropical gardens and several pools.",
       "website": "https://santrian.com/puri-santrian/",
       "lat": -8.7088,
-      "lng": 115.2585
+      "lng": 115.2585,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "single-fin",
@@ -566,7 +609,9 @@
       "area": "Uluwatu",
       "blurb": "Clifftop bar and restaurant above the Uluwatu surf break, famous for sunset sessions and its Sunday night party.",
       "lat": -8.8149,
-      "lng": 115.0889
+      "lng": 115.0889,
+      "website": "https://www.singlefinbali.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "padang-padang-beach",
@@ -575,7 +620,8 @@
       "area": "Uluwatu",
       "blurb": "Small cove reached through a narrow gap in the limestone cliffs, famous from Eat Pray Love and for its world-class reef break.",
       "lat": -8.811,
-      "lng": 115.103
+      "lng": 115.103,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jimbaran-seafood-dinner",
@@ -584,7 +630,8 @@
       "area": "Jimbaran",
       "blurb": "Rows of beach cafés on Jimbaran Bay grill the day's catch over coconut husks, served at tables on the sand at sunset.",
       "lat": -8.7795,
-      "lng": 115.164
+      "lng": 115.164,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "intercontinental-bali-resort",
@@ -593,7 +640,9 @@
       "area": "Jimbaran",
       "blurb": "Large beachfront resort on Jimbaran Bay, close to the seafood cafés.",
       "lat": -8.783,
-      "lng": 115.164
+      "lng": 115.164,
+      "website": "https://www.ihg.com/intercontinental/hotels/us/en/jimbaran/dpsha/hoteldetail",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "waterblow",
@@ -602,7 +651,8 @@
       "area": "Nusa Dua",
       "blurb": "Limestone outcrop where ocean swells smash into the rocks and shoot spray high into the air. Most dramatic at high tide.",
       "lat": -8.8007,
-      "lng": 115.2363
+      "lng": 115.2363,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ku-de-ta",
@@ -612,7 +662,8 @@
       "blurb": "Seminyak's original beachfront club: daybeds, cocktails and sunset DJs on the sand.",
       "website": "https://kudeta.com/beachclub",
       "lat": -8.6865,
-      "lng": 115.154
+      "lng": 115.154,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "motel-mexicola",
@@ -622,7 +673,8 @@
       "blurb": "Loud, colourful Mexican cantina in Seminyak, as much party as restaurant.",
       "website": "https://motelmexicola.info/",
       "lat": -8.6835,
-      "lng": 115.1555
+      "lng": 115.1555,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pura-petitenget",
@@ -631,7 +683,8 @@
       "area": "Seminyak",
       "blurb": "16th-century sea temple linked to the priest Dang Hyang Nirartha, one of the chain of temples guarding Bali's southwest coast.",
       "lat": -8.6797,
-      "lng": 115.153
+      "lng": 115.153,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hotel-tugu-bali",
@@ -640,7 +693,9 @@
       "area": "Canggu",
       "blurb": "Boutique hotel on Batu Bolong beach filled with antique Indonesian art, built like a museum you can sleep in.",
       "lat": -8.6593,
-      "lng": 115.1302
+      "lng": 115.1302,
+      "website": "https://tuguhotels.com/hotels/bali/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "batu-bolong-echo-beach",
@@ -649,7 +704,8 @@
       "area": "Canggu",
       "blurb": "Neighbouring black-sand surf beaches at the heart of Canggu: Batu Bolong for beginner waves, Echo Beach for sunset bars and bigger breaks.",
       "lat": -8.6595,
-      "lng": 115.13
+      "lng": 115.13,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "crate-cafe",
@@ -658,7 +714,8 @@
       "area": "Canggu",
       "blurb": "Busy Canggu breakfast café serving big brunch plates and smoothie bowls out of shipping-crate style digs.",
       "lat": -8.648,
-      "lng": 115.133
+      "lng": 115.133,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jatiluwih-rice-terraces",
@@ -667,7 +724,8 @@
       "area": "Tabanan",
       "blurb": "Sweeping terraces on the slopes of Mount Batukaru, part of the UNESCO-listed Subak landscape, with walking trails through the fields.",
       "lat": -8.37,
-      "lng": 115.131
+      "lng": 115.131,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "taman-ayun-temple",
@@ -676,7 +734,8 @@
       "area": "Mengwi",
       "blurb": "Moated royal temple of the Mengwi kingdom, built in 1634 and part of the UNESCO Subak listing, known for its tiered meru shrines.",
       "lat": -8.5418,
-      "lng": 115.1726
+      "lng": 115.1726,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sang-giri-mountain-glamping-camp",
@@ -684,9 +743,10 @@
       "category": "STAY",
       "area": "Jatiluwih",
       "blurb": "Safari-style tents in the forest above the Jatiluwih rice terraces.",
-      "website": "http://www.sanggiri.com",
+      "website": "https://sanggiri.com/",
       "lat": -8.375,
-      "lng": 115.138
+      "lng": 115.138,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ulun-danu-beratan-temple",
@@ -695,7 +755,8 @@
       "area": "Bedugul",
       "blurb": "17th-century water temple to the lake goddess Dewi Danu whose shrines seem to float on Lake Beratan. It is on the IDR 50,000 note.",
       "lat": -8.2752,
-      "lng": 115.1668
+      "lng": 115.1668,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "handara-gate",
@@ -704,7 +765,8 @@
       "area": "Bedugul",
       "blurb": "Traditional Balinese split gate at the entrance to Handara golf resort, framed by misty mountains. One of Bali's most photographed spots.",
       "lat": -8.247,
-      "lng": 115.1563
+      "lng": 115.1563,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banyumala-twin-waterfalls",
@@ -713,7 +775,8 @@
       "area": "Wanagiri",
       "blurb": "Twin cascades in jungle above Lake Buyan, reached by a short steep trail, with a pool you can swim in.",
       "lat": -8.2554,
-      "lng": 115.0983
+      "lng": 115.0983,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sacred-monkey-forest",
@@ -724,7 +787,8 @@
       "tip": "Keep sunglasses and snacks out of sight: the monkeys grab them.",
       "website": "https://monkeyforestubud.com/",
       "lat": -8.5188,
-      "lng": 115.2585
+      "lng": 115.2585,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ubud-palace",
@@ -733,7 +797,8 @@
       "area": "Ubud",
       "blurb": "Puri Saren Agung, home of Ubud's royal family, with ornate gates and courtyards. Free to walk in by day.",
       "lat": -8.5068,
-      "lng": 115.2625
+      "lng": 115.2625,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "campuhan-ridge-walk",
@@ -742,7 +807,8 @@
       "area": "Ubud",
       "blurb": "Paved 2 km ridge-top trail between two river valleys, lined with tall grass. Best at sunrise before the heat.",
       "lat": -8.503,
-      "lng": 115.254
+      "lng": 115.254,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bisma-eight",
@@ -751,7 +817,9 @@
       "area": "Ubud",
       "blurb": "Design hotel on Jalan Bisma with a jungle-view infinity pool, a short walk from central Ubud.",
       "lat": -8.509,
-      "lng": 115.2588
+      "lng": 115.2588,
+      "website": "https://bisma-eight.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "the-yoga-barn",
@@ -760,7 +828,8 @@
       "area": "Ubud",
       "blurb": "Ubud's best-known yoga centre, running many classes a day in open-air studios among the rice fields.",
       "lat": -8.5167,
-      "lng": 115.2649
+      "lng": 115.2649,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kintamani-checkpoint",
@@ -769,7 +838,8 @@
       "area": "Kintamani",
       "blurb": "Fee collected at checkpoints on the roads into the Batur caldera.",
       "lat": -8.286,
-      "lng": 115.354
+      "lng": 115.354,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "toya-devasya-hot-springs",
@@ -779,7 +849,8 @@
       "blurb": "Volcanic hot-spring pools on the shore of Lake Batur beneath Mount Batur. A classic soak after the sunrise hike.",
       "website": "https://toyadevasya.com/",
       "lat": -8.263,
-      "lng": 115.4005
+      "lng": 115.4005,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "penglipuran-village",
@@ -788,7 +859,8 @@
       "area": "Bangli",
       "blurb": "Traditional village of matching bamboo-roofed compounds along a car-free street, often called one of the cleanest villages in the world.",
       "lat": -8.422,
-      "lng": 115.359
+      "lng": 115.359,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tukad-cepung-waterfall",
@@ -797,7 +869,8 @@
       "area": "Bangli",
       "blurb": "Waterfall hidden inside a narrow canyon cave, famous for morning light beams through the rock.",
       "lat": -8.438,
-      "lng": 115.388
+      "lng": 115.388,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sidemen-bukit-tegeh",
@@ -815,7 +888,8 @@
       "area": "East Bali",
       "blurb": "White-sand cove with turquoise water near Candidasa, lined with simple warungs. One of east Bali's few white-sand beaches.",
       "lat": -8.499,
-      "lng": 115.611
+      "lng": 115.611,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jemeluk-bay",
@@ -824,7 +898,8 @@
       "area": "Amed",
       "blurb": "Sheltered Amed bay with coral right off the beach, plus underwater statues and an underwater postbox.",
       "lat": -8.3355,
-      "lng": 115.6595
+      "lng": 115.6595,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "japanese-shipwreck-amed",
@@ -833,7 +908,8 @@
       "area": "Amed",
       "blurb": "Small WWII-era patrol boat wreck in 2-12 m of water off Banyuning, coral-covered and easy to snorkel from shore.",
       "lat": -8.354,
-      "lng": 115.686
+      "lng": 115.686,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "warung-enak",
@@ -842,7 +918,8 @@
       "area": "Amed",
       "blurb": "Simple Amed warung for nasi goreng, grilled fish and other Indonesian staples.",
       "lat": -8.338,
-      "lng": 115.655
+      "lng": 115.655,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "usat-liberty-wreck",
@@ -851,7 +928,8 @@
       "area": "Tulamben",
       "blurb": "US Army cargo ship torpedoed in 1942 that now lies just off the beach at 5-30 m, one of the world's most accessible wreck dives.",
       "lat": -8.2747,
-      "lng": 115.5929
+      "lng": 115.5929,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lovina-dolphin-tour",
@@ -860,7 +938,8 @@
       "area": "Lovina",
       "blurb": "Sunrise trips in traditional outrigger boats to see wild spinner dolphins off Lovina's black-sand coast.",
       "lat": -8.159,
-      "lng": 115.026
+      "lng": 115.026,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banjar-hot-springs",
@@ -869,7 +948,8 @@
       "area": "Lovina",
       "blurb": "Sulphur springs pouring from carved dragon spouts into three tiered pools in a tropical garden.",
       "lat": -8.214,
-      "lng": 114.969
+      "lng": 114.969,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "brahmavihara-arama",
@@ -878,16 +958,18 @@
       "area": "Lovina",
       "blurb": "Bali's largest Buddhist monastery, on a hillside above Lovina, with a mini Borobudur stupa.",
       "lat": -8.212,
-      "lng": 114.962
+      "lng": 114.962,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "gitgit-waterfall",
       "name": "Gitgit Waterfall",
       "category": "EXPERIENCE",
-      "area": "Munduk",
+      "area": "Gitgit",
       "blurb": "35-40 m waterfall in jungle just off the Singaraja to Bedugul road.",
       "lat": -8.198,
-      "lng": 115.136
+      "lng": 115.136,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "munduk-moding-plantation",
@@ -897,7 +979,8 @@
       "blurb": "Eco resort on a coffee plantation in the Munduk highlands, known for its infinity pool above the clouds.",
       "website": "https://mundukmodingplantation.com",
       "lat": -8.2606,
-      "lng": 115.0765
+      "lng": 115.0765,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "menjangan-island",
@@ -906,7 +989,8 @@
       "area": "West Bali",
       "blurb": "Uninhabited island in West Bali National Park with steep coral walls and clear water, among Bali's best snorkelling.",
       "lat": -8.095,
-      "lng": 114.515
+      "lng": 114.515,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "biorock-pemuteran",
@@ -915,7 +999,8 @@
       "area": "Pemuteran",
       "blurb": "One of the world's largest reef-restoration projects: coral grows on electrified steel frames right off Pemuteran beach.",
       "lat": -8.142,
-      "lng": 114.661
+      "lng": 114.661,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "taman-sari-bali-resort",
@@ -924,7 +1009,8 @@
       "area": "Pemuteran",
       "blurb": "Beachfront bungalows in Pemuteran, close to the Biorock reef.",
       "lat": -8.142,
-      "lng": 114.653
+      "lng": 114.653,
+      "website": "https://tamansaribali.com/"
     },
     {
       "slug": "drive-to-denpasar",
@@ -933,7 +1019,8 @@
       "area": "West Bali",
       "blurb": "One-way private car from northwest Bali to the airport, about 4-5 hours.",
       "lat": -8.144,
-      "lng": 114.656
+      "lng": 114.656,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kampung-cafe",
@@ -948,10 +1035,11 @@
       "slug": "layana-warung",
       "name": "Layana Warung",
       "category": "FOOD",
-      "area": "Ubud",
+      "area": "Bedulu",
       "blurb": "Vegetarian-friendly warung near Goa Gajah.",
       "lat": -8.5224,
-      "lng": 115.2843
+      "lng": 115.2843,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "saraswati-temple",
@@ -960,7 +1048,8 @@
       "area": "Ubud",
       "blurb": "Water temple to Saraswati, goddess of learning, fronted by a lotus pond. Evening dance shows are held here.",
       "lat": -8.5065,
-      "lng": 115.2617
+      "lng": 115.2617,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "prasaja-by-arang",
@@ -979,16 +1068,18 @@
       "blurb": "Well-reviewed day spa in Kedewatan, west of central Ubud, for traditional Balinese massage.",
       "website": "https://ubudtraditionalspa.com/",
       "lat": -8.495,
-      "lng": 115.244
+      "lng": 115.244,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bali-swing",
       "name": "Bali Swing",
       "category": "EXPERIENCE",
-      "area": "Ubud",
+      "area": "Bongkasa",
       "blurb": "The original jungle swing park, with giant swings over the Ayung River valley.",
       "lat": -8.4905,
-      "lng": 115.2212
+      "lng": 115.2212,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "potato-head-beach-club",
@@ -997,7 +1088,9 @@
       "area": "Seminyak",
       "blurb": "Landmark Seminyak beach club with a lawn and infinity pool facing the sunset.",
       "lat": -8.6794,
-      "lng": 115.15
+      "lng": 115.15,
+      "website": "https://seminyak.potatohead.co/beach-club",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "echo-beach-surf-lesson",
@@ -1006,7 +1099,8 @@
       "area": "Canggu",
       "blurb": "Batu Bolong and Echo Beach have gentle sandy-bottom waves and dozens of surf schools on the beach.",
       "lat": -8.6595,
-      "lng": 115.13
+      "lng": 115.13,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mywarung",
@@ -1014,7 +1108,6 @@
       "category": "FOOD",
       "area": "Canggu",
       "blurb": "Casual Canggu warung serving Indonesian and western dishes.",
-      "website": "https://www.mywarung.com",
       "lat": -8.652,
       "lng": 115.135
     },
@@ -1025,7 +1118,8 @@
       "area": "Kuta",
       "blurb": "Landscaped waterpark in Kuta with more than a dozen slides, regularly ranked among Asia's best.",
       "lat": -8.728,
-      "lng": 115.169
+      "lng": 115.169,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "suluban-beach",
@@ -1034,7 +1128,8 @@
       "area": "Uluwatu",
       "blurb": "Hidden beach reached through a gap in the cliffs below the Uluwatu surf break, with caves and sunset views.",
       "lat": -8.815,
-      "lng": 115.088
+      "lng": 115.088,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "warung-bejana",
@@ -1043,17 +1138,19 @@
       "area": "Uluwatu",
       "blurb": "Restaurant about 400 m from Uluwatu Temple, handy before or after the Kecak show.",
       "lat": -8.8281,
-      "lng": 115.0881
+      "lng": 115.0881,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tribal-bali",
       "name": "Tribal Bali",
       "category": "STAY",
-      "area": "Canggu",
+      "area": "Pererenan",
       "blurb": "Co-working hostel with a big pool, popular with digital nomads.",
       "website": "https://tribalbali.com/",
       "lat": -8.6487,
-      "lng": 115.1248
+      "lng": 115.1248,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pura-besakih",
@@ -1063,7 +1160,8 @@
       "blurb": "Bali's Mother Temple: more than 80 temples on the slopes of Mount Agung, the holiest site in Balinese Hinduism.",
       "tip": "Go with a guide or tour: touts at the gate are known for scams.",
       "lat": -8.3741,
-      "lng": 115.451
+      "lng": 115.451,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "batur-natural-hot-spring",
@@ -1072,7 +1170,8 @@
       "area": "Kintamani",
       "blurb": "Hot-spring pools on the shore of Lake Batur with views of the volcano.",
       "lat": -8.2669,
-      "lng": 115.4044
+      "lng": 115.4044,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "la-plancha",
@@ -1081,7 +1180,9 @@
       "area": "Seminyak",
       "blurb": "Beach bar known for colourful umbrellas and beanbags on the sand at sunset.",
       "lat": -8.693,
-      "lng": 115.16
+      "lng": 115.16,
+      "website": "https://laplancha-bali.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "airport-taxi",
@@ -1090,25 +1191,29 @@
       "area": "Denpasar",
       "blurb": "Taxi between Ngurah Rai airport and your hotel.",
       "lat": -8.7467,
-      "lng": 115.1668
+      "lng": 115.1668,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "amar-boutique-hotel",
       "name": "Amar Boutique Hotel",
       "category": "STAY",
-      "area": "Canggu",
+      "area": "Pererenan",
       "blurb": "Small boutique hotel in Pererenan, near Echo Beach.",
       "lat": -8.6513,
-      "lng": 115.1256
+      "lng": 115.1256,
+      "website": "https://www.amarbali.com/"
     },
     {
       "slug": "kayon-jungle-resort",
       "name": "The Kayon Jungle Resort",
       "category": "STAY",
-      "area": "Ubud",
+      "area": "Payangan",
       "blurb": "Adults-only jungle resort north of Ubud with tiered infinity pools over the river valley.",
       "lat": -8.438,
-      "lng": 115.249
+      "lng": 115.249,
+      "website": "https://thekayonjungleresort.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "goa-raja-waterfall",
@@ -1117,7 +1222,8 @@
       "area": "Bangli",
       "blurb": "The King Cave waterfall: water spills through a cave-like rock opening.",
       "lat": -8.446,
-      "lng": 115.357
+      "lng": 115.357,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ubud-to-nusa-penida-transfer",
@@ -1126,7 +1232,8 @@
       "area": "Sanur",
       "blurb": "Car to Sanur harbour, then the fast boat across to Nusa Penida.",
       "lat": -8.6785,
-      "lng": 115.2635
+      "lng": 115.2635,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "padang-padang-inn",
@@ -1135,7 +1242,8 @@
       "area": "Uluwatu",
       "blurb": "Simple bungalows a short walk from Padang Padang beach.",
       "lat": -8.8114,
-      "lng": 115.105
+      "lng": 115.105,
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -1855,7 +1963,10 @@
           "name": "Motel Mexicola",
           "category": "FOOD",
           "note": "On Seminyak's Eat Street with Sisterfields and La Lucciola.",
-          "place": "motel-mexicola"
+          "place": "motel-mexicola",
+          "price": 13.33,
+          "priceNote": "Rp 220k a main (mains Rp 160–290k)",
+          "priceSource": "https://motelmexicola.info/seminyak/menu/"
         },
         {
           "day": 6,

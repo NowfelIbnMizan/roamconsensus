@@ -152,9 +152,9 @@ export async function cityHealth() {
         ),
         placeCheck(
           "Websites",
-          "Every hotel and restaurant links its own site.",
+          "Every hotel and restaurant links its own site, or was checked and has none (Instagram-only warungs).",
           used.filter((p) => p.category === "STAY" || p.category === "FOOD"),
-          (p) => Boolean(p.website),
+          (p) => Boolean(p.website) || p.checkedAt !== null,
         ),
         placeCheck(
           "About text",
