@@ -4,12 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   CheckCircle2,
-  ChevronRight,
+  ChevronDown,
   Globe,
   MapPin,
   Navigation,
 } from "lucide-react";
-import { AddRouteButton } from "@/components/add-to-cart";
+import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import { FavouriteButton } from "@/components/favourite-button";
 import { CreatorChip } from "@/components/creator";
 import { CreatorAvatar } from "@/components/creator-avatar";
@@ -65,7 +65,13 @@ export default async function PlacePage({ params }: Props) {
   const near = `${p.area ? `${p.area}, ` : ""}${d.name}`;
   const googleUrl = googleMapsPlaceUrl(p.name, near);
   const recommended = p.mentions.filter((m) => m.sentiment !== "AVOID");
+  const faces = [
+    ...new Map(p.mentions.map((m) => [m.creator.handle, m.creator])).values(),
+  ];
   const agree = new Set(recommended.map((m) => m.creator.handle)).size;
+  const days = p.mentions.map((m) => m.day);
+  const firstDay = Math.min(...days);
+  const lastDay = Math.max(...days);
 
   const nearby = hasPin(p)
     ? p.others
@@ -133,41 +139,54 @@ export default async function PlacePage({ params }: Props) {
         ← {d.name}
       </Link>
 
-      <div className="mt-4 grid gap-6 md:grid-cols-[1fr_340px]">
-        <div>
-          <PhotoGallery
-            main={
-              <Photo
-                photoKey={placePhotoKey(d.slug, p)}
-                query={placeQuery(p.name, d.name)}
-                category={p.category}
-                website={p.website}
-                alt={p.name}
-                sizes="(min-width: 768px) 640px, 100vw"
-                className="h-full"
-                priority
-              />
-            }
-            own={p.photos.slice(1)}
-            alt={p.name}
-            destination={d.slug}
-            place={p.slug}
-            className="aspect-[16/10] rounded-2xl"
-          />
-        </div>
-        <div>
-          <p className="flex flex-wrap items-center gap-x-1.5 text-sm text-muted">
+      <div className="mt-3 flex gap-4 sm:gap-6">
+        <PhotoGallery
+          main={
+            <Photo
+              photoKey={placePhotoKey(d.slug, p)}
+              query={placeQuery(p.name, d.name)}
+              category={p.category}
+              website={p.website}
+              alt={p.name}
+              sizes="(min-width: 640px) 240px, 112px"
+              className="h-full"
+              priority
+            />
+          }
+          own={p.photos.slice(1)}
+          alt={p.name}
+          destination={d.slug}
+          place={p.slug}
+          className="size-28 shrink-0 rounded-2xl sm:size-60"
+        />
+        <div className="min-w-0">
+          <h1 className="text-2xl font-semibold tracking-tight text-balance sm:text-4xl">
+            {p.name}
+          </h1>
+          <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-muted">
             {p.area && (
               <>
                 <MapPin className="size-3.5" aria-hidden /> {p.area} ·
               </>
             )}{" "}
             {categoryLabel[p.category]}
+            {p.fromPrice && (
+              <>
+                {" · "}
+                <span className="font-medium text-foreground tabular-nums">
+                  <Price
+                    item={{
+                      priceCents: p.fromPrice.cents,
+                      quantity: 1,
+                      currency: p.fromPrice.currency,
+                    }}
+                  />
+                  {p.fromPrice.unit && `/${p.fromPrice.unit}`}
+                </span>
+              </>
+            )}
           </p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">
-            {p.name}
-          </h1>
-          {p.creatorCount > 1 && agree > 0 && (
+          {agree > 0 && (
             <p
               className={`mt-2 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-sm font-medium ${
                 agree === p.creatorCount
@@ -178,177 +197,111 @@ export default async function PlacePage({ params }: Props) {
               {agree === p.creatorCount && (
                 <CheckCircle2 className="size-4" aria-hidden />
               )}
-              {agree} of {p.creatorCount} creators recommend it
+              {agree} of {p.creatorCount}{" "}
+              {p.creatorCount === 1 ? "creator" : "creators"}
             </p>
           )}
-          {agree > 0 && (
-            <div className="mt-3 flex -space-x-2" aria-hidden>
-              {[
-                ...new Map(
-                  recommended.map((m) => [m.creator.handle, m.creator]),
-                ).values(),
-              ].map((c) => (
-                <CreatorAvatar
-                  key={c.handle}
-                  creator={c}
-                  size="sm"
-                  className="ring-2 ring-background"
-                />
-              ))}
-            </div>
-          )}
-          {p.blurb && <p className="mt-3">{p.blurb}</p>}
-          {p.tip && <p className="mt-2 text-sm text-muted">Tip: {p.tip}</p>}
-          {p.fromPrice && (
-            <p className="mt-3 text-lg font-semibold tabular-nums">
-              <Price
-                item={{
-                  priceCents: p.fromPrice.cents,
-                  quantity: 1,
-                  currency: p.fromPrice.currency,
-                }}
-              />
-              {p.fromPrice.unit && (
-                <span className="text-sm font-normal text-muted">
-                  /{p.fromPrice.unit}
-                </span>
-              )}
+          {p.blurb && (
+            <p className="mt-3 hidden max-w-2xl text-pretty sm:block">
+              {p.blurb}
             </p>
           )}
-          <div className="mt-4 flex flex-wrap gap-2">
-            {p.cartItem && p.skippedBy.length === 0 && (
-              <AddRouteButton
-                items={[p.cartItem]}
-                label="Add to trip cart"
-                doneLabel="In your trip cart"
-                removeLabel="Remove from cart"
-              />
-            )}
-            <FavouriteButton
-              destination={d.slug}
-              place={p.slug}
-              name={p.name}
-              withLabel
-            />
-            <a
-              href={googleUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
-            >
-              <Navigation className="size-4" aria-hidden /> Google Maps
-            </a>
-            {p.website && (
-              <a
-                href={p.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
-              >
-                <Globe className="size-4" aria-hidden /> Website
-              </a>
-            )}
-          </div>
-          <PageGuide id="place" className="mt-6" />
         </div>
       </div>
+      {p.blurb && <p className="mt-4 text-pretty sm:hidden">{p.blurb}</p>}
 
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold">What creators say</h2>
-        <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
-          {p.mentions.map((m) => (
-            <li key={m.id} className="flex gap-3 p-4">
-              <CreatorAvatar creator={m.creator} size="sm" />
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="flex flex-wrap items-center gap-1.5 text-sm">
-                    <CreatorChip creator={m.creator} />
-                    <span className="text-muted">
-                      Day {m.day} of{" "}
-                      <Link
-                        href={`/itineraries/${m.itinerary.slug}`}
-                        className="underline hover:text-foreground"
-                      >
-                        {m.itinerary.title}
-                      </Link>
-                    </span>
-                    {m.sentiment && m.sentiment !== "RECOMMENDED" && (
-                      <span
-                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                          m.sentiment === "AVOID"
-                            ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
-                            : "bg-accent-soft text-accent"
-                        }`}
-                      >
-                        {sentimentLabel[m.sentiment]}
-                      </span>
-                    )}
-                  </p>
-                  <span className="text-sm tabular-nums text-muted">
-                    <Price item={m} />
-                  </span>
-                </div>
-                {m.name !== p.name && (
-                  <p className="mt-2 font-medium">{m.name}</p>
-                )}
-                {m.note && (
-                  <p className="mt-1 text-sm text-muted">
-                    &ldquo;{m.note}&rdquo;
-                  </p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {p.cartItem && p.skippedBy.length === 0 && (
+          <AddRouteButton
+            items={[p.cartItem]}
+            label="Add to trip"
+            doneLabel="In your trip"
+            removeLabel="Remove from trip"
+          />
+        )}
+        <a
+          href={googleUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
+        >
+          <Navigation className="size-4" aria-hidden /> Google Maps
+        </a>
+        {p.website && (
+          <a
+            href={p.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
+          >
+            <Globe className="size-4" aria-hidden /> Website
+          </a>
+        )}
+        <FavouriteButton
+          destination={d.slug}
+          place={p.slug}
+          name={p.name}
+          withLabel
+        />
+      </div>
+      <PageGuide id="place" className="mt-4" />
 
       {stops.length > 0 && (
-        <section className="mt-10">
+        <section className="mt-8">
           <h2 className="text-xl font-semibold">
-            On the map{nearby.length > 0 && " and nearby"}
+            {nearby.length > 0 ? "Build a day around it" : "On the map"}
           </h2>
-          <div className="mt-3 grid gap-4 md:grid-cols-[1fr_300px]">
-            <TripMap stops={stops} className="h-72" />
+          <p className="mt-1 text-sm text-pretty text-muted">
+            {firstDay === lastDay
+              ? `Creators visit on day ${firstDay}.`
+              : `Creators visit between day ${firstDay} and ${lastDay}.`}
+            {p.tip && ` Tip: ${p.tip}`}
+          </p>
+          <div
+            className={`mt-3 grid gap-4 ${nearby.length > 0 ? "md:grid-cols-[1fr_340px]" : ""}`}
+          >
+            <TripMap stops={stops} className="h-64 md:h-full md:min-h-96" />
             {nearby.length > 0 && (
-              <ol className="space-y-2">
+              <ol className="divide-y divide-line rounded-2xl border border-line bg-card">
                 {nearby.map((o, n) => (
-                  <li key={o.slug}>
+                  <li key={o.slug} className="flex items-center gap-3 p-2.5">
+                    <span className="relative shrink-0">
+                      <Thumb
+                        url={o.photoUrl}
+                        category={o.category}
+                        className="size-12 rounded-lg"
+                      />
+                      <span
+                        className="absolute -top-1.5 -left-1.5 inline-flex size-5 items-center justify-center rounded-full text-[10px] font-semibold text-white ring-2 ring-card"
+                        style={{ background: categoryHex[o.category] }}
+                        title="Pin number on the map"
+                      >
+                        {n + 1}
+                      </span>
+                    </span>
                     <Link
                       href={placeHref(d.slug, o.slug)}
-                      className="flex items-center gap-3 rounded-xl border border-line bg-card p-2.5 text-sm hover:border-accent"
+                      className="min-w-0 flex-1 text-sm hover:text-accent"
                     >
-                      <span className="relative shrink-0">
-                        <Thumb
-                          url={o.photoUrl}
-                          category={o.category}
-                          className="size-14 rounded-lg"
-                        />
-                        <span
-                          className="absolute -top-1.5 -left-1.5 inline-flex size-5 items-center justify-center rounded-full text-[10px] font-semibold text-white ring-2 ring-card"
-                          style={{ background: categoryHex[o.category] }}
-                          title="Pin number on the map"
-                        >
-                          {n + 1}
-                        </span>
+                      <span className="block truncate font-medium">
+                        {o.name}
                       </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate font-medium">
-                          {o.name}
-                        </span>
-                        <span className="text-xs text-muted">
-                          ~
-                          {formatMinutes(
-                            driveMinutes(p as { lat: number; lng: number }, o)
-                              .minutes,
-                          )}{" "}
-                          drive · {categoryLabel[o.category]}
-                        </span>
+                      <span className="text-xs text-muted">
+                        ~
+                        {formatMinutes(
+                          driveMinutes(p as { lat: number; lng: number }, o)
+                            .minutes,
+                        )}{" "}
+                        drive · {categoryLabel[o.category]}
                       </span>
-                      <ChevronRight
-                        className="size-4 shrink-0 text-muted"
-                        aria-hidden
-                      />
                     </Link>
+                    {o.cartItem && o.skippedBy.length === 0 && (
+                      <span className="mr-1.5 shrink-0">
+                        <AddItemButton
+                          item={{ ...o.cartItem, photoUrl: o.photoUrl }}
+                        />
+                      </span>
+                    )}
                   </li>
                 ))}
               </ol>
@@ -356,6 +309,66 @@ export default async function PlacePage({ params }: Props) {
           </div>
         </section>
       )}
+
+      <details
+        open={stops.length === 0}
+        className="group mt-8 rounded-2xl border border-line bg-card"
+      >
+        <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
+          <span className="flex -space-x-2" aria-hidden>
+            {faces.map((c) => (
+              <CreatorAvatar
+                key={c.handle}
+                creator={c}
+                size="sm"
+                className="ring-2 ring-card"
+              />
+            ))}
+          </span>
+          <span className="flex-1 font-medium">
+            What{" "}
+            {faces.length === 1
+              ? "1 creator says"
+              : `${faces.length} creators say`}
+          </span>
+          <ChevronDown
+            className="size-4 text-muted transition group-open:rotate-180"
+            aria-hidden
+          />
+        </summary>
+        <ul className="divide-y divide-line border-t border-line">
+          {p.mentions.map((m) => (
+            <li key={m.id} className="flex gap-3 p-4 text-sm">
+              <CreatorAvatar creator={m.creator} size="sm" />
+              <div className="min-w-0 flex-1">
+                <p className="flex flex-wrap items-center gap-1.5">
+                  <CreatorChip creator={m.creator} />
+                  <Link
+                    href={`/itineraries/${m.itinerary.slug}`}
+                    className="text-muted underline hover:text-foreground"
+                  >
+                    Day {m.day} · {m.itinerary.title}
+                  </Link>
+                  {m.sentiment && m.sentiment !== "RECOMMENDED" && (
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                        m.sentiment === "AVOID"
+                          ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+                          : "bg-accent-soft text-accent"
+                      }`}
+                    >
+                      {sentimentLabel[m.sentiment]}
+                    </span>
+                  )}
+                </p>
+                {m.note && (
+                  <p className="mt-1.5 text-muted">&ldquo;{m.note}&rdquo;</p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </details>
     </>
   );
 }
