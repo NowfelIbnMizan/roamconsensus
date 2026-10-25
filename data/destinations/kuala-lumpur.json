@@ -613,7 +613,10 @@
           "name": "National Museum",
           "category": "EXPERIENCE",
           "note": "If you're interested in Malaysian history",
-          "place": "national-museum-malaysia"
+          "place": "national-museum-malaysia",
+          "price": 1.19,
+          "priceNote": "RM 5 per foreign adult",
+          "priceSource": "https://www.muziumnegara.gov.my/ms/tiket"
         },
         {
           "day": 1,
@@ -653,7 +656,10 @@
           "day": 1,
           "name": "Yut Kee",
           "category": "FOOD",
-          "place": "yut-kee"
+          "place": "yut-kee",
+          "price": 3.33,
+          "priceNote": "RM 14, roti babi",
+          "priceSource": "https://2bearbear.com/?p=35928"
         },
         {
           "day": 1,
@@ -696,7 +702,10 @@
           "name": "National Museum",
           "category": "EXPERIENCE",
           "note": "English guided tours are available",
-          "place": "national-museum-malaysia"
+          "place": "national-museum-malaysia",
+          "price": 1.19,
+          "priceNote": "RM 5 per foreign adult",
+          "priceSource": "https://www.muziumnegara.gov.my/ms/tiket"
         },
         {
           "day": 1,
@@ -719,7 +728,10 @@
           "name": "KL Bird Park",
           "category": "EXPERIENCE",
           "note": "Go early",
-          "place": "kl-bird-park"
+          "place": "kl-bird-park",
+          "price": 21.43,
+          "priceNote": "RM 90 per adult",
+          "priceSource": "https://www.klbirdpark.com/plan-your-visit/"
         },
         {
           "day": 2,

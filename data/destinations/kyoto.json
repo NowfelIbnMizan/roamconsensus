@@ -1413,7 +1413,10 @@
           "day": 2,
           "name": "Tenryu-ji",
           "category": "EXPERIENCE",
-          "place": "tenryu-ji"
+          "place": "tenryu-ji",
+          "price": 3.16,
+          "priceNote": "JPY 500, garden only",
+          "priceSource": "https://www.tenryuji.com/en/visit/"
         },
         {
           "day": 2,
@@ -1428,7 +1431,10 @@
           "name": "Arashiyama Monkey Park Iwatayama",
           "category": "EXPERIENCE",
           "note": "Macaques and city views. Cash only.",
-          "place": "iwatayama-monkey-park"
+          "place": "iwatayama-monkey-park",
+          "price": 3.8,
+          "priceNote": "JPY 600 per adult",
+          "priceSource": "https://kansaionepass.com/en/article/detail/365"
         },
         {
           "day": 3,
@@ -1518,7 +1524,10 @@
           "name": "Kimono Tea Ceremony Maikoya Kyoto",
           "category": "EXPERIENCE",
           "note": "Kimono included; reservations recommended",
-          "place": "maikoya-kyoto-tea-ceremony"
+          "place": "maikoya-kyoto-tea-ceremony",
+          "price": 31.65,
+          "priceNote": "kimono + tea ceremony, from JPY 5,000",
+          "priceSource": "https://mai-ko.com/culture/tea-ceremony/"
         }
       ]
     }

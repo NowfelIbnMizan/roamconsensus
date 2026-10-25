@@ -660,7 +660,9 @@
           "name": "Lock Tien Food Court",
           "category": "FOOD",
           "place": "lock-tien",
-          "priceNote": "creator: super cheap"
+          "priceNote": "THB 50, plate of Hokkien noodles",
+          "price": 1.49,
+          "priceSource": "https://www.eatingthaifood.com/lock-tien-phuket/"
         },
         {
           "day": 1,
@@ -747,7 +749,9 @@
           "day": 4,
           "name": "James Bond Island",
           "category": "EXPERIENCE",
-          "place": "james-bond-island"
+          "place": "james-bond-island",
+          "price": 0,
+          "priceNote": "part of the Phang Nga Bay trip"
         },
         {
           "day": 5,
@@ -789,7 +793,10 @@
           "day": 6,
           "name": "Bamboo Island",
           "category": "EXPERIENCE",
-          "place": "bamboo-island"
+          "place": "bamboo-island",
+          "price": 145.83,
+          "priceNote": "speedboat day tour (Phi Phi, Bamboo Island), from THB 4,900",
+          "priceSource": "https://tisland.travel/excursion/phi-phi-james-bond-1-day"
         },
         {
           "day": 6,
@@ -802,7 +809,9 @@
           "name": "Phuket Sunday Walking Street",
           "category": "FOOD",
           "note": "Starts around 4 PM",
-          "place": "phuket-sunday-walking-street"
+          "place": "phuket-sunday-walking-street",
+          "price": 0,
+          "priceNote": "free to wander; snacks extra"
         },
         {
           "day": 7,
@@ -1090,13 +1099,18 @@
           "day": 2,
           "name": "James Bond Island",
           "category": "EXPERIENCE",
-          "place": "james-bond-island"
+          "place": "james-bond-island",
+          "price": 0,
+          "priceNote": "part of the same speedboat day tour"
         },
         {
           "day": 2,
           "name": "Bamboo Island",
           "category": "EXPERIENCE",
-          "place": "bamboo-island"
+          "place": "bamboo-island",
+          "price": 145.83,
+          "priceNote": "speedboat day tour with James Bond Island, from THB 4,900",
+          "priceSource": "https://tisland.travel/excursion/phi-phi-james-bond-1-day"
         },
         {
           "day": 2,

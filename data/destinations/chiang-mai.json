@@ -619,7 +619,9 @@
           "name": "Wat Lok Moli",
           "category": "EXPERIENCE",
           "note": "Start as early as you can",
-          "place": "wat-lok-moli"
+          "place": "wat-lok-moli",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
@@ -633,13 +635,19 @@
           "day": 1,
           "name": "Wat Chedi Luang",
           "category": "EXPERIENCE",
-          "place": "wat-chedi-luang"
+          "place": "wat-chedi-luang",
+          "price": 1.49,
+          "priceNote": "THB 50 per adult",
+          "priceSource": "https://pickyourtrail.com/attractions/wat-chedi-luang-chiang-mai"
         },
         {
           "day": 1,
           "name": "Wat Phra Singh",
           "category": "EXPERIENCE",
-          "place": "wat-phra-singh"
+          "place": "wat-phra-singh",
+          "price": 0.6,
+          "priceNote": "THB 20 per person",
+          "priceSource": "https://gowanderly.com/?p=9810"
         },
         {
           "day": 1,
@@ -652,7 +660,10 @@
           "day": 1,
           "name": "Wat Suan Dok",
           "category": "EXPERIENCE",
-          "place": "wat-suan-dok"
+          "place": "wat-suan-dok",
+          "price": 0.6,
+          "priceNote": "THB 20 per person",
+          "priceSource": "https://gowanderly.com/?p=9810"
         },
         {
           "day": 1,
@@ -705,7 +716,10 @@
           "day": 2,
           "name": "Mae Ya Waterfall",
           "category": "EXPERIENCE",
-          "place": "mae-ya-waterfall"
+          "place": "mae-ya-waterfall",
+          "price": 8.93,
+          "priceNote": "Doi Inthanon park entry for foreigners, THB 300; covers the park's other stops",
+          "priceSource": "https://backpackbob.com/doi-inthanon"
         },
         {
           "day": 2,
@@ -720,20 +734,28 @@
           "day": 2,
           "name": "Twin Royal Pagodas",
           "category": "EXPERIENCE",
-          "place": "doi-inthanon-royal-pagodas"
+          "place": "doi-inthanon-royal-pagodas",
+          "price": 4.46,
+          "priceNote": "THB 150 per person",
+          "priceSource": "https://backpackbob.com/doi-inthanon"
         },
         {
           "day": 2,
           "name": "Kew Mae Pan Nature Trail",
           "category": "EXPERIENCE",
           "note": "The earlier you are there, the less you will have to wait",
-          "place": "kew-mae-pan-trail"
+          "place": "kew-mae-pan-trail",
+          "price": 5.95,
+          "priceNote": "THB 200 guide fee per group",
+          "priceSource": "https://goasia.cc/en/article/doi-inthanon-national-park"
         },
         {
           "day": 2,
           "name": "Wachirathan Waterfall",
           "category": "EXPERIENCE",
-          "place": "wachirathan-waterfall"
+          "place": "wachirathan-waterfall",
+          "price": 0,
+          "priceNote": "covered by the Doi Inthanon park ticket"
         },
         {
           "day": 3,
@@ -926,7 +948,9 @@
           "name": "Wat Lok Moli",
           "category": "EXPERIENCE",
           "note": "Within easy walking distance from one another within the gates",
-          "place": "wat-lok-moli"
+          "place": "wat-lok-moli",
+          "price": 0,
+          "priceNote": "free entry"
         },
         {
           "day": 1,
@@ -940,7 +964,10 @@
           "day": 1,
           "name": "Wat Phra Singh",
           "category": "EXPERIENCE",
-          "place": "wat-phra-singh"
+          "place": "wat-phra-singh",
+          "price": 0.6,
+          "priceNote": "THB 20 per person",
+          "priceSource": "https://gowanderly.com/?p=9810"
         },
         {
           "day": 1,
@@ -972,7 +999,10 @@
           "name": "Elephant Jungle Sanctuary",
           "category": "EXPERIENCE",
           "note": "I cannot recommend this company and activity enough!",
-          "place": "elephant-jungle-sanctuary"
+          "place": "elephant-jungle-sanctuary",
+          "price": 56.55,
+          "priceNote": "half-day visit, from THB 1,900",
+          "priceSource": "https://elephantjunglesanctuary.com/chiang-mai/"
         }
       ]
     },
@@ -990,7 +1020,10 @@
           "name": "Khao Soi Khun Yai",
           "category": "FOOD",
           "note": "Packed with spices, not too sweet, and extremely flavorful",
-          "place": "khao-soi-khun-yai"
+          "place": "khao-soi-khun-yai",
+          "price": 1.04,
+          "priceNote": "THB 30-35 per bowl",
+          "priceSource": "https://www.eatingthaifood.com/khao-soi-khun-yai-chiang-mai/"
         },
         {
           "day": 1,

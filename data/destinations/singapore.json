@@ -1072,7 +1072,10 @@
           "name": "Chinatown Complex Food Centre",
           "category": "FOOD",
           "note": "There's a very popular place to eat claypot rice at the market.",
-          "place": "chinatown-complex-food-centre"
+          "place": "chinatown-complex-food-centre",
+          "price": 9.38,
+          "priceNote": "SGD 12, medium claypot rice",
+          "priceSource": "https://migrationology.com/chinatown-complex-food-centre-singapore/"
         },
         {
           "day": 1,
@@ -1086,7 +1089,10 @@
           "name": "Kok Sen Restaurant",
           "category": "FOOD",
           "note": "I think you better go with the small size for just two of you.",
-          "place": "kok-sen-restaurant"
+          "place": "kok-sen-restaurant",
+          "price": 26.56,
+          "priceNote": "SGD 34 for three shared dishes",
+          "priceSource": "https://migrationology.com/kok-sen-restaurant/"
         },
         {
           "day": 1,
@@ -1128,13 +1134,19 @@
           "name": "Singapore Zam Zam",
           "category": "FOOD",
           "note": "Murtabak since 1908",
-          "place": "singapore-zam-zam"
+          "place": "singapore-zam-zam",
+          "price": 6.25,
+          "priceNote": "SGD 8, medium murtabak",
+          "priceSource": "https://migrationology.com/singapore-zam-zam-murtabak/"
         },
         {
           "day": 2,
           "name": "Beach Road Scissor Cut Hainanese Curry Rice",
           "category": "FOOD",
-          "place": "beach-road-scissor-cut-curry-rice"
+          "place": "beach-road-scissor-cut-curry-rice",
+          "price": 3.12,
+          "priceNote": "SGD 3-5 a plate",
+          "priceSource": "https://migrationology.com/scissor-cut-hainanese-curry-rice/"
         },
         {
           "day": 2,
@@ -1164,14 +1176,20 @@
           "day": 3,
           "name": "Adam Road nasi lemak",
           "category": "FOOD",
-          "place": "adam-road-food-centre"
+          "place": "adam-road-food-centre",
+          "price": 4.3,
+          "priceNote": "about SGD 5.50 a plate",
+          "priceSource": "https://migrationology.com/adam-road-nasi-lemak/"
         },
         {
           "day": 3,
           "name": "Chomp Chomp Food Centre",
           "category": "FOOD",
           "note": "well worth the effort to get here; BBQ sambal stingray",
-          "place": "chomp-chomp-food-centre"
+          "place": "chomp-chomp-food-centre",
+          "price": 9.38,
+          "priceNote": "SGD 10-15, BBQ stingray",
+          "priceSource": "https://migrationology.com/chomp-chomp-food-centre-singapore/"
         }
       ]
     },
@@ -1299,7 +1317,9 @@
           "name": "Sentosa Island",
           "category": "EXPERIENCE",
           "note": "~10-minute drive from central Singapore",
-          "place": "sentosa-island"
+          "place": "sentosa-island",
+          "price": 0,
+          "priceNote": "free to walk in on the Sentosa Boardwalk; rides extra"
         },
         {
           "day": 3,
@@ -1330,7 +1350,10 @@
           "day": 3,
           "name": "Universal Studios Singapore",
           "category": "EXPERIENCE",
-          "place": "universal-studios-singapore"
+          "place": "universal-studios-singapore",
+          "price": 63.28,
+          "priceNote": "SGD 81 per adult, 1 day",
+          "priceSource": "https://blog.waug.com/universal-studios-singapore-tickets-price-promos/"
         },
         {
           "day": 4,
@@ -1354,7 +1377,10 @@
           "name": "ArtScience Museum",
           "category": "EXPERIENCE",
           "note": "About 1 hour",
-          "place": "artscience-museum"
+          "place": "artscience-museum",
+          "price": 17.19,
+          "priceNote": "SGD 22 per adult, current exhibition",
+          "priceSource": "https://www.marinabaysands.com/museum/ticket/search.html"
         },
         {
           "day": 4,
