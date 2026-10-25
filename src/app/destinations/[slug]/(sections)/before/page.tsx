@@ -48,19 +48,14 @@ export default async function BeforePage({
       </>
     );
 
-  const topics = [...new Set(d.tips.map((t) => t.topic))].map((topic) => ({
-    topic,
-    tips: d.tips.filter((t) => t.topic === topic),
-  }));
-
   return (
     <>
       {visaBox}
       <h2 className="text-xl font-semibold">Before you go to {d.name}</h2>
-      <p className="mt-1 text-sm text-muted">
-        Tick as you go. Saved on this device.
+      <p className="mt-1 mb-4 text-sm text-muted">
+        Tick as you go. Tap a tip to read it.
       </p>
-      <Checklist slug={d.slug} topics={topics} />
+      <Checklist slug={d.slug} tips={d.tips} />
       <p className="fine-print mt-6">
         Rules and fees change. Check the official links before you travel.
       </p>
