@@ -39,7 +39,7 @@ export const guides = {
   "city-stay": [
     {
       lead: "Areas, not just hotels",
-      text: "Each area is one creators slept in, most-picked first.",
+      text: "Each area is one creators slept in, most-picked first. Numbers match the pins on the map.",
     },
     {
       lead: "What's nearby",

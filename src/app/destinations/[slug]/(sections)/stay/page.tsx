@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BedDouble, MapPin } from "lucide-react";
 import { AddItemButton } from "@/components/add-to-cart";
 import { CreatorChip } from "@/components/creator";
 import { Money } from "@/components/money";
 import { Photo } from "@/components/photo";
+import { TripMap, type MapStop } from "@/components/trip-map";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 
@@ -61,142 +61,138 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : {};
 }
 
+// One colour per area, shared by its number badge and its map pins.
+const AREA_COLORS = ["#0f6b62", "#e0703f", "#7c3aed", "#2563eb", "#b45309", "#be185d", "#4d7c0f", "#475569"];
+
 export default async function StayPage({ params }: Props) {
   const d = await getDestination((await params).slug);
   if (!d) notFound();
   const areas = stayAreas(d);
   if (!areas.length) return <p className="text-muted">No creator stays listed for {d.name} yet.</p>;
+  const color = (i: number) => AREA_COLORS[i % AREA_COLORS.length];
+  const stops: MapStop[] = areas.flatMap((a, i) =>
+    a.stays
+      .filter((p) => p.lat !== null && p.lng !== null)
+      .map((p) => ({
+        key: p.slug,
+        lat: p.lat!,
+        lng: p.lng!,
+        label: String(i + 1),
+        color: color(i),
+        title: p.name,
+        subtitle: a.area,
+        page: placeHref(d.slug, p.slug),
+        cartId: p.cartItem?.id,
+      })),
+  );
 
   return (
     <>
       <h2 className="text-xl font-semibold">Where to stay in {d.name}</h2>
-      <p className="mt-1 max-w-2xl text-sm text-muted">
-        The areas creators actually slept in, with their hotels. &ldquo;Nearby&rdquo; counts the other spots creators
-        recommend in the same area.
-      </p>
+      <p className="mt-1 max-w-2xl text-sm text-muted">The areas creators actually slept in, with their hotels.</p>
 
-      <div className="mt-5 hidden overflow-hidden rounded-2xl border border-line bg-card sm:block">
-        <table className="w-full text-left text-sm">
-          <thead className="border-b border-line text-xs uppercase tracking-wide text-muted">
-            <tr>
-              <th className="px-4 py-2.5 font-medium">Area</th>
-              {d.creatorCount > 1 && <th className="px-4 py-2.5 font-medium">Creators stayed</th>}
-              <th className="px-4 py-2.5 font-medium">From a night</th>
-              <th className="px-4 py-2.5 font-medium">Nearby picks</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-line">
-            {areas.map((a) => (
-              <tr key={a.area}>
-                <td className="px-4 py-3 font-semibold">
-                  <a href={`#${encodeURIComponent(a.area)}`} className="hover:text-accent hover:underline">
+      <div className="mt-5 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">
+        {stops.length > 0 && (
+          <div className="mb-5 lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:mb-0">
+            <TripMap
+              stops={stops}
+              legend={areas.map((a, i) => ({ label: a.area, color: color(i) }))}
+              className="h-72 sm:h-96 lg:h-[calc(100vh-11rem)]"
+            />
+          </div>
+        )}
+        <div className="space-y-4 lg:col-start-1 lg:row-start-1">
+          {areas.map((a, i) => {
+            const nearby = [...a.todo, ...a.food];
+            return (
+              <section
+                key={a.area}
+                id={encodeURIComponent(a.area)}
+                className="scroll-mt-6 rounded-2xl border border-line bg-card p-4"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="flex items-center gap-2 font-semibold">
+                    <span
+                      aria-hidden
+                      className="flex size-6 shrink-0 items-center justify-center rounded-full text-xs text-white"
+                      style={{ background: color(i) }}
+                    >
+                      {i + 1}
+                    </span>
                     {a.area}
-                  </a>
-                </td>
-                {d.creatorCount > 1 && (
-                  <td className="px-4 py-3 tabular-nums">
-                    {a.creators.length} of {d.creatorCount}
-                  </td>
-                )}
-                <td className="px-4 py-3 tabular-nums">
-                  {a.from ? (
-                    <Money cents={a.from.cents} currency={a.from.currency} />
-                  ) : (
-                    <span className="text-muted">Not listed</span>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-muted">
-                  {[a.todo.length && `${a.todo.length} to do`, a.food.length && `${a.food.length} to eat`]
-                    .filter(Boolean)
-                    .join(" · ") || "None listed"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="mt-6 space-y-5">
-        {areas.map((a) => (
-          <section
-            key={a.area}
-            id={encodeURIComponent(a.area)}
-            className="scroll-mt-6 rounded-2xl border border-line bg-card p-4 sm:p-5"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="flex items-center gap-2 text-lg font-semibold">
-                <MapPin className="size-4 text-accent" aria-hidden /> {a.area}
-              </h3>
-              <p className="text-sm text-muted">
-                {d.creatorCount > 1 && (
-                  <>
-                    {a.creators.length} of {d.creatorCount} creators stayed here
-                    {a.from && " · "}
-                  </>
-                )}
-                {a.from && (
-                  <>
-                    from <Money cents={a.from.cents} currency={a.from.currency} /> a night
-                  </>
-                )}
-              </p>
-            </div>
-            {a.todo.length + a.food.length > 0 && (
-              <p className="mt-1 text-sm text-muted">
-                Nearby:{" "}
-                {[...a.todo, ...a.food].slice(0, 4).map((p, i) => (
-                  <span key={p.slug}>
-                    {i > 0 && ", "}
-                    <Link href={placeHref(d.slug, p.slug)} className="underline hover:text-foreground">
-                      {p.name}
-                    </Link>
-                  </span>
-                ))}
-                {a.todo.length + a.food.length > 4 && ` and ${a.todo.length + a.food.length - 4} more`}
-              </p>
-            )}
-            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-              {a.stays.map((p) => (
-                <li key={p.slug} className="flex gap-3 rounded-xl border border-line p-3">
-                  <Photo
-                    photoKey={placePhotoKey(d.slug, p)}
-                    query={placeQuery(p.name, d.name)}
-                    category={p.category}
-                    website={p.website}
-                    alt={p.name}
-                    sizes="160px"
-                    credit={false}
-                    className="size-20 shrink-0 rounded-lg"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-2">
-                      <Link href={placeHref(d.slug, p.slug)} className="font-medium leading-snug hover:text-accent">
-                        {p.name}
-                      </Link>
-                      {p.cartItem && <AddItemButton item={p.cartItem} />}
-                    </div>
-                    {p.fromPrice && p.fromPrice.cents > 0 && (
-                      <p className="text-sm tabular-nums">
-                        <Money cents={p.fromPrice.cents} currency={p.fromPrice.currency} />
-                        {p.fromPrice.unit && <span className="text-muted">/{p.fromPrice.unit}</span>}
-                      </p>
+                  </h3>
+                  <p className="text-sm text-muted">
+                    {d.creatorCount > 1 && (
+                      <>
+                        {a.creators.length} of {d.creatorCount} creators
+                        {a.from && " · "}
+                      </>
                     )}
-                    <div className="mt-1.5 flex flex-wrap gap-1.5">
-                      {p.creators.map((c) => (
-                        <CreatorChip key={c.handle} creator={c} />
-                      ))}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+                    {a.from && (
+                      <>
+                        from <Money cents={a.from.cents} currency={a.from.currency} />
+                      </>
+                    )}
+                  </p>
+                </div>
+                <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {a.stays.map((p) => (
+                    <li key={p.slug} className="flex min-w-0 items-center gap-3">
+                      <Photo
+                        photoKey={placePhotoKey(d.slug, p)}
+                        query={placeQuery(p.name, d.name)}
+                        category={p.category}
+                        website={p.website}
+                        alt={p.name}
+                        sizes="112px"
+                        credit={false}
+                        className="size-14 shrink-0 rounded-lg"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <Link
+                          href={placeHref(d.slug, p.slug)}
+                          className="block truncate font-medium hover:text-accent"
+                        >
+                          {p.name}
+                        </Link>
+                        {p.fromPrice && p.fromPrice.cents > 0 ? (
+                          <p className="text-sm tabular-nums">
+                            <Money cents={p.fromPrice.cents} currency={p.fromPrice.currency} />
+                            {p.fromPrice.unit && <span className="text-muted">/{p.fromPrice.unit}</span>}
+                          </p>
+                        ) : (
+                          <p className="text-sm text-muted">Price not listed</p>
+                        )}
+                        <div className="mt-1 flex flex-wrap gap-1.5">
+                          {p.creators.map((c) => (
+                            <CreatorChip key={c.handle} creator={c} />
+                          ))}
+                        </div>
+                      </div>
+                      {p.cartItem && <AddItemButton item={p.cartItem} />}
+                    </li>
+                  ))}
+                </ul>
+                {nearby.length > 0 && (
+                  <p className="mt-3 text-sm text-muted">
+                    Nearby:{" "}
+                    {nearby.slice(0, 3).map((p, n) => (
+                      <span key={p.slug}>
+                        {n > 0 && ", "}
+                        <Link href={placeHref(d.slug, p.slug)} className="underline hover:text-foreground">
+                          {p.name}
+                        </Link>
+                      </span>
+                    ))}
+                    {nearby.length > 3 && ` and ${nearby.length - 3} more`}
+                  </p>
+                )}
+              </section>
+            );
+          })}
+        </div>
       </div>
-      <p className="mt-6 flex items-center gap-2 text-sm text-muted">
-        <BedDouble className="size-4" aria-hidden /> Prices are what creators paid or the typical rate. Check current
-        prices before you book.
-      </p>
+      <p className="fine-print mt-6">Prices are what creators paid or the typical rate. Check before you book.</p>
     </>
   );
 }
