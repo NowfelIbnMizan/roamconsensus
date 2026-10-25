@@ -1,10 +1,16 @@
 import Link from "next/link";
 import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
 import { Photo } from "@/components/photo";
-import { getDestination, getDestinations, getSiteStats } from "@/lib/data";
+import {
+  getDestination,
+  getDestinationCenters,
+  getDestinations,
+  getSiteStats,
+} from "@/lib/data";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { HomeSearch } from "@/components/home-search";
+import { CityMap } from "@/components/city-map";
 
 // Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
 const comingSoon = [
@@ -13,9 +19,10 @@ const comingSoon = [
 ];
 
 export default async function Home() {
-  const [destinations, stats] = await Promise.all([
+  const [destinations, stats, centers] = await Promise.all([
     getDestinations(),
     getSiteStats(),
+    getDestinationCenters(),
   ]);
   const { creators } = stats;
   // Letter circles look like a placeholder, so the faces row waits until a few creators have agreed to a photo.
@@ -44,11 +51,11 @@ export default async function Home() {
 
   return (
     <>
-      <section className="relative grid items-center gap-8 pb-6 md:grid-cols-[1.4fr_1fr] md:py-10">
+      <section className="grid items-center gap-6 pb-6 md:grid-cols-[1fr_1.1fr] md:gap-10 md:py-8">
         <div>
           <Link
             href="/creators"
-            className="mb-3 inline-flex items-center gap-2.5 text-xs text-muted hover:text-foreground sm:mb-4 sm:text-sm"
+            className="inline-flex items-center gap-2.5 hover:text-foreground"
           >
             {faces.length >= 3 && (
               <span className="flex -space-x-2" aria-hidden>
@@ -62,23 +69,17 @@ export default async function Home() {
                 ))}
               </span>
             )}
-            <span>
-              Trips from{" "}
-              <strong className="text-foreground">
-                {creators.length} independent travel creators
-              </strong>
-              <span className="fine-print mt-1 block">
-                Collected from what they share publicly online.
-              </span>
+            <span className="eyebrow">
+              {destinations.length} cities · {routes} routes · {creators.length}{" "}
+              creators
             </span>
           </Link>
-          <h1 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-5xl">
-            Plan your trip from the routes travel creators{" "}
-            <em className="font-medium text-accent">agree</em> on.
+          <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight sm:text-5xl">
+            Where are you going?
           </h1>
-          <p className="mt-4 hidden max-w-xl text-muted sm:block">
-            Pick a city and how long you have. You get day-by-day creator
-            routes, the spots they all recommend, and a trip cart to book from.
+          <p className="mt-3 max-w-md text-muted">
+            Tap a city or search. You get the routes travel creators{" "}
+            <em className="font-medium text-accent">agree</em> on, day by day.
           </p>
           <HomeSearch
             cities={destinations.map(({ slug, name, country }) => ({
@@ -87,61 +88,32 @@ export default async function Home() {
               country,
             }))}
           />
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-            <span className="text-muted">Popular:</span>
-            {covered
-              .concat(
-                destinations.filter((d) => !covered.includes(d)).slice(0, 3),
-              )
-              .map((d) => (
-                <Link
-                  key={d.slug}
-                  href={`/destinations/${d.slug}`}
-                  className="rounded-full border border-line bg-card px-3 py-1 hover:border-accent"
-                >
-                  {d.name}
-                </Link>
-              ))}
-            <Link
-              href="/quiz"
-              className="inline-flex items-center gap-1 px-1 font-medium text-accent hover:underline"
-            >
-              <Sparkles className="size-3.5" aria-hidden /> Not sure where? 3
-              quick questions
-            </Link>
-          </div>
-        </div>
-        <div className="hidden md:block">
-          {/* One tall photo and two stacked: the three best-covered cities. */}
-          <div className="grid aspect-[5/4] grid-cols-[1.25fr_1fr] grid-rows-2 gap-2.5">
-            {covered.map((d, i) => (
-              <Link
-                key={d.slug}
-                href={`/destinations/${d.slug}`}
-                className={`group relative block overflow-hidden rounded-2xl ${i === 0 ? "row-span-2" : ""}`}
-              >
-                <Photo
-                  photoKey={`destination:${d.slug}`}
-                  query={`${d.name} ${d.country}`}
-                  category="DESTINATION"
-                  alt={d.name}
-                  sizes="(min-width: 768px) 280px, 40vw"
-                  credit={false}
-                  priority={i === 0}
-                  className="size-full transition duration-500 group-hover:scale-[1.03]"
-                />
-                <span className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent to-45%" />
-                <span className="absolute bottom-3 left-3.5 font-display text-lg font-medium text-white">
-                  {d.name}
-                </span>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-3 text-center text-sm text-muted tabular-nums">
-            {destinations.length} cities · {routes} routes · {creators.length}{" "}
-            creators
+          <Link
+            href="/quiz"
+            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+          >
+            <Sparkles className="size-3.5" aria-hidden /> Not sure where? 3
+            quick questions
+          </Link>
+          <p className="fine-print mt-2">
+            Trips collected from what independent creators share publicly
+            online.
           </p>
         </div>
+        <CityMap
+          cities={destinations.flatMap((d) =>
+            centers[d.slug]
+              ? [
+                  {
+                    slug: d.slug,
+                    name: d.name,
+                    routes: d._count.itineraries,
+                    ...centers[d.slug],
+                  },
+                ]
+              : [],
+          )}
+        />
       </section>
 
       <section id="destinations" className="mt-4 scroll-mt-6">
