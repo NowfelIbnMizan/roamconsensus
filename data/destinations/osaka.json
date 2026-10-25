@@ -196,7 +196,9 @@
       "area": "Nipponbashi",
       "blurb": "Hostel set in a former toy store south of Namba.",
       "lat": 34.656,
-      "lng": 135.505
+      "lng": 135.505,
+      "website": "https://mitsuwaya.tesen.jp/en/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "konjaku-so-dotonbori-garden-spa-stay",
@@ -205,7 +207,9 @@
       "area": "Dotonbori",
       "blurb": "Japanese-style luxury stay with spa near Dotonbori.",
       "lat": 34.6691,
-      "lng": 135.5019
+      "lng": 135.5019,
+      "website": "https://konjakuso.jp",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cross-hotel-osaka",
@@ -214,7 +218,9 @@
       "area": "Shinsaibashi/Dotonbori",
       "blurb": "Design hotel steps from Dotonbori.",
       "lat": 34.6705,
-      "lng": 135.502
+      "lng": 135.502,
+      "website": "https://cross-osaka.orixhotelsandresorts.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "conrad-osaka",
@@ -223,7 +229,9 @@
       "area": "Nakanoshima",
       "blurb": "Five-star hotel on the upper floors of the Nakanoshima Festival Tower West.",
       "lat": 34.6929,
-      "lng": 135.492
+      "lng": 135.492,
+      "website": "https://www.hilton.com/en/hotels/osacici-conrad-osaka/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "national-museum-of-art-osaka",
@@ -232,7 +240,8 @@
       "area": "Nakanoshima",
       "blurb": "Underground contemporary art museum on Nakanoshima.",
       "lat": 34.6916,
-      "lng": 135.4916
+      "lng": 135.4916,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "namba-parks",
@@ -241,7 +250,8 @@
       "area": "Namba",
       "blurb": "Shopping complex with a terraced rooftop garden.",
       "lat": 34.6614,
-      "lng": 135.502
+      "lng": 135.502,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tempozan-ferris-wheel",
@@ -250,16 +260,18 @@
       "area": "Osaka Bay (Tempozan)",
       "blurb": "Large Ferris wheel beside Kaiyukan with bay views.",
       "lat": 34.6566,
-      "lng": 135.4318
+      "lng": 135.4318,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "original-pancake-house-osaka",
       "name": "The Original Pancake House",
       "category": "FOOD",
-      "area": "",
+      "area": "Namba Parks",
       "blurb": "American-style pancake restaurant.",
       "lat": 34.7058,
-      "lng": 135.4979
+      "lng": 135.4979,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "osaka-aquarium-kaiyukan",
@@ -269,7 +281,8 @@
       "blurb": "One of the world's largest public aquariums, built around a central Pacific Ocean tank.",
       "website": "https://www.kaiyukan.com/",
       "lat": 34.6545,
-      "lng": 135.429
+      "lng": 135.429,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "national-bunraku-theatre",
@@ -278,7 +291,8 @@
       "area": "Nipponbashi",
       "blurb": "National theatre dedicated to traditional bunraku puppet drama.",
       "lat": 34.667,
-      "lng": 135.507
+      "lng": 135.507,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "osaka-castle",
@@ -287,7 +301,8 @@
       "area": "Chuo / Osaka Castle Park",
       "blurb": "Reconstructed 16th-century castle keep housing a history museum, set in a large park.",
       "lat": 34.6873,
-      "lng": 135.5262
+      "lng": 135.5262,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mint-museum-osaka",
@@ -296,16 +311,20 @@
       "area": "Kita / Sakuranomiya",
       "blurb": "Museum at the Japan Mint, known for its spring cherry-blossom passage.",
       "lat": 34.6965,
-      "lng": 135.5215
+      "lng": 135.5215,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "garden-oriental-osaka",
       "name": "Garden Oriental Osaka",
       "category": "FOOD",
-      "area": "Kita / Sakuranomiya",
+      "area": "Miyakojima",
       "blurb": "Restaurant and wedding venue in a historic building beside the Okawa river.",
       "lat": 34.6957,
-      "lng": 135.5225
+      "lng": 135.5225,
+      "website": "https://www.gardenoriental.com/",
+      "tip": "Closed every Tuesday and Wednesday since July 2026.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "umeda-sky-building",
@@ -314,7 +333,8 @@
       "area": "Umeda",
       "blurb": "Twin-tower skyscraper joined by an open-air rooftop observatory.",
       "lat": 34.7053,
-      "lng": 135.4898
+      "lng": 135.4898,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "osaka-museum-of-history",
@@ -323,7 +343,8 @@
       "area": "Chuo",
       "blurb": "Museum of Osaka's history with views over Osaka Castle.",
       "lat": 34.6823,
-      "lng": 135.5194
+      "lng": 135.5194,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "dotonbori",
@@ -332,7 +353,8 @@
       "area": "Namba",
       "blurb": "Canal-side entertainment strip known for neon signs and street food.",
       "lat": 34.6687,
-      "lng": 135.5013
+      "lng": 135.5013,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tonbori-river-cruise",
@@ -341,7 +363,8 @@
       "area": "Dotonbori",
       "blurb": "Short sightseeing boat ride along the Dotonbori canal.",
       "lat": 34.669,
-      "lng": 135.5035
+      "lng": 135.5035,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "expo-70-commemorative-park",
@@ -350,7 +373,8 @@
       "area": "Suita",
       "blurb": "Park on the 1970 World Expo site, home to the Tower of the Sun.",
       "lat": 34.8094,
-      "lng": 135.5323
+      "lng": 135.5323,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "universal-studios-japan",
@@ -360,7 +384,8 @@
       "blurb": "Theme park including Super Nintendo World and the Wizarding World of Harry Potter.",
       "tip": "Prices change by date: buy tickets ahead on the official site.",
       "lat": 34.6654,
-      "lng": 135.4323
+      "lng": 135.4323,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cupnoodles-museum-osaka-ikeda",
@@ -369,7 +394,8 @@
       "area": "Ikeda",
       "blurb": "Museum on the invention of instant ramen, with a make-your-own cup noodle workshop.",
       "lat": 34.8183,
-      "lng": 135.429
+      "lng": 135.429,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hattori-ryokuchi-park",
@@ -378,7 +404,8 @@
       "area": "Toyonaka",
       "blurb": "Large park with an open-air museum of old Japanese farmhouses.",
       "lat": 34.7725,
-      "lng": 135.478
+      "lng": 135.478,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "abeno-harukas-300",
@@ -387,7 +414,8 @@
       "area": "Tennoji / Abeno",
       "blurb": "Observation deck at the top of the Abeno Harukas skyscraper.",
       "lat": 34.6459,
-      "lng": 135.5135
+      "lng": 135.5135,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mega-don-quijote-shinsekai",
@@ -396,7 +424,8 @@
       "area": "Shinsekai",
       "blurb": "Large discount store open late into the night.",
       "lat": 34.6519,
-      "lng": 135.5056
+      "lng": 135.5056,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "den-den-town",
@@ -405,7 +434,8 @@
       "area": "Nipponbashi",
       "blurb": "Electronics, anime and hobby shopping district.",
       "lat": 34.66,
-      "lng": 135.506
+      "lng": 135.506,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kuromon-ichiba-market",
@@ -414,7 +444,8 @@
       "area": "Nipponbashi",
       "blurb": "Covered food market known for seafood and street snacks.",
       "lat": 34.6655,
-      "lng": 135.5065
+      "lng": 135.5065,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "okonomiyaki-mizuno",
@@ -423,7 +454,9 @@
       "area": "Dotonbori",
       "blurb": "Long-running okonomiyaki restaurant on Dotonbori.",
       "lat": 34.6687,
-      "lng": 135.5025
+      "lng": 135.5025,
+      "website": "https://www.mizuno-osaka.com/index2.html",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "shinsaibashi-suji",
@@ -432,7 +465,8 @@
       "area": "Shinsaibashi",
       "blurb": "Long covered shopping arcade north of Dotonbori.",
       "lat": 34.674,
-      "lng": 135.501
+      "lng": 135.501,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hankyu-umeda-depachika",
@@ -441,7 +475,8 @@
       "area": "Umeda",
       "blurb": "Department-store basement food hall.",
       "lat": 34.7035,
-      "lng": 135.4995
+      "lng": 135.4995,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kura-sushi-osaka",
@@ -450,7 +485,8 @@
       "area": "",
       "blurb": "Conveyor-belt sushi chain; the creator does not name a branch.",
       "lat": 34.6686,
-      "lng": 135.5015
+      "lng": 135.5015,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "takoyaki-doraku-wanaka",
@@ -459,7 +495,8 @@
       "area": "Namba / Sennichimae",
       "blurb": "Popular takoyaki stand.",
       "lat": 34.666,
-      "lng": 135.504
+      "lng": 135.504,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ippudo-osaka",
@@ -468,7 +505,8 @@
       "area": "",
       "blurb": "Hakata-style tonkotsu ramen chain; the creator does not name a branch.",
       "lat": 34.6661,
-      "lng": 135.5011
+      "lng": 135.5011,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "minoo-park",
@@ -477,16 +515,19 @@
       "area": "Minoh",
       "blurb": "Forested quasi-national park with a paved trail to Minoo Waterfall.",
       "lat": 34.853,
-      "lng": 135.472
+      "lng": 135.472,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hisakunikosendo",
-      "name": "Hisakunikosendo",
+      "name": "Hisakuni Kousendo",
       "category": "FOOD",
       "area": "Minoh",
       "blurb": "Shop selling momiji (maple-leaf) tempura.",
       "lat": 34.8355,
-      "lng": 135.4722
+      "lng": 135.4722,
+      "website": "https://www.hisakuni.net",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "izakaya-toyo",
@@ -495,7 +536,8 @@
       "area": "Kyobashi",
       "blurb": "Standing izakaya known for its showman owner and seared tuna.",
       "lat": 34.6965,
-      "lng": 135.534
+      "lng": 135.534,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ichiran-ramen-dotonbori",
@@ -504,34 +546,40 @@
       "area": "Dotonbori",
       "blurb": "Tonkotsu ramen chain with solo booths.",
       "lat": 34.6688,
-      "lng": 135.503
+      "lng": 135.503,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wagyu-yakiniku-nikukachi",
-      "name": "Wagyu Yakiniku Nikukachi",
+      "name": "Wagyu Yakiniku Nikuhachi",
       "category": "FOOD",
-      "area": "",
+      "area": "Dotonbori",
       "blurb": "Wagyu yakiniku grill restaurant.",
       "lat": 34.6652,
-      "lng": 135.5043
+      "lng": 135.5043,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "alis-kitchen-osaka",
       "name": "Ali's Kitchen Osaka",
       "category": "FOOD",
-      "area": "",
+      "area": "Shinsaibashi",
       "blurb": "Small halal restaurant.",
       "lat": 34.6641,
-      "lng": 135.5052
+      "lng": 135.5052,
+      "website": "https://www.aliskitchen.jp/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cinquecento-bar-osaka",
       "name": "CinqueCento",
       "category": "FOOD",
-      "area": "",
+      "area": "Higashi-Shinsaibashi",
       "blurb": "Bar serving around 100 cocktails at 500 yen each.",
       "lat": 34.6694,
-      "lng": 135.5004
+      "lng": 135.5004,
+      "website": "https://osakacinquecento.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tsutenkaku-tower",
@@ -540,7 +588,8 @@
       "area": "Shinsekai",
       "blurb": "Retro observation tower and landmark of Shinsekai.",
       "lat": 34.6525,
-      "lng": 135.5063
+      "lng": 135.5063,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kushikatsu-daruma",
@@ -549,7 +598,8 @@
       "area": "Shinsekai",
       "blurb": "Kushikatsu (deep-fried skewer) chain founded in Shinsekai.",
       "lat": 34.652,
-      "lng": 135.506
+      "lng": 135.506,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tennoji-park",
@@ -558,7 +608,8 @@
       "area": "Tennoji",
       "blurb": "Urban park containing the zoo and the city art museum.",
       "lat": 34.65,
-      "lng": 135.511
+      "lng": 135.511,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "osaka-city-museum-of-fine-arts",
@@ -567,7 +618,8 @@
       "area": "Tennoji",
       "blurb": "Municipal art museum in Tennoji Park.",
       "lat": 34.6505,
-      "lng": 135.5095
+      "lng": 135.5095,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tennoji-zoo",
@@ -576,16 +628,18 @@
       "area": "Tennoji",
       "blurb": "Historic city zoo in Tennoji Park.",
       "lat": 34.651,
-      "lng": 135.5085
+      "lng": 135.5085,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kimono-tea-ceremony-maiko-osaka",
-      "name": "Kimono Tea Ceremony Maiko",
+      "name": "Kimono Tea Ceremony Maikoya",
       "category": "EXPERIENCE",
-      "area": "",
+      "area": "Fukushima",
       "blurb": "Tea ceremony experience in kimono.",
       "lat": 34.6745,
-      "lng": 135.5011
+      "lng": 135.5011,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sushi-hayata",
@@ -605,7 +659,8 @@
       "area": "Kyoto",
       "blurb": "Kyoto district with a bamboo grove, monkey park and river scenery.",
       "lat": 35.017,
-      "lng": 135.672
+      "lng": 135.672,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "nunobiki-herb-gardens",
@@ -614,7 +669,8 @@
       "area": "Kobe",
       "blurb": "Hillside herb gardens in Kobe reached by ropeway.",
       "lat": 34.7105,
-      "lng": 135.192
+      "lng": 135.192,
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -692,7 +748,10 @@
           "name": "The Original Pancake House",
           "category": "FOOD",
           "note": "Try the Dutch Baby or the coconut pancake",
-          "place": "original-pancake-house-osaka"
+          "place": "original-pancake-house-osaka",
+          "price": 8.86,
+          "priceNote": "about ¥1,400 a person",
+          "priceSource": "https://r.gnavi.co.jp/d04cggw00000/"
         },
         {
           "day": 1,
@@ -770,13 +829,19 @@
           "name": "Expo '70 Commemorative Park",
           "category": "EXPERIENCE",
           "note": "Tower of the Sun; spring cherry blossoms",
-          "place": "expo-70-commemorative-park"
+          "place": "expo-70-commemorative-park",
+          "price": 1.65,
+          "priceNote": "¥260 garden entry",
+          "priceSource": "https://en.osaka-info.jp/spot/expo-70-commemorative-park"
         },
         {
           "day": 3,
           "name": "Universal Studios Japan",
           "category": "EXPERIENCE",
-          "place": "universal-studios-japan"
+          "place": "universal-studios-japan",
+          "price": 53.16,
+          "priceNote": "1-day pass from ¥8,400",
+          "priceSource": "https://wdwnt.com/2026/06/studio-pass-pricing-updated-at-universal-studios-japan-making-early-purchases-more-affordable/"
         },
         {
           "day": 3,
@@ -848,7 +913,10 @@
           "name": "Kuromon Ichiba Market",
           "category": "FOOD",
           "note": "Try not to eat too much",
-          "place": "kuromon-ichiba-market"
+          "place": "kuromon-ichiba-market",
+          "price": 2.53,
+          "priceNote": "snacks ¥400–800 each",
+          "priceSource": "https://japanactivity.com/kuromon-ichiba-market-food-guide"
         },
         {
           "day": 1,
@@ -1031,7 +1099,10 @@
           "day": 1,
           "name": "Wagyu Yakiniku Nikukachi",
           "category": "FOOD",
-          "place": "wagyu-yakiniku-nikukachi"
+          "place": "wagyu-yakiniku-nikukachi",
+          "price": 83.54,
+          "priceNote": "¥13,200 course",
+          "priceSource": "https://www.tablecheck.com/en/nikuhachi-osaka-dotonbori"
         },
         {
           "day": 2,
@@ -1065,7 +1136,10 @@
           "day": 2,
           "name": "Ali's Kitchen Osaka",
           "category": "FOOD",
-          "place": "alis-kitchen-osaka"
+          "place": "alis-kitchen-osaka",
+          "price": 9.49,
+          "priceNote": "mains from ¥1,500",
+          "priceSource": "https://www.aliskitchen.jp/"
         },
         {
           "day": 2,
@@ -1124,7 +1198,10 @@
           "day": 4,
           "name": "Osaka City Museum of Fine Arts",
           "category": "EXPERIENCE",
-          "place": "osaka-city-museum-of-fine-arts"
+          "place": "osaka-city-museum-of-fine-arts",
+          "price": 12.66,
+          "priceNote": "about ¥2,000 a special exhibition",
+          "priceSource": "https://www.tokyoartbeat.com/en/events/-/Water-Margin/478-ED-604/2026-07-11"
         },
         {
           "day": 4,
