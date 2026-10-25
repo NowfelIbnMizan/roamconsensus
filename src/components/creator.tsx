@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ReadMore } from "@/components/read-more";
 import { ArrowRight } from "lucide-react";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { CreatorHover } from "@/components/creator-hover";
@@ -61,7 +62,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
           <p className="truncate text-xs text-muted">@{creator.handle}</p>
         </div>
       </div>
-      {creator.bio && <p className="mt-3 line-clamp-4 text-sm text-muted">{creator.bio}</p>}
+      {creator.bio && <ReadMore text={creator.bio} lines={4} className="mt-3" />}
       <CreatorSocials creator={creator} className="mt-3" />
       <p className="mt-3 text-xs text-muted">Independent creator. Not affiliated with Creatour and not an endorsement.</p>
       <Link
