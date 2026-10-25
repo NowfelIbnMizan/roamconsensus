@@ -388,15 +388,8 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
               lat: { not: null },
               items: { some: {} },
             },
-            select: {
-              slug: true,
-              name: true,
-              category: true,
-              area: true,
-              lat: true,
-              lng: true,
-              website: true,
-            },
+            // Full rows, so each nearby spot comes with the item its + button adds.
+            include: { items: { select: placeItemSelect } },
           },
         },
       },
@@ -432,7 +425,7 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
       creator: i.itinerary.creator,
     })),
     others: others.map((p) => ({
-      ...p,
+      ...placeSummary(p),
       lat: p.lat!,
       lng: p.lng!,
       photoUrl: photos.get(placePhotoKey(destinationSlug, p)) ?? null,
