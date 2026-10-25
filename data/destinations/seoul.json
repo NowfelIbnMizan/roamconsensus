@@ -144,6 +144,42 @@
       "title": "Skip the e-Arrival Card and you'll queue",
       "body": "Travellers who have not filed the e-Arrival Card are sent to self-service kiosks at the airport, which can mean long waits at peak times.",
       "sourceUrl": "https://blog.wego.com/south-korea-travel-rules-k-eta-waiver-2026/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Get Kakao T for taxis",
+      "body": "Download Kakao T and link a card before you land. It has English and is more reliable than hailing a taxi in the street.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Money",
+      "title": "Don't tip",
+      "body": "Tipping isn't done in Korea. Pay the exact bill.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Money",
+      "title": "Cash for markets and street stalls",
+      "body": "Visa and Mastercard work in restaurants, shops, cafes and most taxis. Keep some cash for pojangmacha tents, traditional markets and street food.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Culture",
+      "title": "Wear hanbok, get into palaces free",
+      "body": "Entry to Gyeongbokgung, Changdeokgung, Deoksugung and Gyeonghuigung is free in hanbok. Rentals cost about 15,000 to 25,000 won for 2 to 4 hours.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Last subway is around midnight",
+      "body": "The subway stops between about midnight and 1am depending on the line. Night buses run until dawn, but less often.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Health",
+      "title": "Check your medicines",
+      "body": "Codeine cold medicine, some ADHD drugs and other controlled medicines may need approval before you bring them in.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
     }
   ],
   "places": [
@@ -156,7 +192,8 @@
       "tip": "Free entry if you wear hanbok. Closed Tuesdays.",
       "website": "https://royal.khs.go.kr",
       "lat": 37.5796,
-      "lng": 126.977
+      "lng": 126.977,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "changdeokgung-palace",
@@ -167,7 +204,8 @@
       "tip": "The Secret Garden is a guided tour for 5,000 KRW more. Closed Mondays.",
       "website": "https://royal.khs.go.kr",
       "lat": 37.5794,
-      "lng": 126.991
+      "lng": 126.991,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "changgyeonggung-palace",
@@ -177,7 +215,8 @@
       "blurb": "Joseon palace adjoining Changdeokgung, with a pond and a Victorian-style glass greenhouse.",
       "website": "https://royal.khs.go.kr",
       "lat": 37.5788,
-      "lng": 126.9949
+      "lng": 126.9949,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jongmyo-shrine",
@@ -187,7 +226,8 @@
       "blurb": "UNESCO-listed royal ancestral shrine of the Joseon kings.",
       "website": "https://royal.khs.go.kr",
       "lat": 37.5744,
-      "lng": 126.9942
+      "lng": 126.9942,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "deoksugung-palace",
@@ -197,7 +237,8 @@
       "blurb": "Compact palace mixing Korean halls and Western-style buildings, beside the Deoksugung stone-wall walk.",
       "website": "https://royal.khs.go.kr",
       "lat": 37.5658,
-      "lng": 126.9751
+      "lng": 126.9751,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bukchon-hanok-village",
@@ -207,7 +248,8 @@
       "blurb": "Residential neighborhood of preserved traditional hanok houses between Gyeongbokgung and Changdeokgung.",
       "tip": "Tourists are barred from the red zone from 5 pm to 10 am, with fines up to 100,000 KRW.",
       "lat": 37.5826,
-      "lng": 126.9836
+      "lng": 126.9836,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "insadong",
@@ -216,7 +258,8 @@
       "area": "Jongno-gu",
       "blurb": "Pedestrian street of galleries, tea houses and traditional craft shops, including the Ssamziegil complex.",
       "lat": 37.574,
-      "lng": 126.985
+      "lng": 126.985,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jogyesa-temple",
@@ -225,7 +268,8 @@
       "area": "Jongno-gu",
       "blurb": "Head temple of the Jogye Order of Korean Buddhism and center of the Lotus Lantern Festival.",
       "lat": 37.574,
-      "lng": 126.9817
+      "lng": 126.9817,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "gwanghwamun-square",
@@ -234,7 +278,8 @@
       "area": "Jongno-gu",
       "blurb": "Central plaza with statues of King Sejong and Admiral Yi Sun-sin and an underground exhibition hall.",
       "lat": 37.572,
-      "lng": 126.9769
+      "lng": 126.9769,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cheonggyecheon-stream",
@@ -243,7 +288,8 @@
       "area": "Jongno-gu / Jung-gu",
       "blurb": "Restored 11 km urban stream with walking paths below street level.",
       "lat": 37.569,
-      "lng": 126.9787
+      "lng": 126.9787,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "inwangsan",
@@ -252,7 +298,8 @@
       "area": "Jongno-gu / Seodaemun-gu",
       "blurb": "Rocky peak traversed by the Seoul City Wall trail with views over the palace district.",
       "lat": 37.585,
-      "lng": 126.958
+      "lng": 126.958,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "gwangjang-market",
@@ -261,7 +308,8 @@
       "area": "Jongno-gu",
       "blurb": "One of Seoul's oldest traditional markets, famed for bindaetteok, mayak gimbap and raw-food stalls.",
       "lat": 37.57,
-      "lng": 126.9996
+      "lng": 126.9996,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "myeongdong",
@@ -270,7 +318,8 @@
       "area": "Jung-gu",
       "blurb": "Dense shopping district known for cosmetics stores and evening street-food stalls.",
       "lat": 37.5636,
-      "lng": 126.985
+      "lng": 126.985,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "n-seoul-tower",
@@ -279,7 +328,8 @@
       "area": "Yongsan-gu (Namsan)",
       "blurb": "Communications and observation tower atop Namsan, reachable on foot or by the Namsan cable car.",
       "lat": 37.5512,
-      "lng": 126.9882
+      "lng": 126.9882,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hongdae",
@@ -288,7 +338,8 @@
       "area": "Mapo-gu",
       "blurb": "Youthful nightlife and busking district around Hongik University.",
       "lat": 37.5563,
-      "lng": 126.9236
+      "lng": 126.9236,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "dongdaemun-design-plaza",
@@ -297,7 +348,8 @@
       "area": "Jung-gu",
       "blurb": "Zaha Hadid-designed curving landmark hosting exhibitions, beside the Dongdaemun History & Culture Park.",
       "lat": 37.5665,
-      "lng": 127.0092
+      "lng": 127.0092,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ihwa-mural-village",
@@ -306,16 +358,19 @@
       "area": "Jongno-gu",
       "blurb": "Hillside residential neighborhood with murals near Naksan Park and the city wall.",
       "lat": 37.5791,
-      "lng": 127.0069
+      "lng": 127.0069,
+      "tip": "Residents painted over the famous flower and koi stair murals in 2016; it is a lived-in neighbourhood, so keep the noise down.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "coex-mall",
-      "name": "COEX Mall",
+      "name": "Starfield COEX Mall",
       "category": "EXPERIENCE",
       "area": "Gangnam-gu (Samseong)",
       "blurb": "Large underground mall home to the Starfield Library, near Bongeunsa Temple.",
       "lat": 37.5116,
-      "lng": 127.0595
+      "lng": 127.0595,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "common-ground",
@@ -324,7 +379,8 @@
       "area": "Gwangjin-gu (Konkuk Univ.)",
       "blurb": "Shopping and dining complex built from shipping containers.",
       "lat": 37.5414,
-      "lng": 127.0659
+      "lng": 127.0659,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ewha-womans-university",
@@ -333,7 +389,8 @@
       "area": "Seodaemun-gu",
       "blurb": "University campus known for the sunken ECC building designed by Dominique Perrault.",
       "lat": 37.5618,
-      "lng": 126.9468
+      "lng": 126.9468,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tapgol-park",
@@ -342,7 +399,8 @@
       "area": "Jongno-gu",
       "blurb": "Small historic park, site of the 1919 March 1st independence declaration reading, with a ten-story stone pagoda.",
       "lat": 37.5711,
-      "lng": 126.9882
+      "lng": 126.9882,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "trickeye-museum-seoul",
@@ -351,7 +409,8 @@
       "area": "Mapo-gu (Hongdae)",
       "blurb": "Interactive optical-illusion and AR art museum at 20 Hongik-ro 3-gil.",
       "lat": 37.5537,
-      "lng": 126.9215
+      "lng": 126.9215,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bukhansan-national-park",
@@ -360,7 +419,8 @@
       "area": "Northern Seoul / Goyang",
       "blurb": "Granite mountain park on Seoul's northern edge whose highest peak is Baegundae (836 m).",
       "lat": 37.6588,
-      "lng": 126.9779
+      "lng": 126.9779,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "siloam-sauna",
@@ -369,7 +429,10 @@
       "area": "Jung-gu (near Seoul Station)",
       "blurb": "Large 24-hour jjimjilbang near Seoul Station that is popular with foreign travelers.",
       "lat": 37.5582,
-      "lng": 126.9675
+      "lng": 126.9675,
+      "closed": true,
+      "tip": "Reported permanently closed (KoreaToDo; Grrrl Traveler, 2026).",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lotte-world-tower-seoul-sky",
@@ -378,7 +441,8 @@
       "area": "Songpa-gu (Jamsil)",
       "blurb": "Observation decks on floors 117–123 of Korea's tallest building, including a glass-floor skydeck.",
       "lat": 37.5126,
-      "lng": 127.1026
+      "lng": 127.1026,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lotte-world-adventure",
@@ -387,7 +451,8 @@
       "area": "Songpa-gu (Jamsil)",
       "blurb": "Large indoor theme park with an outdoor Magic Island section and an attached folk museum.",
       "lat": 37.5111,
-      "lng": 127.0982
+      "lng": 127.0982,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "nami-island",
@@ -397,7 +462,8 @@
       "blurb": "River island famed for tree-lined avenues, reached by ferry or zipline from Gapyeong.",
       "website": "https://namisum-en.imweb.me",
       "lat": 37.7907,
-      "lng": 127.5254
+      "lng": 127.5254,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mmca-seoul",
@@ -406,7 +472,8 @@
       "area": "Jongno-gu",
       "blurb": "National modern and contemporary art museum between Gyeongbokgung and Bukchon.",
       "lat": 37.5788,
-      "lng": 126.98
+      "lng": 126.98,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cafe-comma-hapjeong",
@@ -415,7 +482,8 @@
       "area": "Mapo-gu",
       "blurb": "Multi-floor book cafe run by publisher Munhakdongne.",
       "lat": 37.5497,
-      "lng": 126.9136
+      "lng": 126.9136,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "dmz-tour",
@@ -425,7 +493,8 @@
       "blurb": "Guided tours from Seoul to the Demilitarized Zone border sites.",
       "tip": "JSA (Panmunjom) tours have been on and off: check the status before you book.",
       "lat": 37.9167,
-      "lng": 126.697
+      "lng": 126.697,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jihwaja",
@@ -434,7 +503,8 @@
       "area": "Jongno-gu",
       "blurb": "Restaurant serving Joseon royal court cuisine.",
       "lat": 37.5862,
-      "lng": 126.9693
+      "lng": 126.9693,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hanboknam-gyeongbokgung",
@@ -443,7 +513,8 @@
       "area": "Jongno-gu",
       "blurb": "Hanbok rental shop near Gyeongbokgung Station.",
       "lat": 37.577,
-      "lng": 126.9735
+      "lng": 126.9735,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chatteul-tea-house",
@@ -452,7 +523,8 @@
       "area": "Jongno-gu (Bukchon)",
       "blurb": "Traditional hanok tea house serving tea and rice cakes.",
       "lat": 37.581,
-      "lng": 126.9845
+      "lng": 126.9845,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jongno-pojangmacha",
@@ -461,7 +533,8 @@
       "area": "Jongno-gu",
       "blurb": "Strip of evening tented street stalls serving snacks and soju.",
       "lat": 37.571,
-      "lng": 126.992
+      "lng": 126.992,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "guerlain-spa-shilla",
@@ -470,7 +543,8 @@
       "area": "Jung-gu",
       "blurb": "Luxury hotel spa inside The Shilla Seoul.",
       "lat": 37.5559,
-      "lng": 127.0055
+      "lng": 127.0055,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "butterfinger-pancakes",
@@ -488,7 +562,8 @@
       "area": "Gangnam-gu",
       "blurb": "Upscale fashion and boutique district.",
       "lat": 37.5272,
-      "lng": 127.0405
+      "lng": 127.0405,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "four-seasons-hotel-seoul",
@@ -497,7 +572,9 @@
       "area": "Jongno-gu (Gwanghwamun)",
       "blurb": "Luxury hotel steps from Gwanghwamun Square.",
       "lat": 37.5718,
-      "lng": 126.9759
+      "lng": 126.9759,
+      "website": "https://www.fourseasons.com/seoul/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "holiday-inn-express-seoul-hongdae",
@@ -506,7 +583,9 @@
       "area": "Mapo-gu",
       "blurb": "Midrange IHG hotel beside Hongik University Station.",
       "lat": 37.5574,
-      "lng": 126.9246
+      "lng": 126.9246,
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/seoul/seohg/hoteldetail",
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -639,14 +718,20 @@
           "name": "Myeongdong",
           "category": "FOOD",
           "note": "Street food, and shopping if that's your thing",
-          "place": "myeongdong"
+          "place": "myeongdong",
+          "price": 2.5,
+          "priceNote": "street snacks ₩3,500–5,000",
+          "priceSource": "https://www.tunextravels.com/best-korean-street-foods-to-try-2025-guide-korean-street-foods/"
         },
         {
           "day": 2,
           "name": "Trickeye Museum Seoul",
           "category": "EXPERIENCE",
           "note": "Optical-illusion / AR exhibits",
-          "place": "trickeye-museum-seoul"
+          "place": "trickeye-museum-seoul",
+          "price": 8.57,
+          "priceNote": "₩12,000 adult entry",
+          "priceSource": "https://thesoulofseoul.net/trickeye-museum-revamped/"
         },
         {
           "day": 2,
@@ -775,7 +860,10 @@
           "name": "National Museum of Modern and Contemporary Art Seoul",
           "category": "EXPERIENCE",
           "note": "Permanent collection / temporary exhibitions",
-          "place": "mmca-seoul"
+          "place": "mmca-seoul",
+          "price": 7.14,
+          "priceNote": "₩10,000 pass for all exhibitions",
+          "priceSource": "https://www.mmca.go.kr/eng/visitingInfo/seoulInfo.do"
         },
         {
           "day": 3,
@@ -873,7 +961,10 @@
           "name": "Gwangjang Market",
           "category": "FOOD",
           "note": "Mung bean pancakes & gimbap; pick a busy stall",
-          "place": "gwangjang-market"
+          "place": "gwangjang-market",
+          "price": 3.57,
+          "priceNote": "bindaetteok ₩5,000",
+          "priceSource": "https://koreaexperience.com/blog/gwangjang-market-complete-food-guide"
         },
         {
           "day": 2,
@@ -1015,7 +1106,10 @@
           "name": "Jihwaja",
           "category": "FOOD",
           "note": "Royal court cuisine in a hanok",
-          "place": "jihwaja"
+          "place": "jihwaja",
+          "price": 78.57,
+          "priceNote": "courses ₩110,000–175,000",
+          "priceSource": "https://ordinarypatrons.com/2025/04/11/jihwaja-seoul-restaurant-royal-korean-court-cuisine/"
         },
         {
           "day": 2,
@@ -1092,7 +1186,10 @@
           "name": "Jongno 3-ga pojangmacha street",
           "category": "FOOD",
           "note": "Street stalls for snacks",
-          "place": "jongno-pojangmacha"
+          "place": "jongno-pojangmacha",
+          "price": 25.0,
+          "priceNote": "about ₩35,000 a person with drinks",
+          "priceSource": "https://koreaexperience.com/blog/pojangmacha-street-tent-bars-experience"
         },
         {
           "day": 4,

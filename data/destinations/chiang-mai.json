@@ -181,10 +181,12 @@
       "slug": "the-wing-boutique",
       "name": "The Wing Boutique",
       "category": "STAY",
-      "area": "",
+      "area": "Old City",
       "blurb": "Mid-range boutique hotel.",
       "lat": 18.7846,
-      "lng": 98.9831
+      "lng": 98.9831,
+      "website": "https://thewingboutique.com/en/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "beautiful-thai-home-airbnb",
@@ -200,7 +202,9 @@
       "area": "Mae Ping riverside (north)",
       "blurb": "Riverside resort with Lanna-inspired design.",
       "lat": 18.827,
-      "lng": 99.005
+      "lng": 99.005,
+      "website": "https://www.rayaheritage.com/en/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-lok-moli",
@@ -209,7 +213,8 @@
       "area": "Old City (north)",
       "blurb": "Temple just north of the old city wall with a large brick chedi.",
       "lat": 18.7955,
-      "lng": 98.9845
+      "lng": 98.9845,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-chiang-man",
@@ -218,7 +223,8 @@
       "area": "Old City",
       "blurb": "Chiang Mai's oldest temple, founded in 1296, with the elephant-buttressed Chang Lom chedi.",
       "lat": 18.7942,
-      "lng": 98.9893
+      "lng": 98.9893,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-chedi-luang",
@@ -227,7 +233,8 @@
       "area": "Old City",
       "blurb": "Temple centred on a massive partially ruined chedi.",
       "lat": 18.787,
-      "lng": 98.9865
+      "lng": 98.9865,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-phra-singh",
@@ -236,7 +243,8 @@
       "area": "Old City",
       "blurb": "Major Lanna-style temple housing the Phra Buddha Sihing image.",
       "lat": 18.7886,
-      "lng": 98.9817
+      "lng": 98.9817,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-phan-tao",
@@ -245,7 +253,8 @@
       "area": "Old City",
       "blurb": "Teak-wood temple hall beside Wat Chedi Luang.",
       "lat": 18.788,
-      "lng": 98.9875
+      "lng": 98.9875,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-dubphai",
@@ -254,16 +263,18 @@
       "area": "Old City",
       "blurb": "Small temple in the old city.",
       "lat": 18.7905,
-      "lng": 98.9842
+      "lng": 98.9842,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "khao-soi-lung-prakit",
       "name": "Khao Soi Lung Prakit",
       "category": "FOOD",
-      "area": "",
+      "area": "Hai Ya",
       "blurb": "Khao soi noodle shop.",
       "lat": 18.7958,
-      "lng": 99.0006
+      "lng": 99.0006,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-suan-dok",
@@ -272,7 +283,8 @@
       "area": "Suthep Road",
       "blurb": "Temple known for its cluster of white royal chedis.",
       "lat": 18.788,
-      "lng": 98.9675
+      "lng": 98.9675,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-umong",
@@ -281,7 +293,8 @@
       "area": "Suthep (forest)",
       "blurb": "Forest temple with ancient meditation tunnels.",
       "lat": 18.783,
-      "lng": 98.952
+      "lng": 98.952,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-pha-lat",
@@ -290,7 +303,8 @@
       "area": "Doi Suthep",
       "blurb": "Quiet jungle temple on the trail up Doi Suthep.",
       "lat": 18.8,
-      "lng": 98.933
+      "lng": 98.933,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-phra-that-doi-suthep",
@@ -300,7 +314,8 @@
       "blurb": "Mountaintop temple reached by a naga staircase, overlooking the city.",
       "tip": "Cover shoulders and knees. Take the 306 steps or the funicular.",
       "lat": 18.805,
-      "lng": 98.9216
+      "lng": 98.9216,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "suki-koka-chang-phueak",
@@ -309,7 +324,8 @@
       "area": "Chang Phueak Gate",
       "blurb": "Evening sukiyaki stall beside Khao Kha Moo Chang Phueak.",
       "lat": 18.7975,
-      "lng": 98.986
+      "lng": 98.986,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "north-gate-jazz-co-op",
@@ -318,7 +334,8 @@
       "area": "Chang Phueak Gate",
       "blurb": "Small bar with nightly live jazz.",
       "lat": 18.797,
-      "lng": 98.9865
+      "lng": 98.9865,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pha-chor",
@@ -327,7 +344,8 @@
       "area": "Mae Wang / Doi Inthanon area",
       "blurb": "Canyon of eroded sandstone cliffs.",
       "lat": 18.4537,
-      "lng": 98.6741
+      "lng": 98.6741,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mae-ya-waterfall",
@@ -336,7 +354,8 @@
       "area": "Doi Inthanon National Park",
       "blurb": "Tall tiered waterfall in Doi Inthanon National Park.",
       "lat": 18.4927,
-      "lng": 98.6075
+      "lng": 98.6075,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "doi-inthanon-summit",
@@ -345,7 +364,8 @@
       "area": "Doi Inthanon National Park",
       "blurb": "Thailand's highest point, with the Ang Ka Nature Trail.",
       "lat": 18.5885,
-      "lng": 98.487
+      "lng": 98.487,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "doi-inthanon-royal-pagodas",
@@ -354,7 +374,8 @@
       "area": "Doi Inthanon National Park",
       "blurb": "Pair of royal chedis with mountain views.",
       "lat": 18.544,
-      "lng": 98.478
+      "lng": 98.478,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kew-mae-pan-trail",
@@ -363,7 +384,9 @@
       "area": "Doi Inthanon National Park",
       "blurb": "Ridge trail popular for sunrise; guided walk only.",
       "lat": 18.553,
-      "lng": 98.481
+      "lng": 98.481,
+      "tip": "Open November to May only; the trail closes every June to October for the rains.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wachirathan-waterfall",
@@ -372,7 +395,8 @@
       "area": "Doi Inthanon National Park",
       "blurb": "Powerful roadside waterfall in Doi Inthanon National Park.",
       "lat": 18.5426,
-      "lng": 98.601
+      "lng": 98.601,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "elephant-nature-park",
@@ -381,7 +405,8 @@
       "area": "Mae Taeng",
       "blurb": "Elephant rescue and rehabilitation centre north of Chiang Mai.",
       "lat": 19.2125,
-      "lng": 98.858
+      "lng": 98.858,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chiang-mai-night-bazaar",
@@ -390,7 +415,8 @@
       "area": "Chang Khlan",
       "blurb": "Nightly market for souvenirs and street food.",
       "lat": 18.785,
-      "lng": 99.0005
+      "lng": 99.0005,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chiang-mai-city-arts-cultural-centre",
@@ -399,7 +425,8 @@
       "area": "Old City",
       "blurb": "Museum of Chiang Mai history in a former provincial hall.",
       "lat": 18.7905,
-      "lng": 98.9877
+      "lng": 98.9877,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chiang-mai-national-museum",
@@ -408,7 +435,8 @@
       "area": "",
       "blurb": "Museum of Lanna history and culture.",
       "lat": 18.8114,
-      "lng": 98.9793
+      "lng": 98.9793,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "san-kamphaeng-road",
@@ -417,7 +445,8 @@
       "area": "San Kamphaeng",
       "blurb": "Road lined with handicraft workshops and factories.",
       "lat": 18.7745,
-      "lng": 99.073
+      "lng": 99.073,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lanna-folklife-museum",
@@ -426,7 +455,8 @@
       "area": "Old City",
       "blurb": "Museum of northern Thai daily life and crafts.",
       "lat": 18.79,
-      "lng": 98.9875
+      "lng": 98.9875,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bhubing-palace",
@@ -435,7 +465,8 @@
       "area": "Doi Suthep",
       "blurb": "Royal winter palace with gardens on Doi Suthep.",
       "lat": 18.805,
-      "lng": 98.899
+      "lng": 98.899,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mae-ping-river",
@@ -444,7 +475,8 @@
       "area": "Riverside",
       "blurb": "River through Chiang Mai lined with restaurants and boat trips.",
       "lat": 18.788,
-      "lng": 99.001
+      "lng": 99.001,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "womens-correctional-institution-massage",
@@ -453,7 +485,8 @@
       "area": "Old City",
       "blurb": "Massage centre run by trained inmates and ex-inmates.",
       "lat": 18.7908,
-      "lng": 98.9878
+      "lng": 98.9878,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "terracotta-garden",
@@ -471,7 +504,8 @@
       "area": "Chang Phueak Gate",
       "blurb": "Evening street-food market at the old city's north gate.",
       "lat": 18.7965,
-      "lng": 98.986
+      "lng": 98.986,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bua-tong-sticky-waterfall",
@@ -480,7 +514,8 @@
       "area": "Mae Taeng",
       "blurb": "Limestone waterfall you can climb thanks to grippy mineral deposits.",
       "lat": 19.064,
-      "lng": 99.079
+      "lng": 99.079,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "elephant-jungle-sanctuary",
@@ -489,7 +524,8 @@
       "area": "",
       "blurb": "Elephant experience operator offering half-day visits.",
       "lat": 18.9442,
-      "lng": 98.8597
+      "lng": 98.8597,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "khao-soi-khun-yai",
@@ -507,7 +543,8 @@
       "area": "Nimmanhaemin",
       "blurb": "Northern Thai restaurant.",
       "lat": 18.7986,
-      "lng": 98.9676
+      "lng": 98.9676,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "khao-kha-moo-chang-phueak",
@@ -516,7 +553,8 @@
       "area": "Chang Phueak Gate",
       "blurb": "Evening stall famous for braised pork leg on rice.",
       "lat": 18.7975,
-      "lng": 98.986
+      "lng": 98.986,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kiat-ocha",
@@ -525,7 +563,8 @@
       "area": "Old City",
       "blurb": "Khao man gai shop also known for pork satay.",
       "lat": 18.7896,
-      "lng": 98.9892
+      "lng": 98.9892,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sp-chicken",
@@ -534,7 +573,8 @@
       "area": "Old City",
       "blurb": "Isan-style rotisserie chicken restaurant.",
       "lat": 18.7866,
-      "lng": 98.9838
+      "lng": 98.9838,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "khao-soi-islam",
@@ -543,7 +583,8 @@
       "area": "Night Bazaar area",
       "blurb": "Halal restaurant serving khao soi and biryani.",
       "lat": 18.7881,
-      "lng": 99.0003
+      "lng": 99.0003,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "huen-phen",
@@ -552,13 +593,14 @@
       "area": "Old City",
       "blurb": "Northern Thai restaurant.",
       "lat": 18.7843,
-      "lng": 98.9857
+      "lng": 98.9857,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "loong-thai",
       "name": "Loong Thai",
       "category": "FOOD",
-      "area": "",
+      "area": "Suthep Road",
       "blurb": "Spicy curry-and-rice shop.",
       "lat": 18.8018,
       "lng": 98.9563
@@ -654,7 +696,10 @@
           "name": "Khao Soi Lung Prakit",
           "category": "FOOD",
           "note": "Get the beef khao soi",
-          "place": "khao-soi-lung-prakit"
+          "place": "khao-soi-lung-prakit",
+          "price": 5.95,
+          "priceNote": "under ฿200 a bowl",
+          "priceSource": "https://www.visitthailandtoday.com/restaurants/chiang-mai/khao-soi-lung-prakit-kad-kom"
         },
         {
           "day": 1,
@@ -710,7 +755,10 @@
           "day": 2,
           "name": "Pha Chor",
           "category": "EXPERIENCE",
-          "place": "pha-chor"
+          "place": "pha-chor",
+          "price": 2.98,
+          "priceNote": "฿100 park entry (foreign adult)",
+          "priceSource": "https://chiangmaicitylife.com/citynews/general/fascinating-erosion-formations-at-mae-wang-national-parks-pha-chor"
         },
         {
           "day": 2,
@@ -911,7 +959,9 @@
           "name": "Chiang Mai Women's Correctional Institution Massage",
           "category": "EXPERIENCE",
           "place": "womens-correctional-institution-massage",
-          "priceNote": "creator: No set price"
+          "priceNote": "฿200 for a 60-min massage",
+          "price": 5.95,
+          "priceSource": "https://madmonkeyhostels.com/blogs/blogs-travel-guide-thailand-travel-chiang-mai-spas/"
         },
         {
           "day": 3,
@@ -983,7 +1033,10 @@
           "name": "Chang Phueak Gate Night Market",
           "category": "FOOD",
           "note": "This is a great way to end any of your activity-packed days in Chiang Mai!",
-          "place": "chang-phueak-gate-night-market"
+          "place": "chang-phueak-gate-night-market",
+          "price": 1.49,
+          "priceNote": "dishes from about ฿50",
+          "priceSource": "https://tablejourney.com/thailand/chiang-mai/budget-eating/"
         },
         {
           "day": 2,
@@ -1037,7 +1090,10 @@
           "name": "Khao Kha Moo Chang Phueak",
           "category": "FOOD",
           "note": "Look for the cowboy-hat server",
-          "place": "khao-kha-moo-chang-phueak"
+          "place": "khao-kha-moo-chang-phueak",
+          "price": 1.49,
+          "priceNote": "about ฿50 a plate",
+          "priceSource": "https://tablejourney.com/thailand/chiang-mai/budget-eating/"
         },
         {
           "day": 1,
@@ -1051,20 +1107,29 @@
           "name": "Kiat Ocha",
           "category": "FOOD",
           "note": "Don't miss their pork satay",
-          "place": "kiat-ocha"
+          "place": "kiat-ocha",
+          "price": 5.95,
+          "priceNote": "under ฿200 a plate",
+          "priceSource": "https://www.visitthailandtoday.com/restaurants/chiang-mai/kiat-ocha"
         },
         {
           "day": 2,
           "name": "SP Chicken",
           "category": "FOOD",
-          "place": "sp-chicken"
+          "place": "sp-chicken",
+          "price": 4.46,
+          "priceNote": "lunch under ฿150",
+          "priceSource": "https://tablejourney.com/thailand/chiang-mai/budget-eating/"
         },
         {
           "day": 2,
           "name": "Khao Soi Islam",
           "category": "FOOD",
           "note": "Khao soi is mild; the beef biryani-style rice is the highlight",
-          "place": "khao-soi-islam"
+          "place": "khao-soi-islam",
+          "price": 2.98,
+          "priceNote": "khao soi under ฿100",
+          "priceSource": "https://tablejourney.com/thailand/chiang-mai/budget-eating/"
         },
         {
           "day": 2,

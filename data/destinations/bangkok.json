@@ -210,7 +210,8 @@
       "tip": "Ignore anyone outside saying it's closed today: it's a scam.",
       "website": "https://royalgrandpalace.th",
       "lat": 13.75,
-      "lng": 100.4913
+      "lng": 100.4913,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-pho",
@@ -220,7 +221,8 @@
       "blurb": "Home of the 46 m gold-leaf Reclining Buddha and the traditional centre of Thai massage teaching.",
       "website": "https://watpho.com",
       "lat": 13.7465,
-      "lng": 100.493
+      "lng": 100.493,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-arun",
@@ -229,7 +231,8 @@
       "area": "Thonburi",
       "blurb": "The Temple of Dawn on the Thonburi bank, its central prang covered in porcelain mosaic. Best at sunset from across the river.",
       "lat": 13.7437,
-      "lng": 100.4888
+      "lng": 100.4888,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tha-tien-ferry",
@@ -238,7 +241,8 @@
       "area": "Rattanakosin",
       "blurb": "A short shuttle boat across the Chao Phraya from Tha Tien pier, by Wat Pho, to Wat Arun.",
       "lat": 13.7463,
-      "lng": 100.4914
+      "lng": 100.4914,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-benchamabophit",
@@ -247,7 +251,8 @@
       "area": "Dusit",
       "blurb": "King Rama V's temple built of Italian Carrara marble, pictured on the back of the 5-baht coin.",
       "lat": 13.7666,
-      "lng": 100.5141
+      "lng": 100.5141,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jim-thompson-house",
@@ -258,7 +263,8 @@
       "tip": "No photos inside the house.",
       "website": "https://jimthompsonhouse.org",
       "lat": 13.7493,
-      "lng": 100.5283
+      "lng": 100.5283,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "golden-mount",
@@ -267,7 +273,8 @@
       "area": "Old Town",
       "blurb": "A man-made hill topped by a golden chedi, about 300 steps up, with 360-degree views over old Bangkok. Great at sunset.",
       "lat": 13.7538,
-      "lng": 100.5068
+      "lng": 100.5068,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "khao-san-road",
@@ -276,7 +283,8 @@
       "area": "Banglamphu",
       "blurb": "Bangkok's famous backpacker street of guesthouses, bars, street food and stalls. Liveliest at night.",
       "lat": 13.7589,
-      "lng": 100.4974
+      "lng": 100.4974,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chatuchak-weekend-market",
@@ -286,7 +294,8 @@
       "blurb": "One of the world's biggest weekend markets: thousands of stalls of clothes, crafts, plants, antiques and food.",
       "tip": "Weekends only. Go early before the heat, and haggle.",
       "lat": 13.7999,
-      "lng": 100.5502
+      "lng": 100.5502,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "co-van-kessel-bike-tour",
@@ -296,7 +305,8 @@
       "blurb": "Guided bike rides through Chinatown alleys and Thonburi's canal-side villages, finishing with a longtail boat ride. Co van Kessel is the long-running operator.",
       "website": "https://www.covankessel.com",
       "lat": 13.7297,
-      "lng": 100.5148
+      "lng": 100.5148,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sompong-thai-cooking-school",
@@ -306,7 +316,8 @@
       "blurb": "Cooking school on Silom Soi 13 near BTS Chong Nonsi. Classes start with a market visit.",
       "website": "http://www.sompongthaicookingschool.com/intro.html",
       "lat": 13.7247,
-      "lng": 100.5269
+      "lng": 100.5269,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "rajadamnern-stadium",
@@ -316,7 +327,8 @@
       "blurb": "Bangkok's oldest purpose-built Muay Thai stadium, opened in 1945.",
       "website": "https://rajadamnern.com/",
       "lat": 13.7573,
-      "lng": 100.5078
+      "lng": 100.5078,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lub-d-siam",
@@ -326,7 +338,8 @@
       "blurb": "Hostel opposite MBK at BTS National Stadium, with dorms and private rooms.",
       "website": "https://lubd.com",
       "lat": 13.7466,
-      "lng": 100.5296
+      "lng": 100.5296,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bangkok-national-museum",
@@ -335,7 +348,8 @@
       "area": "Rattanakosin",
       "blurb": "Thailand's largest museum, partly in the old Front Palace, covering Thai art and history from prehistory on.",
       "lat": 13.7577,
-      "lng": 100.4925
+      "lng": 100.4925,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "karim-roti-mataba",
@@ -353,7 +367,8 @@
       "area": "Rattanakosin",
       "blurb": "Riverside restaurant at Arun Residence looking straight across to Wat Arun. Popular at sunset.",
       "lat": 13.7454,
-      "lng": 100.4917
+      "lng": 100.4917,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "yaowarat-street-food",
@@ -362,7 +377,8 @@
       "area": "Chinatown",
       "blurb": "After dark Yaowarat Road turns into one of Bangkok's busiest street-food strips: seafood, noodles, dim sum and desserts.",
       "lat": 13.7398,
-      "lng": 100.5094
+      "lng": 100.5094,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "siam-paragon",
@@ -371,7 +387,8 @@
       "area": "Siam",
       "blurb": "Big luxury mall at BTS Siam with an aquarium, cinema and a huge food hall.",
       "lat": 13.7462,
-      "lng": 100.5347
+      "lng": 100.5347,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-ratchabophit",
@@ -380,7 +397,8 @@
       "area": "Rattanakosin",
       "blurb": "Rama V-era temple known for its Benjarong-tiled cloister and Gothic-style chapel interior.",
       "lat": 13.7491,
-      "lng": 100.4972
+      "lng": 100.4972,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "loha-prasat",
@@ -389,18 +407,20 @@
       "area": "Old Town",
       "blurb": "The Metal Castle at Wat Ratchanatdaram: a tiered building with 37 metal spires, the only one of its kind left.",
       "lat": 13.7547,
-      "lng": 100.5034
+      "lng": 100.5034,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "red-sky",
       "name": "Red Sky",
       "category": "FOOD",
-      "area": "Siam",
+      "area": "Ratchaprasong",
       "blurb": "Rooftop bar on the 55th floor of Centara Grand at CentralWorld, under a red-lit arch.",
       "tip": "Dress code: no flip-flops.",
       "website": "http://www.centarahotelsresorts.com/redsky",
       "lat": 13.7477,
-      "lng": 100.5393
+      "lng": 100.5393,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ayutthaya",
@@ -409,16 +429,18 @@
       "area": "Ayutthaya",
       "blurb": "The old Siamese capital (1351-1767), 80 km north of Bangkok. Its temple ruins are a UNESCO World Heritage Site.",
       "lat": 14.3532,
-      "lng": 100.5689
+      "lng": 100.5689,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "damnoen-saduak-maeklong",
       "name": "Damnoen Saduak & Maeklong Railway Market",
       "category": "EXPERIENCE",
-      "area": "Ratchaburi",
+      "area": "Ratchaburi & Samut Songkhram",
       "blurb": "A half-day trip pairing the busy Damnoen Saduak floating market with the Maeklong market, where stalls fold back as the train passes.",
       "lat": 13.5196,
-      "lng": 99.959
+      "lng": 99.959,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "siri-heritage",
@@ -427,7 +449,8 @@
       "area": "Old Town",
       "blurb": "Three-star old-city hotel with Siamese touches and a small pool, near the Grand Palace and Khao San.",
       "lat": 13.7543,
-      "lng": 100.4992
+      "lng": 100.4992,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "longtail-canal-tour",
@@ -436,7 +459,8 @@
       "area": "Thonburi",
       "blurb": "Longtail boats leave from piers like Tha Chang and run through Thonburi's canals past stilt houses and temples.",
       "lat": 13.7531,
-      "lng": 100.4893
+      "lng": 100.4893,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bacc",
@@ -445,7 +469,8 @@
       "area": "Siam",
       "blurb": "Contemporary art centre opposite MBK with galleries on a spiral ramp. Free; closed Mondays.",
       "lat": 13.7466,
-      "lng": 100.5302
+      "lng": 100.5302,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mbk-center",
@@ -454,25 +479,29 @@
       "area": "Siam",
       "blurb": "Eight-storey budget mall with more than 2,000 shops: phones, clothes and souvenirs.",
       "lat": 13.7447,
-      "lng": 100.5299
+      "lng": 100.5299,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "erawan-shrine",
       "name": "Erawan Shrine",
       "category": "EXPERIENCE",
-      "area": "Siam",
+      "area": "Ratchaprasong",
       "blurb": "Hindu shrine to Brahma at the Ratchaprasong junction, where worshippers pay classical dancers to perform.",
       "lat": 13.7443,
-      "lng": 100.5404
+      "lng": 100.5404,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jodd-fairs",
-      "name": "Jodd Fairs night market",
+      "name": "Jodd Fairs Ratchada",
       "category": "FOOD",
-      "area": "Rama 9",
+      "area": "Ratchada",
       "blurb": "Night market behind Central Rama 9 near MRT Phra Ram 9, with food stalls and shops. It took over from the old Talad Neon market.",
-      "lat": 13.7566,
-      "lng": 100.5664
+      "lat": 13.766,
+      "lng": 100.57,
+      "tip": "Moved from Rama 9 to Ratchada, next to Thailand Cultural Centre MRT, in 2025.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sukhumvit-soi-11",
@@ -481,7 +510,8 @@
       "area": "Sukhumvit",
       "blurb": "Nightlife lane with the Above Eleven rooftop and Havana Social, a Cuban speakeasy you enter through a phone booth.",
       "lat": 13.7442,
-      "lng": 100.5554
+      "lng": 100.5554,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sampeng-lane",
@@ -490,7 +520,8 @@
       "area": "Chinatown",
       "blurb": "Narrow wholesale lane through Chinatown packed with stalls of accessories, toys, fabrics and trinkets.",
       "lat": 13.7425,
-      "lng": 100.5035
+      "lng": 100.5035,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-traimit",
@@ -499,7 +530,8 @@
       "area": "Chinatown",
       "blurb": "Home of a 5.5-tonne solid-gold Buddha found under a plaster shell in 1955, plus a Chinatown heritage museum.",
       "lat": 13.7378,
-      "lng": 100.5135
+      "lng": 100.5135,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lumphini-park",
@@ -508,7 +540,8 @@
       "area": "Silom",
       "blurb": "Central Bangkok's big green space, with a lake, jogging paths and wild monitor lizards.",
       "lat": 13.7314,
-      "lng": 100.5414
+      "lng": 100.5414,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "silom-thai-cooking-school",
@@ -517,7 +550,8 @@
       "area": "Silom",
       "blurb": "Popular budget cooking school off Silom Road; half-day classes start with a market visit.",
       "lat": 13.7245,
-      "lng": 100.5265
+      "lng": 100.5265,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sky-bar-lebua",
@@ -527,7 +561,9 @@
       "blurb": "Open-air bar on the 63rd floor of lebua at State Tower, made famous by The Hangover Part II.",
       "tip": "Smart dress code.",
       "lat": 13.7216,
-      "lng": 100.5167
+      "lng": 100.5167,
+      "website": "https://lebua.com",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "amphawa-floating-market",
@@ -536,7 +572,8 @@
       "area": "Samut Songkhram",
       "blurb": "Weekend canal-side market popular with Thai visitors, known for grilled seafood sold from boats and evening firefly boat trips.",
       "lat": 13.4253,
-      "lng": 99.9551
+      "lng": 99.9551,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "riva-surya",
@@ -545,7 +582,8 @@
       "area": "Banglamphu",
       "blurb": "Four-star boutique hotel on the river with a riverside pool, near Khao San and the Grand Palace.",
       "lat": 13.7613,
-      "lng": 100.4945
+      "lng": 100.4945,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ruam-tai",
@@ -563,7 +601,8 @@
       "area": "Silom",
       "blurb": "Famously fiery Isan som tam spot on Soi Phiphat 2, packed with office workers at lunch.",
       "lat": 13.724,
-      "lng": 100.532
+      "lng": 100.532,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "or-tor-kor-market",
@@ -572,7 +611,8 @@
       "area": "Chatuchak",
       "blurb": "Upscale fresh market next to Chatuchak, known for top-quality fruit, curries and northern Thai food stalls.",
       "lat": 13.7985,
-      "lng": 100.548
+      "lng": 100.548,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tom-yum-goong-banglamphu",
@@ -581,7 +621,8 @@
       "area": "Banglamphu",
       "blurb": "Street-side shop on Kraisi Road near Khao San famous for creamy tom yum with big river prawns.",
       "lat": 13.76,
-      "lng": 100.496
+      "lng": 100.496,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "airport-transfer-bkk",
@@ -590,7 +631,8 @@
       "area": "Suvarnabhumi",
       "blurb": "From Suvarnabhumi: the S1 bus to Khao San, the Airport Rail Link to Phaya Thai, or a metered taxi from the official queue.",
       "lat": 13.69,
-      "lng": 100.7501
+      "lng": 100.7501,
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -903,7 +945,10 @@
           "name": "Red Sky rooftop bar",
           "category": "FOOD",
           "note": "Dress code: no flip-flops. Or Nest in Sukhumvit, or Wanderlust in Thonglor.",
-          "place": "red-sky"
+          "place": "red-sky",
+          "price": 29.76,
+          "priceNote": "฿1,000–1,500 a main",
+          "priceSource": "https://www.phuket101.net/bangkok/red-sky-rooftop-bangkok/"
         },
         {
           "day": 3,
@@ -911,7 +956,10 @@
           "category": "EXPERIENCE",
           "sentiment": "OPTIONAL",
           "note": "Wat Chai Watthanaram, Wat Maha That, Wat Phra Si Sanphet.",
-          "place": "ayutthaya"
+          "place": "ayutthaya",
+          "price": 2.38,
+          "priceNote": "฿80 a temple (฿300 pass for 7)",
+          "priceSource": "https://ayutthaya-history.com/ce_admissionfee.html"
         },
         {
           "day": 3,
@@ -970,7 +1018,10 @@
           "name": "The Deck",
           "category": "FOOD",
           "note": "Lunch with great drinks and a view of Wat Arun.",
-          "place": "the-deck-arun-residence"
+          "place": "the-deck-arun-residence",
+          "price": 23.49,
+          "priceNote": "US$23.49 set lunch or dinner",
+          "priceSource": "https://www.waug.com/en/activities/122693"
         },
         {
           "day": 1,
@@ -1069,7 +1120,10 @@
           "name": "Night market",
           "category": "FOOD",
           "note": "Creator's pick was Talad Neon, which has closed. Jodd Fairs in Rama 9 is the nearest equivalent.",
-          "place": "jodd-fairs"
+          "place": "jodd-fairs",
+          "price": 1.79,
+          "priceNote": "฿10–60 a dish",
+          "priceSource": "https://thaiest.com/blog/jodd-fairs-night-market-bangkok"
         },
         {
           "day": 2,

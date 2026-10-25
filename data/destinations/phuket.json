@@ -184,7 +184,9 @@
       "area": "Phuket Old Town",
       "blurb": "Mid-range hotel in Phuket Town.",
       "lat": 7.8857,
-      "lng": 98.3879
+      "lng": 98.3879,
+      "website": "https://www.theblankethotels.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lub-d-phuket-patong",
@@ -193,7 +195,9 @@
       "area": "Patong",
       "blurb": "Social hostel and hotel with a pool in Patong.",
       "lat": 7.892,
-      "lng": 98.296
+      "lng": 98.296,
+      "website": "https://lubd.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "intercontinental-phuket-resort",
@@ -202,7 +206,9 @@
       "area": "Kamala",
       "blurb": "Beachfront luxury resort on Kamala Bay.",
       "lat": 7.942,
-      "lng": 98.278
+      "lng": 98.278,
+      "website": "https://phuket.intercontinental.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banyan-tree-phuket",
@@ -211,7 +217,9 @@
       "area": "Laguna / Bang Tao",
       "blurb": "All-pool-villa luxury resort in the Laguna complex.",
       "lat": 8.001,
-      "lng": 98.297
+      "lng": 98.297,
+      "website": "https://www.banyantree.com/thailand/phuket",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "phuket-old-town",
@@ -220,16 +228,19 @@
       "area": "Phuket Town",
       "blurb": "Historic district of Sino-Portuguese shophouses around Thalang Road.",
       "lat": 7.8846,
-      "lng": 98.388
+      "lng": 98.388,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lock-tien",
-      "name": "Lock Tien Food Court",
+      "name": "Lock Tien",
       "category": "FOOD",
       "area": "Phuket Old Town",
       "blurb": "Old-style local food court.",
       "lat": 7.8846,
-      "lng": 98.3889
+      "lng": 98.3889,
+      "tip": "Moved in 2025 from the old Yaowarat and Dibuk corner food court to 59/14 Bangkok Road; now a single restaurant.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "one-chun-cafe",
@@ -238,7 +249,8 @@
       "area": "Phuket Town",
       "blurb": "Michelin Bib Gourmand restaurant for Phuket-style dishes.",
       "lat": 7.8893,
-      "lng": 98.3916
+      "lng": 98.3916,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tu-kab-khao",
@@ -247,7 +259,8 @@
       "area": "Phuket Old Town",
       "blurb": "Southern Thai restaurant in a colonial shophouse.",
       "lat": 7.8879,
-      "lng": 98.3906
+      "lng": 98.3906,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kopitiam-by-wilai",
@@ -256,7 +269,8 @@
       "area": "Phuket Old Town",
       "blurb": "Retro café serving local Phuket dishes.",
       "lat": 7.8851,
-      "lng": 98.3871
+      "lng": 98.3871,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "wat-chalong",
@@ -265,7 +279,8 @@
       "area": "Chalong",
       "blurb": "Phuket's most important Buddhist temple.",
       "lat": 7.8467,
-      "lng": 98.3366
+      "lng": 98.3366,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "big-buddha-phuket",
@@ -285,7 +300,8 @@
       "area": "Rawai",
       "blurb": "Sheltered beach at Phuket's southern tip.",
       "lat": 7.777,
-      "lng": 98.304
+      "lng": 98.304,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "black-rock-viewpoint",
@@ -303,7 +319,8 @@
       "area": "Nai Harn",
       "blurb": "Headland hike with sunset views over Nai Harn.",
       "lat": 7.774,
-      "lng": 98.301
+      "lng": 98.301,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "promthep-cape",
@@ -312,7 +329,8 @@
       "area": "Rawai",
       "blurb": "Southernmost headland, famous for sunset.",
       "lat": 7.7623,
-      "lng": 98.3054
+      "lng": 98.3054,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "phang-nga-bay",
@@ -321,7 +339,8 @@
       "area": "Phang Nga",
       "blurb": "Bay of limestone karst islands, sea caves and lagoons.",
       "lat": 8.275,
-      "lng": 98.5
+      "lng": 98.5,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "james-bond-island",
@@ -330,7 +349,9 @@
       "area": "Phang Nga Bay",
       "blurb": "Karst islet made famous by The Man with the Golden Gun.",
       "lat": 8.2745,
-      "lng": 98.501
+      "lng": 98.501,
+      "tip": "Boats can't land on the rock itself; you see it from the water or from Khao Phing Kan beach.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "koh-panyi",
@@ -339,7 +360,9 @@
       "area": "Phang Nga Bay",
       "blurb": "Muslim fishing village built on stilts.",
       "lat": 8.335,
-      "lng": 98.5
+      "lng": 98.5,
+      "tip": "No alcohol is sold in the village.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kata-beach",
@@ -348,7 +371,8 @@
       "area": "Kata",
       "blurb": "Popular west-coast beach.",
       "lat": 7.8205,
-      "lng": 98.2985
+      "lng": 98.2985,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "karon-beach",
@@ -357,7 +381,8 @@
       "area": "Karon",
       "blurb": "Long west-coast beach.",
       "lat": 7.845,
-      "lng": 98.294
+      "lng": 98.294,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "patong-beach",
@@ -366,7 +391,8 @@
       "area": "Patong",
       "blurb": "Phuket's busiest beach and nightlife hub.",
       "lat": 7.896,
-      "lng": 98.296
+      "lng": 98.296,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "maya-bay",
@@ -376,7 +402,8 @@
       "blurb": "Cliff-ringed bay from The Beach; swimming is not allowed.",
       "tip": "Closed every year from 1 Aug to 30 Sep. National park fee 400 THB. No swimming in the bay.",
       "lat": 7.678,
-      "lng": 98.766
+      "lng": 98.766,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bamboo-island",
@@ -385,7 +412,8 @@
       "area": "Phi Phi",
       "blurb": "Small white-sand island north of Phi Phi Don.",
       "lat": 7.824,
-      "lng": 98.763
+      "lng": 98.763,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "rang-yai-island",
@@ -394,7 +422,8 @@
       "area": "Phang Nga Bay (east of Phuket)",
       "blurb": "Small island off Phuket's east coast, used for beach day trips.",
       "lat": 7.9535,
-      "lng": 98.4602
+      "lng": 98.4602,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "phuket-sunday-walking-street",
@@ -403,7 +432,8 @@
       "area": "Phuket Old Town",
       "blurb": "Sunday-evening street market on Thalang Road.",
       "lat": 7.884,
-      "lng": 98.39
+      "lng": 98.39,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "golden-dragon-monument",
@@ -412,7 +442,8 @@
       "area": "Phuket Town",
       "blurb": "Dragon monument in a small park in Phuket Town.",
       "lat": 7.8869,
-      "lng": 98.394
+      "lng": 98.394,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kata-noi-beach",
@@ -421,7 +452,8 @@
       "area": "Kata",
       "blurb": "Quieter beach south of Kata.",
       "lat": 7.802,
-      "lng": 98.295
+      "lng": 98.295,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "laem-hin-pier",
@@ -430,7 +462,8 @@
       "area": "Ko Kaew (east coast)",
       "blurb": "Seafood restaurants reached by shuttle boat.",
       "lat": 7.9574,
-      "lng": 98.4056
+      "lng": 98.4056,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bang-pae-waterfall",
@@ -439,7 +472,8 @@
       "area": "Thalang",
       "blurb": "Jungle waterfall in Khao Phra Thaeo wildlife sanctuary.",
       "lat": 8.04,
-      "lng": 98.399
+      "lng": 98.399,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sirinat-national-park",
@@ -448,7 +482,8 @@
       "area": "Nai Yang / Mai Khao",
       "blurb": "Coastal national park with beaches and mangroves.",
       "lat": 8.095,
-      "lng": 98.295
+      "lng": 98.295,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bang-tao-beach",
@@ -457,7 +492,8 @@
       "area": "Cherngtalay",
       "blurb": "6 km beach fronting the Laguna resorts.",
       "lat": 7.999,
-      "lng": 98.292
+      "lng": 98.292,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banzaan-market",
@@ -466,7 +502,8 @@
       "area": "Patong",
       "blurb": "Fresh market with a food court.",
       "lat": 7.8945,
-      "lng": 98.299
+      "lng": 98.299,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "paradise-beach-phuket",
@@ -475,7 +512,8 @@
       "area": "South of Patong",
       "blurb": "Small beach-club cove south of Patong.",
       "lat": 7.867,
-      "lng": 98.282
+      "lng": 98.282,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bangla-road",
@@ -484,7 +522,8 @@
       "area": "Patong",
       "blurb": "Pedestrian nightlife strip.",
       "lat": 7.8935,
-      "lng": 98.2965
+      "lng": 98.2965,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "freedom-beach",
@@ -493,7 +532,8 @@
       "area": "South of Patong",
       "blurb": "Secluded beach reached by longtail boat.",
       "lat": 7.874,
-      "lng": 98.273
+      "lng": 98.273,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "surin-beach",
@@ -502,7 +542,8 @@
       "area": "Surin",
       "blurb": "Upscale west-coast beach.",
       "lat": 7.976,
-      "lng": 98.279
+      "lng": 98.279,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "baba-nest",
@@ -511,7 +552,8 @@
       "area": "Cape Panwa",
       "blurb": "Rooftop sunset bar at Sri Panwa.",
       "lat": 7.8325,
-      "lng": 98.406
+      "lng": 98.406,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "black-ginger-phuket",
@@ -520,7 +562,9 @@
       "area": "Nai Yang",
       "blurb": "Thai restaurant reached by raft at The Slate hotel.",
       "lat": 8.0896,
-      "lng": 98.3003
+      "lng": 98.3003,
+      "website": "https://www.theslatephuket.com/dining/black-ginger.html",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "la-gritta",
@@ -529,7 +573,9 @@
       "area": "Patong",
       "blurb": "Italian restaurant on the rocks at Amari Phuket.",
       "lat": 7.8791,
-      "lng": 98.2771
+      "lng": 98.2771,
+      "website": "https://www.amari.com/phuket/dine/la-gritta",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "catch-beach-club",
@@ -538,7 +584,8 @@
       "area": "Bang Tao",
       "blurb": "Beach club on Bang Tao Beach.",
       "lat": 7.9943,
-      "lng": 98.2949
+      "lng": 98.2949,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banyan-tree-spa-phuket",
@@ -547,7 +594,8 @@
       "area": "Laguna / Bang Tao",
       "blurb": "Resort spa at Banyan Tree Phuket.",
       "lat": 8.001,
-      "lng": 98.297
+      "lng": 98.297,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "suay-cherngtalay",
@@ -556,7 +604,9 @@
       "area": "Cherngtalay",
       "blurb": "Michelin Plate modern Thai restaurant.",
       "lat": 7.9992,
-      "lng": 98.3112
+      "lng": 98.3112,
+      "website": "https://www.suayrestaurant.com/suay-cherngtalay",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cafe-del-mar-phuket",
@@ -565,7 +615,8 @@
       "area": "Kamala",
       "blurb": "Beach club on Kamala Beach.",
       "lat": 7.9641,
-      "lng": 98.2771
+      "lng": 98.2771,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "laem-sing-beach",
@@ -574,7 +625,8 @@
       "area": "Kamala / Surin",
       "blurb": "Small cove between Kamala and Surin.",
       "lat": 7.962,
-      "lng": 98.278
+      "lng": 98.278,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chalong-bay-rum-distillery",
@@ -583,7 +635,9 @@
       "area": "Chalong",
       "blurb": "Craft rum distillery offering tours and tastings.",
       "lat": 7.8459,
-      "lng": 98.3459
+      "lng": 98.3459,
+      "tip": "Tours run every hour from 2 to 6 pm.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ao-yon-beach",
@@ -592,16 +646,19 @@
       "area": "Cape Panwa",
       "blurb": "Quiet east-coast beach.",
       "lat": 7.8031,
-      "lng": 98.4049
+      "lng": 98.4049,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banana-beach-phuket",
       "name": "Banana Beach",
       "category": "EXPERIENCE",
-      "area": "Thalang / Kamala north",
+      "area": "Thalang (between Nai Thon and Bang Tao)",
       "blurb": "Small secluded cove on the west coast.",
       "lat": 8.0388,
-      "lng": 98.2771
+      "lng": 98.2771,
+      "tip": "The old hilltop path is closed; use the parking at the north end (฿100).",
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -669,19 +726,28 @@
           "day": 1,
           "name": "One Chun Cafe & Restaurant",
           "category": "FOOD",
-          "place": "one-chun-cafe"
+          "place": "one-chun-cafe",
+          "price": 7.89,
+          "priceNote": "mains ฿120–390",
+          "priceSource": "https://www.phuket101.net/th/one-chun-th/"
         },
         {
           "day": 1,
           "name": "Tu Kab Khao",
           "category": "FOOD",
-          "place": "tu-kab-khao"
+          "place": "tu-kab-khao",
+          "price": 10.42,
+          "priceNote": "about ฿350–880 a person",
+          "priceSource": "https://intravel.net/phuket/restaurants-cafes/tu-kab-khao-restaurant"
         },
         {
           "day": 1,
           "name": "Kopitiam by Wilai",
           "category": "FOOD",
-          "place": "kopitiam-by-wilai"
+          "place": "kopitiam-by-wilai",
+          "price": 3.13,
+          "priceNote": "noodles from ฿105",
+          "priceSource": "https://www.phuket101.net/kopitiam-by-wilai/"
         },
         {
           "day": 2,
@@ -803,7 +869,10 @@
           "day": 6,
           "name": "Koh Rang Yai",
           "category": "EXPERIENCE",
-          "place": "rang-yai-island"
+          "place": "rang-yai-island",
+          "price": 0,
+          "priceNote": "free island entry (boat extra)",
+          "priceSource": "https://www.thaiholidayguide.com/attraction/ko-rang-yai/"
         },
         {
           "day": 7,
@@ -1015,7 +1084,10 @@
           "name": "Freedom Beach",
           "category": "EXPERIENCE",
           "note": "Rent a sunbed and grab a fresh coconut from a local vendor to fully embrace island life!",
-          "place": "freedom-beach"
+          "place": "freedom-beach",
+          "price": 5.95,
+          "priceNote": "฿200 entry by the trail",
+          "priceSource": "https://www.thaiholidayguide.com/attraction/freedom-beach/"
         },
         {
           "day": 1,
@@ -1063,19 +1135,28 @@
           "day": 1,
           "name": "Tu Kab Khao",
           "category": "FOOD",
-          "place": "tu-kab-khao"
+          "place": "tu-kab-khao",
+          "price": 10.42,
+          "priceNote": "about ฿350–880 a person",
+          "priceSource": "https://intravel.net/phuket/restaurants-cafes/tu-kab-khao-restaurant"
         },
         {
           "day": 1,
           "name": "Baba Nest",
           "category": "FOOD",
-          "place": "baba-nest"
+          "place": "baba-nest",
+          "price": 29.76,
+          "priceNote": "฿1,000 minimum spend a person",
+          "priceSource": "https://intravel.net/phuket/nightlife/baba-nest"
         },
         {
           "day": 1,
           "name": "Black Ginger",
           "category": "FOOD",
-          "place": "black-ginger-phuket"
+          "place": "black-ginger-phuket",
+          "price": 65.48,
+          "priceNote": "set menus ฿2,200++ a person",
+          "priceSource": "https://www.theslatephuket.com/assets/media/uploads/Documents/All Menu/The Slate - Black Ginger menu_2025-26.pdf"
         },
         {
           "day": 1,
@@ -1117,13 +1198,19 @@
           "day": 2,
           "name": "La Gritta",
           "category": "FOOD",
-          "place": "la-gritta"
+          "place": "la-gritta",
+          "price": 16.37,
+          "priceNote": "pastas ฿530–580++",
+          "priceSource": "https://www.amari.com/phuket/dine/la-gritta"
         },
         {
           "day": 2,
           "name": "Catch Beach Club",
           "category": "EXPERIENCE",
-          "place": "catch-beach-club"
+          "place": "catch-beach-club",
+          "price": 178.57,
+          "priceNote": "daybed ฿6,000 minimum spend",
+          "priceSource": "https://www.phuket101.net/catch-beach-club-phuket/"
         },
         {
           "day": 3,
@@ -1137,13 +1224,19 @@
           "day": 3,
           "name": "Banyan Tree Spa Phuket",
           "category": "EXPERIENCE",
-          "place": "banyan-tree-spa-phuket"
+          "place": "banyan-tree-spa-phuket",
+          "price": 133.93,
+          "priceNote": "treatments ฿4,500–12,000",
+          "priceSource": "https://islaguru.com/articles/top-10-spas-in-phuket"
         },
         {
           "day": 3,
           "name": "Suay Cherngtalay",
           "category": "FOOD",
-          "place": "suay-cherngtalay"
+          "place": "suay-cherngtalay",
+          "price": 32.72,
+          "priceNote": "set menu ฿2,199 for two",
+          "priceSource": "https://www.phuket101.net/suay-restaurant-cherngtalay/"
         },
         {
           "day": 3,
@@ -1183,7 +1276,10 @@
           "day": 1,
           "name": "Catch Beach Club",
           "category": "EXPERIENCE",
-          "place": "catch-beach-club"
+          "place": "catch-beach-club",
+          "price": 178.57,
+          "priceNote": "daybed ฿6,000 minimum spend",
+          "priceSource": "https://www.phuket101.net/catch-beach-club-phuket/"
         },
         {
           "day": 2,
@@ -1232,14 +1328,20 @@
           "day": 4,
           "name": "Suay Cherngtalay",
           "category": "FOOD",
-          "place": "suay-cherngtalay"
+          "place": "suay-cherngtalay",
+          "price": 32.72,
+          "priceNote": "set menu ฿2,199 for two",
+          "priceSource": "https://www.phuket101.net/suay-restaurant-cherngtalay/"
         },
         {
           "day": 5,
           "name": "Chalong Bay Rum Distillery",
           "category": "EXPERIENCE",
           "note": "Tours at 1/3/5/7 pm; book online",
-          "place": "chalong-bay-rum-distillery"
+          "place": "chalong-bay-rum-distillery",
+          "price": 13.39,
+          "priceNote": "฿450 distillery visit",
+          "priceSource": "https://phuket101.net/chalong-bay-rum-distillery"
         },
         {
           "day": 6,
@@ -1290,7 +1392,10 @@
           "day": 9,
           "name": "One Chun Cafe & Restaurant",
           "category": "FOOD",
-          "place": "one-chun-cafe"
+          "place": "one-chun-cafe",
+          "price": 7.89,
+          "priceNote": "mains ฿120–390",
+          "priceSource": "https://www.phuket101.net/th/one-chun-th/"
         },
         {
           "day": 10,

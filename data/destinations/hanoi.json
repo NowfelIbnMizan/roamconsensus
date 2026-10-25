@@ -132,6 +132,54 @@
       "title": "Train Street is officially off-limits",
       "body": "Commercial activity on Hanoi's Train Street has been banned since October 2019, and tour operators have been told not to bring visitors there. Hanoi has called all cafe activity there a violation, and in February 2026 the authorities agreed to run fewer passenger trains and stop freight trains on this stretch. The only sanctioned viewpoint is the Hoa Xa cafe inside Long Bien Railway Station.",
       "sourceUrl": "https://vietcetera.com/amp/en/hanoi-cuts-train-services-to-famous-train-street-can-it-remain-a-tourist-magnet"
+    },
+    {
+      "topic": "Safety",
+      "title": "Cross the street at a steady pace",
+      "body": "Walk at a slow, steady pace and don't run or stop suddenly: motorbikes flow around you. Look both ways, even on one-way streets.",
+      "sourceUrl": "https://www.islands.com/1865824/what-to-know-before-vietnam-vacation/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Use Grab instead of street taxis",
+      "body": "Grab shows the price up front, so there's no bargaining or fast meter. Check the licence plate matches the app, and don't let a driver cancel the trip partway.",
+      "sourceUrl": "https://www.islands.com/1865824/what-to-know-before-vietnam-vacation/"
+    },
+    {
+      "topic": "Money",
+      "title": "Check your 500,000 and 20,000 notes",
+      "body": "The 500,000 dong note (about US$19) and the 20,000 note (about US$0.75) are almost the same colour. Count your change, and keep big and small notes apart.",
+      "sourceUrl": "https://www.islands.com/1865824/what-to-know-before-vietnam-vacation/"
+    },
+    {
+      "topic": "Money",
+      "title": "Carry small notes",
+      "body": "Cash is still the norm for street food, markets and some taxis, and many vendors can't change big notes. ATMs are easy to find in the city.",
+      "sourceUrl": "https://www.eskimo.travel/blog/travel-tips-for-first-time-visiting-vietnam"
+    },
+    {
+      "topic": "Health",
+      "title": "Don't drink the tap water",
+      "body": "Tap water isn't safe to drink. Bottled and filtered water is cheap and sold everywhere.",
+      "sourceUrl": "https://www.eskimo.travel/blog/travel-tips-for-first-time-visiting-vietnam"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Dress for temples",
+      "body": "Cover shoulders and knees, take off your shoes, hat and sunglasses, and don't touch religious objects. Walk clockwise around altars.",
+      "sourceUrl": "https://www.islands.com/1865824/what-to-know-before-vietnam-vacation/"
+    },
+    {
+      "topic": "Safety",
+      "title": "Never leave your passport as a deposit",
+      "body": "If you rent a motorbike, check it for damage before you ride off and don't hand over your passport as security.",
+      "sourceUrl": "https://www.islands.com/1865824/what-to-know-before-vietnam-vacation/"
+    },
+    {
+      "topic": "Shopping",
+      "title": "Haggle with a smile",
+      "body": "At markets, counter at about half the first price, stay friendly, and walk away if you can't agree.",
+      "sourceUrl": "https://www.islands.com/1865824/what-to-know-before-vietnam-vacation/"
     }
   ],
   "places": [
@@ -142,7 +190,8 @@
       "area": "Hoan Kiem",
       "blurb": "Dense grid of trade-named streets north of Hoan Kiem Lake.",
       "lat": 21.034,
-      "lng": 105.85
+      "lng": 105.85,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "dong-xuan-market",
@@ -151,7 +200,8 @@
       "area": "Hoan Kiem",
       "blurb": "Hanoi's largest covered market, in the north of the Old Quarter.",
       "lat": 21.0383,
-      "lng": 105.8494
+      "lng": 105.8494,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hoan-kiem-lake",
@@ -160,7 +210,8 @@
       "area": "Hoan Kiem",
       "blurb": "Central lake with Turtle Tower and Ngoc Son Temple.",
       "lat": 21.0287,
-      "lng": 105.8524
+      "lng": 105.8524,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ngoc-son-temple",
@@ -169,7 +220,8 @@
       "area": "Hoan Kiem",
       "blurb": "Temple on an islet in Hoan Kiem Lake, reached by the red The Huc Bridge.",
       "lat": 21.0307,
-      "lng": 105.8524
+      "lng": 105.8524,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ma-may-ancient-house",
@@ -178,7 +230,8 @@
       "area": "Hoan Kiem",
       "blurb": "Restored 19th-century merchant tube house in the Old Quarter.",
       "lat": 21.0346,
-      "lng": 105.853
+      "lng": 105.853,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bach-ma-temple",
@@ -187,7 +240,8 @@
       "area": "Hoan Kiem",
       "blurb": "One of Hanoi's oldest temples, on Hang Buom Street.",
       "lat": 21.036,
-      "lng": 105.8516
+      "lng": 105.8516,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "o-quan-chuong-gate",
@@ -196,7 +250,8 @@
       "area": "Hoan Kiem",
       "blurb": "The last surviving gate of Hanoi's old city walls.",
       "lat": 21.0372,
-      "lng": 105.8532
+      "lng": 105.8532,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "long-bien-bridge",
@@ -205,7 +260,8 @@
       "area": "Hoan Kiem / Long Bien",
       "blurb": "Early-1900s steel cantilever bridge over the Red River.",
       "lat": 21.043,
-      "lng": 105.859
+      "lng": 105.859,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ho-chi-minh-mausoleum",
@@ -215,7 +271,8 @@
       "blurb": "Granite mausoleum holding Ho Chi Minh's embalmed body, on Ba Dinh Square.",
       "tip": "Mornings only; closed Mondays and Fridays. Cover shoulders and knees.",
       "lat": 21.0368,
-      "lng": 105.8346
+      "lng": 105.8346,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ho-chi-minh-stilt-house",
@@ -224,7 +281,8 @@
       "area": "Ba Dinh",
       "blurb": "Grounds of the Presidential Palace, with the simple stilt house where Ho Chi Minh lived.",
       "lat": 21.0398,
-      "lng": 105.8337
+      "lng": 105.8337,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "one-pillar-pagoda",
@@ -233,17 +291,19 @@
       "area": "Ba Dinh",
       "blurb": "Small 11th-century-origin pagoda raised on a single stone pillar.",
       "lat": 21.0359,
-      "lng": 105.8336
+      "lng": 105.8336,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "vietnam-military-history-museum",
       "name": "Vietnam Military History Museum",
       "category": "EXPERIENCE",
-      "area": "Ba Dinh (old site) / Nam Tu Liem (new site)",
-      "blurb": "National museum of Vietnam's military history, associated with the Hanoi Flag Tower.",
+      "area": "Nam Tu Liem",
+      "blurb": "National museum of Vietnam's military history, moved in November 2024 to a large new site on Thang Long Boulevard.",
       "tip": "The museum moved to a new building on Thang Long Boulevard in late 2024: check the address before you go.",
       "lat": 21.0322,
-      "lng": 105.8398
+      "lng": 105.8398,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tran-quoc-pagoda",
@@ -252,7 +312,8 @@
       "area": "Tay Ho",
       "blurb": "Hanoi's oldest pagoda, on a small peninsula in West Lake.",
       "lat": 21.048,
-      "lng": 105.8368
+      "lng": 105.8368,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "vietnam-museum-of-ethnology",
@@ -261,7 +322,8 @@
       "area": "Cau Giay",
       "blurb": "Museum of Vietnam's 54 ethnic groups, with full-size traditional houses outdoors.",
       "lat": 21.0405,
-      "lng": 105.7985
+      "lng": 105.7985,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "thang-long-water-puppet-theatre",
@@ -271,7 +333,8 @@
       "blurb": "Theatre for traditional water puppetry, by Hoan Kiem Lake.",
       "website": "https://thanglongwaterpuppet.com",
       "lat": 21.0318,
-      "lng": 105.8535
+      "lng": 105.8535,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "temple-of-literature",
@@ -280,7 +343,8 @@
       "area": "Dong Da",
       "blurb": "11th-century Confucian temple and site of Vietnam's first national university.",
       "lat": 21.0285,
-      "lng": 105.8355
+      "lng": 105.8355,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "st-josephs-cathedral",
@@ -289,7 +353,8 @@
       "area": "Hoan Kiem",
       "blurb": "Neo-Gothic cathedral from 1886.",
       "lat": 21.0287,
-      "lng": 105.8489
+      "lng": 105.8489,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hoa-lo-prison",
@@ -298,7 +363,8 @@
       "area": "Hoan Kiem",
       "blurb": "Museum in the remaining gatehouse of the French-built prison later called the 'Hanoi Hilton'.",
       "lat": 21.0253,
-      "lng": 105.8466
+      "lng": 105.8466,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hanoi-opera-house",
@@ -307,7 +373,8 @@
       "area": "Hoan Kiem",
       "blurb": "French colonial opera house from 1911; the interior is open only for performances.",
       "lat": 21.0243,
-      "lng": 105.8576
+      "lng": 105.8576,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ta-hien-beer-street",
@@ -316,7 +383,8 @@
       "area": "Hoan Kiem",
       "blurb": "Old Quarter street of bia hoi stalls and bars around Ta Hien and Luong Ngoc Quyen.",
       "lat": 21.036,
-      "lng": 105.852
+      "lng": 105.852,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "perfume-pagoda",
@@ -325,7 +393,8 @@
       "area": "My Duc, about 60 km SW of Hanoi",
       "blurb": "Buddhist cave-temple complex reached by boat and a short hike.",
       "lat": 20.617,
-      "lng": 105.746
+      "lng": 105.746,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hanoi-train-street",
@@ -335,7 +404,8 @@
       "blurb": "Narrow residential strip with cafes where trains pass inches from homes.",
       "tip": "Officially off-limits: Hanoi has banned business on the tracks since 2019 and cut train services in Feb 2026. The sanctioned view is from the cafe inside Long Bien station.",
       "lat": 21.0306,
-      "lng": 105.8443
+      "lng": 105.8443,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cafe-dinh",
@@ -344,7 +414,8 @@
       "area": "Hoan Kiem",
       "blurb": "Upstairs cafe off Hoan Kiem Lake, known for egg coffee.",
       "lat": 21.0317,
-      "lng": 105.853
+      "lng": 105.853,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bun-cha-74-hang-quat",
@@ -371,7 +442,9 @@
       "area": "Hoan Kiem",
       "blurb": "Restaurant serving cha ca, Hanoi's turmeric-dill fried fish.",
       "lat": 21.034,
-      "lng": 105.847
+      "lng": 105.847,
+      "website": "https://chacathanglong.com.vn",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "phung-hung-mural-street",
@@ -380,7 +453,8 @@
       "area": "Hoan Kiem",
       "blurb": "Railway viaduct arches painted with murals of old Hanoi.",
       "lat": 21.0335,
-      "lng": 105.846
+      "lng": 105.846,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pho-gia-truyen-bat-dan",
@@ -389,7 +463,8 @@
       "area": "Hoan Kiem",
       "blurb": "Long-running beef pho shop with a queue-and-pay system.",
       "lat": 21.0336,
-      "lng": 105.8466
+      "lng": 105.8466,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "imperial-citadel-of-thang-long",
@@ -398,7 +473,8 @@
       "area": "Ba Dinh",
       "blurb": "UNESCO-listed former royal citadel, including wartime command bunkers.",
       "lat": 21.0352,
-      "lng": 105.84
+      "lng": 105.84,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cong-caphe",
@@ -407,16 +483,18 @@
       "area": "Hoan Kiem (multiple branches)",
       "blurb": "Retro-themed Vietnamese cafe chain, known for coconut coffee.",
       "lat": 21.03,
-      "lng": 105.853
+      "lng": 105.853,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "banh-my-tram",
-      "name": "Banh My Tram",
+      "name": "Banh Mi Tram",
       "category": "FOOD",
       "area": "Hoan Kiem",
       "blurb": "Small shop for Hanoi-style pate banh mi.",
       "lat": 21.03,
-      "lng": 105.846
+      "lng": 105.846,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "quan-thanh-temple",
@@ -425,7 +503,8 @@
       "area": "Ba Dinh",
       "blurb": "Taoist temple near Truc Bach Lake with a large bronze statue.",
       "lat": 21.043,
-      "lng": 105.837
+      "lng": 105.837,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ca-phe-duy-tri",
@@ -440,10 +519,11 @@
       "slug": "banh-cuon-ba-xuan",
       "name": "Banh Cuon Ba Xuan",
       "category": "FOOD",
-      "area": "Hoan Kiem",
+      "area": "Ba Dinh",
       "blurb": "Old Quarter stall for steamed rice rolls.",
       "lat": 21.0345,
-      "lng": 105.8485
+      "lng": 105.8485,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bun-bo-nam-bo-bach-phuong",
@@ -452,7 +532,8 @@
       "area": "Hoan Kiem",
       "blurb": "Shop on Hang Dieu serving bun bo nam bo, a dry beef noodle salad.",
       "lat": 21.032,
-      "lng": 105.848
+      "lng": 105.848,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ha-long-bay",
@@ -461,7 +542,8 @@
       "area": "Quang Ninh, about 170 km E of Hanoi",
       "blurb": "UNESCO-listed bay of limestone karsts, visited by day trip or overnight cruise.",
       "lat": 20.9101,
-      "lng": 107.1839
+      "lng": 107.1839,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ninh-binh",
@@ -470,7 +552,8 @@
       "area": "Ninh Binh, about 90 km S of Hanoi",
       "blurb": "Karst landscape explored by rowing boat through caves and rivers.",
       "lat": 20.257,
-      "lng": 105.915
+      "lng": 105.915,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bun-cha-huong-lien",
@@ -479,7 +562,8 @@
       "area": "Hai Ba Trung",
       "blurb": "Bun cha restaurant known for the 2016 Obama and Bourdain meal.",
       "lat": 21.0177,
-      "lng": 105.853
+      "lng": 105.853,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pho-10-ly-quoc-su",
@@ -488,7 +572,8 @@
       "area": "Hoan Kiem",
       "blurb": "Michelin Guide-listed beef pho shop near the cathedral.",
       "lat": 21.031,
-      "lng": 105.849
+      "lng": 105.849,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pasteur-street-brewing-hanoi",
@@ -497,16 +582,19 @@
       "area": "Hoan Kiem",
       "blurb": "Taproom of a Vietnamese craft brewery.",
       "lat": 21.0293,
-      "lng": 105.8486
+      "lng": 105.8486,
+      "website": "https://www.pasteurstreet.com/taprooms",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tam-vi",
       "name": "Tam Vi",
       "category": "FOOD",
-      "area": "Ba Dinh",
+      "area": "Dong Da",
       "blurb": "One-Michelin-star restaurant for northern Vietnamese home cooking in a vintage setting.",
       "lat": 21.031,
-      "lng": 105.838
+      "lng": 105.838,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lighthouse-sky-bar",
@@ -515,7 +603,9 @@
       "area": "Hoan Kiem",
       "blurb": "Old Quarter rooftop bar with city and Red River views.",
       "lat": 21.0371,
-      "lng": 105.8547
+      "lng": 105.8547,
+      "website": "https://skybars.vn/lighthouse-sky-bar/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "cafe-giang",
@@ -524,7 +614,8 @@
       "area": "Hoan Kiem",
       "blurb": "Family cafe credited with inventing egg coffee.",
       "lat": 21.0335,
-      "lng": 105.8545
+      "lng": 105.8545,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "swip-speakeasy",
@@ -560,7 +651,9 @@
       "area": "Hoan Kiem (French Quarter)",
       "blurb": "Opera-themed luxury hotel near the Opera House.",
       "lat": 21.0245,
-      "lng": 105.8566
+      "lng": 105.8566,
+      "website": "https://capellahotels.com/en/capella-hanoi",
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -793,14 +886,20 @@
           "name": "Ta Hien Beer Street",
           "category": "FOOD",
           "note": "Evening street food and socializing",
-          "place": "ta-hien-beer-street"
+          "place": "ta-hien-beer-street",
+          "price": 0.38,
+          "priceNote": "₫10,000–15,000 a glass of bia hoi",
+          "priceSource": "https://jackfruitadventure.com/beer-street-hanoi/"
         },
         {
           "day": 3,
           "name": "Perfume Pagoda",
           "category": "EXPERIENCE",
           "note": "About 60 km out; only if you have the time",
-          "place": "perfume-pagoda"
+          "place": "perfume-pagoda",
+          "price": 8.85,
+          "priceNote": "₫230,000 boat and entry (cable car extra)",
+          "priceSource": "https://hnvjourneys.com/blog/things-to-see/visit-perfume-pagoda-vietnam"
         },
         {
           "day": 3,
@@ -1061,7 +1160,10 @@
           "name": "Ha Long Bay",
           "category": "EXPERIENCE",
           "note": "Full-day trip; an overnight cruise is better if you have time",
-          "place": "ha-long-bay"
+          "place": "ha-long-bay",
+          "price": 46.5,
+          "priceNote": "day trip from US$46.50",
+          "priceSource": "https://www.taketours.com/hanoi/ha-long-bay-full-day-boat-cruise-846-5189.html"
         }
       ]
     },
@@ -1218,7 +1320,10 @@
           "name": "Tam Vi",
           "category": "FOOD",
           "note": "One Michelin star; perfect for a special occasion",
-          "place": "tam-vi"
+          "place": "tam-vi",
+          "price": 26.92,
+          "priceNote": "set menus ₫700,000–900,000",
+          "priceSource": "https://www.trvlogue.com/en/tam-vi-hanoi-michelin"
         },
         {
           "day": 4,
@@ -1230,7 +1335,10 @@
           "day": 4,
           "name": "The Lighthouse Sky Bar",
           "category": "FOOD",
-          "place": "lighthouse-sky-bar"
+          "place": "lighthouse-sky-bar",
+          "price": 11.35,
+          "priceNote": "cocktails from ₫295,000",
+          "priceSource": "https://skybars.vn/lighthouse-sky-bar/"
         }
       ]
     }

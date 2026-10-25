@@ -1,0 +1,14 @@
+-- kuala-lumpur: checked place by place on 2026-10-25 (still open, own websites, prices with sources).
+
+UPDATE "Place" p SET "website" = 'https://gold3hotel.com/', "area" = 'Bukit Bintang' FROM "Destination" d WHERE d.id = p."destinationId" AND d.slug = 'kuala-lumpur' AND p.slug = 'gold3-boutique-hotel';
+UPDATE "Place" p SET "website" = 'https://www.mandarinoriental.com/en/kuala-lumpur/petronas-towers' FROM "Destination" d WHERE d.id = p."destinationId" AND d.slug = 'kuala-lumpur' AND p.slug = 'mandarin-oriental-kuala-lumpur';
+UPDATE "Place" p SET "website" = 'https://marinisgroup.com/marinis-on-57/' FROM "Destination" d WHERE d.id = p."destinationId" AND d.slug = 'kuala-lumpur' AND p.slug = 'marinis-on-57';
+UPDATE "Place" p SET "website" = 'https://vcr.my/' FROM "Destination" d WHERE d.id = p."destinationId" AND d.slug = 'kuala-lumpur' AND p.slug = 'vcr-cafe';
+UPDATE "Place" p SET "checkedAt" = '2026-10-25' FROM "Destination" d WHERE d.id = p."destinationId" AND d.slug = 'kuala-lumpur' AND p.slug IN ('dorms-kl', 'gold3-boutique-hotel', 'mandarin-oriental-kuala-lumpur', 'batu-caves', 'brickfields-little-india', 'bukit-bintang', 'chinatown-petaling-street', 'guan-di-temple', 'islamic-arts-museum-malaysia', 'kl-bird-park', 'kl-forest-eco-park', 'kl-tower', 'klcc-park', 'kompleks-kraf-kuala-lumpur', 'masjid-jamek', 'merdeka-square', 'national-mosque-masjid-negara', 'national-museum-malaysia', 'pavilion-kl', 'perdana-botanical-gardens', 'petronas-twin-towers', 'royal-selangor-visitor-centre', 'heli-lounge-bar', 'jalan-alor', 'marinis-on-57', 'suria-klcc', 'vcr-cafe', 'yut-kee');
+
+UPDATE "Item" SET "priceCents" = 238, "priceNote" = 'RM10–40 a dish', "priceSourceUrl" = 'https://backpackandsnorkel.com/Malaysia/Jalan-Alor-Food-Street/', "priceCheckedAt" = '2026-10-25' WHERE "id" = 'kuala-lumpur-2-days-bucketlistly--jalan-alor' AND "priceCents" IS NULL;
+UPDATE "Item" SET "priceCents" = 238, "priceNote" = 'RM10–40 a dish', "priceSourceUrl" = 'https://backpackandsnorkel.com/Malaysia/Jalan-Alor-Food-Street/', "priceCheckedAt" = '2026-10-25' WHERE "id" = 'kuala-lumpur-3-days-luxury-foratravel--jalan-alor' AND "priceCents" IS NULL;
+UPDATE "Item" SET "priceCents" = 425, "priceNote" = 'dishes from RM18', "priceSourceUrl" = 'https://sethlui.com/suria-klcc-food-guide-malaysia/', "priceCheckedAt" = '2026-10-25' WHERE "id" = 'kuala-lumpur-3-days-luxury-foratravel--suria-klcc' AND "priceCents" IS NULL;
+UPDATE "Item" SET "priceCents" = 2381, "priceNote" = 'about RM100 minimum spend', "priceSourceUrl" = 'https://backpackandsnorkel.com/Malaysia/Heli-Lounge-Bar/', "priceCheckedAt" = '2026-10-25' WHERE "id" = 'kuala-lumpur-3-days-luxury-foratravel--heli-lounge-bar' AND "priceCents" IS NULL;
+-- Checked: no source publishes a price for these.
+UPDATE "Item" SET "priceCheckedAt" = '2026-10-25' WHERE "priceCents" IS NULL AND "id" IN ('kuala-lumpur-2-days-bucketlistly--vcr-cafe', 'kuala-lumpur-3-days-luxury-foratravel--marini-s-on-57');

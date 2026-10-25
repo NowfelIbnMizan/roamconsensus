@@ -184,7 +184,8 @@
       "area": "Changi",
       "blurb": "The world's tallest indoor waterfall, inside Jewel's glass dome at Changi Airport.",
       "lat": 1.3602,
-      "lng": 103.9894
+      "lng": 103.9894,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "changi-airport",
@@ -193,7 +194,8 @@
       "area": "Changi",
       "blurb": "Singapore's main international airport.",
       "lat": 1.3644,
-      "lng": 103.9915
+      "lng": 103.9915,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chinatown",
@@ -202,7 +204,8 @@
       "area": "Outram / Chinatown",
       "blurb": "Historic district of shophouses, temples and hawker centres around Pagoda Street.",
       "lat": 1.2836,
-      "lng": 103.8443
+      "lng": 103.8443,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "maxwell-food-centre",
@@ -211,7 +214,8 @@
       "area": "Chinatown",
       "blurb": "Popular hawker centre known for Hainanese chicken rice.",
       "lat": 1.2803,
-      "lng": 103.8448
+      "lng": 103.8448,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "buddha-tooth-relic-temple",
@@ -220,7 +224,8 @@
       "area": "Chinatown",
       "blurb": "Tang-style Buddhist temple housing a relic said to be the Buddha's tooth.",
       "lat": 1.2814,
-      "lng": 103.8443
+      "lng": 103.8443,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "fort-canning-park",
@@ -229,7 +234,8 @@
       "area": "Museum District",
       "blurb": "Historic hilltop park with colonial ruins, gardens and the photogenic Tree Tunnel.",
       "lat": 1.2945,
-      "lng": 103.846
+      "lng": 103.846,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "national-museum-of-singapore",
@@ -240,7 +246,8 @@
       "tip": "The Singapore History Gallery closed in November 2025 for upgrading works.",
       "website": "https://www.nhb.gov.sg/nationalmuseum/plan-your-visit/visitor-information/admissions",
       "lat": 1.2966,
-      "lng": 103.8485
+      "lng": 103.8485,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lau-pa-sat",
@@ -249,7 +256,9 @@
       "area": "Downtown Core",
       "blurb": "Victorian cast-iron market turned hawker centre, known for its evening satay street.",
       "lat": 1.2806,
-      "lng": 103.8504
+      "lng": 103.8504,
+      "website": "https://www.laupasat.sg/sataystreet/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "capitaspring-sky-garden",
@@ -258,7 +267,8 @@
       "area": "Raffles Place",
       "blurb": "Rooftop garden atop the 280 m CapitaSpring tower with skyline views.",
       "lat": 1.2843,
-      "lng": 103.85
+      "lng": 103.85,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "marina-bay-waterfront-promenade",
@@ -267,7 +277,8 @@
       "area": "Marina Bay",
       "blurb": "A 3.5 km waterfront loop linking Marina Bay's landmarks.",
       "lat": 1.285,
-      "lng": 103.858
+      "lng": 103.858,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "merlion-park",
@@ -276,7 +287,8 @@
       "area": "Marina Bay",
       "blurb": "Home of the Merlion statue, Singapore's half-lion, half-fish mascot, facing Marina Bay.",
       "lat": 1.2868,
-      "lng": 103.8545
+      "lng": 103.8545,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "spectra-light-and-water-show",
@@ -285,7 +297,8 @@
       "area": "Marina Bay",
       "blurb": "Free nightly outdoor light and water show at the Event Plaza in front of The Shoppes at Marina Bay Sands.",
       "lat": 1.2838,
-      "lng": 103.8591
+      "lng": 103.8591,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "marina-bay-sands",
@@ -295,7 +308,8 @@
       "blurb": "Integrated resort with three towers topped by the SkyPark, plus a mall and casino.",
       "website": "https://www.marinabaysands.com/attractions/sands-skypark.html",
       "lat": 1.2834,
-      "lng": 103.8607
+      "lng": 103.8607,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "marina-bay-sands-skypark-observation-deck",
@@ -305,7 +319,8 @@
       "blurb": "Observation deck 57 storeys up with 360-degree city views.",
       "website": "https://www.marinabaysands.com/attractions/sands-skypark.html",
       "lat": 1.2826,
-      "lng": 103.8607
+      "lng": 103.8607,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "artscience-museum",
@@ -314,7 +329,8 @@
       "area": "Marina Bay",
       "blurb": "Lotus-shaped museum of art, science and digital exhibitions at Marina Bay Sands.",
       "lat": 1.2863,
-      "lng": 103.8593
+      "lng": 103.8593,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "gardens-by-the-bay",
@@ -325,7 +341,8 @@
       "tip": "Garden Rhapsody light show at 7:45 pm and 8:45 pm, free.",
       "website": "https://www.gardensbythebay.com.sg/en/frequently-asked-questions/general.html",
       "lat": 1.2816,
-      "lng": 103.8636
+      "lng": 103.8636,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "flower-dome-and-cloud-forest",
@@ -335,7 +352,8 @@
       "blurb": "Two cooled conservatories: a Mediterranean flower garden and a misty cloud forest with an indoor waterfall.",
       "website": "https://www.gardensbythebay.com.sg/en/frequently-asked-questions/general.html",
       "lat": 1.284,
-      "lng": 103.8655
+      "lng": 103.8655,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "koon-seng-road-shophouses",
@@ -344,16 +362,19 @@
       "area": "Joo Chiat / Katong",
       "blurb": "Row of pastel-coloured Peranakan terrace houses in the Joo Chiat heritage area.",
       "lat": 1.3123,
-      "lng": 103.9008
+      "lng": 103.9008,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "petit-pain",
       "name": "Petit Pain",
       "category": "FOOD",
-      "area": "Joo Chiat / Katong (location unverified)",
+      "area": "Joo Chiat",
       "blurb": "Neighbourhood bakery known for its croissants.",
       "lat": 1.311,
-      "lng": 103.903
+      "lng": 103.903,
+      "tip": "17 Joo Chiat Place. Takeaway only, Thursday to Sunday mornings; sells out fast.",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "328-katong-laksa",
@@ -362,7 +383,8 @@
       "area": "Katong",
       "blurb": "Long-running stall famous for Katong-style laksa.",
       "lat": 1.305,
-      "lng": 103.905
+      "lng": 103.905,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sri-veeramakaliamman-temple",
@@ -371,7 +393,8 @@
       "area": "Little India",
       "blurb": "Colourful Hindu temple on Serangoon Road dedicated to the goddess Kali.",
       "lat": 1.3075,
-      "lng": 103.853
+      "lng": 103.853,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "little-india",
@@ -380,7 +403,8 @@
       "area": "Little India",
       "blurb": "Lively district of spice shops, sari stores, temples and South Indian food.",
       "lat": 1.3066,
-      "lng": 103.851
+      "lng": 103.851,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "little-india-arcade",
@@ -389,7 +413,8 @@
       "area": "Little India",
       "blurb": "Restored shophouse arcade with stalls selling Indian goods and snacks.",
       "lat": 1.3066,
-      "lng": 103.8507
+      "lng": 103.8507,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "house-of-tan-teng-niah",
@@ -398,7 +423,8 @@
       "area": "Little India",
       "blurb": "Brightly painted 1900 Chinese villa, one of Little India's most photographed buildings.",
       "lat": 1.3087,
-      "lng": 103.8523
+      "lng": 103.8523,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sultan-mosque",
@@ -407,7 +433,8 @@
       "area": "Kampong Glam",
       "blurb": "Golden-domed mosque at the heart of the historic Malay-Muslim quarter.",
       "lat": 1.3022,
-      "lng": 103.859
+      "lng": 103.859,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "arab-street",
@@ -416,7 +443,8 @@
       "area": "Kampong Glam",
       "blurb": "Historic quarter of textile shops, cafes and Haji Lane street art.",
       "lat": 1.3016,
-      "lng": 103.8585
+      "lng": 103.8585,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "changi-point-ferry-terminal",
@@ -425,7 +453,8 @@
       "area": "Changi Village",
       "blurb": "Terminal for bumboats to Pulau Ubin.",
       "lat": 1.3893,
-      "lng": 103.9877
+      "lng": 103.9877,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pulau-ubin",
@@ -434,7 +463,8 @@
       "area": "North-East islands",
       "blurb": "Rustic island of kampung villages, quarries and cycling trails, including Chek Jawa wetlands.",
       "lat": 1.4044,
-      "lng": 103.96
+      "lng": 103.96,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "singapore-botanic-gardens",
@@ -444,7 +474,8 @@
       "blurb": "UNESCO-listed tropical garden that is home to the National Orchid Garden.",
       "website": "https://sbg.nparks.gov.sg/visit/general-info/",
       "lat": 1.3138,
-      "lng": 103.8159
+      "lng": 103.8159,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "orchard-road",
@@ -453,7 +484,8 @@
       "area": "Orchard",
       "blurb": "Singapore's main shopping boulevard, including ION Orchard, Paragon and Ngee Ann City.",
       "lat": 1.304,
-      "lng": 103.8318
+      "lng": 103.8318,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sentosa-express",
@@ -462,7 +494,8 @@
       "area": "HarbourFront / Sentosa",
       "blurb": "Monorail from VivoCity to Sentosa Island.",
       "lat": 1.2644,
-      "lng": 103.8222
+      "lng": 103.8222,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "sentosa-island",
@@ -471,7 +504,8 @@
       "area": "Sentosa",
       "blurb": "Resort island of beaches, theme parks and hotels just off the south coast.",
       "lat": 1.2494,
-      "lng": 103.8303
+      "lng": 103.8303,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "siloso-beach",
@@ -480,7 +514,8 @@
       "area": "Sentosa",
       "blurb": "Sentosa's livelier beach, with beach clubs and water sports.",
       "lat": 1.2537,
-      "lng": 103.8125
+      "lng": 103.8125,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "southernmost-point-continental-asia",
@@ -489,7 +524,8 @@
       "area": "Sentosa (Palawan Beach)",
       "blurb": "Islet off Palawan Beach, reached by a suspension bridge, with lookout towers.",
       "lat": 1.247,
-      "lng": 103.8226
+      "lng": 103.8226,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "resorts-world-sentosa",
@@ -498,7 +534,8 @@
       "area": "Sentosa",
       "blurb": "Integrated resort with Universal Studios, S.E.A. Aquarium, hotels and a casino.",
       "lat": 1.256,
-      "lng": 103.82
+      "lng": 103.82,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "universal-studios-singapore",
@@ -509,7 +546,8 @@
       "tip": "Some rides and shows are unavailable until further notice: check before you book.",
       "website": "https://www.rwsentosa.com/en/attractions/universal-studios-singapore",
       "lat": 1.254,
-      "lng": 103.8238
+      "lng": 103.8238,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "southern-ridges",
@@ -518,7 +556,8 @@
       "area": "Bukit Merah",
       "blurb": "10 km chain of parks and elevated walkways, including the wave-shaped Henderson Waves bridge.",
       "lat": 1.2763,
-      "lng": 103.8155
+      "lng": 103.8155,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chinatown-complex-food-centre",
@@ -527,7 +566,8 @@
       "area": "Chinatown",
       "blurb": "One of Singapore's largest hawker centres, with hundreds of stalls.",
       "lat": 1.2823,
-      "lng": 103.8431
+      "lng": 103.8431,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "hong-lim-food-centre",
@@ -536,7 +576,8 @@
       "area": "Chinatown",
       "blurb": "Busy hawker centre known for its noodle and curry-chicken stalls.",
       "lat": 1.2853,
-      "lng": 103.8458
+      "lng": 103.8458,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "old-airport-road-food-centre",
@@ -545,7 +586,8 @@
       "area": "Geylang / Dakota",
       "blurb": "Large hawker centre with many long-established stalls.",
       "lat": 1.308,
-      "lng": 103.8857
+      "lng": 103.8857,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "tiong-bahru-market",
@@ -554,7 +596,8 @@
       "area": "Tiong Bahru",
       "blurb": "Wet market with an airy upstairs hawker centre in a heritage neighbourhood.",
       "lat": 1.2851,
-      "lng": 103.8325
+      "lng": 103.8325,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "geylang-serai-market",
@@ -563,7 +606,8 @@
       "area": "Geylang Serai",
       "blurb": "Malay-Muslim market and hawker centre known for nasi padang and Malay dishes.",
       "lat": 1.317,
-      "lng": 103.8985
+      "lng": 103.8985,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chomp-chomp-food-centre",
@@ -572,7 +616,8 @@
       "area": "Serangoon Gardens",
       "blurb": "Evening hawker centre known for BBQ stingray and satay.",
       "lat": 1.3641,
-      "lng": 103.8665
+      "lng": 103.8665,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "adam-road-food-centre",
@@ -581,7 +626,8 @@
       "area": "Bukit Timah",
       "blurb": "Small hawker centre known for nasi lemak.",
       "lat": 1.324,
-      "lng": 103.814
+      "lng": 103.814,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kok-sen-restaurant",
@@ -590,16 +636,18 @@
       "area": "Chinatown (Keong Saik)",
       "blurb": "Zi char restaurant serving Cantonese-style home cooking.",
       "lat": 1.2803,
-      "lng": 103.8418
+      "lng": 103.8418,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "beach-road-scissor-cut-curry-rice",
-      "name": "Beach Road Scissor Cut Curry Rice",
+      "name": "Beach Road Scissors Cut Curry Rice",
       "category": "FOOD",
       "area": "Jalan Besar",
       "blurb": "Late-night stall serving Hainanese curry rice with scissor-cut pork chop.",
       "lat": 1.308,
-      "lng": 103.8574
+      "lng": 103.8574,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "singapore-zam-zam",
@@ -617,7 +665,8 @@
       "area": "Singapore River",
       "blurb": "Riverside quay of restored warehouses housing bars and restaurants.",
       "lat": 1.2906,
-      "lng": 103.8465
+      "lng": 103.8465,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jumbo-seafood-riverside-point",
@@ -626,7 +675,8 @@
       "area": "Clarke Quay",
       "blurb": "Seafood restaurant chain known for chilli crab.",
       "lat": 1.2899,
-      "lng": 103.8455
+      "lng": 103.8455,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "newton-food-centre",
@@ -635,7 +685,8 @@
       "area": "Newton",
       "blurb": "Open-air hawker centre known for seafood and satay, featured in Crazy Rich Asians.",
       "lat": 1.3121,
-      "lng": 103.8394
+      "lng": 103.8394,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "night-safari",
@@ -645,16 +696,18 @@
       "blurb": "Nocturnal wildlife park explored by tram and walking trails.",
       "website": "https://cn.mandai.com/en/tickets-and-passes/single-attractions/night-safari.html",
       "lat": 1.4021,
-      "lng": 103.788
+      "lng": 103.788,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ulu-ulu-safari-restaurant",
       "name": "Ulu Ulu Safari Restaurant",
       "category": "FOOD",
       "area": "Mandai (Night Safari)",
-      "blurb": "Kampung-themed restaurant at the Night Safari entrance.",
+      "blurb": "Food-court counters at the Night Safari entrance. The sit-down buffet moved to The Courtyard at Mandai Wildlife East in May 2025.",
       "lat": 1.4025,
-      "lng": 103.7885
+      "lng": 103.7885,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bird-paradise",
@@ -663,7 +716,8 @@
       "area": "Mandai",
       "blurb": "Mandai bird park with walk-through aviaries housing thousands of birds.",
       "lat": 1.4085,
-      "lng": 103.788
+      "lng": 103.788,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "lavo-singapore",
@@ -672,7 +726,9 @@
       "area": "Marina Bay Sands (Tower 1, L57)",
       "blurb": "Italian-American restaurant on top of Marina Bay Sands.",
       "lat": 1.2826,
-      "lng": 103.8607
+      "lng": 103.8607,
+      "website": "https://taogroup.com/venues/lavo-italian-restaurant-singapore/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "ce-la-vi-singapore",
@@ -681,7 +737,9 @@
       "area": "Marina Bay Sands (Tower 3, L57)",
       "blurb": "Rooftop restaurant and skybar on the SkyPark.",
       "lat": 1.2826,
-      "lng": 103.8613
+      "lng": 103.8613,
+      "website": "https://sg.celavi.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "oasia-hotel-downtown",
@@ -690,7 +748,9 @@
       "area": "Tanjong Pagar",
       "blurb": "Mid-range hotel in a red-mesh tower covered in greenery.",
       "lat": 1.2765,
-      "lng": 103.8434
+      "lng": 103.8434,
+      "website": "https://tfehotels.com/hotels/oasia/oasia-hotel-downtown",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "carlton-city-hotel",
@@ -699,7 +759,9 @@
       "area": "Tanjong Pagar",
       "blurb": "Four-star tower hotel near Tanjong Pagar.",
       "lat": 1.276,
-      "lng": 103.844
+      "lng": 103.844,
+      "website": "https://carltoncity.sg/step-carlton-city-experience",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "marina-bay-sands-hotel",
@@ -708,7 +770,8 @@
       "area": "Marina Bay",
       "blurb": "Landmark resort hotel with the rooftop infinity pool, for guests only.",
       "lat": 1.2834,
-      "lng": 103.8607
+      "lng": 103.8607,
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -818,7 +881,10 @@
           "day": 3,
           "name": "Sentosa",
           "category": "EXPERIENCE",
-          "place": "sentosa-island"
+          "place": "sentosa-island",
+          "price": 3.13,
+          "priceNote": "S$4 island entry by Sentosa Express (free on foot via Boardwalk)",
+          "priceSource": "https://www.singsaver.com.sg/car-insurance/blog/sentosa-island-entrance-fee-and-parking-rates"
         },
         {
           "day": 3,
@@ -875,7 +941,10 @@
           "name": "Maxwell Food Centre",
           "category": "FOOD",
           "note": "Favourite hawker centre for breakfast",
-          "place": "maxwell-food-centre"
+          "place": "maxwell-food-centre",
+          "price": 3.91,
+          "priceNote": "S$5–7 for Tian Tian chicken rice",
+          "priceSource": "https://disneyblog.com/guide/singapore/hawker-centers/maxwell-food-centre/"
         },
         {
           "day": 1,
@@ -901,7 +970,9 @@
           "category": "FOOD",
           "note": "Good for lunch",
           "place": "lau-pa-sat",
-          "priceNote": "creator: quite affordable"
+          "priceNote": "From S$5 per person; most dishes S$5–10",
+          "price": 3.91,
+          "priceSource": "https://sethlui.com/lau-pa-sat-food-guide-singapore/"
         },
         {
           "day": 1,
@@ -941,7 +1012,10 @@
           "day": 1,
           "name": "ArtScience Museum",
           "category": "EXPERIENCE",
-          "place": "artscience-museum"
+          "place": "artscience-museum",
+          "price": 26.65,
+          "priceNote": "From US$26.65 (teamLab Future World, off-peak tourist)",
+          "priceSource": "https://www.pelago.com/activity/p4ikn-artscience-museum-singapore"
         },
         {
           "day": 1,
@@ -982,7 +1056,10 @@
           "name": "328 Katong Laksa",
           "category": "FOOD",
           "note": "Laksa spot Gordon Ramsay visited",
-          "place": "328-katong-laksa"
+          "place": "328-katong-laksa",
+          "price": 5.7,
+          "priceNote": "S$7.30 small laksa (S$9.30 large)",
+          "priceSource": "https://eatbook.sg/?p=192280"
         },
         {
           "day": 2,
@@ -1082,7 +1159,10 @@
           "name": "Hong Lim Market & Food Centre",
           "category": "FOOD",
           "note": "so many food options it will blow your mind",
-          "place": "hong-lim-food-centre"
+          "place": "hong-lim-food-centre",
+          "price": 3.13,
+          "priceNote": "S$4–7 per dish",
+          "priceSource": "https://disneyblog.com/guide/singapore/hawker-centers/hong-lim-market-and-food-centre/"
         },
         {
           "day": 1,
@@ -1099,7 +1179,10 @@
           "name": "Tiong Bahru Market",
           "category": "FOOD",
           "note": "still open air, very spacious, nice and clean",
-          "place": "tiong-bahru-market"
+          "place": "tiong-bahru-market",
+          "price": 3.13,
+          "priceNote": "S$4–6 for chicken rice or lor mee",
+          "priceSource": "https://disneyblog.com/guide/singapore/hawker-centers/tiong-bahru-market/"
         },
         {
           "day": 1,
@@ -1153,14 +1236,20 @@
           "name": "Old Airport Road Food Centre",
           "category": "FOOD",
           "note": "home to some legendary vendors",
-          "place": "old-airport-road-food-centre"
+          "place": "old-airport-road-food-centre",
+          "price": 3.13,
+          "priceNote": "S$4–6 per dish (Nam Sing Hokkien mee)",
+          "priceSource": "https://disneyblog.com/guide/singapore/hawker-centers/old-airport-road-food-centre/"
         },
         {
           "day": 2,
           "name": "Geylang Serai Market",
           "category": "FOOD",
           "note": "Indonesian and Malay food",
-          "place": "geylang-serai-market"
+          "place": "geylang-serai-market",
+          "price": 2.34,
+          "priceNote": "S$3–10 for nasi padang",
+          "priceSource": "https://sethlui.com/sinar-pagi-nasi-padang-singapore/"
         },
         {
           "day": 3,
@@ -1244,7 +1333,10 @@
           "name": "Jumbo Seafood",
           "category": "FOOD",
           "note": "Chilli crab and black pepper crab",
-          "place": "jumbo-seafood-riverside-point"
+          "place": "jumbo-seafood-riverside-point",
+          "price": 78.13,
+          "priceNote": "Chilli crab S$100–120 per kg",
+          "priceSource": "https://www.homejourney.sg/blog/best-chilli-crab-singapore-homejourney-ultimate-2026-guide-202603090101"
         },
         {
           "day": 1,
@@ -1269,7 +1361,10 @@
           "name": "Newton Food Centre",
           "category": "FOOD",
           "note": "famous for the film Crazy Rich Asians; laksa, prawn mee, chicken rice, bak kut teh, kaya toast",
-          "place": "newton-food-centre"
+          "place": "newton-food-centre",
+          "price": 6.25,
+          "priceNote": "S$8–12 for oyster omelette; seafood S$25+",
+          "priceSource": "https://disneyblog.com/guide/singapore/hawker-centers/newton-food-centre/"
         },
         {
           "day": 2,
@@ -1370,7 +1465,10 @@
           "name": "Marina Bay Sands",
           "category": "EXPERIENCE",
           "note": "2–3 hours; casino free for foreigners",
-          "place": "marina-bay-sands"
+          "place": "marina-bay-sands",
+          "price": 27.34,
+          "priceNote": "S$35 SkyPark Observation Deck (non-peak)",
+          "priceSource": "https://www.marinabaysands.com/attractions/sands-skypark.html"
         },
         {
           "day": 4,
@@ -1396,7 +1494,10 @@
           "name": "LAVO Italian Restaurant & Rooftop Bar",
           "category": "FOOD",
           "note": "Reservations are recommended as it's a popular spot.",
-          "place": "lavo-singapore"
+          "place": "lavo-singapore",
+          "price": 27.34,
+          "priceNote": "S$35–46 per main; cocktails S$27",
+          "priceSource": "https://sethlui.com/lavo-singapore/"
         },
         {
           "day": 4,

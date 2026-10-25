@@ -144,6 +144,48 @@
       "title": "Yellow fever certificate if arriving from a risk country",
       "body": "You need a yellow fever vaccination certificate if you are coming from a country listed as a transmission risk. This does not apply to direct flights from most of Europe or North America.",
       "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Transport",
+      "title": "Trains take Touch 'n Go or tokens only",
+      "body": "You can't tap a bank card, QR code or phone wallet at LRT/MRT gates yet. Buy a single-journey token, or use a Touch 'n Go card (cheaper fares; keep at least RM5 on it).",
+      "sourceUrl": "https://www.malaymail.com/news/malaysia/2026/05/22/first-time-using-kuala-lumpurs-trains-here-are-some-tips-including-how-to-pay-tap-in-and-out/220875"
+    },
+    {
+      "topic": "Transport",
+      "title": "Buses are cashless",
+      "body": "Rapid KL buses take no cash, only Touch 'n Go, with at least RM3 on the card. Fares are RM1 to RM5 by zone.",
+      "sourceUrl": "https://www.malaymail.com/news/malaysia/2026/05/22/first-time-using-kuala-lumpurs-trains-here-are-some-tips-including-how-to-pay-tap-in-and-out/220875"
+    },
+    {
+      "topic": "Transport",
+      "title": "Rapid Kembara pass",
+      "body": "Unlimited Rapid KL trains, BRT and buses for RM25 for one day or RM55 for three days. It needs a Touch 'n Go card.",
+      "sourceUrl": "https://www.malaymail.com/news/malaysia/2026/05/22/first-time-using-kuala-lumpurs-trains-here-are-some-tips-including-how-to-pay-tap-in-and-out/220875"
+    },
+    {
+      "topic": "Transport",
+      "title": "Use Grab, not street taxis",
+      "body": "Street taxis may refuse the meter or overcharge. Grab shows the fare first.",
+      "sourceUrl": "https://kualalumpurcity.my/kuala-lumpur-travel-tips-first-timers/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Cover up at mosques and temples",
+      "body": "Cover shoulders and knees and take off your shoes before going in.",
+      "sourceUrl": "https://kualalumpurcity.my/kuala-lumpur-travel-tips-first-timers/"
+    },
+    {
+      "topic": "Money",
+      "title": "Tipping is optional",
+      "body": "Restaurants often add a service charge, so tipping isn't expected. RM2 to RM5 for hotel housekeeping is a kind extra.",
+      "sourceUrl": "https://kualalumpurcity.my/kuala-lumpur-travel-tips-first-timers/"
+    },
+    {
+      "topic": "Money",
+      "title": "Change money in town",
+      "body": "Airport money changers give worse rates. Changers in the city, especially Bukit Bintang, are better.",
+      "sourceUrl": "https://kualalumpurcity.my/kuala-lumpur-travel-tips-first-timers/"
     }
   ],
   "places": [
@@ -155,7 +197,8 @@
       "blurb": "88-storey twin towers with a Skybridge on levels 41-42 and an observation deck on level 86.",
       "tip": "The skybridge and observation deck are closed on Mondays. Book a time slot ahead.",
       "lat": 3.1579,
-      "lng": 101.7116
+      "lng": 101.7116,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kl-tower",
@@ -164,7 +207,8 @@
       "area": "Bukit Nanas",
       "blurb": "421 m telecom tower with an observation deck and the open-air Sky Deck.",
       "lat": 3.1528,
-      "lng": 101.7038
+      "lng": 101.7038,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kl-forest-eco-park",
@@ -173,7 +217,8 @@
       "area": "Bukit Nanas",
       "blurb": "Rainforest reserve below KL Tower with a canopy walkway.",
       "lat": 3.1525,
-      "lng": 101.7015
+      "lng": 101.7015,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "klcc-park",
@@ -182,7 +227,8 @@
       "area": "KLCC",
       "blurb": "Landscaped park below the Petronas Towers with the Lake Symphony fountain.",
       "lat": 3.1548,
-      "lng": 101.714
+      "lng": 101.714,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "heli-lounge-bar",
@@ -191,7 +237,8 @@
       "area": "Bukit Bintang / Jalan Sultan Ismail",
       "blurb": "Bar on a rooftop helipad with open skyline views.",
       "lat": 3.1497,
-      "lng": 101.7065
+      "lng": 101.7065,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "merdeka-square",
@@ -200,7 +247,8 @@
       "area": "City Centre",
       "blurb": "Colonial-era square where independence was declared in 1957, facing the Sultan Abdul Samad Building.",
       "lat": 3.1478,
-      "lng": 101.6937
+      "lng": 101.6937,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "perdana-botanical-gardens",
@@ -209,7 +257,8 @@
       "area": "Tasik Perdana",
       "blurb": "KL's large central park with themed gardens near the National Monument.",
       "lat": 3.143,
-      "lng": 101.685
+      "lng": 101.685,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "national-museum-malaysia",
@@ -218,7 +267,8 @@
       "area": "Brickfields / Jalan Damansara",
       "blurb": "Malaysia's national history museum in a Malay-palace-style building.",
       "lat": 3.1376,
-      "lng": 101.6873
+      "lng": 101.6873,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "chinatown-petaling-street",
@@ -227,7 +277,8 @@
       "area": "Chinatown",
       "blurb": "Covered market street at the heart of KL's Chinatown.",
       "lat": 3.1435,
-      "lng": 101.6976
+      "lng": 101.6976,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "jalan-alor",
@@ -236,7 +287,8 @@
       "area": "Bukit Bintang",
       "blurb": "Street of open-air food stalls and restaurants, busiest at night.",
       "lat": 3.1456,
-      "lng": 101.7087
+      "lng": 101.7087,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "islamic-arts-museum-malaysia",
@@ -245,7 +297,8 @@
       "area": "Perdana Botanical Gardens",
       "blurb": "Large museum of Islamic decorative arts with over 7,000 artefacts.",
       "lat": 3.1417,
-      "lng": 101.6895
+      "lng": 101.6895,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "national-mosque-masjid-negara",
@@ -255,7 +308,8 @@
       "blurb": "Modernist national mosque from 1965 with a folded star-shaped roof.",
       "tip": "Closed to visitors at prayer times. Robes are lent at the door.",
       "lat": 3.1418,
-      "lng": 101.6918
+      "lng": 101.6918,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "guan-di-temple",
@@ -264,7 +318,8 @@
       "area": "Chinatown",
       "blurb": "Taoist temple from 1886 dedicated to Guan Yu.",
       "lat": 3.1443,
-      "lng": 101.6964
+      "lng": 101.6964,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "brickfields-little-india",
@@ -273,7 +328,8 @@
       "area": "Brickfields",
       "blurb": "Indian-Malaysian neighbourhood near KL Sentral.",
       "lat": 3.1306,
-      "lng": 101.6849
+      "lng": 101.6849,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "masjid-jamek",
@@ -282,7 +338,8 @@
       "area": "City Centre",
       "blurb": "Mosque from 1909 at the confluence of the Klang and Gombak rivers.",
       "lat": 3.1488,
-      "lng": 101.6957
+      "lng": 101.6957,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "bukit-bintang",
@@ -291,7 +348,8 @@
       "area": "Bukit Bintang",
       "blurb": "Main shopping and entertainment district.",
       "lat": 3.1466,
-      "lng": 101.7113
+      "lng": 101.7113,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "vcr-cafe",
@@ -300,7 +358,9 @@
       "area": "Bukit Bintang (Jalan Galloway)",
       "blurb": "Specialty coffee cafe in a restored shophouse.",
       "lat": 3.143,
-      "lng": 101.708
+      "lng": 101.708,
+      "website": "https://vcr.my/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "yut-kee",
@@ -309,7 +369,8 @@
       "area": "Chow Kit (Jalan Kamunting)",
       "blurb": "Hainanese kopitiam dating from 1928.",
       "lat": 3.158,
-      "lng": 101.698
+      "lng": 101.698,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "batu-caves",
@@ -318,7 +379,8 @@
       "area": "Gombak, Selangor (about 13 km N)",
       "blurb": "Limestone cave temples reached by 272 steps, with a giant golden Murugan statue.",
       "lat": 3.2379,
-      "lng": 101.684
+      "lng": 101.684,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kl-bird-park",
@@ -327,7 +389,8 @@
       "area": "Perdana Botanical Gardens",
       "blurb": "Large walk-in free-flight aviary in the Lake Gardens.",
       "lat": 3.143,
-      "lng": 101.688
+      "lng": 101.688,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "suria-klcc",
@@ -336,7 +399,8 @@
       "area": "KLCC",
       "blurb": "Shopping mall at the base of the Petronas Towers.",
       "lat": 3.158,
-      "lng": 101.7121
+      "lng": 101.7121,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "marinis-on-57",
@@ -345,7 +409,9 @@
       "area": "KLCC (Menara 3 Petronas)",
       "blurb": "57th-floor Italian restaurant and bar facing the Twin Towers.",
       "lat": 3.1572,
-      "lng": 101.7111
+      "lng": 101.7111,
+      "website": "https://marinisgroup.com/marinis-on-57/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "royal-selangor-visitor-centre",
@@ -354,7 +420,8 @@
       "area": "Setapak",
       "blurb": "Pewter maker's factory visitor centre with tours and workshops.",
       "lat": 3.2007,
-      "lng": 101.7225
+      "lng": 101.7225,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "pavilion-kl",
@@ -363,7 +430,8 @@
       "area": "Bukit Bintang",
       "blurb": "Large upscale shopping mall.",
       "lat": 3.149,
-      "lng": 101.7134
+      "lng": 101.7134,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "kompleks-kraf-kuala-lumpur",
@@ -372,7 +440,8 @@
       "area": "Jalan Conlay",
       "blurb": "Government crafts centre selling batik, pewter and woodwork.",
       "lat": 3.1528,
-      "lng": 101.7188
+      "lng": 101.7188,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "dorms-kl",
@@ -381,16 +450,19 @@
       "area": "Bukit Bintang (approx.)",
       "blurb": "Backpacker hostel with free breakfast.",
       "lat": 3.146,
-      "lng": 101.706
+      "lng": 101.706,
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "gold3-boutique-hotel",
       "name": "Gold3 Boutique Hotel",
       "category": "STAY",
-      "area": "Bukit Bintang (Changkat)",
+      "area": "Bukit Bintang",
       "blurb": "Midrange boutique hotel.",
       "lat": 3.144,
-      "lng": 101.708
+      "lng": 101.708,
+      "website": "https://gold3hotel.com/",
+      "checkedAt": "2026-10-25"
     },
     {
       "slug": "mandarin-oriental-kuala-lumpur",
@@ -399,7 +471,9 @@
       "area": "KLCC",
       "blurb": "Luxury hotel beside KLCC Park and the Twin Towers.",
       "lat": 3.1555,
-      "lng": 101.713
+      "lng": 101.713,
+      "website": "https://www.mandarinoriental.com/en/kuala-lumpur/petronas-towers",
+      "checkedAt": "2026-10-25"
     }
   ],
   "creators": [
@@ -666,7 +740,10 @@
           "name": "Jalan Alor",
           "category": "FOOD",
           "note": "Go at night",
-          "place": "jalan-alor"
+          "place": "jalan-alor",
+          "price": 2.38,
+          "priceNote": "RM10–40 a dish",
+          "priceSource": "https://backpackandsnorkel.com/Malaysia/Jalan-Alor-Food-Street/"
         },
         {
           "day": 2,
@@ -712,7 +789,10 @@
           "name": "Jalan Alor",
           "category": "FOOD",
           "note": "Liveliest at night",
-          "place": "jalan-alor"
+          "place": "jalan-alor",
+          "price": 2.38,
+          "priceNote": "RM10–40 a dish",
+          "priceSource": "https://backpackandsnorkel.com/Malaysia/Jalan-Alor-Food-Street/"
         },
         {
           "day": 1,
@@ -758,7 +838,10 @@
           "name": "Suria KLCC",
           "category": "FOOD",
           "note": "Lunch: nasi lemak, roti canai, laksa",
-          "place": "suria-klcc"
+          "place": "suria-klcc",
+          "price": 4.25,
+          "priceNote": "dishes from RM18",
+          "priceSource": "https://sethlui.com/suria-klcc-food-guide-malaysia/"
         },
         {
           "day": 2,
@@ -792,7 +875,10 @@
           "name": "Heli Lounge Bar",
           "category": "FOOD",
           "note": "Reserve in advance",
-          "place": "heli-lounge-bar"
+          "place": "heli-lounge-bar",
+          "price": 23.81,
+          "priceNote": "about RM100 minimum spend",
+          "priceSource": "https://backpackandsnorkel.com/Malaysia/Heli-Lounge-Bar/"
         },
         {
           "day": 3,
