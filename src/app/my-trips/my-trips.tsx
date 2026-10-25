@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CalendarDays, ChevronDown, FolderOpen, LogOut, Plane, Save, ShoppingBag, Trash2 } from "lucide-react";
+import { CalendarDays, ChevronDown, FolderOpen, LogOut, Luggage, Plane, Save, ShoppingBag, Trash2 } from "lucide-react";
 import { Avatar } from "@/components/account-button";
 import { cartData } from "@/components/cart-sync";
 import { Thumb } from "@/components/thumb";
@@ -211,6 +211,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
   if (!items.length)
     return (
       <section className="rounded-2xl border border-dashed border-line-strong p-6 text-center">
+        <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-display text-xl font-semibold">Your trip cart is empty</p>
         <p className="mt-1 text-sm text-muted">Pick a route creators agree on and build from there.</p>
         <Link
