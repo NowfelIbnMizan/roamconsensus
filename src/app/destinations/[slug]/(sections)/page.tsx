@@ -329,63 +329,51 @@ export default async function DestinationPage({
                   style={{ containIntrinsicSize: "auto 300px" }}
                 >
                   <div className="relative">
-                    {p.blurb || p.tip ? (
-                      <PlaceHover
-                        href={placeHref(destination.slug, p.slug)}
-                        name={p.name}
-                        card={
-                          <div className="max-h-[60vh] overflow-y-auto">
-                            <p className="eyebrow">
-                              {p.area && `${p.area} · `}
-                              {categoryLabel[p.category]}
+                    <PlaceHover
+                      href={placeHref(destination.slug, p.slug)}
+                      name={p.name}
+                      card={
+                        <div className="max-h-[60vh] overflow-y-auto">
+                          <p className="eyebrow">
+                            {p.area && `${p.area} · `}
+                            {categoryLabel[p.category]}
+                          </p>
+                          <p className="mt-1 font-display text-lg font-semibold leading-snug">
+                            {p.name}
+                          </p>
+                          {p.fromPrice && (
+                            <p className="text-sm text-muted tabular-nums">
+                              <FromPrice p={p.fromPrice} />
                             </p>
-                            <p className="mt-1 font-display text-lg font-semibold leading-snug">
-                              {p.name}
+                          )}
+                          {p.blurb && <p className="mt-2 text-sm">{p.blurb}</p>}
+                          {p.tip && (
+                            <p className="mt-2 text-sm text-muted">
+                              <span className="font-medium text-foreground">
+                                Tip:
+                              </span>{" "}
+                              {p.tip}
                             </p>
-                            {p.fromPrice && (
-                              <p className="text-sm text-muted tabular-nums">
-                                <FromPrice p={p.fromPrice} />
-                              </p>
-                            )}
-                            {p.blurb && (
-                              <p className="mt-2 text-sm">{p.blurb}</p>
-                            )}
-                            {p.tip && (
-                              <p className="mt-2 text-sm text-muted">
-                                <span className="font-medium text-foreground">
-                                  Tip:
-                                </span>{" "}
-                                {p.tip}
-                              </p>
-                            )}
-                            {p.creators.length > 0 && (
-                              <p className="mt-3 text-xs text-muted">
-                                {creatorCount > 1
-                                  ? `${p.creators.length} of ${creatorCount} creators recommend it`
-                                  : `Picked by ${p.creators[0].name}`}
-                              </p>
-                            )}
-                            <Link
-                              href={placeHref(destination.slug, p.slug)}
-                              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                            >
-                              Open place{" "}
-                              <ArrowRight className="size-4" aria-hidden />
-                            </Link>
-                          </div>
-                        }
-                      >
-                        {photo}
-                      </PlaceHover>
-                    ) : (
-                      <Link
-                        href={placeHref(destination.slug, p.slug)}
-                        aria-label={p.name}
-                        className="block overflow-hidden rounded-2xl"
-                      >
-                        {photo}
-                      </Link>
-                    )}
+                          )}
+                          {p.creators.length > 0 && (
+                            <p className="mt-3 text-xs text-muted">
+                              {creatorCount > 1
+                                ? `${p.creators.length} of ${creatorCount} creators recommend it`
+                                : `Picked by ${p.creators[0].name}`}
+                            </p>
+                          )}
+                          <Link
+                            href={placeHref(destination.slug, p.slug)}
+                            className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                          >
+                            Open place{" "}
+                            <ArrowRight className="size-4" aria-hidden />
+                          </Link>
+                        </div>
+                      }
+                    >
+                      {photo}
+                    </PlaceHover>
                     {hasPin(p) && (
                       <span
                         className="pointer-events-none absolute top-2 left-2 z-[3] inline-flex size-6 items-center justify-center rounded-full text-xs font-semibold text-white ring-2 ring-white/80"
