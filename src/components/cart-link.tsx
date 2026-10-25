@@ -18,7 +18,8 @@ export function CartLink() {
           aria-label={`Trip mode: day ${today} of your trip`}
           className="hidden items-center gap-1.5 rounded-full bg-accent px-3 py-1 font-medium whitespace-nowrap text-background sm:flex"
         >
-          <Sun className="size-4" aria-hidden /> Today
+          <Sun className="size-4" aria-hidden />
+          <span className="hidden lg:inline">Today</span>
         </Link>
       )}
       <Link
@@ -27,7 +28,7 @@ export function CartLink() {
         className="relative flex items-center gap-1.5 rounded-full border border-line px-3 py-1 whitespace-nowrap"
       >
         <ShoppingBag className="size-4" aria-hidden />
-        <span className="hidden sm:inline">Trip cart</span>
+        <span className="hidden lg:inline">Trip cart</span>
         {hydrated && count > 0 && (
           <span className="ml-0.5 rounded-full bg-accent px-1.5 text-xs font-medium text-background">{count}</span>
         )}

@@ -142,7 +142,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   }
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div className="max-w-4xl space-y-6">
       {/* The trip in one card: total, length, budget, and every tool behind ⋯ instead of a sidebar of boxes. */}
       <section className="rounded-2xl border border-line bg-card p-4 sm:p-5">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-3">

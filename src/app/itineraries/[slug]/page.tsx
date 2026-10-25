@@ -292,7 +292,7 @@ export default async function ItineraryPage({
           <Thumb
             url={it.coverUrl}
             category="EXPERIENCE"
-            sizes="(min-width: 1024px) 1024px, 100vw"
+            sizes="(min-width: 1280px) 1280px, 100vw"
             className="size-full"
             priority
           />

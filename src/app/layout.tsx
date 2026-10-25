@@ -74,8 +74,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
           <header className="border-b border-line print:hidden">
-            <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-              <Link href="/" className="group flex items-center gap-2">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4">
+              <Link href="/" className="group flex shrink-0 items-center gap-2">
                 <Compass
                   className="size-6 text-accent-2 transition-transform group-hover:rotate-45"
                   strokeWidth={2.2}
@@ -85,7 +85,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                   Crea<span className="text-accent italic">tour</span>
                 </span>
               </Link>
-              <div className="flex items-center gap-2 text-sm font-medium text-foreground/75 sm:gap-4">
+              <div className="flex items-center gap-2 text-sm font-medium whitespace-nowrap text-foreground/75 sm:gap-4">
                 <Link
                   href="/#destinations"
                   className="hidden hover:text-accent md:inline"
@@ -94,7 +94,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
                 <Link
                   href="/creators"
-                  className="hidden hover:text-accent md:inline"
+                  className="hidden hover:text-accent lg:inline"
                 >
                   Creators
                 </Link>
@@ -106,21 +106,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
                 <Link
                   href="/visa"
-                  className="hidden hover:text-accent sm:inline"
+                  className="hidden hover:text-accent lg:inline"
                 >
                   Visa check
-                </Link>
-                <Link
-                  href="/blog"
-                  className="hidden hover:text-accent md:inline"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/about"
-                  className="hidden hover:text-accent md:inline"
-                >
-                  About
                 </Link>
                 <Link
                   href="/#plan"
@@ -131,14 +119,14 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
                 <ThemeToggle />
                 <CurrencyPicker />
-                <span className="hidden sm:inline-flex">
+                <span className="hidden gap-2 sm:inline-flex">
                   <CartLink />
                 </span>
                 <AccountButton enabled={googleLoginEnabled()} />
               </div>
             </nav>
           </header>
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:py-10 print:py-0">
+          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:py-10 print:py-0">
             {/* Pages are prerendered whole; this only shows if a page has to load its data at request time, which
                 otherwise fails with a blocking-route error. */}
             <Suspense fallback={<p className="text-muted">Loading…</p>}>
@@ -146,7 +134,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             </Suspense>
           </main>
           <footer className="mt-8 border-t border-line print:hidden">
-            <div className="mx-auto max-w-5xl px-4 pt-6">
+            <div className="mx-auto max-w-7xl px-4 pt-6">
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-md flex-1">
                   <p className="font-display text-xl font-semibold">
@@ -159,7 +147,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </div>
               </div>
             </div>
-            <p className="fine-print mx-auto max-w-5xl px-4 py-6">
+            <p className="fine-print mx-auto max-w-7xl px-4 py-6">
               Featured creators are independent and not affiliated with
               Creatour; being featured doesn&apos;t mean they endorse it.
               Creator names, photos, logos and itineraries belong to their
@@ -170,6 +158,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               {" · "}
               <Link href="/creators" className="underline">
                 Creators
+              </Link>
+              {" · "}
+              <Link href="/visa" className="underline">
+                Visa check
               </Link>
               {" · "}
               <Link href="/blog" className="underline">
@@ -192,7 +184,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 Terms
               </Link>
             </p>
-            <p className="mx-auto max-w-5xl px-4 pb-24 text-xs text-muted sm:pb-6">
+            <p className="mx-auto max-w-7xl px-4 pb-24 text-xs text-muted sm:pb-6">
               <InstallApp />
             </p>
           </footer>
