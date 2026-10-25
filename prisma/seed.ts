@@ -271,6 +271,8 @@ async function main() {
         website: p.website ?? null,
         lat: p.lat ?? null,
         lng: p.lng ?? null,
+        closed: p.closed ?? false,
+        checkedAt: p.checkedAt ?? null,
       };
       const row = await db.place.upsert({
         where: { destinationId_slug: { destinationId: dest.id, slug: p.slug } },

@@ -16,6 +16,8 @@ export const PlaceData = z.object({
   website: url.optional(),
   lat: z.number().min(-90).max(90).optional(),
   lng: z.number().min(-180).max(180).optional(),
+  closed: z.boolean().optional(),
+  checkedAt: z.coerce.date().optional(), // "2026-10-25": when it was last checked to be open
 });
 
 export const CreatorData = z.object({

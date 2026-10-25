@@ -595,7 +595,8 @@
       "blurb": "Sushi restaurant.",
       "lat": 34.6812,
       "lng": 135.4996,
-      "tip": "Closed for good in February 2025 (Inside Osaka)."
+      "tip": "Closed for good in February 2025 (Inside Osaka).",
+      "closed": true
     },
     {
       "slug": "arashiyama",

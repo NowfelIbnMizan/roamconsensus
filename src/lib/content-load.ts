@@ -42,6 +42,7 @@ export async function loadItinerary(
         priceCents: item.price === undefined ? null : Math.round(item.price * 100),
         priceNote: item.priceNote,
         priceSourceUrl: item.priceSource,
+        priceCheckedAt: item.priceSource ? new Date() : undefined,
         sentiment: item.sentiment,
         currency: item.currency,
         unit: item.unit,

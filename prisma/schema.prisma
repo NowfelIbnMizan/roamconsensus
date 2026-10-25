@@ -171,6 +171,10 @@ model Place {
   /// Map pin. Approximate is fine; travellers get "Open in Google Maps" for exact directions.
   lat           Float?
   lng           Float?
+  /// Shut for good (or for a long refurbishment). Stays on creators' routes with a "Closed" label, left out of costs.
+  closed        Boolean      @default(false)
+  /// When someone last checked it is still open (Google Maps or its own site).
+  checkedAt     DateTime?
   destinationId String
   destination   Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
   items         Item[]
@@ -191,6 +195,8 @@ model Item {
   currency       String          @default("USD")
   /// Where we found the price when the creator didn't give one (official site, ticket office, booking platform).
   priceSourceUrl String?
+  /// When that researched price was last checked; shown as "checked Oct 2026". Set with no price = no source lists one.
+  priceCheckedAt DateTime?
   unit           String? // "night", "person", "day"
   quantity       Int             @default(1)
   itineraryId    String

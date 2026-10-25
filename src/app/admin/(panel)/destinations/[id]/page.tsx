@@ -369,6 +369,7 @@ export default async function DestinationAdmin({
                 <span className="text-sm text-muted">
                   {categoryLabel[p.category]} · {p._count.items} items
                   {p.lat === null && " · no map pin"}
+                  {p.closed && " · closed"}
                 </span>
               </summary>
               <form
@@ -422,6 +423,15 @@ export default async function DestinationAdmin({
                   name="photos"
                   defaultValue={p.photos.join("\n")}
                   rows={3}
+                />
+                <Checkbox
+                  label="Closed for good (stays on routes, left out of costs)"
+                  name="closed"
+                  defaultChecked={p.closed}
+                />
+                <Checkbox
+                  label={`I just checked it's open${p.checkedAt ? ` (last: ${p.checkedAt.toISOString().slice(0, 10)})` : ""}`}
+                  name="checkedNow"
                 />
                 <div>
                   <SaveButton />

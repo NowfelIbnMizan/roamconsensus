@@ -275,7 +275,8 @@
       "blurb": "45 m white marble Buddha statue on a hilltop.",
       "tip": "The viewpoint has been closed since the August 2024 landslide (Phuket News, July 2025). Check it has reopened before you go.",
       "lat": 7.8278,
-      "lng": 98.3128
+      "lng": 98.3128,
+      "closed": true
     },
     {
       "slug": "nai-harn-beach",
