@@ -6,7 +6,7 @@ import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { Thumb } from "@/components/thumb";
 import { useEffect, useState } from "react";
-import { Check, CloudRain, ExternalLink, Navigation, Plus } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, CloudRain, ExternalLink, Navigation, Plus } from "lucide-react";
 import { lineTotal, useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
 import { planLength } from "@/components/day-plan";
 import { LegHint } from "@/components/road-time";
@@ -89,16 +89,38 @@ export function TodayView() {
 
   return (
     <>
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <p className="text-sm text-muted">{auto === day ? "Today" : "Trip mode"}</p>
-          <h1 className="text-3xl font-semibold tracking-tight">
-            Day {day}
-            {city && <span className="text-muted"> · {city.name}</span>}
-          </h1>
+      <div className="mx-auto max-w-xl">
+        <div className="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() => setPicked(Math.max(1, day - 1))}
+            disabled={day === 1}
+            aria-label="Previous day"
+            className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line disabled:opacity-30"
+          >
+            <ChevronLeft className="size-5" aria-hidden />
+          </button>
+          <div className="min-w-0 text-center">
+            <p className="truncate text-sm text-muted">
+              {auto === day ? "Today" : "Trip mode"}
+              {city && ` · ${city.name}`}
+            </p>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Day {day} of {days}
+            </h1>
+          </div>
+          <button
+            type="button"
+            onClick={() => setPicked(Math.min(days, day + 1))}
+            disabled={day === days}
+            aria-label="Next day"
+            className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line disabled:opacity-30"
+          >
+            <ChevronRight className="size-5" aria-hidden />
+          </button>
         </div>
-        <label className="text-sm text-muted">
-          Trip starts{" "}
+        <label className="mt-3 flex items-center justify-center gap-2 text-sm text-muted">
+          Trip starts
           <input
             type="date"
             value={startDate ?? ""}
@@ -106,178 +128,179 @@ export function TodayView() {
               setStartDate(e.target.value || null);
               setPicked(null);
             }}
-            className="ml-1 rounded-lg border border-line bg-background px-2 py-1 text-foreground"
+            className="rounded-lg border border-line bg-background px-2 py-1 text-foreground"
           />
         </label>
-      </div>
+        <PageGuide id="today" className="mt-4" />
+        {!startDate && (
+          <p className="mt-2 text-xs text-muted">
+            Set your start date and this page opens on today&apos;s plan by itself.
+          </p>
+        )}
 
-      <nav
-        className="mt-4 flex gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        aria-label="Trip days"
-      >
-        {Array.from({ length: days }, (_, n) => n + 1).map((d) => (
-          <button
-            key={d}
-            type="button"
-            onClick={() => setPicked(d)}
-            aria-current={d === day ? "date" : undefined}
-            className={`shrink-0 rounded-full border px-3 py-1 text-sm ${
-              d === day ? "border-accent bg-accent-soft font-medium text-accent" : "border-line text-muted"
-            }`}
-          >
-            Day {d}
-            {d === auto && " · today"}
-          </button>
-        ))}
-      </nav>
-      <PageGuide id="today" className="mt-4" />
-      {!startDate && (
-        <p className="mt-2 text-xs text-muted">
-          Set your start date and this page opens on today&apos;s plan by itself.
-        </p>
-      )}
+        <div className="mt-6">{data?.weather && city && <WeatherCard name={city.name} weather={data.weather} />}</div>
 
-      <div className="mt-6">{data?.weather && city && <WeatherCard name={city.name} weather={data.weather} />}</div>
+        {rainy && data && data.rainyPicks.length > 0 && (
+          <section className="mb-6 rounded-2xl border border-sky-500/30 bg-sky-500/10 p-4">
+            <h2 className="flex items-center gap-2 font-semibold">
+              <CloudRain className="size-5 text-sky-700 dark:text-sky-400" aria-hidden /> Rainy day? Indoor backups
+            </h2>
+            <p className="mt-1 text-sm text-muted">Spots under a roof that creators recommend in {city?.name}.</p>
+            <ul className="mt-3 divide-y divide-line">
+              {data.rainyPicks.map((p) => (
+                <li key={p.href} className="flex items-center justify-between gap-3 py-2">
+                  <Link href={p.href} className="min-w-0 hover:underline">
+                    <span className="font-medium">{p.name}</span>
+                    <span className="block text-xs text-muted">
+                      {[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+                    </span>
+                  </Link>
+                  {p.cartItem &&
+                    (inPlan.has(p.cartItem.id) ? (
+                      <span className="text-xs text-muted">In your plan</span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          add([{ ...p.cartItem!, day: null }]);
+                          setDay(p.cartItem!.id, day);
+                        }}
+                        className="inline-flex shrink-0 items-center gap-1 rounded-full border border-line px-3 py-1 text-xs font-medium"
+                      >
+                        <Plus className="size-3" aria-hidden /> Add to day {day}
+                      </button>
+                    ))}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
-      {rainy && data && data.rainyPicks.length > 0 && (
-        <section className="mb-6 rounded-2xl border border-sky-500/30 bg-sky-500/10 p-4">
-          <h2 className="flex items-center gap-2 font-semibold">
-            <CloudRain className="size-5 text-sky-700 dark:text-sky-400" aria-hidden /> Rainy day? Indoor backups
-          </h2>
-          <p className="mt-1 text-sm text-muted">Spots under a roof that creators recommend in {city?.name}.</p>
-          <ul className="mt-3 divide-y divide-line">
-            {data.rainyPicks.map((p) => (
-              <li key={p.href} className="flex items-center justify-between gap-3 py-2">
-                <Link href={p.href} className="min-w-0 hover:underline">
-                  <span className="font-medium">{p.name}</span>
-                  <span className="block text-xs text-muted">
-                    {[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
-                  </span>
-                </Link>
-                {p.cartItem &&
-                  (inPlan.has(p.cartItem.id) ? (
-                    <span className="text-xs text-muted">In your plan</span>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        add([{ ...p.cartItem!, day: null }]);
-                        setDay(p.cartItem!.id, day);
-                      }}
-                      className="inline-flex shrink-0 items-center gap-1 rounded-full border border-line px-3 py-1 text-xs font-medium"
-                    >
-                      <Plus className="size-3" aria-hidden /> Add to day {day}
-                    </button>
-                  ))}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {list.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-line p-6 text-center text-muted">
-          Nothing planned for day {day}. A free day!{" "}
-          <Link href="/cart" className="text-accent underline">
-            Plan it in your trip cart
-          </Link>
-        </p>
-      ) : (
-        <>
-          <ol className="space-y-3">
-            {list.map((item) => {
-              const isDone = done.includes(item.id);
-              const isNext = item.id === next?.id;
-              return (
-                <li
-                  key={item.id}
-                  className={`overflow-hidden rounded-2xl border bg-card p-4 ${isNext ? "border-accent" : "border-line"} ${isDone ? "opacity-60" : ""}`}
-                >
-                  {isNext && (
-                    <Thumb
-                      url={item.photoUrl}
-                      category={item.category}
-                      sizes="(min-width: 768px) 720px, 100vw"
-                      className="-mx-4 -mt-4 mb-4 aspect-[16/9] w-[calc(100%+2rem)]"
-                    />
-                  )}
-                  <div className="flex items-start gap-3">
-                    <button
-                      type="button"
-                      onClick={() => toggleDone(item.id)}
-                      aria-pressed={isDone}
-                      aria-label={isDone ? `Mark ${item.name} not done` : `Mark ${item.name} done`}
-                      className={`mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full border ${
-                        isDone ? "border-accent bg-accent text-background" : "border-line"
-                      }`}
-                    >
-                      {isDone && <Check className="size-4" aria-hidden />}
-                    </button>
-                    {!isNext && (
-                      <Thumb url={item.photoUrl} category={item.category} className="order-last size-16 rounded-xl" />
+        {list.length === 0 ? (
+          <p className="rounded-2xl border border-dashed border-line p-6 text-center text-muted">
+            Nothing planned for day {day}. A free day!{" "}
+            <Link href="/cart" className="text-accent underline">
+              Plan it in your trip cart
+            </Link>
+          </p>
+        ) : (
+          <>
+            {next ? (
+              <section className="overflow-hidden rounded-3xl border border-accent bg-card">
+                <Thumb
+                  url={next.photoUrl}
+                  category={next.category}
+                  sizes="(min-width: 640px) 576px, 100vw"
+                  className="aspect-[16/10] w-full"
+                />
+                <div className="p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-accent">Up next</p>
+                  <h2 className="mt-1 text-2xl font-semibold leading-tight">{next.name}</h2>
+                  <p className="mt-1 text-sm text-muted">
+                    {categoryLabel[next.category]}
+                    {lineTotal(next) > 0 && ` · ${price(next)}`}
+                    {next.couponCode && (
+                      <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
+                        {next.couponCode}
+                      </span>
                     )}
-                    <div className="min-w-0 flex-1">
-                      {isNext && <p className="text-xs font-semibold uppercase tracking-wide text-accent">Next</p>}
-                      <p className={`font-semibold ${isDone ? "line-through" : ""}`}>{item.name}</p>
-                      <p className="text-xs text-muted">
-                        {categoryLabel[item.category]}
-                        {lineTotal(item) > 0 && ` · ${price(item)}`}
-                        {item.couponCode && (
-                          <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
-                            {item.couponCode}
+                  </p>
+                  <StopNote id={next.id} note={next.note} editable={false} />
+                  <LegHint leg={legs.get(next.id)} />
+                  <div className="mt-4 flex gap-2">
+                    {hasPin(next) && (
+                      <a
+                        href={directionsUrl(next)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-accent py-4 text-lg font-semibold text-background"
+                      >
+                        <Navigation className="size-5" aria-hidden /> Directions
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => toggleDone(next.id)}
+                      className={`flex items-center justify-center gap-2 rounded-2xl border border-line px-5 py-4 font-medium ${hasPin(next) ? "" : "flex-1"}`}
+                    >
+                      <Check className="size-5" aria-hidden /> Done
+                    </button>
+                  </div>
+                  {(next.bookUrl ?? next.website) && (
+                    <a
+                      href={(next.bookUrl ?? next.website)!}
+                      target="_blank"
+                      rel={next.bookUrl ? "sponsored noopener noreferrer" : "noopener noreferrer"}
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+                    >
+                      {next.bookUrl ? (next.vendor ? `Book on ${next.vendor}` : "Book") : "Website"}
+                      <ExternalLink className="size-3.5" aria-hidden />
+                    </a>
+                  )}
+                </div>
+              </section>
+            ) : (
+              <p className="rounded-3xl border border-accent bg-accent-soft p-6 text-center font-medium text-accent">
+                All {list.length} stops done. Nice day!
+              </p>
+            )}
+
+            <h2 className="mt-6 text-sm font-medium text-muted">
+              {next ? "Rest of the day" : `Day ${day}`} · {list.filter((i) => done.includes(i.id)).length} of{" "}
+              {list.length} done
+            </h2>
+            <ol className="mt-2 divide-y divide-line rounded-2xl border border-line bg-card">
+              {list
+                .filter((i) => i.id !== next?.id)
+                .map((item) => {
+                  const isDone = done.includes(item.id);
+                  return (
+                    <li key={item.id} className="flex items-center gap-3 p-3">
+                      <button
+                        type="button"
+                        onClick={() => toggleDone(item.id)}
+                        aria-pressed={isDone}
+                        aria-label={isDone ? `Mark ${item.name} not done` : `Mark ${item.name} done`}
+                        className={`flex size-8 shrink-0 items-center justify-center rounded-full border ${
+                          isDone ? "border-accent bg-accent text-background" : "border-line"
+                        }`}
+                      >
+                        {isDone && <Check className="size-4" aria-hidden />}
+                      </button>
+                      <span className={`min-w-0 flex-1 ${isDone ? "text-muted line-through" : ""}`}>
+                        <span className="block truncate">{item.name}</span>
+                        {!isDone && (
+                          <span className="text-xs text-muted">
+                            {categoryLabel[item.category]}
+                            {lineTotal(item) > 0 && ` · ${price(item)}`}
                           </span>
                         )}
-                      </p>
-                      <StopNote id={item.id} note={item.note} editable={false} />
-                      <LegHint leg={legs.get(item.id)} />
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {hasPin(item) && (
-                          <a
-                            href={directionsUrl(item)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
-                          >
-                            <Navigation className="size-4" aria-hidden /> Directions
-                          </a>
-                        )}
-                        {(item.bookUrl ?? item.website) && (
-                          <a
-                            href={(item.bookUrl ?? item.website)!}
-                            target="_blank"
-                            rel={item.bookUrl ? "sponsored noopener noreferrer" : "noopener noreferrer"}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm"
-                          >
-                            {item.bookUrl ? (item.vendor ? `Book on ${item.vendor}` : "Book") : "Website"}
-                            <ExternalLink className="size-3.5" aria-hidden />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-          {pinned.length > 1 && (
-            <a
-              href={googleMapsRouteUrl(pinned)!}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-            >
-              Whole day&apos;s route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
-            </a>
-          )}
-        </>
-      )}
-      <p className="mt-8 text-xs text-muted">
-        Works offline once opened: your plan is saved on this phone. Edit it in your{" "}
-        <Link href="/cart" className="underline">
-          trip cart
-        </Link>
-        .
-      </p>
+                      </span>
+                      <Thumb url={item.photoUrl} category={item.category} className="size-11 shrink-0 rounded-lg" />
+                    </li>
+                  );
+                })}
+            </ol>
+            {pinned.length > 1 && (
+              <a
+                href={googleMapsRouteUrl(pinned)!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+              >
+                Whole day&apos;s route in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+              </a>
+            )}
+          </>
+        )}
+        <p className="mt-8 text-xs text-muted">
+          Works offline once opened: your plan is saved on this phone. Edit it in your{" "}
+          <Link href="/cart" className="underline">
+            trip cart
+          </Link>
+          .
+        </p>
+      </div>
     </>
   );
 }
