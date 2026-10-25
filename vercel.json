@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npx prisma migrate deploy && npx prisma db seed && npm run build",
+  "buildCommand": "bash scripts/migrate-deploy.sh && npx prisma db seed && npm run build",
   "regions": [
     "sin1"
   ],
