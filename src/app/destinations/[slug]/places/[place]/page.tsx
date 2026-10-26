@@ -258,7 +258,7 @@ export default async function PlacePage({ params }: Props) {
             {p.tip && ` Tip: ${p.tip}`}
           </p>
           <div
-            className={`mt-3 grid gap-4 ${nearby.length > 0 ? "md:grid-cols-[1fr_340px]" : ""}`}
+            className={`mt-3 grid grid-cols-1 gap-4 ${nearby.length > 0 ? "md:grid-cols-[minmax(0,1fr)_340px]" : ""}`}
           >
             <TripMap stops={stops} className="h-64 md:h-full md:min-h-96" />
             {nearby.length > 0 && (

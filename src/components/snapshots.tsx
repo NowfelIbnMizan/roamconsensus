@@ -16,7 +16,7 @@ export function Snapshots({ shots, className = "" }: { shots: Snapshot[]; classN
     <div
       className={`-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pt-1 pb-3 [scrollbar-width:none] sm:mx-0 sm:px-1 ${className}`}
     >
-      {shots.slice(0, 12).map((s, n) => {
+      {shots.slice(0, 12).map((s) => {
         const card = (
           <>
             <div className="relative aspect-[4/5] w-36 bg-line sm:w-44">
