@@ -778,84 +778,108 @@
       "name": "Raffles Hotel",
       "category": "EXPERIENCE",
       "area": "Civic District",
-      "blurb": "Historic colonial-style luxury hotel."
+      "blurb": "Historic colonial-style luxury hotel.",
+      "lat": 1.29656,
+      "lng": 103.85466
     },
     {
       "slug": "old-hill-police-station",
       "name": "Old Hill Police Station",
       "category": "EXPERIENCE",
       "area": "Civic District",
-      "blurb": "Historic building known for its colorful rainbow windows."
+      "blurb": "Historic building known for its colorful rainbow windows.",
+      "lat": 1.29063,
+      "lng": 103.84852
     },
     {
       "slug": "battlebox",
       "name": "Battlebox",
       "category": "EXPERIENCE",
       "area": "Civic District",
-      "blurb": "Former WWII British underground command centre."
+      "blurb": "Former WWII British underground command centre.",
+      "lat": 1.29547,
+      "lng": 103.8465
     },
     {
       "slug": "tekka-centre",
       "name": "Tekka Centre",
       "category": "FOOD",
       "area": "Little India",
-      "blurb": "Bustling hawker centre known for authentic Indian food."
+      "blurb": "Bustling hawker centre known for authentic Indian food.",
+      "lat": 1.30616,
+      "lng": 103.85072
     },
     {
       "slug": "albert-centre-market-food-centre",
       "name": "Albert Centre Market Food Centre",
       "category": "FOOD",
       "area": "Bugis",
-      "blurb": "Popular local hawker centre serving budget-friendly meals."
+      "blurb": "Popular local hawker centre serving budget-friendly meals.",
+      "lat": 1.30105,
+      "lng": 103.85303
     },
     {
       "slug": "satay-by-the-bay",
       "name": "Satay by the Bay",
       "category": "FOOD",
       "area": "Marina Bay",
-      "blurb": "Open-air food court specializing in satay and local dishes."
+      "blurb": "Open-air food court specializing in satay and local dishes.",
+      "lat": 1.28234,
+      "lng": 103.86857
     },
     {
       "slug": "sri-mariamman-temple",
       "name": "Sri Mariamman Temple",
       "category": "EXPERIENCE",
       "area": "Chinatown",
-      "blurb": "Singapore's oldest Hindu temple."
+      "blurb": "Singapore's oldest Hindu temple.",
+      "lat": 1.28266,
+      "lng": 103.84525
     },
     {
       "slug": "telok-ayer-street",
       "name": "Telok Ayer Street",
       "category": "EXPERIENCE",
       "area": "Chinatown",
-      "blurb": "Historic street featuring early places of worship."
+      "blurb": "Historic street featuring early places of worship.",
+      "lat": 1.28067,
+      "lng": 103.84739
     },
     {
       "slug": "fuk-tak-chi-temple",
       "name": "Fuk Tak Chi Temple",
       "category": "EXPERIENCE",
       "area": "Chinatown",
-      "blurb": "Former temple now serving as a street museum."
+      "blurb": "Former temple now serving as a street museum.",
+      "lat": 1.28264,
+      "lng": 103.84837
     },
     {
       "slug": "thian-hock-keng-temple",
       "name": "Thian Hock Keng Temple",
       "category": "EXPERIENCE",
       "area": "Chinatown",
-      "blurb": "Historic temple dedicated to the Chinese sea goddess Mazu."
+      "blurb": "Historic temple dedicated to the Chinese sea goddess Mazu.",
+      "lat": 1.28114,
+      "lng": 103.84752
     },
     {
       "slug": "ann-siang-hill",
       "name": "Ann Siang Hill",
       "category": "EXPERIENCE",
       "area": "Chinatown",
-      "blurb": "Historic hill offering views of traditional and modern architecture."
+      "blurb": "Historic hill offering views of traditional and modern architecture.",
+      "lat": 1.28147,
+      "lng": 103.84554
     },
     {
       "slug": "chinatown-heritage-centre",
       "name": "Chinatown Heritage Centre",
       "category": "EXPERIENCE",
       "area": "Chinatown",
-      "blurb": "Museum detailing the lives of early Chinese immigrants."
+      "blurb": "Museum detailing the lives of early Chinese immigrants.",
+      "lat": 1.28352,
+      "lng": 103.84438
     },
     {
       "slug": "sentosa-boardwalk",
@@ -869,28 +893,36 @@
       "name": "Palawan Beach",
       "category": "EXPERIENCE",
       "area": "Sentosa Island",
-      "blurb": "Family-friendly beach with a suspension bridge to an islet."
+      "blurb": "Family-friendly beach with a suspension bridge to an islet.",
+      "lat": 1.24729,
+      "lng": 103.82457
     },
     {
       "slug": "fort-siloso",
       "name": "Fort Siloso",
       "category": "EXPERIENCE",
       "area": "Sentosa Island",
-      "blurb": "Preserved 19th-century coastal fort and military museum."
+      "blurb": "Preserved 19th-century coastal fort and military museum.",
+      "lat": 1.25892,
+      "lng": 103.80808
     },
     {
       "slug": "fort-siloso-skywalk",
       "name": "Fort Siloso Skywalk",
       "category": "EXPERIENCE",
       "area": "Sentosa Island",
-      "blurb": "Elevated walkway offering panoramic views of Sentosa and beyond."
+      "blurb": "Elevated walkway offering panoramic views of Sentosa and beyond.",
+      "lat": 1.25875,
+      "lng": 103.81186
     },
     {
       "slug": "vivocity-food-court",
       "name": "VivoCity Food Court",
       "category": "FOOD",
       "area": "HarbourFront",
-      "blurb": "Large food court located inside the VivoCity shopping mall."
+      "blurb": "Large food court located inside the VivoCity shopping mall.",
+      "lat": 1.26475,
+      "lng": 103.82236
     }
   ],
   "creators": [

@@ -1316,63 +1316,72 @@
       "name": "Kuta Beach",
       "category": "EXPERIENCE",
       "area": "Kuta",
-      "blurb": "Famous stretch of sand ideal for sunsets and surfing."
+      "blurb": "Famous stretch of sand ideal for sunsets and surfing.",
+      "lat": -8.71812,
+      "lng": 115.16866
     },
     {
       "slug": "water-bom-bali",
       "name": "Water Bom Bali",
       "category": "EXPERIENCE",
       "area": "Kuta",
-      "blurb": "Massive water park with thrilling slides and attractions."
-    },
-    {
-      "slug": "kuta-markets",
-      "name": "Kuta Markets",
-      "category": "EXPERIENCE",
-      "area": "Kuta",
-      "blurb": "Bustling local markets great for souvenir shopping."
+      "blurb": "Massive water park with thrilling slides and attractions.",
+      "lat": -8.72825,
+      "lng": 115.16935
     },
     {
       "slug": "kemenuh-butterfly-park",
       "name": "Kemenuh Butterfly Park",
       "category": "EXPERIENCE",
       "area": "Ubud",
-      "blurb": "Conservation park home to a variety of beautiful butterfly species."
+      "blurb": "Conservation park home to a variety of beautiful butterfly species.",
+      "lat": -8.54877,
+      "lng": 115.28014
     },
     {
       "slug": "golden-valley-waterfall",
       "name": "Golden Valley Waterfall",
       "category": "EXPERIENCE",
       "area": "Buleleng",
-      "blurb": "A quiet and scenic hidden waterfall in the northern hills."
+      "blurb": "A quiet and scenic hidden waterfall in the northern hills.",
+      "lat": -8.25429,
+      "lng": 115.07315
     },
     {
       "slug": "seminyak-beach",
       "name": "Seminyak Beach",
       "category": "EXPERIENCE",
       "area": "Seminyak",
-      "blurb": "A trendy beach destination with a wide stretch of golden sand."
+      "blurb": "A trendy beach destination with a wide stretch of golden sand.",
+      "lat": -8.6913,
+      "lng": 115.15623
     },
     {
       "slug": "kuta-beach-walk-shopping-centre",
       "name": "Kuta Beach Walk Shopping Centre",
       "category": "EXPERIENCE",
       "area": "Kuta",
-      "blurb": "Modern outdoor shopping and entertainment complex by the beach."
+      "blurb": "Modern outdoor shopping and entertainment complex by the beach.",
+      "lat": -8.71673,
+      "lng": 115.16905
     },
     {
       "slug": "sekumpel-waterfall",
       "name": "Sekumpel Waterfall",
       "category": "EXPERIENCE",
       "area": "Bali",
-      "blurb": "A famous waterfall requiring a 20-minute hike down a series of stairs."
+      "blurb": "A famous waterfall requiring a 20-minute hike down a series of stairs.",
+      "lat": -8.17243,
+      "lng": 115.18374
     },
     {
       "slug": "hidden-hills-wanagiri",
       "name": "Hidden Hills Wanagiri",
       "category": "EXPERIENCE",
       "area": "Bali",
-      "blurb": "A photo spot featuring swings and nests with views over Danau Buyan, Bali's second largest lake."
+      "blurb": "A photo spot featuring swings and nests with views over Danau Buyan, Bali's second largest lake.",
+      "lat": -8.23707,
+      "lng": 115.08818
     }
   ],
   "creators": [
@@ -3047,7 +3056,6 @@
           "day": 1,
           "name": "Kuta Markets",
           "category": "EXPERIENCE",
-          "place": "kuta-markets",
           "sentiment": "RECOMMENDED"
         },
         {

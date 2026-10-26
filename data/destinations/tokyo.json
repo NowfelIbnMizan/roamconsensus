@@ -839,67 +839,81 @@
       "slug": "odaiba",
       "name": "Odaiba",
       "category": "EXPERIENCE",
-      "blurb": "Futuristic waterfront district built on reclaimed land in Tokyo Bay."
+      "blurb": "Futuristic waterfront district built on reclaimed land in Tokyo Bay.",
+      "lat": 35.619,
+      "lng": 139.77936
     },
     {
       "slug": "divercity-tokyo-plaza",
       "name": "DiverCity Tokyo Plaza",
       "category": "EXPERIENCE",
-      "blurb": "Shopping mall famous for the life-sized transforming Unicorn Gundam statue outside."
+      "blurb": "Shopping mall famous for the life-sized transforming Unicorn Gundam statue outside.",
+      "lat": 35.62524,
+      "lng": 139.77545
     },
     {
       "slug": "hie-shrine",
       "name": "Hie Shrine",
       "category": "EXPERIENCE",
-      "blurb": "Peaceful hidden shrine in Akasaka with a tunnel of red torii gates."
-    },
-    {
-      "slug": "mocha-cat-cafe",
-      "name": "MoCHA Cat Cafe",
-      "category": "EXPERIENCE",
-      "blurb": "Cute cafe where you can relax and feed treats to roaming cats."
+      "blurb": "Peaceful hidden shrine in Akasaka with a tunnel of red torii gates.",
+      "lat": 35.67468,
+      "lng": 139.73967
     },
     {
       "slug": "aoyama-flower-market-teahouse",
       "name": "Aoyama Flower Market Teahouse",
       "category": "FOOD",
-      "blurb": "Beautiful teahouse serving brunch surrounded by stunning plants and flowers."
+      "blurb": "Beautiful teahouse serving brunch surrounded by stunning plants and flowers.",
+      "lat": 35.66532,
+      "lng": 139.71261
     },
     {
       "slug": "arona-spa",
       "name": "ARONA Spa",
       "category": "EXPERIENCE",
-      "blurb": "Relaxing spa located in the bustling Shibuya district."
+      "blurb": "Relaxing spa located in the bustling Shibuya district.",
+      "lat": 35.66068,
+      "lng": 139.69805
     },
     {
       "slug": "omotenashi-toriyoshi-aoyama",
       "name": "Omotenashi Toriyoshi Aoyama",
       "category": "FOOD",
-      "blurb": "Traditional izakaya restaurant serving yakitori and sake."
+      "blurb": "Traditional izakaya restaurant serving yakitori and sake.",
+      "lat": 35.66497,
+      "lng": 139.71189
     },
     {
       "slug": "vent-club",
       "name": "Vent",
       "category": "EXPERIENCE",
-      "blurb": "Cool nightclub where phone cameras are covered so guests stay in the moment."
+      "blurb": "Cool nightclub where phone cameras are covered so guests stay in the moment.",
+      "lat": 35.66318,
+      "lng": 139.7135
     },
     {
       "slug": "lake-kawaguchiko",
       "name": "Lake Kawaguchiko",
       "category": "EXPERIENCE",
-      "blurb": "Scenic lake offering outstanding reflective views of Mount Fuji."
+      "blurb": "Scenic lake offering outstanding reflective views of Mount Fuji.",
+      "lat": 35.51711,
+      "lng": 138.75178
     },
     {
       "slug": "kameido-tenjin-shrine",
       "name": "Kameido Tenjin Shrine",
       "category": "EXPERIENCE",
-      "blurb": "A historic and beautiful shrine in East Tokyo."
+      "blurb": "A historic and beautiful shrine in East Tokyo.",
+      "lat": 35.70308,
+      "lng": 139.82064
     },
     {
       "slug": "super-hotel-lohas-akasaka",
       "name": "Super Hotel Lohas Akasaka",
       "category": "STAY",
-      "blurb": "Budget-friendly hotel in a central location featuring its own dreamy onsen."
+      "blurb": "Budget-friendly hotel in a central location featuring its own dreamy onsen.",
+      "lat": 35.67467,
+      "lng": 139.73638
     }
   ],
   "creators": [
@@ -1825,7 +1839,6 @@
           "day": 2,
           "name": "Relax at MoCHA Cat Cafe",
           "category": "EXPERIENCE",
-          "place": "mocha-cat-cafe",
           "sentiment": "RECOMMENDED",
           "note": "Buy treats to attract the roaming cats to eat from your hand."
         },
