@@ -17,7 +17,7 @@ export function CreatorTrips({ trips }: { trips: Trip[] }) {
   return (
     <>
       {cities.length > 1 && (
-        <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none]">
+        <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
           {cities.map(([slug, name]) => (
             <button
               key={slug}

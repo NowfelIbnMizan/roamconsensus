@@ -262,7 +262,7 @@ export function TripFinder({
       </p>
       {guide}
 
-      <div className="sticky top-0 z-20 -mx-4 mt-4 flex gap-2 overflow-x-auto bg-background/95 px-4 py-2 backdrop-blur">
+      <div className="sticky top-0 z-20 -mx-4 mt-4 flex gap-2 overflow-x-auto bg-background/95 px-4 py-2 backdrop-blur sm:flex-wrap sm:overflow-visible">
         {picker(
           names.length ? names.join(" + ") : "Anywhere",
           where.length > 0,

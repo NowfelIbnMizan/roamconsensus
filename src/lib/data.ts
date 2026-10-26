@@ -154,7 +154,8 @@ function placeSummary(place: PlaceWithItems) {
   const priced = recommended
     .filter((i) => i.priceCents !== null)
     .sort((a, b) => a.priceCents! - b.priceCents!);
-  const pick = priced[0] ?? recommended[0];
+  // A place only creators said to skip can still go in the cart; the traveller decides.
+  const pick = priced[0] ?? recommended[0] ?? place.items[0];
   return {
     slug: place.slug,
     name: place.name,
