@@ -53,7 +53,10 @@ export default async function PostPage({ params }: Props) {
       <Link href="/blog" className="text-sm text-muted hover:text-foreground">
         ← Blog
       </Link>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
+      {post.destination && <p className="eyebrow mt-4">{post.destination.name}</p>}
+      <h1 className={`${post.destination ? "mt-1" : "mt-3"} text-3xl font-semibold tracking-tight sm:text-4xl`}>
+        {post.title}
+      </h1>
       <p className="mt-2 text-sm text-muted">
         By{" "}
         <Link href="/about" className="underline">
