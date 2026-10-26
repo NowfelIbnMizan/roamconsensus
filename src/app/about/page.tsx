@@ -13,6 +13,18 @@ const PHOTOS: AboutPhoto[] = [
   { src: "/about/thali.jpg", alt: "A thali spread with drinks in Pokhara, Nepal", caption: "Thali time · Pokhara, Nepal" },
   { src: "/about/fish.jpg", alt: "Whole grilled fish on a banana leaf in Pokhara, Nepal", caption: "Grilled fish · Pokhara, Nepal" },
   { src: "/about/ferry.jpg", alt: "Nowfel on a ferry deck at sunset near Koh Phangan", caption: "Ferry at sunset · Koh Phangan, Thailand" },
+  { src: "/about/safari.jpg", alt: "Nowfel in a safari jeep in Wilpattu", caption: "Safari jeep · Wilpattu, Sri Lanka" },
+  { src: "/about/monkey-temple.jpg", alt: "Nowfel with a monkey at the Monkey Temple, other faces blurred", caption: "Monkey Temple · Kathmandu, Nepal" },
+  { src: "/about/kite.jpg", alt: "Nowfel walking out of the lagoon with kitesurf gear", caption: "Kitesurf day · Kalpitiya, Sri Lanka" },
+  { src: "/about/python.jpg", alt: "Nowfel with a python around his neck, other faces blurred", caption: "Made a friend · Galle Fort, Sri Lanka" },
+  { src: "/about/golden-statue.jpg", alt: "Nowfel in front of a giant golden statue", caption: "Golden giant · Pokhara, Nepal" },
+  { src: "/about/pokhara-view.jpg", alt: "View over Pokhara and its lake from a hilltop temple", caption: "View over Pokhara, Nepal" },
+  { src: "/about/cliff.jpg", alt: "Nowfel resting on a rock below a forest cliff, other face blurred", caption: "Cliffside break · Nuwara Eliya, Sri Lanka" },
+  { src: "/about/waterfall.jpg", alt: "A waterfall in green hills", caption: "Waterfall hike · Nuwara Eliya, Sri Lanka" },
+  { src: "/about/waves.jpg", alt: "Nowfel on rocks as a wave breaks", caption: "Chasing waves · Kalpitiya, Sri Lanka" },
+  { src: "/about/beach.jpg", alt: "Nowfel on a quiet beach", caption: "Beach walk · Kalpitiya, Sri Lanka" },
+  { src: "/about/galle-night.jpg", alt: "Galle Fort clock tower at night", caption: "Clock tower · Galle Fort, Sri Lanka" },
+  { src: "/about/shade.jpg", alt: "Nowfel resting on the grass in the shade", caption: "Shade break", focus: "50% 80%" },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {

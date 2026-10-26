@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export type AboutPhoto = { src: string; alt: string; caption: string };
+export type AboutPhoto = {
+  src: string;
+  alt: string;
+  caption: string;
+  /** Where to anchor the crop when the slot shape cuts the photo, e.g. "50% 85%" to keep the bottom. */
+  focus?: string;
+};
 
 // Slot shapes: one tall, two small, one wide. Any photo fills any slot (object-cover).
 const SLOTS = ["row-span-2", "aspect-[4/3]", "aspect-[4/3]", "col-span-2 aspect-[16/9]"];
@@ -51,6 +57,7 @@ export function AboutPhotos({ photos, className = "" }: { photos: AboutPhoto[]; 
               fill
               sizes="(min-width: 1024px) 560px, 50vw"
               className="fade-in object-cover"
+              style={p.focus ? { objectPosition: p.focus } : undefined}
             />
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 pt-6 pb-2 text-xs font-medium text-white">
               {p.caption}
