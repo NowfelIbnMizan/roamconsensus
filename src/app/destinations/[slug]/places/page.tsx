@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
+import { PageGuide } from "@/components/page-guide";
 import { PlaceList } from "../(sections)/place-list";
 
 export async function generateStaticParams() {
@@ -39,6 +40,7 @@ export default async function CityPlacesPage({ params }: PageProps<"/destination
       <p className="mt-1 text-sm text-muted">
         {d.creatorCount > 1 ? "Most agreed-on first. Tap + to save one." : "From one creator so far."}
       </p>
+      <PageGuide id="city-places" className="mt-4" />
       <PlaceList destination={d} />
     </>
   );
