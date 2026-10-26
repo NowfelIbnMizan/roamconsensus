@@ -227,6 +227,10 @@ export default async function ItineraryPage({
   ]);
   if (!it) notFound();
   const fullGuide = fullGuideLabel(it.sourceUrl);
+  // The photo strip needs two photos to show; without it (or a video) the header stays one column.
+  const photoCount = it.schedule
+    .flatMap(({ items }) => items)
+    .filter((i) => i.photoUrl && i.sentiment !== "AVOID").length;
   const video = youtubeId(it.sourceUrl);
 
   // Places the creator says to skip stay listed but out of the route bundle.
@@ -292,7 +296,7 @@ export default async function ItineraryPage({
           <Thumb
             url={it.coverUrl}
             category="EXPERIENCE"
-            sizes="(min-width: 1280px) 1280px, 100vw"
+            sizes="(min-width: 1536px) 1536px, 100vw"
             className="size-full"
             priority
           />
@@ -312,107 +316,120 @@ export default async function ItineraryPage({
           <h1 className="text-3xl font-semibold tracking-tight">{it.title}</h1>
         </>
       )}
-      {/* One line of facts instead of a row of tiles. Each "· part" is one unit, so a wrapped line never starts with a
-          dangling dot. */}
-      <p className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
-        by <CreatorChip creator={it.creator} />{" "}
-        <span>
-          · {it.days} {it.days === 1 ? "day" : "days"}
-        </span>
-        <span>· {kept.length} stops</span>
-        {it.totalCents > 0 && (
-          <span
-            title={
-              priced < kept.length
-                ? `${priced} of ${kept.length} stops have a price`
-                : undefined
-            }
-          >
-            ·{" "}
-            <span className="font-medium text-foreground">
-              ~<Money cents={it.totalCents} />
-            </span>
-            {priced < kept.length && " so far"}
-          </span>
-        )}
-        <span>
-          · <UpdatedOn date={it.updatedAt} className="text-sm" />
-        </span>
-      </p>
-      <CreatorNoticeLine name={it.creator.name} className="mt-2 max-w-2xl" />
-      <p className="mt-3 max-w-2xl">{it.summary}</p>
-      <Snapshots
-        className="mt-6"
-        shots={it.schedule.flatMap(({ day, items }) =>
-          items
-            .filter((i) => i.photoUrl && i.sentiment !== "AVOID")
-            .map((i) => ({
-              id: i.id,
-              url: i.photoUrl!,
-              caption: i.name,
-              label: `Day ${day}`,
-              href: i.placeSlug ? placeHref(it.destination.slug, i.placeSlug) : undefined,
-              card: (
-                <div className="max-h-[60vh] overflow-y-auto">
-                  <p className="eyebrow">
-                    Day {day} · {i.area ? `${i.area} · ` : ""}
-                    {categoryLabel[i.category]}
-                  </p>
-                  <p className="mt-1 font-display text-lg font-semibold leading-snug">{i.name}</p>
-                  <p className="text-sm text-muted tabular-nums">
-                    <Price item={i} />
-                  </p>
-                  {i.note && (
-                    <p className="mt-2 text-sm">
-                      <span className="font-medium">{it.creator.name}:</span> {i.note}
-                    </p>
-                  )}
-                  {i.blurb && <p className="mt-2 text-sm text-muted">{i.blurb}</p>}
-                  {i.placeSlug && (
-                    <Link
-                      href={placeHref(it.destination.slug, i.placeSlug)}
-                      className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                    >
-                      Open place <ArrowRight className="size-4" aria-hidden />
-                    </Link>
-                  )}
-                </div>
-              ),
-            })),
-        )}
-      />
-      <a
-        href={it.sourceUrl}
-        rel="noopener noreferrer"
-        target="_blank"
-        className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-accent px-4 py-1.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-background"
+      {/* Wide screens: the facts and buttons on the left, the trip in photos (and video) beside them. */}
+      <div
+        className={
+          video || photoCount >= 2
+            ? "xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start xl:gap-10"
+            : ""
+        }
       >
-        {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
-      </a>
-      {video && (
-        <div className="mt-5 max-w-2xl">
-          <YouTubeEmbed
-            id={video}
-            title={`${it.title} by ${it.creator.name}`}
-            start={youtubeStart(it.sourceUrl)}
-          />
+        <div>
+          {/* One line of facts instead of a row of tiles. Each "· part" is one unit, so a wrapped line never starts with a
+              dangling dot. */}
+          <p className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-muted">
+            by <CreatorChip creator={it.creator} />{" "}
+            <span>
+              · {it.days} {it.days === 1 ? "day" : "days"}
+            </span>
+            <span>· {kept.length} stops</span>
+            {it.totalCents > 0 && (
+              <span
+                title={
+                  priced < kept.length
+                    ? `${priced} of ${kept.length} stops have a price`
+                    : undefined
+                }
+              >
+                ·{" "}
+                <span className="font-medium text-foreground">
+                  ~<Money cents={it.totalCents} />
+                </span>
+                {priced < kept.length && " so far"}
+              </span>
+            )}
+            <span>
+              · <UpdatedOn date={it.updatedAt} className="text-sm" />
+            </span>
+          </p>
+          <CreatorNoticeLine name={it.creator.name} className="mt-2 max-w-2xl" />
+          <p className="mt-3 max-w-2xl">{it.summary}</p>
+          <a
+            href={it.sourceUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-accent px-4 py-1.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-background"
+          >
+            {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
+          </a>
+          {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
+          <p className="mt-3 text-sm">
+            <Link
+              href={`/creators/${it.creator.handle}`}
+              className="text-muted underline hover:text-foreground"
+            >
+              More from {it.creator.name}
+            </Link>
+          </p>
+          <div className="mt-5">
+            <AddRouteButton
+              items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
+            />
+          </div>
+          <PageGuide id="itinerary" className="mt-6" />
         </div>
-      )}
-      {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
-      <p className="mt-3 text-sm">
-        <Link
-          href={`/creators/${it.creator.handle}`}
-          className="text-muted underline hover:text-foreground"
-        >
-          More from {it.creator.name}
-        </Link>
-      </p>
-      <div className="mt-5">
-        <AddRouteButton
-          items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
-        />
+        <div>
+          <Snapshots
+            className="mt-6 xl:mt-3"
+            shots={it.schedule.flatMap(({ day, items }) =>
+              items
+                .filter((i) => i.photoUrl && i.sentiment !== "AVOID")
+                .map((i) => ({
+                  id: i.id,
+                  url: i.photoUrl!,
+                  caption: i.name,
+                  label: `Day ${day}`,
+                  href: i.placeSlug ? placeHref(it.destination.slug, i.placeSlug) : undefined,
+                  card: (
+                    <div className="max-h-[60vh] overflow-y-auto">
+                      <p className="eyebrow">
+                        Day {day} · {i.area ? `${i.area} · ` : ""}
+                        {categoryLabel[i.category]}
+                      </p>
+                      <p className="mt-1 font-display text-lg font-semibold leading-snug">{i.name}</p>
+                      <p className="text-sm text-muted tabular-nums">
+                        <Price item={i} />
+                      </p>
+                      {i.note && (
+                        <p className="mt-2 text-sm">
+                          <span className="font-medium">{it.creator.name}:</span> {i.note}
+                        </p>
+                      )}
+                      {i.blurb && <p className="mt-2 text-sm text-muted">{i.blurb}</p>}
+                      {i.placeSlug && (
+                        <Link
+                          href={placeHref(it.destination.slug, i.placeSlug)}
+                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                        >
+                          Open place <ArrowRight className="size-4" aria-hidden />
+                        </Link>
+                      )}
+                    </div>
+                  ),
+                })),
+            )}
+          />
+          {video && (
+            <div className="mt-5 max-w-2xl">
+              <YouTubeEmbed
+                id={video}
+                title={`${it.title} by ${it.creator.name}`}
+                start={youtubeStart(it.sourceUrl)}
+              />
+            </div>
+          )}
+        </div>
       </div>
-      <PageGuide id="itinerary" className="mt-6" />
 
       {/* On wide screens the map sits beside the days and stays in view while you scroll them. */}
       <div className="lg:mt-10 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">

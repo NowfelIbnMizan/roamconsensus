@@ -34,6 +34,59 @@ function FromPrice({
   );
 }
 
+type Place = Destination["consensus"][number];
+
+/** The mini profile a place card shows on hover (sheet on phones): city page grid and its Top 5. */
+export function PlaceMiniCard({
+  p,
+  destination,
+  creatorCount,
+}: {
+  p: Place;
+  destination: string;
+  creatorCount: number;
+}) {
+  return (
+    <div className="max-h-[60vh] overflow-y-auto">
+      <p className="eyebrow">
+        {p.area && `${p.area} · `}
+        {categoryLabel[p.category]}
+      </p>
+      <p className="mt-1 font-display text-lg font-semibold leading-snug">
+        {p.name}
+      </p>
+      {p.fromPrice && (
+        <p className="text-sm text-muted tabular-nums">
+          <FromPrice p={p.fromPrice} />
+        </p>
+      )}
+      {p.blurb && <p className="mt-2 text-sm">{p.blurb}</p>}
+      {p.tip && (
+        <p className="mt-2 text-sm text-muted">
+          <span className="font-medium text-foreground">
+            Tip:
+          </span>{" "}
+          {p.tip}
+        </p>
+      )}
+      {p.creators.length > 0 && (
+        <p className="mt-3 text-xs text-muted">
+          {creatorCount > 1
+            ? `${p.creators.length} of ${creatorCount} creators recommend it`
+            : `Picked by ${p.creators[0].name}`}
+        </p>
+      )}
+      <Link
+        href={placeHref(destination, p.slug)}
+        className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+      >
+        Open place{" "}
+        <ArrowRight className="size-4" aria-hidden />
+      </Link>
+    </div>
+  );
+}
+
 /**
  * The map and photo grid of every place creators recommend, most agreed-on first, with category chips.
  * `limit` (the city page) renders only the top rows overall plus the top few per category, and links to the full
@@ -104,7 +157,7 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
           />
         </div>
       )}
-      <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 lg:grid-cols-4">
+      <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 lg:grid-cols-4 2xl:grid-cols-5">
         {shown.map((p) => {
           const photo = (
             <Photo
@@ -129,45 +182,7 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
                 <PlaceHover
                   href={placeHref(destination.slug, p.slug)}
                   name={p.name}
-                  card={
-                    <div className="max-h-[60vh] overflow-y-auto">
-                      <p className="eyebrow">
-                        {p.area && `${p.area} · `}
-                        {categoryLabel[p.category]}
-                      </p>
-                      <p className="mt-1 font-display text-lg font-semibold leading-snug">
-                        {p.name}
-                      </p>
-                      {p.fromPrice && (
-                        <p className="text-sm text-muted tabular-nums">
-                          <FromPrice p={p.fromPrice} />
-                        </p>
-                      )}
-                      {p.blurb && <p className="mt-2 text-sm">{p.blurb}</p>}
-                      {p.tip && (
-                        <p className="mt-2 text-sm text-muted">
-                          <span className="font-medium text-foreground">
-                            Tip:
-                          </span>{" "}
-                          {p.tip}
-                        </p>
-                      )}
-                      {p.creators.length > 0 && (
-                        <p className="mt-3 text-xs text-muted">
-                          {creatorCount > 1
-                            ? `${p.creators.length} of ${creatorCount} creators recommend it`
-                            : `Picked by ${p.creators[0].name}`}
-                        </p>
-                      )}
-                      <Link
-                        href={placeHref(destination.slug, p.slug)}
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                      >
-                        Open place{" "}
-                        <ArrowRight className="size-4" aria-hidden />
-                      </Link>
-                    </div>
-                  }
+                  card={<PlaceMiniCard p={p} destination={destination.slug} creatorCount={creatorCount} />}
                 >
                   {photo}
                 </PlaceHover>

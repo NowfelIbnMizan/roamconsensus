@@ -18,8 +18,8 @@ export default async function DestinationLayout({ children, params }: LayoutProp
           query={`${destination.name} ${destination.country}`}
           category="DESTINATION"
           alt={destination.name}
-          sizes="(min-width: 1280px) 1280px, 100vw"
-          className="aspect-[2/1] sm:aspect-[21/9] lg:aspect-[4/1]"
+          sizes="(min-width: 1536px) 1536px, 100vw"
+          className="aspect-[2/1] sm:aspect-[21/9] lg:aspect-[4/1] 2xl:aspect-[5/1]"
           priority
         />
       </div>

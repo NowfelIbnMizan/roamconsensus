@@ -33,7 +33,7 @@ export function CreatorTrips({ trips }: { trips: Trip[] }) {
           ))}
         </div>
       )}
-      <ul className="mt-4 space-y-4">
+      <ul className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {shown.map((t) => {
           const pics = (t.photos.length ? t.photos : t.coverUrl ? [t.coverUrl] : []).slice(0, 3);
           return (

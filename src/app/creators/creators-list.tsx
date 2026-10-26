@@ -65,7 +65,7 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
         </p>
       )}
 
-      <ul className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <ul className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {shown.map((c) => {
           const destinations = [
             ...new Map(c.itineraries.map((it) => [it.destination.slug, it.destination])).values(),

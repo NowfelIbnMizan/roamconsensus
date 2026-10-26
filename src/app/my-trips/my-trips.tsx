@@ -140,7 +140,7 @@ function SignedIn({
         ) : trips.length === 0 ? (
           <p className="mt-2 text-muted">None yet. Save a copy of your trip cart to keep it here.</p>
         ) : (
-          <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {trips.map((t) => (
               <li key={t.id} className="min-w-0">
                 <TripCard trip={t} onOpen={() => open(t)} onDelete={() => remove(t)} />

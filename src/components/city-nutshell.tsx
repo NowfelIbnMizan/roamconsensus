@@ -130,7 +130,7 @@ export function CityNutshell({ d, stays }: { d: Destination; stays: Stays }) {
       <h2 id="nutshell-heading" className="text-xl font-semibold">
         {d.name} in a nutshell
       </h2>
-      <dl className="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+      <dl className="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
         {rows.map(({ icon: Icon, label, value }) => (
           <div key={label} className="flex gap-3">
             <Icon className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden />
