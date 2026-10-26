@@ -7,6 +7,7 @@ import { creatorLinkSelect } from "@/lib/creator-links";
 import { vibesOf, type VibeKey } from "@/lib/vibes";
 import { cachedPhotoUrls } from "@/lib/photos";
 import { placePhotoKey } from "@/lib/place";
+import { convertCents, FALLBACK_RATES } from "@/lib/currency";
 
 /** On every cached read of site content; admin saves invalidate it so edits show at once. */
 export const CONTENT_TAG = "content";
@@ -91,6 +92,8 @@ export async function getDestinationSlugs() {
 
 type Costed = {
   priceCents: number | null;
+  /** The price's own currency; totals are in USD (Money converts for display). */
+  currency?: string;
   quantity: number;
   place?: { closed: boolean } | null;
 };
@@ -98,7 +101,10 @@ type Costed = {
 const counted = (item: Costed) => !item.place?.closed;
 const isUnpriced = (item: Costed) => item.priceCents === null && counted(item);
 function itemTotal(item: Costed) {
-  return counted(item) ? (item.priceCents ?? 0) * item.quantity : 0;
+  if (!counted(item) || !item.priceCents) return 0;
+  // Fixed rates are close enough for a "~" route total, and keep this function synchronous and cacheable.
+  const usd = convertCents(item.priceCents, item.currency ?? "USD", "USD", FALLBACK_RATES).cents;
+  return usd * item.quantity;
 }
 
 const placeItemSelect = {
@@ -240,6 +246,7 @@ export async function getDestination(slug: string) {
             select: {
               category: true,
               priceCents: true,
+              currency: true,
               quantity: true,
               sentiment: true,
               place: { select: { slug: true, website: true, closed: true } },
@@ -449,6 +456,7 @@ export async function getQuizData() {
           note: true,
           category: true,
           priceCents: true,
+          currency: true,
           quantity: true,
           sentiment: true,
           place: {

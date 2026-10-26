@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import type { ItemCategory } from "@/generated/prisma/enums";
+import { convertCents, FALLBACK_RATES } from "@/lib/currency";
 
 export type CartItem = {
   id: string;
@@ -163,5 +164,9 @@ export function useCartHydrated() {
   );
 }
 
-/** Unpriced items count as 0; callers show them separately. */
-export const lineTotal = (i: Pick<CartItem, "priceCents" | "quantity">) => (i.priceCents ?? 0) * i.quantity;
+/**
+ * A line's cost in USD cents, whatever currency the price is in (totals add lines up, then Money converts for
+ * display). Unpriced items count as 0; callers show them separately.
+ */
+export const lineTotal = (i: Pick<CartItem, "priceCents" | "quantity"> & { currency?: string }) =>
+  convertCents((i.priceCents ?? 0) * i.quantity, i.currency ?? "USD", "USD", FALLBACK_RATES).cents;
