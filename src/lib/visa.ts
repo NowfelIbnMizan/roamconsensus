@@ -45,6 +45,41 @@ export const visaStatusLabel: Record<VisaStatus, string> = {
   HOME: "Your own country",
 };
 
+/** ISO codes for passports and destination countries, only to draw their flags. */
+const countryCode: Record<string, string> = {
+  "United States": "US",
+  "United Kingdom": "GB",
+  Canada: "CA",
+  Australia: "AU",
+  "New Zealand": "NZ",
+  Germany: "DE",
+  Ireland: "IE",
+  India: "IN",
+  Bangladesh: "BD",
+  Pakistan: "PK",
+  Philippines: "PH",
+  Malaysia: "MY",
+  Indonesia: "ID",
+  China: "CN",
+  Japan: "JP",
+  "South Korea": "KR",
+  Singapore: "SG",
+  "United Arab Emirates": "AE",
+  "Saudi Arabia": "SA",
+  Nigeria: "NG",
+  Brazil: "BR",
+  Mexico: "MX",
+  "South Africa": "ZA",
+  Thailand: "TH",
+  Vietnam: "VN",
+};
+
+/** A country's flag emoji, or "" when we don't know its code. Windows shows the two letters instead. */
+export function flag(country: string) {
+  const code = countryCode[country];
+  return code ? String.fromCodePoint(...[...code].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65)) : "";
+}
+
 /** Keyed by destination country, as stored on Destination.country. */
 export const visaRules: Record<string, CountryVisa> = {
   Indonesia: {

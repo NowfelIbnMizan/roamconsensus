@@ -67,6 +67,7 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 - Header one line, site `max-w-7xl` (#69). Route + cart 2-col at `lg` with sticky map right (#70).
 - City tabs: Before-you-go list + "Once you land" fold (#71) · When-to-go 12 month tiles (#72) · Budget 3 style cards + stacked bar (#73) · eSIM 2 questions -> 3 picks (#74) · Compare all-routes table, tick 2 to diff (#75) · Where to stay area list + sticky map, one hotel per row (#77, #79) · Top picks podium + add buttons (#78).
 - My trips: Planning-now card + saved trip photo cards, account folded (#80).
+- Creators list polish: city pills, style tags, most routes first (#85). Visa page A + tick-off "Before you fly" list + flag emojis (visa-check branch).
 - Mockup branches (`*-lab`) are throwaway; delete when asked.
 - **No redesign queued.** Ask the owner what's next.
 
