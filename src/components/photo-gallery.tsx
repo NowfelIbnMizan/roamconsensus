@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Photo } from "@/lib/photos";
 
 type Slide = Pick<Photo, "url" | "attribution" | "creditUrl">;
@@ -56,13 +56,16 @@ export function PhotoGallery({
             {/* eslint-disable-next-line @next/next/no-img-element -- owner photos can be on any host */}
             <img src={s.url} alt={`${alt}, photo ${i + 2}`} loading="lazy" className="h-full w-full object-cover" />
             {s.attribution && (
+              // A camera badge, like the site's other photos: the credit is its tooltip and link, not text over the photo.
               <a
                 href={s.creditUrl ?? undefined}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute right-0 bottom-0 rounded-tl-md bg-black/50 px-1.5 py-0.5 text-[10px] text-white/90"
+                title={s.attribution}
+                className="absolute right-1.5 bottom-1.5 z-10 flex items-center rounded-full bg-black/35 p-1.5 text-white/90 backdrop-blur-sm hover:bg-black/55"
               >
-                {s.attribution}
+                <Camera className="size-3" aria-hidden />
+                <span className="sr-only">{s.attribution}</span>
               </a>
             )}
           </figure>

@@ -142,7 +142,7 @@ export default async function PlacePage({ params }: Props) {
       {/* Wide screens: the place on the left, its map and nearby picks beside it. */}
       <div className="xl:grid xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:items-start xl:gap-10">
         <div>
-          <div className="mt-3 flex gap-4 sm:gap-6">
+          <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:gap-6 xl:flex-col xl:gap-4">
             <PhotoGallery
               main={
                 <Photo
@@ -151,7 +151,8 @@ export default async function PlacePage({ params }: Props) {
                   category={p.category}
                   website={p.website}
                   alt={p.name}
-                  sizes="(min-width: 640px) 240px, 112px"
+                  sizes="(min-width: 1280px) 640px, (min-width: 640px) 320px, 100vw"
+                  credit={false}
                   className="h-full"
                   priority
                 />
@@ -160,7 +161,7 @@ export default async function PlacePage({ params }: Props) {
               alt={p.name}
               destination={d.slug}
               place={p.slug}
-              className="size-28 shrink-0 rounded-2xl sm:size-60"
+              className="aspect-[4/3] w-full shrink-0 rounded-2xl sm:w-80 xl:w-full"
             />
             <div className="min-w-0">
               <h1 className="text-2xl font-semibold tracking-tight text-balance sm:text-4xl">
@@ -205,13 +206,12 @@ export default async function PlacePage({ params }: Props) {
                 </p>
               )}
               {p.blurb && (
-                <p className="mt-3 hidden max-w-2xl text-pretty sm:block">
+                <p className="mt-3 max-w-2xl text-pretty">
                   {p.blurb}
                 </p>
               )}
             </div>
           </div>
-          {p.blurb && <p className="mt-4 text-pretty sm:hidden">{p.blurb}</p>}
 
           <div className="mt-4 flex flex-wrap gap-2">
             {p.cartItem && (
