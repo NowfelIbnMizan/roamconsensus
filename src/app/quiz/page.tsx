@@ -4,7 +4,7 @@ import { Quiz } from "./quiz";
 
 export const metadata: Metadata = {
   title: "Find your trip",
-  description: "Three questions, then the creator itinerary that fits your days, budget and travel style.",
+  description: "Tap where, how long, your budget style and what you love: the creator itinerary that fits shows up as you go.",
 };
 
 export default async function QuizPage() {
@@ -12,7 +12,7 @@ export default async function QuizPage() {
   return (
     <>
       <h1 className="text-3xl font-semibold tracking-tight">Find your trip</h1>
-      <p className="mt-1 text-muted">Three quick questions. We match you to the creator route that fits.</p>
+      <p className="mt-1 text-muted">Tap what fits. Your best route updates as you go.</p>
       <Quiz data={data} />
     </>
   );
