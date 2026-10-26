@@ -13,11 +13,14 @@ export function PlaceHover({
   href,
   name,
   card,
+  infoAt = "bottom-2 left-2",
   children,
 }: {
   href: string;
   name: string;
   card: ReactNode;
+  /** Where the phone-only "i" badge sits, so it clears the card's own text. */
+  infoAt?: string;
   children: ReactNode;
 }) {
   return (
@@ -30,7 +33,7 @@ export function PlaceHover({
         {children}
         <span
           aria-hidden
-          className="pointer-events-none absolute bottom-2 left-2 flex size-6 items-center justify-center rounded-full bg-black/45 text-white [@media(hover:hover)]:hidden"
+          className={`pointer-events-none absolute ${infoAt} flex size-6 items-center justify-center rounded-full bg-black/45 text-white [@media(hover:hover)]:hidden`}
         >
           <Info className="size-3.5" />
         </span>

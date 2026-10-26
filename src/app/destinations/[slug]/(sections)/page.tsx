@@ -24,7 +24,8 @@ import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { Thumb } from "@/components/thumb";
-import { PlaceList } from "./place-list";
+import { PlaceHover } from "@/components/place-hover";
+import { PlaceList, PlaceMiniCard } from "./place-list";
 import type { ItemCategory } from "@/generated/prisma/enums";
 
 /** One line in place of the full bar legend: where most of the money goes. */
@@ -101,33 +102,37 @@ export default async function DestinationPage({
           <ol className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0">
             {agreed.map((p, i) => (
               <li key={p.slug} className="w-40 shrink-0 snap-start sm:w-auto">
-                <Link
+                <PlaceHover
                   href={placeHref(destination.slug, p.slug)}
-                  className="group relative block aspect-[4/5] overflow-hidden rounded-xl"
+                  name={p.name}
+                  infoAt="top-2 right-2"
+                  card={<PlaceMiniCard p={p} destination={destination.slug} creatorCount={creatorCount} />}
                 >
-                  <Photo
-                    photoKey={placePhotoKey(destination.slug, p)}
-                    query={placeQuery(p.name, destination.name)}
-                    category={p.category}
-                    website={p.website}
-                    alt=""
-                    sizes="(min-width: 640px) 220px, 160px"
-                    credit={false}
-                    className="size-full transition duration-300 group-hover:scale-105"
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                  <span className="absolute top-2.5 left-3 font-display text-2xl font-semibold text-white drop-shadow">
-                    {i + 1}
-                  </span>
-                  <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
-                    <span className="block font-semibold leading-tight text-balance">
-                      {p.name}
+                  <span className="group relative block aspect-[4/5] overflow-hidden rounded-xl">
+                    <Photo
+                      photoKey={placePhotoKey(destination.slug, p)}
+                      query={placeQuery(p.name, destination.name)}
+                      category={p.category}
+                      website={p.website}
+                      alt=""
+                      sizes="(min-width: 640px) 220px, 160px"
+                      credit={false}
+                      className="size-full transition duration-300 group-hover:scale-105"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <span className="absolute top-2.5 left-3 font-display text-2xl font-semibold text-white drop-shadow">
+                      {i + 1}
                     </span>
-                    <span className="mt-0.5 block text-xs text-white/85">
-                      {p.creators.length} of {creatorCount} creators
+                    <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
+                      <span className="block font-semibold leading-tight text-balance">
+                        {p.name}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-white/85">
+                        {p.creators.length} of {creatorCount} creators
+                      </span>
                     </span>
                   </span>
-                </Link>
+                </PlaceHover>
               </li>
             ))}
           </ol>

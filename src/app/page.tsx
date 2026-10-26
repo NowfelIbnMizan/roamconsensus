@@ -118,7 +118,7 @@ export default async function Home() {
 
       <section id="destinations" className="mt-4 scroll-mt-6">
         <h2 className="text-3xl font-semibold">Where to next?</h2>
-        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
+        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4">
           {destinations.map((d) => (
             <li key={d.slug}>
               <Link href={`/destinations/${d.slug}`} className="group block">

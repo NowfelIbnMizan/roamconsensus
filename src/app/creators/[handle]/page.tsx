@@ -36,28 +36,31 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
         <ChevronLeft className="size-4" aria-hidden />
         All creators
       </Link>
-      <div className="mt-3 flex items-center gap-4">
-        <CreatorAvatar creator={creator} size="lg" />
-        <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{creator.name}</h1>
-          <p className="text-sm text-muted">
-            {trips.length} {trips.length === 1 ? "trip" : "trips"} · {cities} {cities === 1 ? "city" : "cities"} ·{" "}
-            {days} days of plans
-          </p>
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start lg:gap-10">
+        <div>
+          <div className="mt-3 flex items-center gap-4">
+            <CreatorAvatar creator={creator} size="lg" />
+            <div className="min-w-0">
+              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{creator.name}</h1>
+              <p className="text-sm text-muted">
+                {trips.length} {trips.length === 1 ? "trip" : "trips"} · {cities} {cities === 1 ? "city" : "cities"} ·{" "}
+                {days} days of plans
+              </p>
+            </div>
+          </div>
+          {creator.bio && <p className="mt-3 max-w-2xl text-pretty">{creator.bio}</p>}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <CreatorSocials creator={creator} />
+          </div>
+          <CreatorNoticeLine name={creator.name} className="mt-3 max-w-2xl" />
         </div>
+        <SupportCreator creator={creator} className="mt-8 lg:mt-3" />
       </div>
-      {creator.bio && <p className="mt-3 max-w-2xl text-pretty">{creator.bio}</p>}
-      <div className="mt-3 flex flex-wrap items-center gap-2">
-        <CreatorSocials creator={creator} />
-      </div>
-      <CreatorNoticeLine name={creator.name} className="mt-3 max-w-2xl" />
 
-      <section className="mt-8 max-w-3xl">
+      <section className="mt-8">
         <h2 className="text-lg font-semibold">{cities > 1 ? "Where are you going?" : "Their plan"}</h2>
         <CreatorTrips trips={trips} />
       </section>
-
-      <SupportCreator creator={creator} className="mt-10 max-w-2xl" />
     </>
   );
 }

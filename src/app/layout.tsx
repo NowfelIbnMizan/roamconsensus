@@ -85,7 +85,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans">
         <CurrencyProvider rates={rates}>
           <header className="border-b border-line print:hidden">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4">
+            <nav className="mx-auto flex max-w-[96rem] items-center justify-between gap-6 px-4 py-4">
               <Link href="/" className="group flex shrink-0 items-center gap-2">
                 <Compass
                   className="size-6 text-accent-2 transition-transform group-hover:rotate-45"
@@ -137,7 +137,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </nav>
           </header>
-          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:py-10 print:py-0">
+          <main className="mx-auto w-full max-w-[96rem] flex-1 px-4 py-6 sm:py-10 print:py-0">
             {/* Pages are prerendered whole; this only shows if a page has to load its data at request time, which
                 otherwise fails with a blocking-route error. */}
             <Suspense fallback={<p className="text-muted">Loading…</p>}>
@@ -145,7 +145,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             </Suspense>
           </main>
           <footer className="mt-8 border-t border-line print:hidden">
-            <div className="mx-auto max-w-7xl px-4 pt-6">
+            <div className="mx-auto max-w-[96rem] px-4 pt-6">
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-md flex-1">
                   <p className="font-display text-xl font-semibold">
@@ -158,7 +158,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </div>
               </div>
             </div>
-            <div className="mx-auto max-w-7xl px-4 py-6">
+            <div className="mx-auto max-w-[96rem] px-4 py-6">
               <nav aria-label="Footer">
                 <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
                   {FOOTER_LINKS.map(([href, label]) => (
@@ -180,7 +180,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 owners. Please visit and support them.
               </p>
             </div>
-            <p className="mx-auto max-w-7xl px-4 pb-24 text-xs text-muted sm:pb-6">
+            <p className="mx-auto max-w-[96rem] px-4 pb-24 text-xs text-muted sm:pb-6">
               <InstallApp />
             </p>
           </footer>
