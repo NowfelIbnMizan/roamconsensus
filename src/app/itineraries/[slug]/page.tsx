@@ -351,6 +351,33 @@ export default async function ItineraryPage({
               url: i.photoUrl!,
               caption: i.name,
               label: `Day ${day}`,
+              href: i.placeSlug ? placeHref(it.destination.slug, i.placeSlug) : undefined,
+              card: (
+                <div className="max-h-[60vh] overflow-y-auto">
+                  <p className="eyebrow">
+                    Day {day} · {i.area ? `${i.area} · ` : ""}
+                    {categoryLabel[i.category]}
+                  </p>
+                  <p className="mt-1 font-display text-lg font-semibold leading-snug">{i.name}</p>
+                  <p className="text-sm text-muted tabular-nums">
+                    <Price item={i} />
+                  </p>
+                  {i.note && (
+                    <p className="mt-2 text-sm">
+                      <span className="font-medium">{it.creator.name}:</span> {i.note}
+                    </p>
+                  )}
+                  {i.blurb && <p className="mt-2 text-sm text-muted">{i.blurb}</p>}
+                  {i.placeSlug && (
+                    <Link
+                      href={placeHref(it.destination.slug, i.placeSlug)}
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                    >
+                      Open place <ArrowRight className="size-4" aria-hidden />
+                    </Link>
+                  )}
+                </div>
+              ),
             })),
         )}
       />

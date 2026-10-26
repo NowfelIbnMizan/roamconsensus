@@ -669,6 +669,8 @@ export async function getItinerary(slug: string) {
               lng: true,
               tip: true,
               closed: true,
+              area: true,
+              blurb: true,
             },
           },
           links: { select: { url: true, creatorId: true } },
@@ -735,6 +737,8 @@ export async function getItinerary(slug: string) {
           couponNote: offer?.description ?? null,
           website: i.place?.website ?? null,
           placeSlug: i.place?.slug ?? null,
+          area: i.place?.area ?? null,
+          blurb: i.place?.blurb ?? null,
           /** Set when the place is marked closed in Admin > destination > Places: its tip, or just "Closed". */
           closedNote: i.place?.closed ? (i.place.tip ?? "Closed") : null,
           /** The place's photo when the site already has one; lists show a category tile otherwise. */

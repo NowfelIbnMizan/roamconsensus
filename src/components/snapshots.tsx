@@ -1,4 +1,6 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
+import { PlaceHover } from "@/components/place-hover";
 import { optimized } from "@/components/thumb";
 
 export type Snapshot = {
@@ -7,6 +9,8 @@ export type Snapshot = {
   caption: string;
   label?: string;
   href?: string;
+  /** Mini profile shown on hover (tap on phones), like the city page's place cards. Needs `href`. */
+  card?: ReactNode;
 };
 
 /** A swipeable row of captioned photos: the trip at a glance before the day-by-day list. */
@@ -29,13 +33,32 @@ export function Snapshots({ shots, className = "" }: { shots: Snapshot[]; classN
                 className="object-cover"
               />
             </div>
-            <p className="w-36 truncate px-2.5 py-2 text-sm font-medium sm:w-44">{s.caption}</p>
-            {s.label && <span className="sr-only">{s.label}</span>}
           </>
+        );
+        const caption = (
+          <p className="w-36 truncate px-2.5 py-2 text-sm font-medium sm:w-44">
+            {s.href ? (
+              <a href={s.href} className="hover:text-accent hover:underline">
+                {s.caption}
+              </a>
+            ) : (
+              s.caption
+            )}
+            {s.label && <span className="sr-only"> {s.label}</span>}
+          </p>
         );
         return (
           <figure key={s.id} className="polaroid shrink-0 snap-start">
-            {s.href ? <a href={s.href}>{card}</a> : card}
+            {s.href && s.card ? (
+              <PlaceHover href={s.href} name={s.caption} card={s.card}>
+                {card}
+              </PlaceHover>
+            ) : s.href ? (
+              <a href={s.href}>{card}</a>
+            ) : (
+              card
+            )}
+            {caption}
           </figure>
         );
       })}
