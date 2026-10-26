@@ -29,6 +29,7 @@ export async function sitePaths() {
     ...posts.map((p) => `/blog/${p.slug}`),
     ...creators.map((c) => `/creators/${c.handle}`),
     ...destinations.flatMap((d) => destinationPaths(d.slug)),
+    ...destinations.map((d) => `/destinations/${d.slug}/places`),
     ...itineraries.map((i) => `/itineraries/${i.slug}`),
     ...places.map((p) => `/destinations/${p.slug}/places/${p.place}`),
   ];
