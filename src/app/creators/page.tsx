@@ -16,16 +16,14 @@ export default async function CreatorsPage() {
   const creators = (await getCreators()).toSorted(
     (a, b) => b.itineraries.length - a.itineraries.length || a.name.localeCompare(b.name),
   );
-  const itineraryCount = creators.reduce((n, c) => n + c.itineraries.length, 0);
 
   return (
     <>
       <h1 className="text-3xl font-semibold tracking-tight">The creators</h1>
       <p className="mt-2 max-w-2xl text-muted">
-        {creators.length} creators, {itineraryCount} routes. They did the
-        travelling: give them a read and a follow.
+        They did the travelling: give them a read and a follow.
       </p>
-      <CreatorNoticeLine className="mt-3 max-w-2xl" />
+      <CreatorNoticeLine className="mt-1.5 max-w-2xl" />
 
       <PageGuide id="creators" className="mt-6" />
       <CreatorsList creators={creators} />

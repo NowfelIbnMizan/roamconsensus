@@ -102,7 +102,7 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
                 ))}
               </ul>
               <div className="mt-3 flex items-start gap-3">
-                {c.bio && <ReadMore text={c.bio} className="min-w-0 flex-1" />}
+                {c.bio && <ReadMore text={c.bio} lines={3} className="min-w-0 flex-1" />}
                 <CreatorSocials creator={c} className="shrink-0" />
               </div>
               <ul className="mt-3 space-y-2 border-t border-line pt-3 text-sm">
