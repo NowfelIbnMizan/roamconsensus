@@ -390,23 +390,13 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
           name: true,
           country: true,
           itineraries: { select: { creatorId: true } },
-          places: {
-            where: {
-              slug: { not: placeSlug },
-              lat: { not: null },
-              items: { some: {} },
-            },
-            // Full rows, so each nearby spot comes with the item its + button adds.
-            include: { items: { select: placeItemSelect } },
-          },
         },
       },
     },
   });
   if (!place || place.items.length === 0) return null;
-  const others = place.destination.places;
-  const photos = await cachedPhotoUrls(
-    others.map((p) => placePhotoKey(destinationSlug, p)),
+  const others = (await getPinnedPlaces(destinationSlug)).filter(
+    (p) => p.slug !== placeSlug,
   );
 
   return {
@@ -432,13 +422,37 @@ export async function getPlace(destinationSlug: string, placeSlug: string) {
       itinerary: { slug: i.itinerary.slug, title: i.itinerary.title },
       creator: i.itinerary.creator,
     })),
-    others: others.map((p) => ({
-      ...placeSummary(p),
-      lat: p.lat!,
-      lng: p.lng!,
-      photoUrl: photos.get(placePhotoKey(destinationSlug, p)) ?? null,
-    })),
+    others,
   };
+}
+
+/**
+ * Every pinned, recommended place of a destination, for the map and "nearby" list on each place page. Cached per
+ * city, so a build reads each city's places once instead of once per place page.
+ */
+async function getPinnedPlaces(destinationSlug: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+
+  const places = await db.place.findMany({
+    where: {
+      destination: { slug: destinationSlug },
+      lat: { not: null },
+      items: { some: {} },
+    },
+    // Full rows, so each nearby spot comes with the item its + button adds.
+    include: { items: { select: placeItemSelect } },
+  });
+  const photos = await cachedPhotoUrls(
+    places.map((p) => placePhotoKey(destinationSlug, p)),
+  );
+  return places.map((p) => ({
+    ...placeSummary(p),
+    lat: p.lat!,
+    lng: p.lng!,
+    photoUrl: photos.get(placePhotoKey(destinationSlug, p)) ?? null,
+  }));
 }
 
 /** Every route and recommended spot, tagged with trip vibes, for the trip quiz. */
