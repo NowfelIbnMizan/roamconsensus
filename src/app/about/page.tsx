@@ -1,43 +1,19 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { AtSign, Mail } from "lucide-react";
 import { FellowTraveller } from "@/components/creator-notice";
 import { EditorAvatar } from "@/components/editor-take";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { getEditor, paragraphs } from "@/lib/editor";
+import { AboutPhotos, type AboutPhoto } from "./photos";
 
-// The owner's own travel photos (public/about), location data stripped. Faces of other people are blurred.
-const PHOTOS = [
-  { src: "/about/party.jpg", w: 900, h: 1200, alt: "Nowfel at a beach party, other faces blurred", caption: "Party mode" },
-  { src: "/about/thali.jpg", w: 1200, h: 900, alt: "A thali spread with drinks in Pokhara, Nepal", caption: "Thali time · Pokhara, Nepal" },
-  { src: "/about/fish.jpg", w: 1200, h: 900, alt: "Whole grilled fish on a banana leaf in Pokhara, Nepal", caption: "Grilled fish · Pokhara, Nepal" },
-  { src: "/about/ferry.jpg", w: 1200, h: 904, alt: "Nowfel on a ferry deck at sunset", caption: "Ferry deck, golden hour" },
+// The owner's own travel photos (public/about), location data stripped, other people's faces blurred. Places come
+// from each photo's location data or from the owner.
+const PHOTOS: AboutPhoto[] = [
+  { src: "/about/party.jpg", alt: "Nowfel at the Full Moon Party, other faces blurred", caption: "Full Moon Party · Koh Phangan, Thailand" },
+  { src: "/about/thali.jpg", alt: "A thali spread with drinks in Pokhara, Nepal", caption: "Thali time · Pokhara, Nepal" },
+  { src: "/about/fish.jpg", alt: "Whole grilled fish on a banana leaf in Pokhara, Nepal", caption: "Grilled fish · Pokhara, Nepal" },
+  { src: "/about/ferry.jpg", alt: "Nowfel on a ferry deck at sunset near Koh Phangan", caption: "Ferry at sunset · Koh Phangan, Thailand" },
 ];
-
-function Photos({ className = "" }: { className?: string }) {
-  return (
-    <div className={`grid grid-cols-2 gap-3 ${className}`}>
-      {PHOTOS.map((p, i) => (
-        <figure
-          key={p.src}
-          className={`relative overflow-hidden rounded-2xl bg-line ${i === 0 ? "row-span-2" : ""} ${i === 3 ? "col-span-2" : ""}`}
-        >
-          <Image
-            src={p.src}
-            alt={p.alt}
-            width={p.w}
-            height={p.h}
-            sizes="(min-width: 1024px) 280px, 50vw"
-            className={`w-full object-cover ${i === 0 ? "h-full" : i === 3 ? "aspect-[16/9]" : "aspect-[4/3]"}`}
-          />
-          <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 pt-6 pb-2 text-xs font-medium text-white">
-            {p.caption}
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  );
-}
 
 export async function generateMetadata(): Promise<Metadata> {
   const e = await getEditor();
@@ -64,7 +40,7 @@ export default async function AboutPage() {
             <p key={i}>{p}</p>
           ))}
         </div>
-        <Photos className="mt-6 lg:hidden" />
+        <AboutPhotos photos={PHOTOS} className="mt-6 lg:hidden" />
         <p className="mt-5 flex flex-wrap gap-4 text-sm">
           <a href={`mailto:${email}`} className="inline-flex items-center gap-1.5 text-accent underline">
             <Mail className="size-4" aria-hidden /> {email}
@@ -110,7 +86,7 @@ export default async function AboutPage() {
         </p>
       </article>
       <aside className="hidden lg:sticky lg:top-6 lg:block lg:self-start">
-        <Photos />
+        <AboutPhotos photos={PHOTOS} />
       </aside>
     </div>
   );
