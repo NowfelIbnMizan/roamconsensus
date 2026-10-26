@@ -92,8 +92,8 @@ export default async function Home() {
             href="/quiz"
             className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
           >
-            <Sparkles className="size-3.5" aria-hidden /> Not sure where? 3
-            quick questions
+            <Sparkles className="size-3.5" aria-hidden /> Not sure where? Find
+            your match
           </Link>
           <p className="fine-print mt-2">
             Trips collected from what independent creators share publicly

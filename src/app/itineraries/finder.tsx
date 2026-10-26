@@ -257,7 +257,7 @@ export function TripFinder({
           ? `${trip.days} days${trip.start ? ` · ${rangeLabel(trip.start, addDays(trip.start, trip.days - 1))}` : ""}${perCity ? ` · about ${perCity} in each city` : ""}`
           : "Your days, your budget."}{" "}
         <Link href="/quiz" className="underline">
-          Not sure? 3 quick questions
+          Not sure? Find your match
         </Link>
       </p>
       {guide}
