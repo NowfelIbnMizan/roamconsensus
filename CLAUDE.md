@@ -2,7 +2,7 @@
 
 # Creatour: handoff notes for Claude sessions
 
-Read this first. It replaces the project memory that plain sessions can't see. Last updated 2026-10-25.
+Read this first. It replaces the project memory that plain sessions can't see. Last updated 2026-10-26 (main at PR #83).
 
 ## What the site is
 
@@ -15,7 +15,7 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 
 - Next.js 16 (`cacheComponents` on, read `node_modules/next/dist/docs/` before using APIs), React 19, Tailwind 4, Zustand cart (`src/lib/cart-store.ts`).
 - Prisma 7 with `prisma.config.ts` + `@prisma/adapter-pg`; client in `src/generated/prisma`. DB = Neon Postgres (Singapore).
-- Hosting: **Vercel Pro**, region `sin1`. `vercel.json` build = `prisma migrate deploy && prisma db seed && next build`. Build prerenders from the DB, so it needs `DATABASE_URL`.
+- Hosting: **Vercel Pro**, region `sin1`. `vercel.json` build = `scripts/migrate-deploy.sh && prisma db seed && next build`. Build prerenders from the DB, so it needs `DATABASE_URL`.
 - Auth: Better Auth, Google only (`src/lib/auth.ts`). Admin at `/admin`: `ADMIN_PASSWORD` cookie or Google account listed in `ADMIN_EMAILS` (env only).
 - Env vars: see `.env.example`. Never print or fetch secret values.
 - Scripts: `npm run lint`, `npm test`, `npm run check:data` (content validator), `npm run build`.
@@ -33,7 +33,7 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 ## Gotchas (each one burned us before)
 
 1. **Preview builds hit the LIVE database.** A PR preview runs migrations + seed against production data. Pushing a branch = changing live data. Be sure before you push migrations.
-2. **Merge only after the PR's Vercel preview is "Ready".** Both builds run `prisma migrate deploy`; overlap = advisory lock error (P1002) and production build fails. If it happens, redeploy production.
+2. **Prefer merging after the PR's Vercel preview is "Ready".** Both builds run migrations; overlap = advisory lock error (P1002). `scripts/migrate-deploy.sh` now retries P1002 (5x, 30s) so early merges usually survive (owner often merges early). If prod still fails: redeploy production.
 3. Keep the `<Suspense>` around `{children}` in `src/app/layout.tsx`. Removing it brought back runtime 500s (`NEXT_STATIC_GEN_BAILOUT`).
 4. Never add `revalidatePath("/", "layout")`. It breaks runtime regen of `/itineraries/[slug]`. Admin saves use `updateTag("content")`.
 5. **Never re-enable the Vercel image optimizer.** Custom loader `src/lib/image-loader.ts` resizes via Unsplash/Pexels URL params. Default optimizer blew the quota.
@@ -62,14 +62,19 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 
 ## Redesign rounds done (pick = merged)
 
-Home map-first (#57) · city place photo grid (#58) · route page folds (#61) · cart B (#62) · finder B (#63) · place page B (#64) · creator page B (#65).
-**Next: Trip mode (`/today`)** redesign, same 3-mockup flow.
+- Home map-first (#57), no stats line under map (#81) · city place photo grid (#58) · route page folds (#61) · cart B (#62) · finder B (#63) · place page B (#64) · creator page B (#65).
+- Trip mode `/today` = Up next card + tick list + day arrows (#67). Phone Trip tab = menu (cart / Trip mode / My trips); desktop "Today" link while travelling (#68).
+- Header one line, site `max-w-7xl` (#69). Route + cart 2-col at `lg` with sticky map right (#70).
+- City tabs: Before-you-go list + "Once you land" fold (#71) · When-to-go 12 month tiles (#72) · Budget 3 style cards + stacked bar (#73) · eSIM 2 questions -> 3 picks (#74) · Compare all-routes table, tick 2 to diff (#75) · Where to stay area list + sticky map, one hotel per row (#77, #79) · Top picks podium + add buttons (#78).
+- My trips: Planning-now card + saved trip photo cards, account folded (#80).
+- Mockup branches (`*-lab`) are throwaway; delete when asked.
+- **No redesign queued.** Ask the owner what's next.
 
 ## Open work (as of 2026-10-25)
 
-- "Perfect cities" plan: all 11 cities checked (pins, photos, prices, websites, open/closed, tips). Admin scorecard at `/admin/health`. Last batch of city fixes sat as local commits in another session (bundle in project files); ask the owner if it's merged before redoing it.
+- "Perfect cities" plan done: all 11 cities checked (pins, photos, prices, websites, open/closed, tips) and merged (#56, #82). Admin scorecard at `/admin/health`. Creator counts only include creators with a route (#83).
 - Kyoto per-style budget still missing (no source; don't invent).
-- After polish: add creators to fill tier gaps (backpacker → luxury) and length gaps (1-2, 3-4, 5+ days).
+- After polish: add creators to fill tier gaps (backpacker → luxury) and length gaps (1-2, 3-4, 5+ days). Example: Bali has no budget route and no 1-2 day route.
 
 ## Map of the code
 
