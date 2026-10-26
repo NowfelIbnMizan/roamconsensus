@@ -24,7 +24,6 @@ const PHOTOS: AboutPhoto[] = [
   { src: "/about/waves.jpg", alt: "Nowfel on rocks as a wave breaks", caption: "Chasing waves · Kalpitiya, Sri Lanka" },
   { src: "/about/beach.jpg", alt: "Nowfel on a quiet beach", caption: "Beach walk · Kalpitiya, Sri Lanka" },
   { src: "/about/galle-night.jpg", alt: "Galle Fort clock tower at night", caption: "Clock tower · Galle Fort, Sri Lanka" },
-  { src: "/about/shade.jpg", alt: "Nowfel resting on the grass in the shade", caption: "Shade break", focus: "50% 80%" },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
