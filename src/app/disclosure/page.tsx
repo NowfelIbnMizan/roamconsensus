@@ -46,6 +46,24 @@ export default async function DisclosurePage() {
         Place photos come from Unsplash and Pexels (credited to the photographer) or from the venue&apos;s own
         website. They belong to their owners.
       </p>
+
+      <h2 className="pt-2 text-xl font-semibold">Flags</h2>
+      <p>
+        On Windows, country flags use the Twemoji Country Flags font, with art from{" "}
+        <a href="https://github.com/twitter/twemoji" target="_blank" rel="noopener noreferrer" className="underline">
+          Twemoji
+        </a>{" "}
+        by Twitter, used under{" "}
+        <a
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          CC BY 4.0
+        </a>
+        .
+      </p>
     </article>
   );
 }
