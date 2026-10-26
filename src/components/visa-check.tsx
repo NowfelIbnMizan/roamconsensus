@@ -34,7 +34,7 @@ const subscribe = (cb: () => void) => {
 };
 
 /** The traveller's passport, remembered on this device; "" until chosen or before it has loaded. */
-function usePassport() {
+export function usePassport() {
   const passport = useSyncExternalStore(
     subscribe,
     () => usePassportStore.getState().passport,
