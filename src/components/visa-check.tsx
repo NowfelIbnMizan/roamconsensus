@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { BadgeCheck, Check, ChevronDown, CircleAlert, Stamp } from "lucide-react";
@@ -77,11 +78,22 @@ const tone: Record<VisaStatus, string> = {
 
 const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 
+// Windows draws flag emojis as two letters; there, load a flag-only font (self-hosted, credited on /disclosure).
+let flagsPolyfilled = false;
+function useFlagFont() {
+  useEffect(() => {
+    if (flagsPolyfilled) return;
+    flagsPolyfilled = true;
+    polyfillCountryFlagEmojis("Twemoji Country Flags", "/fonts/TwemojiCountryFlags.woff2");
+  }, []);
+}
+
 const isOk = (r?: VisaRule) =>
   r?.status === "VISA_FREE" || r?.status === "HOME";
 
 export function PassportPicker({ big = false }: { big?: boolean }) {
   const [passport, setPassport] = usePassport();
+  useFlagFont();
   if (big)
     return (
       <label className="flex flex-col gap-1.5 sm:w-80">
@@ -92,7 +104,7 @@ export function PassportPicker({ big = false }: { big?: boolean }) {
         <select
           value={passport}
           onChange={(e) => setPassport(e.target.value)}
-          className="rounded-xl border border-line bg-card px-4 py-3 text-lg font-medium"
+          className="flag-font rounded-xl border border-line bg-card px-4 py-3 text-lg font-medium"
         >
           <option value="">Choose…</option>
           {PASSPORTS.map((p) => (
@@ -110,7 +122,7 @@ export function PassportPicker({ big = false }: { big?: boolean }) {
       <select
         value={passport}
         onChange={(e) => setPassport(e.target.value)}
-        className="rounded-lg border border-line bg-background px-2 py-1.5"
+        className="flag-font rounded-lg border border-line bg-background px-2 py-1.5"
       >
         <option value="">Choose…</option>
         {PASSPORTS.map((p) => (
@@ -250,7 +262,7 @@ export function VisaList({
             <li key={country}>
               <details className="group">
                 <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
-                  <span aria-hidden className="text-2xl leading-none">
+                  <span aria-hidden className="flag-font text-2xl leading-none">
                     {flag(country)}
                   </span>
                   <span className="min-w-0 flex-1">
