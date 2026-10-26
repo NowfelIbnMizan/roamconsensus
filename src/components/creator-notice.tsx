@@ -33,7 +33,9 @@ export function CreatorNoticeLine({
       <span>
         {full
           ? independentLine(name)
-          : `${name ? `${name} is` : "Creators are"} independent. Not affiliated, not an endorsement.`}{" "}
+          : name
+            ? `${name} is independent. Not affiliated, not an endorsement.`
+            : "Creators are independent, not affiliated with or endorsed by Creatour."}{" "}
         <Link href="/disclosure#credits" className="underline">
           Credits
         </Link>

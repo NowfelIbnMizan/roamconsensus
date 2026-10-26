@@ -199,7 +199,11 @@ export const guides = {
   creators: [
     {
       lead: "Who we follow",
-      text: "The travel creators whose itineraries we compare.",
+      text: "The travel creators whose itineraries we compare. Most routes first.",
+    },
+    {
+      lead: "Pick a city",
+      text: "Tap a city to see only the creators with a route there.",
     },
     {
       lead: "Dig in",
