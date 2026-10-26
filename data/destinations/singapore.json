@@ -772,6 +772,157 @@
       "lat": 1.2834,
       "lng": 103.8607,
       "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "raffles-hotel",
+      "name": "Raffles Hotel",
+      "category": "EXPERIENCE",
+      "area": "Civic District",
+      "blurb": "Historic colonial-style luxury hotel.",
+      "lat": 1.29656,
+      "lng": 103.85466
+    },
+    {
+      "slug": "old-hill-police-station",
+      "name": "Old Hill Police Station",
+      "category": "EXPERIENCE",
+      "area": "Civic District",
+      "blurb": "Historic building known for its colorful rainbow windows.",
+      "lat": 1.29063,
+      "lng": 103.84852
+    },
+    {
+      "slug": "battlebox",
+      "name": "Battlebox",
+      "category": "EXPERIENCE",
+      "area": "Civic District",
+      "blurb": "Former WWII British underground command centre.",
+      "lat": 1.29547,
+      "lng": 103.8465
+    },
+    {
+      "slug": "tekka-centre",
+      "name": "Tekka Centre",
+      "category": "FOOD",
+      "area": "Little India",
+      "blurb": "Bustling hawker centre known for authentic Indian food.",
+      "lat": 1.30616,
+      "lng": 103.85072
+    },
+    {
+      "slug": "albert-centre-market-food-centre",
+      "name": "Albert Centre Market Food Centre",
+      "category": "FOOD",
+      "area": "Bugis",
+      "blurb": "Popular local hawker centre serving budget-friendly meals.",
+      "lat": 1.30105,
+      "lng": 103.85303
+    },
+    {
+      "slug": "satay-by-the-bay",
+      "name": "Satay by the Bay",
+      "category": "FOOD",
+      "area": "Marina Bay",
+      "blurb": "Open-air food court specializing in satay and local dishes.",
+      "lat": 1.28234,
+      "lng": 103.86857
+    },
+    {
+      "slug": "sri-mariamman-temple",
+      "name": "Sri Mariamman Temple",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Singapore's oldest Hindu temple.",
+      "lat": 1.28266,
+      "lng": 103.84525
+    },
+    {
+      "slug": "telok-ayer-street",
+      "name": "Telok Ayer Street",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Historic street featuring early places of worship.",
+      "lat": 1.28067,
+      "lng": 103.84739
+    },
+    {
+      "slug": "fuk-tak-chi-temple",
+      "name": "Fuk Tak Chi Temple",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Former temple now serving as a street museum.",
+      "lat": 1.28264,
+      "lng": 103.84837
+    },
+    {
+      "slug": "thian-hock-keng-temple",
+      "name": "Thian Hock Keng Temple",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Historic temple dedicated to the Chinese sea goddess Mazu.",
+      "lat": 1.28114,
+      "lng": 103.84752
+    },
+    {
+      "slug": "ann-siang-hill",
+      "name": "Ann Siang Hill",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Historic hill offering views of traditional and modern architecture.",
+      "lat": 1.28147,
+      "lng": 103.84554
+    },
+    {
+      "slug": "chinatown-heritage-centre",
+      "name": "Chinatown Heritage Centre",
+      "category": "EXPERIENCE",
+      "area": "Chinatown",
+      "blurb": "Museum detailing the lives of early Chinese immigrants.",
+      "lat": 1.28352,
+      "lng": 103.84438
+    },
+    {
+      "slug": "sentosa-boardwalk",
+      "name": "Sentosa Boardwalk",
+      "category": "TRANSIT",
+      "area": "HarbourFront",
+      "blurb": "Pedestrian walkway linking the mainland to Sentosa Island."
+    },
+    {
+      "slug": "palawan-beach",
+      "name": "Palawan Beach",
+      "category": "EXPERIENCE",
+      "area": "Sentosa Island",
+      "blurb": "Family-friendly beach with a suspension bridge to an islet.",
+      "lat": 1.24729,
+      "lng": 103.82457
+    },
+    {
+      "slug": "fort-siloso",
+      "name": "Fort Siloso",
+      "category": "EXPERIENCE",
+      "area": "Sentosa Island",
+      "blurb": "Preserved 19th-century coastal fort and military museum.",
+      "lat": 1.25892,
+      "lng": 103.80808
+    },
+    {
+      "slug": "fort-siloso-skywalk",
+      "name": "Fort Siloso Skywalk",
+      "category": "EXPERIENCE",
+      "area": "Sentosa Island",
+      "blurb": "Elevated walkway offering panoramic views of Sentosa and beyond.",
+      "lat": 1.25875,
+      "lng": 103.81186
+    },
+    {
+      "slug": "vivocity-food-court",
+      "name": "VivoCity Food Court",
+      "category": "FOOD",
+      "area": "HarbourFront",
+      "blurb": "Large food court located inside the VivoCity shopping mall.",
+      "lat": 1.26475,
+      "lng": 103.82236
     }
   ],
   "creators": [
@@ -803,6 +954,12 @@
       "platform": "BLOG",
       "profileUrl": "https://www.foratravel.com",
       "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    },
+    {
+      "handle": "bottlecapbackpacker",
+      "name": "Bottle Cap Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://bottlecapbackpacker.com"
     }
   ],
   "itineraries": [
@@ -1530,6 +1687,297 @@
           "name": "Changi Airport",
           "category": "TRANSIT",
           "place": "changi-airport"
+        }
+      ]
+    },
+    {
+      "slug": "singapore-3-days-bottlecapbackpacker",
+      "title": "Singapore on a Budget in 3 Days",
+      "summary": "A budget-friendly 3-day itinerary focusing on hawker centers, MRT travel, and exploring Singapore's incredible free attractions and cultural districts.",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bottlecapbackpacker",
+      "sourceUrl": "https://bottlecapbackpacker.com/singapore-on-a-budget-guide/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Merlion Park",
+          "category": "EXPERIENCE",
+          "place": "merlion-park",
+          "sentiment": "RECOMMENDED",
+          "note": "Start here for the classic photo in the Civic District."
+        },
+        {
+          "day": 1,
+          "name": "Raffles Hotel",
+          "category": "EXPERIENCE",
+          "place": "raffles-hotel",
+          "sentiment": "AVOID",
+          "note": "Avoid stopping for the Singapore Sling, as it destroys a backpacker budget.",
+          "price": 39,
+          "currency": "SGD",
+          "priceNote": "cocktail costs S$39"
+        },
+        {
+          "day": 1,
+          "name": "Fort Canning Park",
+          "category": "EXPERIENCE",
+          "place": "fort-canning-park",
+          "sentiment": "RECOMMENDED",
+          "note": "Offers great views from its hilltop vantage point and a famous spiral staircase."
+        },
+        {
+          "day": 1,
+          "name": "Old Hill Police Station",
+          "category": "EXPERIENCE",
+          "place": "old-hill-police-station",
+          "sentiment": "RECOMMENDED",
+          "note": "Stop by to see the iconic, colourful rainbow windows."
+        },
+        {
+          "day": 1,
+          "name": "Battlebox",
+          "category": "EXPERIENCE",
+          "place": "battlebox",
+          "sentiment": "OPTIONAL",
+          "note": "Former British Army Command during WWII. The basic experience is free without a guide."
+        },
+        {
+          "day": 1,
+          "name": "Singapore National Museum",
+          "category": "EXPERIENCE",
+          "place": "national-museum-of-singapore",
+          "sentiment": "OPTIONAL",
+          "note": "Offers a deep dive into the varied history of the city-state.",
+          "price": 15,
+          "currency": "SGD",
+          "priceNote": "S$15 entry fee"
+        },
+        {
+          "day": 1,
+          "name": "Tekka Centre",
+          "category": "FOOD",
+          "place": "tekka-centre",
+          "sentiment": "RECOMMENDED",
+          "note": "The go-to place for budget-friendly, authentic Indian cuisine in Little India.",
+          "price": 5,
+          "currency": "SGD",
+          "priceNote": "around S$5"
+        },
+        {
+          "day": 1,
+          "name": "Little India",
+          "category": "EXPERIENCE",
+          "place": "little-india",
+          "sentiment": "RECOMMENDED",
+          "note": "Take in the sounds and smells, from sweet spices to lively Bollywood music."
+        },
+        {
+          "day": 1,
+          "name": "House of Tan Teng Niah",
+          "category": "EXPERIENCE",
+          "place": "house-of-tan-teng-niah",
+          "sentiment": "RECOMMENDED",
+          "note": "Iconic, colourful Chinese Mansion from the 20th century."
+        },
+        {
+          "day": 1,
+          "name": "Sri Veeramakaliamman Hindu Temple",
+          "category": "EXPERIENCE",
+          "place": "sri-veeramakaliamman-temple",
+          "sentiment": "RECOMMENDED",
+          "note": "One of the oldest temples in Singapore; remember to remove your shoes."
+        },
+        {
+          "day": 1,
+          "name": "Kampong Glam",
+          "category": "EXPERIENCE",
+          "place": "arab-street",
+          "sentiment": "RECOMMENDED",
+          "note": "Singapore's Arab and Malay Quarter, packed with street art and colourful shophouses."
+        },
+        {
+          "day": 1,
+          "name": "Sultan Mosque",
+          "category": "EXPERIENCE",
+          "place": "sultan-mosque",
+          "sentiment": "RECOMMENDED",
+          "note": "Provides the perfect background while walking up Bussorah Street."
+        },
+        {
+          "day": 1,
+          "name": "Albert Centre Market Food Centre",
+          "category": "FOOD",
+          "place": "albert-centre-market-food-centre",
+          "sentiment": "RECOMMENDED",
+          "note": "Get a range of local noodle dishes here to stay within your daily budget.",
+          "price": 7,
+          "currency": "SGD",
+          "priceNote": "within the budget of S$7"
+        },
+        {
+          "day": 1,
+          "name": "Gardens by the Bay",
+          "category": "EXPERIENCE",
+          "place": "gardens-by-the-bay",
+          "sentiment": "MUST_VISIT",
+          "note": "Explore the free main gardens and the magical Supertree Grove Light Show."
+        },
+        {
+          "day": 1,
+          "name": "Satay by the Bay",
+          "category": "FOOD",
+          "place": "satay-by-the-bay",
+          "sentiment": "OPTIONAL",
+          "note": "Open-air eating experience surrounded by the smokey smells of satay."
+        },
+        {
+          "day": 2,
+          "name": "Singapore Botanic Gardens",
+          "category": "EXPERIENCE",
+          "place": "singapore-botanic-gardens",
+          "sentiment": "RECOMMENDED",
+          "note": "Wander the paths of this UNESCO World Heritage Site for free."
+        },
+        {
+          "day": 2,
+          "name": "Maxwell Food Centre",
+          "category": "FOOD",
+          "place": "maxwell-food-centre",
+          "sentiment": "RECOMMENDED",
+          "note": "Try Ah Tai stall for excellent Hainanese Chicken Rice without the long queues.",
+          "price": 3.5,
+          "currency": "SGD",
+          "priceNote": "costs as little as S$3.50"
+        },
+        {
+          "day": 2,
+          "name": "Buddha Tooth Relic Temple",
+          "category": "EXPERIENCE",
+          "place": "buddha-tooth-relic-temple",
+          "sentiment": "RECOMMENDED",
+          "note": "Top Chinatown attraction with an impressive main hall that is free to enter."
+        },
+        {
+          "day": 2,
+          "name": "Sri Mariamman Temple",
+          "category": "EXPERIENCE",
+          "place": "sri-mariamman-temple",
+          "sentiment": "RECOMMENDED",
+          "note": "A stunning, vibrantly painted temple in Chinatown."
+        },
+        {
+          "day": 2,
+          "name": "Telok Ayer Street",
+          "category": "EXPERIENCE",
+          "place": "telok-ayer-street",
+          "sentiment": "RECOMMENDED",
+          "note": "Original seafront area featuring a large mural and historical temples."
+        },
+        {
+          "day": 2,
+          "name": "Fuk Tak Chi Temple",
+          "category": "EXPERIENCE",
+          "place": "fuk-tak-chi-temple",
+          "sentiment": "RECOMMENDED",
+          "note": "Now a museum displaying exhibits and artifacts from early migrants."
+        },
+        {
+          "day": 2,
+          "name": "Thian Hock Keng Temple",
+          "category": "EXPERIENCE",
+          "place": "thian-hock-keng-temple",
+          "sentiment": "RECOMMENDED",
+          "note": "Dedicated to the Chinese sea goddess by early Hokkien seafarers."
+        },
+        {
+          "day": 2,
+          "name": "Ann Siang Hill",
+          "category": "EXPERIENCE",
+          "place": "ann-siang-hill",
+          "sentiment": "RECOMMENDED",
+          "note": "Offers an iconic contrast between the modern financial district and historical Chinatown."
+        },
+        {
+          "day": 2,
+          "name": "Chinatown Heritage Centre",
+          "category": "EXPERIENCE",
+          "place": "chinatown-heritage-centre",
+          "sentiment": "OPTIONAL",
+          "note": "Provides a detailed look at how early Chinese settlers lived in shophouses.",
+          "price": 20,
+          "currency": "SGD",
+          "priceNote": "S$20 foreign visitor admission"
+        },
+        {
+          "day": 2,
+          "name": "Chinatown Complex Food Centre",
+          "category": "FOOD",
+          "place": "chinatown-complex-food-centre",
+          "sentiment": "RECOMMENDED",
+          "note": "Singapore's largest hawker center with the lowest food prices. Try Old Amoy Chendol.",
+          "price": 4,
+          "currency": "SGD",
+          "priceNote": "around S$4"
+        },
+        {
+          "day": 2,
+          "name": "Spectra Light and Water Show",
+          "category": "EXPERIENCE",
+          "place": "spectra-light-and-water-show",
+          "sentiment": "MUST_VISIT",
+          "note": "A must-see free spectacle at the Marina Bay Sands Event Plaza."
+        },
+        {
+          "day": 3,
+          "name": "Sentosa Boardwalk",
+          "category": "TRANSIT",
+          "place": "sentosa-boardwalk",
+          "sentiment": "RECOMMENDED",
+          "note": "Walk across for free entry to the island instead of paying for the monorail."
+        },
+        {
+          "day": 3,
+          "name": "Palawan Beach",
+          "category": "EXPERIENCE",
+          "place": "palawan-beach",
+          "sentiment": "RECOMMENDED",
+          "note": "Pristine beach home to the southernmost point of Continental Asia."
+        },
+        {
+          "day": 3,
+          "name": "Fort Siloso",
+          "category": "EXPERIENCE",
+          "place": "fort-siloso",
+          "sentiment": "RECOMMENDED",
+          "note": "Free museum in a preserved coastal fort exploring the island's history."
+        },
+        {
+          "day": 3,
+          "name": "Fort Siloso Skywalk",
+          "category": "EXPERIENCE",
+          "place": "fort-siloso-skywalk",
+          "sentiment": "MUST_VISIT",
+          "note": "Free, elevated walkway providing panoramic views of the skyline and shipping lanes."
+        },
+        {
+          "day": 3,
+          "name": "VivoCity Food Court",
+          "category": "FOOD",
+          "place": "vivocity-food-court",
+          "sentiment": "RECOMMENDED",
+          "note": "Head here for affordable meals to avoid inflated Sentosa food prices.",
+          "price": 7,
+          "currency": "SGD",
+          "priceNote": "S$7 meal"
+        },
+        {
+          "day": 3,
+          "name": "Jewel Changi Airport",
+          "category": "EXPERIENCE",
+          "place": "jewel-rain-vortex",
+          "sentiment": "RECOMMENDED",
+          "note": "Wander through the indoor jungle and see the world's tallest indoor waterfall."
         }
       ]
     }

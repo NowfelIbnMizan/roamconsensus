@@ -37,6 +37,7 @@ import { CouponCode } from "@/components/coupon-code";
 import { getEditor } from "@/lib/editor";
 import { Thumb } from "@/components/thumb";
 import { Snapshots } from "@/components/snapshots";
+import { convertCents, FALLBACK_RATES } from "@/lib/currency";
 
 /** "Read the full guide on saltinourhair.com", or "Watch the full video on YouTube". */
 function fullGuideLabel(url: string) {
@@ -409,8 +410,11 @@ export default async function ItineraryPage({
             const going = items.filter(
               (i) => i.sentiment !== "AVOID" && !i.closedNote,
             );
+            // In USD, like the route total: prices can be in local currency.
             const cost = going.reduce(
-              (n, i) => n + (i.priceCents ?? 0) * i.quantity,
+              (n, i) =>
+                n +
+                convertCents((i.priceCents ?? 0) * i.quantity, i.currency, "USD", FALLBACK_RATES).cents,
               0,
             );
             const routeUrl = groups.find((g) => g.id === day)?.routeUrl;

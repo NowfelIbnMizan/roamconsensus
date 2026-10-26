@@ -1310,6 +1310,78 @@
       "lat": -8.8114,
       "lng": 115.105,
       "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "kuta-beach",
+      "name": "Kuta Beach",
+      "category": "EXPERIENCE",
+      "area": "Kuta",
+      "blurb": "Famous stretch of sand ideal for sunsets and surfing.",
+      "lat": -8.71812,
+      "lng": 115.16866
+    },
+    {
+      "slug": "water-bom-bali",
+      "name": "Water Bom Bali",
+      "category": "EXPERIENCE",
+      "area": "Kuta",
+      "blurb": "Massive water park with thrilling slides and attractions.",
+      "lat": -8.72825,
+      "lng": 115.16935
+    },
+    {
+      "slug": "kemenuh-butterfly-park",
+      "name": "Kemenuh Butterfly Park",
+      "category": "EXPERIENCE",
+      "area": "Ubud",
+      "blurb": "Conservation park home to a variety of beautiful butterfly species.",
+      "lat": -8.54877,
+      "lng": 115.28014
+    },
+    {
+      "slug": "golden-valley-waterfall",
+      "name": "Golden Valley Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Buleleng",
+      "blurb": "A quiet and scenic hidden waterfall in the northern hills.",
+      "lat": -8.25429,
+      "lng": 115.07315
+    },
+    {
+      "slug": "seminyak-beach",
+      "name": "Seminyak Beach",
+      "category": "EXPERIENCE",
+      "area": "Seminyak",
+      "blurb": "A trendy beach destination with a wide stretch of golden sand.",
+      "lat": -8.6913,
+      "lng": 115.15623
+    },
+    {
+      "slug": "kuta-beach-walk-shopping-centre",
+      "name": "Kuta Beach Walk Shopping Centre",
+      "category": "EXPERIENCE",
+      "area": "Kuta",
+      "blurb": "Modern outdoor shopping and entertainment complex by the beach.",
+      "lat": -8.71673,
+      "lng": 115.16905
+    },
+    {
+      "slug": "sekumpel-waterfall",
+      "name": "Sekumpel Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Bali",
+      "blurb": "A famous waterfall requiring a 20-minute hike down a series of stairs.",
+      "lat": -8.17243,
+      "lng": 115.18374
+    },
+    {
+      "slug": "hidden-hills-wanagiri",
+      "name": "Hidden Hills Wanagiri",
+      "category": "EXPERIENCE",
+      "area": "Bali",
+      "blurb": "A photo spot featuring swings and nests with views over Danau Buyan, Bali's second largest lake.",
+      "lat": -8.23707,
+      "lng": 115.08818
     }
   ],
   "creators": [
@@ -1345,6 +1417,20 @@
       "platform": "BLOG",
       "profileUrl": "https://www.saltinourhair.com",
       "bio": "Travel blog by Hannah & Nick."
+    },
+    {
+      "handle": "thebackpackingfamily",
+      "name": "The Backpacking Family",
+      "platform": "BLOG",
+      "profileUrl": "https://thebackpackingfamily.com",
+      "bio": "Family travel blog: trips with and without kids."
+    },
+    {
+      "handle": "livelikeitstheweekend",
+      "name": "Michelle Halpern",
+      "platform": "BLOG",
+      "profileUrl": "https://www.livelikeitstheweekend.com/",
+      "bio": "A California based travel writer and photographer who swapped corporate fashion marketing for world travel."
     }
   ],
   "itineraries": [
@@ -2942,6 +3028,244 @@
           "priceNote": "creator: about $15"
         }
       ]
+    },
+    {
+      "slug": "bali-7-days-thebackpackingfamily",
+      "title": "Bali in 7 days on a budget",
+      "summary": "An action-packed 7-day loop around Bali starting in Kuta, heading north through the cultural hub of Ubud to Mount Batur, up to the coast of Lovina, and back down via Bedugul.",
+      "tier": "BUDGET",
+      "days": 7,
+      "creator": "thebackpackingfamily",
+      "sourceUrl": "https://thebackpackingfamily.com/7-day-bali-itinerary-in-depth-guide/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Kuta Beach",
+          "category": "EXPERIENCE",
+          "place": "kuta-beach",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 1,
+          "name": "Water Bom Bali",
+          "category": "EXPERIENCE",
+          "place": "water-bom-bali",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 1,
+          "name": "Kuta Markets",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 2,
+          "name": "Tegenungan Waterfall",
+          "category": "EXPERIENCE",
+          "place": "tegenungan-waterfall",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 2,
+          "name": "Kemenuh Butterfly Park",
+          "category": "EXPERIENCE",
+          "place": "kemenuh-butterfly-park",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 2,
+          "name": "Ubud Monkey Forest",
+          "category": "EXPERIENCE",
+          "place": "sacred-monkey-forest",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 3,
+          "name": "Goa Gajah Temple",
+          "category": "EXPERIENCE",
+          "place": "goa-gajah-and-pura-gunung-lebah",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 3,
+          "name": "Explore Waterfalls",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 3,
+          "name": "Ubud Palace",
+          "category": "EXPERIENCE",
+          "place": "ubud-palace",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 3,
+          "name": "Saraswati Temple",
+          "category": "EXPERIENCE",
+          "place": "saraswati-temple",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 3,
+          "name": "Ubud Art Market",
+          "category": "EXPERIENCE",
+          "place": "ubud-art-market",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 4,
+          "name": "Tegalalang Rice Terrace",
+          "category": "EXPERIENCE",
+          "place": "tegalalang-rice-terraces",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 4,
+          "name": "Tirta Empul Water Temple",
+          "category": "EXPERIENCE",
+          "place": "tirta-empul-temple",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 4,
+          "name": "Coffee Plantations",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 4,
+          "name": "Mount Batur",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 5,
+          "name": "Dolphin Tour",
+          "category": "EXPERIENCE",
+          "place": "lovina-dolphin-tour",
+          "sentiment": "RECOMMENDED",
+          "note": "Get to the meeting point on Lovina beach.",
+          "price": 3,
+          "currency": "GBP",
+          "priceNote": "£3 - £5"
+        },
+        {
+          "day": 6,
+          "name": "Banjar Hot Spring",
+          "category": "EXPERIENCE",
+          "place": "banjar-hot-springs",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 6,
+          "name": "Golden Valley Waterfall",
+          "category": "EXPERIENCE",
+          "place": "golden-valley-waterfall",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 6,
+          "name": "Ulun Danu Temple",
+          "category": "EXPERIENCE",
+          "place": "ulun-danu-beratan-temple",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 7,
+          "name": "Seminyak Beach",
+          "category": "EXPERIENCE",
+          "place": "seminyak-beach",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 7,
+          "name": "Kuta Beach Walk Shopping Centre",
+          "category": "EXPERIENCE",
+          "place": "kuta-beach-walk-shopping-centre",
+          "sentiment": "RECOMMENDED"
+        }
+      ]
+    },
+    {
+      "slug": "north-bali-1-day-livelikeitstheweekend",
+      "title": "North Bali in 1 Day",
+      "summary": "A one-day trip from Ubud featuring early morning hikes to Sekumpel and Banyumala waterfalls and beautiful lake views.",
+      "days": 1,
+      "creator": "livelikeitstheweekend",
+      "sourceUrl": "https://www.livelikeitstheweekend.com/north-bali-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Hired Driver",
+          "category": "TRANSIT",
+          "sentiment": "RECOMMENDED",
+          "note": "Find a driver in town rather than booking through your hotel for a more cost-effective rate.",
+          "price": 1000000,
+          "currency": "IDR",
+          "priceNote": "IDR 1,000,000 for the day to hire a driver"
+        },
+        {
+          "day": 1,
+          "name": "Sekumpel Waterfall",
+          "category": "EXPERIENCE",
+          "place": "sekumpel-waterfall",
+          "sentiment": "RECOMMENDED",
+          "note": "Arrive early around 8 AM to beat the crowds, and you do not need a guide for this hike.",
+          "price": 15000,
+          "currency": "IDR",
+          "priceNote": "IDR 15,000 entrance fee to Sekumpel Waterfall"
+        },
+        {
+          "day": 1,
+          "name": "Hidden Hills Wanagiri",
+          "category": "EXPERIENCE",
+          "place": "hidden-hills-wanagiri",
+          "sentiment": "RECOMMENDED",
+          "note": "Stop for fun photos overlooking the lake, since it is very close to the waterfalls.",
+          "price": 50000,
+          "currency": "IDR",
+          "priceNote": "IDR 50,000 entrance fee to Wanagiri Hidden Hill"
+        },
+        {
+          "day": 1,
+          "name": "Local Warung near Hidden Hills Wanagiri",
+          "category": "FOOD",
+          "sentiment": "RECOMMENDED",
+          "note": "Eat at a local warung on the way rather than driving out of your way for lunch.",
+          "price": 46000,
+          "currency": "IDR",
+          "priceNote": "IDR 46,000 local lunch at a warung"
+        },
+        {
+          "day": 1,
+          "name": "Banyumala Waterfall",
+          "category": "EXPERIENCE",
+          "place": "banyumala-twin-waterfalls",
+          "sentiment": "MUST_VISIT",
+          "note": "Ask a local if the road is open before driving, as heavy rains can wash it out.",
+          "price": 15000,
+          "currency": "IDR",
+          "priceNote": "IDR 15,000 entrance fee to Banyumala Waterfall"
+        },
+        {
+          "day": 1,
+          "name": "Pura Ulun Danu Bratan",
+          "category": "EXPERIENCE",
+          "place": "ulun-danu-beratan-temple",
+          "sentiment": "OPTIONAL",
+          "note": "If the weather is nice, visit this beautiful water temple around sunset on your drive home."
+        },
+        {
+          "day": 1,
+          "name": "Handara Golf Course Gates",
+          "category": "EXPERIENCE",
+          "place": "handara-gate",
+          "sentiment": "AVOID",
+          "note": "Skip this spot; it is just a golf course gate where you have to pay for photos."
+        }
+      ],
+      "tier": "MIDRANGE"
     }
   ]
 }
