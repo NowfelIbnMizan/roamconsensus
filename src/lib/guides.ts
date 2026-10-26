@@ -10,16 +10,16 @@ export const guides = {
       text: "Each card is one creator's full day-by-day plan. Open one to see every stop.",
     },
     {
-      lead: "What creators agree on",
-      text: "Places ranked by how many creators recommend them. Use the chips to show only food, stays and so on.",
+      lead: "Where creators agree",
+      text: "The Top 5 and the photo grid put the places most creators recommend first. Hover or tap a photo for a quick look.",
+    },
+    {
+      lead: "Filter and see all",
+      text: "Chips show only food, stays and so on. See all opens every place in the city on one page.",
     },
     {
       lead: "Save as you go",
-      text: "Tap + on any place to put it in your trip cart. You can plan the days later.",
-    },
-    {
-      lead: "Other tabs",
-      text: "Top picks, when to go, budget, eSIM and more are in the row above.",
+      text: "Tap + on any place to put it in your trip cart. Plan the days later.",
     },
   ],
   "city-best": [
@@ -111,25 +111,33 @@ export const guides = {
   itinerary: [
     {
       lead: "One creator's plan",
-      text: "Every stop, day by day, in the order the creator did it.",
+      text: "Every stop, day by day, in the order the creator did it. Tap a day to fold it open or shut.",
     },
     {
       lead: "Take what you like",
       text: "Add the whole route to your trip cart, or tap + on single stops.",
     },
     {
-      lead: "Book and save",
-      text: "Book buttons open the booking site. Copy any coupon codes first.",
+      lead: "Skip it?",
+      text: "Stops marked Skip it are the creator's warning. They stay out of the whole route, but you can still add one.",
+    },
+    {
+      lead: "Photos and map",
+      text: "Hover or tap a photo for the place's details. Pick a day above the map to see just its stops.",
     },
   ],
   place: [
     {
       lead: "Who recommends it",
-      text: "See which creators include this place and in which of their routes.",
+      text: "The count shows how many creators include it. Open What creators say for their tips.",
     },
     {
       lead: "Swipe the photos",
-      text: "More shots of the place sit in the gallery.",
+      text: "Arrows or a swipe show more shots. The camera icon credits the photographer.",
+    },
+    {
+      lead: "Build a day around it",
+      text: "The map and list show spots creators visit nearby, with drive times. Tap + to add one.",
     },
     {
       lead: "Next step",
@@ -188,26 +196,68 @@ export const guides = {
   ],
   finder: [
     {
-      lead: "Find a route",
-      text: "Pick the kind of trip, then a destination, length and budget style.",
+      lead: "Narrow it down",
+      text: "Pick where, how long, your budget and the kind of trip. The list updates as you choose.",
     },
     {
       lead: "Set a budget",
-      text: "Routes over your budget, or with unpriced stays, are hidden.",
+      text: "Routes over your budget, or with hotels that have no price, are hidden.",
+    },
+    {
+      lead: "Not sure where?",
+      text: "Find your match asks four quick questions and suggests a route.",
     },
   ],
   creators: [
     {
       lead: "Who we follow",
-      text: "The travel creators whose itineraries we compare. Most routes first.",
+      text: "The travel creators whose routes we compare. Most routes first.",
     },
     {
       lead: "Pick a city",
       text: "Tap a city to see only the creators with a route there.",
     },
     {
-      lead: "Dig in",
-      text: "Open a creator to see all their routes and find them on social media.",
+      lead: "Their style",
+      text: "Tags show each creator's travel style and trip lengths, so you can find one who travels like you.",
+    },
+  ],
+  quiz: [
+    {
+      lead: "Tap what fits",
+      text: "Where, how long, your budget style and what you love. Tap again to undo.",
+    },
+    {
+      lead: "Live matches",
+      text: "Your best route updates as you tap, with why it fits. On a phone, the bar at the bottom jumps to it.",
+    },
+    {
+      lead: "Spots made for you",
+      text: "Places that match what you love, ready to mix into any route.",
+    },
+  ],
+  visa: [
+    {
+      lead: "Pick your passport",
+      text: "Each country shows whether you need a visa and for how long. Countries in your trip cart come first.",
+    },
+    {
+      lead: "Before you fly",
+      text: "Tap a country for its checklist. Ticks stay saved on this device.",
+    },
+    {
+      lead: "Rules change",
+      text: "Always confirm on the official links before you book.",
+    },
+  ],
+  "city-places": [
+    {
+      lead: "Every place in one list",
+      text: "All the places creators recommend in this city, most agreed-on first.",
+    },
+    {
+      lead: "Filter and save",
+      text: "Chips show one type at a time. Tap + to add a place to your trip cart.",
     },
   ],
 } satisfies Record<string, Tip[]>;

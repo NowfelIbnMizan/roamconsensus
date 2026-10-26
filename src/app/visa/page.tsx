@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDestinations } from "@/lib/data";
 import { visaRules } from "@/lib/visa";
 import { VisaList } from "@/components/visa-check";
+import { PageGuide } from "@/components/page-guide";
 
 export const metadata: Metadata = {
   title: "Visa checker",
@@ -22,6 +23,7 @@ export default async function VisaPage() {
     <>
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Do I need a visa?</h1>
       <p className="mt-2 max-w-2xl text-muted">Pick your passport. Tap a country for what to sort before you fly.</p>
+      <PageGuide id="visa" className="mt-4" />
       <VisaList countries={countries} />
     </>
   );

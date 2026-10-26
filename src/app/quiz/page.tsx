@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getQuizData } from "@/lib/data";
+import { PageGuide } from "@/components/page-guide";
 import { Quiz } from "./quiz";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default async function QuizPage() {
     <>
       <h1 className="text-3xl font-semibold tracking-tight">Find your trip</h1>
       <p className="mt-1 text-muted">Tap what fits. Your best route updates as you go.</p>
+      <PageGuide id="quiz" className="mt-4" />
       <Quiz data={data} />
     </>
   );
