@@ -70,7 +70,7 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
     ),
     cat: p.category,
     page: placeHref(destination.slug, p.slug),
-    cartId: p.skippedBy.length === 0 ? p.cartItem?.id : undefined,
+    cartId: p.cartItem?.id,
   }));
 
 
@@ -186,7 +186,7 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
                     place={p.slug}
                     name={p.name}
                   />
-                  {p.cartItem && p.skippedBy.length === 0 && (
+                  {p.cartItem && (
                     <AddItemButton item={p.cartItem} />
                   )}
                 </div>

@@ -101,10 +101,8 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
                   </li>
                 ))}
               </ul>
-              <div className="mt-3 flex items-start gap-3">
-                {c.bio && <ReadMore text={c.bio} lines={3} className="min-w-0 flex-1" />}
-                <CreatorSocials creator={c} className="shrink-0" />
-              </div>
+              {c.bio && <ReadMore text={c.bio} className="mt-3" />}
+              <CreatorSocials creator={c} className="mt-3" />
               <ul className="mt-3 space-y-2 border-t border-line pt-3 text-sm">
                 {routes.slice(0, PREVIEW).map((it) => (
                   <li key={it.slug}>

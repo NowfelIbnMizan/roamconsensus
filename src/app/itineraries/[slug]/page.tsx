@@ -168,8 +168,7 @@ function StopCard({
         )}
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        {item.sentiment !== "AVOID" &&
-          (item.bookUrl ? (
+        {item.bookUrl ? (
             <a
               href={item.bookUrl}
               rel="sponsored noopener noreferrer"
@@ -194,7 +193,7 @@ function StopCard({
                 Website <ExternalLink className="size-3.5" aria-hidden />
               </a>
             )
-          ))}
+          )}
         {item.placeSlug && (
           <Link
             href={placeHref(destination, item.placeSlug)}
@@ -513,7 +512,7 @@ export default async function ItineraryPage({
                                   )}
                                 </span>
                                 <span
-                                  className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-24 truncate text-muted" : ""}`}
+                                  className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-32 truncate text-muted" : ""}`}
                                 >
                                   <Price item={item} />
                                 </span>
@@ -527,9 +526,8 @@ export default async function ItineraryPage({
                             />
                           </StopDetails>
                           <div className="shrink-0">
-                            {!skip && (
-                              <AddItemButton item={cartItems.get(item.id)!} />
-                            )}
+                            {/* "Skip it" stays out of the whole-route bundle, but the traveller can still add it. */}
+                            <AddItemButton item={cartItems.get(item.id)!} />
                           </div>
                         </li>
                       );
