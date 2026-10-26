@@ -9,8 +9,8 @@ import { getEditor, paragraphs } from "@/lib/editor";
 // The owner's own travel photos (public/about), location data stripped. Faces of other people are blurred.
 const PHOTOS = [
   { src: "/about/party.jpg", w: 900, h: 1200, alt: "Nowfel at a beach party, other faces blurred", caption: "Party mode" },
-  { src: "/about/thali.jpg", w: 1200, h: 900, alt: "A thali spread with drinks", caption: "Ordered everything" },
-  { src: "/about/fish.jpg", w: 1200, h: 900, alt: "Whole grilled fish on a banana leaf", caption: "Grilled fish, banana leaf" },
+  { src: "/about/thali.jpg", w: 1200, h: 900, alt: "A thali spread with drinks in Pokhara, Nepal", caption: "Thali time · Pokhara, Nepal" },
+  { src: "/about/fish.jpg", w: 1200, h: 900, alt: "Whole grilled fish on a banana leaf in Pokhara, Nepal", caption: "Grilled fish · Pokhara, Nepal" },
   { src: "/about/ferry.jpg", w: 1200, h: 904, alt: "Nowfel on a ferry deck at sunset", caption: "Ferry deck, golden hour" },
 ];
 
