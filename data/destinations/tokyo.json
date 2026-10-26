@@ -834,6 +834,72 @@
       "lng": 139.7608,
       "website": "https://www.kyubey.jp/en/",
       "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "odaiba",
+      "name": "Odaiba",
+      "category": "EXPERIENCE",
+      "blurb": "Futuristic waterfront district built on reclaimed land in Tokyo Bay."
+    },
+    {
+      "slug": "divercity-tokyo-plaza",
+      "name": "DiverCity Tokyo Plaza",
+      "category": "EXPERIENCE",
+      "blurb": "Shopping mall famous for the life-sized transforming Unicorn Gundam statue outside."
+    },
+    {
+      "slug": "hie-shrine",
+      "name": "Hie Shrine",
+      "category": "EXPERIENCE",
+      "blurb": "Peaceful hidden shrine in Akasaka with a tunnel of red torii gates."
+    },
+    {
+      "slug": "mocha-cat-cafe",
+      "name": "MoCHA Cat Cafe",
+      "category": "EXPERIENCE",
+      "blurb": "Cute cafe where you can relax and feed treats to roaming cats."
+    },
+    {
+      "slug": "aoyama-flower-market-teahouse",
+      "name": "Aoyama Flower Market Teahouse",
+      "category": "FOOD",
+      "blurb": "Beautiful teahouse serving brunch surrounded by stunning plants and flowers."
+    },
+    {
+      "slug": "arona-spa",
+      "name": "ARONA Spa",
+      "category": "EXPERIENCE",
+      "blurb": "Relaxing spa located in the bustling Shibuya district."
+    },
+    {
+      "slug": "omotenashi-toriyoshi-aoyama",
+      "name": "Omotenashi Toriyoshi Aoyama",
+      "category": "FOOD",
+      "blurb": "Traditional izakaya restaurant serving yakitori and sake."
+    },
+    {
+      "slug": "vent-club",
+      "name": "Vent",
+      "category": "EXPERIENCE",
+      "blurb": "Cool nightclub where phone cameras are covered so guests stay in the moment."
+    },
+    {
+      "slug": "lake-kawaguchiko",
+      "name": "Lake Kawaguchiko",
+      "category": "EXPERIENCE",
+      "blurb": "Scenic lake offering outstanding reflective views of Mount Fuji."
+    },
+    {
+      "slug": "kameido-tenjin-shrine",
+      "name": "Kameido Tenjin Shrine",
+      "category": "EXPERIENCE",
+      "blurb": "A historic and beautiful shrine in East Tokyo."
+    },
+    {
+      "slug": "super-hotel-lohas-akasaka",
+      "name": "Super Hotel Lohas Akasaka",
+      "category": "STAY",
+      "blurb": "Budget-friendly hotel in a central location featuring its own dreamy onsen."
     }
   ],
   "creators": [
@@ -864,6 +930,13 @@
       "platform": "BLOG",
       "profileUrl": "https://www.foratravel.com",
       "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    },
+    {
+      "handle": "backpackingbella",
+      "name": "Backpacking Bella",
+      "platform": "BLOG",
+      "profileUrl": "https://backpackingbella.com",
+      "bio": "Destination guides for solo female travellers."
     }
   ],
   "itineraries": [
@@ -1678,6 +1751,171 @@
           "priceSource": "https://www.mrandmrssmith.com/luxury-hotels/aman-tokyo/rooms",
           "unit": "night",
           "quantity": 3
+        }
+      ]
+    },
+    {
+      "slug": "tokyo-5-days-backpackingbella",
+      "title": "Tokyo in 5 Days",
+      "summary": "A balanced 5-day itinerary covering Shibuya, historic temples, neon anime districts, and a day trip to Mount Fuji.",
+      "tier": "BACKPACKER",
+      "days": 5,
+      "creator": "backpackingbella",
+      "sourceUrl": "https://backpackingbella.com/5-day-tokyo-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Stay at Super Hotel Lohas Akasaka",
+          "category": "STAY",
+          "place": "super-hotel-lohas-akasaka",
+          "sentiment": "RECOMMENDED",
+          "note": "Enjoy their on-site public bath after a long day of sightseeing.",
+          "unit": "night",
+          "quantity": 5
+        },
+        {
+          "day": 1,
+          "name": "Morning at Tsukiji Market",
+          "category": "FOOD",
+          "place": "tsukiji-outer-market",
+          "sentiment": "MUST_VISIT",
+          "note": "Arrive early to watch vendors and taste top-quality fresh sushi."
+        },
+        {
+          "day": 1,
+          "name": "Explore Odaiba",
+          "category": "EXPERIENCE",
+          "place": "odaiba",
+          "sentiment": "RECOMMENDED",
+          "note": "Take the Yurikamome train across Rainbow Bridge for stunning views."
+        },
+        {
+          "day": 1,
+          "name": "See the Unicorn Gundam Statue",
+          "category": "EXPERIENCE",
+          "place": "divercity-tokyo-plaza",
+          "sentiment": "RECOMMENDED",
+          "note": "Watch the 19.7-metre robot transform throughout the day."
+        },
+        {
+          "day": 1,
+          "name": "Discover Hie Shrine",
+          "category": "EXPERIENCE",
+          "place": "hie-shrine",
+          "sentiment": "RECOMMENDED",
+          "note": "An oasis among modern skyscrapers with a tunnel of red torii gates."
+        },
+        {
+          "day": 2,
+          "name": "Views from Tokyo Tower",
+          "category": "EXPERIENCE",
+          "place": "tokyo-tower",
+          "sentiment": "RECOMMENDED",
+          "note": "Go on your birthday for free entry and a complimentary snack."
+        },
+        {
+          "day": 2,
+          "name": "Explore Akihabara",
+          "category": "EXPERIENCE",
+          "place": "akihabara",
+          "sentiment": "RECOMMENDED",
+          "note": "Browse shops selling vintage video games and anime figures."
+        },
+        {
+          "day": 2,
+          "name": "Relax at MoCHA Cat Cafe",
+          "category": "EXPERIENCE",
+          "place": "mocha-cat-cafe",
+          "sentiment": "RECOMMENDED",
+          "note": "Buy treats to attract the roaming cats to eat from your hand."
+        },
+        {
+          "day": 3,
+          "name": "Brunch at Aoyama Flower Market",
+          "category": "FOOD",
+          "place": "aoyama-flower-market-teahouse",
+          "sentiment": "RECOMMENDED",
+          "note": "Enjoy a beautiful meal surrounded by fresh, seasonal plants."
+        },
+        {
+          "day": 3,
+          "name": "Detour through Harajuku",
+          "category": "EXPERIENCE",
+          "place": "takeshita-street",
+          "sentiment": "OPTIONAL",
+          "note": "Check out quirky fashion boutiques and street food on Takeshita Street."
+        },
+        {
+          "day": 3,
+          "name": "Experience Shibuya Crossing",
+          "category": "EXPERIENCE",
+          "place": "shibuya-crossing",
+          "sentiment": "MUST_VISIT",
+          "note": "Watch up to 3,000 people cross at once in perfectly controlled chaos."
+        },
+        {
+          "day": 3,
+          "name": "Massage at ARONA Spa",
+          "category": "EXPERIENCE",
+          "place": "arona-spa",
+          "sentiment": "OPTIONAL",
+          "note": "Treat yourself to a relaxing massage after exploring the area."
+        },
+        {
+          "day": 3,
+          "name": "Izakaya Dinner",
+          "category": "FOOD",
+          "place": "omotenashi-toriyoshi-aoyama",
+          "sentiment": "RECOMMENDED",
+          "note": "Share small plates like yakitori around a low wooden table."
+        },
+        {
+          "day": 3,
+          "name": "Dancing at Vent",
+          "category": "EXPERIENCE",
+          "place": "vent-club",
+          "sentiment": "RECOMMENDED",
+          "note": "They cover your phone cameras so everyone stays in the moment."
+        },
+        {
+          "day": 4,
+          "name": "Mount Fuji Day Trip",
+          "category": "EXPERIENCE",
+          "place": "lake-kawaguchiko",
+          "sentiment": "MUST_VISIT",
+          "note": "Catch the Red Line bus to Oishi Park for outstanding mountain views."
+        },
+        {
+          "day": 5,
+          "name": "Morning at Kameido Tenjin Shrine",
+          "category": "EXPERIENCE",
+          "place": "kameido-tenjin-shrine",
+          "sentiment": "RECOMMENDED",
+          "note": "Start the final day exploring this quiet historic temple."
+        },
+        {
+          "day": 5,
+          "name": "Late Morning at Tokyo Skytree",
+          "category": "EXPERIENCE",
+          "place": "tokyo-skytree",
+          "sentiment": "RECOMMENDED",
+          "note": "Take in expansive views of East Tokyo from above."
+        },
+        {
+          "day": 5,
+          "name": "Afternoon at Sensō-ji Temple",
+          "category": "EXPERIENCE",
+          "place": "senso-ji",
+          "sentiment": "MUST_VISIT",
+          "note": "Explore the famous temple and bustling surrounding streets of Asakusa."
+        },
+        {
+          "day": 5,
+          "name": "Late Afternoon at Ueno Park",
+          "category": "EXPERIENCE",
+          "place": "ueno-park",
+          "sentiment": "RECOMMENDED",
+          "note": "Stroll through the park grounds before heading back to Shibuya."
         }
       ]
     }
