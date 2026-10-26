@@ -24,6 +24,7 @@ export async function sitePaths() {
     "/disclosure",
     "/creators",
     "/itineraries",
+    "/quiz",
     "/blog",
     ...posts.map((p) => `/blog/${p.slug}`),
     ...creators.map((c) => `/creators/${c.handle}`),

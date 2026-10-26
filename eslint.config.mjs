@@ -12,7 +12,13 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored agent-skill scripts, not site code.
+    ".claude/**",
   ]),
+  {
+    // Server actions used with useActionState must accept the previous state, even when they ignore it.
+    rules: { "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }] },
+  },
 ]);
 
 export default eslintConfig;
