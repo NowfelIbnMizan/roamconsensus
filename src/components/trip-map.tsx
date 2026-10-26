@@ -38,6 +38,7 @@ type MapHandle = {
   L: typeof Leaflet;
   map: Leaflet.Map;
   layer: Leaflet.LayerGroup;
+  resize: ResizeObserver;
 };
 
 // OpenStreetMap's own tiles: free with attribution, no key (CARTO's basemaps now need one).
@@ -94,6 +95,7 @@ export function TripMap({
   const el = useRef<HTMLDivElement>(null);
   const handle = useRef<MapHandle | null>(null);
   const fitted = useRef("");
+  const fittedBounds = useRef<Leaflet.LatLngBounds | null>(null);
   const [ready, setReady] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const hydrated = useCartHydrated();
@@ -115,7 +117,17 @@ export function TripMap({
             dragging: !L.Browser.mobile,
           });
           L.tileLayer(tiles, { attribution, maxZoom: 19 }).addTo(map);
-          handle.current = { L, map, layer: L.layerGroup().addTo(map) };
+          // A map built while its box had no size yet (a phone still laying out the page) draws for a 0×0 box and
+          // stays grey: no tiles, no pins. Re-measure whenever the box changes, and refit if the last fit was blind.
+          const resize = new ResizeObserver(() => {
+            const before = map.getSize();
+            map.invalidateSize();
+            if ((before.x === 0 || before.y === 0) && fittedBounds.current) {
+              map.fitBounds(fittedBounds.current, { padding: [32, 32], maxZoom: 14 });
+            }
+          });
+          resize.observe(el.current);
+          handle.current = { L, map, layer: L.layerGroup().addTo(map), resize };
           setReady(true);
         });
       },
@@ -125,6 +137,7 @@ export function TripMap({
     return () => {
       cancelled = true;
       seen.disconnect();
+      handle.current?.resize.disconnect();
       handle.current?.map.remove();
       handle.current = null;
       fitted.current = "";
@@ -181,7 +194,9 @@ export function TripMap({
     const fitKey = `${active}:${shown.map((s) => s.key).join("|")}`;
     if (shown.length && fitted.current !== fitKey) {
       fitted.current = fitKey;
-      map.fitBounds(L.latLngBounds(shown.map((s) => [s.lat, s.lng])), {
+      fittedBounds.current = L.latLngBounds(shown.map((s) => [s.lat, s.lng]));
+      map.invalidateSize();
+      map.fitBounds(fittedBounds.current, {
         padding: [32, 32],
         maxZoom: 14,
       });
