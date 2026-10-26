@@ -4,6 +4,27 @@ import { FellowTraveller } from "@/components/creator-notice";
 import { EditorAvatar } from "@/components/editor-take";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { getEditor, paragraphs } from "@/lib/editor";
+import { AboutPhotos, type AboutPhoto } from "./photos";
+
+// The owner's own travel photos (public/about), location data stripped, other people's faces blurred. Places come
+// from each photo's location data or from the owner.
+const PHOTOS: AboutPhoto[] = [
+  { src: "/about/party.jpg", alt: "Nowfel at the Full Moon Party, other faces blurred", caption: "Full Moon Party · Koh Phangan, Thailand" },
+  { src: "/about/thali.jpg", alt: "A thali spread with drinks in Pokhara, Nepal", caption: "Thali time · Pokhara, Nepal" },
+  { src: "/about/fish.jpg", alt: "Whole grilled fish on a banana leaf in Pokhara, Nepal", caption: "Grilled fish · Pokhara, Nepal" },
+  { src: "/about/ferry.jpg", alt: "Nowfel on a ferry deck at sunset near Koh Phangan", caption: "Ferry at sunset · Koh Phangan, Thailand" },
+  { src: "/about/safari.jpg", alt: "Nowfel in a safari jeep in Wilpattu", caption: "Safari jeep · Wilpattu, Sri Lanka" },
+  { src: "/about/monkey-temple.jpg", alt: "Nowfel with a monkey at the Monkey Temple, other faces blurred", caption: "Monkey Temple · Kathmandu, Nepal" },
+  { src: "/about/kite.jpg", alt: "Nowfel walking out of the lagoon with kitesurf gear", caption: "Kitesurf day · Kalpitiya, Sri Lanka" },
+  { src: "/about/python.jpg", alt: "Nowfel with a python around his neck, other faces blurred", caption: "Made a friend · Galle Fort, Sri Lanka" },
+  { src: "/about/golden-statue.jpg", alt: "Nowfel in front of a giant golden statue", caption: "Golden giant · Pokhara, Nepal" },
+  { src: "/about/pokhara-view.jpg", alt: "View over Pokhara and its lake from a hilltop temple", caption: "View over Pokhara, Nepal" },
+  { src: "/about/cliff.jpg", alt: "Nowfel resting on a rock below a forest cliff, other face blurred", caption: "Cliffside break · Nuwara Eliya, Sri Lanka" },
+  { src: "/about/waterfall.jpg", alt: "A waterfall in green hills", caption: "Waterfall hike · Nuwara Eliya, Sri Lanka" },
+  { src: "/about/waves.jpg", alt: "Nowfel on rocks as a wave breaks", caption: "Chasing waves · Kalpitiya, Sri Lanka" },
+  { src: "/about/beach.jpg", alt: "Nowfel on a quiet beach", caption: "Beach walk · Kalpitiya, Sri Lanka" },
+  { src: "/about/galle-night.jpg", alt: "Galle Fort clock tower at night", caption: "Clock tower · Galle Fort, Sri Lanka" },
+];
 
 export async function generateMetadata(): Promise<Metadata> {
   const e = await getEditor();
@@ -15,65 +36,69 @@ export default async function AboutPage() {
   // Always the site address: it forwards to the owner's inbox without showing their personal email.
   const email = CONTACT_EMAIL;
   return (
-    <article className="max-w-2xl">
-      <div className="flex items-center gap-4">
-        <EditorAvatar editor={e} size="size-20 text-3xl" />
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Hi, I&apos;m {e.name}</h1>
-          {e.tagline && <p className="mt-1 text-muted">{e.tagline}</p>}
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,42rem)_minmax(0,1fr)]">
+      <article className="max-w-2xl">
+        <div className="flex items-center gap-4">
+          <EditorAvatar editor={e} size="size-20 text-3xl" />
+          <div>
+            <h1 className="text-3xl font-semibold tracking-tight">Hi, I&apos;m {e.name}</h1>
+            {e.tagline && <p className="mt-1 text-muted">{e.tagline}</p>}
+          </div>
         </div>
-      </div>
-      <FellowTraveller name={e.name} className="mt-6" />
-      <div className="mt-6 space-y-4">
-        {paragraphs(e.bio).map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
-      </div>
-      <p className="mt-5 flex flex-wrap gap-4 text-sm">
-        <a href={`mailto:${email}`} className="inline-flex items-center gap-1.5 text-accent underline">
-          <Mail className="size-4" aria-hidden /> {email}
-        </a>
-        {e.instagramUrl && (
-          <a
-            href={e.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-accent underline"
-          >
-            <AtSign className="size-4" aria-hidden /> Instagram
+        <FellowTraveller name={e.name} className="mt-6" />
+        <div className="mt-6 space-y-4">
+          {paragraphs(e.bio).map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+        <AboutPhotos photos={PHOTOS} className="mt-6 lg:hidden" />
+        <p className="mt-5 flex flex-wrap gap-4 text-sm">
+          <a href={`mailto:${email}`} className="inline-flex items-center gap-1.5 text-accent underline">
+            <Mail className="size-4" aria-hidden /> {email}
           </a>
-        )}
-      </p>
+          {e.instagramUrl && (
+            <a
+              href={e.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-accent underline"
+            >
+              <AtSign className="size-4" aria-hidden /> Instagram
+            </a>
+          )}
+        </p>
 
-      <h2 className="mt-10 text-xl font-semibold">How Creatour works</h2>
-      <ul className="mt-3 list-disc space-y-2 pl-5">
-        <li>I read each creator&apos;s full guide and lay out their stops day by day.</li>
-        <li>
-          Places several creators recommend rise to the top, so you can see where they agree and where they don&apos;t.
-        </li>
-        <li>
-          Where a creator didn&apos;t list a price, I add a typical current price and link where it came from. Where
-          their price is out of date, I show both.
-        </li>
-        <li>
-          My own opinions are marked as <strong>{e.name}&apos;s take</strong>, kept separate from the creator&apos;s
-          content.
-        </li>
-        <li>
-          Every itinerary links back to the creator&apos;s original guide. Read it: their photos, stories and tips are
-          the real thing.
-        </li>
-      </ul>
+        <h2 className="mt-10 text-xl font-semibold">How Creatour works</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5">
+          <li>I read each creator&apos;s whole guide, not the listicle version, and lay their stops out day by day.</li>
+          <li>
+            When several creators pick the same place, it rises to the top. You see where they agree, and where they
+            don&apos;t.
+          </li>
+          <li>
+            No price from the creator? I add a current one and link the source. No source, no price: it says
+            &ldquo;Price not listed&rdquo;.
+          </li>
+          <li>
+            My opinions are labelled <strong>{e.name}&apos;s take</strong>, so they never get mixed up with the
+            creator&apos;s.
+          </li>
+          <li>Every route links to the original guide. Read it: the photos and the stories are theirs.</li>
+        </ul>
 
-      <h2 id="for-creators" className="mt-10 scroll-mt-6 text-xl font-semibold">For creators</h2>
-      <p className="mt-3">
-        Creatour is not affiliated with or endorsed by the creators featured. If you&apos;re one of them and want
-        something corrected, your own booking links used for your picks, or your itinerary removed,{" "}
-        <a href={`mailto:${email}`} className="text-accent underline">
-          email me
-        </a>{" "}
-        and I&apos;ll act on it quickly.
-      </p>
-    </article>
+        <h2 id="for-creators" className="mt-10 scroll-mt-6 text-xl font-semibold">For creators</h2>
+        <p className="mt-3">
+          Featured on Creatour? Your route, your call. Want something fixed, your own booking links on your picks, or
+          your itinerary taken down?{" "}
+          <a href={`mailto:${email}`} className="text-accent underline">
+            Email me
+          </a>{" "}
+          and I&apos;ll sort it fast. Creatour isn&apos;t affiliated with or endorsed by the creators featured.
+        </p>
+      </article>
+      <aside className="hidden lg:sticky lg:top-6 lg:block lg:self-start">
+        <AboutPhotos photos={PHOTOS} />
+      </aside>
+    </div>
   );
 }

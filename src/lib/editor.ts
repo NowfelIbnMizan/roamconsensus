@@ -14,10 +14,11 @@ export type Editor = {
 /** Shown until the owner saves their own in Admin > About me. */
 export const DEFAULT_EDITOR: Editor = {
   name: "Nowfel",
-  tagline: "I read the travel guides so you can plan faster.",
+  tagline: "Street-food hunter, Muay Thai fan, weekend DJ. I read the travel guides so you can plan faster.",
   bio: [
-    "Hi, I'm Nowfel. Planning a trip usually means ten open tabs of creator itineraries and trying to work out which places they all agree on. I built Creatour to do that in one place.",
-    "I read each creator's full guide, lay out their stops day by day, check current prices and add my own take on who the route suits. Every itinerary links back to the creator's original guide: read it, they did the travelling.",
+    "Born and raised in Riyadh, now based in Dhaka, and happiest wherever there's a night market. So far: Thailand, Vietnam, Nepal and Sri Lanka. Bangkok is my favourite city, and I'll happily argue that over a plate of street food.",
+    "By day I'm a digital marketer working remotely. That means two things: I can plan trips from anywhere, and I can spot a sponsored \"top 10\" list from across the street. Creatour skips all that. It lines up itineraries that travel creators shared publicly, so you can see where they actually agree.",
+    "Off the clock it's Muay Thai and DJ-ing. On the road it's temples and old towns by day, a good night out after, and street food in between. My rule for that last one: follow the queue of locals, not the ad. Creatour runs on the same rule. When several creators who went all point to the same place, it's probably worth your afternoon.",
   ].join("\n\n"),
   photoUrl: null,
   email: null,

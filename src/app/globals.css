@@ -128,6 +128,21 @@ h2 {
   display: none;
 }
 
+/* A photo swapping in (About page rotation). */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.fade-in {
+  animation: fade-in 600ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+  }
+}
+
 /* Flag emojis: the Windows flag font (loaded only where needed, see visa-check.tsx) first, then the normal text font. */
 .flag-font {
   font-family: "Twemoji Country Flags", var(--font-geist-sans), sans-serif;
