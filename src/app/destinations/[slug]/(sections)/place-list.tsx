@@ -13,7 +13,7 @@ import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
 import { ConsensusFilter } from "./consensus-filter";
 import { CONSENSUS_PREVIEW } from "./preview";
-import { PlaceHover } from "./place-hover";
+import { PlaceHover } from "@/components/place-hover";
 
 type Destination = NonNullable<Awaited<ReturnType<typeof getDestination>>>;
 
