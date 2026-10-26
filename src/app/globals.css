@@ -123,7 +123,7 @@ h2 {
 [data-filter="TRANSIT"] [data-cat]:not([data-cat="TRANSIT"]) {
   display: none;
 }
-/* Under "All", the list shows its first 20 rows until "Show all" (CONSENSUS_PREVIEW in consensus-filter.tsx). */
+/* Under "All", the list shows its first 20 rows until "Show all" (CONSENSUS_PREVIEW in destinations/[slug]/(sections)/preview.ts). */
 [data-filter=""][data-collapsed] [data-cat]:nth-child(n + 21) {
   display: none;
 }

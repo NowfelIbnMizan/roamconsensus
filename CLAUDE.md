@@ -83,3 +83,4 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 - Data access: `src/lib/data.ts`, `src/lib/place.ts`, `src/lib/trip.ts`; content schema/check/load in `src/lib/content-*.ts`.
 - Key components: `home-search`, `city-map`, `stop-details`, `day-plan`, `creator-hover`, `creator-trips`, `agree-pill`, `read-more`, `page-guide`, `photo`/`thumb`.
 - Page tips text: `src/lib/guides.ts` (new tabs/pages need an entry).
+- City place grid: `(sections)/place-list.tsx`. The city page renders only the top 20 + top 8 per category and links to `/destinations/[slug]/places` (full list) to keep big cities light on phones.
