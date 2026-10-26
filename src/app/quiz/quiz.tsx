@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ArrowRight, Check, RotateCcw } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, ArrowRight, Check, RotateCcw } from "lucide-react";
 import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import { Thumb } from "@/components/thumb";
@@ -70,6 +70,16 @@ export function Quiz({ data }: { data: QuizData }) {
   const [a, setA] = useState<Answers>({ days: null, tier: null, vibes: [] });
   const [city, setCity] = useState<string | null>(null);
   const { money } = useMoney();
+  // Below lg the matches sit under the questions; a bar shows the top pick until they scroll into view.
+  const results = useRef<HTMLElement>(null);
+  const [resultsSeen, setResultsSeen] = useState(false);
+  useEffect(() => {
+    const el = results.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setResultsSeen(e.isIntersecting), { threshold: 0.15 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   const cities = [...new Map(data.routes.map((r) => [r.destination.slug, r.destination])).values()].sort((x, y) =>
     x.name.localeCompare(y.name),
   );
@@ -174,7 +184,11 @@ export function Quiz({ data }: { data: QuizData }) {
           )}
         </div>
 
-        <section aria-live="polite" className="lg:sticky lg:top-6 lg:self-start">
+        <section
+          ref={results}
+          aria-live="polite"
+          className="scroll-mt-6 lg:sticky lg:top-6 lg:self-start"
+        >
           <h2 className="eyebrow font-sans">{answered ? "Your best match" : "Tap to find your match"}</h2>
           {top && (
             <article className="relative mt-2 overflow-hidden rounded-2xl border border-accent bg-card has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
@@ -245,6 +259,22 @@ export function Quiz({ data }: { data: QuizData }) {
           )}
         </section>
       </div>
+
+      {answered && top && !resultsSeen && (
+        <button
+          type="button"
+          onClick={() => results.current?.scrollIntoView({ behavior: "smooth" })}
+          className="fixed inset-x-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-[1101] flex items-center gap-3 rounded-2xl bg-foreground px-4 py-3 text-left text-background shadow-lg sm:bottom-4 lg:hidden"
+        >
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs opacity-80">Your best match · {top.pct}%</span>
+            <span className="block truncate text-sm font-semibold">{top.title}</span>
+          </span>
+          <span className="inline-flex shrink-0 items-center gap-1 text-sm font-medium">
+            See it <ArrowDown className="size-4" aria-hidden />
+          </span>
+        </button>
+      )}
 
       {spots.length > 0 && (
         <section>

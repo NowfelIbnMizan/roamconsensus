@@ -85,6 +85,11 @@ export const VIBES = [
       "sushi",
       "noodle",
     ],
+    /**
+     * In a non-food stop's notes, only these count: "park at the café lot" or "find a restaurant nearby" doesn't make
+     * rice terraces a food stop. The stop's own name still matches every word above.
+     */
+    detailWords: ["street food", "food tour", "hawker", "night market", "ramen", "sushi", "noodle", "takoyaki", "food stall"],
     category: "FOOD" as ItemCategory,
   },
   {
@@ -104,17 +109,19 @@ export const VIBES = [
 export type VibeKey = (typeof VIBES)[number]["key"];
 
 const escape = (w: string) => w.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const patterns = new Map(
-  VIBES.map((v) => [
-    v.key,
-    new RegExp(`(?:^|[^\\p{L}])(?:${v.words.map(escape).join("|")})(?:s|es)?(?![\\p{L}])`, "u"),
-  ]),
+const wordsPattern = (words: readonly string[]) =>
+  new RegExp(`(?:^|[^\\p{L}])(?:${words.map(escape).join("|")})(?:s|es)?(?![\\p{L}])`, "u");
+const patterns = new Map(VIBES.map((v) => [v.key, wordsPattern(v.words)]));
+const detailPatterns = new Map<VibeKey, RegExp>(
+  VIBES.flatMap((v) => ("detailWords" in v ? [[v.key, wordsPattern(v.detailWords)] as const] : [])),
 );
 
 /** Vibes of a stop, from its own name (`name`) and its notes and place blurb (`detail`). */
 export function vibesOf(name: string, detail: string, category: ItemCategory): VibeKey[] {
   return VIBES.filter((v) => {
     if ("category" in v && v.category === category) return true;
+    const strict = detailPatterns.get(v.key);
+    if (strict) return patterns.get(v.key)!.test(name.toLowerCase()) || strict.test(detail.toLowerCase());
     let text = ("nameOnly" in v ? name : `${name} ${detail}`).toLowerCase();
     if ("not" in v) for (const n of v.not) text = text.replaceAll(n, " ");
     return patterns.get(v.key)!.test(text);
