@@ -46,6 +46,23 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 12. Marketing copy: never claim creator partnerships or that the owner visited/tested a route. Framing = "fellow traveller".
 13. The container can't reach `creatour.co` or `*.vercel.app` directly; use a web-fetch tool or the Vercel MCP for logs.
 
+## Limits and batching (owner rule, 2026-10-27)
+
+Every push to any branch = a Vercel build = migrations + seed + full prerender reading the **live** Neon DB. Spend builds carefully.
+
+- **Batch small fixes into one PR** (e.g. a bug sweep). Don't open a PR per tweak; collect them on one branch and push once.
+- **Don't push mockup (`*-lab`) branches.** Build them locally, send screenshots with `SendUserFile`. Pushing one costs a full build.
+- **Push only when ready for the owner to look.** Each extra push to an open PR = another preview build.
+- Docs-only commits (`*.md`, `shots-lab/`) skip the build (`ignoreCommand` in `vercel.json`).
+- Known limits:
+  - **Neon**: owner upgraded from free (5 GB/month data transfer ran out). A full build reads ~8 MB since #99. Usage: console.neon.tech > project > Monitoring.
+  - **Vercel Pro**: build minutes and image-optimizer quota (optimizer stays off, gotcha 5).
+  - **Unsplash / Pexels APIs**: hourly request caps (Unsplash demo apps 50/hour). Photo lookups are cached in `PhotoCache`; don't bulk-refetch.
+  - **OpenStreetMap tiles**: free, fair-use policy; no bulk tile loading. CARTO basemaps need a key now.
+  - **Google Drive MCP**: can't fetch files over ~6 MB.
+  - **Claude web fetch** in this container is flaky; owner can run extraction prompts in Gemini instead.
+- Before adding anything that calls a paid or rate-limited service, tell the owner the cost and limit first.
+
 ## Owner preferences
 
 - **Replies: terse "caveman" style** (no filler, short sentences) unless he says "normal mode".
