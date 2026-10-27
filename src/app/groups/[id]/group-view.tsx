@@ -202,7 +202,7 @@ function Group() {
         {fromCart.length > 0 && (
           <button type="button" onClick={addMine} className={button}>
             <Upload className="size-4" aria-hidden /> Add {fromCart.length} {fromCart.length === 1 ? "stop" : "stops"}{" "}
-            from my cart
+            from my trip
           </button>
         )}
         {group.items.length > 0 && (

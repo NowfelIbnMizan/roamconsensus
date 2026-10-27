@@ -282,7 +282,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
             href="/cart"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
           >
-            Open trip cart
+            Open trip plan
           </Link>
           <Link href="/today" className={button}>
             <Plane className="size-4" aria-hidden /> Trip mode

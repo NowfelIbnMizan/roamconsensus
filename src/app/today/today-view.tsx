@@ -167,7 +167,7 @@ export function TodayView() {
           <p className="rounded-2xl border border-dashed border-line p-6 text-center text-muted">
             Nothing planned for day {day}. A free day!{" "}
             <Link href="/cart" className="text-accent underline">
-              Plan it in your trip cart
+              Plan it in your trip
             </Link>
           </p>
         ) : (
@@ -283,7 +283,7 @@ export function TodayView() {
         <p className="mt-8 text-xs text-muted">
           Works offline once opened: your plan is saved on this phone. Edit it in your{" "}
           <Link href="/cart" className="underline">
-            trip cart
+            trip plan
           </Link>
           .
         </p>

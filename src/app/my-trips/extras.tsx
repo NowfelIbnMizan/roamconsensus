@@ -197,7 +197,7 @@ export function AlertsToggle({ canEmail }: { canEmail: boolean }) {
             <Bell className="size-4 text-accent" aria-hidden /> Email me about my trip
           </span>
           <span className="block text-sm text-muted">
-            Once a day at most: when prices change for stops in your trip cart, or creators add new routes for your
+            Once a day at most: when prices change for stops in your trip, or creators add new routes for your
             cities.
           </span>
           {!canEmail && enabled && (

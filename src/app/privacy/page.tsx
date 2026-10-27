@@ -19,7 +19,7 @@ export default function PrivacyPage() {
 
       <h2>What stays on your device</h2>
       <p>
-        Your trip cart, day plan, chosen currency, passport (on the visa checker), theme, ticked checklists and hidden
+        Your trip plan and its days, chosen currency, passport (on the visa checker), theme, ticked checklists and hidden
         tips are saved in your browser&apos;s local storage. Unless you sign in, they never reach us. Clearing your
         browser data removes them.
       </p>
@@ -31,7 +31,7 @@ export default function PrivacyPage() {
       <h2>If you sign in with Google</h2>
       <p>
         Signing in is optional. When you do, Google tells us your name, email address and profile photo, and we keep
-        your trip cart (with any notes you add), saved trips and hearted places so they show up on all your devices. A
+        your trip plan (with any notes you add), saved trips and liked places so they show up on all your devices. A
         sign-in cookie keeps you signed in for up to 90 days; it is only used for that. We never see your Google
         password, and we don&apos;t ask for access to your contacts, files or anything else.
       </p>
