@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { cityHealth } from "@/lib/admin/health";
 import { saveDestination } from "@/lib/admin/actions";
 import { Checkbox, Field, SaveButton, TextArea } from "../ui";
 import { IndexNowButton } from "./indexnow-button";
@@ -10,6 +11,12 @@ export default async function AdminHome() {
     orderBy: { name: "asc" },
     include: { _count: { select: { itineraries: true, places: true } } },
   });
+  // What still needs doing, from the same checks as City health, so you can start here instead of hunting.
+  const todo = (await cityHealth()).flatMap((c) =>
+    c.checks
+      .filter((k) => k.done < k.total)
+      .map((k) => ({ city: c.name, slug: c.slug, label: k.label, href: k.missing[0]?.href ?? `/admin/health#${c.slug}` })),
+  );
 
   return (
     <>
@@ -18,6 +25,27 @@ export default async function AdminHome() {
         Changes go live on the site as soon as you save. Open a destination to
         edit its places and itineraries.
       </p>
+      <section className="mt-6 rounded-2xl border border-line bg-card p-4">
+        <h2 className="font-semibold">To do {todo.length > 0 && <span className="text-muted">· {todo.length}</span>}</h2>
+        {todo.length === 0 ? (
+          <p className="mt-1 text-sm text-muted">Nothing missing. Every city passes every check.</p>
+        ) : (
+          <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">
+            {todo.slice(0, 20).map((x) => (
+              <li key={`${x.slug}-${x.label}`}>
+                <Link href={x.href} className="hover:underline">
+                  <span className="font-medium">{x.city}</span> · {x.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        {todo.length > 20 && (
+          <Link href="/admin/health" className="mt-2 inline-block text-sm text-accent underline">
+            See all {todo.length} in City health
+          </Link>
+        )}
+      </section>
       <ul className="mt-6 divide-y divide-line rounded-2xl border border-line bg-card">
         {destinations.map((d) => (
           <li key={d.id}>

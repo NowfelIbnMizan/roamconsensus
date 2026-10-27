@@ -1,3 +1,5 @@
+import { CostGuideForm } from "../../../forms/content-forms";
+import { costGuideOf } from "@/lib/costs";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
@@ -271,6 +273,9 @@ export default async function DestinationAdmin({
           </div>
         </div>
       </form>
+
+      <h2 className="mt-10 text-xl font-semibold">Budget</h2>
+      <CostGuideForm id={d.id} guide={costGuideOf(d)} />
 
       <h2 className="mt-10 text-xl font-semibold">Before you go</h2>
       <p className="mt-1 text-sm text-muted">

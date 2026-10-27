@@ -1,3 +1,5 @@
+import { EsimGuideForm } from "../../forms/content-forms";
+import type { EsimGuide } from "@/lib/esim-guides";
 import { db } from "@/lib/db";
 import { deleteEsimPlan, saveEsimPlan } from "@/lib/admin/actions";
 import { DeleteButton, Field, SaveButton, Select } from "../../ui";
@@ -98,6 +100,7 @@ export default async function EsimAdmin() {
     orderBy: [{ country: "asc" }, { provider: "asc" }, { priceCents: "asc" }],
   });
   const countries = [...new Set(plans.map((p) => p.country))];
+  const guides = new Map((await db.esimGuide.findMany()).map((g) => [g.country, g.data as EsimGuide]));
 
   return (
     <>
@@ -109,6 +112,12 @@ export default async function EsimAdmin() {
       {countries.map((country) => (
         <section key={country} className="mt-6">
           <h2 className="text-lg font-semibold">{country}</h2>
+          <details className="mt-2">
+            <summary className="cursor-pointer text-sm font-medium text-accent">
+              {guides.has(country) ? "Edit" : "Add"} the phone and signal guide
+            </summary>
+            <EsimGuideForm country={country} guide={guides.get(country) ?? null} />
+          </details>
           <ul className="mt-2 divide-y divide-line rounded-2xl border border-line bg-card">
             {plans
               .filter((p) => p.country === country)

@@ -1,4 +1,4 @@
-import { costGuides } from "@/lib/costs";
+import { costGuideOf } from "@/lib/costs";
 import type { EsimPlanRow, getDestination } from "@/lib/data";
 import { formatMoney, tierLabel } from "@/lib/format";
 import { bestMonths } from "@/lib/seasons";
@@ -32,7 +32,7 @@ export function destinationFaq(d: Destination, esimPlans: EsimPlanRow[]): Faq[] 
     });
   }
 
-  const guide = costGuides[d.slug];
+  const guide = costGuideOf(d);
   const priced = d.routes
     .filter((r) => r.totalCents > 0 && r.unpricedCount === 0)
     .sort((a, b) => a.totalCents - b.totalCents);

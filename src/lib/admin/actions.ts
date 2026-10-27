@@ -18,6 +18,7 @@ import type {
   Sentiment,
   Tier,
 } from "@/generated/prisma/enums";
+import { Prisma } from "@/generated/prisma/client";
 import { findPhoto } from "@/lib/photos";
 import { placePhotoKey, placeQuery } from "@/lib/place";
 import { ImportData } from "@/lib/content-schema";
@@ -832,4 +833,84 @@ export async function importItineraries(
       href: `/itineraries/${it.slug}`,
     })),
   };
+}
+
+// Budgets, eSIM guides and About photos (content that used to live in code)
+
+const lines = (fd: FormData, key: string) =>
+  text(fd, key)
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+export async function saveCostGuide(fd: FormData) {
+  await requireAdmin();
+  const id = text(fd, "id");
+  const num = (k: string) => Number(text(fd, k)) || 0;
+  const styles = Object.fromEntries(
+    ["backpacker", "midrange", "luxury"].map((s) => [
+      s,
+      {
+        food: num(`${s}.food`),
+        localTransport: num(`${s}.localTransport`),
+        activities: num(`${s}.activities`),
+        stayPerNight: num(`${s}.stayPerNight`),
+      },
+    ]),
+  );
+  const empty = Object.values(styles).every((s) => Object.values(s).every((v) => v === 0));
+  await db.destination.update({
+    where: { id },
+    data: { costGuide: empty ? Prisma.DbNull : { checked: text(fd, "checked"), styles, sources: lines(fd, "sources") } },
+  });
+  published(await destinationChanged(id));
+}
+
+export async function saveEsimGuide(fd: FormData) {
+  await requireAdmin();
+  const country = text(fd, "country");
+  if (!country) return;
+  const data = {
+    checked: text(fd, "checked"),
+    imei: { title: text(fd, "imeiTitle"), body: lines(fd, "imeiBody"), sources: lines(fd, "imeiSources") },
+    coverage: {
+      intro: text(fd, "coverageIntro"),
+      // "Name: note", one area per line.
+      areas: lines(fd, "areas").map((l) => {
+        const at = l.indexOf(":");
+        return at < 0 ? { name: l, note: "" } : { name: l.slice(0, at).trim(), note: l.slice(at + 1).trim() };
+      }),
+      sources: lines(fd, "coverageSources"),
+    },
+    // Blocks split by a blank line; first line is the question, the rest the answer.
+    faq: text(fd, "faq")
+      .split(/\n\s*\n/)
+      .map((b) => b.trim().split("\n"))
+      .filter((b) => b[0])
+      .map(([q, ...a]) => ({ q: q.replace(/^Q:\s*/i, "").trim(), a: a.join(" ").replace(/^A:\s*/i, "").trim() })),
+  };
+  await db.esimGuide.upsert({ where: { country }, create: { country, data }, update: { data } });
+  published();
+}
+
+export async function saveAboutPhoto(fd: FormData) {
+  await requireAdmin();
+  const id = optional(fd, "id");
+  const data = {
+    src: text(fd, "src"),
+    alt: text(fd, "alt") || text(fd, "caption"),
+    caption: text(fd, "caption"),
+    wide: text(fd, "shape") === "wide",
+    position: int(fd, "position"),
+  };
+  if (!data.src) return;
+  if (id) await db.aboutPhoto.update({ where: { id }, data });
+  else await db.aboutPhoto.create({ data });
+  published();
+}
+
+export async function deleteAboutPhoto(fd: FormData) {
+  await requireAdmin();
+  await db.aboutPhoto.delete({ where: { id: text(fd, "id") } });
+  published();
 }

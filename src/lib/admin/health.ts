@@ -1,8 +1,7 @@
 // The "City health" scorecard in admin: every check a destination has to pass before it counts as finished.
-import { costGuides } from "@/lib/costs";
+import { costGuideOf } from "@/lib/costs";
 import { getDestination, getEsimPlans } from "@/lib/data";
 import { db } from "@/lib/db";
-import { esimGuides } from "@/lib/esim-guides";
 import { destinationFaq } from "@/lib/faq";
 import { placePhotoKey } from "@/lib/place";
 
@@ -27,6 +26,7 @@ export type Check = {
 };
 
 export async function cityHealth() {
+  const guides = new Set((await db.esimGuide.findMany({ select: { country: true } })).map((g) => g.country));
   const destinations = await db.destination.findMany({
     orderBy: { name: "asc" },
     include: {
@@ -195,13 +195,13 @@ export async function cityHealth() {
         one("When to go", "All 12 months filled.", d._count.months === 12),
         one(
           "Budget",
-          "Daily costs per travel style (src/lib/costs.ts).",
-          Boolean(costGuides[d.slug]),
+          "Daily costs per travel style (edit on the city page).",
+          Boolean(costGuideOf(d)),
         ),
         one(
           "eSIM",
           "Plans and a guide for the country.",
-          plans.length > 0 && Boolean(esimGuides[d.country]),
+          plans.length > 0 && guides.has(d.country),
           "/admin/esim",
         ),
         {

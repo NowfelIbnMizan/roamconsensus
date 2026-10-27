@@ -343,6 +343,7 @@ export async function getDestination(slug: string) {
     summary: destination.summary,
     isSample: destination.isSample,
     climateSourceUrl: destination.climateSourceUrl,
+    costGuide: destination.costGuide,
     months: destination.months,
     tips: destination.tips,
     creatorCount,
