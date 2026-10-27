@@ -112,6 +112,15 @@ export function CityMap({ cities }: { cities: City[] }) {
               opacity="0.12"
               className="transition group-hover:opacity-30 group-focus-visible:opacity-30"
             />
+            {/* A slow pulse ring, staggered per pin, so the numbers read as tappable. */}
+            <circle
+              cx={p.x}
+              cy={p.y}
+              r={p.r}
+              fill="var(--accent)"
+              className="pin-pulse"
+              style={{ animationDelay: `${(i % 6) * 0.4}s` }}
+            />
             <circle
               cx={p.x}
               cy={p.y}
@@ -119,6 +128,7 @@ export function CityMap({ cities }: { cities: City[] }) {
               fill="var(--accent)"
               stroke="var(--card)"
               strokeWidth="3"
+              className="origin-center transition-transform [transform-box:fill-box] group-hover:scale-110 group-focus-visible:scale-110"
             />
             <text
               x={p.x}
@@ -148,7 +158,7 @@ export function CityMap({ cities }: { cities: City[] }) {
         ))}
       </svg>
       <figcaption className="border-t border-line px-4 py-2.5 text-xs text-muted">
-        Number = creator routes in that city
+        Tap a city to plan it · number = creator routes there
       </figcaption>
     </figure>
   );

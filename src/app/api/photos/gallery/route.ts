@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   const key = placePhotoKey(p.destination.slug, p);
   const query = placeQuery(p.name, p.destination.name);
   const main = await getPhoto({ key, query, category: p.category, website: p.website });
-  return Response.json(await findGallery(key, query, main.url), {
+  return Response.json(await findGallery(key, query, main), {
     headers: { "Cache-Control": "public, max-age=3600" },
   });
 }

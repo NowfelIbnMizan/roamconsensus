@@ -137,6 +137,28 @@ h2 {
 .fade-in {
   animation: fade-in 600ms ease-out;
 }
+/* Home map: a ring that swells and fades from each city pin. */
+@keyframes pin-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.pin-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: pin-pulse 2.4s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pin-pulse {
+    animation: none;
+  }
+}
 /* About photos: the new photo fades in over the old one. */
 .crossfade {
   animation: fade-in 1400ms ease-in-out;
