@@ -16,8 +16,8 @@ export const DEFAULT_EDITOR: Editor = {
   name: "Nowfel",
   tagline: "Street-food hunter, Muay Thai fan, weekend DJ. I read the travel guides so you can plan faster.",
   bio: [
-    "Born and raised in Riyadh, now based in Dhaka, and happiest wherever there's a night market. So far: Thailand, Vietnam, Nepal and Sri Lanka. Bangkok is my favourite city, and I'll happily argue that over a plate of street food.",
-    "By day I'm a digital marketer working remotely. That means two things: I can plan trips from anywhere, and I can spot a sponsored \"top 10\" list from across the street. Creatour skips all that. It lines up itineraries that travel creators shared publicly, so you can see where they actually agree.",
+    "Born and raised in Riyadh, now based in Dhaka, and happiest wherever there's a night market. So far: Thailand, Vietnam, Nepal and Sri Lanka, plus Cox's Bazar back home. Bangkok is my favourite city, and I'll happily argue that over a plate of street food.",
+    "By day I'm a digital marketer working remotely. That means two things: I can plan trips from anywhere, and I can spot a sponsored \"top 10\" list from across the street. Creatour skips all that. It lines up itineraries that travel creators shared publicly, so you can see the places they don't miss.",
     "Off the clock it's Muay Thai and DJ-ing. On the road it's temples and old towns by day, a good night out after, and street food in between. My rule for that last one: follow the queue of locals, not the ad. Creatour runs on the same rule. When several creators who went all point to the same place, it's probably worth your afternoon.",
   ].join("\n\n"),
   photoUrl: null,

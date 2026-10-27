@@ -335,6 +335,30 @@ export async function getPhoto(lookup: Lookup): Promise<Photo> {
 
 const GALLERY_SIZE = 5;
 
+const unsplashPhoto = (r: UnsplashResult): Photo => ({
+  url: r.urls.regular,
+  source: "UNSPLASH",
+  attribution: `Photo by ${r.user.name} on Unsplash`,
+  creditUrl: `${r.user.links.html}?utm_source=creatour&utm_medium=referral`,
+});
+
+/**
+ * Drops gallery shots that would look like repeats: the main photo itself (Unsplash links carry a tracking tag that
+ * changes per search, so links are compared without it) and more than one shot per photographer, since a
+ * photographer's results are usually one burst of near-identical frames. The main photo's photographer counts too.
+ */
+export function distinctShots(photos: Photo[], main?: Photo): Photo[] {
+  const base = (url: string) => url.split("?")[0];
+  const seen = new Set(main ? [base(main.url)] : []);
+  const by = new Set(main?.attribution ? [main.attribution] : []);
+  return photos.filter((p) => {
+    if (seen.has(base(p.url)) || (p.attribution && by.has(p.attribution))) return false;
+    seen.add(base(p.url));
+    if (p.attribution) by.add(p.attribution);
+    return true;
+  });
+}
+
 /**
  * More shots of a place for its photo gallery: up to five Unsplash results besides the main photo, cached for a week
  * as "<key>#2" … "<key>#6". Fetched on demand from the place page (not at build) to stay inside Unsplash's hourly limit.
@@ -342,7 +366,7 @@ const GALLERY_SIZE = 5;
 export async function findGallery(
   key: string,
   query: string,
-  mainUrl?: string,
+  main?: Photo,
 ): Promise<Photo[]> {
   const cached = await db.photoCache.findMany({
     where: { key: { startsWith: `${key}#` } },
@@ -352,12 +376,15 @@ export async function findGallery(
     cached.length &&
     Date.now() - cached[0].fetchedAt.getTime() < CACHE_TTL_MS
   )
-    return cached.map(({ url, source, attribution, creditUrl }) => ({
-      url,
-      source,
-      attribution,
-      creditUrl,
-    }));
+    return distinctShots(
+      cached.map(({ url, source, attribution, creditUrl }) => ({
+        url,
+        source,
+        attribution,
+        creditUrl,
+      })),
+      main,
+    );
 
   const auth = process.env.UNSPLASH_ACCESS_KEY;
   if (!auth) return [];
@@ -377,10 +404,12 @@ export async function findGallery(
   }
   const words = placeWords(query);
   const results = ((await res.json()).results ?? []) as UnsplashResult[];
-  const photos = results
-    .filter(
-      (r) => r.urls.regular !== mainUrl && mentions(words, ...unsplashText(r)),
-    )
+  const fitting = results.filter((r) => mentions(words, ...unsplashText(r)));
+  const keep = new Set(
+    distinctShots(fitting.map(unsplashPhoto), main).map((p) => p.url),
+  );
+  const photos = fitting
+    .filter((r) => keep.has(r.urls.regular))
     .slice(0, GALLERY_SIZE);
   // Unsplash API terms: report each photo we start using via its download endpoint.
   await Promise.all(
@@ -391,12 +420,7 @@ export async function findGallery(
       }).catch(() => null),
     ),
   );
-  const gallery: Photo[] = photos.map((r) => ({
-    url: r.urls.regular,
-    source: "UNSPLASH",
-    attribution: `Photo by ${r.user.name} on Unsplash`,
-    creditUrl: `${r.user.links.html}?utm_source=creatour&utm_medium=referral`,
-  }));
+  const gallery: Photo[] = photos.map(unsplashPhoto);
   await db.$transaction([
     db.photoCache.deleteMany({ where: { key: { startsWith: `${key}#` } } }),
     ...gallery.map((p, i) =>

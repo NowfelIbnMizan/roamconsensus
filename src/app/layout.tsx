@@ -88,7 +88,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <nav className="mx-auto flex max-w-[96rem] items-center justify-between gap-6 px-4 py-4">
               <Link href="/" className="group flex shrink-0 items-center gap-2">
                 <Compass
-                  className="size-6 text-accent-2 transition-transform group-hover:rotate-45"
+                  className="size-6 text-logo transition-transform group-hover:rotate-45"
                   strokeWidth={2.2}
                   aria-hidden
                 />

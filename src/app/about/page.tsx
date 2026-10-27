@@ -53,8 +53,8 @@ export default async function AboutPage() {
         <ul className="mt-3 list-disc space-y-2 pl-5">
           <li>I read each creator&apos;s whole guide, not the listicle version, and lay their stops out day by day.</li>
           <li>
-            When several creators pick the same place, it rises to the top. You see where they agree, and where they
-            don&apos;t.
+            When several creators pick the same place, it rises to the top. You see the places they don&apos;t miss, and
+            the ones only one of them loved.
           </li>
           <li>
             No price from the creator? I add a current one and link the source. No source, no price: it says
@@ -70,7 +70,7 @@ export default async function AboutPage() {
         <h2 id="for-creators" className="mt-10 scroll-mt-6 text-xl font-semibold">For creators</h2>
         <p className="mt-3">
           Featured on Creatour? Your route, your call. Want something fixed, your own booking links on your picks, or
-          your itinerary taken down?{" "}
+          your route taken down?{" "}
           <a href={`mailto:${email}`} className="text-accent underline">
             Email me
           </a>{" "}

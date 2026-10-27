@@ -55,6 +55,8 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-2: var(--accent-2);
+  /* The compass logo is the same rust in light and dark, to match the app icon. */
+  --color-logo: #ad4a22;
   --color-sun: var(--sun);
   --color-line-strong: var(--line-strong);
   --font-sans: var(--font-geist-sans);
@@ -136,6 +138,28 @@ h2 {
 }
 .fade-in {
   animation: fade-in 600ms ease-out;
+}
+/* Home map: a ring that swells and fades from each city pin. */
+@keyframes pin-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.pin-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: pin-pulse 2.4s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pin-pulse {
+    animation: none;
+  }
 }
 /* About photos: the new photo fades in over the old one. */
 .crossfade {
