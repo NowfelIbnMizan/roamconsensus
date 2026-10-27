@@ -84,7 +84,7 @@ export function CityMap({ cities }: { cities: City[] }) {
   const y1 = Math.min(MAP_H, Math.max(...taken.map((t) => t.y + t.h)) + PAD);
 
   return (
-    <figure className="overflow-hidden rounded-3xl border border-line bg-card">
+    <figure className="relative overflow-hidden rounded-3xl border border-line bg-card">
       <svg
         viewBox={`${x0} ${y0} ${x1 - x0} ${y1 - y0}`}
         className="block h-auto w-full"
@@ -157,8 +157,12 @@ export function CityMap({ cities }: { cities: City[] }) {
           </Link>
         ))}
       </svg>
-      <figcaption className="border-t border-line px-4 py-2.5 text-xs text-muted">
-        Tap a city to plan it · number = creator routes there
+      {/* Map key, in the empty top-left corner (no pins there at any width): a sample pin and what its number means. */}
+      <figcaption className="absolute top-3 left-3 flex items-center gap-2 rounded-full border border-line bg-card/85 py-1 pr-3 pl-1 text-xs text-muted shadow-sm backdrop-blur-sm">
+        <span className="flex size-5 items-center justify-center rounded-full bg-accent text-[10px] font-semibold text-background tabular-nums">
+          4
+        </span>
+        Creator routes per city
       </figcaption>
     </figure>
   );
