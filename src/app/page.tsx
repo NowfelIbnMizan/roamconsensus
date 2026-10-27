@@ -97,7 +97,7 @@ export default async function Home() {
             your match
           </Link>
           <p className="fine-print mt-2">
-            Trips collected from what independent creators share publicly
+            Routes collected from what independent creators share publicly
             online.
           </p>
         </div>

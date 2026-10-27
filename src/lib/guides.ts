@@ -43,7 +43,7 @@ export const guides = {
     },
     {
       lead: "What's nearby",
-      text: "Nearby counts the other spots creators recommend in that area.",
+      text: "Nearby counts the other places creators recommend in that area.",
     },
     {
       lead: "Add a stay",
@@ -137,7 +137,7 @@ export const guides = {
     },
     {
       lead: "Build a day around it",
-      text: "The map and list show spots creators visit nearby, with drive times. Tap + to add one.",
+      text: "The map and list show places creators visit nearby, with drive times. Tap + to add one.",
     },
     {
       lead: "Next step",
@@ -191,7 +191,7 @@ export const guides = {
     },
     {
       lead: "Rainy day?",
-      text: "When rain is forecast, indoor spots creators like show up here.",
+      text: "When rain is forecast, indoor places creators like show up here.",
     },
   ],
   finder: [
@@ -232,7 +232,7 @@ export const guides = {
       text: "Your best route updates as you tap, with why it fits. On a phone, the bar at the bottom jumps to it.",
     },
     {
-      lead: "Spots made for you",
+      lead: "Places made for you",
       text: "Places that match what you love, ready to mix into any route.",
     },
   ],

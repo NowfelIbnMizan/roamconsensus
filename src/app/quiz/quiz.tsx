@@ -148,7 +148,7 @@ export function Quiz({ data }: { data: QuizData }) {
               </button>
             ))}
           </Question>
-          <Question label="Love doing (up to 3)">
+          <Question label="What do you love? Pick up to 3">
             {VIBES.map((v) => {
               const on = a.vibes.includes(v.key);
               return (
@@ -278,7 +278,7 @@ export function Quiz({ data }: { data: QuizData }) {
 
       {spots.length > 0 && (
         <section>
-          <h2 className="text-xl font-semibold">Spots made for you</h2>
+          <h2 className="text-xl font-semibold">Places made for you</h2>
           <p className="mt-1 text-sm text-muted">Mix these into any route from your trip plan.</p>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {spots.map((p) => (

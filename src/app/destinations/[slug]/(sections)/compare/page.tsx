@@ -20,7 +20,7 @@ export default async function ComparePage({ params }: PageProps<"/destinations/[
   return (
     <>
       <h2 className="text-xl font-semibold">Which {d.name} route is for you?</h2>
-      <p className="mt-1 text-sm text-muted">Every creator route at a glance. Tick two to see which spots they share.</p>
+      <p className="mt-1 text-sm text-muted">Every creator route at a glance. Tick two to see which places they share.</p>
       <CompareRoutes destination={d.slug} routes={d.routes} places={places} />
     </>
   );

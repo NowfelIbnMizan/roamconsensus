@@ -24,7 +24,7 @@ const SORTS = {
 } as const;
 type Sort = keyof typeof SORTS;
 
-/** Every route in one table; tick two to see which spots they share. */
+/** Every route in one table; tick two to see which places they share. */
 export function CompareRoutes({
   destination,
   routes,
@@ -216,7 +216,7 @@ export function CompareRoutes({
         </div>
       ) : (
         <p className="mt-6 rounded-2xl border border-line bg-card p-4 text-sm text-muted">
-          Tick {2 - pair.length} more route{pair.length ? "" : "s"} to see which spots they share.
+          Tick {2 - pair.length} more route{pair.length ? "" : "s"} to see which places they share.
         </p>
       )}
     </div>

@@ -177,7 +177,7 @@ export default async function BestPage({ params }: Props) {
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
             Ranked by how many of {d.routes.length} {d.name} routes
-            recommend each spot.
+            recommend each place.
           </p>
         </div>
         <a

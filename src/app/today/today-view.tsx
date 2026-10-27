@@ -132,7 +132,7 @@ export function TodayView() {
             <h2 className="flex items-center gap-2 font-semibold">
               <CloudRain className="size-5 text-sky-700 dark:text-sky-400" aria-hidden /> Rainy day? Indoor backups
             </h2>
-            <p className="mt-1 text-sm text-muted">Spots under a roof that creators recommend in {city?.name}.</p>
+            <p className="mt-1 text-sm text-muted">Places under a roof that creators recommend in {city?.name}.</p>
             <ul className="mt-3 divide-y divide-line">
               {data.rainyPicks.map((p) => (
                 <li key={p.href} className="flex items-center justify-between gap-3 py-2">
