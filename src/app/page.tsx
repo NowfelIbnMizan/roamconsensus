@@ -177,7 +177,7 @@ export default async function Home() {
                     {c.name}
                   </h3>
                   <p className="mt-2 text-sm text-muted">
-                    Collecting creator itineraries now.
+                    Collecting creator routes now.
                   </p>
                   <p className="mt-4 flex items-center gap-1 text-sm font-medium text-muted">
                     <Clock className="size-4" aria-hidden /> Coming soon

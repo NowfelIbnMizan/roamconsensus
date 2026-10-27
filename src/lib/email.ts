@@ -38,7 +38,7 @@ const escape = (s: string) =>
 export function tripEmailHtml(tripUrl: string, email: string) {
   return `<div style="font-family:system-ui,sans-serif;max-width:480px">
 <h2 style="margin:0 0 12px">Your Creatour trip plan</h2>
-<p>Here is the day-by-day plan you built. Open it on any phone or computer, and save it to your trip cart there.</p>
+<p>Here is the day-by-day plan you built. Open it on any phone or computer, and save it to your trip there.</p>
 <p><a href="${escape(tripUrl)}" style="display:inline-block;background:#0f766e;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none">Open my trip</a></p>
 <p style="color:#78716c;font-size:12px">You asked for this at Creatour. <a href="${escape(unsubscribeUrl(email))}" style="color:#78716c">Unsubscribe</a></p>
 </div>`;

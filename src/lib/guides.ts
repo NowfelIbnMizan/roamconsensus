@@ -19,7 +19,7 @@ export const guides = {
     },
     {
       lead: "Save as you go",
-      text: "Tap + on any place to put it in your trip cart. Plan the days later.",
+      text: "Tap + on any place to put it in your trip. Plan the days later.",
     },
   ],
   "city-best": [
@@ -29,7 +29,7 @@ export const guides = {
     },
     {
       lead: "Save the ones you like",
-      text: "Tap + to add a pick to your trip cart.",
+      text: "Tap + to add a pick to your trip.",
     },
     {
       lead: "Keep it for later",
@@ -47,7 +47,7 @@ export const guides = {
     },
     {
       lead: "Save a stay",
-      text: "Tap + on a hotel to add it to your trip cart.",
+      text: "Tap + on a hotel to add it to your trip.",
     },
   ],
   "city-when": [
@@ -115,7 +115,7 @@ export const guides = {
     },
     {
       lead: "Take what you like",
-      text: "Add the whole route to your trip cart, or tap + on single stops.",
+      text: "Add the whole route to your trip, or tap + on single stops.",
     },
     {
       lead: "Skip it?",
@@ -141,7 +141,7 @@ export const guides = {
     },
     {
       lead: "Next step",
-      text: "Add it to your trip cart, or open directions in Google Maps.",
+      text: "Add it to your trip, or open directions in Google Maps.",
     },
   ],
   cart: [
@@ -151,11 +151,11 @@ export const guides = {
     },
     {
       lead: "Plan the days",
-      text: "Set your trip length, then put each item on a day in Day by day.",
+      text: "Set your trip length, then put each stop on a day in Day by day.",
     },
     {
       lead: "Share it",
-      text: "Share my trip makes a link friends can open and copy into their own cart.",
+      text: "Share trip makes a short link friends can open and copy into their own trip.",
     },
     {
       lead: "On the road",
@@ -163,17 +163,17 @@ export const guides = {
     },
     {
       lead: "Every device",
-      text: "Sign in with Google to see this cart on your phone and laptop.",
+      text: "Sign in with Google to see this trip on your phone and laptop.",
     },
   ],
   "my-trips": [
     {
-      lead: "Same cart everywhere",
-      text: "Signed in, your trip cart follows you to your phone, laptop and tablet.",
+      lead: "Same trip everywhere",
+      text: "Signed in, your trip plan follows you to your phone, laptop and tablet.",
     },
     {
       lead: "Keep a copy",
-      text: "Save the cart as a named trip, then start a new one. Open it again any time.",
+      text: "Save your trip under a name, then start a new one. Open it again any time.",
     },
     {
       lead: "Plan with friends",
@@ -239,7 +239,7 @@ export const guides = {
   visa: [
     {
       lead: "Pick your passport",
-      text: "Each country shows whether you need a visa and for how long. Countries in your trip cart come first.",
+      text: "Each country shows whether you need a visa and for how long. Countries in your trip come first.",
     },
     {
       lead: "Before you fly",
@@ -257,7 +257,7 @@ export const guides = {
     },
     {
       lead: "Filter and save",
-      text: "Chips show one type at a time. Tap + to add a place to your trip cart.",
+      text: "Chips show one type at a time. Tap + to add a place to your trip.",
     },
   ],
 } satisfies Record<string, Tip[]>;

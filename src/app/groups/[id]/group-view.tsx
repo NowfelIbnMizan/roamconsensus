@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { Copy, Link2, LogOut, RefreshCw, Share2, ShoppingBag, ThumbsUp, Trash2, Upload } from "lucide-react";
+import { Copy, Link2, LogOut, RefreshCw, Share2, Luggage, ThumbsUp, Trash2, Upload } from "lucide-react";
 import { Avatar } from "@/components/account-button";
 import { Thumb } from "@/components/thumb";
 import { AddItemButton } from "@/components/add-to-cart";
@@ -89,7 +89,7 @@ function Group() {
   async function addMine() {
     const res = await post("/items", { items: fromCart });
     const body = await res.json().catch(() => ({}));
-    setMessage(res.ok ? `Added ${body.added} ${body.added === 1 ? "stop" : "stops"} from your cart.` : body.error);
+    setMessage(res.ok ? `Added ${body.added} ${body.added === 1 ? "stop" : "stops"} from your trip.` : body.error);
     void load();
   }
 
@@ -207,7 +207,7 @@ function Group() {
         )}
         {group.items.length > 0 && (
           <button type="button" onClick={copyAll} className={button}>
-            <ShoppingBag className="size-4" aria-hidden /> Copy all to my cart
+            <Luggage className="size-4" aria-hidden /> Copy all to my trip
           </button>
         )}
       </div>
@@ -219,7 +219,7 @@ function Group() {
 
       {group.items.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-line p-10 text-center text-muted">
-          No stops yet. Add places to your trip cart, then come back and add them here. Or{" "}
+          No stops yet. Add places to your trip, then come back and add them here. Or{" "}
           <Link href="/#destinations" className="underline">
             browse destinations
           </Link>

@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy policy" updated="23 October 2026">
       <p>
-        <strong>Short version:</strong> you don&apos;t need an account, we set no tracking cookies, your trip cart stays
+        <strong>Short version:</strong> you don&apos;t need an account, we set no tracking cookies, your trip plan stays
         on your own device unless you sign in, and we only keep your email address if you give it to us.
       </p>
 

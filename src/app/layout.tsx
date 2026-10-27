@@ -152,7 +152,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                     Wish you were here
                   </p>
                   <EmailSignup
-                    label="New destinations and creator itineraries, by email"
+                    label="New cities and creator routes, by email"
                     button="Sign up"
                   />
                 </div>

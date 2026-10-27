@@ -56,7 +56,7 @@ export function TodayView() {
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">No trip planned yet.</p>
-        <p className="mt-1 text-sm text-muted">Add a route to your trip cart, then come back here while you travel.</p>
+        <p className="mt-1 text-sm text-muted">Add a route to your trip, then come back here while you travel.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
           Browse destinations
         </Link>

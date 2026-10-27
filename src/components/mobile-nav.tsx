@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Compass, Map, Search, ShoppingBag, Sun, Users } from "lucide-react";
+import { Compass, Map, Search, Luggage, Sun, Users } from "lucide-react";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 import { useTripDay } from "@/lib/use-trip-day";
 
@@ -68,12 +68,12 @@ export function MobileNav({ accounts }: { accounts: boolean }) {
   const menu = [
     {
       href: "/cart",
-      label: "Trip cart",
+      label: "Trip plan",
       sub:
         hydrated && count > 0
           ? `${count} ${count === 1 ? "stop" : "stops"} · days and budget`
           : "Stops you have saved",
-      icon: ShoppingBag,
+      icon: Luggage,
     },
     {
       href: "/today",
@@ -155,7 +155,7 @@ export function MobileNav({ accounts }: { accounts: boolean }) {
               aria-controls="trip-menu"
               className={tabClass(open || tripMatch(pathname))}
             >
-              <ShoppingBag className="size-5" aria-hidden />
+              <Luggage className="size-5" aria-hidden />
               Trip
               {hydrated && count > 0 && (
                 <span className="absolute top-1 left-1/2 ml-2 min-w-4 rounded-full bg-accent px-1 text-center text-[10px] leading-4 font-semibold text-background">

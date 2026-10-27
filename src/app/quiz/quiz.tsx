@@ -279,7 +279,7 @@ export function Quiz({ data }: { data: QuizData }) {
       {spots.length > 0 && (
         <section>
           <h2 className="text-xl font-semibold">Spots made for you</h2>
-          <p className="mt-1 text-sm text-muted">Mix these into any route from the trip cart.</p>
+          <p className="mt-1 text-sm text-muted">Mix these into any route from your trip plan.</p>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {spots.map((p) => (
               <li key={`${p.destination}/${p.slug}`}>

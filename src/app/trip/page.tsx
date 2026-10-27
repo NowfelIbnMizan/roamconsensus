@@ -12,7 +12,7 @@ export default function TripPage() {
   return (
     <>
       <h1 className="text-3xl font-semibold tracking-tight">A trip plan shared with you</h1>
-      <p className="mt-1 text-muted">Built from travel creators&apos; itineraries on Creatour.</p>
+      <p className="mt-1 text-muted">Built from travel creators&apos; routes on Creatour.</p>
       <div className="mt-8">
         <Suspense fallback={<p className="text-muted">Loading the trip…</p>}>
           <SharedTripView />

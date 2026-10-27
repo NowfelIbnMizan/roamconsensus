@@ -25,7 +25,7 @@ export function JoinGroup() {
       .then(({ ok, body }) => {
         if (stale) return;
         if (ok && body.id) router.replace(`/groups/${body.id}`);
-        else setError(body.error ?? "Couldn't join. Try the link again.");
+        else setError(body.error ?? "Couldn't join. Check your connection and open the link again.");
       });
     return () => {
       stale = true;
@@ -44,7 +44,7 @@ export function JoinGroup() {
         <p className="mt-3 text-muted">Joining…</p>
       ) : (
         <>
-          <p className="mt-3 text-muted">Sign in to add stops, vote on them and copy the trip to your own cart.</p>
+          <p className="mt-3 text-muted">Sign in to add stops, vote on them and copy the trip to your own trip.</p>
           <button
             type="button"
             onClick={() => signInWithGoogle()}

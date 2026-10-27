@@ -250,7 +250,7 @@ export function TripMap({
           {stops.some((s) => s.cartId) && (
             <li className="flex items-center gap-1.5">
               <span className="ml-0.5 size-2.5 rounded-full ring-2 ring-foreground ring-offset-1 ring-offset-background" />
-              In your cart
+              In your trip
             </li>
           )}
         </ul>

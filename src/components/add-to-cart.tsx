@@ -1,13 +1,13 @@
 "use client";
 
-import { Check, Plus, ShoppingBag, X } from "lucide-react";
+import { Check, Plus, Luggage, X } from "lucide-react";
 import { useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
 
 export function AddRouteButton({
   items,
-  label = "Add whole route to cart",
-  doneLabel = "Whole route in cart",
-  removeLabel = "Remove route from cart",
+  label = "Add whole route to trip",
+  doneLabel = "Whole route in your trip",
+  removeLabel = "Remove route from trip",
 }: {
   items: CartItem[];
   label?: string;
@@ -41,7 +41,7 @@ export function AddRouteButton({
         </>
       ) : (
         <>
-          <ShoppingBag className="size-4" aria-hidden />
+          <Luggage className="size-4" aria-hidden />
           {label}
         </>
       )}
@@ -61,8 +61,8 @@ export function AddItemButton({ item }: { item: CartItem }) {
       type="button"
       onClick={() => (added ? remove(item.id) : add([item]))}
       aria-pressed={added}
-      aria-label={added ? `Remove ${item.name} from cart` : `Add ${item.name} to cart`}
-      title={added ? "In your cart: click to remove" : "Add to cart"}
+      aria-label={added ? `Remove ${item.name} from trip` : `Add ${item.name} to trip`}
+      title={added ? "In your trip: click to remove" : "Add to trip"}
       // Bare icon, no ring: the hover wash shows the tap area.
       className={`group -m-1.5 inline-flex size-10 items-center justify-center rounded-full transition-colors ${
         added ? "text-accent hover:bg-red-500/10 hover:text-red-600" : "text-accent hover:bg-accent-soft"

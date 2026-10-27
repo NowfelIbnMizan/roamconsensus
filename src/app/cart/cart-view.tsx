@@ -82,16 +82,16 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const days = planLength(items, tripDays);
   const { stops, groups } = useMemo(() => planMap(items, days), [items, days]);
 
-  if (!hydrated) return <p className="text-muted">Loading your cart…</p>;
+  if (!hydrated) return <p className="text-muted">Loading your trip…</p>;
 
   if (items.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
-        <p className="font-medium">Your trip cart is empty.</p>
-        <p className="mt-1 text-sm text-muted">Add a whole route or single items from any itinerary.</p>
+        <p className="font-medium">Nothing in your trip yet.</p>
+        <p className="mt-1 text-sm text-muted">Tap + on any place, or add a creator&apos;s whole route.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
-          Browse destinations
+          Pick a city
         </Link>
       </div>
     );
@@ -177,7 +177,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               onClick={share}
               className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 text-sm font-medium text-background"
             >
-              <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share"}
+              <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share trip"}
             </button>
             <StopDetails
               label="Trip tools"
@@ -255,7 +255,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                 </div>
               )}
               <button type="button" onClick={clear} className="mt-5 text-sm text-muted underline hover:text-rose-600">
-                Clear cart
+                Clear trip
               </button>
             </StopDetails>
           </div>
