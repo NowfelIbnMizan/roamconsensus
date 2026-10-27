@@ -24,7 +24,7 @@ import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toIcs, toNotionMarkdown, toText } from "@/lib/cart-export";
 import { VendorBadge } from "@/components/vendor-badge";
 import { categoryLabel } from "@/lib/format";
-import { encodeTrip } from "@/lib/share";
+import { encodeTrip, shortCode } from "@/lib/share";
 import { EmailSignup } from "@/components/email-signup";
 import { TripMap } from "@/components/trip-map";
 import { DayPlan, planLength, planMap } from "@/components/day-plan";
@@ -125,7 +125,16 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
     startDate && save(toIcs(items, startDate, days, location.origin), "text/calendar", "creatour-trip.ics");
 
   async function share() {
-    const url = `${location.origin}/trip?t=${encodeTrip(items, days)}`;
+    const t = encodeTrip(items, days);
+    const code = await shortCode(t);
+    const url = `${location.origin}/t/${code}`;
+    // Saved in the background: waiting on the network first can cost the tap that lets a page share or copy.
+    void fetch("/api/share", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ t }),
+      keepalive: true,
+    }).catch(() => {});
     if (navigator.share && matchMedia("(pointer: coarse)").matches) {
       await navigator.share({ title: "My trip plan", url }).catch(() => {});
       return;
