@@ -213,7 +213,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
       <section className="rounded-2xl border border-dashed border-line-strong p-6 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-display text-xl font-semibold">Your trip cart is empty</p>
-        <p className="mt-1 text-sm text-muted">Pick a route creators agree on and build from there.</p>
+        <p className="mt-1 text-sm text-muted">Pick a creator&apos;s route and build from there.</p>
         <Link
           href="/itineraries"
           className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"

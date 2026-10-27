@@ -1,7 +1,7 @@
 import { getDestinations } from "@/lib/data";
 import { ogCard, ogPhoto, ogSize } from "@/lib/og";
 
-export const alt = "Creatour: see where travel creators agree";
+export const alt = "Creatour: the places travel creators don't miss";
 export const size = ogSize;
 export const contentType = "image/png";
 
@@ -11,7 +11,7 @@ export default async function Image() {
   const trips = cities.reduce((n, d) => n + d._count.itineraries, 0);
   return ogCard({
     eyebrow: "Travel itineraries, compared",
-    title: "See where travel creators agree",
+    title: "The places travel creators don't miss",
     detail: "Real creator routes side by side, with the places they all recommend.",
     photos: await Promise.all(top.map((d) => ogPhoto(`destination:${d.slug}`, d.name))),
     stamp: [`${cities.length} cities`, `${trips} trips`],

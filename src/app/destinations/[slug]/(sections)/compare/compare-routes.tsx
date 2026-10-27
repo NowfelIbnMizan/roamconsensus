@@ -18,7 +18,7 @@ type Places = Record<string, { name: string; category: ItemCategory; photo: stri
 const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
 
 const SORTS = {
-  agreed: "Most agreed",
+  agreed: "Most shared",
   cheap: "Cheapest a day",
   short: "Shortest",
 } as const;
@@ -116,7 +116,7 @@ export function CompareRoutes({
               <th className="p-3 font-medium">Days</th>
               <th className="p-3 font-medium">Per day</th>
               <th className="p-3 font-medium">Stops</th>
-              <th className="p-3 font-medium">Spots others agree on</th>
+              <th className="p-3 font-medium">Shared with other routes</th>
               <th className="w-48 p-3 font-medium">Spend</th>
             </tr>
           </thead>

@@ -114,7 +114,7 @@ export function FellowTraveller({
         Creatour is a one-person project by {name}. I travel a lot, and I love
         learning from travel creators. I collect itineraries they&apos;ve shared
         publicly online, summarise them, and put them side by side so travellers
-        can see where they agree. The creators are independent and haven&apos;t
+        can see the places they don&apos;t miss. The creators are independent and haven&apos;t
         reviewed or endorsed this site. Picks, notes and &ldquo;my take&rdquo;
         comments are my own opinion. Their full guides are always better than my
         summary, so please read them, follow them and support their work.

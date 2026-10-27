@@ -52,7 +52,7 @@ export async function generateMetadata({
 }: PageProps<"/destinations/[slug]">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
   return d
-    ? { title: `${d.name} itineraries compared`, description: d.summary }
+    ? { title: `${d.name} itineraries and must-visit places, picked by travel creators`, description: d.summary }
     : {};
 }
 
@@ -90,7 +90,7 @@ export default async function DestinationPage({
         >
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
             <h2 id="agreed-heading" className="text-xl font-semibold">
-              Top 5 the creators agree on
+              Top 5 creators don&apos;t miss
             </h2>
             <a
               href="#agree"
@@ -235,11 +235,11 @@ export default async function DestinationPage({
       <section id="agree" className="mt-12 scroll-mt-6">
         <h2 className="flex items-center gap-2 text-xl font-semibold">
           <Users className="size-5 text-accent" aria-hidden />{" "}
-          {creatorCount > 1 ? "What creators agree on" : "Recommended spots"}
+          {creatorCount > 1 ? "Places creators don't miss" : "Recommended spots"}
         </h2>
         <p className="mt-1 text-sm text-muted">
           {creatorCount > 1
-            ? "Most agreed-on first. Tap + to save one."
+            ? "Most-picked first. Tap + to save."
             : `From one creator so far.`}{" "}
           <Link
             href={`/destinations/${destination.slug}/best`}

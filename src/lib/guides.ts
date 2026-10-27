@@ -10,7 +10,7 @@ export const guides = {
       text: "Each card is one creator's full day-by-day plan. Open one to see every stop.",
     },
     {
-      lead: "Where creators agree",
+      lead: "What creators don't miss",
       text: "The Top 5 and the photo grid put the places most creators recommend first. Hover or tap a photo for a quick look.",
     },
     {
@@ -25,7 +25,7 @@ export const guides = {
   "city-best": [
     {
       lead: "The short list",
-      text: "The places most creators agree on, grouped by type.",
+      text: "The places most creators picked, grouped by type.",
     },
     {
       lead: "Save the ones you like",
@@ -73,7 +73,7 @@ export const guides = {
   "city-compare": [
     {
       lead: "Every route at a glance",
-      text: "Sort the routes by agreement, cost a day or length.",
+      text: "Sort the routes by most shared places, cost a day or length.",
     },
     {
       lead: "Spot the overlap",
@@ -253,7 +253,7 @@ export const guides = {
   "city-places": [
     {
       lead: "Every place in one list",
-      text: "All the places creators recommend in this city, most agreed-on first.",
+      text: "All the places creators recommend in this city, most-picked first.",
     },
     {
       lead: "Filter and save",

@@ -6,7 +6,7 @@ import { PostCover, formatDate } from "@/components/post-cover";
 
 export const metadata: Metadata = {
   title: "Travel blog",
-  description: "Short reads to plan smarter, built on what travel creators agree on. No sponsored lists.",
+  description: "Short reads to plan smarter, built on the places travel creators don't miss. No sponsored lists.",
   alternates: { canonical: "/blog" },
 };
 

@@ -201,8 +201,11 @@ export default async function PlacePage({ params }: Props) {
                   {agree === p.creatorCount && (
                     <CheckCircle2 className="size-4" aria-hidden />
                   )}
-                  {agree} of {p.creatorCount}{" "}
-                  {p.creatorCount === 1 ? "creator" : "creators"}
+                  {p.creatorCount === 1
+                    ? "Picked by 1 creator"
+                    : agree === p.creatorCount
+                      ? `Picked by all ${agree} creators`
+                      : `Picked by ${agree} of ${p.creatorCount} creators`}
                 </p>
               )}
               {p.blurb && (

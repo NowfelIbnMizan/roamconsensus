@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: "Creatour", statusBarStyle: "default" },
   icons: { apple: "/icons/apple-touch-icon.png" },
   title: { default: "Creatour", template: "%s · Creatour" },
-  description: "Compare travel creators' itineraries and see where they agree.",
+  description: "Compare travel creators' itineraries and see the places they don't miss.",
 };
 
 // GoatCounter site code (the "xyz" in xyz.goatcounter.com); visitor stats stay off until it is set.

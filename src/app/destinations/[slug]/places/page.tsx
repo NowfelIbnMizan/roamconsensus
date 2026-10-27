@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   const d = await getDestination((await params).slug);
   return d
     ? {
-        title: `All places in ${d.name}`,
-        description: `Every place travel creators recommend in ${d.name}, most agreed-on first, on one map.`,
+        title: `All must-visit places in ${d.name}, picked by travel creators`,
+        description: `Every place travel creators recommend in ${d.name}, most-picked first, on one map.`,
       }
     : {};
 }
@@ -38,7 +38,7 @@ export default async function CityPlacesPage({ params }: PageProps<"/destination
         All {d.consensus.length} places in {d.name}
       </h1>
       <p className="mt-1 text-sm text-muted">
-        {d.creatorCount > 1 ? "Most agreed-on first. Tap + to save one." : "From one creator so far."}
+        {d.creatorCount > 1 ? "Most-picked first. Tap + to save." : "From one creator so far."}
       </p>
       <PageGuide id="city-places" className="mt-4" />
       <PlaceList destination={d} />
