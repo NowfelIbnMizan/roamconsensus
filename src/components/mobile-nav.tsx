@@ -72,7 +72,7 @@ export function MobileNav({ accounts }: { accounts: boolean }) {
       sub:
         hydrated && count > 0
           ? `${count} ${count === 1 ? "stop" : "stops"} · days and budget`
-          : "Stops you have saved",
+          : "Stops you've added",
       icon: Luggage,
     },
     {

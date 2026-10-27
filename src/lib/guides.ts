@@ -18,7 +18,7 @@ export const guides = {
       text: "Chips show only food, stays and so on. See all opens every place in the city on one page.",
     },
     {
-      lead: "Save as you go",
+      lead: "Add as you go",
       text: "Tap + on any place to put it in your trip. Plan the days later.",
     },
   ],
@@ -28,7 +28,7 @@ export const guides = {
       text: "The places most creators picked, grouped by type.",
     },
     {
-      lead: "Save the ones you like",
+      lead: "Add the ones you like",
       text: "Tap + to add a pick to your trip.",
     },
     {
@@ -46,7 +46,7 @@ export const guides = {
       text: "Nearby counts the other spots creators recommend in that area.",
     },
     {
-      lead: "Save a stay",
+      lead: "Add a stay",
       text: "Tap + on a hotel to add it to your trip.",
     },
   ],
@@ -146,7 +146,7 @@ export const guides = {
   ],
   cart: [
     {
-      lead: "Everything you saved",
+      lead: "Everything you added",
       text: "Places from any city and any creator land here.",
     },
     {
@@ -256,7 +256,7 @@ export const guides = {
       text: "All the places creators recommend in this city, most-picked first.",
     },
     {
-      lead: "Filter and save",
+      lead: "Filter and add",
       text: "Chips show one type at a time. Tap + to add a place to your trip.",
     },
   ],

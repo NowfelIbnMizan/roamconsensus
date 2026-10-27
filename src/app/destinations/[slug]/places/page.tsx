@@ -38,7 +38,7 @@ export default async function CityPlacesPage({ params }: PageProps<"/destination
         All {d.consensus.length} places in {d.name}
       </h1>
       <p className="mt-1 text-sm text-muted">
-        {d.creatorCount > 1 ? "Most-picked first. Tap + to save." : "From one creator so far."}
+        {d.creatorCount > 1 ? "Most-picked first. Tap + to add to your trip." : "From one creator so far."}
       </p>
       <PageGuide id="city-places" className="mt-4" />
       <PlaceList destination={d} />

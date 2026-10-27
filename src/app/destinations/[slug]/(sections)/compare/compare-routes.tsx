@@ -54,11 +54,11 @@ export function CompareRoutes({
   const both = b ? a.places.filter((p) => b.places.includes(p)) : [];
   const groups = b
     ? [
-        { title: `Both include · ${both.length}`, slugs: both, empty: "No spots in common.", shared: true },
+        { title: `Both include · ${both.length}`, slugs: both, empty: "These two routes share no places.", shared: true },
         ...[a, b].map((r, n) => {
           const other = n ? a : b;
           const slugs = r.places.filter((p) => !other.places.includes(p));
-          return { title: `Only ${r.creator.name} · ${slugs.length}`, slugs, empty: "Nothing unique.", shared: false };
+          return { title: `Only ${r.creator.name} · ${slugs.length}`, slugs, empty: "Every place here is on both routes.", shared: false };
         }),
       ]
     : [];

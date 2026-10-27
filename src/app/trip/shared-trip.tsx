@@ -64,7 +64,7 @@ export function SharedTripView() {
           onClick={save}
           className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
         >
-          <Luggage className="size-4" aria-hidden /> Save to my trip
+          <Luggage className="size-4" aria-hidden /> Copy to my trip
         </button>
       </div>
       {stops.length > 0 && (
