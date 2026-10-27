@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   const { data, body } = await readCartBody(request);
   const name = Name.safeParse(body.name);
   if (!name.success || !data) return Response.json({ error: "Give the trip a name" }, { status: 400 });
-  if (!data.items.length) return Response.json({ error: "Your trip cart is empty" }, { status: 400 });
+  if (!data.items.length) return Response.json({ error: "Your trip is empty" }, { status: 400 });
   if ((await db.savedTrip.count({ where: { userId: user.id } })) >= MAX_TRIPS)
     return Response.json({ error: `You can keep up to ${MAX_TRIPS} trips. Delete one first.` }, { status: 400 });
   const trip = await db.savedTrip.create({ data: { userId: user.id, name: name.data, data } });

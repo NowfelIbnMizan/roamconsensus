@@ -24,7 +24,7 @@ import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toIcs, toNotionMarkdown, toText } from "@/lib/cart-export";
 import { VendorBadge } from "@/components/vendor-badge";
 import { categoryLabel } from "@/lib/format";
-import { encodeTrip } from "@/lib/share";
+import { encodeTrip, shortCode } from "@/lib/share";
 import { EmailSignup } from "@/components/email-signup";
 import { TripMap } from "@/components/trip-map";
 import { DayPlan, planLength, planMap } from "@/components/day-plan";
@@ -82,16 +82,16 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const days = planLength(items, tripDays);
   const { stops, groups } = useMemo(() => planMap(items, days), [items, days]);
 
-  if (!hydrated) return <p className="text-muted">Loading your cart…</p>;
+  if (!hydrated) return <p className="text-muted">Loading your trip…</p>;
 
   if (items.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
-        <p className="font-medium">Your trip cart is empty.</p>
-        <p className="mt-1 text-sm text-muted">Add a whole route or single items from any itinerary.</p>
+        <p className="font-medium">Nothing in your trip yet.</p>
+        <p className="mt-1 text-sm text-muted">Tap + on any place, or add a creator&apos;s whole route.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
-          Browse destinations
+          Pick a city
         </Link>
       </div>
     );
@@ -125,7 +125,16 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
     startDate && save(toIcs(items, startDate, days, location.origin), "text/calendar", "creatour-trip.ics");
 
   async function share() {
-    const url = `${location.origin}/trip?t=${encodeTrip(items, days)}`;
+    const t = encodeTrip(items, days);
+    const code = await shortCode(t);
+    const url = `${location.origin}/t/${code}`;
+    // Saved in the background: waiting on the network first can cost the tap that lets a page share or copy.
+    void fetch("/api/share", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ t }),
+      keepalive: true,
+    }).catch(() => {});
     if (navigator.share && matchMedia("(pointer: coarse)").matches) {
       await navigator.share({ title: "My trip plan", url }).catch(() => {});
       return;
@@ -168,7 +177,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               onClick={share}
               className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 text-sm font-medium text-background"
             >
-              <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share"}
+              <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share trip"}
             </button>
             <StopDetails
               label="Trip tools"
@@ -246,7 +255,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                 </div>
               )}
               <button type="button" onClick={clear} className="mt-5 text-sm text-muted underline hover:text-rose-600">
-                Clear cart
+                Clear trip
               </button>
             </StopDetails>
           </div>
@@ -311,7 +320,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                   <VendorBadge name={group.vendor} bookable={group.items[0].vendor !== null} />
                 </h2>
                 <span className="text-sm tabular-nums text-muted">
-                  {group.items.some((i) => i.priceCents !== null) ? money(group.totalCents) : "Price on site"}
+                  {group.items.some((i) => i.priceCents !== null) ? money(group.totalCents) : "Price not listed"}
                 </span>
               </header>
               <ul className="divide-y divide-line">
@@ -359,7 +368,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                     </div>
                     {item.priceCents === null ? (
                       <span className="max-w-40 rounded-full bg-amber-500/15 px-2 py-0.5 text-right text-xs text-amber-700 dark:text-amber-300">
-                        {item.priceNote ?? "Varies · pay on site"}
+                        {item.priceNote ?? "Price not listed"}
                       </span>
                     ) : (
                       <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">{price(item)}</span>

@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: "Creatour", statusBarStyle: "default" },
   icons: { apple: "/icons/apple-touch-icon.png" },
   title: { default: "Creatour", template: "%s · Creatour" },
-  description: "Compare travel creators' itineraries and see where they agree.",
+  description: "Compare travel creators' itineraries and see the places they don't miss.",
 };
 
 // GoatCounter site code (the "xyz" in xyz.goatcounter.com); visitor stats stay off until it is set.
@@ -113,7 +113,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                   href="/itineraries"
                   className="hidden hover:text-accent sm:inline"
                 >
-                  Find a trip
+                  Find a route
                 </Link>
                 <Link
                   href="/visa"
@@ -149,10 +149,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-md flex-1">
                   <p className="font-display text-xl font-semibold">
-                    Wish you were here
+                    New routes by email
                   </p>
                   <EmailSignup
-                    label="New destinations and creator itineraries, by email"
+                    label="When we add a city or creator route."
                     button="Sign up"
                   />
                 </div>

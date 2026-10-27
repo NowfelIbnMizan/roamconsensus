@@ -78,8 +78,9 @@ export default async function Home() {
             Where are you going?
           </h1>
           <p className="mt-3 max-w-md text-muted">
-            Tap a city or search. You get the routes travel creators{" "}
-            <em className="font-medium text-accent">agree</em> on, day by day.
+            Tap a city or search. See the places travel creators{" "}
+            <em className="font-medium text-accent">don&apos;t miss</em>, then build
+            your trip around them.
           </p>
           <HomeSearch
             cities={destinations.map(({ slug, name, country }) => ({
@@ -96,7 +97,7 @@ export default async function Home() {
             your match
           </Link>
           <p className="fine-print mt-2">
-            Trips collected from what independent creators share publicly
+            Routes collected from what independent creators share publicly
             online.
           </p>
         </div>
@@ -176,7 +177,7 @@ export default async function Home() {
                     {c.name}
                   </h3>
                   <p className="mt-2 text-sm text-muted">
-                    Collecting creator itineraries now.
+                    Collecting creator routes now.
                   </p>
                   <p className="mt-4 flex items-center gap-1 text-sm font-medium text-muted">
                     <Clock className="size-4" aria-hidden /> Coming soon
@@ -190,7 +191,7 @@ export default async function Home() {
       {examples.length > 0 && (
         <section aria-labelledby="agree-examples" className="mt-16">
           <h2 id="agree-examples" className="text-2xl font-semibold">
-            For example, creators agree on…
+            Places creators don&apos;t miss
           </h2>
           <ul className="-mx-4 mt-3 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
             {examples.map((e) => (

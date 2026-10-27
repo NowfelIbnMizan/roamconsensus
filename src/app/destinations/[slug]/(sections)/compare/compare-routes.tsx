@@ -18,13 +18,13 @@ type Places = Record<string, { name: string; category: ItemCategory; photo: stri
 const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
 
 const SORTS = {
-  agreed: "Most agreed",
+  agreed: "Most shared",
   cheap: "Cheapest a day",
   short: "Shortest",
 } as const;
 type Sort = keyof typeof SORTS;
 
-/** Every route in one table; tick two to see which spots they share. */
+/** Every route in one table; tick two to see which places they share. */
 export function CompareRoutes({
   destination,
   routes,
@@ -54,11 +54,11 @@ export function CompareRoutes({
   const both = b ? a.places.filter((p) => b.places.includes(p)) : [];
   const groups = b
     ? [
-        { title: `Both include · ${both.length}`, slugs: both, empty: "No spots in common.", shared: true },
+        { title: `Both include · ${both.length}`, slugs: both, empty: "These two routes share no places.", shared: true },
         ...[a, b].map((r, n) => {
           const other = n ? a : b;
           const slugs = r.places.filter((p) => !other.places.includes(p));
-          return { title: `Only ${r.creator.name} · ${slugs.length}`, slugs, empty: "Nothing unique.", shared: false };
+          return { title: `Only ${r.creator.name} · ${slugs.length}`, slugs, empty: "Every place here is on both routes.", shared: false };
         }),
       ]
     : [];
@@ -116,7 +116,7 @@ export function CompareRoutes({
               <th className="p-3 font-medium">Days</th>
               <th className="p-3 font-medium">Per day</th>
               <th className="p-3 font-medium">Stops</th>
-              <th className="p-3 font-medium">Spots others agree on</th>
+              <th className="p-3 font-medium">Shared with other routes</th>
               <th className="w-48 p-3 font-medium">Spend</th>
             </tr>
           </thead>
@@ -216,7 +216,7 @@ export function CompareRoutes({
         </div>
       ) : (
         <p className="mt-6 rounded-2xl border border-line bg-card p-4 text-sm text-muted">
-          Tick {2 - pair.length} more route{pair.length ? "" : "s"} to see which spots they share.
+          Tick {2 - pair.length} more route{pair.length ? "" : "s"} to see which places they share.
         </p>
       )}
     </div>

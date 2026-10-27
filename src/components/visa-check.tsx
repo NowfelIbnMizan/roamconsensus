@@ -106,7 +106,7 @@ export function PassportPicker({ big = false }: { big?: boolean }) {
           onChange={(e) => setPassport(e.target.value)}
           className="flag-font rounded-xl border border-line bg-card px-4 py-3 text-lg font-medium"
         >
-          <option value="">Choose…</option>
+          <option value="">Your passport</option>
           {PASSPORTS.map((p) => (
             <option key={p} value={p}>
               {flag(p)} {p}
@@ -124,7 +124,7 @@ export function PassportPicker({ big = false }: { big?: boolean }) {
         onChange={(e) => setPassport(e.target.value)}
         className="flag-font rounded-lg border border-line bg-background px-2 py-1.5"
       >
-        <option value="">Choose…</option>
+        <option value="">Your passport</option>
         {PASSPORTS.map((p) => (
           <option key={p} value={p}>
             {flag(p)} {p}
@@ -281,7 +281,7 @@ export function VisaList({
                   {!passport ? (
                     <span className="text-sm text-muted">Pick passport</span>
                   ) : !rule ? (
-                    <span className="text-sm text-muted">No data yet</span>
+                    <span className="text-sm text-muted">Not checked yet. Use the official link.</span>
                   ) : (
                     <span
                       className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium ${tone[rule.status]}`}

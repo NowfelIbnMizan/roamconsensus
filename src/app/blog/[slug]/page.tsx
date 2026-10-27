@@ -77,7 +77,7 @@ export default async function PostPage({ params }: Props) {
         >
           <span>
             <span className="block text-sm text-muted">Planning a trip?</span>
-            <span className="font-semibold">Compare {post.destination.name} itineraries from real creators</span>
+            <span className="font-semibold">Compare {post.destination.name} routes from real creators</span>
           </span>
           <ArrowRight className="size-5 text-accent" aria-hidden />
         </Link>

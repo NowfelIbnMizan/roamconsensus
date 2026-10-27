@@ -46,7 +46,7 @@ export function SavedPlaces() {
   return (
     <section>
       <h2 className="flex items-center gap-2 text-xl font-semibold">
-        <Heart className="size-5 text-accent-2" aria-hidden /> Saved places{rows?.length ? ` · ${rows.length}` : ""}
+        <Heart className="size-5 text-accent-2" aria-hidden /> Liked places{rows?.length ? ` · ${rows.length}` : ""}
       </h2>
       {rows === null ? (
         <p className="mt-2 text-muted">Loading…</p>
@@ -107,7 +107,7 @@ export function GroupTrips() {
     });
     const body = await res.json().catch(() => ({}));
     if (res.ok) router.push(`/groups/${body.id}`);
-    else setError(body.error ?? "Couldn't start it. Try again.");
+    else setError(body.error ?? "Couldn't start the group trip. Check your connection and try again.");
   }
 
   return (
@@ -152,8 +152,8 @@ export function GroupTrips() {
         </div>
         <p className="mt-2 text-xs text-muted">
           {items.length
-            ? `Starts with the ${items.length} ${items.length === 1 ? "stop" : "stops"} in your trip cart.`
-            : "Starts empty. Friends can add stops from their own carts."}
+            ? `Starts with the ${items.length} ${items.length === 1 ? "stop" : "stops"} in your current trip.`
+            : "Starts empty. Friends can add stops from their own trips."}
         </p>
         {error && (
           <p role="alert" className="mt-2 text-sm text-accent-2">
@@ -197,7 +197,7 @@ export function AlertsToggle({ canEmail }: { canEmail: boolean }) {
             <Bell className="size-4 text-accent" aria-hidden /> Email me about my trip
           </span>
           <span className="block text-sm text-muted">
-            Once a day at most: when prices change for stops in your trip cart, or creators add new routes for your
+            Once a day at most: when prices change for stops in your trip, or creators add new routes for your
             cities.
           </span>
           {!canEmail && enabled && (

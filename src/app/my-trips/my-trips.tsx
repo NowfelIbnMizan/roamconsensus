@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CalendarDays, ChevronDown, FolderOpen, LogOut, Luggage, Plane, Save, ShoppingBag, Trash2 } from "lucide-react";
+import { CalendarDays, ChevronDown, FolderOpen, LogOut, Luggage, Plane, Save, Trash2 } from "lucide-react";
 import { Avatar } from "@/components/account-button";
 import { cartData } from "@/components/cart-sync";
 import { Thumb } from "@/components/thumb";
@@ -45,10 +45,10 @@ function SignedOut() {
     <section className="max-w-lg rounded-2xl border border-line bg-card p-6">
       <h2 className="font-display text-2xl font-semibold">Sign in to keep your trips</h2>
       <ul className="mt-3 list-disc space-y-1 pl-5 text-muted">
-        <li>Your trip cart shows up on your phone and laptop.</li>
+        <li>Your trip plan shows up on your phone and laptop.</li>
         <li>Save trips by name and come back to them.</li>
-        <li>Heart places, add notes, and plan a trip with friends.</li>
-        <li>What you added before signing in stays in your cart.</li>
+        <li>Like places, add notes, and plan a trip with friends.</li>
+        <li>What you added before signing in stays in your trip.</li>
       </ul>
       <button
         type="button"
@@ -101,17 +101,17 @@ function SignedIn({
   }, [version]);
 
   async function open(trip: TripRow) {
-    if (items.length && !confirm(`Open "${trip.name}"? It replaces the ${items.length} items in your trip cart.`))
+    if (items.length && !confirm(`Open "${trip.name}"? It replaces the ${items.length} stops in your current trip.`))
       return;
     const res = await fetch(`/api/account/trips/${trip.id}`);
-    if (!res.ok) return alert("Couldn't open that trip. Try again.");
+    if (!res.ok) return alert("Couldn't open that trip. Check your connection and try again.");
     const { data } = (await res.json()) as { data: CartData };
     useCart.setState(data);
     router.push("/cart");
   }
 
   async function remove(trip: TripRow) {
-    if (!confirm(`Delete "${trip.name}"? This can't be undone. Your trip cart is not affected.`)) return;
+    if (!confirm(`Delete "${trip.name}"? This can't be undone. Your current trip is not affected.`)) return;
     await fetch(`/api/account/trips/${trip.id}`, { method: "DELETE" });
     load();
   }
@@ -119,7 +119,7 @@ function SignedIn({
   async function deleteAccount() {
     if (
       !confirm(
-        "Delete your Creatour account and all saved trips? This can't be undone. Your trip cart stays on this device.",
+        "Delete your Creatour account and all saved trips? This can't be undone. Your current trip stays on this device.",
       )
     )
       return;
@@ -138,7 +138,7 @@ function SignedIn({
         {trips === null ? (
           <p className="mt-2 text-muted">Loading…</p>
         ) : trips.length === 0 ? (
-          <p className="mt-2 text-muted">None yet. Save a copy of your trip cart to keep it here.</p>
+          <p className="mt-2 text-muted">None yet. Save a copy of your current trip to keep it here.</p>
         ) : (
           <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {trips.map((t) => (
@@ -212,13 +212,13 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
     return (
       <section className="rounded-2xl border border-dashed border-line-strong p-6 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
-        <p className="font-display text-xl font-semibold">Your trip cart is empty</p>
-        <p className="mt-1 text-sm text-muted">Pick a route creators agree on and build from there.</p>
+        <p className="font-display text-xl font-semibold">Nothing in your trip yet</p>
+        <p className="mt-1 text-sm text-muted">Pick a creator&apos;s route and build from there.</p>
         <Link
           href="/itineraries"
           className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
         >
-          Find a trip
+          Find a route
         </Link>
       </section>
     );
@@ -239,7 +239,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
     });
     setBusy(false);
     const body = await res.json().catch(() => ({}));
-    setMessage(res.ok ? "Saved below. Your trip cart is unchanged." : (body.error ?? "Couldn't save. Try again."));
+    setMessage(res.ok ? "Saved below. Your current trip is unchanged." : (body.error ?? "Couldn't save. Check your connection and try again."));
     if (res.ok) {
       setName("");
       setSaving(false);
@@ -261,7 +261,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
             </li>
           )}
           <li className="inline-flex items-center gap-1.5">
-            <ShoppingBag className="size-4" aria-hidden />
+            <Luggage className="size-4" aria-hidden />
             {items.length} {items.length === 1 ? "stop" : "stops"}
           </li>
         </ul>
@@ -282,7 +282,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
             href="/cart"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
           >
-            Open trip cart
+            Open trip plan
           </Link>
           <Link href="/today" className={button}>
             <Plane className="size-4" aria-hidden /> Trip mode

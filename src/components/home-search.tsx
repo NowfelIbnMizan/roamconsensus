@@ -27,7 +27,7 @@ type Entry = Omit<SearchEntry, "kind"> & {
 const kindLabel: Record<Entry["kind"], string> = {
   Guide: "Guide",
   Destination: "City",
-  Spot: "Spot",
+  Spot: "Place",
   Itinerary: "Route",
   Creator: "Creator",
 };
@@ -87,7 +87,7 @@ type City = { slug: string; name: string; country: string };
 
 /**
  * The home page's first thing: where are you going (one city or several), and when. Picking from the list only
- * fills the box; "Find trips" opens matching creator routes, split across the cities when there are several.
+ * fills the box; "Find routes" opens matching creator routes, split across the cities when there are several.
  * A spot, route or creator picked instead opens its own page.
  */
 export function HomeSearch({ cities }: { cities: City[] }) {
@@ -273,7 +273,7 @@ export function HomeSearch({ cities }: { cities: City[] }) {
     if (other) return router.push(other.href);
     let trip = picked;
     if (!trip.length) {
-      // Typed but didn't pick: take the best match, so Enter or "Find trips" always goes somewhere.
+      // Typed but didn't pick: take the best match, so Enter or "Find routes" always goes somewhere.
       const top = words.length ? results[0] : undefined;
       if (top && top.kind !== "Destination") return router.push(top.href);
       const city = top && cities.find((c) => top.href.endsWith(`/${c.slug}`));
@@ -321,7 +321,7 @@ export function HomeSearch({ cities }: { cities: City[] }) {
       role="search"
       onSubmit={(e) => {
         e.preventDefault();
-        // Enter in the box picks the highlighted match; the "Find trips" button always searches.
+        // Enter in the box picks the highlighted match; the "Find routes" button always searches.
         const fromButton = (e.nativeEvent as SubmitEvent).submitter !== null;
         if (!fromButton && showList && words.length && results[active])
           choose(results[active]);
@@ -334,7 +334,7 @@ export function HomeSearch({ cities }: { cities: City[] }) {
           <Search className="size-5 shrink-0 text-accent" aria-hidden />
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-semibold">
-              Search trips, cities and tips
+              Search cities, routes and places
             </span>
             <span className="flex flex-wrap items-center gap-1">
               {[
@@ -439,7 +439,7 @@ export function HomeSearch({ cities }: { cities: City[] }) {
           type="submit"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-medium whitespace-nowrap text-background"
         >
-          <Search className="size-4" aria-hidden /> Search
+          <Search className="size-4" aria-hidden /> Find routes
         </button>
       </div>
       {hint && (

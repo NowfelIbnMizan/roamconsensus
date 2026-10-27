@@ -58,6 +58,9 @@ const schemaType = { STAY: "LodgingBusiness", FOOD: "Restaurant" } as Record<
   string
 >;
 
+/** "Next door" under 2 minutes, else "~15 min drive". */
+const nearLabel = (minutes: number) => (minutes < 2 ? "Next door" : `~${formatMinutes(minutes)} drive`);
+
 export default async function PlacePage({ params }: Props) {
   const p = await load(params);
   if (!p) notFound();
@@ -201,8 +204,11 @@ export default async function PlacePage({ params }: Props) {
                   {agree === p.creatorCount && (
                     <CheckCircle2 className="size-4" aria-hidden />
                   )}
-                  {agree} of {p.creatorCount}{" "}
-                  {p.creatorCount === 1 ? "creator" : "creators"}
+                  {p.creatorCount === 1
+                    ? "Picked by 1 creator"
+                    : agree === p.creatorCount
+                      ? `Picked by all ${agree} creators`
+                      : `Picked by ${agree} of ${p.creatorCount} creators`}
                 </p>
               )}
               {p.blurb && (
@@ -256,8 +262,8 @@ export default async function PlacePage({ params }: Props) {
               </h2>
               <p className="mt-1 text-sm text-pretty text-muted">
                 {firstDay === lastDay
-                  ? `Creators visit on day ${firstDay}.`
-                  : `Creators visit between day ${firstDay} and ${lastDay}.`}
+                  ? `Creators go on day ${firstDay} of their trips.`
+                  : `Creators fit it in anywhere from day ${firstDay} to day ${lastDay} of their trips.`}
                 {p.tip && ` Tip: ${p.tip}`}
               </p>
               <div
@@ -290,12 +296,11 @@ export default async function PlacePage({ params }: Props) {
                             {o.name}
                           </span>
                           <span className="text-xs text-muted">
-                            ~
-                            {formatMinutes(
+                            {nearLabel(
                               driveMinutes(p as { lat: number; lng: number }, o)
                                 .minutes,
                             )}{" "}
-                            drive · {categoryLabel[o.category]}
+                            · {categoryLabel[o.category]}
                           </span>
                         </Link>
                         {o.cartItem && o.skippedBy.length === 0 && (

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Map as MapIcon, ShoppingBag } from "lucide-react";
+import { Map as MapIcon, Luggage } from "lucide-react";
 import { DayPlan, planMap } from "@/components/day-plan";
 import { useMoney } from "@/components/money";
 import { TripMap } from "@/components/trip-map";
@@ -38,7 +38,7 @@ export function SharedTripView() {
 
   const { stops, groups } = useMemo(() => planMap(items ?? [], trip?.days ?? 1), [items, trip]);
 
-  if (!trip) return <p className="text-muted">This trip link is broken. Ask for a fresh one.</p>;
+  if (!trip) return <p className="text-muted">This trip link doesn&apos;t open. Part of it may be cut off. Ask for the link again.</p>;
   if (!items) return <p className="text-muted">Loading the trip…</p>;
   if (items.length === 0) return <p className="text-muted">The places in this trip are no longer listed.</p>;
 
@@ -64,7 +64,7 @@ export function SharedTripView() {
           onClick={save}
           className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
         >
-          <ShoppingBag className="size-4" aria-hidden /> Save to my trip cart
+          <Luggage className="size-4" aria-hidden /> Copy to my trip
         </button>
       </div>
       {stops.length > 0 && (
@@ -79,7 +79,7 @@ export function SharedTripView() {
       <p className="text-sm text-muted">
         Want your own?{" "}
         <Link href="/#destinations" className="font-medium text-accent underline">
-          Browse creator itineraries
+          Browse creator routes
         </Link>
       </p>
     </div>

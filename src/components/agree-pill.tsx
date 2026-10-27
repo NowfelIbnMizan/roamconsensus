@@ -20,12 +20,16 @@ export function AgreePill({
 }) {
   if (!creators.length && !skippedBy.length) return null;
   const all = total > 1 && creators.length === total;
+  // Phones drop "Picked by" so the pill fits one line in the two-column grid; the section heading says it already.
   const label =
-    total <= 1
-      ? `Picked by ${creators[0]?.name ?? "a creator"}`
-      : all
-        ? `All ${total} creators agree`
-        : `${creators.length} of ${total} creators agree`;
+    total <= 1 ? (
+      `Picked by ${creators[0]?.name ?? "a creator"}`
+    ) : (
+      <>
+        <span className="hidden sm:inline">Picked by </span>
+        {all ? `all ${total}` : `${creators.length} of ${total}`} creators
+      </>
+    );
   return (
     <details className={`group ${className}`}>
       <summary

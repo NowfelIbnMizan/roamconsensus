@@ -47,3 +47,9 @@ export function decodeTrip(token: string): SharedTrip | null {
     return null;
   }
 }
+
+/** Short code for a trip payload: the first 8 characters of its SHA-256, base64url. Same on the server (api/share). */
+export async function shortCode(payload: string) {
+  const hash = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(payload)));
+  return toBase64Url(String.fromCharCode(...hash)).slice(0, 8);
+}

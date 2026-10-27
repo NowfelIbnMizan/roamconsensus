@@ -37,9 +37,9 @@ function alertHtml(userId: string, changes: PriceChange[], routes: NewRoute[]) {
     .join("");
   return `<div style="font-family:system-ui,sans-serif;max-width:520px">
 <h2 style="margin:0 0 12px">News for your Creatour trip</h2>
-${changes.length ? `<p>Prices changed for stops in your trip cart:</p><ul>${priceRows}</ul>` : ""}
+${changes.length ? `<p>Prices changed for stops in your trip:</p><ul>${priceRows}</ul>` : ""}
 ${routes.length ? `<p>New creator routes for your cities:</p><ul>${routeRows}</ul>` : ""}
-<p><a href="${site}/cart" style="display:inline-block;background:#0f766e;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none">Open my trip cart</a></p>
+<p><a href="${site}/cart" style="display:inline-block;background:#0f766e;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none">Open my trip</a></p>
 <p style="color:#78716c;font-size:12px">You turned on trip alerts at Creatour. <a href="${alertsOffUrl(userId)}" style="color:#78716c">Turn off alerts</a></p>
 </div>`;
 }

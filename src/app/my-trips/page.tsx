@@ -35,7 +35,7 @@ export default function MyTripsPage() {
         <MyTrips canEmail={canSendEmail()} />
       ) : (
         <p className="rounded-2xl border border-dashed border-line p-10 text-center text-muted">
-          Accounts are coming soon. Your trip cart is saved on this device for now.
+          Accounts are coming soon. Your trip plan is saved on this device for now.
         </p>
       )}
     </>

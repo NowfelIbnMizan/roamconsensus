@@ -27,7 +27,7 @@ export function DestinationTabs({ slug }: { slug: string }) {
     return () => window.removeEventListener("resize", check);
   }, []);
   const tabs = [
-    { href: `/destinations/${slug}`, label: "Itineraries" },
+    { href: `/destinations/${slug}`, label: "Routes" },
     { href: `/destinations/${slug}/best`, label: "Top picks" },
     { href: `/destinations/${slug}/stay`, label: "Where to stay" },
     { href: `/destinations/${slug}/when`, label: "When to go" },

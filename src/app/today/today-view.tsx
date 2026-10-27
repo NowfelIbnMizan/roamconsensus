@@ -56,7 +56,7 @@ export function TodayView() {
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">No trip planned yet.</p>
-        <p className="mt-1 text-sm text-muted">Add a route to your trip cart, then come back here while you travel.</p>
+        <p className="mt-1 text-sm text-muted">Add a route to your trip, then come back here while you travel.</p>
         <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
           Browse destinations
         </Link>
@@ -132,7 +132,7 @@ export function TodayView() {
             <h2 className="flex items-center gap-2 font-semibold">
               <CloudRain className="size-5 text-sky-700 dark:text-sky-400" aria-hidden /> Rainy day? Indoor backups
             </h2>
-            <p className="mt-1 text-sm text-muted">Spots under a roof that creators recommend in {city?.name}.</p>
+            <p className="mt-1 text-sm text-muted">Places under a roof that creators recommend in {city?.name}.</p>
             <ul className="mt-3 divide-y divide-line">
               {data.rainyPicks.map((p) => (
                 <li key={p.href} className="flex items-center justify-between gap-3 py-2">
@@ -167,7 +167,7 @@ export function TodayView() {
           <p className="rounded-2xl border border-dashed border-line p-6 text-center text-muted">
             Nothing planned for day {day}. A free day!{" "}
             <Link href="/cart" className="text-accent underline">
-              Plan it in your trip cart
+              Plan it in your trip
             </Link>
           </p>
         ) : (
@@ -283,7 +283,7 @@ export function TodayView() {
         <p className="mt-8 text-xs text-muted">
           Works offline once opened: your plan is saved on this phone. Edit it in your{" "}
           <Link href="/cart" className="underline">
-            trip cart
+            trip plan
           </Link>
           .
         </p>

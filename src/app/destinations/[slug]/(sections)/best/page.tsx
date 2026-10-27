@@ -176,8 +176,8 @@ export default async function BestPage({ params }: Props) {
             The best of {d.name}, according to {who}
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Ranked by how many of {d.routes.length} {d.name} itineraries
-            recommend each spot.
+            Ranked by how many of {d.routes.length} {d.name} routes
+            recommend each place.
           </p>
         </div>
         <a
@@ -267,13 +267,13 @@ export default async function BestPage({ params }: Props) {
       <div className="mt-12 rounded-2xl border border-line bg-card p-5">
         <p className="font-medium">Want it as a day-by-day plan?</p>
         <p className="mt-1 text-sm text-muted">
-          Compare the full {d.name} itineraries and add stops to your trip cart.
+          Compare the full {d.name} routes and add stops to your trip.
         </p>
         <Link
           href={`/destinations/${d.slug}`}
           className="mt-3 inline-flex rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
         >
-          See {d.name} itineraries
+          See {d.name} routes
         </Link>
       </div>
       <UpdatedOn date={d.updatedAt} />

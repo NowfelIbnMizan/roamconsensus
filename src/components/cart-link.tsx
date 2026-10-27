@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingBag, Sun } from "lucide-react";
+import { Luggage, Sun } from "lucide-react";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 import { useTripDay } from "@/lib/use-trip-day";
 
@@ -24,11 +24,11 @@ export function CartLink() {
       )}
       <Link
         href="/cart"
-        aria-label="Trip cart"
+        aria-label="Trip plan"
         className="relative flex items-center gap-1.5 rounded-full border border-line px-3 py-1 whitespace-nowrap"
       >
-        <ShoppingBag className="size-4" aria-hidden />
-        <span className="hidden lg:inline">Trip cart</span>
+        <Luggage className="size-4" aria-hidden />
+        <span className="hidden lg:inline">Trip plan</span>
         {hydrated && count > 0 && (
           <span className="ml-0.5 rounded-full bg-accent px-1.5 text-xs font-medium text-background">{count}</span>
         )}

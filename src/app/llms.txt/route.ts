@@ -12,7 +12,7 @@ export async function GET() {
   const lines = [
     "# Creatour",
     "",
-    "> Creatour compares real travel creators' itineraries for each destination and shows where they agree: which places most creators recommend, which they say to skip, and what each route costs. Every recommendation links to the creator's original guide.",
+    "> Creatour compares real travel creators' itineraries for each destination and shows the places they don't miss: which places most creators recommend, which they say to skip, and what each route costs. Every recommendation links to the creator's original guide.",
     "",
     'How to read the data: a place\'s rank comes from how many different creators recommend it. "3 of 4 creators" means three of the four creators covering that city include it. Prices are typical costs in USD with a source link where the creator gave none.',
     "",
@@ -25,7 +25,7 @@ export async function GET() {
     lines.push(
       `- [${d.name}, ${d.country}](${base}/destinations/${d.slug}): ${d.summary} (${d.routes.length} itineraries from ${who})`,
     );
-    lines.push(`  - [Top picks ranked by creator agreement](${base}/destinations/${d.slug}/best)`);
+    lines.push(`  - [Top picks ranked by how many creators picked them](${base}/destinations/${d.slug}/best)`);
     lines.push(
       `  - [Best time to go](${base}/destinations/${d.slug}/when), [Before you go](${base}/destinations/${d.slug}/before), [Budget](${base}/destinations/${d.slug}/budget), [eSIM plans](${base}/destinations/${d.slug}/esim)`,
     );

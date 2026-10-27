@@ -29,9 +29,9 @@ export function PrintTrip() {
   if (items.length === 0)
     return (
       <p className="text-muted">
-        Your trip cart is empty.{" "}
+        Nothing in your trip yet.{" "}
         <Link href="/cart" className="underline">
-          Back to the cart
+          Back to your trip
         </Link>
       </p>
     );
@@ -62,7 +62,7 @@ export function PrintTrip() {
     <article className="mx-auto max-w-3xl text-[15px] print:max-w-none print:text-[11pt]">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3 print:hidden">
         <Link href="/cart" className="text-sm text-muted hover:text-foreground">
-          ← Back to the cart
+          ← Back to your trip
         </Link>
         <button
           type="button"

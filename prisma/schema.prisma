@@ -492,3 +492,11 @@ model GroupVote {
 
   @@id([groupItemId, userId])
 }
+
+/// Short trip-share links: /t/<code> stands for /trip?t=<payload>, so a shared link stays short. The code is a hash of
+/// the payload, so sharing the same trip twice gives the same link.
+model ShareLink {
+  code      String   @id
+  payload   String
+  createdAt DateTime @default(now())
+}
