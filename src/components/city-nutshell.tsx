@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BedDouble, CalendarDays, Star, Sun, TrainFront, Wallet, type LucideIcon } from "lucide-react";
 import { Money } from "@/components/money";
-import { costGuides } from "@/lib/costs";
+import { costGuideOf } from "@/lib/costs";
 import type { getDestination, getStays } from "@/lib/data";
 import { placeHref } from "@/lib/place";
 import { bestMonths } from "@/lib/seasons";
@@ -34,7 +34,7 @@ const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.len
 export function CityNutshell({ d, stays }: { d: Destination; stays: Stays }) {
   const days = d.routes.map((r) => r.days);
   const [min, max] = [Math.min(...days), Math.max(...days)];
-  const guide = costGuides[d.slug]?.styles.backpacker;
+  const guide = costGuideOf(d)?.styles.backpacker;
   const cheapestNight = stays.length ? stays.reduce((a, b) => (b.priceCents < a.priceCents ? b : a)) : null;
   const transport = d.tips.find((t) => /transport|getting around/i.test(t.topic));
   const base = topStayArea(d.consensus);

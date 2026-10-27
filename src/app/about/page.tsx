@@ -3,8 +3,7 @@ import { AtSign, Mail } from "lucide-react";
 import { FellowTraveller } from "@/components/creator-notice";
 import { EditorAvatar } from "@/components/editor-take";
 import { CONTACT_EMAIL } from "@/lib/contact";
-import { getEditor, paragraphs } from "@/lib/editor";
-import { PHOTOS } from "./photo-list";
+import { getAboutPhotos, getEditor, paragraphs } from "@/lib/editor";
 import { AboutPhotos } from "./photos";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AboutPage() {
   const e = await getEditor();
+  const photos = await getAboutPhotos();
   // Always the site address: it forwards to the owner's inbox without showing their personal email.
   const email = CONTACT_EMAIL;
   return (
@@ -32,7 +32,7 @@ export default async function AboutPage() {
             <p key={i}>{p}</p>
           ))}
         </div>
-        <AboutPhotos photos={PHOTOS} className="mt-6 lg:hidden" />
+        <AboutPhotos photos={photos} className="mt-6 lg:hidden" />
         <p className="mt-5 flex flex-wrap gap-4 text-sm">
           <a href={`mailto:${email}`} className="inline-flex items-center gap-1.5 text-accent underline">
             <Mail className="size-4" aria-hidden /> {email}
@@ -78,7 +78,7 @@ export default async function AboutPage() {
         </p>
       </article>
       <aside className="hidden lg:sticky lg:top-6 lg:block lg:self-start">
-        <AboutPhotos photos={PHOTOS} />
+        <AboutPhotos photos={photos} />
       </aside>
     </div>
   );

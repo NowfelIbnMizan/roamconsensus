@@ -100,6 +100,8 @@ model Destination {
   isSample         Boolean            @default(false)
   /// Where the month-by-month weather figures come from.
   climateSourceUrl String?
+  /// Typical daily costs per travel style for the Budget tab (lib/costs.ts CostGuide). Edited in admin.
+  costGuide        Json?
   places           Place[]
   itineraries      Itinerary[]
   posts            Post[]
@@ -499,4 +501,22 @@ model ShareLink {
   code      String   @id
   payload   String
   createdAt DateTime @default(now())
+}
+
+/// Phone and signal notes under a country's eSIM plans (lib/esim-guides.ts EsimGuide). Edited in Admin > eSIM plans.
+model EsimGuide {
+  country   String   @id
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
+/// The owner's travel photos rotating on the About page. Edited in Admin > About me.
+model AboutPhoto {
+  id       String  @id @default(cuid())
+  src      String
+  alt      String
+  caption  String
+  /// Landscape (wider than tall): only shown in the landscape slots.
+  wide     Boolean @default(false)
+  position Int     @default(0)
 }

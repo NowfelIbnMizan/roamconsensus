@@ -43,3 +43,11 @@ export const paragraphs = (text: string) =>
     .split(/\n\s*\n/)
     .map((p) => p.trim())
     .filter(Boolean);
+
+/** The travel photos rotating on the About page, in admin order. */
+export async function getAboutPhotos() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  return db.aboutPhoto.findMany({ orderBy: { position: "asc" }, select: { src: true, alt: true, caption: true, wide: true } });
+}

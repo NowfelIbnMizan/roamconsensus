@@ -26,7 +26,7 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 - **The database is the source of truth.** Owner edits content in `/admin` (cities, places, creators, blog, import itineraries via pasted JSON).
 - Seed (`prisma/seed.ts`) only **adds** itineraries/destinations from `data/` that are new (tracked in `SeedLog`). It never updates existing rows; admin deletions stay deleted.
 - **Fixing data in existing rows = SQL data migration** in `prisma/migrations/` (runs on deploy). Only fill NULLs unless told otherwise.
-- New city bundle = itineraries + when-to-go + 12+ before-you-go tips + eSIM JSON (`data/esim/<country>.json`, keep `"dataGb": null` for unlimited) + guide (`src/lib/esim-guides.ts`) + budget (`src/lib/costs.ts`) + FAQ + map pins.
+- New city bundle = itineraries + when-to-go + 12+ before-you-go tips + eSIM JSON (`data/esim/<country>.json`, keep `"dataGb": null` for unlimited) + guide (Admin > eSIM plans) + budget (Admin > city page) + FAQ + map pins.
 - Prices: researched price needs a source URL (`priceSource`); no source = "Price not listed". Never guess. Closed places stay on route, marked Closed, excluded from totals.
 - Creator content: only their own public content, credited. Readable blogs via fetch: myglobalviewpoint, thebrokebackpacker, saltinourhair. Not: nomadicmatt, alexinwanderland, twowanderingsoles, findingtheuniverse, wanderlustcrew.
 
@@ -91,7 +91,7 @@ Every push to any branch = a Vercel build = migrations + seed + full prerender r
 ## Open work (as of 2026-10-25)
 
 - "Perfect cities" plan done: all 11 cities checked (pins, photos, prices, websites, open/closed, tips) and merged (#56, #82). Admin scorecard at `/admin/health`. Creator counts only include creators with a route (#83).
-- Kyoto per-style budget still missing (no source; don't invent).
+- Kyoto per-style budget still missing (no source; don't invent). Budgets, eSIM guides and About photos are edited in admin now (DB), not code.
 - After polish: add creators to fill tier gaps (backpacker → luxury) and length gaps (1-2, 3-4, 5+ days). Example: Bali has no budget route and no 1-2 day route.
 
 ## Map of the code

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs, getStays } from "@/lib/data";
-import { costGuides } from "@/lib/costs";
+import { costGuideOf } from "@/lib/costs";
 import { BudgetCalculator } from "./budget-calculator";
 
 export async function generateStaticParams() {
@@ -22,7 +22,7 @@ export default async function BudgetPage({ params }: PageProps<"/destinations/[s
   const { slug } = await params;
   const [d, stays] = await Promise.all([getDestination(slug), getStays(slug)]);
   if (!d) notFound();
-  const guide = costGuides[d.slug];
+  const guide = costGuideOf(d);
   if (!guide) return <p className="text-muted">A budget calculator for {d.name} is coming soon.</p>;
 
   return (

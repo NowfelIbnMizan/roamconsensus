@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import type { AboutPhoto } from "./photo-list";
+export type AboutPhoto = { src: string; alt: string; caption: string; wide: boolean; focus?: string };
 
 // Two portrait slots over two landscape ones. A photo only goes in a slot of its own shape, so nothing is cropped
 // sideways into the wrong orientation.

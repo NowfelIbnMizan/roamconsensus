@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs, getEsimPlans } from "@/lib/data";
-import { esimGuides, type EsimGuide } from "@/lib/esim-guides";
+import { getEsimGuide, type EsimGuide } from "@/lib/esim-guides";
 import { PlanPicker } from "./plan-picker";
 import { ChevronDown, ShieldCheck, Signal, Wifi } from "lucide-react";
 import type { ReactNode } from "react";
@@ -35,7 +35,7 @@ export default async function EsimPage({
     );
   }
 
-  const guide = esimGuides[destination.country];
+  const guide = await getEsimGuide(destination.country);
   const checked = plans.reduce(
     (latest, p) => (p.checkedAt > latest ? p.checkedAt : latest),
     plans[0].checkedAt,
