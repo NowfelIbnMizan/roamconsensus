@@ -174,7 +174,7 @@ export function TripFinder({
           </>
         ) : (
           <span className="block max-w-24 text-xs text-muted">
-            {r.totalCents > 0 ? "Partly priced" : "Prices not listed"}
+            {r.totalCents > 0 ? "Some prices missing" : "No prices listed"}
           </span>
         )}
       </span>
@@ -187,7 +187,7 @@ export function TripFinder({
         <span>Route</span>
         <span>Days</span>
         <span>Style</span>
-        <span className="text-right">Est. per person</span>
+        <span className="text-right">Per person</span>
       </div>
       <ul className="divide-y divide-line">{rs.map(row)}</ul>
     </div>
@@ -220,7 +220,7 @@ export function TripFinder({
       ? tierLabel[tier]
       : "Any budget";
 
-  // Each filter is a pill that opens its picker; choices apply at once and "Show trips" closes it.
+  // Each filter is a pill that opens its picker; choices apply at once and "Show routes" closes it.
   const picker = (
     label: string,
     on: boolean,
@@ -240,7 +240,7 @@ export function TripFinder({
       <div className="mt-4">{body}</div>
       <form method="dialog" className="mt-5">
         <button className="w-full rounded-full bg-accent px-4 py-2.5 text-sm font-medium text-background">
-          Show {shown.length} {shown.length === 1 ? "trip" : "trips"}
+          Show {shown.length} {shown.length === 1 ? "route" : "routes"}
         </button>
       </form>
     </StopDetails>
@@ -249,7 +249,7 @@ export function TripFinder({
   return (
     <div>
       <h1 className="text-3xl font-semibold tracking-tight">
-        {shown.length} {shown.length === 1 ? "trip" : "trips"}
+        {shown.length} {shown.length === 1 ? "route" : "routes"}
         {names.length > 0 && ` in ${names.join(" + ")}`}
       </h1>
       <p className="mt-1 text-muted">
@@ -421,7 +421,7 @@ export function TripFinder({
             value={sort}
             onChange={(e) => setSort(e.target.value as keyof typeof SORTS)}
             className="rounded-lg border border-line bg-card px-2 py-1"
-            aria-label="Sort trips"
+            aria-label="Sort routes"
           >
             {Object.entries(SORTS).map(([k, v]) => (
               <option key={k} value={k}>

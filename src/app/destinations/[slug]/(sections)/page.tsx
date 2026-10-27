@@ -220,8 +220,8 @@ export default async function DestinationPage({
               ) : (
                 <p className="mt-3 text-sm text-muted">
                   {r.totalCents > 0
-                    ? `Partly priced (${r.stops - r.unpricedCount} of ${r.stops} stops)`
-                    : "Creator didn't list prices"}
+                    ? `Some prices missing (${r.stops - r.unpricedCount} of ${r.stops} stops priced)`
+                    : "No prices listed"}
                 </p>
               )}
               <p className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">

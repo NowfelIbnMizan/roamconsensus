@@ -218,7 +218,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
           href="/itineraries"
           className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
         >
-          Find a trip
+          Find a route
         </Link>
       </section>
     );

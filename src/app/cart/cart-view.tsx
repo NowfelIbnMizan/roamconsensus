@@ -320,7 +320,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                   <VendorBadge name={group.vendor} bookable={group.items[0].vendor !== null} />
                 </h2>
                 <span className="text-sm tabular-nums text-muted">
-                  {group.items.some((i) => i.priceCents !== null) ? money(group.totalCents) : "Price on site"}
+                  {group.items.some((i) => i.priceCents !== null) ? money(group.totalCents) : "Price not listed"}
                 </span>
               </header>
               <ul className="divide-y divide-line">
@@ -368,7 +368,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                     </div>
                     {item.priceCents === null ? (
                       <span className="max-w-40 rounded-full bg-amber-500/15 px-2 py-0.5 text-right text-xs text-amber-700 dark:text-amber-300">
-                        {item.priceNote ?? "Varies · pay on site"}
+                        {item.priceNote ?? "Price not listed"}
                       </span>
                     ) : (
                       <span className="min-w-16 max-w-40 text-right text-sm tabular-nums">{price(item)}</span>
