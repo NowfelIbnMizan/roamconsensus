@@ -137,8 +137,13 @@ h2 {
 .fade-in {
   animation: fade-in 600ms ease-out;
 }
+/* About photos: the new photo fades in over the old one. */
+.crossfade {
+  animation: fade-in 1400ms ease-in-out;
+}
 @media (prefers-reduced-motion: reduce) {
-  .fade-in {
+  .fade-in,
+  .crossfade {
     animation: none;
   }
 }
