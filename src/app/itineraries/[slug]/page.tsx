@@ -343,9 +343,10 @@ export default async function ItineraryPage({
               >
                 ·{" "}
                 <span className="font-medium text-foreground">
-                  ~<Money cents={it.totalCents} />
+                  <Money cents={it.totalCents} />
+                  {priced < kept.length && "+"}
                 </span>
-                {priced < kept.length && " so far"}
+                {priced < kept.length && " in listed prices"}
               </span>
             )}
             <span>
