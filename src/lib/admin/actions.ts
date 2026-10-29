@@ -198,6 +198,7 @@ export async function savePlace(fd: FormData) {
       .slice(0, 12),
     ...(await mapPin(text(fd, "pin"))),
     closed: checkbox(fd, "closed"),
+    hidePhoto: checkbox(fd, "hidePhoto"),
     ...(checkbox(fd, "checkedNow") && { checkedAt: new Date() }),
   };
   const place = id
@@ -209,11 +210,16 @@ export async function savePlace(fd: FormData) {
   published(await destinationChanged(place.destinationId));
 }
 
+// Hidden-photo rows are dated far in the future; anything after this is one.
+const HIDDEN_UNTIL = new Date("9000-01-01T00:00:00Z");
+
 /** The first photo link typed in admin replaces the stock photo; clearing the links lets the stock search run again. */
 async function saveOwnPhoto(place: {
   slug: string;
   destinationId: string;
   photos: string[];
+  category: ItemCategory;
+  hidePhoto: boolean;
 }) {
   const { slug } = await db.destination.findUniqueOrThrow({
     where: { id: place.destinationId },
@@ -224,6 +230,37 @@ async function saveOwnPhoto(place: {
     placePhotoKey(slug, { slug: place.slug, website: null }),
     placePhotoKey(slug, { slug: place.slug, website: "x" }),
   ];
+  // A hidden photo is a placeholder row that never expires, so no search
+  // replaces it; showing it again clears that row.
+  await db.photoCache.deleteMany({
+    where: {
+      key: { in: keys },
+      source: "PLACEHOLDER",
+      fetchedAt: { gt: HIDDEN_UNTIL },
+    },
+  });
+  if (place.hidePhoto) {
+    const row = {
+      url: `/placeholders/${place.category.toLowerCase()}.svg`,
+      source: "PLACEHOLDER" as const,
+      attribution: null,
+      creditUrl: null,
+      fetchedAt: new Date("9999-12-31T00:00:00Z"),
+    };
+    await Promise.all([
+      ...keys.map((key) =>
+        db.photoCache.upsert({
+          where: { key },
+          create: { key, ...row },
+          update: row,
+        }),
+      ),
+      ...keys.map((key) =>
+        db.photoCache.deleteMany({ where: { key: { startsWith: `${key}#` } } }),
+      ),
+    ]);
+    return;
+  }
   const [url] = place.photos;
   if (!url) {
     await db.photoCache.deleteMany({
@@ -372,6 +409,7 @@ export async function saveCreator(fd: FormData) {
     bio: optional(fd, "bio"),
     // Only ever a photo the creator agreed to; https so it never breaks the page's mixed-content rules.
     avatarUrl: avatarUrl?.startsWith("https://") ? avatarUrl : null,
+    hideAvatar: checkbox(fd, "hideAvatar"),
     ...socials,
     // Blank main link falls back to the first social profile given.
     profileUrl:

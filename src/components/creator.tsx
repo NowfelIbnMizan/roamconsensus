@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ReadMore } from "@/components/read-more";
 import { ArrowRight } from "lucide-react";
+import { AvatarImage } from "@/components/avatar-image";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { CreatorHover } from "@/components/creator-hover";
 import { SocialIcon } from "@/components/social-icons";
@@ -12,6 +12,7 @@ type Creator = {
   name: string;
   profileUrl?: string | null;
   avatarUrl?: string | null;
+  hideAvatar?: boolean;
   bio?: string | null;
 } & CreatorLinks;
 
@@ -23,19 +24,22 @@ const pill =
  * opens a small profile card. With `link` false (inside another link) it is a plain pill.
  */
 export function CreatorChip({ creator, link = true }: { creator: Creator; link?: boolean }) {
+  const initial = (
+    <span
+      aria-hidden
+      className={`flex size-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ring-0 ${creatorTint(creator.handle)}`}
+    >
+      {creator.name.charAt(0)}
+    </span>
+  );
   const content = (
     <>
-      {creator.avatarUrl ? (
+      {creator.avatarUrl && !creator.hideAvatar ? (
         <span aria-hidden className="relative size-4 shrink-0 overflow-hidden rounded-full">
-          <Image src={creator.avatarUrl} alt="" fill sizes="16px" unoptimized className="object-cover" />
+          <AvatarImage src={creator.avatarUrl} sizes="16px" fallback={initial} />
         </span>
       ) : (
-        <span
-          aria-hidden
-          className={`flex size-4 items-center justify-center rounded-full text-[10px] font-bold ring-0 ${creatorTint(creator.handle)}`}
-        >
-          {creator.name.charAt(0)}
-        </span>
+        initial
       )}
       {creator.name}
     </>

@@ -430,6 +430,11 @@ export default async function DestinationAdmin({
                   rows={3}
                 />
                 <Checkbox
+                  label="Hide photo (show the category icon instead)"
+                  name="hidePhoto"
+                  defaultChecked={p.hidePhoto}
+                />
+                <Checkbox
                   label="Closed for good (stays on routes, left out of costs)"
                   name="closed"
                   defaultChecked={p.closed}
