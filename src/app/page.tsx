@@ -26,7 +26,7 @@ export default async function Home() {
   ]);
   const { creators } = stats;
   // Letter circles look like a placeholder, so the faces row waits until a few creators have agreed to a photo.
-  const faces = creators.filter((c) => c.avatarUrl);
+  const faces = creators.filter((c) => c.avatarUrl && !c.hideAvatar);
   const routes = destinations.reduce((n, d) => n + d._count.itineraries, 0);
   const live = new Set(destinations.map((d) => d.slug));
   const placeholders = comingSoon

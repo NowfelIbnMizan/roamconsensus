@@ -10,6 +10,8 @@ export async function GET(request: Request) {
   const key = placePhotoKey(p.destination.slug, p);
   const query = placeQuery(p.name, p.destination.name);
   const main = await getPhoto({ key, query, category: p.category, website: p.website });
+  // A placeholder main photo (none found, or hidden in admin) gets no gallery either.
+  if (main.source === "PLACEHOLDER") return Response.json([]);
   return Response.json(await findGallery(key, query, main), {
     headers: { "Cache-Control": "public, max-age=3600" },
   });

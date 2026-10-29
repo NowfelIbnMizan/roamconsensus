@@ -164,7 +164,7 @@ function placeSummary(place: PlaceWithItems) {
     blurb: place.blurb,
     tip: place.tip,
     website: place.website,
-    photos: place.photos,
+    photos: place.hidePhoto ? [] : place.photos,
     lat: place.lat,
     lng: place.lng,
     fromPrice: priced[0]
@@ -821,7 +821,7 @@ export async function getSiteStats() {
     db.creator.findMany({
       where: { itineraries: { some: {} } },
       orderBy: { name: "asc" },
-      select: { handle: true, name: true, avatarUrl: true },
+      select: { handle: true, name: true, avatarUrl: true, hideAvatar: true },
     }),
     db.place.count({
       where: { items: { some: { sentiment: { not: "AVOID" } } } },

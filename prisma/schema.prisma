@@ -126,6 +126,8 @@ model Creator {
   pinterestUrl   String?
   websiteUrl     String?
   avatarUrl      String?
+  /// Admin switch: keep the avatar link but show the initial instead.
+  hideAvatar     Boolean     @default(false)
   bio            String?
   itineraries    Itinerary[]
   coupons        Coupon[]
@@ -175,6 +177,8 @@ model Place {
   lng           Float?
   /// Shut for good (or for a long refurbishment). Stays on creators' routes with a "Closed" label, left out of costs.
   closed        Boolean      @default(false)
+  /// Admin switch: show the category icon instead of any photo of this place.
+  hidePhoto     Boolean      @default(false)
   /// When someone last checked it is still open (Google Maps or its own site).
   checkedAt     DateTime?
   destinationId String

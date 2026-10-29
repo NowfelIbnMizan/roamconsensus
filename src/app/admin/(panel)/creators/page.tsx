@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { deleteCreator, saveCreator } from "@/lib/admin/actions";
 import { SOCIALS } from "@/lib/creator-links";
 import { platformOptions } from "../../options";
-import { DeleteButton, Field, SaveButton, Select, TextArea } from "../../ui";
+import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea } from "../../ui";
 
 type Creator = Awaited<ReturnType<typeof db.creator.findFirstOrThrow>>;
 
@@ -44,8 +44,9 @@ function CreatorFields({ c }: { c?: Creator }) {
         name="avatarUrl"
         type="url"
         defaultValue={c?.avatarUrl}
-        hint="Only with the creator's written OK. Paste an https image link they gave you. Blank = initial."
+        hint="Only with the creator's written OK. Use a lasting https link they gave you (their website or Pinterest). Instagram and TikTok photo links expire within days. Blank = initial."
       />
+      <Checkbox label="Hide photo (show the initial instead)" name="hideAvatar" defaultChecked={c?.hideAvatar} />
       <TextArea label="Bio" name="bio" defaultValue={c?.bio} />
     </>
   );
