@@ -44,7 +44,7 @@ export default async function HealthPage() {
       {cities.map((c) => (
         <section key={c.id} id={c.slug} className="mt-10 scroll-mt-6">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-xl font-semibold">{c.name}</h2>
+            <h2 className="font-display text-2xl">{c.name}</h2>
             <Link
               href={`/admin/destinations/${c.id}`}
               className="text-sm text-accent underline"

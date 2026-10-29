@@ -244,6 +244,7 @@ export default async function DestinationAdmin({
             >
               <EditDialog
                 floating
+                openId={`place-${p.id}`}
                 title={p.name}
                 subtitle={`${categoryLabel[p.category]}, on ${p._count.items} route stop${p._count.items === 1 ? "" : "s"}`}
               >

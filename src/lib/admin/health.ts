@@ -45,6 +45,7 @@ export async function cityHealth() {
           days: true,
           items: {
             select: {
+              id: true,
               name: true,
               category: true,
               sentiment: true,
@@ -81,7 +82,8 @@ export async function cityHealth() {
         p.items.some((i) => i.sentiment !== "AVOID"),
       );
       const open = used.filter((p) => !p.closed);
-      const place = (p: { name: string }) => ({ name: p.name, href: edit });
+      // Links open the place's edit pop-up straight away.
+      const place = (p: { id: string; name: string }) => ({ name: p.name, href: `${edit}?edit=place-${p.id}#places` });
       const placeCheck = (
         label: string,
         rule: string,
@@ -100,7 +102,7 @@ export async function cityHealth() {
           .filter((i) => i.sentiment !== "AVOID" && !i.place?.closed)
           .map((i) => ({
             ...i,
-            href: `/admin/itineraries/${it.id}`,
+            href: `/admin/itineraries/${it.id}?edit=stop-${i.id}`,
             route: it.title,
           })),
       );
@@ -189,14 +191,15 @@ export async function cityHealth() {
           total: MIN_TIPS,
           missing:
             d._count.tips < MIN_TIPS
-              ? [{ name: `${MIN_TIPS - d._count.tips} more tips`, href: edit }]
+              ? [{ name: `${MIN_TIPS - d._count.tips} more tips`, href: `${edit}#tips` }]
               : [],
         },
-        one("When to go", "All 12 months filled.", d._count.months === 12),
+        one("When to go", "All 12 months filled.", d._count.months === 12, `${edit}#when`),
         one(
           "Budget",
           "Daily costs per travel style (edit on the city page).",
           Boolean(costGuideOf(d)),
+          `${edit}#budget`,
         ),
         one(
           "eSIM",
@@ -234,7 +237,7 @@ export async function cityHealth() {
             (t) => !d.itineraries.some((it) => it.tier === t),
           ).map((t) => ({
             name: `No ${t.toLowerCase()} route`,
-            href: edit,
+            href: `${edit}#routes`,
           })),
         },
         {
@@ -247,7 +250,7 @@ export async function cityHealth() {
           missing: LENGTHS.filter(
             (l) =>
               !d.itineraries.some((it) => it.days >= l.min && it.days <= l.max),
-          ).map((l) => ({ name: `No ${l.label} route`, href: edit })),
+          ).map((l) => ({ name: `No ${l.label} route`, href: `${edit}#routes` })),
         },
       ];
       return {

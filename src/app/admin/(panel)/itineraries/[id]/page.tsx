@@ -296,7 +296,7 @@ export default async function ItineraryAdmin({
                         </p>
                       </div>
                       <div className="absolute right-2 top-2">
-                        <EditDialog title={item.name} subtitle={`Day ${item.day}, ${categoryLabel[item.category]}`}>
+                        <EditDialog openId={`stop-${item.id}`} title={item.name} subtitle={`Day ${item.day}, ${categoryLabel[item.category]}`}>
                           {stopForm(item)}
                           <div className="mt-3 text-right">
                             <DeleteButton action={deleteItem} id={item.id} what={item.name} />

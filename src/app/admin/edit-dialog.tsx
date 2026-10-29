@@ -1,7 +1,7 @@
 "use client";
 
 import { Pencil, Plus, X } from "lucide-react";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 /**
  * An Edit (or Add) button that opens its form in a pop-up. Saving closes the pop-up; the page refreshes behind it
@@ -13,6 +13,7 @@ export function EditDialog({
   label = "Edit",
   add,
   floating,
+  openId,
   children,
 }: {
   title: string;
@@ -22,9 +23,22 @@ export function EditDialog({
   add?: boolean;
   /** Sit on top of a photo card. */
   floating?: boolean;
+  /** Opens by itself when the address has ?edit=<openId> (links from City health). */
+  openId?: string;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const url = new URL(location.href);
+    if (!openId || url.searchParams.get("edit") !== openId) return;
+    // After the tabs have switched to the right panel, or the pop-up opens inside a hidden one.
+    const t = setTimeout(() => {
+      ref.current?.showModal();
+      url.searchParams.delete("edit");
+      history.replaceState(null, "", url);
+    }, 50);
+    return () => clearTimeout(t);
+  }, [openId]);
   const Icon = add || label.startsWith("Add") ? Plus : Pencil;
   return (
     <>
