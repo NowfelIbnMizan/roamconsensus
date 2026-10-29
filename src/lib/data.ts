@@ -564,6 +564,10 @@ export async function getQuizData() {
       /** Hotels without a price leave the total far too low to compare against a budget. */
       unpricedStays: kept.filter((i) => i.category === "STAY" && isUnpriced(i))
         .length,
+      /** No hotel and no food listed: the total is sights only, so it can't be compared with full routes. */
+      sightsOnly: !kept.some(
+        (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
+      ),
       /** Share of the route's stops matching each vibe, 0–1. */
       vibes: Object.fromEntries(
         Object.entries(counts).map(([k, n]) => [

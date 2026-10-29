@@ -181,6 +181,12 @@ h2 {
 .leaflet-container {
   font-family: inherit;
 }
+/* Bigger zoom buttons for fingers. */
+.leaflet-touch .leaflet-bar a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
 .rc-pin-wrap {
   background: none;
   border: none;

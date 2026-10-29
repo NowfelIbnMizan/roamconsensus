@@ -37,7 +37,7 @@ const tripMatch = (p: string) =>
   p.startsWith("/my-trips");
 
 const tabClass = (active: boolean) =>
-  `relative flex w-full flex-col items-center gap-0.5 py-2 text-[11px] ${active ? "font-medium text-accent" : "text-muted"}`;
+  `relative flex w-full flex-col items-center gap-0.5 py-2 text-xs ${active ? "font-medium text-accent" : "text-muted"}`;
 
 /**
  * Thumb-reach tab bar on phones, where the header has no room for links. The Trip tab opens a small menu, so the cart,

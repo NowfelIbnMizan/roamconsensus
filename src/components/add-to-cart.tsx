@@ -8,8 +8,10 @@ export function AddRouteButton({
   label = "Add whole route to trip",
   doneLabel = "Whole route in your trip",
   removeLabel = "Remove route from trip",
+  className = "",
 }: {
   items: CartItem[];
+  className?: string;
   label?: string;
   doneLabel?: string;
   removeLabel?: string;
@@ -28,7 +30,7 @@ export function AddRouteButton({
       onClick={() => (all ? items.forEach((i) => remove(i.id)) : add(items))}
       aria-pressed={all}
       title={all ? `Click to ${removeLabel.toLowerCase()}` : undefined}
-      className={`group inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${
+      className={`group inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${className} ${
         all ? "bg-accent-soft text-accent ring-1 ring-accent/30 ring-inset" : "bg-foreground text-background"
       }`}
     >

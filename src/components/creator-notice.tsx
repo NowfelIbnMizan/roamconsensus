@@ -36,7 +36,7 @@ export function CreatorNoticeLine({
           : name
             ? `${name} is independent. Not affiliated, not an endorsement.`
             : "Creators are independent, not affiliated with or endorsed by Creatour."}{" "}
-        <Link href="/disclosure#credits" className="underline">
+        <Link href="/disclosure#credits" className="underline pointer-coarse:inline-block pointer-coarse:py-2">
           Credits
         </Link>
       </span>

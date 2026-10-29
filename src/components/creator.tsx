@@ -17,7 +17,7 @@ type Creator = {
 } & CreatorLinks;
 
 const pill =
-  "inline-flex items-center gap-1.5 rounded-full bg-card py-0.5 pr-2.5 pl-1 text-sm font-medium text-foreground ring-1 ring-line-strong ring-inset";
+  "inline-flex items-center gap-1.5 rounded-full bg-card py-0.5 pr-2.5 pl-1 pointer-coarse:py-1.5 text-sm font-medium text-foreground ring-1 ring-line-strong ring-inset";
 
 /**
  * A creator's name as a quiet pill; only the initial carries the creator's colour. It links to their Creatour page; a mouse resting on it, or a tap on a phone,
