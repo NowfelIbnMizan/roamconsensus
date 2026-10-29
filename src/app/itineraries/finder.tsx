@@ -114,6 +114,7 @@ export function TripFinder({
       <div className="flex min-w-0 items-center gap-3">
         <Thumb
           url={r.photoUrl}
+          alt={r.destination.name}
           category="EXPERIENCE"
           sizes="64px"
           className="size-14 shrink-0 rounded-lg sm:size-16"

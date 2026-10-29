@@ -295,6 +295,7 @@ export default async function ItineraryPage({
         <div className="relative mt-4 h-52 overflow-hidden rounded-2xl sm:h-72">
           <Thumb
             url={it.coverUrl}
+            alt={it.destination.name}
             category="EXPERIENCE"
             sizes="(min-width: 1536px) 1536px, 100vw"
             className="size-full"
@@ -518,6 +519,7 @@ export default async function ItineraryPage({
                                 <span className="relative shrink-0 p-1">
                                   <Thumb
                                     url={item.photoUrl}
+                                    alt={item.name}
                                     category={item.category}
                                     className={`size-14 rounded-lg ${skip ? "opacity-50 grayscale" : ""}`}
                                   />

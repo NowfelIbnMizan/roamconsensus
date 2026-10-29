@@ -48,6 +48,7 @@ export function CreatorTrips({ trips }: { trips: Trip[] }) {
                       <Thumb
                         key={url}
                         url={url}
+                        alt={t.title}
                         category="EXPERIENCE"
                         className={`h-full ${pics.length === 1 ? "col-span-3" : n === 0 ? "col-span-2 row-span-2" : ""}`}
                       />
