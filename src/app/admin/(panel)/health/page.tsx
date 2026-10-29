@@ -11,7 +11,7 @@ export default async function HealthPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-semibold">City health</h1>
+      <h1 className="font-display text-3xl">City health</h1>
       <p className="mt-1 text-sm text-muted">
         Each city against the same {total} checks. Green means done. Open a
         check to see what is still missing and where to fix it.

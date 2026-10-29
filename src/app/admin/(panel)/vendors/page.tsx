@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { EditDialog } from "../../edit-dialog";
 import {
   deleteCoupon,
   deleteVendor,
@@ -86,7 +87,7 @@ export default async function VendorsAdmin() {
 
   return (
     <>
-      <h1 className="text-2xl font-semibold">Booking sites</h1>
+      <h1 className="font-display text-3xl">Booking sites</h1>
       <p className="mt-1 text-sm text-muted">
         Where items are booked (Klook, Agoda…). Items pick one on their
         itinerary page.
@@ -94,16 +95,17 @@ export default async function VendorsAdmin() {
       <ul className="mt-6 divide-y divide-line rounded-2xl border border-line bg-card">
         {vendorRows.map((v) => (
           <li key={v.id}>
-            <details className="p-4">
-              <summary className="flex cursor-pointer items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-4 p-4">
+              <span className="flex min-w-0 flex-1 items-center justify-between gap-4">
                 <span className="font-medium">{v.name}</span>
                 <span className="text-sm text-muted">
-                  {v._count.items} items
+                  {v._count.items} {v._count.items === 1 ? "stop" : "stops"}
                 </span>
-              </summary>
+              </span>
+              <EditDialog title={v.name}>
               <form
                 action={saveVendor}
-                className="mt-4 grid gap-3 sm:grid-cols-3"
+                className="grid gap-3 sm:grid-cols-3"
               >
                 <input type="hidden" name="id" value={v.id} />
                 <Field
@@ -131,41 +133,42 @@ export default async function VendorsAdmin() {
                   what={`${v.name}, its booking links and coupons`}
                 />
               </div>
-            </details>
+              </EditDialog>
+            </div>
           </li>
         ))}
       </ul>
-      <details className="mt-3 rounded-2xl border border-line bg-card p-4">
-        <summary className="cursor-pointer font-medium">
-          Add a booking site
-        </summary>
-        <form action={saveVendor} className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-3">
+        <EditDialog title="Add a booking site" add label="Add booking site">
+        <form action={saveVendor} className="grid gap-3 sm:grid-cols-3">
           <Field label="Name" name="name" required />
           <Field label="Homepage" name="homepage" type="url" required />
           <div className="self-end">
             <SaveButton>Add</SaveButton>
           </div>
         </form>
-      </details>
+        </EditDialog>
+      </div>
 
-      <h2 className="mt-10 text-xl font-semibold">Coupons</h2>
+      <h2 className="mt-10 font-display text-2xl">Coupons</h2>
       <p className="mt-1 text-sm text-muted">
         Shown on bookable items from the same booking site.
       </p>
       <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
         {coupons.map((c) => (
           <li key={c.id}>
-            <details className="p-4">
-              <summary className="flex cursor-pointer items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-4 p-4">
+              <span className="flex min-w-0 flex-1 items-center justify-between gap-4">
                 <span className="font-mono font-medium">{c.code}</span>
                 <span className="text-sm text-muted">
                   {c.vendor.name}
                   {!c.active && " · inactive"}
                 </span>
-              </summary>
+              </span>
+              <EditDialog title={c.code}>
               <form
                 action={saveCoupon}
-                className="mt-4 grid gap-3 sm:grid-cols-2"
+                className="grid gap-3 sm:grid-cols-2"
               >
                 <input type="hidden" name="id" value={c.id} />
                 <CouponFields c={c} vendors={vendors} creators={creators} />
@@ -180,7 +183,8 @@ export default async function VendorsAdmin() {
                   what={`coupon ${c.code}`}
                 />
               </div>
-            </details>
+              </EditDialog>
+            </div>
           </li>
         ))}
         {coupons.length === 0 && (
@@ -188,15 +192,16 @@ export default async function VendorsAdmin() {
         )}
       </ul>
       {vendors.length > 0 && (
-        <details className="mt-3 rounded-2xl border border-line bg-card p-4">
-          <summary className="cursor-pointer font-medium">Add a coupon</summary>
-          <form action={saveCoupon} className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="mt-3">
+          <EditDialog title="Add a coupon" add label="Add coupon">
+          <form action={saveCoupon} className="grid gap-3 sm:grid-cols-2">
             <CouponFields vendors={vendors} creators={creators} />
             <div>
               <SaveButton>Add coupon</SaveButton>
             </div>
           </form>
-        </details>
+          </EditDialog>
+        </div>
       )}
     </>
   );

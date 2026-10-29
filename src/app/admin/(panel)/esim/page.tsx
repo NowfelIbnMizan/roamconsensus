@@ -1,6 +1,7 @@
 import { EsimGuideForm } from "../../forms/content-forms";
 import type { EsimGuide } from "@/lib/esim-guides";
 import { db } from "@/lib/db";
+import { EditDialog } from "../../edit-dialog";
 import { deleteEsimPlan, saveEsimPlan } from "@/lib/admin/actions";
 import { DeleteButton, Field, SaveButton, Select } from "../../ui";
 
@@ -104,27 +105,26 @@ export default async function EsimAdmin() {
 
   return (
     <>
-      <h1 className="text-2xl font-semibold">eSIM plans</h1>
+      <h1 className="font-display text-3xl">eSIM plans</h1>
       <p className="mt-1 text-sm text-muted">
         Shown on the eSIM tab of every destination in that country. Saving a
         plan marks its price as checked today.
       </p>
       {countries.map((country) => (
         <section key={country} className="mt-6">
-          <h2 className="text-lg font-semibold">{country}</h2>
-          <details className="mt-2">
-            <summary className="cursor-pointer text-sm font-medium text-accent">
-              {guides.has(country) ? "Edit" : "Add"} the phone and signal guide
-            </summary>
-            <EsimGuideForm country={country} guide={guides.get(country) ?? null} />
-          </details>
+          <h2 className="font-display text-2xl">{country}</h2>
+          <div className="mt-2">
+            <EditDialog title={`${country} phone and signal guide`} label={guides.has(country) ? "Edit phone and signal guide" : "Add phone and signal guide"}>
+              <EsimGuideForm country={country} guide={guides.get(country) ?? null} />
+            </EditDialog>
+          </div>
           <ul className="mt-2 divide-y divide-line rounded-2xl border border-line bg-card">
             {plans
               .filter((p) => p.country === country)
               .map((p) => (
                 <li key={p.id}>
-                  <details className="p-4">
-                    <summary className="flex cursor-pointer items-center justify-between gap-4">
+                  <div className="flex items-center justify-between gap-4 p-4">
+                    <span className="flex min-w-0 flex-1 items-center justify-between gap-4">
                       <span>
                         <span className="font-medium">{p.provider}</span>{" "}
                         <span className="text-sm text-muted">{p.name}</span>
@@ -132,10 +132,11 @@ export default async function EsimAdmin() {
                       <span className="text-sm text-muted tabular-nums">
                         ${(p.priceCents / 100).toFixed(2)}
                       </span>
-                    </summary>
+                    </span>
+                    <EditDialog title={`${p.provider} ${p.name}`}>
                     <form
                       action={saveEsimPlan}
-                      className="mt-4 grid gap-3 sm:grid-cols-3"
+                      className="grid gap-3 sm:grid-cols-3"
                     >
                       <input type="hidden" name="id" value={p.id} />
                       <PlanFields p={p} />
@@ -150,21 +151,23 @@ export default async function EsimAdmin() {
                         what={`${p.provider} ${p.name}`}
                       />
                     </div>
-                  </details>
+                    </EditDialog>
+                  </div>
                 </li>
               ))}
           </ul>
         </section>
       ))}
-      <details className="mt-6 rounded-2xl border border-line bg-card p-4">
-        <summary className="cursor-pointer font-medium">Add a plan</summary>
-        <form action={saveEsimPlan} className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-3">
+        <EditDialog title="Add a plan" add label="Add plan">
+        <form action={saveEsimPlan} className="grid gap-3 sm:grid-cols-3">
           <PlanFields country={countries[0]} />
           <div className="self-end">
             <SaveButton>Add plan</SaveButton>
           </div>
         </form>
-      </details>
+        </EditDialog>
+      </div>
     </>
   );
 }

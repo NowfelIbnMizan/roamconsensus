@@ -25,7 +25,7 @@ export function EditDialog({
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
-  const Icon = add ? Plus : Pencil;
+  const Icon = add || label.startsWith("Add") ? Plus : Pencil;
   return (
     <>
       <button
