@@ -188,7 +188,7 @@ export function VisaResult({
             ))}
           </ul>
           <p className="fine-print mt-2">
-            Checked {rules.checked}. Rules change: confirm on the official sites
+            Updated {rules.checked}. Rules change: confirm on the official sites
             before you book.{" "}
             {rules.sources.map((u, i) => (
               <span key={u}>
@@ -350,7 +350,7 @@ export function VisaList({
                     })}
                   </ul>
                   <p className="fine-print mt-3">
-                    Checked {rules.checked}. Rules change: confirm on the
+                    Updated {rules.checked}. Rules change: confirm on the
                     official sites before you book.{" "}
                     {rules.sources.map((u, i) => (
                       <span key={u}>
