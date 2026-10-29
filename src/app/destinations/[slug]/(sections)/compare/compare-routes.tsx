@@ -197,6 +197,7 @@ export function CompareRoutes({
                       >
                         <Thumb
                           url={places[s]?.photo}
+                          alt={places[s]?.name ?? s}
                           category={places[s]?.category ?? "EXPERIENCE"}
                           className="size-10 rounded-lg"
                           sizes="40px"

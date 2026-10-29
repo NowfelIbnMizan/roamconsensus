@@ -45,8 +45,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = await load(params);
   if (!p) return {};
   const where = [p.area, p.destination.name].filter(Boolean).join(", ");
+  // Bing flags titles over about 70 characters; " · Creatour" is added after this.
+  const base = `${p.name}, ${where}`;
   return {
-    title: `${p.name}, ${where}: what travel creators say`,
+    title: base.length <= 40 ? `${base}: what creators say` : base,
     description:
       p.blurb ??
       `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`,
@@ -277,6 +279,7 @@ export default async function PlacePage({ params }: Props) {
                         <span className="relative shrink-0">
                           <Thumb
                             url={o.photoUrl}
+                            alt={o.name}
                             category={o.category}
                             className="size-12 rounded-lg"
                           />

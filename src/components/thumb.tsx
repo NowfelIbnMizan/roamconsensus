@@ -24,12 +24,15 @@ export function Thumb({
   sizes = "96px",
   className = "size-20 rounded-xl",
   priority,
+  alt = "",
 }: {
   url?: string | null;
   category: ItemCategory;
   sizes?: string;
   className?: string;
   priority?: boolean;
+  /** What the photo shows, for search engines and screen readers. Leave out when the name is right beside it. */
+  alt?: string;
 }) {
   const Icon = categoryIcon[category];
   return (
@@ -40,7 +43,7 @@ export function Thumb({
       {url ? (
         <Image
           src={url}
-          alt=""
+          alt={alt}
           fill
           sizes={sizes}
           priority={priority}

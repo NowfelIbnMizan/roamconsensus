@@ -165,7 +165,7 @@ export default async function Home() {
                   photoKey={`destination:${c.slug}`}
                   query={`${c.name} ${c.country}`}
                   category="DESTINATION"
-                  alt=""
+                  alt={c.name}
                   sizes="(min-width: 1024px) 33vw, 50vw"
                   className="aspect-[16/9] opacity-60 grayscale"
                 />
@@ -205,7 +205,7 @@ export default async function Home() {
                     query={placeQuery(e.place.name, e.city)}
                     category={e.place.category}
                     website={e.place.website}
-                    alt=""
+                    alt={e.place.name}
                     sizes="(min-width: 640px) 33vw, 256px"
                     credit={false}
                     className="size-full transition duration-300 group-hover:scale-105"

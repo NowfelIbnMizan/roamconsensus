@@ -26,7 +26,7 @@ export default async function EditPost({
         ← All posts
       </Link>
       <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-semibold">{post.title}</h1>
+        <h1 className="font-display text-3xl">{post.title}</h1>
         {post.published && (
           <Link
             href={`/blog/${post.slug}`}

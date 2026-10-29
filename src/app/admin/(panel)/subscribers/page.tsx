@@ -9,7 +9,7 @@ export default async function SubscribersAdmin() {
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl font-semibold">Email sign-ups</h1>
+        <h1 className="font-display text-3xl">Email sign-ups</h1>
         <a
           href="/admin/subscribers.csv"
           className="text-sm text-accent underline"

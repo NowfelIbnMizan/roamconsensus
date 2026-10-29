@@ -114,7 +114,7 @@ export default async function DestinationPage({
                       query={placeQuery(p.name, destination.name)}
                       category={p.category}
                       website={p.website}
-                      alt=""
+                      alt={p.name}
                       sizes="(min-width: 640px) 220px, 160px"
                       credit={false}
                       className="size-full transition duration-300 group-hover:scale-105"
@@ -167,6 +167,7 @@ export default async function DestinationPage({
                     <Thumb
                       key={url}
                       url={url}
+                      alt={destination.name}
                       category="EXPERIENCE"
                       sizes="(min-width: 768px) 360px, 80vw"
                       // One photo fills the strip; two split 2:1; three sit side by side.

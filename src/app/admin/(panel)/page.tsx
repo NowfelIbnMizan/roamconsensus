@@ -3,6 +3,9 @@ import { db } from "@/lib/db";
 import { cityHealth } from "@/lib/admin/health";
 import { saveDestination } from "@/lib/admin/actions";
 import { Checkbox, Field, SaveButton, TextArea } from "../ui";
+import { EditDialog } from "../edit-dialog";
+import { cachedPhotoUrls } from "@/lib/photos";
+import { Thumb } from "@/components/thumb";
 import { IndexNowButton } from "./indexnow-button";
 import { RecheckPhotosButton } from "./recheck-photos-button";
 
@@ -12,7 +15,10 @@ export default async function AdminHome() {
     include: { _count: { select: { itineraries: true, places: true } } },
   });
   // What still needs doing, from the same checks as City health, so you can start here instead of hunting.
-  const todo = (await cityHealth()).flatMap((c) =>
+  const health = await cityHealth();
+  const covers = await cachedPhotoUrls(destinations.map((d) => `destination:${d.slug}`));
+  const left = new Map(health.map((c) => [c.slug, c.checks.filter((k) => k.done < k.total).length]));
+  const todo = health.flatMap((c) =>
     c.checks
       .filter((k) => k.done < k.total)
       .map((k) => ({ city: c.name, slug: c.slug, label: k.label, href: k.missing[0]?.href ?? `/admin/health#${c.slug}` })),
@@ -20,11 +26,44 @@ export default async function AdminHome() {
 
   return (
     <>
-      <h1 className="text-2xl font-semibold">Destinations</h1>
-      <p className="mt-1 text-sm text-muted">
-        Changes go live on the site as soon as you save. Open a destination to
-        edit its places and itineraries.
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="font-display text-3xl">Cities</h1>
+        <EditDialog title="Add a city" add label="Add city">
+          <form action={saveDestination} className="grid gap-3 sm:grid-cols-2">
+            <Field label="Name" name="name" required placeholder="Tokyo" />
+            <Field label="Country" name="country" required placeholder="Japan" hint="Must match the eSIM plans' country." />
+            <TextArea label="Summary" name="summary" />
+            <Field label="URL name" name="slug" placeholder="tokyo" hint="Leave blank to make one from the name." />
+            <Checkbox label="Sample (fictional demo content)" name="isSample" />
+            <div>
+              <SaveButton>Add city</SaveButton>
+            </div>
+          </form>
+        </EditDialog>
+      </div>
+      <p className="mt-1 text-sm text-muted">Open a city to edit what travellers see on it.</p>
+      <ul className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
+        {destinations.map((d) => (
+          <li key={d.id}>
+            <Link href={`/admin/destinations/${d.id}`} className="group block overflow-hidden rounded-xl border border-line bg-card hover:border-accent">
+              <Thumb url={covers.get(`destination:${d.slug}`)} category="EXPERIENCE" sizes="(min-width: 1280px) 20vw, 45vw" className="aspect-[16/10] w-full" />
+              <span className="block p-3">
+                <span className="flex items-baseline justify-between gap-2">
+                  <span className="font-medium">{d.name}</span>
+                  <span className="text-xs text-muted">{d.country}</span>
+                </span>
+                <span className="mt-0.5 block text-xs text-muted">
+                  {d._count.itineraries} routes, {d._count.places} places
+                </span>
+                <span className={`mt-2 inline-block rounded-full px-2 py-0.5 text-xs ${left.get(d.slug) ? "bg-amber-100 text-amber-900" : "bg-accent-soft text-accent"}`}>
+                  {left.get(d.slug) ? `${left.get(d.slug)} checks to fix` : "All checks pass"}
+                </span>
+              </span>
+            </Link>
+          </li>
+        ))}
+        {destinations.length === 0 && <li className="text-sm text-muted">No cities yet.</li>}
+      </ul>
       <section className="mt-6 rounded-2xl border border-line bg-card p-4">
         <h2 className="font-semibold">To do {todo.length > 0 && <span className="text-muted">· {todo.length}</span>}</h2>
         {todo.length === 0 ? (
@@ -46,58 +85,6 @@ export default async function AdminHome() {
           </Link>
         )}
       </section>
-      <ul className="mt-6 divide-y divide-line rounded-2xl border border-line bg-card">
-        {destinations.map((d) => (
-          <li key={d.id}>
-            <Link
-              href={`/admin/destinations/${d.id}`}
-              className="flex items-center justify-between p-4 hover:bg-line/40"
-            >
-              <span>
-                <span className="font-medium">{d.name}</span>{" "}
-                <span className="text-sm text-muted">{d.country}</span>
-              </span>
-              <span className="text-sm text-muted">
-                {d._count.itineraries} itineraries · {d._count.places} places
-              </span>
-            </Link>
-          </li>
-        ))}
-        {destinations.length === 0 && (
-          <li className="p-4 text-sm text-muted">No destinations yet.</li>
-        )}
-      </ul>
-
-      <details className="mt-6 rounded-2xl border border-line bg-card p-4">
-        <summary className="cursor-pointer font-medium">
-          Add a destination
-        </summary>
-        <form
-          action={saveDestination}
-          className="mt-4 grid gap-3 sm:grid-cols-2"
-        >
-          <Field label="Name" name="name" required placeholder="Tokyo" />
-          <Field
-            label="Country"
-            name="country"
-            required
-            placeholder="Japan"
-            hint="Must match the eSIM plans' country."
-          />
-          <TextArea label="Summary" name="summary" />
-          <Field
-            label="URL name"
-            name="slug"
-            placeholder="tokyo"
-            hint="Leave blank to make one from the name."
-          />
-          <Checkbox label="Sample (fictional demo content)" name="isSample" />
-          <div>
-            <SaveButton>Add destination</SaveButton>
-          </div>
-        </form>
-      </details>
-
       <section className="mt-6 rounded-2xl border border-line bg-card p-4">
         <h2 className="font-medium">Search engines</h2>
         <p className="mt-1 text-sm text-muted">

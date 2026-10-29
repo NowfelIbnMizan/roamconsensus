@@ -2,6 +2,7 @@ import { deleteAboutPhoto, saveAboutPhoto, saveCostGuide, saveEsimGuide } from "
 import type { CostGuide } from "@/lib/costs";
 import type { EsimGuide } from "@/lib/esim-guides";
 import { Field, SaveButton, TextArea } from "../ui";
+import { EditDialog } from "../edit-dialog";
 
 const box = "mt-4 grid gap-3 rounded-2xl border border-line bg-card p-4 sm:grid-cols-2";
 const STYLE_ROWS = [
@@ -96,37 +97,41 @@ function PhotoFields({ p }: { p?: Photo }) {
 export function AboutPhotosForm({ photos }: { photos: Photo[] }) {
   return (
     <>
-      <form action={saveAboutPhoto} className={box}>
-        <p className="font-medium sm:col-span-2">Add a photo</p>
-        <PhotoFields />
-        <div className="sm:col-span-2">
-          <SaveButton />
-        </div>
-      </form>
-      <ul className="mt-4 space-y-2">
+      <div className="mt-4">
+        <EditDialog title="Add a photo" add label="Add photo">
+          <form action={saveAboutPhoto} className="grid gap-3 sm:grid-cols-2">
+            <PhotoFields />
+            <div className="sm:col-span-2">
+              <SaveButton>Add photo</SaveButton>
+            </div>
+          </form>
+        </EditDialog>
+      </div>
+      <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-6">
         {photos.map((p) => (
-          <li key={p.id}>
-            <details className="rounded-2xl border border-line bg-card p-3">
-              <summary className="flex cursor-pointer items-center gap-3 text-sm">
-                {/* eslint-disable-next-line @next/next/no-img-element -- admin preview of any host */}
-                <img src={p.src} alt="" className="size-10 rounded object-cover" />
-                <span className="min-w-0 flex-1 truncate">{p.caption}</span>
-                <span className="text-muted">{p.wide ? "Wide" : "Upright"}</span>
-              </summary>
-              <form action={saveAboutPhoto} className="mt-3 grid gap-3 sm:grid-cols-2">
+          <li key={p.id} className="relative overflow-hidden rounded-xl border border-line bg-card">
+            <EditDialog floating title="Edit photo" subtitle={p.caption}>
+              {/* eslint-disable-next-line @next/next/no-img-element -- admin preview of any host */}
+              <img src={p.src} alt={p.alt ?? ""} className="mb-4 max-h-60 rounded-lg object-cover" />
+              <form action={saveAboutPhoto} className="grid gap-3 sm:grid-cols-2">
                 <input type="hidden" name="id" value={p.id} />
                 <PhotoFields p={p} />
                 <div className="sm:col-span-2">
                   <SaveButton />
                 </div>
               </form>
-              <form action={deleteAboutPhoto} className="mt-2">
+              <form action={deleteAboutPhoto} className="mt-3 text-right">
                 <input type="hidden" name="id" value={p.id} />
-                <button type="submit" className="text-sm text-red-700 underline dark:text-red-400">
+                <button type="submit" className="text-sm text-rose-600 hover:underline">
                   Remove this photo
                 </button>
               </form>
-            </details>
+            </EditDialog>
+            {/* eslint-disable-next-line @next/next/no-img-element -- admin preview of any host */}
+            <img src={p.src} alt={p.alt ?? ""} className="aspect-square w-full object-cover" />
+            <p className="truncate p-2 text-xs text-muted">
+              {p.wide ? "Wide" : "Upright"}: {p.caption}
+            </p>
           </li>
         ))}
       </ul>

@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { savePost } from "@/lib/admin/actions";
 import { SaveButton } from "../../ui";
 import { PostFields } from "./post-fields";
+import { EditDialog } from "../../edit-dialog";
 
 export default async function BlogAdmin() {
   const [posts, cities] = await Promise.all([
@@ -17,7 +18,17 @@ export default async function BlogAdmin() {
   ]);
   return (
     <>
-      <h1 className="text-2xl font-semibold">Blog</h1>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="font-display text-3xl">Blog</h1>
+        <EditDialog title="Write a new post" add label="New post">
+          <form action={savePost} className="grid gap-3 sm:grid-cols-2">
+            <PostFields cities={cities.map((c) => ({ value: c.id, label: c.name }))} />
+            <div className="sm:col-span-2">
+              <SaveButton>Save post</SaveButton>
+            </div>
+          </form>
+        </EditDialog>
+      </div>
       <p className="mt-1 text-sm text-muted">
         Posts show at /blog once published. Drafts stay hidden.
       </p>
@@ -42,22 +53,6 @@ export default async function BlogAdmin() {
         )}
       </ul>
 
-      <details
-        className="mt-6 rounded-2xl border border-line bg-card p-4"
-        open={posts.length === 0}
-      >
-        <summary className="cursor-pointer font-medium">
-          Write a new post
-        </summary>
-        <form action={savePost} className="mt-4 grid gap-3 sm:grid-cols-2">
-          <PostFields
-            cities={cities.map((c) => ({ value: c.id, label: c.name }))}
-          />
-          <div>
-            <SaveButton>Save post</SaveButton>
-          </div>
-        </form>
-      </details>
     </>
   );
 }
