@@ -6,6 +6,7 @@ import { CreatorNoticeLine } from "@/components/creator-notice";
 import { CreatorsList } from "./creators-list";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/creators" },
   title: "Travel creators",
   description:
     "The travel bloggers and creators whose itineraries Creatour compares, with their bios, socials and routes.",

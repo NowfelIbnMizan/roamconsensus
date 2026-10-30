@@ -55,8 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const d = await getDestination((await params).slug);
   return d
     ? {
-        title: `Where to stay in ${d.name}: the areas travel creators pick`,
+        title: `Where to stay in ${d.name}: creators' areas`,
         description: `The ${d.name} neighbourhoods travel creators stayed in, with their hotels, nightly prices and what's nearby.`,
+        alternates: { canonical: `/destinations/${d.slug}/stay` },
       }
     : {};
 }

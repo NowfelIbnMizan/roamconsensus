@@ -8,7 +8,11 @@ import { AboutPhotos } from "./photos";
 
 export async function generateMetadata(): Promise<Metadata> {
   const e = await getEditor();
-  return { title: `About ${e.name}`, description: e.tagline ?? `Who runs Creatour and how it works.` };
+  return {
+    title: `About ${e.name}`,
+    description: e.tagline ?? `Who runs Creatour and how it works.`,
+    alternates: { canonical: "/about" },
+  };
 }
 
 export default async function AboutPage() {

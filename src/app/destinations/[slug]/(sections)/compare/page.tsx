@@ -9,7 +9,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/destinations/[slug]/compare">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
-  return d ? { title: `Compare ${d.name} itineraries`, description: `${d.name} creator routes side by side.` } : {};
+  return d
+    ? {
+        title: `Compare ${d.name} itineraries`,
+        description: `${d.name} creator routes side by side.`,
+        alternates: { canonical: `/destinations/${d.slug}/compare` },
+      }
+    : {};
 }
 
 export default async function ComparePage({ params }: PageProps<"/destinations/[slug]/compare">) {

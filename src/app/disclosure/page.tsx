@@ -4,6 +4,7 @@ import { FellowTraveller } from "@/components/creator-notice";
 import { getEditor } from "@/lib/editor";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/disclosure" },
   title: "Credits",
   description: "Who owns the content on Creatour and how creators are credited.",
 };

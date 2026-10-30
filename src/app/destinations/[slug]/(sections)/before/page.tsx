@@ -16,7 +16,8 @@ export async function generateMetadata({
   return d
     ? {
         title: `${d.name} travel checklist`,
-        description: `Visa, money, health and etiquette before you go to ${d.name}.`,
+        description: `Visa, money, SIM, health and etiquette: what to sort out before you fly to ${d.name}.`,
+        alternates: { canonical: `/destinations/${d.slug}/before` },
       }
     : {};
 }

@@ -29,6 +29,7 @@ import {
   hasPin,
 } from "@/lib/map";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
+import { breadcrumbJsonLd, clip, ldJson } from "@/lib/seo";
 
 type Props = PageProps<"/destinations/[slug]/places/[place]">;
 type Mentions = NonNullable<Awaited<ReturnType<typeof getPlace>>>["mentions"];
@@ -49,10 +50,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Bing flags titles over about 70 characters; " · Creatour" is added after this.
   const base = `${p.name}, ${where}`;
   return {
-    title: base.length <= 40 ? `${base}: what creators say` : base,
-    description:
-      p.blurb ??
-      `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`,
+    title: base.length <= 32 ? `${base}: what creators say` : base.length > 60 ? `${p.name}, ${p.destination.name}` : base,
+    description: clip(p.blurb ?? `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`),
+    alternates: { canonical: placeHref(p.destination.slug, p.slug) },
   };
 }
 
@@ -136,9 +136,17 @@ export default async function PlacePage({ params }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(jsonLd)} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={ldJson(
+          breadcrumbJsonLd([
+            ["Home", "/"],
+            [d.name, `/destinations/${d.slug}`],
+            ["Places", `/destinations/${d.slug}/places`],
+            [p.name, placeHref(d.slug, p.slug)],
+          ]),
+        )}
       />
       <Link
         href={`/destinations/${d.slug}`}
