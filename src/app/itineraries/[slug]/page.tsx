@@ -9,6 +9,7 @@ import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { siteUrl } from "@/lib/email";
 import { breadcrumbJsonLd, clip, ldJson } from "@/lib/seo";
+import { kindEyebrow } from "@/lib/post-kinds";
 import {
   ArrowRight,
   ChevronDown,
@@ -21,7 +22,7 @@ import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
-import { getItinerary, getItinerarySlugs } from "@/lib/data";
+import { getItinerary, getItinerarySlugs, getPostsForRoute } from "@/lib/data";
 import { categoryLabel, sentimentLabel, tierLabel } from "@/lib/format";
 import { Money, Price } from "@/components/money";
 import {
@@ -232,9 +233,11 @@ export async function generateMetadata({
 export default async function ItineraryPage({
   params,
 }: PageProps<"/itineraries/[slug]">) {
-  const [it, editor] = await Promise.all([
-    getItinerary((await params).slug),
+  const { slug } = await params;
+  const [it, editor, posts] = await Promise.all([
+    getItinerary(slug),
     getEditor(),
+    getPostsForRoute(slug),
   ]);
   if (!it) notFound();
   const fullGuide = fullGuideLabel(it.sourceUrl);
@@ -408,6 +411,19 @@ export default async function ItineraryPage({
             {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
           </a>
           {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
+          {posts.map((p) => (
+            <Link
+              key={p.slug}
+              href={`/blog/${p.slug}`}
+              className="mt-3 flex max-w-2xl items-center justify-between gap-3 rounded-2xl border border-accent/30 bg-accent/5 p-4 hover:border-accent"
+            >
+              <span>
+                <span className="eyebrow block">{kindEyebrow(p.kind, editor.name)}</span>
+                <span className="font-semibold">{p.title}</span>
+              </span>
+              <ArrowRight className="size-5 shrink-0 text-accent" aria-hidden />
+            </Link>
+          ))}
           <p className="mt-3 text-sm">
             <Link
               href={`/creators/${it.creator.handle}`}

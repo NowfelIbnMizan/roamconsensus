@@ -982,7 +982,10 @@ const postSelect = {
   publishedAt: true,
   updatedAt: true,
   destination: { select: { slug: true, name: true } },
+  kind: true,
 } as const;
+
+const routeRef = { select: { slug: true, destination: { select: { slug: true } } } } as const;
 
 const postDates = <T extends { publishedAt: Date | null; updatedAt: Date }>(
   p: T,
@@ -1014,7 +1017,23 @@ export async function getPost(slug: string) {
   cacheTag(CONTENT_TAG);
   const post = await db.post.findUnique({
     where: { slug },
-    select: { ...postSelect, body: true, published: true },
+    select: { ...postSelect, body: true, published: true, itinerary: routeRef, otherItinerary: routeRef },
   });
   return post?.published ? postDates(post) : null;
+}
+
+/** Published posts that talk about a route: a take on it, or a side by side that includes it. */
+export async function getPostsForRoute(itinerarySlug: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const posts = await db.post.findMany({
+    where: {
+      published: true,
+      OR: [{ itinerary: { slug: itinerarySlug } }, { otherItinerary: { slug: itinerarySlug } }],
+    },
+    orderBy: { publishedAt: "desc" },
+    select: postSelect,
+  });
+  return posts.map(postDates);
 }

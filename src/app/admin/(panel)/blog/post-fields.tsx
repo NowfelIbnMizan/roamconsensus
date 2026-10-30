@@ -1,4 +1,7 @@
+import { db } from "@/lib/db";
 import { Checkbox, Field, Select, TextArea } from "../../ui";
+import { KindFields } from "./kind-fields";
+import type { PostKind } from "@/generated/prisma/enums";
 
 type Post = {
   title: string;
@@ -7,6 +10,9 @@ type Post = {
   body: string;
   coverUrl: string | null;
   destinationId: string | null;
+  kind: PostKind;
+  itineraryId: string | null;
+  otherItineraryId: string | null;
   published: boolean;
 };
 
@@ -16,9 +22,11 @@ export const MARKDOWN_HELP =
 export function PostFields({
   p,
   cities,
+  routes,
 }: {
   p?: Post;
   cities: { value: string; label: string }[];
+  routes: { value: string; label: string }[];
 }) {
   return (
     <>
@@ -46,19 +54,16 @@ export function PostFields({
         name="destinationId"
         defaultValue={p?.destinationId}
         options={cities}
-        blank="None"
+        blank="None (route posts use the route's city)"
       />
-      <label className="block text-sm sm:col-span-2">
-        <span className="text-muted">Post</span>
-        <textarea
-          name="body"
-          rows={18}
-          required
-          defaultValue={p?.body ?? ""}
-          className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2 font-mono text-sm"
-        />
-        <span className="mt-0.5 block text-xs text-muted">{MARKDOWN_HELP}</span>
-      </label>
+      <KindFields
+        kind={p?.kind ?? "GENERAL"}
+        itineraryId={p?.itineraryId ?? null}
+        otherItineraryId={p?.otherItineraryId ?? null}
+        body={p?.body ?? ""}
+        routes={routes}
+        help={MARKDOWN_HELP}
+      />
       <Checkbox
         label="Published (visible on the site)"
         name="published"
@@ -66,4 +71,13 @@ export function PostFields({
       />
     </>
   );
+}
+
+/** Every route as "City · Title (Creator)", for the route pickers. */
+export async function routeOptions() {
+  const rows = await db.itinerary.findMany({
+    orderBy: [{ destination: { name: "asc" } }, { title: "asc" }],
+    select: { id: true, title: true, destination: { select: { name: true } }, creator: { select: { name: true } } },
+  });
+  return rows.map((r) => ({ value: r.id, label: `${r.destination.name} · ${r.title} (${r.creator.name})` }));
 }

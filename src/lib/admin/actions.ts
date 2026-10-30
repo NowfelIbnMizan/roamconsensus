@@ -15,6 +15,7 @@ import type {
   ItemCategory,
   PhotoSource,
   Platform,
+  PostKind,
   Sentiment,
   Tier,
 } from "@/generated/prisma/enums";
@@ -677,13 +678,27 @@ export async function savePost(fd: FormData) {
   const before = id
     ? await db.post.findUnique({ where: { id }, select: { publishedAt: true } })
     : null;
+  const kind = (text(fd, "kind") || "GENERAL") as PostKind;
+  // Only route posts keep routes; a take has one, a side by side two different ones.
+  const itineraryId = kind === "TAKE" || kind === "COMPARE" ? optional(fd, "itineraryId") : null;
+  const otherItineraryId = kind === "COMPARE" ? optional(fd, "otherItineraryId") : null;
+  if (kind !== "GENERAL" && kind !== "TRIP" && !itineraryId) throw new Error("Pick a route for this post.");
+  if (kind === "COMPARE" && (!otherItineraryId || otherItineraryId === itineraryId))
+    throw new Error("Pick two different routes to compare.");
+  const routes = await db.itinerary.findMany({
+    where: { id: { in: [itineraryId, otherItineraryId].filter((r) => r !== null) } },
+    select: { slug: true, destinationId: true },
+  });
   const data = {
     slug: slugify(text(fd, "slug") || text(fd, "title")),
     title: text(fd, "title"),
     excerpt: optional(fd, "excerpt"),
     body: text(fd, "body"),
     coverUrl: optional(fd, "coverUrl"),
-    destinationId: optional(fd, "destinationId"),
+    destinationId: optional(fd, "destinationId") ?? routes[0]?.destinationId ?? null,
+    kind,
+    itineraryId,
+    otherItineraryId,
     published: live,
     // The first time a post goes live sets its date; later edits keep it.
     publishedAt: before?.publishedAt ?? (live ? new Date() : null),
@@ -692,7 +707,7 @@ export async function savePost(fd: FormData) {
     ? await db.post.update({ where: { id }, data })
     : await db.post.create({ data });
   // Drafts refresh the cache (a post taken offline must disappear) but aren't announced to Bing.
-  published(row.published ? ["/blog", `/blog/${row.slug}`] : []);
+  published(row.published ? ["/blog", `/blog/${row.slug}`, ...routes.map((r) => `/itineraries/${r.slug}`)] : []);
   if (!id) redirect(`/admin/blog/${row.id}`);
 }
 
