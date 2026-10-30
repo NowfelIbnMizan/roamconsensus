@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export function DestinationTabs({ slug }: { slug: string }) {
   const pathname = usePathname();
@@ -64,4 +64,9 @@ export function DestinationTabs({ slug }: { slug: string }) {
       })}
     </nav>
   );
+}
+
+/** The city photo and blurb, on the Routes tab only: other tabs start with their own content near the top. */
+export function OverviewOnly({ slug, children }: { slug: string; children: ReactNode }) {
+  return usePathname() === `/destinations/${slug}` ? children : null;
 }

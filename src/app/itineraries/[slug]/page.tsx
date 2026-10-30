@@ -233,10 +233,10 @@ export default async function ItineraryPage({
     .filter((i) => i.photoUrl && i.sentiment !== "AVOID").length;
   const video = youtubeId(it.sourceUrl);
 
-  // Places the creator says to skip stay listed but out of the route bundle.
+  // Places the creator says to skip, and closed ones, stay listed but out of the route bundle (and its total).
   const skipped = new Set(
     it.schedule.flatMap(({ items }) =>
-      items.filter((i) => i.sentiment === "AVOID").map((i) => i.id),
+      items.filter((i) => i.sentiment === "AVOID" || i.closedNote).map((i) => i.id),
     ),
   );
   const cartItems = new Map<string, CartItem>(
@@ -250,7 +250,7 @@ export default async function ItineraryPage({
   const stops: MapStop[] = [];
   const groups: MapGroup[] = [];
   const drive = new Map<number, ReturnType<typeof dayLegs>>();
-  for (const [index, { day, items }] of it.schedule.entries()) {
+  for (const { day, items } of it.schedule) {
     const pinned = items.filter((i) => i.sentiment !== "AVOID").filter(hasPin);
     drive.set(day, dayLegs(pinned));
     pinned.forEach((i, n) => {
@@ -260,7 +260,7 @@ export default async function ItineraryPage({
         lat: i.lat,
         lng: i.lng,
         label: String(n + 1),
-        color: dayColor(index),
+        color: dayColor(day - 1),
         title: i.name,
         subtitle: `Day ${day} · ${categoryLabel[i.category]}`,
         href: googleMapsPlaceUrl(i.name, it.destination.name),
@@ -272,7 +272,7 @@ export default async function ItineraryPage({
       groups.push({
         id: day,
         label: `Day ${day}`,
-        color: dayColor(index),
+        color: dayColor(day - 1),
         routeUrl: googleMapsRouteUrl(pinned),
       });
   }
@@ -356,6 +356,13 @@ export default async function ItineraryPage({
           </p>
           <CreatorNoticeLine name={it.creator.name} className="mt-2 max-w-2xl" />
           <p className="mt-3 max-w-2xl">{it.summary}</p>
+          {/* The main action comes straight after the summary; full width on phones. */}
+          <div className="mt-4">
+            <AddRouteButton
+              items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
+              className="w-full justify-center sm:w-auto"
+            />
+          </div>
           <a
             href={it.sourceUrl}
             rel="noopener noreferrer"
@@ -368,16 +375,11 @@ export default async function ItineraryPage({
           <p className="mt-3 text-sm">
             <Link
               href={`/creators/${it.creator.handle}`}
-              className="text-muted underline hover:text-foreground"
+              className="inline-flex min-h-11 items-center text-muted underline hover:text-foreground sm:min-h-0"
             >
               More from {it.creator.name}
             </Link>
           </p>
-          <div className="mt-5">
-            <AddRouteButton
-              items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
-            />
-          </div>
           <PageGuide id="itinerary" className="mt-6" />
         </div>
         <div>
@@ -434,9 +436,10 @@ export default async function ItineraryPage({
       </div>
 
       {/* On wide screens the map sits beside the days and stays in view while you scroll them. */}
-      <div className="lg:mt-10 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">
+      {/* On phones the days come first and the map after them, so the plan starts right under the header. */}
+      <div className="flex flex-col lg:mt-10 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">
         {stops.length > 0 && (
-          <section className="mt-10 lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:mt-0">
+          <section className="order-2 mt-10 lg:order-none lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:mt-0">
             <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
               <MapIcon className="size-5 text-accent" aria-hidden /> Where
               you&apos;ll go
@@ -450,7 +453,7 @@ export default async function ItineraryPage({
           </section>
         )}
 
-        <div className="mt-10 space-y-3 lg:col-start-1 lg:row-start-1 lg:mt-0">
+        <div className="order-1 mt-10 space-y-3 lg:order-none lg:col-start-1 lg:row-start-1 lg:mt-0">
           {it.schedule.map(({ day, items }, index) => {
             const going = items.filter(
               (i) => i.sentiment !== "AVOID" && !i.closedNote,
@@ -476,7 +479,7 @@ export default async function ItineraryPage({
                   <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
                     <span
                       className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-                      style={{ background: dayColor(index) }}
+                      style={{ background: dayColor(day - 1) }}
                       aria-hidden
                     >
                       {day}
@@ -526,7 +529,7 @@ export default async function ItineraryPage({
                                   {pinNumber.has(item.id) && (
                                     <span
                                       className="absolute top-0 left-0 inline-flex size-5 items-center justify-center rounded-full text-[11px] font-semibold text-white ring-2 ring-card"
-                                      style={{ background: dayColor(index) }}
+                                      style={{ background: dayColor(day - 1) }}
                                       title="Pin number on the map"
                                     >
                                       {pinNumber.get(item.id)}

@@ -1,7 +1,7 @@
 "use client";
 
 import { StopNote } from "@/components/stop-note";
-import { Luggage } from "lucide-react";
+import { Luggage, Search } from "lucide-react";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { Thumb } from "@/components/thumb";
@@ -38,7 +38,8 @@ export function TodayView() {
   const auto = tripDayToday(startDate, days);
   const [picked, setPicked] = useState<number | null>(null);
   const day = picked ?? auto ?? 1;
-  const list = items.filter((i) => i.day === day);
+  // Insurance and eSIMs are sorted before the trip (see the trip plan), not stops to tick off on the day.
+  const list = items.filter((i) => i.day === day && i.category !== "GEAR" && i.category !== "ESIM");
   const city = cityOf(list) ?? cityOf(items);
   const [info, setInfo] = useState<{ slug: string; data: CityInfo } | null>(null);
 
@@ -57,8 +58,11 @@ export function TodayView() {
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">No trip planned yet.</p>
         <p className="mt-1 text-sm text-muted">Add a route to your trip, then come back here while you travel.</p>
-        <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
-          Browse destinations
+        <Link
+          href="/itineraries"
+          className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+        >
+          <Search className="size-4" aria-hidden /> Find a route
         </Link>
       </div>
     );
@@ -178,7 +182,7 @@ export function TodayView() {
                   url={next.photoUrl}
                   category={next.category}
                   sizes="(min-width: 640px) 576px, 100vw"
-                  className="aspect-[16/10] w-full"
+                  className="h-32 w-full sm:aspect-[16/10] sm:h-auto"
                 />
                 <div className="p-5">
                   <p className="text-xs font-semibold uppercase tracking-wide text-accent">Up next</p>

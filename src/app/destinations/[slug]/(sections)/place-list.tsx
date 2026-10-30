@@ -157,7 +157,12 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
           />
         </div>
       )}
-      <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 lg:grid-cols-4 2xl:grid-cols-5">
+      {/* The full list is long, so phones get one row per place with a small photo; the city page keeps the grid. */}
+      <ul
+        className={`mt-5 grid gap-x-3 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-6 lg:grid-cols-4 2xl:grid-cols-5 ${
+          limit ? "grid-cols-2 gap-y-6" : "grid-cols-1 gap-y-3"
+        }`}
+      >
         {shown.map((p) => {
           const photo = (
             <Photo
@@ -175,10 +180,10 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
             <li
               key={p.slug}
               data-cat={p.category}
-              className="cv-row flex flex-col"
-              style={{ containIntrinsicSize: "auto 300px" }}
+              className={`cv-row flex ${limit ? "flex-col" : "items-start gap-3 sm:flex-col sm:gap-0"}`}
+              style={{ containIntrinsicSize: `auto ${limit ? 300 : 110}px` }}
             >
-              <div className="relative">
+              <div className={`relative ${limit ? "" : "w-28 shrink-0 sm:w-auto sm:self-stretch"}`}>
                 <PlaceHover
                   href={placeHref(destination.slug, p.slug)}
                   name={p.name}
@@ -206,26 +211,28 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
                   )}
                 </div>
               </div>
-              <p className="eyebrow mt-2.5 truncate">
-                {p.area ?? categoryLabel[p.category]}
-              </p>
-              <Link
-                href={placeHref(destination.slug, p.slug)}
-                className="mt-0.5 font-semibold leading-snug hover:text-accent hover:underline"
-              >
-                {p.name}
-              </Link>
-              {p.fromPrice && (
-                <p className="mt-0.5 text-sm text-muted tabular-nums">
-                  <FromPrice p={p.fromPrice} />
+              <div className="min-w-0 flex-1">
+                <p className={`eyebrow truncate ${limit ? "mt-2.5" : "sm:mt-2.5"}`}>
+                  {p.area ?? categoryLabel[p.category]}
                 </p>
-              )}
-              <AgreePill
-                className="mt-1"
-                creators={p.creators}
-                total={creatorCount}
-                skippedBy={p.skippedBy}
-              />
+                <Link
+                  href={placeHref(destination.slug, p.slug)}
+                  className="mt-0.5 block font-semibold leading-snug hover:text-accent hover:underline"
+                >
+                  {p.name}
+                </Link>
+                {p.fromPrice && (
+                  <p className="mt-0.5 text-sm text-muted tabular-nums">
+                    <FromPrice p={p.fromPrice} />
+                  </p>
+                )}
+                <AgreePill
+                  className="mt-1"
+                  creators={p.creators}
+                  total={creatorCount}
+                  skippedBy={p.skippedBy}
+                />
+              </div>
             </li>
           );
         })}

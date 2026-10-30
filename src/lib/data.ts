@@ -312,6 +312,12 @@ export async function getDestination(slug: string) {
     return {
       unpricedCount: it.items.filter(isUnpriced).length,
       stops: it.items.filter(counted).length,
+      /** No hotel and no food listed: the total is sights only, so it can't be compared with full routes. */
+      sightsOnly: !it.items.some(
+        (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
+      ),
+      /** More than a day but no hotel listed: the total leaves out the biggest cost. */
+      noStay: it.days > 1 && !it.items.some((i) => counted(i) && i.category === "STAY"),
       /** Places it recommends (not ones it says to skip), for comparing routes. */
       places: routePlaces[n].map((p) => p.slug),
       /** Up to three of its stops' photos, in trip order. */
@@ -564,6 +570,12 @@ export async function getQuizData() {
       /** Hotels without a price leave the total far too low to compare against a budget. */
       unpricedStays: kept.filter((i) => i.category === "STAY" && isUnpriced(i))
         .length,
+      /** No hotel and no food listed: the total is sights only, so it can't be compared with full routes. */
+      sightsOnly: !kept.some(
+        (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
+      ),
+      /** More than a day but no hotel listed: the total leaves out the biggest cost. */
+      noStay: it.days > 1 && !kept.some((i) => counted(i) && i.category === "STAY"),
       /** Share of the route's stops matching each vibe, 0–1. */
       vibes: Object.fromEntries(
         Object.entries(counts).map(([k, n]) => [

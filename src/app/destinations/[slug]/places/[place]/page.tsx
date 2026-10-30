@@ -31,6 +31,7 @@ import {
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 
 type Props = PageProps<"/destinations/[slug]/places/[place]">;
+type Mentions = NonNullable<Awaited<ReturnType<typeof getPlace>>>["mentions"];
 
 export async function generateStaticParams() {
   return getPlaceParams();
@@ -70,6 +71,8 @@ export default async function PlacePage({ params }: Props) {
   const near = `${p.area ? `${p.area}, ` : ""}${d.name}`;
   const googleUrl = googleMapsPlaceUrl(p.name, near);
   const recommended = p.mentions.filter((m) => m.sentiment !== "AVOID");
+  // Mentions with the creator's own words first, so the one shown open says something.
+  const said = [...p.mentions].sort((a, b) => Number(!a.note) - Number(!b.note));
   const faces = [
     ...new Map(p.mentions.map((m) => [m.creator.handle, m.creator])).values(),
   ];
@@ -255,6 +258,35 @@ export default async function PlacePage({ params }: Props) {
               withLabel
             />
           </div>
+          {/* What creators say is the point of the page, so it sits up here with the first one open. */}
+          {p.mentions.length > 0 && (
+            <section className="mt-6 rounded-2xl border border-line bg-card">
+              <h2 className="flex items-center gap-3 border-b border-line p-4 font-medium">
+                <span className="flex -space-x-2" aria-hidden>
+                  {faces.map((c) => (
+                    <CreatorAvatar key={c.handle} creator={c} size="sm" className="ring-2 ring-card" />
+                  ))}
+                </span>
+                What {faces.length === 1 ? "1 creator says" : `${faces.length} creators say`}
+              </h2>
+              <ul>
+                <Mention m={said[0]} />
+              </ul>
+              {p.mentions.length > 1 && (
+                <details className="group border-t border-line">
+                  <summary className="flex cursor-pointer list-none items-center gap-1 p-4 text-sm font-medium text-accent [&::-webkit-details-marker]:hidden">
+                    {p.mentions.length - 1} more
+                    <ChevronDown className="size-4 transition group-open:rotate-180" aria-hidden />
+                  </summary>
+                  <ul className="divide-y divide-line border-t border-line">
+                    {said.slice(1).map((m) => (
+                      <Mention key={m.id} m={m} />
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </section>
+          )}
           <PageGuide id="place" className="mt-4" />
         </div>
           {stops.length > 0 && (
@@ -322,65 +354,40 @@ export default async function PlacePage({ params }: Props) {
           )}
       </div>
 
-      <details
-        open={stops.length === 0}
-        className="group mt-8 rounded-2xl border border-line bg-card"
-      >
-        <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
-          <span className="flex -space-x-2" aria-hidden>
-            {faces.map((c) => (
-              <CreatorAvatar
-                key={c.handle}
-                creator={c}
-                size="sm"
-                className="ring-2 ring-card"
-              />
-            ))}
-          </span>
-          <span className="flex-1 font-medium">
-            What{" "}
-            {faces.length === 1
-              ? "1 creator says"
-              : `${faces.length} creators say`}
-          </span>
-          <ChevronDown
-            className="size-4 text-muted transition group-open:rotate-180"
-            aria-hidden
-          />
-        </summary>
-        <ul className="divide-y divide-line border-t border-line">
-          {p.mentions.map((m) => (
-            <li key={m.id} className="flex gap-3 p-4 text-sm">
-              <CreatorAvatar creator={m.creator} size="sm" />
-              <div className="min-w-0 flex-1">
-                <p className="flex flex-wrap items-center gap-1.5">
-                  <CreatorChip creator={m.creator} />
-                  <Link
-                    href={`/itineraries/${m.itinerary.slug}`}
-                    className="text-muted underline hover:text-foreground"
-                  >
-                    Day {m.day} · {m.itinerary.title}
-                  </Link>
-                  {m.sentiment && m.sentiment !== "RECOMMENDED" && (
-                    <span
-                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                        m.sentiment === "AVOID"
-                          ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
-                          : "bg-accent-soft text-accent"
-                      }`}
-                    >
-                      {sentimentLabel[m.sentiment]}
-                    </span>
-                  )}
-                </p>
-                {m.note && (
-                  <p className="mt-1.5 text-muted">&ldquo;{m.note}&rdquo;</p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </details>
     </>
+  );
+}
+
+/** One creator's mention of the place: who, which route and day, and their own words. */
+function Mention({ m }: { m: Mentions[number] }) {
+  return (
+    <li className="flex gap-3 p-4 text-sm">
+      <CreatorAvatar creator={m.creator} size="sm" />
+      <div className="min-w-0 flex-1">
+        <p className="flex flex-wrap items-center gap-1.5">
+          <CreatorChip creator={m.creator} />
+          <Link
+            href={`/itineraries/${m.itinerary.slug}`}
+            className="text-muted underline hover:text-foreground"
+          >
+            Day {m.day} · {m.itinerary.title}
+          </Link>
+          {m.sentiment && m.sentiment !== "RECOMMENDED" && (
+            <span
+              className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                m.sentiment === "AVOID"
+                  ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+                  : "bg-accent-soft text-accent"
+              }`}
+            >
+              {sentimentLabel[m.sentiment]}
+            </span>
+          )}
+        </p>
+        {m.note && (
+          <p className="mt-1.5 text-muted">&ldquo;{m.note}&rdquo;</p>
+        )}
+      </div>
+    </li>
   );
 }

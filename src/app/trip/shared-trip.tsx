@@ -10,8 +10,10 @@ import { TripMap } from "@/components/trip-map";
 import { lineTotal, useCart, type CartItem } from "@/lib/cart-store";
 import { decodeTrip } from "@/lib/share";
 
-export function SharedTripView() {
-  const token = useSearchParams().get("t") ?? "";
+/** The trip from ?t=, or from `token` when a short /t/ link has already looked it up. */
+export function SharedTripView({ token: given }: { token?: string }) {
+  const fromUrl = useSearchParams().get("t") ?? "";
+  const token = given ?? fromUrl;
   const trip = useMemo(() => decodeTrip(token), [token]);
   const [items, setItems] = useState<CartItem[] | null>(null);
   const { money } = useMoney();

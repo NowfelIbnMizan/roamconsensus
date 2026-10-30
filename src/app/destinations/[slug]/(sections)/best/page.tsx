@@ -214,23 +214,23 @@ export default async function BestPage({ params }: Props) {
           className="mt-10 scroll-mt-6"
         >
           <h3 className="text-xl font-semibold">{s.heading(d.name)}</h3>
-          {/* The top three get big photo cards; the rest stay short. */}
+          {/* The top three get big photo cards on wider screens, photo rows on phones; the rest stay short. */}
           <ol className="mt-4 grid gap-3 md:grid-cols-3">
             {s.places.slice(0, 3).map((p, i) => (
               <li
                 key={p.slug}
-                className="overflow-hidden rounded-2xl border border-line bg-card"
+                className="flex gap-3 overflow-hidden rounded-2xl border border-line bg-card p-3 md:block md:p-0"
               >
                 <PlacePhoto
                   d={d}
                   p={p}
-                  sizes="(min-width: 768px) 420px, 100vw"
-                  className="aspect-[4/3] w-full"
+                  sizes="(min-width: 768px) 420px, 192px"
+                  className="size-24 shrink-0 rounded-xl md:aspect-[4/3] md:size-auto md:w-full md:rounded-none"
                 />
-                <div className="space-y-1.5 p-4">
+                <div className="min-w-0 flex-1 space-y-1.5 md:p-4">
                   <PickTitle d={d} p={p} n={i + 1} />
                   <PickMeta p={p} />
-                  {p.blurb && <p className="line-clamp-3 text-sm">{p.blurb}</p>}
+                  {p.blurb && <p className="line-clamp-2 text-sm md:line-clamp-3">{p.blurb}</p>}
                   <AgreePill creators={p.creators} total={d.creatorCount} />
                 </div>
               </li>

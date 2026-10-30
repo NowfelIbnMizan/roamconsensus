@@ -93,6 +93,8 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
                       : destinations.map((d) => d.name).join(", ")}
                   </p>
                 </div>
+                {/* Beside the name, so a lone website icon doesn't take a row of its own. */}
+                <CreatorSocials creator={c} className="ml-auto max-w-[45%] shrink-0 justify-end" />
               </div>
               <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Travel style">
                 {styleLine(c).map((s) => (
@@ -102,10 +104,10 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
                 ))}
               </ul>
               {c.bio && <ReadMore text={c.bio} className="mt-3" />}
-              <CreatorSocials creator={c} className="mt-3" />
               <ul className="mt-3 space-y-2 border-t border-line pt-3 text-sm">
-                {routes.slice(0, PREVIEW).map((it) => (
-                  <li key={it.slug}>
+                {/* Phones show one route per card to keep the list short; the rest are on the creator's page. */}
+                {routes.slice(0, PREVIEW).map((it, n) => (
+                  <li key={it.slug} className={n > 0 ? "hidden sm:block" : undefined}>
                     <Link href={`/itineraries/${it.slug}`} className="group flex items-center gap-3">
                       <Thumb url={it.coverUrl} category="EXPERIENCE" className="size-10 rounded-lg sm:size-12" />
                       <span className="min-w-0">
@@ -122,7 +124,7 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
                 href={`/creators/${c.handle}`}
                 className="mt-3 inline-flex items-center gap-1 self-start text-sm font-medium text-accent hover:underline"
               >
-                {c.itineraries.length > PREVIEW ? `All ${c.itineraries.length} routes` : `About ${c.name}`}
+                See creator page
                 <ArrowRight className="size-3.5" aria-hidden />
               </Link>
             </li>

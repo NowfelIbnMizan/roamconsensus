@@ -8,6 +8,15 @@ import { useMoney } from "@/components/money";
 import { lineTotal, useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
 import { categoryLabel } from "@/lib/format";
 
+/** Paper can't click a link, so print just the site: getyourguide.com, not its long search address. */
+const site = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+};
+
 const DAY_MS = 86_400_000;
 
 /** A plain, ink-friendly copy of the day plan. Opens the print dialog once, where "Save as PDF" makes the file. */
@@ -98,7 +107,7 @@ export function PrintTrip() {
                     {i.couponCode && ` · code ${i.couponCode}`}
                   </p>
                   {i.note && <p className="text-sm">Note: {i.note}</p>}
-                  {(i.bookUrl ?? i.website) && <p className="text-xs break-all text-muted">{i.bookUrl ?? i.website}</p>}
+                  {(i.bookUrl ?? i.website) && <p className="text-xs text-muted">{site(i.bookUrl ?? i.website!)}</p>}
                 </div>
               </li>
             ))}

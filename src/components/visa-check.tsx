@@ -238,18 +238,30 @@ export function VisaList({
   );
   const free = rows.filter((c) => isOk(c.rules.passports[passport])).length;
 
+  // No passport yet: the picker is the whole page, so nobody reads 7 rows of "pick passport".
+  if (!passport)
+    return (
+      <div className="mt-6 rounded-2xl border-2 border-accent bg-card p-5 sm:p-8">
+        <PassportPicker big />
+        <p className="mt-4 text-sm text-muted">
+          Then see the answer for {rows.length} countries:{" "}
+          <span className="flag-font text-base">
+            {rows.map((c) => flag(c.country)).join(" ")}
+          </span>
+        </p>
+      </div>
+    );
+
   return (
     <>
       <div className="mt-5 flex flex-wrap items-end gap-x-6 gap-y-3">
         <PassportPicker big />
-        {passport && (
-          <p className="text-sm text-muted sm:pb-3.5">
-            <span className="font-semibold text-foreground">
-              {free} of {rows.length}
-            </span>{" "}
-            countries: no visa needed.
-          </p>
-        )}
+        <p className="text-sm text-muted sm:pb-3.5">
+          <span className="font-semibold text-foreground">
+            {free} of {rows.length}
+          </span>{" "}
+          countries: no visa needed.
+        </p>
       </div>
       <ul className="mt-6 divide-y divide-line rounded-2xl border border-line bg-card">
         {rows.map(({ country, rules, cities }) => {
@@ -278,9 +290,7 @@ export function VisaList({
                       {cities.map((d) => d.name).join(", ")}
                     </span>
                   </span>
-                  {!passport ? (
-                    <span className="text-sm text-muted">Pick passport</span>
-                  ) : !rule ? (
+                  {!rule ? (
                     <span className="text-sm text-muted">Not checked yet. Use the official link.</span>
                   ) : (
                     <span
@@ -311,7 +321,7 @@ export function VisaList({
                       {rule.note}
                     </p>
                   )}
-                  {!rule && passport && (
+                  {!rule && (
                     <p className="text-sm text-muted">
                       No data for a {passport} passport yet. Check the
                       official links below.

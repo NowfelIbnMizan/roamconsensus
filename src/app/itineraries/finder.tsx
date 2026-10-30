@@ -86,12 +86,14 @@ export function TripFinder({
       (r) =>
         !vibes.length || vibes.some((v) => (r.vibes[v] ?? 0) >= VIBE_SHARE),
     )
-    // Routes with few prices, or unpriced hotels, can't be judged against a budget, so a budget hides them.
+    // Routes with few prices, unpriced hotels or no hotel and food can't be judged against a budget, so a budget hides them.
     .filter(
       (r) =>
         maxCents === null ||
         (mostlyPriced(r) &&
           r.unpricedStays === 0 &&
+          !r.sightsOnly &&
+          !r.noStay &&
           r.totalCents > 0 &&
           r.totalCents <= maxCents),
     )
@@ -100,8 +102,8 @@ export function TripFinder({
         ? a.days - b.days
         : sort === "long"
           ? b.days - a.days
-          : // Partly priced routes look cheap only because their prices are missing, so they go last.
-            Number(!mostlyPriced(a)) - Number(!mostlyPriced(b)) ||
+          : // Partly priced, sights-only and hotel-less routes look cheap only because costs are missing, so they go last.
+            Number(!mostlyPriced(a) || a.sightsOnly || a.noStay) - Number(!mostlyPriced(b) || b.sightsOnly || b.noStay) ||
             (a.totalCents || Infinity) - (b.totalCents || Infinity),
     );
 
@@ -167,10 +169,16 @@ export function TripFinder({
             <span className="block text-lg font-semibold tabular-nums">
               {money(r.totalCents)}
             </span>
-            {r.unpricedCount > 0 && (
-              <span className="block text-xs text-muted">
-                + {r.unpricedCount} unpriced
-              </span>
+            {r.sightsOnly ? (
+              <span className="block text-xs text-muted">Sights only, no hotel or food</span>
+            ) : r.noStay ? (
+              <span className="block text-xs text-muted">No hotel listed</span>
+            ) : (
+              r.unpricedCount > 0 && (
+                <span className="block text-xs text-muted">
+                  + {r.unpricedCount} unpriced
+                </span>
+              )
             )}
           </>
         ) : (

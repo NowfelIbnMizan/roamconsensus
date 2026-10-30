@@ -75,7 +75,7 @@ export function WeatherCard({
           ))}
         </p>
       )}
-      <p className="mt-2 text-[10px] text-muted">
+      <p className="mt-2 text-xs text-muted">
         Forecast by{" "}
         <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer" className="underline">
           OpenWeather
