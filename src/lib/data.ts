@@ -312,6 +312,10 @@ export async function getDestination(slug: string) {
     return {
       unpricedCount: it.items.filter(isUnpriced).length,
       stops: it.items.filter(counted).length,
+      /** No hotel and no food listed: the total is sights only, so it can't be compared with full routes. */
+      sightsOnly: !it.items.some(
+        (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
+      ),
       /** Places it recommends (not ones it says to skip), for comparing routes. */
       places: routePlaces[n].map((p) => p.slug),
       /** Up to three of its stops' photos, in trip order. */

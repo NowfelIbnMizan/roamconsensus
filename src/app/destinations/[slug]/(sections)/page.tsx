@@ -180,7 +180,7 @@ export default async function DestinationPage({
                 <span className="text-xs font-medium uppercase tracking-wide text-accent">
                   {tierLabel[r.tier]}
                 </span>
-                <span className="text-xs text-muted">{r.days} days</span>
+                <span className="text-xs text-muted">{r.days} {r.days === 1 ? "day" : "days"}</span>
               </div>
               <h3 className="mt-1 font-semibold">
                 <Link

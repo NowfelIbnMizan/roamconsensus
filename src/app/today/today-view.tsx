@@ -1,7 +1,7 @@
 "use client";
 
 import { StopNote } from "@/components/stop-note";
-import { Luggage } from "lucide-react";
+import { Luggage, Search } from "lucide-react";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { Thumb } from "@/components/thumb";
@@ -57,8 +57,11 @@ export function TodayView() {
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">No trip planned yet.</p>
         <p className="mt-1 text-sm text-muted">Add a route to your trip, then come back here while you travel.</p>
-        <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
-          Browse destinations
+        <Link
+          href="/itineraries"
+          className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+        >
+          <Search className="size-4" aria-hidden /> Find a route
         </Link>
       </div>
     );

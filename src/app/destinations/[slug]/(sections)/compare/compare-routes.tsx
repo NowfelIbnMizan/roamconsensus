@@ -16,6 +16,8 @@ type Route = NonNullable<Awaited<ReturnType<typeof getDestination>>>["routes"][n
 type Places = Record<string, { name: string; category: ItemCategory; photo: string | null }>;
 
 const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
+// Sights-only routes have no hotel or food in their total, so "cheapest" ranks them after full routes.
+const cheapKey = (r: Route) => (r.sightsOnly ? 1e12 : 0) + (perDay(r) ?? 1e11);
 
 const SORTS = {
   agreed: "Most shared",
@@ -43,7 +45,7 @@ export function CompareRoutes({
     routes.map((r) => [r.slug, r.places.filter((p) => routes.some((x) => x !== r && x.places.includes(p))).length]),
   );
   const key = (r: Route) =>
-    sort === "agreed" ? -agreed.get(r.slug)! : sort === "cheap" ? (perDay(r) ?? Infinity) : r.days;
+    sort === "agreed" ? -agreed.get(r.slug)! : sort === "cheap" ? cheapKey(r) : r.days;
   const rows = [...routes].sort((x, y) => key(x) - key(y));
   // Ticking a third route drops the oldest pick, so two stay compared.
   const toggle = (slug: string) =>
@@ -63,9 +65,15 @@ export function CompareRoutes({
       ]
     : [];
 
-  const price = (r: Route) => (perDay(r) ? money(perDay(r)!) : "Not listed");
+  const price = (r: Route) => (r.sightsOnly ? "Sights only" : perDay(r) ? money(perDay(r)!) : "Not listed");
+  const dayPrice = (r: Route) =>
+    r.sightsOnly
+      ? "sights only, no hotel or food"
+      : perDay(r)
+        ? `${money(perDay(r)!)}/day`
+        : "price not listed";
   const missing = (r: Route) =>
-    r.unpricedCount > 0 && perDay(r) ? <span className="block text-xs text-muted">{r.unpricedCount} not priced</span> : null;
+    r.unpricedCount > 0 && perDay(r) && !r.sightsOnly ? <span className="block text-xs text-muted">{r.unpricedCount} not priced</span> : null;
 
   const Tick = ({ r }: { r: Route }) => {
     const on = ticked.includes(r.slug);
@@ -170,7 +178,7 @@ export function CompareRoutes({
                 <CreatorChip creator={r.creator} />
               </div>
               <p className="mt-1 text-xs text-muted">
-                {tierLabel[r.tier]} · {r.days} days · {perDay(r) ? `${money(perDay(r)!)}/day` : "price not listed"} ·{" "}
+                {tierLabel[r.tier]} · {r.days} {r.days === 1 ? "day" : "days"} · {dayPrice(r)} ·{" "}
                 {agreed.get(r.slug)} agreed spots
               </p>
             </div>
