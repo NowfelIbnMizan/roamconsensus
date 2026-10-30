@@ -633,6 +633,170 @@
       "lat": 13.69,
       "lng": 100.7501,
       "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "pathumwan-princess-hotel",
+      "name": "Pathumwan Princess Hotel",
+      "category": "STAY",
+      "area": "Siam",
+      "lat": 13.7466,
+      "lng": 100.5293
+    },
+    {
+      "slug": "siam-square",
+      "name": "Siam Square",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "lat": 13.7449,
+      "lng": 100.534
+    },
+    {
+      "slug": "centralworld",
+      "name": "CentralWorld",
+      "category": "EXPERIENCE",
+      "area": "Ratchaprasong",
+      "lat": 13.7466,
+      "lng": 100.5393
+    },
+    {
+      "slug": "siam-discovery",
+      "name": "Siam Discovery",
+      "category": "EXPERIENCE",
+      "area": "Siam",
+      "lat": 13.7464,
+      "lng": 100.5313
+    },
+    {
+      "slug": "pratunam-market",
+      "name": "Pratunam Market",
+      "category": "EXPERIENCE",
+      "area": "Pratunam",
+      "lat": 13.751,
+      "lng": 100.5405
+    },
+    {
+      "slug": "platinum-fashion-mall",
+      "name": "Platinum Fashion Mall",
+      "category": "EXPERIENCE",
+      "area": "Pratunam",
+      "lat": 13.7503,
+      "lng": 100.539
+    },
+    {
+      "slug": "decembers-cafe",
+      "name": "Decembers",
+      "category": "FOOD",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "b-story-cafe",
+      "name": "B-Story",
+      "category": "FOOD",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "the-cassette-coffee-bar",
+      "name": "The Cassette Coffee Bar",
+      "category": "FOOD",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "le-cafe-louis-vuitton",
+      "name": "Le Café Louis Vuitton",
+      "category": "FOOD",
+      "area": "Ratchaprasong"
+    },
+    {
+      "slug": "tribe-sky-beach-club",
+      "name": "Tribe Sky Beach Club",
+      "category": "FOOD",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "emsphere",
+      "name": "Emsphere",
+      "category": "EXPERIENCE",
+      "area": "Phrom Phong",
+      "lat": 13.7306,
+      "lng": 100.5694
+    },
+    {
+      "slug": "akara-sky-hanuman",
+      "name": "Akara Sky Hanuman",
+      "category": "FOOD",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "ancient-city",
+      "name": "Ancient City (Muang Boran)",
+      "category": "EXPERIENCE",
+      "area": "Samut Prakan",
+      "lat": 13.541,
+      "lng": 100.623
+    },
+    {
+      "slug": "widdershins-bar",
+      "name": "Widdershins",
+      "category": "FOOD",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "wat-paknam",
+      "name": "Wat Paknam Phasi Charoen",
+      "category": "EXPERIENCE",
+      "area": "Thonburi",
+      "lat": 13.7215,
+      "lng": 100.4706
+    },
+    {
+      "slug": "wat-khun-chan",
+      "name": "Wat Khun Chan",
+      "category": "EXPERIENCE",
+      "area": "Thonburi"
+    },
+    {
+      "slug": "iconsiam",
+      "name": "ICONSIAM",
+      "category": "EXPERIENCE",
+      "area": "Khlong San",
+      "lat": 13.7266,
+      "lng": 100.5103
+    },
+    {
+      "slug": "pak-khlong-talat",
+      "name": "Bangkok Flower Market (Pak Khlong Talat)",
+      "category": "EXPERIENCE",
+      "area": "Rattanakosin",
+      "lat": 13.7428,
+      "lng": 100.4965
+    },
+    {
+      "slug": "talat-noi",
+      "name": "Talat Noi street art",
+      "category": "EXPERIENCE",
+      "area": "Talat Noi",
+      "lat": 13.734,
+      "lng": 100.513
+    },
+    {
+      "slug": "eagle-nest-bar",
+      "name": "Eagle Nest Bar",
+      "category": "FOOD",
+      "area": "Rattanakosin"
+    },
+    {
+      "slug": "pratu-nokyung-alley",
+      "name": "Pratu Nokyung Alley",
+      "category": "EXPERIENCE",
+      "area": "Bangkok"
+    },
+    {
+      "slug": "asiatique",
+      "name": "Asiatique The Riverfront",
+      "category": "EXPERIENCE",
+      "area": "Charoen Krung",
+      "lat": 13.7046,
+      "lng": 100.503
     }
   ],
   "creators": [
@@ -664,6 +828,14 @@
       "profileUrl": "https://www.eatingthaifood.com",
       "youtubeUrl": "https://www.youtube.com/@MarkWiens",
       "bio": "Food traveller behind Migrationology and Eating Thai Food."
+    },
+    {
+      "handle": "thesavvytourist",
+      "name": "The Savvy Tourist",
+      "platform": "BLOG",
+      "profileUrl": "https://the-savvytourist.com",
+      "websiteUrl": "https://the-savvytourist.com",
+      "bio": "Travel blog by Shannon Thomson, with detailed city itineraries and maps."
     }
   ],
   "itineraries": [
@@ -1236,6 +1408,266 @@
           "place": "tom-yum-goong-banglamphu",
           "price": 17.85,
           "priceNote": "creator: 600 THB for everything"
+        }
+      ]
+    },
+    {
+      "slug": "bangkok-4-days-thesavvytourist",
+      "title": "4 days in Bangkok: malls, markets and the river",
+      "summary": "Siam's malls and cafés with a rooftop sunset, a day out to the railway and floating markets, temples and the river by ferry, then a slow massage day.",
+      "tier": "MIDRANGE",
+      "days": 4,
+      "creator": "thesavvytourist",
+      "sourceUrl": "https://the-savvytourist.com/4-day-bangkok-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Pathumwan Princess Hotel",
+          "category": "STAY",
+          "place": "pathumwan-princess-hotel",
+          "unit": "night",
+          "note": "Shannon's pick for a central Siam base. Also suggests Siam @ Siam, Ibis Siam and Mercure Siam."
+        },
+        {
+          "day": 1,
+          "name": "Airport Rail Link to the city",
+          "category": "TRANSIT",
+          "place": "airport-transfer-bkk",
+          "price": 1.34,
+          "priceNote": "about 45 THB (creator)",
+          "note": "From Suvarnabhumi. A taxi or Grab is about 500-800 THB."
+        },
+        {
+          "day": 1,
+          "name": "Siam Square",
+          "category": "EXPERIENCE",
+          "place": "siam-square",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Siam Paragon",
+          "category": "EXPERIENCE",
+          "place": "siam-paragon",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "CentralWorld",
+          "category": "EXPERIENCE",
+          "place": "centralworld",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "MBK Center",
+          "category": "EXPERIENCE",
+          "place": "mbk-center",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Siam Discovery",
+          "category": "EXPERIENCE",
+          "place": "siam-discovery",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Pratunam Market",
+          "category": "EXPERIENCE",
+          "place": "pratunam-market",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Platinum Fashion Mall",
+          "category": "EXPERIENCE",
+          "place": "platinum-fashion-mall",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Decembers",
+          "category": "FOOD",
+          "place": "decembers-cafe"
+        },
+        {
+          "day": 1,
+          "name": "B-Story",
+          "category": "FOOD",
+          "place": "b-story-cafe"
+        },
+        {
+          "day": 1,
+          "name": "The Cassette Coffee Bar",
+          "category": "FOOD",
+          "place": "the-cassette-coffee-bar"
+        },
+        {
+          "day": 1,
+          "name": "Le Café Louis Vuitton",
+          "category": "FOOD",
+          "place": "le-cafe-louis-vuitton",
+          "note": "Make a reservation."
+        },
+        {
+          "day": 1,
+          "name": "Tribe Sky Beach Club",
+          "category": "FOOD",
+          "place": "tribe-sky-beach-club"
+        },
+        {
+          "day": 1,
+          "name": "Emsphere",
+          "category": "EXPERIENCE",
+          "place": "emsphere",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Chatuchak Weekend Market",
+          "category": "EXPERIENCE",
+          "place": "chatuchak-weekend-market",
+          "note": "Landing on a weekend? Stop here between the airport and the city and use the storage lockers.",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Akara Sky Hanuman",
+          "category": "FOOD",
+          "place": "akara-sky-hanuman",
+          "price": 11.9,
+          "priceNote": "cocktails from 400-500 THB (creator)",
+          "note": "Go at sunset and stay for the light show and the 9:30pm cultural show."
+        },
+        {
+          "day": 2,
+          "name": "Maeklong Railway Market and Damnoen Saduak Floating Market",
+          "category": "EXPERIENCE",
+          "place": "damnoen-saduak-maeklong"
+        },
+        {
+          "day": 2,
+          "name": "Ancient City (Muang Boran)",
+          "category": "EXPERIENCE",
+          "place": "ancient-city"
+        },
+        {
+          "day": 2,
+          "name": "Chinatown night market",
+          "category": "FOOD",
+          "place": "yaowarat-street-food"
+        },
+        {
+          "day": 2,
+          "name": "Widdershins",
+          "category": "FOOD",
+          "place": "widdershins-bar"
+        },
+        {
+          "day": 3,
+          "name": "Wat Paknam Phasi Charoen",
+          "category": "EXPERIENCE",
+          "place": "wat-paknam",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "Wat Khun Chan",
+          "category": "EXPERIENCE",
+          "place": "wat-khun-chan",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "ICONSIAM",
+          "category": "EXPERIENCE",
+          "place": "iconsiam",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "Hop-on hop-off river ferry pass",
+          "category": "TRANSIT",
+          "price": 4.46,
+          "priceNote": "150 THB (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Wat Arun",
+          "category": "EXPERIENCE",
+          "place": "wat-arun",
+          "price": 5.95,
+          "priceNote": "200 THB entry (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Bangkok Flower Market",
+          "category": "EXPERIENCE",
+          "place": "pak-khlong-talat",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "Chinatown and Yaowarat Road",
+          "category": "FOOD",
+          "place": "yaowarat-street-food"
+        },
+        {
+          "day": 3,
+          "name": "Talat Noi street art",
+          "category": "EXPERIENCE",
+          "place": "talat-noi",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "Eagle Nest Bar",
+          "category": "FOOD",
+          "place": "eagle-nest-bar"
+        },
+        {
+          "day": 3,
+          "name": "Pratu Nokyung Alley",
+          "category": "EXPERIENCE",
+          "place": "pratu-nokyung-alley",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 3,
+          "name": "Chao Phraya river dinner cruise",
+          "category": "EXPERIENCE"
+        },
+        {
+          "day": 3,
+          "name": "Asiatique The Riverfront",
+          "category": "EXPERIENCE",
+          "place": "asiatique",
+          "note": "Ferris wheel, merry-go-round and the Mystery Mansion haunted house.",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 4,
+          "name": "Thai massage or spa",
+          "category": "EXPERIENCE",
+          "note": "Get around on the BTS and MRT to skip traffic. Use Grab: many taxis won't use the meter, and ask tuk-tuks for the 'no stop' price."
         }
       ]
     }
