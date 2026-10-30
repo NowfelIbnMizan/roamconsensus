@@ -261,19 +261,26 @@ export function Quiz({ data }: { data: QuizData }) {
       </div>
 
       {answered && top && !resultsSeen && (
-        <button
-          type="button"
-          onClick={() => results.current?.scrollIntoView({ behavior: "smooth" })}
-          className="fixed inset-x-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-[1101] flex items-center gap-3 rounded-2xl bg-foreground px-4 py-3 text-left text-background shadow-lg sm:bottom-4 lg:hidden"
-        >
-          <span className="min-w-0 flex-1">
-            <span className="block text-xs opacity-80">Your best match · {top.pct}%</span>
+        <div className="fixed inset-x-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-[1101] flex items-center gap-2 rounded-2xl bg-foreground py-2 pl-4 pr-2 text-background shadow-lg sm:bottom-4 lg:hidden">
+          <Link href={`/itineraries/${top.slug}`} className="min-w-0 flex-1 py-1">
+            <span className="block text-xs opacity-80">Best match · {top.pct}%</span>
             <span className="block truncate text-sm font-semibold">{top.title}</span>
-          </span>
-          <span className="inline-flex shrink-0 items-center gap-1 text-sm font-medium">
-            See it <ArrowDown className="size-4" aria-hidden />
-          </span>
-        </button>
+          </Link>
+          <button
+            type="button"
+            onClick={() => results.current?.scrollIntoView({ behavior: "smooth" })}
+            aria-label="See all matches"
+            className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-xl px-2 text-sm opacity-80"
+          >
+            More <ArrowDown className="size-4" aria-hidden />
+          </button>
+          <Link
+            href={`/itineraries/${top.slug}`}
+            className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-xl bg-background px-3 text-sm font-medium text-foreground"
+          >
+            Open <ArrowRight className="size-4" aria-hidden />
+          </Link>
+        </div>
       )}
 
       {spots.length > 0 && (

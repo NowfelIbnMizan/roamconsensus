@@ -51,11 +51,14 @@ export function CreatorNoticeLine({
 export function SupportCreator({
   creator,
   sourceUrl,
+  notice = true,
   className = "",
 }: {
   creator: Creator;
   /** The original guide, when the box sits on one of their itineraries. */
   sourceUrl?: string | null;
+  /** Off where the page already shows the independence note nearby. */
+  notice?: boolean;
   className?: string;
 }) {
   const home = sourceUrl ?? creator.websiteUrl ?? creator.profileUrl;
@@ -88,11 +91,13 @@ export function SupportCreator({
         )}
         <CreatorSocials creator={creator} />
       </div>
-      <CreatorNoticeLine
-        name={creator.name}
-        full
-        className="mt-4 border-t border-line pt-3"
-      />
+      {notice && (
+        <CreatorNoticeLine
+          name={creator.name}
+          full
+          className="mt-4 border-t border-line pt-3"
+        />
+      )}
     </aside>
   );
 }

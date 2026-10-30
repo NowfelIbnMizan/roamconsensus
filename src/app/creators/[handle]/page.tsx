@@ -54,7 +54,7 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
           </div>
           <CreatorNoticeLine name={creator.name} className="mt-3 max-w-2xl" />
         </div>
-        <SupportCreator creator={creator} className="mt-8 lg:mt-3" />
+        <SupportCreator creator={creator} notice={false} className="mt-8 lg:mt-3" />
       </div>
 
       <section className="mt-8">

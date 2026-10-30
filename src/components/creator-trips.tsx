@@ -9,16 +9,16 @@ import type { getCreator } from "@/lib/data";
 
 type Trip = NonNullable<Awaited<ReturnType<typeof getCreator>>>["itineraries"][number];
 
-/** A creator's trips by city: pick where you are going, see that city's plans as big photo cards. */
+/** A creator's trips as big photo cards: all of them first, or one city's via the pills. */
 export function CreatorTrips({ trips }: { trips: Trip[] }) {
   const cities = [...new Map(trips.map((t) => [t.destination.slug, t.destination.name])).entries()];
-  const [city, setCity] = useState(cities[0][0]);
-  const shown = trips.filter((t) => t.destination.slug === city);
+  const [city, setCity] = useState("all");
+  const shown = city === "all" ? trips : trips.filter((t) => t.destination.slug === city);
   return (
     <>
       {cities.length > 1 && (
         <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
-          {cities.map(([slug, name]) => (
+          {[["all", `All ${trips.length}`], ...cities].map(([slug, name]) => (
             <button
               key={slug}
               type="button"
