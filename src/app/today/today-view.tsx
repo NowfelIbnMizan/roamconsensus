@@ -38,7 +38,8 @@ export function TodayView() {
   const auto = tripDayToday(startDate, days);
   const [picked, setPicked] = useState<number | null>(null);
   const day = picked ?? auto ?? 1;
-  const list = items.filter((i) => i.day === day);
+  // Insurance and eSIMs are sorted before the trip (see the trip plan), not stops to tick off on the day.
+  const list = items.filter((i) => i.day === day && i.category !== "GEAR" && i.category !== "ESIM");
   const city = cityOf(list) ?? cityOf(items);
   const [info, setInfo] = useState<{ slug: string; data: CityInfo } | null>(null);
 
@@ -181,7 +182,7 @@ export function TodayView() {
                   url={next.photoUrl}
                   category={next.category}
                   sizes="(min-width: 640px) 576px, 100vw"
-                  className="aspect-[16/10] w-full"
+                  className="h-32 w-full sm:aspect-[16/10] sm:h-auto"
                 />
                 <div className="p-5">
                   <p className="text-xs font-semibold uppercase tracking-wide text-accent">Up next</p>

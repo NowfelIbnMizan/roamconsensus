@@ -16,8 +16,8 @@ type Route = NonNullable<Awaited<ReturnType<typeof getDestination>>>["routes"][n
 type Places = Record<string, { name: string; category: ItemCategory; photo: string | null }>;
 
 const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
-// Sights-only routes have no hotel or food in their total, so "cheapest" ranks them after full routes.
-const cheapKey = (r: Route) => (r.sightsOnly ? 1e12 : 0) + (perDay(r) ?? 1e11);
+// Sights-only and hotel-less routes leave big costs out of their total, so "cheapest" ranks them after full routes.
+const cheapKey = (r: Route) => (r.sightsOnly || r.noStay ? 1e12 : 0) + (perDay(r) ?? 1e11);
 
 const SORTS = {
   agreed: "Most shared",
@@ -69,11 +69,17 @@ export function CompareRoutes({
   const dayPrice = (r: Route) =>
     r.sightsOnly
       ? "sights only, no hotel or food"
-      : perDay(r)
-        ? `${money(perDay(r)!)}/day`
-        : "price not listed";
+      : r.noStay && perDay(r)
+        ? `${money(perDay(r)!)}/day, no hotel listed`
+        : perDay(r)
+          ? `${money(perDay(r)!)}/day`
+          : "price not listed";
   const missing = (r: Route) =>
-    r.unpricedCount > 0 && perDay(r) && !r.sightsOnly ? <span className="block text-xs text-muted">{r.unpricedCount} not priced</span> : null;
+    r.noStay && !r.sightsOnly && perDay(r) ? (
+      <span className="block text-xs text-muted">No hotel listed</span>
+    ) : r.unpricedCount > 0 && perDay(r) && !r.sightsOnly ? (
+      <span className="block text-xs text-muted">{r.unpricedCount} not priced</span>
+    ) : null;
 
   const Tick = ({ r }: { r: Route }) => {
     const on = ticked.includes(r.slug);

@@ -316,6 +316,8 @@ export async function getDestination(slug: string) {
       sightsOnly: !it.items.some(
         (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
       ),
+      /** More than a day but no hotel listed: the total leaves out the biggest cost. */
+      noStay: it.days > 1 && !it.items.some((i) => counted(i) && i.category === "STAY"),
       /** Places it recommends (not ones it says to skip), for comparing routes. */
       places: routePlaces[n].map((p) => p.slug),
       /** Up to three of its stops' photos, in trip order. */
@@ -572,6 +574,8 @@ export async function getQuizData() {
       sightsOnly: !kept.some(
         (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
       ),
+      /** More than a day but no hotel listed: the total leaves out the biggest cost. */
+      noStay: it.days > 1 && !kept.some((i) => counted(i) && i.category === "STAY"),
       /** Share of the route's stops matching each vibe, 0–1. */
       vibes: Object.fromEntries(
         Object.entries(counts).map(([k, n]) => [
