@@ -1,4 +1,5 @@
-import { getCreatorHandles, getDestinationSlugs, getItinerarySlugs, getPlaceParams, getPosts } from "@/lib/data";
+import { collectionPaths } from "@/lib/collections";
+import { getCreatorHandles, getDestination, getDestinationSlugs, getItinerarySlugs, getPlaceParams, getPosts } from "@/lib/data";
 
 /** City tabs that are worth indexing (Compare is interactive, so left out). */
 export const DESTINATION_TABS = ["", "/best", "/stay", "/when", "/before", "/budget", "/esim"];
@@ -14,6 +15,7 @@ export async function sitePaths() {
     getCreatorHandles(),
     getPosts(),
   ]);
+  const cities = await Promise.all(destinations.map((d) => getDestination(d.slug)));
   return [
     "/",
     "/visa",
@@ -30,6 +32,7 @@ export async function sitePaths() {
     ...creators.map((c) => `/creators/${c.handle}`),
     ...destinations.flatMap((d) => destinationPaths(d.slug)),
     ...destinations.map((d) => `/destinations/${d.slug}/places`),
+    ...cities.flatMap((d) => (d ? collectionPaths(d) : [])),
     ...itineraries.map((i) => `/itineraries/${i.slug}`),
     ...places.map((p) => `/destinations/${p.slug}/places/${p.place}`),
   ];
