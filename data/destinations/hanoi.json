@@ -659,7 +659,9 @@
       "slug": "family-hanoi-hotel",
       "name": "Family Hanoi Hotel",
       "category": "STAY",
-      "area": "Old Quarter"
+      "area": "Old Quarter",
+      "lat": 21.0285,
+      "lng": 105.8505
     },
     {
       "slug": "ba-dinh-square",
@@ -673,7 +675,9 @@
       "slug": "legend-beer",
       "name": "Legend Beer",
       "category": "FOOD",
-      "area": "Hoan Kiem"
+      "area": "Hoan Kiem",
+      "lat": 21.0312,
+      "lng": 105.8528
     }
   ],
   "creators": [

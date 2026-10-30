@@ -686,31 +686,41 @@
       "slug": "decembers-cafe",
       "name": "Decembers",
       "category": "FOOD",
-      "area": "Bangkok"
+      "area": "Ratchathewi",
+      "lat": 13.7505,
+      "lng": 100.5382
     },
     {
       "slug": "b-story-cafe",
       "name": "B-Story",
       "category": "FOOD",
-      "area": "Bangkok"
+      "area": "Ratchathewi",
+      "lat": 13.7533,
+      "lng": 100.5318
     },
     {
       "slug": "the-cassette-coffee-bar",
       "name": "The Cassette Coffee Bar",
       "category": "FOOD",
-      "area": "Bangkok"
+      "area": "Siam",
+      "lat": 13.7447,
+      "lng": 100.5323
     },
     {
       "slug": "le-cafe-louis-vuitton",
       "name": "Le Café Louis Vuitton",
       "category": "FOOD",
-      "area": "Ratchaprasong"
+      "area": "Ratchaprasong",
+      "lat": 13.7437,
+      "lng": 100.5435
     },
     {
       "slug": "tribe-sky-beach-club",
       "name": "Tribe Sky Beach Club",
       "category": "FOOD",
-      "area": "Bangkok"
+      "area": "Sukhumvit",
+      "lat": 13.7381,
+      "lng": 100.563
     },
     {
       "slug": "emsphere",
@@ -724,7 +734,9 @@
       "slug": "akara-sky-hanuman",
       "name": "Akara Sky Hanuman",
       "category": "FOOD",
-      "area": "Bangkok"
+      "area": "Ratchathewi",
+      "lat": 13.754,
+      "lng": 100.5398
     },
     {
       "slug": "ancient-city",
@@ -738,7 +750,9 @@
       "slug": "widdershins-bar",
       "name": "Widdershins",
       "category": "FOOD",
-      "area": "Bangkok"
+      "area": "Chinatown",
+      "lat": 13.7375,
+      "lng": 100.509
     },
     {
       "slug": "wat-paknam",
@@ -752,7 +766,9 @@
       "slug": "wat-khun-chan",
       "name": "Wat Khun Chan",
       "category": "EXPERIENCE",
-      "area": "Thonburi"
+      "area": "Thonburi",
+      "lat": 13.7258,
+      "lng": 100.4764
     },
     {
       "slug": "iconsiam",
@@ -782,13 +798,17 @@
       "slug": "eagle-nest-bar",
       "name": "Eagle Nest Bar",
       "category": "FOOD",
-      "area": "Rattanakosin"
+      "area": "Tha Tien",
+      "lat": 13.7435,
+      "lng": 100.4886
     },
     {
       "slug": "pratu-nokyung-alley",
       "name": "Pratu Nokyung Alley",
       "category": "EXPERIENCE",
-      "area": "Bangkok"
+      "area": "Tha Tien",
+      "lat": 13.7436,
+      "lng": 100.4885
     },
     {
       "slug": "asiatique",
