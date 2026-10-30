@@ -111,6 +111,16 @@ export default async function Home() {
             <em className="font-medium text-accent">don&apos;t miss</em>, then build
             your trip around them.
           </p>
+          <ol className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
+            {["Pick a route", "Add it to your trip", "Plan it day by day"].map((step, n) => (
+              <li key={step} className="flex items-center gap-1.5">
+                <span className="flex size-5 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent">
+                  {n + 1}
+                </span>
+                {step}
+              </li>
+            ))}
+          </ol>
           <HomeSearch
             cities={destinations.map(({ slug, name, country }) => ({
               slug,

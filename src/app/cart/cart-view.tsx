@@ -1,6 +1,6 @@
 "use client";
 
-import { Luggage } from "lucide-react";
+import { Luggage, Search } from "lucide-react";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
 import { Thumb } from "@/components/thumb";
@@ -89,10 +89,18 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
       <div className="rounded-2xl border border-dashed border-line p-10 text-center">
         <Luggage className="mx-auto mb-3 size-10 text-muted" strokeWidth={1.25} aria-hidden />
         <p className="font-medium">Nothing in your trip yet.</p>
-        <p className="mt-1 text-sm text-muted">Tap + on any place, or add a creator&apos;s whole route.</p>
-        <Link href="/#destinations" className="mt-4 inline-block text-sm font-medium text-accent underline">
-          Pick a city
-        </Link>
+        <p className="mt-1 text-sm text-muted">Start with a creator&apos;s route, or tap + on any place you like.</p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
+          <Link
+            href="/itineraries"
+            className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+          >
+            <Search className="size-4" aria-hidden /> Find a route
+          </Link>
+          <Link href="/#destinations" className="text-sm font-medium text-accent underline">
+            Browse cities
+          </Link>
+        </div>
       </div>
     );
   }
@@ -411,8 +419,33 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
             </section>
           ))
         )}
+        <AddMore cities={[...new Map(items.flatMap((i) => (i.destination ? [[i.destination.slug, i.destination.name] as const] : []))).entries()]} />
         <PackingList items={items} />
       </div>
+    </div>
+  );
+}
+
+/** The way back out to add more, so the trip plan is never a dead end. */
+function AddMore({ cities }: { cities: (readonly [string, string])[] }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-dashed border-line-strong p-4">
+      <span className="mr-1 text-sm font-medium">Add more:</span>
+      {cities.map(([slug, name]) => (
+        <Link
+          key={slug}
+          href={`/destinations/${slug}`}
+          className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 text-sm hover:border-accent"
+        >
+          <Plus className="size-3.5" aria-hidden /> Places in {name}
+        </Link>
+      ))}
+      <Link
+        href="/itineraries"
+        className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 text-sm hover:border-accent"
+      >
+        <Search className="size-3.5" aria-hidden /> Another route
+      </Link>
     </div>
   );
 }

@@ -401,6 +401,9 @@ export default async function ItineraryPage({
               items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
               className="w-full justify-center sm:w-auto"
             />
+            <p className="mt-2 text-sm text-muted">
+              Or tap <span className="font-semibold text-accent">+</span> on a stop to add just that one.
+            </p>
           </div>
           <a
             href={it.sourceUrl}
