@@ -635,6 +635,14 @@
       "profileUrl": "https://www.eatingthaifood.com",
       "youtubeUrl": "https://www.youtube.com/@MarkWiens",
       "bio": "Food traveller behind Migrationology and Eating Thai Food."
+    },
+    {
+      "handle": "thepoortraveler",
+      "name": "The Poor Traveler",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thepoortraveler.net",
+      "websiteUrl": "https://www.thepoortraveler.net",
+      "bio": "Budget travel blog by Yosh Dimen and Vins Ayala, with sample itineraries and cost estimates."
     }
   ],
   "itineraries": [
@@ -1147,6 +1155,97 @@
           "price": 1.19,
           "priceNote": "about THB 40 per plate",
           "priceSource": "https://www.eatingthaifood.com/restaurants/loong-thai-curry-chiang-mai/"
+        }
+      ]
+    },
+    {
+      "slug": "chiang-mai-5-days-thepoortraveler",
+      "title": "5 days in Chiang Mai on a budget",
+      "summary": "Street food and the night bazaar, a temples tour, day trips to Doi Inthanon and Chiang Rai, then a cooking class before you fly.",
+      "tier": "BUDGET",
+      "days": 5,
+      "creator": "thepoortraveler",
+      "sourceUrl": "https://www.thepoortraveler.net/2018/08/chiang-mai-itinerary/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Airport to the Old City",
+          "category": "TRANSIT",
+          "price": 1.78,
+          "priceNote": "฿60 in 2018 (creator)"
+        },
+        {
+          "day": 1,
+          "name": "DIY street food trip",
+          "category": "FOOD",
+          "price": 5.95,
+          "priceNote": "฿200 in 2018 (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Night Bazaar",
+          "category": "EXPERIENCE",
+          "place": "chiang-mai-night-bazaar",
+          "price": 0,
+          "priceNote": "free entry",
+          "note": "On a weekend, go to the weekend walking street market instead."
+        },
+        {
+          "day": 2,
+          "name": "Chiang Mai temples tour",
+          "category": "EXPERIENCE",
+          "price": 27.96,
+          "priceNote": "฿940 in 2018 (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Street food dinner",
+          "category": "FOOD",
+          "price": 2.97,
+          "priceNote": "฿100 in 2018 (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Doi Inthanon day tour",
+          "category": "EXPERIENCE",
+          "place": "doi-inthanon-summit",
+          "price": 38.67,
+          "priceNote": "฿1300 in 2018 (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Street food dinner",
+          "category": "FOOD",
+          "price": 2.97,
+          "priceNote": "฿100 in 2018 (creator)"
+        },
+        {
+          "day": 4,
+          "name": "Chiang Rai day tour",
+          "category": "EXPERIENCE",
+          "price": 34.21,
+          "priceNote": "฿1150 in 2018 (creator)"
+        },
+        {
+          "day": 4,
+          "name": "Street food dinner",
+          "category": "FOOD",
+          "price": 2.97,
+          "priceNote": "฿100 in 2018 (creator)"
+        },
+        {
+          "day": 5,
+          "name": "Thai cooking class",
+          "category": "EXPERIENCE",
+          "price": 22.01,
+          "priceNote": "฿740 in 2018 (creator)"
+        },
+        {
+          "day": 5,
+          "name": "Old City to the airport",
+          "category": "TRANSIT",
+          "price": 4.46,
+          "priceNote": "฿150 in 2018 (creator)"
         }
       ]
     }
