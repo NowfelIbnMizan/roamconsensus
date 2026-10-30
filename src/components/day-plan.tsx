@@ -324,9 +324,10 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                                 </span>
                               </span>
                               <span
-                                className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-24 truncate text-muted" : ""}`}
+                                className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "text-muted" : ""}`}
                               >
-                                {price(item)}
+                                {/* A creator's price wording can be long; the row says "No price", tapping shows it. */}
+                                {item.priceCents === null ? "No price" : price(item)}
                               </span>
                             </>
                           }
