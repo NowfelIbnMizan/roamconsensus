@@ -16,8 +16,10 @@ export async function generateMetadata({
   const d = await getDestination((await params).slug);
   return d
     ? {
-        title: `${d.country} eSIM plans compared`,
-        description: `Compare eSIM data plans for ${d.name}.`,
+        // Cities in one country share the plans, so the city name keeps each title its own.
+        title: `${d.name} eSIM: ${d.country} data plans compared`,
+        description: `Compare ${d.country} eSIM data plans for ${d.name} by price, data and days, and check your phone works first.`,
+        alternates: { canonical: `/destinations/${d.slug}/esim` },
       }
     : {};
 }

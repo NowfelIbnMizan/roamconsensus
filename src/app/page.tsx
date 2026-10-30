@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
 import { Photo } from "@/components/photo";
@@ -11,6 +12,33 @@ import { CreatorAvatar } from "@/components/creator-avatar";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { HomeSearch } from "@/components/home-search";
 import { CityMap } from "@/components/city-map";
+import { siteUrl } from "@/lib/email";
+import { CONTACT_EMAIL } from "@/lib/contact";
+import { ldJson } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  // The bare brand name tells search nothing; lead with what the site is.
+  title: { absolute: "Creatour: travel itineraries from creators, compared" },
+  description:
+    "See where travel creators agree. Compare their itineraries for Bali, Tokyo, Bangkok and more, then build your own day-by-day trip plan.",
+  alternates: { canonical: "/" },
+};
+
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": `${siteUrl()}/#website`, name: "Creatour", url: siteUrl() },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl()}/#org`,
+      name: "Creatour",
+      url: siteUrl(),
+      logo: `${siteUrl()}/icons/icon-512.png`,
+      email: CONTACT_EMAIL,
+      sameAs: ["https://www.instagram.com/creatour.co/", "https://www.linkedin.com/company/creatour-co/"],
+    },
+  ],
+};
 
 // Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
 const comingSoon = [
@@ -51,6 +79,7 @@ export default async function Home() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(siteJsonLd)} />
       <section className="grid items-center gap-6 pb-6 md:grid-cols-[1fr_1.1fr] md:gap-10 md:py-8">
         <div>
           <Link

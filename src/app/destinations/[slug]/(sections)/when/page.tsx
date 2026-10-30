@@ -16,7 +16,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/destinations/[slug]/when">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
   return d
-    ? { title: `Best time to visit ${d.name}`, description: `${d.name} weather and crowds month by month.` }
+    ? {
+        title: `Best time to visit ${d.name}`,
+        description: `${d.name} weather, rain and crowds month by month, and the best months to go.`,
+        alternates: { canonical: `/destinations/${d.slug}/when` },
+      }
     : {};
 }
 

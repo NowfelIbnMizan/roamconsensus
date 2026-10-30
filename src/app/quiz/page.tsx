@@ -4,6 +4,7 @@ import { PageGuide } from "@/components/page-guide";
 import { Quiz } from "./quiz";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/quiz" },
   title: "Find your trip",
   description: "Tap where, how long, your budget style and what you love: the creator itinerary that fits shows up as you go.",
 };

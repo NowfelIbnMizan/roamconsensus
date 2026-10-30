@@ -3,7 +3,8 @@ import { PageGuide } from "@/components/page-guide";
 import { canSendEmail } from "@/lib/email";
 import { CartView } from "./cart-view";
 
-export const metadata: Metadata = { title: "Trip plan" };
+// Each visitor's own plan, so nothing here for search to index.
+export const metadata: Metadata = { title: "Trip plan", robots: { index: false } };
 
 export default function CartPage() {
   return (

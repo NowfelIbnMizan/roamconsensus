@@ -7,6 +7,8 @@ import { UpdatedOn } from "@/components/updated-on";
 import Link from "next/link";
 import { Fragment } from "react";
 import { notFound } from "next/navigation";
+import { siteUrl } from "@/lib/email";
+import { breadcrumbJsonLd, clip, ldJson } from "@/lib/seo";
 import {
   ArrowRight,
   ChevronDown,
@@ -215,7 +217,16 @@ export async function generateMetadata({
   params,
 }: PageProps<"/itineraries/[slug]">): Promise<Metadata> {
   const it = await getItinerary((await params).slug);
-  return it ? { title: it.title, description: it.summary } : {};
+  if (!it) return {};
+  // "One week in Bali" alone matches few searches; add the city when missing and the creator's name.
+  const city = it.title.toLowerCase().includes(it.destination.name.toLowerCase()) ? "" : ` in ${it.destination.name}`;
+  const title = `${it.title}${city}`;
+  return {
+    // Titles past about 60 characters get cut in results, so the creator's name goes only where it fits.
+    title: title.length + it.creator.name.length <= 50 ? `${title}, by ${it.creator.name}` : title,
+    description: clip(it.summary),
+    alternates: { canonical: `/itineraries/${it.slug}` },
+  };
 }
 
 export default async function ItineraryPage({
@@ -282,8 +293,33 @@ export default async function ItineraryPage({
   );
   const priced = kept.filter((i) => i.priceCents !== null).length;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: it.title,
+    description: it.summary,
+    url: `${siteUrl()}/itineraries/${it.slug}`,
+    author: { "@type": "Person", name: it.creator.name, url: it.creator.profileUrl },
+    isBasedOn: it.sourceUrl,
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: kept.map((i, n) => ({ "@type": "ListItem", position: n + 1, name: i.name })),
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(jsonLd)} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={ldJson(
+          breadcrumbJsonLd([
+            ["Home", "/"],
+            [it.destination.name, `/destinations/${it.destination.slug}`],
+            [it.title, `/itineraries/${it.slug}`],
+          ]),
+        )}
+      />
       {it.destination.isSample && <SampleBanner />}
       <Link
         href={`/destinations/${it.destination.slug}`}

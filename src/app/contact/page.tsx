@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description: "Get in touch with Creatour: questions, corrections, creator requests and partnerships.",
 };

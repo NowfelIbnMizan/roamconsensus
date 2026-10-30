@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
     ? {
         title: `${d.name} trip budget calculator`,
         description: `How much a trip to ${d.name} costs per day, for backpackers, mid-range and luxury travellers.`,
+        alternates: { canonical: `/destinations/${d.slug}/budget` },
       }
     : {};
 }

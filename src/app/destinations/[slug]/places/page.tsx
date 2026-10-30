@@ -14,8 +14,9 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   const d = await getDestination((await params).slug);
   return d
     ? {
-        title: `All must-visit places in ${d.name}, picked by travel creators`,
+        title: `All ${d.name} places travel creators recommend`,
         description: `Every place travel creators recommend in ${d.name}, most-picked first, on one map.`,
+        alternates: { canonical: `/destinations/${d.slug}/places` },
       }
     : {};
 }

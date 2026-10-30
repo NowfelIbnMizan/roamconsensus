@@ -134,7 +134,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? `${d.creatorCount} travel creators`
       : "a travel creator";
   return {
-    title: `${count} best things to do in ${d.name}, according to ${who}`,
+    title: `${count} best things to do in ${d.name} (${d.creatorCount > 1 ? `${d.creatorCount} creators` : "creator"} pick)`,
     description: `The spots ${who} recommend most in ${d.name}: things to do, where to eat and where to stay, with prices and who recommends each one.`,
     alternates: { canonical: `/destinations/${d.slug}/best` },
   };

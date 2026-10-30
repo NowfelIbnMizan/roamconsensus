@@ -4,6 +4,7 @@ import { LegalPage } from "@/components/legal";
 import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms of use",
   description:
     "The rules for using Creatour: prices are estimates, check before you book, and creators own their work.",

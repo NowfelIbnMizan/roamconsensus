@@ -4,6 +4,7 @@ import { getQuizData } from "@/lib/data";
 import { TripFinder } from "./finder";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/itineraries" },
   title: "Find a route by length and budget",
   description:
     "Every creator itinerary on Creatour, filtered by how many days you have and what you want to spend.",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { clip } from "@/lib/seo";
 import { ArrowRight, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
@@ -52,7 +53,11 @@ export async function generateMetadata({
 }: PageProps<"/destinations/[slug]">): Promise<Metadata> {
   const d = await getDestination((await params).slug);
   return d
-    ? { title: `${d.name} itineraries and must-visit places, picked by travel creators`, description: d.summary }
+    ? {
+        title: `${d.name} itineraries from travel creators`,
+        description: clip(d.summary),
+        alternates: { canonical: `/destinations/${d.slug}` },
+      }
     : {};
 }
 

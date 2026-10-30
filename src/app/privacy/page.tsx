@@ -4,6 +4,7 @@ import { LegalPage } from "@/components/legal";
 import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy" },
   title: "Privacy policy",
   description:
     "What Creatour collects, why, and how to have it deleted. Short version: very little, and no tracking cookies.",

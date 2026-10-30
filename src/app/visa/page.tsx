@@ -6,7 +6,8 @@ import { VisaList } from "@/components/visa-check";
 import { PageGuide } from "@/components/page-guide";
 
 export const metadata: Metadata = {
-  title: "Visa checker",
+  alternates: { canonical: "/visa" },
+  title: "Do I need a visa? Visa checker by passport",
   description: "Pick your passport and see whether you need a visa for each destination, with official links.",
 };
 
