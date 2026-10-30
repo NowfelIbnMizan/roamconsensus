@@ -102,7 +102,7 @@ export function TripFinder({
         ? a.days - b.days
         : sort === "long"
           ? b.days - a.days
-          : // Partly priced, sights-only and hotel-less routes look cheap only because costs are missing, so they go last.
+          : // Partly priced, sights-only and unpriced-hotel routes look cheap only because costs are missing, so they go last.
             Number(!mostlyPriced(a) || a.sightsOnly || a.noStay) - Number(!mostlyPriced(b) || b.sightsOnly || b.noStay) ||
             (a.totalCents || Infinity) - (b.totalCents || Infinity),
     );
@@ -172,7 +172,7 @@ export function TripFinder({
             {r.sightsOnly ? (
               <span className="block text-xs text-muted">Sights only, no hotel or food</span>
             ) : r.noStay ? (
-              <span className="block text-xs text-muted">No hotel listed</span>
+              <span className="block text-xs text-muted">No hotel price</span>
             ) : (
               r.unpricedCount > 0 && (
                 <span className="block text-xs text-muted">

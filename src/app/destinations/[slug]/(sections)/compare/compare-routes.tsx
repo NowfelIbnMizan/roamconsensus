@@ -16,7 +16,7 @@ type Route = NonNullable<Awaited<ReturnType<typeof getDestination>>>["routes"][n
 type Places = Record<string, { name: string; category: ItemCategory; photo: string | null }>;
 
 const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
-// Sights-only and hotel-less routes leave big costs out of their total, so "cheapest" ranks them after full routes.
+// Sights-only routes and routes without a hotel price leave big costs out of their total, so "cheapest" ranks them after full routes.
 const cheapKey = (r: Route) => (r.sightsOnly || r.noStay ? 1e12 : 0) + (perDay(r) ?? 1e11);
 
 const SORTS = {
@@ -70,13 +70,13 @@ export function CompareRoutes({
     r.sightsOnly
       ? "sights only, no hotel or food"
       : r.noStay && perDay(r)
-        ? `${money(perDay(r)!)}/day, no hotel listed`
+        ? `${money(perDay(r)!)}/day, no hotel price`
         : perDay(r)
           ? `${money(perDay(r)!)}/day`
           : "price not listed";
   const missing = (r: Route) =>
     r.noStay && !r.sightsOnly && perDay(r) ? (
-      <span className="block text-xs text-muted">No hotel listed</span>
+      <span className="block text-xs text-muted">No hotel price</span>
     ) : r.unpricedCount > 0 && perDay(r) && !r.sightsOnly ? (
       <span className="block text-xs text-muted">{r.unpricedCount} not priced</span>
     ) : null;

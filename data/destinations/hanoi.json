@@ -654,6 +654,30 @@
       "lng": 105.8566,
       "website": "https://capellahotels.com/en/capella-hanoi",
       "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "family-hanoi-hotel",
+      "name": "Family Hanoi Hotel",
+      "category": "STAY",
+      "area": "Old Quarter",
+      "lat": 21.0285,
+      "lng": 105.8505
+    },
+    {
+      "slug": "ba-dinh-square",
+      "name": "Ba Dinh Square",
+      "category": "EXPERIENCE",
+      "area": "Ba Dinh",
+      "lat": 21.0368,
+      "lng": 105.8345
+    },
+    {
+      "slug": "legend-beer",
+      "name": "Legend Beer",
+      "category": "FOOD",
+      "area": "Hoan Kiem",
+      "lat": 21.0312,
+      "lng": 105.8528
     }
   ],
   "creators": [
@@ -677,6 +701,14 @@
       "platform": "BLOG",
       "profileUrl": "https://www.foratravel.com",
       "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    },
+    {
+      "handle": "onedayinacity",
+      "name": "One Day in a City",
+      "platform": "BLOG",
+      "profileUrl": "https://www.onedayinacity.com",
+      "websiteUrl": "https://www.onedayinacity.com",
+      "bio": "Travel blog by Gina and Yen with one-day city guides."
     }
   ],
   "itineraries": [
@@ -1339,6 +1371,99 @@
           "price": 11.35,
           "priceNote": "cocktails from ₫295,000",
           "priceSource": "https://skybars.vn/lighthouse-sky-bar/"
+        }
+      ]
+    },
+    {
+      "slug": "hanoi-1-day-onedayinacity",
+      "title": "One day in Hanoi",
+      "summary": "Hoan Kiem Lake and the Jade Mountain temple, the Ho Chi Minh Mausoleum, a water puppet show, then banh mi, chicken pho and egg coffee.",
+      "tier": "BUDGET",
+      "days": 1,
+      "creator": "onedayinacity",
+      "sourceUrl": "https://www.onedayinacity.com/one-day-in-hanoi-vietnam/",
+      "items": [
+        {
+          "day": 1,
+          "name": "Family Hanoi Hotel",
+          "category": "STAY",
+          "place": "family-hanoi-hotel",
+          "unit": "night",
+          "note": "Or Hanoi Old Quarter Backpackers Hostel on a tighter budget."
+        },
+        {
+          "day": 1,
+          "name": "Hanoi Old Quarter",
+          "category": "EXPERIENCE",
+          "place": "old-quarter",
+          "price": 0,
+          "priceNote": "free",
+          "note": "Don't spend your whole day here. On a weekend evening, grab a drink on a stool outside a bar and catch the live music."
+        },
+        {
+          "day": 1,
+          "name": "Hoan Kiem Lake",
+          "category": "EXPERIENCE",
+          "place": "hoan-kiem-lake",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Temple of the Jade Mountain (Ngoc Son)",
+          "category": "EXPERIENCE",
+          "place": "ngoc-son-temple",
+          "price": 1.16,
+          "priceNote": "30,000 VND (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Ho Chi Minh Mausoleum",
+          "category": "EXPERIENCE",
+          "place": "ho-chi-minh-mausoleum",
+          "price": 0,
+          "priceNote": "free entry",
+          "note": "Go super early for a photo, or queue with everyone else."
+        },
+        {
+          "day": 1,
+          "name": "Ba Dinh Square",
+          "category": "EXPERIENCE",
+          "place": "ba-dinh-square",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Legend Beer",
+          "category": "FOOD",
+          "place": "legend-beer",
+          "note": "A good drink spot if you're not in town for the weekend."
+        },
+        {
+          "day": 1,
+          "name": "Thang Long Water Puppet Theatre",
+          "category": "EXPERIENCE",
+          "place": "thang-long-water-puppet-theatre",
+          "note": "Shows sell out at weekends and in peak season: book ahead."
+        },
+        {
+          "day": 1,
+          "name": "Banh mi",
+          "category": "FOOD",
+          "note": "Pick the stall with the crowd, or where the owner is busy cooking."
+        },
+        {
+          "day": 1,
+          "name": "Chicken pho",
+          "category": "FOOD"
+        },
+        {
+          "day": 1,
+          "name": "Giang Café egg coffee",
+          "category": "FOOD",
+          "place": "cafe-giang",
+          "note": "Always busy, so expect a short queue."
         }
       ]
     }
