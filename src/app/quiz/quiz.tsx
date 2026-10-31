@@ -11,6 +11,7 @@ import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
+import { usePrefs } from "@/lib/prefs";
 
 // Most routes cover one city in 1-3 days, so the shortest choice has to be short.
 const DAYS = [
@@ -69,6 +70,15 @@ function Question({ label, children }: { label: string; children: React.ReactNod
 export function Quiz({ data }: { data: QuizData }) {
   const [a, setA] = useState<Answers>({ days: null, tier: null, vibes: [] });
   const [city, setCity] = useState<string | null>(null);
+  // Style starts from the traveller's profile (My trips), still one tap to change.
+  const prefs = usePrefs();
+  const prefsApplied = useRef(false);
+  useEffect(() => {
+    if (!prefs.ready || prefsApplied.current) return;
+    prefsApplied.current = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the profile is only readable after mount
+    if (prefs.tier) setA((x) => ({ ...x, tier: x.tier ?? (prefs.tier as Tier) }));
+  }, [prefs]);
   const { money } = useMoney();
   // Below lg the matches sit under the questions; a bar shows the top pick until they scroll into view.
   const results = useRef<HTMLElement>(null);

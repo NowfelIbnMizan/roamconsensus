@@ -16,7 +16,7 @@ import {
   type VisaStatus,
 } from "@/lib/visa";
 
-const usePassportStore = create<{
+export const usePassportStore = create<{
   passport: string;
   set: (p: string) => void;
   /** Ticked "before you fly" items, as "Country: item text". */

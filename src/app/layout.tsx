@@ -9,6 +9,7 @@ import { CurrencyPicker, CurrencyProvider } from "@/components/money";
 import { ThemeToggle, themeScript } from "@/components/theme";
 import { InstallApp } from "@/components/install-app";
 import { MobileNav } from "@/components/mobile-nav";
+import { AddedToast } from "@/components/added-toast";
 import { AccountButton } from "@/components/account-button";
 import { CartSync } from "@/components/cart-sync";
 import { googleLoginEnabled } from "@/lib/auth";
@@ -186,6 +187,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           </footer>
           <Suspense fallback={null}>
             <MobileNav accounts={googleLoginEnabled()} />
+            <AddedToast accounts={googleLoginEnabled()} />
             {googleLoginEnabled() && <CartSync />}
             {goatcounter && <VisitorStats code={goatcounter} />}
           </Suspense>

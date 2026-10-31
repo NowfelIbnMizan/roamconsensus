@@ -383,6 +383,8 @@ model User {
   alertsEnabled   Boolean          @default(false)
   /// Last alert check; only routes added after it count as new.
   alertsCheckedAt DateTime?
+  /// Private travel profile set on My trips: style, trip length, passport, currency, cities been to.
+  prefs           Json?
 }
 
 model Session {

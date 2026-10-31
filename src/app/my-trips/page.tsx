@@ -6,7 +6,9 @@ import { PageGuide } from "@/components/page-guide";
 import { isAdmin } from "@/lib/admin/auth";
 import { googleLoginEnabled } from "@/lib/auth";
 import { canSendEmail } from "@/lib/email";
+import { getDestinations } from "@/lib/data";
 import { MyTrips } from "./my-trips";
+import { MyTravel } from "./my-travel";
 
 export const metadata: Metadata = { title: "My trips", robots: { index: false } };
 
@@ -21,6 +23,11 @@ async function AdminLink() {
       <Settings className="size-4" aria-hidden /> Open admin
     </Link>
   );
+}
+
+async function Travel() {
+  const cities = (await getDestinations()).filter((d) => !d.isSample).map(({ slug, name }) => ({ slug, name }));
+  return <MyTravel cities={cities} />;
 }
 
 export default function MyTripsPage() {
@@ -38,6 +45,9 @@ export default function MyTripsPage() {
           Accounts are coming soon. Your trip plan is saved on this device for now.
         </p>
       )}
+      <Suspense>
+        <Travel />
+      </Suspense>
     </>
   );
 }

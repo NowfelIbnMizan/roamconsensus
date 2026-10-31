@@ -5,6 +5,9 @@ import { authClient } from "@/lib/auth-client";
 import { type CartData, mergeCarts } from "@/lib/cart-data";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 import { favouriteKey, useFavourites } from "@/lib/favourites";
+import { type TravelPrefs, usePrefsStore } from "@/lib/prefs";
+import { useCurrencyStore } from "@/components/money";
+import { usePassportStore } from "@/components/visa-check";
 
 // Which account this device's cart already follows. Set after the first sign-in here merges the two carts; from
 // then on the account's copy is the latest, since every change is sent to it.
@@ -105,5 +108,73 @@ export function CartSync() {
     };
   }, [hydrated, isPending, userId]);
 
+  usePrefsSync(isPending ? undefined : (userId ?? null));
+
   return null;
+}
+
+type AccountPrefs = { tier: string; length: number; been: string[]; passport: string; currency: string };
+
+function prefsData(): AccountPrefs {
+  const { tier, length, been } = usePrefsStore.getState();
+  return { tier, length, been, passport: usePassportStore.getState().passport, currency: useCurrencyStore.getState().code };
+}
+
+const pushPrefs = (prefs: AccountPrefs) =>
+  fetch("/api/account/prefs", {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(prefs),
+    keepalive: true,
+  }).catch(() => {});
+
+/** The travel profile (style, length, cities been, passport, currency) follows the account; the account's copy wins. */
+function usePrefsSync(userId: string | null | undefined) {
+  useEffect(() => {
+    if (!userId) return;
+    let ready = false;
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let last = "";
+
+    (async () => {
+      await Promise.all([
+        usePrefsStore.persist.rehydrate(),
+        usePassportStore.persist.rehydrate(),
+        useCurrencyStore.persist.rehydrate(),
+      ]);
+      const res = await fetch("/api/account/prefs").catch(() => null);
+      if (!res?.ok || cancelled) return;
+      const { prefs } = (await res.json()) as { prefs: AccountPrefs | null };
+      if (prefs) {
+        usePrefsStore.getState().update({
+          tier: prefs.tier as TravelPrefs["tier"],
+          length: prefs.length,
+          been: prefs.been,
+        });
+        if (prefs.passport) usePassportStore.getState().set(prefs.passport);
+        if (prefs.currency) useCurrencyStore.getState().set(prefs.currency);
+      }
+      last = JSON.stringify(prefsData());
+      if (!prefs) void pushPrefs(prefsData());
+      ready = true;
+    })();
+
+    const changed = () => {
+      if (!ready) return;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const now = JSON.stringify(prefsData());
+        if (now === last) return;
+        last = now;
+        void pushPrefs(JSON.parse(now));
+      }, 800);
+    };
+    const unsubs = [usePrefsStore.subscribe(changed), usePassportStore.subscribe(changed), useCurrencyStore.subscribe(changed)];
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+      unsubs.forEach((u) => u());
+    };
+  }, [userId]);
 }

@@ -15,6 +15,7 @@ import { CityMap } from "@/components/city-map";
 import { siteUrl } from "@/lib/email";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { ldJson } from "@/lib/seo";
+import { BeenCity } from "@/components/been-city";
 
 export const metadata: Metadata = {
   // The bare brand name tells search nothing; lead with what the site is.
@@ -111,6 +112,16 @@ export default async function Home() {
             <em className="font-medium text-accent">don&apos;t miss</em>, then build
             your trip around them.
           </p>
+          <ol className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
+            {["Pick a route", "Add it to your trip", "Plan it day by day"].map((step, n) => (
+              <li key={step} className="flex items-center gap-1.5">
+                <span className="flex size-5 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent">
+                  {n + 1}
+                </span>
+                {step}
+              </li>
+            ))}
+          </ol>
           <HomeSearch
             cities={destinations.map(({ slug, name, country }) => ({
               slug,
@@ -150,7 +161,7 @@ export default async function Home() {
         <h2 className="text-3xl font-semibold">Where to next?</h2>
         <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4">
           {destinations.map((d) => (
-            <li key={d.slug}>
+            <BeenCity key={d.slug} slug={d.slug}>
               <Link href={`/destinations/${d.slug}`} className="group block">
                 <span className="block overflow-hidden rounded-2xl">
                   <Photo
@@ -185,10 +196,10 @@ export default async function Home() {
                   </p>
                 </div>
               </Link>
-            </li>
+            </BeenCity>
           ))}
           {placeholders.map((c) => (
-            <li key={c.slug} aria-label={`${c.name}, coming soon`}>
+            <li key={c.slug} aria-label={`${c.name}, coming soon`} className="order-2">
               <div className="overflow-hidden rounded-2xl border border-dashed border-line bg-card">
                 <Photo
                   photoKey={`destination:${c.slug}`}

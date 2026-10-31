@@ -2,6 +2,7 @@
 
 import { Check, Plus, Luggage, X } from "lucide-react";
 import { useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
+import { announceAdded } from "@/components/added-toast";
 
 export function AddRouteButton({
   items,
@@ -27,7 +28,11 @@ export function AddRouteButton({
   return (
     <button
       type="button"
-      onClick={() => (all ? items.forEach((i) => remove(i.id)) : add(items))}
+      onClick={() => {
+        if (all) return items.forEach((i) => remove(i.id));
+        add(items);
+        announceAdded(items.length === 1 ? `Added ${items[0].name} to your trip` : `Added ${items.length} stops to your trip`);
+      }}
       aria-pressed={all}
       title={all ? `Click to ${removeLabel.toLowerCase()}` : undefined}
       className={`group inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${className} ${
@@ -61,7 +66,11 @@ export function AddItemButton({ item }: { item: CartItem }) {
   return (
     <button
       type="button"
-      onClick={() => (added ? remove(item.id) : add([item]))}
+      onClick={() => {
+        if (added) return remove(item.id);
+        add([item]);
+        announceAdded(`Added ${item.name} to your trip`);
+      }}
       aria-pressed={added}
       aria-label={added ? `Remove ${item.name} from trip` : `Add ${item.name} to trip`}
       title={added ? "In your trip: click to remove" : "Add to trip"}
