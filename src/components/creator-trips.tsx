@@ -54,7 +54,7 @@ export function CreatorTrips({ trips }: { trips: Trip[] }) {
                       />
                     ))
                   ) : (
-                    <Thumb category="EXPERIENCE" className="col-span-3 h-full" />
+                    <Thumb alt={t.title} category="EXPERIENCE" className="col-span-3 h-full" />
                   )}
                 </div>
                 <div className="flex items-end justify-between gap-3 p-4">

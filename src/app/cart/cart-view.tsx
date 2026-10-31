@@ -335,7 +335,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                 {group.items.map((item) => (
                   <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4">
                     <div className="flex min-w-0 basis-full gap-3 sm:basis-auto sm:flex-1">
-                      <Thumb url={item.photoUrl} category={item.category} className="size-14 rounded-xl sm:size-16" />
+                      <Thumb url={item.photoUrl} alt={item.name} category={item.category} className="size-14 rounded-xl sm:size-16" />
                       <div className="min-w-0 flex-1">
                         <p className="font-medium">{item.name}</p>
                         <p className="text-xs text-muted">

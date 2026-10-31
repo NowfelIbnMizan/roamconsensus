@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ReadMore } from "@/components/read-more";
 import { ArrowRight } from "lucide-react";
@@ -36,7 +38,7 @@ export function CreatorChip({ creator, link = true }: { creator: Creator; link?:
     <>
       {creator.avatarUrl && !creator.hideAvatar ? (
         <span aria-hidden className="relative size-4 shrink-0 overflow-hidden rounded-full">
-          <AvatarImage src={creator.avatarUrl} sizes="16px" fallback={initial} />
+          <AvatarImage src={creator.avatarUrl} alt={creator.name} sizes="16px" fallback={initial} />
         </span>
       ) : (
         initial

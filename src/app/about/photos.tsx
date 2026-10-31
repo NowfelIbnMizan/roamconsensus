@@ -87,7 +87,7 @@ export function AboutPhotos({ photos, className = "" }: { photos: AboutPhoto[]; 
               <Image
                 key={photos[before].src}
                 src={photos[before].src}
-                alt=""
+                alt={photos[before].alt}
                 fill
                 sizes="(min-width: 1024px) 280px, 50vw"
                 className="object-cover"

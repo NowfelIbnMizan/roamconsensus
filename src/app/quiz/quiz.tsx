@@ -202,7 +202,7 @@ export function Quiz({ data }: { data: QuizData }) {
           <h2 className="eyebrow font-sans">{answered ? "Your best match" : "Tap to find your match"}</h2>
           {top && (
             <article className="relative mt-2 overflow-hidden rounded-2xl border border-accent bg-card has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
-              <Thumb url={top.photoUrl} category="EXPERIENCE" sizes="420px" className="h-44 w-full" />
+              <Thumb url={top.photoUrl} alt={top.title} category="EXPERIENCE" sizes="420px" className="h-44 w-full" />
               <div className="p-4">
                 {answered && <p className="text-sm font-medium text-accent">{top.pct}% match</p>}
                 <h3 className="mt-0.5 text-xl font-semibold">
@@ -245,7 +245,7 @@ export function Quiz({ data }: { data: QuizData }) {
                 {rest.map((r) => (
                   <li key={r.slug}>
                     <article className="relative flex gap-3 rounded-2xl border border-line bg-card p-3 hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
-                      <Thumb url={r.photoUrl} category="EXPERIENCE" className="size-16 shrink-0 rounded-xl" />
+                      <Thumb url={r.photoUrl} alt={r.title} category="EXPERIENCE" className="size-16 shrink-0 rounded-xl" />
                       <div className="min-w-0 flex-1">
                         {answered && <p className="text-xs font-medium text-accent">{r.pct}% match</p>}
                         <p className="font-semibold">

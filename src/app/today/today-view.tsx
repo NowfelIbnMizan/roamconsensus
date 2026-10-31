@@ -180,6 +180,7 @@ export function TodayView() {
               <section className="overflow-hidden rounded-3xl border border-accent bg-card">
                 <Thumb
                   url={next.photoUrl}
+                  alt={next.name}
                   category={next.category}
                   sizes="(min-width: 640px) 576px, 100vw"
                   className="h-32 w-full sm:aspect-[16/10] sm:h-auto"
@@ -267,7 +268,7 @@ export function TodayView() {
                           </span>
                         )}
                       </span>
-                      <Thumb url={item.photoUrl} category={item.category} className="size-11 shrink-0 rounded-lg" />
+                      <Thumb url={item.photoUrl} alt={item.name} category={item.category} className="size-11 shrink-0 rounded-lg" />
                     </li>
                   );
                 })}

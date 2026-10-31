@@ -46,7 +46,7 @@ export default async function AdminHome() {
         {destinations.map((d) => (
           <li key={d.id}>
             <Link href={`/admin/destinations/${d.id}`} className="group block overflow-hidden rounded-xl border border-line bg-card hover:border-accent">
-              <Thumb url={covers.get(`destination:${d.slug}`)} category="EXPERIENCE" sizes="(min-width: 1280px) 20vw, 45vw" className="aspect-[16/10] w-full" />
+              <Thumb url={covers.get(`destination:${d.slug}`)} alt={d.name} category="EXPERIENCE" sizes="(min-width: 1280px) 20vw, 45vw" className="aspect-[16/10] w-full" />
               <span className="block p-3">
                 <span className="flex items-baseline justify-between gap-2">
                   <span className="font-medium">{d.name}</span>

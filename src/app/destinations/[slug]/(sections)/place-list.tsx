@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { AgreePill } from "@/components/agree-pill";
 import { AddItemButton } from "@/components/add-to-cart";
 import { FavouriteButton } from "@/components/favourite-button";
-import { Money } from "@/components/money";
 import { Photo } from "@/components/photo";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import type { getDestination } from "@/lib/data";
@@ -14,29 +12,19 @@ import type { ItemCategory } from "@/generated/prisma/enums";
 import { ConsensusFilter } from "./consensus-filter";
 import { CONSENSUS_PREVIEW } from "./preview";
 import { PlaceHover } from "@/components/place-hover";
+import { FromPrice, MiniCard } from "./place-mini-card";
 
 type Destination = NonNullable<Awaited<ReturnType<typeof getDestination>>>;
 
 /** Cards kept per category on the city page, so a filter chip still shows a handful before "See all". */
 const PER_CATEGORY = 8;
 
-function FromPrice({
-  p,
-}: {
-  p: { cents: number; unit: string | null; currency: string };
-}) {
-  if (p.cents === 0) return "Free";
-  return (
-    <>
-      from <Money cents={p.cents} currency={p.currency} />
-      {p.unit && `/${p.unit}`}
-    </>
-  );
-}
-
 type Place = Destination["consensus"][number];
 
-/** The mini profile a place card shows on hover (sheet on phones): city page grid and its Top 5. */
+/**
+ * The mini profile a place card shows on hover (sheet on phones): city page grid and its Top 5. Only the text it
+ * needs goes to the browser; a server-rendered card per place doubled the page size.
+ */
 export function PlaceMiniCard({
   p,
   destination,
@@ -47,43 +35,21 @@ export function PlaceMiniCard({
   creatorCount: number;
 }) {
   return (
-    <div className="max-h-[60vh] overflow-y-auto">
-      <p className="eyebrow">
-        {p.area && `${p.area} · `}
-        {categoryLabel[p.category]}
-      </p>
-      <p className="mt-1 font-display text-lg font-semibold leading-snug">
-        {p.name}
-      </p>
-      {p.fromPrice && (
-        <p className="text-sm text-muted tabular-nums">
-          <FromPrice p={p.fromPrice} />
-        </p>
-      )}
-      {p.blurb && <p className="mt-2 text-sm">{p.blurb}</p>}
-      {p.tip && (
-        <p className="mt-2 text-sm text-muted">
-          <span className="font-medium text-foreground">
-            Tip:
-          </span>{" "}
-          {p.tip}
-        </p>
-      )}
-      {p.creators.length > 0 && (
-        <p className="mt-3 text-xs text-muted">
-          {creatorCount > 1
+    <MiniCard
+      eyebrow={[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+      name={p.name}
+      fromPrice={p.fromPrice}
+      blurb={p.blurb}
+      tip={p.tip}
+      picked={
+        p.creators.length === 0
+          ? null
+          : creatorCount > 1
             ? `${p.creators.length} of ${creatorCount} creators recommend it`
-            : `Picked by ${p.creators[0].name}`}
-        </p>
-      )}
-      <Link
-        href={placeHref(destination, p.slug)}
-        className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-      >
-        Open place{" "}
-        <ArrowRight className="size-4" aria-hidden />
-      </Link>
-    </div>
+            : `Picked by ${p.creators[0].name}`
+      }
+      href={placeHref(destination, p.slug)}
+    />
   );
 }
 

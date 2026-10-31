@@ -26,7 +26,7 @@ export function CreatorAvatar({
   if (!creator.avatarUrl || creator.hideAvatar) return initial;
   return (
     <span aria-hidden className={`relative block shrink-0 overflow-hidden rounded-full bg-line ${box} ${className}`}>
-      <AvatarImage src={creator.avatarUrl} sizes="64px" fallback={initial} />
+      <AvatarImage src={creator.avatarUrl} alt={creator.name} sizes="64px" fallback={initial} />
     </span>
   );
 }

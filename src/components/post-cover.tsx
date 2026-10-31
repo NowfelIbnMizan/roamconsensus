@@ -26,14 +26,14 @@ export function PostCover({
 }) {
   if (post.coverUrl)
     // eslint-disable-next-line @next/next/no-img-element -- covers are pasted links from any site
-    return <img src={post.coverUrl} alt="" loading="lazy" className={`w-full object-cover ${className}`} />;
+    return <img src={post.coverUrl} alt={post.title} loading="lazy" className={`w-full object-cover ${className}`} />;
   if (!post.destination) return <div className={`bg-accent-soft ${className}`} />;
   return (
     <Photo
       photoKey={`destination:${post.destination.slug}`}
       query={post.destination.name}
       category="DESTINATION"
-      alt=""
+      alt={post.title}
       sizes={sizes}
       credit={credit}
       className={className}

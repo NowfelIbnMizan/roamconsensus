@@ -243,7 +243,7 @@ function Group() {
                   >
                     <ThumbsUp className={`size-4 ${i.voted ? "fill-current" : ""}`} aria-hidden /> {i.votes}
                   </button>
-                  <Thumb url={i.item.photoUrl} category={i.item.category} className="size-12 rounded-lg" />
+                  <Thumb url={i.item.photoUrl} alt={i.item.name} category={i.item.category} className="size-12 rounded-lg" />
                   <div className="min-w-0 flex-1 basis-40">
                     <p className="font-medium">{i.item.name}</p>
                     <p className="text-xs text-muted">

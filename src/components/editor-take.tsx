@@ -5,7 +5,7 @@ import { paragraphs } from "@/lib/editor";
 export function EditorAvatar({ editor, size = "size-10" }: { editor: Editor; size?: string }) {
   return editor.photoUrl ? (
     // eslint-disable-next-line @next/next/no-img-element -- any host the owner pastes; no next/image allowlist
-    <img src={editor.photoUrl} alt="" className={`${size} shrink-0 rounded-full object-cover`} />
+    <img src={editor.photoUrl} alt={editor.name} className={`${size} shrink-0 rounded-full object-cover`} />
   ) : (
     <span
       aria-hidden
