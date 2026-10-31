@@ -187,7 +187,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           </footer>
           <Suspense fallback={null}>
             <MobileNav accounts={googleLoginEnabled()} />
-            <AddedToast />
+            <AddedToast accounts={googleLoginEnabled()} />
             {googleLoginEnabled() && <CartSync />}
             {goatcounter && <VisitorStats code={goatcounter} />}
           </Suspense>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { create } from "zustand";
 import { ArrowRight, Check, X } from "lucide-react";
+import { authClient, signInWithGoogle } from "@/lib/auth-client";
 
 type Notice = { text: string; hint: boolean; at: number } | null;
 
@@ -24,7 +25,7 @@ export function announceAdded(text: string) {
 
 const HINT_KEY = "roamconsensus-added-hint";
 
-export function AddedToast() {
+export function AddedToast({ accounts }: { accounts: boolean }) {
   const notice = useAdded((s) => s.notice);
   const pathname = usePathname();
   const [hold, setHold] = useState(false);
@@ -60,6 +61,7 @@ export function AddedToast() {
               Your trip plan is saved on this device. Open it any time from <b>Trip plan</b>
               <span className="sm:hidden"> in the Trip tab below</span>
               <span className="hidden sm:inline"> at the top of the page</span>.
+              {accounts && <SignInHint />}
             </p>
           )}
           <Link
@@ -79,5 +81,20 @@ export function AddedToast() {
         </button>
       </div>
     </div>
+  );
+}
+
+/** Signed-out travellers learn an account keeps the trip on every device; signed-in ones already have that. */
+function SignInHint() {
+  const { data: session, isPending } = authClient.useSession();
+  if (isPending || session) return null;
+  return (
+    <>
+      {" "}
+      <button type="button" onClick={() => signInWithGoogle()} className="font-medium text-accent underline">
+        Sign in
+      </button>{" "}
+      to keep it on all your devices.
+    </>
   );
 }
