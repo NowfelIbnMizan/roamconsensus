@@ -25,7 +25,7 @@ const subscribe = (cb: () => void) => {
 };
 
 /** The traveller's currency, or null before it has loaded (server render), when prices show as stored. */
-function useCurrencyCode() {
+export function useCurrencyCode() {
   return useSyncExternalStore(
     subscribe,
     () => (useCurrencyStore.persist.hasHydrated() ? useCurrencyStore.getState().code : null),
