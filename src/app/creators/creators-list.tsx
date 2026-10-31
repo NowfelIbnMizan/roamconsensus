@@ -109,7 +109,7 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
                 {routes.slice(0, PREVIEW).map((it, n) => (
                   <li key={it.slug} className={n > 0 ? "hidden sm:block" : undefined}>
                     <Link href={`/itineraries/${it.slug}`} className="group flex items-center gap-3">
-                      <Thumb url={it.coverUrl} category="EXPERIENCE" className="size-10 rounded-lg sm:size-12" />
+                      <Thumb url={it.coverUrl} alt={it.title} category="EXPERIENCE" className="size-10 rounded-lg sm:size-12" />
                       <span className="min-w-0">
                         <span className="block font-medium group-hover:underline">{it.title}</span>
                         <span className="text-muted">

@@ -280,6 +280,7 @@ export default async function ItineraryAdmin({
                     <li key={item.id} className="relative flex gap-3 rounded-xl border border-line bg-card p-2.5">
                       <Thumb
                         url={photoOf(item)}
+                        alt={item.name}
                         category={item.category}
                         className={`size-16 rounded-lg ${item.sentiment === "AVOID" || item.place?.closed ? "opacity-50 grayscale" : ""}`}
                       />

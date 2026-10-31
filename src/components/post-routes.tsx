@@ -33,7 +33,7 @@ export function RouteCard({ route }: { route: Route }) {
   const dayPrice = useDayPrice();
   return (
     <article className="relative flex gap-4 rounded-2xl border border-line bg-card p-4 hover:border-accent">
-      <Thumb url={route.photos[0]} category="EXPERIENCE" sizes="112px" className="size-24 rounded-xl sm:size-28" />
+      <Thumb url={route.photos[0]} alt={route.title} category="EXPERIENCE" sizes="112px" className="size-24 rounded-xl sm:size-28" />
       <div className="min-w-0 flex-1">
         <p className="eyebrow">
           {tierLabel[route.tier]} · {route.days} {route.days === 1 ? "day" : "days"} · {route.stops} stops

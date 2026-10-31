@@ -24,15 +24,15 @@ export function Thumb({
   sizes = "96px",
   className = "size-20 rounded-xl",
   priority,
-  alt = "",
+  alt,
 }: {
   url?: string | null;
   category: ItemCategory;
   sizes?: string;
   className?: string;
   priority?: boolean;
-  /** What the photo shows, for search engines and screen readers. Leave out when the name is right beside it. */
-  alt?: string;
+  /** What the photo shows (the stop or route name), for search engines and screen readers. */
+  alt: string;
 }) {
   const Icon = categoryIcon[category];
   return (

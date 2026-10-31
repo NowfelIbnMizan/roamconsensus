@@ -47,10 +47,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = await load(params);
   if (!p) return {};
   const where = [p.area, p.destination.name].filter(Boolean).join(", ");
-  // Bing flags titles over about 70 characters; " · Creatour" is added after this.
+  // Bing flags titles over 70 characters; " · Creatour" (11) is added after this, so the longest that fits wins.
   const base = `${p.name}, ${where}`;
+  const fits = [base, `${p.name}, ${p.destination.name}`, p.name.replace(/\s*\(.*\)$/, "")].find((t) => t.length <= 58);
   return {
-    title: base.length <= 32 ? `${base}: what creators say` : base.length > 60 ? `${p.name}, ${p.destination.name}` : base,
+    title: base.length <= 32 ? `${base}: what creators say` : (fits ?? clip(p.name, 58)),
     description: clip(p.blurb ?? `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`),
     alternates: { canonical: placeHref(p.destination.slug, p.slug) },
   };

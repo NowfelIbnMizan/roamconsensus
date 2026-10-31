@@ -29,7 +29,7 @@ export function YouTubeEmbed({ id, title, start = 0 }: { id: string; title: stri
           {/* eslint-disable-next-line @next/next/no-img-element -- YouTube's own thumbnail */}
           <img
             src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
-            alt=""
+            alt={title}
             loading="lazy"
             className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
           />

@@ -255,6 +255,7 @@ export default async function DestinationAdmin({
               </EditDialog>
               <Thumb
                 url={p.hidePhoto ? null : (p.photos[0] ?? photos.get(placePhotoKey(d.slug, p)))}
+                alt={p.name}
                 category={p.category}
                 sizes="(min-width: 1280px) 20vw, 45vw"
                 className={`aspect-[4/3] w-full ${p.closed ? "grayscale" : ""}`}
@@ -387,7 +388,7 @@ export default async function DestinationAdmin({
     <>
       <header className="relative overflow-hidden rounded-2xl border border-line bg-card">
         {cover && (
-          <Thumb url={cover} category="EXPERIENCE" sizes="100vw" priority className="h-40 w-full sm:h-56" />
+          <Thumb url={cover} alt={d.name} category="EXPERIENCE" sizes="100vw" priority className="h-40 w-full sm:h-56" />
         )}
         <div className="p-5">
           <div className="absolute right-3 top-3">

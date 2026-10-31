@@ -37,15 +37,20 @@ export async function Photo({
     isPlaceholder || photo.source === "WEBSITE" || photo.source === "MANUAL";
   return (
     <div className={`relative overflow-hidden bg-line ${className}`}>
-      <Image
-        src={photo.url}
-        alt={isPlaceholder ? "" : alt}
-        fill
-        sizes={sizes}
-        priority={priority}
-        unoptimized={unoptimized}
-        className="object-cover"
-      />
+      {isPlaceholder ? (
+        // A drawn tile, not a photo: a background keeps it out of image search and alt-text checks.
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${photo.url})` }} aria-hidden />
+      ) : (
+        <Image
+          src={photo.url}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          unoptimized={unoptimized}
+          className="object-cover"
+        />
+      )}
       {photo.attribution &&
         // Small tiles usually sit inside a link, so their credit is a plain icon with the full credit as its tooltip.
         (credit ? (

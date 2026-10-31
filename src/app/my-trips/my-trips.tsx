@@ -324,6 +324,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
           <li key={i.id} className="min-w-0">
             <Thumb
               url={i.photoUrl}
+              alt={i.name}
               category={i.category}
               className="aspect-square w-full rounded-xl md:size-24"
               sizes="96px"
@@ -341,6 +342,7 @@ function TripCard({ trip, onOpen, onDelete }: { trip: TripRow; onOpen: () => voi
     <article className="flex h-full overflow-hidden rounded-2xl border border-line bg-card sm:flex-col">
       <Thumb
         url={trip.photoUrl}
+        alt={trip.name}
         category={trip.category}
         className="w-24 shrink-0 self-stretch sm:aspect-[2/1] sm:w-full"
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 96px"

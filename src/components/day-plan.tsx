@@ -301,7 +301,7 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                           row={
                             <>
                               <span className="relative shrink-0 p-1">
-                                <Thumb url={item.photoUrl} category={item.category} className="size-12 rounded-lg" />
+                                <Thumb url={item.photoUrl} alt={item.name} category={item.category} className="size-12 rounded-lg" />
                                 {number !== null && (
                                   <span
                                     className="absolute top-0 left-0 inline-flex size-5 items-center justify-center rounded-full text-[11px] font-semibold text-white ring-2 ring-card"
