@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { clip } from "@/lib/seo";
+import { cityCollections } from "@/lib/collections";
 import { ArrowRight, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
 import { CreatorChip } from "@/components/creator";
@@ -257,6 +258,8 @@ export default async function DestinationPage({
         <PlaceList destination={destination} limit />
       </section>
 
+      <PlanYourWay d={destination} />
+
       {posts.length > 0 && (
         <section className="mt-12">
           <h2 className="text-xl font-semibold">From the blog</h2>
@@ -289,5 +292,36 @@ export default async function DestinationPage({
       />
       <UpdatedOn date={destination.updatedAt} />
     </>
+  );
+}
+
+/** Shortcuts into the city's list pages: by trip length, budget, food and neighbourhood. */
+function PlanYourWay({ d }: { d: NonNullable<Awaited<ReturnType<typeof getDestination>>> }) {
+  const c = cityCollections(d);
+  const base = `/destinations/${d.slug}`;
+  const links = [
+    ...c.lengths.map((n) => [`${base}/days/${n}`, `${n} ${n === 1 ? "day" : "days"} in ${d.name}`]),
+    ...(c.budget ? [[`${base}/on-a-budget`, `${d.name} on a budget`]] : []),
+    ...(c.eat ? [[`${base}/eat`, `Where to eat`]] : []),
+    ...c.areas.map((a) => [`${base}/areas/${a.slug}`, `Things to do in ${a.name}`]),
+  ];
+  if (!links.length) return null;
+  return (
+    <section className="mt-12">
+      <h2 className="text-xl font-semibold">Plan your way</h2>
+      <ul className="mt-3 flex flex-wrap gap-2">
+        {links.map(([href, label]) => (
+          <li key={href}>
+            <Link
+              href={href}
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-1.5 text-sm hover:border-accent"
+            >
+              {label}
+              <ArrowRight className="size-3.5 text-accent" aria-hidden />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

@@ -3,18 +3,19 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { deletePost, savePost } from "@/lib/admin/actions";
 import { DeleteButton, SaveButton } from "../../../ui";
-import { PostFields } from "../post-fields";
+import { PostFields, routeOptions } from "../post-fields";
 
 export default async function EditPost({
   params,
 }: PageProps<"/admin/blog/[id]">) {
   const { id } = await params;
-  const [post, cities] = await Promise.all([
+  const [post, cities, routes] = await Promise.all([
     db.post.findUnique({ where: { id } }),
     db.destination.findMany({
       orderBy: { name: "asc" },
       select: { id: true, name: true },
     }),
+    routeOptions(),
   ]);
   if (!post) notFound();
   return (
@@ -42,6 +43,7 @@ export default async function EditPost({
         <PostFields
           p={post}
           cities={cities.map((c) => ({ value: c.id, label: c.name }))}
+          routes={routes}
         />
         <div>
           <SaveButton />

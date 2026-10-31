@@ -32,7 +32,7 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 
 ## Gotchas (each one burned us before)
 
-1. **Preview builds hit the LIVE database.** A PR preview runs migrations + seed against production data. Pushing a branch = changing live data. Be sure before you push migrations.
+1. **Preview builds use a Neon branch** (Neon integration sets `DATABASE_URL` / `DATABASE_URL_UNPOOLED` per git branch; `prisma.config.ts` migrates `DATABASE_URL_UNPOOLED` on previews since PR #109). Before #109 preview migrations hit the LIVE database. The branch is a copy from when the git branch first deployed, so preview data can be stale.
 2. **Prefer merging after the PR's Vercel preview is "Ready".** Both builds run migrations; overlap = advisory lock error (P1002). `scripts/migrate-deploy.sh` now retries P1002 (5x, 30s) so early merges usually survive (owner often merges early). If prod still fails: redeploy production.
 3. Keep the `<Suspense>` around `{children}` in `src/app/layout.tsx`. Removing it brought back runtime 500s (`NEXT_STATIC_GEN_BAILOUT`).
 4. Never add `revalidatePath("/", "layout")`. It breaks runtime regen of `/itineraries/[slug]`. Admin saves use `updateTag("content")`.

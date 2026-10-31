@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { getDestinations, getPosts } from "@/lib/data";
+import { getEditor } from "@/lib/editor";
+import { kindEyebrow } from "@/lib/post-kinds";
 import { PostCover, formatDate } from "@/components/post-cover";
 
 export const metadata: Metadata = {
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const [posts, destinations] = await Promise.all([getPosts(), getDestinations()]);
+  const [posts, destinations, editor] = await Promise.all([getPosts(), getDestinations(), getEditor()]);
   const cities = destinations.filter((d) => !d.isSample && d._count.itineraries > 0);
 
   return (
@@ -34,6 +36,7 @@ export default async function BlogPage() {
                     <p className="text-xs text-muted">
                       {formatDate(p.publishedAt)}
                       {p.destination && ` · ${p.destination.name}`}
+                      {kindEyebrow(p.kind, editor.name) && ` · ${kindEyebrow(p.kind, editor.name)}`}
                     </p>
                     <h2 className="mt-1 text-lg font-semibold group-hover:text-accent">{p.title}</h2>
                     {p.excerpt && <p className="mt-1 line-clamp-2 text-sm text-muted">{p.excerpt}</p>}
