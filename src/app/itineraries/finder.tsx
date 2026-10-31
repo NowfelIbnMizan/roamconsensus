@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, SlidersHorizontal } from "lucide-react";
 import { StopDetails } from "@/components/stop-details";
 import { addDays, rangeLabel } from "@/components/date-range";
@@ -11,6 +11,7 @@ import { useMoney } from "@/components/money";
 import type { QuizData } from "@/lib/data";
 import { mostlyPriced, tierLabel } from "@/lib/format";
 import { LENGTHS } from "@/lib/trip-lengths";
+import { usePrefs } from "@/lib/prefs";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
 
@@ -57,6 +58,18 @@ export function TripFinder({
       setLength(-1);
     } else if (l > 0 && l < LENGTHS.length) setLength(l);
   }, []);
+
+  // With no length or style in the link, start from the traveller's profile (set on My trips).
+  const prefs = usePrefs();
+  const prefsApplied = useRef(false);
+  useEffect(() => {
+    if (!prefs.ready || prefsApplied.current) return;
+    prefsApplied.current = true;
+    const q = new URLSearchParams(window.location.search);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the profile is only readable after mount
+    if (prefs.tier) setTier(prefs.tier);
+    if (!q.get("days") && !q.get("length") && prefs.length > 0 && prefs.length < LENGTHS.length) setLength(prefs.length);
+  }, [prefs]);
 
   const destinations = useMemo(
     () =>

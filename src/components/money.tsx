@@ -6,7 +6,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { CURRENCIES, convertCents, FALLBACK_RATES, type Rates } from "@/lib/currency";
 import { formatMoney } from "@/lib/format";
 
-const useCurrencyStore = create<{ code: string; set: (code: string) => void }>()(
+export const useCurrencyStore = create<{ code: string; set: (code: string) => void }>()(
   persist((set) => ({ code: "USD", set: (code) => set({ code }) }), {
     name: "roamconsensus-currency",
     storage: createJSONStorage(() => localStorage),
