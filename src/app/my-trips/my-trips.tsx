@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { CalendarDays, ChevronDown, FolderOpen, LogOut, Luggage, Plane, Save, Trash2 } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
+import { CalendarDays, FolderOpen, LogOut, Luggage, Plane, Save, Trash2 } from "lucide-react";
 import { Avatar } from "@/components/account-button";
 import { cartData } from "@/components/cart-sync";
 import { Thumb } from "@/components/thumb";
@@ -12,6 +12,7 @@ import type { CartData } from "@/lib/cart-data";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 import type { ItemCategory } from "@/generated/prisma/enums";
 import { AlertsToggle, GroupTrips, SavedPlaces } from "./extras";
+import { MyTravel, MyTravelRows, type City } from "./my-travel";
 
 type TripRow = {
   id: string;
@@ -33,11 +34,46 @@ function suggestName(items: CartData["items"]) {
   return cities ? `${cities}, ${month}` : `My trip, ${month}`;
 }
 
-export function MyTrips({ canEmail }: { canEmail: boolean }) {
+/** Two columns from lg: the trips on the left, the traveller's own things in a sticky rail on the right. */
+function Layout({ header, rail, children }: { header: ReactNode; rail: ReactNode; children: ReactNode }) {
+  return (
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] xl:gap-10">
+      <div className="min-w-0">
+        {header}
+        <div className="space-y-10">{children}</div>
+      </div>
+      <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start">{rail}</aside>
+    </div>
+  );
+}
+
+export function MyTrips({
+  canEmail,
+  accounts,
+  cities,
+  header,
+}: {
+  canEmail: boolean;
+  /** Google sign-in is set up. */
+  accounts: boolean;
+  cities: City[];
+  header: ReactNode;
+}) {
   const { data: session, isPending } = authClient.useSession();
-  if (isPending) return <p className="text-muted">Loading…</p>;
-  if (!session) return <SignedOut />;
-  return <SignedIn user={session.user} canEmail={canEmail} />;
+  if (accounts && session) return <SignedIn user={session.user} canEmail={canEmail} cities={cities} header={header} />;
+  return (
+    <Layout header={header} rail={<MyTravel cities={cities} />}>
+      {!accounts ? (
+        <p className="rounded-2xl border border-dashed border-line p-10 text-center text-muted">
+          Accounts are coming soon. Your trip plan is saved on this device for now.
+        </p>
+      ) : isPending ? (
+        <p className="text-muted">Loading…</p>
+      ) : (
+        <SignedOut />
+      )}
+    </Layout>
+  );
 }
 
 function SignedOut() {
@@ -72,19 +108,19 @@ function SignedOut() {
 function SignedIn({
   user,
   canEmail,
+  cities,
+  header,
 }: {
   user: { name: string; email: string; image?: string | null };
   canEmail: boolean;
+  cities: City[];
+  header: ReactNode;
 }) {
   const router = useRouter();
   const hydrated = useCartHydrated();
   const items = useCart((s) => s.items);
   const [trips, setTrips] = useState<TripRow[] | null>(null);
   const [accountMessage, setAccountMessage] = useState<string | null>(null);
-  // An alerts email's "turn off" link lands here, so open the account panel that holds the switch.
-  const [fromAlerts] = useState(
-    () => typeof window !== "undefined" && new URLSearchParams(window.location.search).has("alerts"),
-  );
 
   // Bumped after a save or delete to fetch the list again.
   const [version, setVersion] = useState(0);
@@ -129,8 +165,47 @@ function SignedIn({
     else router.refresh();
   }
 
+  const rail = (
+    <>
+      <section className="rounded-2xl border border-line bg-card">
+        <div className="flex items-center gap-3 p-4">
+          <Avatar name={user.name} image={user.image} className="size-11" />
+          <div className="min-w-0">
+            <p className="truncate font-semibold">{user.name}</p>
+            <p className="truncate text-sm text-muted">{user.email}</p>
+          </div>
+        </div>
+        <div className="border-t border-line px-4 pt-3 pb-3">
+          <MyTravelRows cities={cities} />
+        </div>
+        <div className="border-t border-line p-4">
+          <AlertsToggle canEmail={canEmail} />
+        </div>
+        <div className="flex items-center gap-4 border-t border-line px-4 py-3 text-sm">
+          <button
+            type="button"
+            onClick={() => authClient.signOut()}
+            className="inline-flex items-center gap-1.5 hover:text-accent"
+          >
+            <LogOut className="size-4" aria-hidden /> Sign out
+          </button>
+          <button type="button" onClick={deleteAccount} className="ml-auto text-muted underline hover:text-accent-2">
+            Delete account
+          </button>
+        </div>
+        {accountMessage && (
+          <p role="status" className="border-t border-line px-4 py-3 text-sm text-muted">
+            {accountMessage}
+          </p>
+        )}
+      </section>
+      <SavedPlaces />
+      <GroupTrips />
+    </>
+  );
+
   return (
-    <div className="space-y-10">
+    <Layout header={header} rail={rail}>
       {hydrated && <PlanningNow onSaved={load} />}
 
       <section>
@@ -140,7 +215,7 @@ function SignedIn({
         ) : trips.length === 0 ? (
           <p className="mt-2 text-muted">None yet. Save a copy of your current trip to keep it here.</p>
         ) : (
-          <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          <ul className="mt-3 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {trips.map((t) => (
               <li key={t.id} className="min-w-0">
                 <TripCard trip={t} onOpen={() => open(t)} onDelete={() => remove(t)} />
@@ -149,49 +224,7 @@ function SignedIn({
           </ul>
         )}
       </section>
-
-      <div className="grid gap-10 md:grid-cols-2 md:gap-8">
-        <div className="min-w-0">
-          <SavedPlaces />
-        </div>
-        <div className="min-w-0">
-          <GroupTrips />
-        </div>
-      </div>
-
-      <details open={fromAlerts} className="group rounded-2xl border border-line bg-card">
-        <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
-          <Avatar name={user.name} image={user.image} className="size-10" />
-          <span className="min-w-0 flex-1">
-            <span className="block font-medium">{user.name}</span>
-            <span className="block truncate text-sm text-muted">{user.email}</span>
-          </span>
-          <span className="text-sm text-muted">Account</span>
-          <ChevronDown className="size-4 shrink-0 transition group-open:rotate-180" aria-hidden />
-        </summary>
-        <div className="space-y-4 border-t border-line p-4">
-          <AlertsToggle canEmail={canEmail} />
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => authClient.signOut()}
-              className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
-            >
-              <LogOut className="size-4" aria-hidden />
-              Sign out
-            </button>
-            <button type="button" onClick={deleteAccount} className="text-sm text-muted underline hover:text-accent-2">
-              Delete my account
-            </button>
-          </div>
-          {accountMessage && (
-            <p role="status" className="text-sm text-muted">
-              {accountMessage}
-            </p>
-          )}
-        </div>
-      </details>
-    </div>
+    </Layout>
   );
 }
 

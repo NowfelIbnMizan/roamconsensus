@@ -8,7 +8,6 @@ import { googleLoginEnabled } from "@/lib/auth";
 import { canSendEmail } from "@/lib/email";
 import { getDestinations } from "@/lib/data";
 import { MyTrips } from "./my-trips";
-import { MyTravel } from "./my-travel";
 
 export const metadata: Metadata = { title: "My trips", robots: { index: false } };
 
@@ -25,29 +24,30 @@ async function AdminLink() {
   );
 }
 
-async function Travel() {
+async function Page() {
   const cities = (await getDestinations()).filter((d) => !d.isSample).map(({ slug, name }) => ({ slug, name }));
-  return <MyTravel cities={cities} />;
+  return (
+    <MyTrips
+      canEmail={canSendEmail()}
+      accounts={googleLoginEnabled()}
+      cities={cities}
+      header={
+        <>
+          <h1 className="mb-6 text-3xl font-semibold tracking-tight">My trips</h1>
+          <Suspense>
+            <AdminLink />
+          </Suspense>
+          <PageGuide id="my-trips" />
+        </>
+      }
+    />
+  );
 }
 
 export default function MyTripsPage() {
   return (
-    <>
-      <h1 className="mb-6 text-3xl font-semibold tracking-tight">My trips</h1>
-      <Suspense>
-        <AdminLink />
-      </Suspense>
-      <PageGuide id="my-trips" />
-      {googleLoginEnabled() ? (
-        <MyTrips canEmail={canSendEmail()} />
-      ) : (
-        <p className="rounded-2xl border border-dashed border-line p-10 text-center text-muted">
-          Accounts are coming soon. Your trip plan is saved on this device for now.
-        </p>
-      )}
-      <Suspense>
-        <Travel />
-      </Suspense>
-    </>
+    <Suspense>
+      <Page />
+    </Suspense>
   );
 }

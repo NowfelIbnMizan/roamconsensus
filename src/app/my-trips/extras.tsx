@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Bell, Heart, Users } from "lucide-react";
+import { Bell, ChevronRight, Heart, Plus, Users } from "lucide-react";
 import { FavouriteButton } from "@/components/favourite-button";
+import { Thumb } from "@/components/thumb";
 import { useCart } from "@/lib/cart-store";
 import { categoryLabel } from "@/lib/format";
 import { useFavourites } from "@/lib/favourites";
@@ -40,44 +41,50 @@ export function SavedPlaces() {
   // Reloads when a ♥ is toggled here or anywhere else on the site.
   const keys = useFavourites((s) => s.keys);
   const rows = useJson<Favourite[]>("/api/account/favourites", keys.size);
-  const byCity = new Map<string, Favourite[]>();
-  for (const f of rows ?? []) byCity.set(f.destinationName, [...(byCity.get(f.destinationName) ?? []), f]);
+  const [all, setAll] = useState(false);
+  const shown = all ? rows : rows?.slice(0, 3);
 
   return (
-    <section>
-      <h2 className="flex items-center gap-2 text-xl font-semibold">
-        <Heart className="size-5 text-accent-2" aria-hidden /> Liked places{rows?.length ? ` · ${rows.length}` : ""}
+    <section className="rounded-2xl border border-line bg-card p-4">
+      <h2 className="flex items-center gap-2 font-semibold">
+        <Heart className="size-4 text-accent-2" aria-hidden /> Liked places{rows?.length ? ` · ${rows.length}` : ""}
       </h2>
       {rows === null ? (
-        <p className="mt-2 text-muted">Loading…</p>
+        <p className="mt-2 text-sm text-muted">Loading…</p>
       ) : rows.length === 0 ? (
-        <p className="mt-2 text-muted">Tap ♥ on any place to keep it here for later.</p>
+        <p className="mt-2 text-sm text-muted">Tap ♥ on any place to keep it here.</p>
       ) : (
-        [...byCity].map(([city, places]) => (
-          <div key={city} className="mt-3">
-            <h3 className="eyebrow">
-              {city} · {places.length}
-            </h3>
-            <ul className="mt-2 divide-y divide-line rounded-2xl border border-line bg-card">
-              {places.map((f) => (
-                <li key={f.place} className="flex items-center gap-3 px-4 py-2.5">
-                  <div className="min-w-0 flex-1">
-                    <Link
-                      href={placeHref(f.destination, f.place)}
-                      className="font-medium hover:text-accent hover:underline"
-                    >
-                      {f.name}
-                    </Link>
-                    <p className="text-xs text-muted">
-                      {[f.area, categoryLabel[f.category]].filter(Boolean).join(" · ")}
-                    </p>
-                  </div>
-                  <FavouriteButton destination={f.destination} place={f.place} name={f.name} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
+        <>
+          <ul className="mt-2 divide-y divide-line">
+            {shown?.map((f) => (
+              <li key={`${f.destination}/${f.place}`} className="flex items-center gap-3 py-2">
+                <Thumb category={f.category} className="size-10 shrink-0 rounded-lg" />
+                <div className="min-w-0 flex-1">
+                  <Link
+                    href={placeHref(f.destination, f.place)}
+                    className="block truncate text-sm font-medium hover:text-accent hover:underline"
+                  >
+                    {f.name}
+                  </Link>
+                  <p className="truncate text-xs text-muted">
+                    {[f.destinationName, f.area ?? categoryLabel[f.category]].filter(Boolean).join(" · ")}
+                  </p>
+                </div>
+                <FavouriteButton destination={f.destination} place={f.place} name={f.name} />
+              </li>
+            ))}
+          </ul>
+          {rows.length > 3 && (
+            <button
+              type="button"
+              aria-expanded={all}
+              onClick={() => setAll(!all)}
+              className="mt-1 text-sm font-medium text-accent hover:underline"
+            >
+              {all ? "Show fewer" : `Show all ${rows.length}`}
+            </button>
+          )}
+        </>
       )}
     </section>
   );
@@ -97,6 +104,7 @@ export function GroupTrips() {
   const groups = useJson<GroupRow[]>("/api/groups");
   const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
 
   async function start(e: React.FormEvent) {
     e.preventDefault();
@@ -111,56 +119,69 @@ export function GroupTrips() {
   }
 
   return (
-    <section>
-      <h2 className="flex items-center gap-2 text-xl font-semibold">
-        <Users className="size-5 text-accent" aria-hidden /> Plan with friends
+    <section className="rounded-2xl border border-line bg-card p-4">
+      <h2 className="flex items-center gap-2 font-semibold">
+        <Users className="size-4 text-accent" aria-hidden /> Plan with friends
       </h2>
-      <p className="mt-1 text-sm text-muted">Share a link. Everyone adds stops and votes on them.</p>
-      {groups && groups.length > 0 && (
-        <ul className="mt-3 divide-y divide-line rounded-2xl border border-line bg-card">
+      {groups && groups.length > 0 ? (
+        <ul className="mt-2 divide-y divide-line">
           {groups.map((g) => (
             <li key={g.id}>
-              <Link href={`/groups/${g.id}`} className="flex items-center gap-3 px-4 py-3 hover:bg-line/40">
-                <span className="min-w-0 flex-1 font-medium">{g.name}</span>
-                <span className="text-sm text-muted">
-                  {g.members} {g.members === 1 ? "person" : "people"} · {g.stops} {g.stops === 1 ? "stop" : "stops"}
+              <Link href={`/groups/${g.id}`} className="flex items-center gap-2 py-2.5 text-sm hover:text-accent">
+                <span className="min-w-0 flex-1 truncate font-medium">{g.name}</span>
+                <span className="shrink-0 text-muted">
+                  {g.members} {g.members === 1 ? "person" : "people"}
                 </span>
+                <ChevronRight className="size-4 shrink-0 text-muted" aria-hidden />
               </Link>
             </li>
           ))}
         </ul>
+      ) : (
+        <p className="mt-1 text-sm text-muted">Share a link. Everyone adds stops and votes.</p>
       )}
-      <form onSubmit={start} className="mt-4 rounded-2xl border border-line bg-card p-4">
-        <label htmlFor="group-name" className="text-sm font-medium">
-          Start a group trip
-        </label>
-        <div className="mt-2 flex flex-wrap gap-2">
-          <input
-            id="group-name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            maxLength={80}
-            placeholder="Our Bali trip"
-            className="min-w-0 flex-1 rounded-lg border border-line bg-background px-3 py-2 placeholder:text-muted"
-          />
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
-          >
-            <Users className="size-4" aria-hidden /> Start
-          </button>
-        </div>
-        <p className="mt-2 text-xs text-muted">
-          {items.length
-            ? `Starts with the ${items.length} ${items.length === 1 ? "stop" : "stops"} in your current trip.`
-            : "Starts empty. Friends can add stops from their own trips."}
-        </p>
-        {error && (
-          <p role="alert" className="mt-2 text-sm text-accent-2">
-            {error}
+      {open ? (
+        <form onSubmit={start} className="mt-3">
+          <label htmlFor="group-name" className="text-sm font-medium">
+            Group trip name
+          </label>
+          <div className="mt-1.5 flex gap-2">
+            <input
+              id="group-name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              maxLength={80}
+              placeholder="Our Bali trip"
+              autoFocus
+              className="min-w-0 flex-1 rounded-lg border border-line bg-background px-3 py-2 text-sm placeholder:text-muted"
+            />
+            <button
+              type="submit"
+              className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
+            >
+              Start
+            </button>
+          </div>
+          <p className="fine-print mt-1.5">
+            {items.length
+              ? `Starts with the ${items.length} ${items.length === 1 ? "stop" : "stops"} in your current trip.`
+              : "Starts empty. Friends add stops from their own trips."}
           </p>
-        )}
-      </form>
+          {error && (
+            <p role="alert" className="mt-2 text-sm text-accent-2">
+              {error}
+            </p>
+          )}
+        </form>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
+        >
+          <Plus className="size-4" aria-hidden /> Start a group trip
+        </button>
+      )}
     </section>
   );
 }
@@ -183,33 +204,49 @@ export function AlertsToggle({ canEmail }: { canEmail: boolean }) {
   }
 
   return (
-    <section>
-      <label className="flex max-w-lg cursor-pointer items-start gap-3">
-        <input
-          type="checkbox"
-          checked={enabled}
-          disabled={state === null}
-          onChange={toggle}
-          className="mt-1 size-4 accent-[var(--accent)]"
-        />
-        <span>
-          <span className="inline-flex items-center gap-1.5 font-medium">
-            <Bell className="size-4 text-accent" aria-hidden /> Email me about my trip
-          </span>
-          <span className="block text-sm text-muted">
-            Once a day at most: when prices change for stops in your trip, or creators add new routes for your
-            cities.
-          </span>
-          {!canEmail && enabled && (
-            <span className="mt-1 block text-xs text-muted">Emails start soon; you&apos;re on the list.</span>
-          )}
+    <div>
+      <div className="flex items-center gap-3">
+        <Bell className="size-4 shrink-0 text-accent" aria-hidden />
+        <span id="alerts-label" className="flex-1 text-sm">
+          Trip emails
+          <span className="fine-print block">Price changes, new routes. Max once a day.</span>
         </span>
-      </label>
+        <Switch on={enabled} disabled={state === null} onClick={toggle} labelledBy="alerts-label" />
+      </div>
+      {!canEmail && enabled && <p className="mt-2 text-xs text-muted">Emails start soon; you&apos;re on the list.</p>}
       {turnedOff && !enabled && (
         <p role="status" className="mt-2 text-sm text-muted">
           Alerts are off. You won&apos;t get any more trip emails.
         </p>
       )}
-    </section>
+    </div>
+  );
+}
+
+function Switch({
+  on,
+  disabled,
+  onClick,
+  labelledBy,
+}: {
+  on: boolean;
+  disabled?: boolean;
+  onClick: () => void;
+  labelledBy: string;
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={on}
+      aria-labelledby={labelledBy}
+      disabled={disabled}
+      onClick={onClick}
+      className={`relative h-6 w-10 shrink-0 rounded-full transition-colors disabled:opacity-50 ${on ? "bg-accent" : "bg-line-strong"}`}
+    >
+      <span
+        className={`absolute top-0.5 left-0.5 size-5 rounded-full bg-background shadow transition-transform ${on ? "translate-x-4" : ""}`}
+      />
+    </button>
   );
 }

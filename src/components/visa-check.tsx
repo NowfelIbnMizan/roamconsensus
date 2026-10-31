@@ -55,7 +55,7 @@ const subscribe = (cb: () => void) => {
 };
 
 /** The traveller's passport, remembered on this device; "" until chosen or before it has loaded. */
-function usePassport() {
+export function usePassport() {
   const passport = useSyncExternalStore(
     subscribe,
     () => usePassportStore.getState().passport,
@@ -80,7 +80,7 @@ const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 
 // Windows draws flag emojis as two letters; there, load a flag-only font (self-hosted, credited on /disclosure).
 let flagsPolyfilled = false;
-function useFlagFont() {
+export function useFlagFont() {
   useEffect(() => {
     if (flagsPolyfilled) return;
     flagsPolyfilled = true;
