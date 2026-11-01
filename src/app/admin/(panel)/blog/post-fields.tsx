@@ -14,6 +14,7 @@ type Post = {
   itineraryId: string | null;
   otherItineraryId: string | null;
   published: boolean;
+  authorName?: string | null;
 };
 
 export const MARKDOWN_HELP =
@@ -31,6 +32,9 @@ export function PostFields({
   return (
     <>
       <Field label="Title" name="title" defaultValue={p?.title} required />
+      {p?.authorName && (
+        <Field label="Guest writer's name (byline)" name="authorName" defaultValue={p.authorName} required />
+      )}
       <Field
         label="URL name"
         name="slug"

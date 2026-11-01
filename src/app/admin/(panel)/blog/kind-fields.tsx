@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Link2 } from "lucide-react";
 import { inputClass } from "../../ui";
 import { POST_KINDS } from "@/lib/post-kinds";
 import type { PostKind } from "@/generated/prisma/enums";
@@ -48,6 +49,19 @@ export function KindFields({
     el.focus();
   };
 
+  // Turns the selected words into a link: [words](url). With nothing selected, adds a placeholder to type over.
+  const addLink = () => {
+    const el = text.current;
+    if (!el) return;
+    const url = window.prompt("Paste the link (https://… or a page here like /destinations/bali)")?.trim();
+    if (!url) return;
+    const { selectionStart: a, selectionEnd: b, value } = el;
+    const words = value.slice(a, b).trim() || "link text";
+    const md = `[${words}](${url})`;
+    el.setRangeText(md, a, b, "end");
+    el.focus();
+  };
+
   return (
     <>
       <label className="block text-sm sm:col-span-2">
@@ -86,9 +100,22 @@ export function KindFields({
           </button>
         </div>
       )}
-      <label className="block text-sm sm:col-span-2">
-        <span className="text-muted">Post</span>
+      <div className="block text-sm sm:col-span-2">
+        <span className="flex items-end justify-between gap-3">
+          <label htmlFor="post-body" className="text-muted">
+            Post
+          </label>
+          <button
+            type="button"
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={addLink}
+            className="inline-flex items-center gap-1 rounded-md border border-line px-2 py-1 text-xs font-medium hover:border-accent hover:text-accent"
+          >
+            <Link2 className="size-3.5" aria-hidden /> Add link
+          </button>
+        </span>
         <textarea
+          id="post-body"
           ref={text}
           name="body"
           rows={18}
@@ -97,7 +124,7 @@ export function KindFields({
           className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2 font-mono text-sm"
         />
         <span className="mt-0.5 block text-xs text-muted">{help}</span>
-      </label>
+      </div>
     </>
   );
 }

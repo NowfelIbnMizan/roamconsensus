@@ -115,21 +115,27 @@ export function DeleteButton({
   action,
   id,
   what,
+  verb = "Delete",
+  question,
 }: {
   action: (fd: FormData) => Promise<void>;
   id: string;
   what: string;
+  /** Button text, for actions that aren't deletes (e.g. "Remove"). */
+  verb?: string;
+  /** Confirm text; defaults to "Delete <what>? This can't be undone." */
+  question?: string;
 }) {
   return (
     <form
       action={action}
       onSubmit={(e) => {
-        if (!confirm(`Delete ${what}? This can't be undone.`)) e.preventDefault();
+        if (!confirm(question ?? `Delete ${what}? This can't be undone.`)) e.preventDefault();
       }}
     >
       <input type="hidden" name="id" value={id} />
       <button type="submit" className="text-sm text-rose-600 hover:underline">
-        Delete
+        {verb}
       </button>
     </form>
   );

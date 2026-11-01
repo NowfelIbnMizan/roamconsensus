@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { requireAdmin } from "@/lib/admin/auth";
+import { db } from "@/lib/db";
 import { logOutAction } from "@/lib/admin/actions";
 
 const links = [
@@ -13,11 +14,13 @@ const more = [
   { href: "/admin/vendors", label: "Booking sites & coupons" },
   { href: "/admin/esim", label: "eSIM plans" },
   { href: "/admin/about", label: "About me" },
+  { href: "/admin/writers", label: "Guest writers" },
   { href: "/admin/subscribers", label: "Email sign-ups" },
 ];
 
 export default async function PanelLayout({ children }: LayoutProps<"/admin">) {
   await requireAdmin();
+  const waiting = await db.post.count({ where: { submittedAt: { not: null }, published: false } });
   return (
     <div>
       <nav className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl bg-foreground px-4 py-2.5 text-sm text-background">
@@ -27,6 +30,12 @@ export default async function PanelLayout({ children }: LayoutProps<"/admin">) {
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="opacity-80 hover:opacity-100">
               {l.label}
+              {l.href === "/admin/blog" && waiting > 0 && (
+                <span className="ml-1.5 rounded-full bg-accent px-1.5 text-xs font-semibold text-background">
+                  {waiting}
+                  <span className="sr-only"> waiting for review</span>
+                </span>
+              )}
             </Link>
           ))}
           <details className="relative">

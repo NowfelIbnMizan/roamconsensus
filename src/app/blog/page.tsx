@@ -36,7 +36,7 @@ export default async function BlogPage() {
                     <p className="text-xs text-muted">
                       {formatDate(p.publishedAt)}
                       {p.destination && ` · ${p.destination.name}`}
-                      {kindEyebrow(p.kind, editor.name) && ` · ${kindEyebrow(p.kind, editor.name)}`}
+                      {kindEyebrow(p.kind, p.authorName ?? editor.name) && ` · ${kindEyebrow(p.kind, p.authorName ?? editor.name)}`}
                     </p>
                     <h2 className="mt-1 text-lg font-semibold group-hover:text-accent">{p.title}</h2>
                     {p.excerpt && <p className="mt-1 line-clamp-2 text-sm text-muted">{p.excerpt}</p>}

@@ -6,26 +6,28 @@ import { youtubeId, youtubeStart } from "@/lib/youtube";
 /**
  * Small Markdown renderer for blog posts: ## and ### headings, paragraphs, - and 1. lists, > quotes, images and
  * YouTube links on their own line, **bold**, *italic* and [links](url). Builds React elements (never raw HTML), so a
- * post can't inject scripts.
+ * post can't inject scripts. `guest` marks outside links nofollow/ugc: a guest writer's links aren't the site vouching
+ * for them.
  */
-export function Markdown({ source }: { source: string }) {
+export function Markdown({ source, guest = false }: { source: string; guest?: boolean }) {
+  const rel = guest ? "nofollow ugc noopener noreferrer" : "noopener noreferrer";
   const blocks = source
     .replace(/\r\n/g, "\n")
     .trim()
     .split(/\n{2,}/);
-  return <div className="space-y-4 leading-relaxed">{blocks.map((b, i) => block(b.trim(), i))}</div>;
+  return <div className="space-y-4 leading-relaxed">{blocks.map((b, i) => block(b.trim(), i, rel))}</div>;
 }
 
 const safeUrl = (url: string) => (/^(https?:\/\/|\/|#|mailto:)/i.test(url) ? url : null);
 
-function block(text: string, key: number): ReactNode {
+function block(text: string, key: number, rel: string): ReactNode {
   const lines = text.split("\n");
   const heading = text.match(/^(#{2,3})\s+(.*)$/);
   if (heading && lines.length === 1) {
     const Tag = heading[1].length === 2 ? "h2" : "h3";
     return (
       <Tag key={key} className={Tag === "h2" ? "pt-4 text-2xl font-semibold" : "pt-2 text-xl font-semibold"}>
-        {inline(heading[2])}
+        {inline(heading[2], rel)}
       </Tag>
     );
   }
@@ -45,7 +47,7 @@ function block(text: string, key: number): ReactNode {
     return (
       <ul key={key} className="list-disc space-y-1 pl-6">
         {lines.map((l, i) => (
-          <li key={i}>{inline(l.replace(/^[-*]\s+/, ""))}</li>
+          <li key={i}>{inline(l.replace(/^[-*]\s+/, ""), rel)}</li>
         ))}
       </ul>
     );
@@ -53,14 +55,14 @@ function block(text: string, key: number): ReactNode {
     return (
       <ol key={key} className="list-decimal space-y-1 pl-6">
         {lines.map((l, i) => (
-          <li key={i}>{inline(l.replace(/^\d+[.)]\s+/, ""))}</li>
+          <li key={i}>{inline(l.replace(/^\d+[.)]\s+/, ""), rel)}</li>
         ))}
       </ol>
     );
   if (lines.every((l) => l.startsWith(">")))
     return (
       <blockquote key={key} className="border-l-2 border-accent pl-4 text-muted italic">
-        {inline(lines.map((l) => l.replace(/^>\s?/, "")).join(" "))}
+        {inline(lines.map((l) => l.replace(/^>\s?/, "")).join(" "), rel)}
       </blockquote>
     );
   return (
@@ -68,7 +70,7 @@ function block(text: string, key: number): ReactNode {
       {lines.map((l, i) => (
         <span key={i}>
           {i > 0 && <br />}
-          {inline(l)}
+          {inline(l, rel)}
         </span>
       ))}
     </p>
@@ -76,15 +78,15 @@ function block(text: string, key: number): ReactNode {
 }
 
 /** **bold**, *italic* and [text](url) inside a line. */
-function inline(text: string): ReactNode[] {
+function inline(text: string, rel: string): ReactNode[] {
   const out: ReactNode[] = [];
   const re = /\*\*(.+?)\*\*|\*(.+?)\*|\[([^\]]+)\]\(([^)\s]+)\)/g;
   let last = 0;
   for (const m of text.matchAll(re)) {
     if (m.index > last) out.push(text.slice(last, m.index));
     const key = `${m.index}`;
-    if (m[1] !== undefined) out.push(<strong key={key}>{inline(m[1])}</strong>);
-    else if (m[2] !== undefined) out.push(<em key={key}>{inline(m[2])}</em>);
+    if (m[1] !== undefined) out.push(<strong key={key}>{inline(m[1], rel)}</strong>);
+    else if (m[2] !== undefined) out.push(<em key={key}>{inline(m[2], rel)}</em>);
     else {
       const url = safeUrl(m[4]);
       if (!url) out.push(m[3]);
@@ -96,7 +98,7 @@ function inline(text: string): ReactNode[] {
         );
       else
         out.push(
-          <a key={key} href={url} target="_blank" rel="noopener noreferrer" className="text-accent underline">
+          <a key={key} href={url} target="_blank" rel={rel} className="text-accent underline">
             {m[3]}
           </a>,
         );
