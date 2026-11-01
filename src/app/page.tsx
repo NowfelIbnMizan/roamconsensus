@@ -8,7 +8,6 @@ import {
   getDestinations,
   getSiteStats,
 } from "@/lib/data";
-import { CreatorAvatar } from "@/components/creator-avatar";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { HomeSearch } from "@/components/home-search";
 import { CityMap } from "@/components/city-map";
@@ -16,6 +15,7 @@ import { siteUrl } from "@/lib/email";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { ldJson } from "@/lib/seo";
 import { BeenCity } from "@/components/been-city";
+import { CreatorFaces } from "@/components/creator-faces";
 
 export const metadata: Metadata = {
   // The bare brand name tells search nothing; lead with what the site is.
@@ -54,7 +54,7 @@ export default async function Home() {
     getDestinationCenters(),
   ]);
   const { creators } = stats;
-  // Letter circles look like a placeholder, so the faces row waits until a few creators have agreed to a photo.
+  // Photos only (letter circles look like a placeholder); CreatorFaces drops expired links and needs three left.
   const faces = creators.filter((c) => c.avatarUrl && !c.hideAvatar);
   const routes = destinations.reduce((n, d) => n + d._count.itineraries, 0);
   const live = new Set(destinations.map((d) => d.slug));
@@ -87,17 +87,10 @@ export default async function Home() {
             href="/creators"
             className="inline-flex items-center gap-2.5 hover:text-foreground"
           >
-            {faces.length >= 3 && (
-              <span className="flex -space-x-2" aria-hidden>
-                {faces.slice(0, 6).map((c) => (
-                  <CreatorAvatar
-                    key={c.handle}
-                    creator={c}
-                    size="sm"
-                    className="ring-2 ring-background"
-                  />
-                ))}
-              </span>
+            {stats.showFaces && (
+              <CreatorFaces
+                faces={faces.map(({ handle, name, avatarUrl }) => ({ handle, name, avatarUrl: avatarUrl! }))}
+              />
             )}
             <span className="eyebrow">
               {destinations.length} cities · {routes} routes · {creators.length}{" "}

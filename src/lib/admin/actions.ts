@@ -424,6 +424,18 @@ export async function saveCreator(fd: FormData) {
   published(["/creators", `/creators/${data.handle}`]);
 }
 
+/** Admin > Creators: the row of creator photos above the home page heading. */
+export async function saveHomeFaces(fd: FormData) {
+  await requireAdmin();
+  const value = checkbox(fd, "homeCreatorFaces");
+  await db.siteSetting.upsert({
+    where: { key: "homeCreatorFaces" },
+    create: { key: "homeCreatorFaces", value },
+    update: { value },
+  });
+  published();
+}
+
 export async function deleteCreator(fd: FormData) {
   await requireAdmin();
   const id = text(fd, "id");

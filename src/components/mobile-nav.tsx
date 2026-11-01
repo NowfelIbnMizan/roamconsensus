@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Compass, Map, Search, Luggage, Sun, Users } from "lucide-react";
+import { Compass, Map, Receipt, Search, Luggage, Sun, Users } from "lucide-react";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 import { useTripDay } from "@/lib/use-trip-day";
 
@@ -90,6 +90,12 @@ export function MobileNav({ accounts }: { accounts: boolean }) {
             label: "My trips",
             sub: "Saved trips on your account",
             icon: Map,
+          },
+          {
+            href: "/my-trips#groups",
+            label: "Group trips",
+            sub: "Plan with friends and split costs",
+            icon: Receipt,
           },
         ]
       : []),

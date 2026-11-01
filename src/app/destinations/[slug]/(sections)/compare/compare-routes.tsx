@@ -8,12 +8,29 @@ import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import { Thumb } from "@/components/thumb";
 import type { getDestination } from "@/lib/data";
-import { tierLabel } from "@/lib/format";
+import { categoryLabel, tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
+import { AddItemButton } from "@/components/add-to-cart";
+import { CreatorHover } from "@/components/creator-hover";
+import type { CartItem } from "@/lib/cart-store";
+import { FromPrice, MiniCard } from "../place-mini-card";
 
 type Route = NonNullable<Awaited<ReturnType<typeof getDestination>>>["routes"][number];
-type Places = Record<string, { name: string; category: ItemCategory; photo: string | null }>;
+type Places = Record<
+  string,
+  {
+    name: string;
+    category: ItemCategory;
+    photo: string | null;
+    area: string | null;
+    fromPrice: { cents: number; unit: string | null; currency: string } | null;
+    blurb: string | null;
+    tip: string | null;
+    picks: number;
+    cartItem: CartItem | null;
+  }
+>;
 
 const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) : null);
 // Sights-only routes and routes without a hotel price leave big costs out of their total, so "cheapest" ranks them after full routes.
@@ -31,10 +48,12 @@ export function CompareRoutes({
   destination,
   routes,
   places,
+  creatorCount,
 }: {
   destination: string;
   routes: Route[];
   places: Places;
+  creatorCount: number;
 }) {
   const { money } = useMoney();
   const [sort, setSort] = useState<Sort>("agreed");
@@ -203,25 +222,56 @@ export function CompareRoutes({
               {g.shared && <p className="text-xs text-muted">Safe bets: two creators picked them.</p>}
               {g.slugs.length ? (
                 <ul className="mt-2 grid gap-1">
-                  {g.slugs.map((s) => (
-                    <li key={s}>
-                      <Link
-                        href={placeHref(destination, s)}
-                        className="group flex items-center gap-2 rounded-xl p-1 hover:bg-accent-soft"
-                      >
-                        <Thumb
-                          url={places[s]?.photo}
-                          alt={places[s]?.name ?? s}
-                          category={places[s]?.category ?? "EXPERIENCE"}
-                          className="size-10 rounded-lg"
-                          sizes="40px"
-                        />
-                        <span className="min-w-0 text-sm leading-tight group-hover:text-accent">
-                          {places[s]?.name ?? s}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
+                  {g.slugs.map((s) => {
+                    const p = places[s];
+                    const href = placeHref(destination, s);
+                    return (
+                      <li key={s} className="flex items-center gap-1">
+                        <CreatorHover
+                          className="flex min-w-0 flex-1"
+                          label={p?.name ?? s}
+                          card={
+                            p && (
+                              <MiniCard
+                                eyebrow={[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+                                name={p.name}
+                                fromPrice={p.fromPrice}
+                                blurb={p.blurb}
+                                tip={p.tip}
+                                picked={p.picks ? `${p.picks} of ${creatorCount} creators recommend it` : null}
+                                href={href}
+                              />
+                            )
+                          }
+                        >
+                          <Link href={href} className="group flex min-w-0 flex-1 items-center gap-2 rounded-xl p-1 hover:bg-accent-soft">
+                            <Thumb
+                              url={p?.photo}
+                              alt={p?.name ?? s}
+                              category={p?.category ?? "EXPERIENCE"}
+                              className="size-10 shrink-0 rounded-lg"
+                              sizes="40px"
+                            />
+                            <span className="min-w-0 leading-tight">
+                              <span className="block text-sm group-hover:text-accent">{p?.name ?? s}</span>
+                              {p && (
+                                <span className="block text-xs text-muted tabular-nums">
+                                  {categoryLabel[p.category]}
+                                  {p.fromPrice && (
+                                    <>
+                                      {" · "}
+                                      <FromPrice p={p.fromPrice} />
+                                    </>
+                                  )}
+                                </span>
+                              )}
+                            </span>
+                          </Link>
+                        </CreatorHover>
+                        {p?.cartItem && <AddItemButton item={p.cartItem} />}
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : (
                 <p className="mt-2 text-sm text-muted">{g.empty}</p>

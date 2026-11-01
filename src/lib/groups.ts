@@ -52,6 +52,7 @@ export async function groupView(groupId: string, userId: string) {
         include: { addedBy: { select: { id: true, name: true } }, votes: { select: { userId: true } } },
         orderBy: { createdAt: "asc" },
       },
+      expenses: { include: { shares: { select: { userId: true, amountCents: true } } }, orderBy: { createdAt: "desc" } },
     },
   });
   return {
@@ -59,6 +60,19 @@ export async function groupView(groupId: string, userId: string) {
     name: g.name,
     isOwner: g.ownerId === userId,
     inviteToken: g.inviteToken,
+    budgetCents: g.budgetCents,
+    expenses: g.expenses.map((e) => ({
+      id: e.id,
+      title: e.title,
+      amountCents: e.amountCents,
+      currency: e.currency,
+      paidById: e.paidById,
+      isSettlement: e.isSettlement,
+      itemId: e.itemId,
+      shares: e.shares,
+      createdAt: e.createdAt.toISOString(),
+      canDelete: [e.createdById, e.paidById, g.ownerId].includes(userId),
+    })),
     members: g.members.map((m) => ({ ...m.user, isOwner: m.user.id === g.ownerId })),
     items: g.items
       .map((i) => ({

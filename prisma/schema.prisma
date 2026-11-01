@@ -135,7 +135,7 @@ model Creator {
   websiteUrl     String?
   avatarUrl      String?
   /// Admin switch: keep the avatar link but show the initial instead.
-  hideAvatar     Boolean     @default(false)
+  hideAvatar     Boolean         @default(false)
   bio            String?
   itineraries    Itinerary[]
   coupons        Coupon[]
@@ -335,35 +335,35 @@ model Subscriber {
 
 /// Blog posts, written in Admin > Blog. Body is simple Markdown (headings, lists, links, images, bold/italic).
 model Post {
-  id            String       @id @default(cuid())
-  slug          String       @unique
-  title         String
+  id               String       @id @default(cuid())
+  slug             String       @unique
+  title            String
   /// One or two sentences for the blog list, search results and share previews.
-  excerpt       String?
-  body          String
-  coverUrl      String?
-  destinationId String?
-  destination   Destination? @relation(fields: [destinationId], references: [id], onDelete: SetNull)
-  kind          PostKind     @default(GENERAL)
+  excerpt          String?
+  body             String
+  coverUrl         String?
+  destinationId    String?
+  destination      Destination? @relation(fields: [destinationId], references: [id], onDelete: SetNull)
+  kind             PostKind     @default(GENERAL)
   /// The route a TAKE is about, or the first of the two in a COMPARE.
   itineraryId      String?
-  itinerary        Itinerary? @relation("PostRoute", fields: [itineraryId], references: [id], onDelete: SetNull)
+  itinerary        Itinerary?   @relation("PostRoute", fields: [itineraryId], references: [id], onDelete: SetNull)
   /// The second route in a COMPARE.
   otherItineraryId String?
-  otherItinerary   Itinerary? @relation("PostOtherRoute", fields: [otherItineraryId], references: [id], onDelete: SetNull)
-  published     Boolean      @default(false)
-  publishedAt   DateTime?
+  otherItinerary   Itinerary?   @relation("PostOtherRoute", fields: [otherItineraryId], references: [id], onDelete: SetNull)
+  published        Boolean      @default(false)
+  publishedAt      DateTime?
   /// A guest writer's post; null for the owner's own. Guests never publish: the owner approves.
-  authorId      String?
-  author        User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorId         String?
+  author           User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
   /// Byline for a guest post, kept even if the writer deletes their account. Null = the owner wrote it.
-  authorName    String?
+  authorName       String?
   /// Set when a guest sends the post for review; cleared when the owner approves or rejects it.
-  submittedAt   DateTime?
+  submittedAt      DateTime?
   /// The owner's note when sending a post back, shown to the writer.
-  reviewNote    String?
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  reviewNote       String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
 
   @@index([published, publishedAt])
   @@index([authorId])
@@ -374,13 +374,13 @@ model Post {
 
 /// Travellers who signed in with Google. The four auth tables follow Better Auth's schema (src/lib/auth.ts).
 model User {
-  id              String           @id
+  id              String              @id
   name            String
-  email           String           @unique
-  emailVerified   Boolean          @default(false)
+  email           String              @unique
+  emailVerified   Boolean             @default(false)
   image           String?
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
   sessions        Session[]
   accounts        Account[]
   cart            UserCart?
@@ -390,14 +390,16 @@ model User {
   groups          GroupMember[]
   groupItems      GroupItem[]
   groupVotes      GroupVote[]
+  expensesPaid    GroupExpense[]      @relation("ExpensePaidBy")
+  expenseShares   GroupExpenseShare[]
   /// Daily email when prices in their cart change or creators add routes for their cart's cities. Off until they opt in.
-  alertsEnabled   Boolean          @default(false)
+  alertsEnabled   Boolean             @default(false)
   /// Last alert check; only routes added after it count as new.
   alertsCheckedAt DateTime?
   /// Private travel profile set on My trips: style, trip length, passport, currency, cities been to.
   prefs           Json?
   /// May write blog posts for review at /write; set by an invite link from Admin > Writers.
-  writer          Boolean          @default(false)
+  writer          Boolean             @default(false)
   posts           Post[]
 }
 
@@ -498,16 +500,19 @@ model FavouritePlace {
 
 /// A trip planned together: anyone with the invite link can join, add stops and vote on them.
 model GroupTrip {
-  id          String        @id @default(cuid())
+  id          String         @id @default(cuid())
   name        String
   ownerId     String
-  owner       User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  owner       User           @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   /// Secret part of the invite link; the owner can make a new one to stop old links working.
-  inviteToken String        @unique
+  inviteToken String         @unique
   members     GroupMember[]
   items       GroupItem[]
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  expenses    GroupExpense[]
+  /// Shared budget for "budget vs spent", in US cents; null until someone sets one.
+  budgetCents Int?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
 }
 
 model GroupMember {
@@ -534,6 +539,39 @@ model GroupItem {
   createdAt DateTime    @default(now())
 
   @@unique([groupId, itemId])
+}
+
+/// A cost someone paid for the group, or (isSettlement) one person paying another back.
+/// Amounts are in `currency`, times 100, like every price on the site.
+model GroupExpense {
+  id           String              @id @default(cuid())
+  groupId      String
+  group        GroupTrip           @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  title        String
+  amountCents  Int
+  currency     String
+  paidById     String
+  paidBy       User                @relation("ExpensePaidBy", fields: [paidById], references: [id], onDelete: Cascade)
+  createdById  String
+  isSettlement Boolean             @default(false)
+  /// The group stop this cost came from, when added from the plan.
+  itemId       String?
+  shares       GroupExpenseShare[]
+  createdAt    DateTime            @default(now())
+
+  @@index([groupId])
+}
+
+/// Each person's part of a cost, in the cost's currency; parts add up to the cost.
+model GroupExpenseShare {
+  expenseId   String
+  expense     GroupExpense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amountCents Int
+
+  @@id([expenseId, userId])
+  @@index([userId])
 }
 
 model GroupVote {
@@ -569,4 +607,10 @@ model AboutPhoto {
   /// Landscape (wider than tall): only shown in the landscape slots.
   wide     Boolean @default(false)
   position Int     @default(0)
+}
+
+/// Site-wide admin switches, one row per key (e.g. "homeCreatorFaces").
+model SiteSetting {
+  key   String @id
+  value Json
 }
