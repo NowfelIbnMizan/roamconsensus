@@ -1382,6 +1382,16 @@
       "blurb": "A photo spot featuring swings and nests with views over Danau Buyan, Bali's second largest lake.",
       "lat": -8.23707,
       "lng": 115.08818
+    },
+    {
+      "slug": "paon-desa-ubud",
+      "name": "Paon Desa Ubud",
+      "category": "STAY",
+      "area": "Ubud",
+      "blurb": "Small 14-room B&B with an outdoor pool in Banjar Laplapan, east of central Ubud.",
+      "lat": -8.5045,
+      "lng": 115.283,
+      "checkedAt": "2026-11-01"
     }
   ],
   "creators": [
@@ -1431,6 +1441,13 @@
       "platform": "BLOG",
       "profileUrl": "https://www.livelikeitstheweekend.com/",
       "bio": "A California based travel writer and photographer who swapped corporate fashion marketing for world travel."
+    },
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
     }
   ],
   "itineraries": [
@@ -3266,6 +3283,69 @@
         }
       ],
       "tier": "MIDRANGE"
+    },
+    {
+      "slug": "ubud-3-days-bucketlistly",
+      "title": "Ubud in 3 days",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/one-month-indonesia-itinerary",
+      "summary": "The Bali leg of Pete's month across Indonesia: three nights in Ubud for temples and architecture, the Water Palace, Tirta Empul, Goa Gajah and Tegalalang at 7 AM. He keeps Bali short because it's crowded.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Paon Desa Ubud",
+          "category": "STAY",
+          "note": "Creator's pick. Or Ubud Rice Field House (dorms) or Chapung Sebali (high-end).",
+          "place": "paon-desa-ubud",
+          "unit": "night",
+          "quantity": 3,
+          "price": 44.11,
+          "priceNote": "AED 162 per night incl. taxes (2 Nov 2026)",
+          "priceSource": "https://mob.expedia.ae/Ubud-Hotels-Paon-Desa-Ubud-Hotel.h38531822.Hotel-Information"
+        },
+        {
+          "day": 1,
+          "name": "Ubud Water Palace (Saraswati Temple)",
+          "category": "EXPERIENCE",
+          "note": "Balinese architecture is the reason to stop in Bali.",
+          "place": "saraswati-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult",
+          "priceSource": "https://www.baliholidaysecrets.com/bali-entrance-fees/"
+        },
+        {
+          "day": 2,
+          "name": "Tegalalang Rice Terraces",
+          "category": "EXPERIENCE",
+          "sentiment": "RECOMMENDED",
+          "note": "Arrive about 7 AM to avoid the crowds.",
+          "place": "tegalalang-rice-terraces",
+          "price": 1.56,
+          "priceNote": "IDR 25k entry; farmer donations extra",
+          "priceSource": "https://www.thecommonwanderer.com/blog/tegalalang-rice-terraces-bali"
+        },
+        {
+          "day": 2,
+          "name": "Tirta Empul Temple",
+          "category": "EXPERIENCE",
+          "note": "Freshwater pools where people cleanse themselves spiritually.",
+          "place": "tirta-empul-temple",
+          "price": 3.13,
+          "priceNote": "IDR 50k per adult",
+          "priceSource": "https://www.indonesia.travel/us-en/travel-ideas/pilgrimage/pura-tirta-empul"
+        },
+        {
+          "day": 3,
+          "name": "Goa Gajah (Elephant Cave)",
+          "category": "EXPERIENCE",
+          "place": "goa-gajah-and-pura-gunung-lebah",
+          "price": 3.13,
+          "priceNote": "IDR 50k Goa Gajah entry",
+          "priceSource": "https://pickyourtrail.com/attractions/bali/goa-gajah"
+        }
+      ]
     }
   ]
 }

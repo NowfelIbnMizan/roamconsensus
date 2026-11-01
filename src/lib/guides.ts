@@ -126,6 +126,10 @@ export const guides = {
       text: "Stops marked Skip it are the creator's warning. They stay out of the whole route, but you can still add one.",
     },
     {
+      lead: "Fill the gap",
+      text: "A day with no food stop or sights, or a route with no hotel, shows nearby picks from other creators. They are not part of this route.",
+    },
+    {
       lead: "Photos and map",
       text: "Hover or tap a photo for the place's details. Pick a day above the map to see just its stops.",
     },
@@ -160,6 +164,10 @@ export const guides = {
     {
       lead: "What the total covers",
       text: "It adds up the prices we know. A + means some stops have no price yet, and the line below says how many hotel nights are in it.",
+    },
+    {
+      lead: "No hotel yet?",
+      text: "A city with no hotel in your plan shows hotels creators recommend near that day's stops. Tap + to add one.",
     },
     {
       lead: "Share it",

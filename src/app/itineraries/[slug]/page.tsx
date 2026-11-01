@@ -24,7 +24,10 @@ import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 import { AddItemButton, AddRouteButton } from "@/components/add-to-cart";
 import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
-import { getItinerary, getItinerarySlugs, getPostsForRoute } from "@/lib/data";
+import { getDestination, getItinerary, getItinerarySlugs, getPostsForRoute } from "@/lib/data";
+import { type Gap, routeGaps } from "@/lib/gaps";
+import { cachedPhotoUrls } from "@/lib/photos";
+import { GapPicks } from "./gap-picks";
 import { categoryLabel, sentimentLabel, tierLabel } from "@/lib/format";
 import { Money, Price } from "@/components/money";
 import {
@@ -36,7 +39,7 @@ import {
   hasPin,
 } from "@/lib/map";
 import { DriveSummary, LegHint } from "@/components/road-time";
-import { placeHref } from "@/lib/place";
+import { placeHref, placePhotoKey } from "@/lib/place";
 import { TripMap, type MapGroup, type MapStop } from "@/components/trip-map";
 import { EditorTake } from "@/components/editor-take";
 import { CouponCode } from "@/components/coupon-code";
@@ -243,6 +246,23 @@ export default async function ItineraryPage({
     getPostsForRoute(slug),
   ]);
   if (!it) notFound();
+  // Days missing food, sights or (for the whole route) a hotel get other creators' nearby picks.
+  const city = await getDestination(it.destination.slug);
+  const gaps = city
+    ? routeGaps(
+        it.schedule.map(({ day, items }) => ({ day, items: items.filter((i) => !i.closedNote) })),
+        it.days,
+        it.creator.handle,
+        city,
+      )
+    : new Map<number, never[]>();
+  const gapPlaces = [...gaps.values()].flatMap((g) => g.flatMap((x) => x.picks.map((p) => p.place)));
+  const cached = await cachedPhotoUrls(
+    gapPlaces.filter((p) => !p.photos[0]).map((p) => placePhotoKey(it.destination.slug, p)),
+  );
+  const gapPhotos = new Map(
+    gapPlaces.map((p) => [p.slug, p.photos[0] ?? cached.get(placePhotoKey(it.destination.slug, p)) ?? null]),
+  );
   const fullGuide = fullGuideLabel(it.sourceUrl);
   // The photo strip needs two photos to show; without it (or a video) the header stays one column.
   const photoCount = it.schedule
@@ -522,6 +542,8 @@ export default async function ItineraryPage({
             destination={it.destination.slug}
             days={it.days}
             creator={it.creator.name}
+            gaps={gaps}
+            gapPhotos={gapPhotos}
           />
         </div>
       </div>
@@ -555,6 +577,8 @@ function DayTimeline({
   destination,
   days,
   creator,
+  gaps,
+  gapPhotos,
 }: {
   schedule: { day: number; items: Stop[] }[];
   cartItems: Map<string, CartItem>;
@@ -564,6 +588,8 @@ function DayTimeline({
   destination: string;
   days: number;
   creator: string;
+  gaps: Map<number, Gap[]>;
+  gapPhotos: Map<string, string | null>;
 }) {
   return (
     <div>
@@ -705,6 +731,11 @@ function DayTimeline({
                     );
                   })}
                 </ol>
+                {gaps.has(day) && (
+                  <div className="mt-2 ml-[26px] overflow-hidden rounded-xl border border-line sm:ml-[30px] [&>div]:border-t-0">
+                    <GapPicks gaps={gaps.get(day)!} day={day} creator={creator} city={destination} photos={gapPhotos} />
+                  </div>
+                )}
                 {routeUrl && (
                   <p className="mt-1 ml-[26px] text-sm sm:ml-[30px]">
                     <a

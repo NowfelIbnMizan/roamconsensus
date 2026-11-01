@@ -14,6 +14,7 @@ import { DriveSummary, LegHint } from "@/components/road-time";
 import { useMoney } from "@/components/money";
 import type { MapGroup, MapStop } from "@/components/trip-map";
 import { cityOf } from "@/lib/trip";
+import { StayPicks } from "@/components/stay-picks";
 import { transferHint, transferLinks } from "@/lib/transfer";
 
 const UNPLANNED = "#a8a29e";
@@ -168,6 +169,16 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
     })),
     { day: null, list: inDay(items, null, days) },
   ];
+
+  // Cities in the plan with no hotel at all get creators' hotel picks on their first day with stops.
+  const stayless = new Map<string, number>();
+  if (edit && days > 1)
+    for (const { day, list } of sections) {
+      const city = day !== null && cityOf(list);
+      if (!city || stayless.has(city.slug)) continue;
+      const hasStay = items.some((i) => i.category === "STAY" && i.destination?.slug === city.slug);
+      if (!hasStay) stayless.set(city.slug, day!);
+    }
 
   return (
     <div className="space-y-4">
@@ -405,6 +416,9 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                     );
                   })}
                 </ul>
+              )}
+              {city && day !== null && stayless.get(city.slug) === day && (
+                <StayPicks city={city.slug} day={day} list={list} />
               )}
               {routeUrl && (
                 <p className="border-t border-line px-4 py-3 text-sm">

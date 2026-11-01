@@ -107,7 +107,8 @@ export function CityNutshell({ d, stays }: { d: Destination; stays: Stays }) {
       label: "Getting around",
       value: <Link href={`/destinations/${d.slug}/before`}>{transport.title}</Link>,
     });
-  if (top)
+  // With one creator every place ties on agreement, so no pick stands out as "don't miss".
+  if (top && d.creatorCount > 1)
     rows.push({
       icon: Star,
       label: "Don't miss",
