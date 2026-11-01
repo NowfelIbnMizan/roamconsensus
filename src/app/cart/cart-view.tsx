@@ -198,11 +198,11 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               <Share2 className="size-4" aria-hidden /> {shared ? "Link copied" : "Share trip"}
             </button>
             <StopDetails
-              label="Trip tools"
+              label="More trip tools"
               className="flex size-9 items-center justify-center rounded-full border border-line hover:border-accent"
               row={<MoreHorizontal className="size-4" aria-hidden />}
             >
-              <p className="pr-8 font-display text-xl font-semibold">Trip tools</p>
+              <p className="pr-8 font-display text-xl font-semibold">More trip tools</p>
               <label className="mt-4 block text-sm text-muted" htmlFor="budget">
                 Your budget ({code})
               </label>
@@ -216,31 +216,6 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                 onChange={(e) => setBudget(e.target.value === "" ? null : fromLocal(Number(e.target.value)))}
                 className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
               />
-              <label className="mt-4 block text-sm text-muted" htmlFor="trip-start">
-                Trip starts
-              </label>
-              <input
-                id="trip-start"
-                type="date"
-                value={startDate ?? ""}
-                onChange={(e) => setStartDate(e.target.value || null)}
-                className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
-              />
-              <button
-                type="button"
-                onClick={calendar}
-                disabled={!startDate || planned === 0}
-                className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background disabled:opacity-50"
-              >
-                <CalendarPlus className="size-4" aria-hidden /> Add to my calendar
-              </button>
-              <p className="mt-1.5 text-xs text-muted">
-                {!startDate
-                  ? "Pick a start date first."
-                  : planned === 0
-                    ? "Put stops on days first."
-                    : `${planned} planned stops as all-day events. Opens in Google, Apple or Outlook calendar.`}
-              </p>
               <div className="mt-4 grid gap-2">
                 <Link
                   href="/cart/print"
@@ -272,9 +247,6 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                   />
                 </div>
               )}
-              <button type="button" onClick={clear} className="mt-5 text-sm text-muted underline hover:text-rose-600">
-                Clear trip
-              </button>
             </StopDetails>
           </div>
         </div>
@@ -295,6 +267,42 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
         )}
         <div className="mt-4">
           <AllocationBar allocation={allocation} />
+        </div>
+        {/* Calendar and Clear stay in plain sight: travellers look for both, and a menu hid them. */}
+        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-line pt-4">
+          <label className="inline-flex items-center gap-2 text-sm">
+            <span className="text-muted">Trip starts</span>
+            <input
+              id="trip-start"
+              type="date"
+              value={startDate ?? ""}
+              onChange={(e) => setStartDate(e.target.value || null)}
+              className="rounded-lg border border-line bg-background px-2.5 py-1.5"
+            />
+          </label>
+          <button
+            type="button"
+            onClick={calendar}
+            disabled={!startDate || planned === 0}
+            title={
+              !startDate
+                ? "Pick a start date first"
+                : planned === 0
+                  ? "Put stops on days first"
+                  : `${planned} planned stops as all-day events. Opens in Google, Apple or Outlook calendar.`
+            }
+            className="inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-2 text-sm hover:border-accent disabled:opacity-50"
+          >
+            <CalendarPlus className="size-4" aria-hidden /> Add to calendar
+          </button>
+          <button
+            type="button"
+            onClick={() => confirm("Clear your whole trip plan? This can't be undone.") && clear()}
+            className="ml-auto inline-flex items-center gap-1.5 px-1 py-2 text-sm text-muted hover:text-rose-600"
+          >
+            <Trash2 className="size-4" aria-hidden /> Clear trip
+          </button>
+          {!startDate && <p className="w-full text-xs text-muted">Pick a start date to add the plan to your calendar.</p>}
         </div>
       </section>
 
