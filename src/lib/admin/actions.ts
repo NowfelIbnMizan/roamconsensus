@@ -1,9 +1,11 @@
 "use server";
 
-import { updateTag } from "next/cache";
+import { randomBytes } from "node:crypto";
+import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { after } from "next/server";
 import { db } from "@/lib/db";
+import { postKindFields } from "@/lib/post-form";
 import { CONTENT_TAG } from "@/lib/data";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { SOCIALS, type SocialKey } from "@/lib/creator-links";
@@ -15,7 +17,6 @@ import type {
   ItemCategory,
   PhotoSource,
   Platform,
-  PostKind,
   Sentiment,
   Tier,
 } from "@/generated/prisma/enums";
@@ -678,17 +679,7 @@ export async function savePost(fd: FormData) {
   const before = id
     ? await db.post.findUnique({ where: { id }, select: { publishedAt: true } })
     : null;
-  const kind = (text(fd, "kind") || "GENERAL") as PostKind;
-  // Only route posts keep routes; a take has one, a side by side two different ones.
-  const itineraryId = kind === "TAKE" || kind === "COMPARE" ? optional(fd, "itineraryId") : null;
-  const otherItineraryId = kind === "COMPARE" ? optional(fd, "otherItineraryId") : null;
-  if (kind !== "GENERAL" && kind !== "TRIP" && !itineraryId) throw new Error("Pick a route for this post.");
-  if (kind === "COMPARE" && (!otherItineraryId || otherItineraryId === itineraryId))
-    throw new Error("Pick two different routes to compare.");
-  const routes = await db.itinerary.findMany({
-    where: { id: { in: [itineraryId, otherItineraryId].filter((r) => r !== null) } },
-    select: { slug: true, destinationId: true },
-  });
+  const { kind, itineraryId, otherItineraryId, routes } = await postKindFields(fd);
   const data = {
     slug: slugify(text(fd, "slug") || text(fd, "title")),
     title: text(fd, "title"),
@@ -702,6 +693,10 @@ export async function savePost(fd: FormData) {
     published: live,
     // The first time a post goes live sets its date; later edits keep it.
     publishedAt: before?.publishedAt ?? (live ? new Date() : null),
+    // Guest posts only: the byline the owner can correct.
+    ...(fd.has("authorName") ? { authorName: optional(fd, "authorName") } : {}),
+    // A guest post that goes live has been reviewed.
+    ...(live ? { submittedAt: null, reviewNote: null } : {}),
   };
   const row = id
     ? await db.post.update({ where: { id }, data })
@@ -709,6 +704,44 @@ export async function savePost(fd: FormData) {
   // Drafts refresh the cache (a post taken offline must disappear) but aren't announced to Bing.
   published(row.published ? ["/blog", `/blog/${row.slug}`, ...routes.map((r) => `/itineraries/${r.slug}`)] : []);
   if (!id) redirect(`/admin/blog/${row.id}`);
+}
+
+/** The review queue's "Approve": saves the owner's edits and publishes the guest's post. */
+export async function approvePost(fd: FormData) {
+  fd.set("published", "on");
+  await savePost(fd);
+}
+
+/** Sends a guest's post back with a note; it stays hidden and the writer can change it and send it again. */
+export async function rejectPost(fd: FormData) {
+  await requireAdmin();
+  const row = await db.post.update({
+    where: { id: text(fd, "id") },
+    data: { published: false, submittedAt: null, reviewNote: optional(fd, "note") ?? "Not this time." },
+  });
+  published(row.publishedAt ? ["/blog", `/blog/${row.slug}`] : []);
+  redirect("/admin/blog");
+}
+
+export async function createWriterInvite(fd: FormData) {
+  await requireAdmin();
+  await db.writerInvite.create({
+    data: { label: text(fd, "label") || "Guest writer", token: randomBytes(18).toString("base64url") },
+  });
+  revalidatePath("/admin/writers");
+}
+
+export async function deleteWriterInvite(fd: FormData) {
+  await requireAdmin();
+  await db.writerInvite.delete({ where: { id: text(fd, "id") } });
+  revalidatePath("/admin/writers");
+}
+
+/** Stops someone writing; their posts stay as they are (live ones stay live). */
+export async function removeWriter(fd: FormData) {
+  await requireAdmin();
+  await db.user.update({ where: { id: text(fd, "id") }, data: { writer: false } });
+  revalidatePath("/admin/writers");
 }
 
 export async function deletePost(fd: FormData) {

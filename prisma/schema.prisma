@@ -353,10 +353,21 @@ model Post {
   otherItinerary   Itinerary? @relation("PostOtherRoute", fields: [otherItineraryId], references: [id], onDelete: SetNull)
   published     Boolean      @default(false)
   publishedAt   DateTime?
+  /// A guest writer's post; null for the owner's own. Guests never publish: the owner approves.
+  authorId      String?
+  author        User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  /// Byline for a guest post, kept even if the writer deletes their account. Null = the owner wrote it.
+  authorName    String?
+  /// Set when a guest sends the post for review; cleared when the owner approves or rejects it.
+  submittedAt   DateTime?
+  /// The owner's note when sending a post back, shown to the writer.
+  reviewNote    String?
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
 
   @@index([published, publishedAt])
+  @@index([authorId])
+  @@index([submittedAt])
   @@index([itineraryId])
   @@index([otherItineraryId])
 }
@@ -385,6 +396,20 @@ model User {
   alertsCheckedAt DateTime?
   /// Private travel profile set on My trips: style, trip length, passport, currency, cities been to.
   prefs           Json?
+  /// May write blog posts for review at /write; set by an invite link from Admin > Writers.
+  writer          Boolean          @default(false)
+  posts           Post[]
+}
+
+/// One-time link the owner sends to invite a guest blog writer.
+model WriterInvite {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  /// Who the owner meant it for, to tell links apart in admin.
+  label     String
+  createdAt DateTime  @default(now())
+  usedAt    DateTime?
+  usedById  String?
 }
 
 model Session {

@@ -32,7 +32,7 @@ export async function RouteCollection({ d, routes }: { d: Destination; routes: D
                   className="flex items-center justify-between gap-3 rounded-2xl border border-accent/30 bg-accent/5 p-4 hover:border-accent"
                 >
                   <span>
-                    <span className="eyebrow block">{kindEyebrow(p.kind, editor.name)}</span>
+                    <span className="eyebrow block">{kindEyebrow(p.kind, p.authorName ?? editor.name)}</span>
                     <span className="font-semibold">{p.title}</span>
                   </span>
                   <ArrowRight className="size-5 shrink-0 text-accent" aria-hidden />

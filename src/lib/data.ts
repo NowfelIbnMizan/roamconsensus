@@ -983,6 +983,8 @@ const postSelect = {
   updatedAt: true,
   destination: { select: { slug: true, name: true } },
   kind: true,
+  /** A guest writer's byline; null for the owner's own posts. */
+  authorName: true,
 } as const;
 
 const routeRef = { select: { slug: true, destination: { select: { slug: true } } } } as const;

@@ -40,7 +40,8 @@ export default async function PostPage({ params }: Props) {
   const places = Object.fromEntries(
     (city?.consensus ?? []).filter((p) => p.category !== "TRANSIT").map((p) => [p.slug, p.name]),
   );
-  const eyebrow = [kindEyebrow(post.kind, editor.name), post.destination?.name].filter(Boolean).join(" · ");
+  const writer = post.authorName ?? editor.name;
+  const eyebrow = [kindEyebrow(post.kind, writer), post.destination?.name].filter(Boolean).join(" · ");
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -49,7 +50,9 @@ export default async function PostPage({ params }: Props) {
     description: post.excerpt ?? undefined,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
-    author: { "@type": "Person", name: editor.name, url: `${siteUrl()}/about` },
+    author: post.authorName
+      ? { "@type": "Person", name: post.authorName }
+      : { "@type": "Person", name: editor.name, url: `${siteUrl()}/about` },
     mainEntityOfPage: `${siteUrl()}/blog/${post.slug}`,
     ...(route ? { about: [route, other].filter(Boolean).map((r) => `${siteUrl()}/itineraries/${r!.slug}`) } : {}),
     ...(post.coverUrl ? { image: post.coverUrl } : {}),
@@ -70,9 +73,13 @@ export default async function PostPage({ params }: Props) {
       </h1>
       <p className="mt-2 text-sm text-muted">
         By{" "}
-        <Link href="/about" className="underline">
-          {editor.name}
-        </Link>{" "}
+        {post.authorName ? (
+          <>{post.authorName}, guest writer</>
+        ) : (
+          <Link href="/about" className="underline">
+            {editor.name}
+          </Link>
+        )}{" "}
         · {formatDate(post.publishedAt)}
       </p>
       <div className="mt-6 overflow-hidden rounded-2xl">
@@ -88,7 +95,7 @@ export default async function PostPage({ params }: Props) {
         </div>
       )}
       <div className="mt-8">
-        <Markdown source={post.body} />
+        <Markdown source={post.body} guest={Boolean(post.authorName)} />
       </div>
       {post.destination && (
         <Link
