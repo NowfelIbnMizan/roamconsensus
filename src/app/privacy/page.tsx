@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy policy" updated="23 October 2026">
+    <LegalPage title="Privacy policy" updated="1 November 2026">
       <p>
         <strong>Short version:</strong> you don&apos;t need an account, we set no tracking cookies, your trip plan stays
         on your own device unless you sign in, and we only keep your email address if you give it to us.
@@ -25,8 +25,10 @@ export default function PrivacyPage() {
         browser data removes them.
       </p>
       <p>
-        When you use <em>Share my trip</em>, the plan is packed into the link itself. Whoever you send the link to can
-        see it; we don&apos;t store it.
+        When you use <em>Share trip</em>, we save a copy of the plan (which stops, how many, on which day, and the trip
+        length) under a short link, so the link stays short enough to send. Your private notes, name and email are not
+        in it. Anyone with the link can see that copy; it isn&apos;t listed anywhere. Later changes to your trip
+        don&apos;t update it; share again to send a new version. To have a shared copy deleted, email us the link.
       </p>
 
       <h2>If you sign in with Google</h2>

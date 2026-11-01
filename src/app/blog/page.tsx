@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageGuide } from "@/components/page-guide";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { getDestinations, getPosts } from "@/lib/data";
 import { getEditor } from "@/lib/editor";
@@ -19,7 +20,8 @@ export default async function BlogPage() {
   return (
     <>
       <h1 className="text-3xl font-semibold tracking-tight">Blog</h1>
-      <p className="mt-1 text-muted">Short reads to plan smarter. No fluff, no sponsored lists.</p>
+      <p className="mt-1 text-muted">Short reads to plan smarter, about routes on this site.</p>
+      <PageGuide id="blog" className="mt-4" />
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
         {posts.length === 0 ? (
           <div className="self-start rounded-2xl border border-dashed border-line-strong p-8 text-center">

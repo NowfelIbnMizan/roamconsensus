@@ -70,3 +70,21 @@ export function DestinationTabs({ slug }: { slug: string }) {
 export function OverviewOnly({ slug, children }: { slug: string; children: ReactNode }) {
   return usePathname() === `/destinations/${slug}` ? children : null;
 }
+
+/** Each tab's main heading says what the page is for ("Bali trip budget"); the overview keeps the plain name. */
+const HEADINGS: Record<string, (city: string) => string> = {
+  best: (c) => `Top picks in ${c}`,
+  stay: (c) => `Where to stay in ${c}`,
+  when: (c) => `When to go to ${c}`,
+  before: (c) => `Before you go to ${c}`,
+  compare: (c) => `Compare ${c} routes`,
+  budget: (c) => `${c} trip budget`,
+  esim: (c) => `eSIM for ${c}`,
+};
+
+export function CityHeading({ slug, name }: { slug: string; name: string }) {
+  const tab = usePathname().slice(`/destinations/${slug}/`.length);
+  return (
+    <h1 className="mt-1 text-4xl font-semibold tracking-tight sm:text-5xl">{HEADINGS[tab]?.(name) ?? name}</h1>
+  );
+}

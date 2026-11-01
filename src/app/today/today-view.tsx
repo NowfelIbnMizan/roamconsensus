@@ -1,5 +1,6 @@
 "use client";
 
+import { bookLabel } from "@/lib/book-label";
 import { StopNote } from "@/components/stop-note";
 import { Luggage, Search } from "lucide-react";
 import { PageGuide } from "@/components/page-guide";
@@ -225,7 +226,7 @@ export function TodayView() {
                       rel={next.bookUrl ? "sponsored noopener noreferrer" : "noopener noreferrer"}
                       className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
                     >
-                      {next.bookUrl ? (next.vendor ? `Book on ${next.vendor}` : "Book") : "Website"}
+                      {next.bookUrl ? bookLabel(next.bookUrl, next.vendor) : "Website"}
                       <ExternalLink className="size-3.5" aria-hidden />
                     </a>
                   )}

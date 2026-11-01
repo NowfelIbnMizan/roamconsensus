@@ -39,7 +39,7 @@ export const guides = {
   "city-stay": [
     {
       lead: "Areas, not just hotels",
-      text: "Each area is one creators slept in, most-picked first. Numbers match the pins on the map.",
+      text: "Each area has hotels from creators' routes, most-picked first. Numbers match the pins on the map.",
     },
     {
       lead: "What's nearby",
@@ -83,7 +83,11 @@ export const guides = {
   "city-budget": [
     {
       lead: "Estimate your trip",
-      text: "Set days, travellers and travel style to see a cost per person.",
+      text: "Set days, people and travel style. Big numbers are the total for your whole group; per person a day sits under each.",
+    },
+    {
+      lead: "Rooms and nights",
+      text: "Hotel nights are one less than days. Two people share a room; an odd one out gets their own.",
     },
     {
       lead: "Choose where you stay",
@@ -151,7 +155,11 @@ export const guides = {
     },
     {
       lead: "Plan the days",
-      text: "Set your trip length, then put each stop on a day in Day by day.",
+      text: "Set your trip length, then put each stop on a day in Day by day. A whole route keeps all its days, even quiet ones.",
+    },
+    {
+      lead: "What the total covers",
+      text: "It adds up the prices we know. A + means some stops have no price yet, and the line below says how many hotel nights are in it.",
     },
     {
       lead: "Share it",
@@ -228,6 +236,10 @@ export const guides = {
       text: "Where, how long, your budget style and what you love. Tap again to undo.",
     },
     {
+      lead: "Hard limits",
+      text: "Trip length and budget are kept. If nothing fits both, you see the closest routes, each saying what it misses.",
+    },
+    {
       lead: "Live matches",
       text: "Your best route updates as you tap, with why it fits. On a phone, the bar at the bottom jumps to it.",
     },
@@ -258,6 +270,62 @@ export const guides = {
     {
       lead: "Filter and add",
       text: "Chips show one type at a time. Tap + to add a place to your trip.",
+    },
+  ],
+  "city-collection": [
+    {
+      lead: "A shortlist for one question",
+      text: "Only the routes or places that answer this page's question, most-picked first.",
+    },
+    {
+      lead: "Where they agree",
+      text: "Places that two or more of these routes share are listed first. They're a good base for your own plan.",
+    },
+    {
+      lead: "Add as you go",
+      text: "Open a route to add it all, or tap + on single places.",
+    },
+  ],
+  blog: [
+    {
+      lead: "Real trips, real opinions",
+      text: "Posts by Nowfel and invited guest writers, each about routes on this site.",
+    },
+    {
+      lead: "Takes and side by sides",
+      text: "A take reviews one creator's route; a side by side compares two. The route cards on each post open the full plan.",
+    },
+  ],
+  group: [
+    {
+      lead: "Plan together",
+      text: "Share the invite link. Everyone signed in can add stops from their own trip and vote on each one.",
+    },
+    {
+      lead: "Friends without an account",
+      text: "Add them by name so their costs can be split too.",
+    },
+    {
+      lead: "Split costs",
+      text: "Log who paid for what. The page works out who owes whom.",
+    },
+    {
+      lead: "Make it a trip",
+      text: "Copy all to my trip puts the group's stops in your own trip, ready to plan the days.",
+    },
+  ],
+  write: [
+    {
+      lead: "Write from your own trips",
+      text: "Your own words and your own photos. Pick a post type for questions to answer.",
+    },
+    {
+      lead: "Links",
+      text: "Select some words and tap Add link. Use /destinations/bali style links for pages on this site.",
+    },
+    {
+      lead: "Review before it's live",
+      text: "Save drafts as you go, then Send for review. Posts go live once approved, or come back with a note.",
     },
   ],
 } satisfies Record<string, Tip[]>;

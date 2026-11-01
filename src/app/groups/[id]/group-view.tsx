@@ -1,5 +1,6 @@
 "use client";
 
+import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -174,6 +175,7 @@ function Group({ me }: { me: string }) {
       <header>
         <p className="eyebrow">Group trip</p>
         <h1 className="text-3xl font-semibold tracking-tight">{group.name}</h1>
+        <PageGuide id="group" className="mt-3" />
         <ul className="mt-3 flex flex-wrap items-center gap-2" aria-label="People in this trip">
           {group.members.map((m) => (
             <li

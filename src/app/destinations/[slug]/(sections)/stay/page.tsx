@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return d
     ? {
         title: `Where to stay in ${d.name}: creators' areas`,
-        description: `The ${d.name} neighbourhoods travel creators stayed in, with their hotels, nightly prices and what's nearby.`,
+        description: `The ${d.name} neighbourhoods where travel creators' routes put their hotels, with nightly prices and what's nearby.`,
         alternates: { canonical: `/destinations/${d.slug}/stay` },
       }
     : {};
@@ -90,7 +90,7 @@ export default async function StayPage({ params }: Props) {
   return (
     <>
       <h2 className="text-xl font-semibold">Where to stay in {d.name}</h2>
-      <p className="mt-1 max-w-2xl text-sm text-muted">The areas creators actually slept in, with their hotels.</p>
+      <p className="mt-1 max-w-2xl text-sm text-muted">The areas where creators&apos; routes put their hotels.</p>
 
       <div className="mt-5 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">
         {stops.length > 0 && (

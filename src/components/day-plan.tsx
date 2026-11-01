@@ -1,5 +1,6 @@
 "use client";
 
+import { bookLabel } from "@/lib/book-label";
 import { Thumb } from "@/components/thumb";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
@@ -351,7 +352,7 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                                 rel={item.bookUrl ? "sponsored noopener noreferrer" : "noopener noreferrer"}
                                 className="mt-4 flex w-fit items-center gap-1 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background hover:opacity-90"
                               >
-                                {item.bookUrl ? (item.vendor ? `Book on ${item.vendor}` : "Book") : "Website"}{" "}
+                                {item.bookUrl ? bookLabel(item.bookUrl, item.vendor) : "Website"}{" "}
                                 <ExternalLink className="size-3.5" aria-hidden />
                               </a>
                             )}

@@ -47,7 +47,7 @@ function estimate(guide: CostGuide, style: Style, nightCents: number, days: numb
     activities: daily.activities * 100 * days * people,
   };
   const total = Object.values(lines).reduce((a, b) => a + b, 0);
-  return { lines, total, perDay: Math.round(total / people / days) };
+  return { lines, total, perDay: Math.round(total / people / days), nights, rooms };
 }
 
 /** Typical night price for a style: the creators' picks if there are any, else the guide's figure. */
@@ -67,7 +67,13 @@ export function BudgetCalculator({ guide, stays, place }: { guide: CostGuide; st
   const styleStays = staysFor(stays, style);
   const picked = styleStays.find((s) => `${s.itinerary}:${s.name}` === stayPick);
   const nightCents = picked ? picked.priceCents : typicalNight(guide, stays, style);
-  const { lines, total } = estimate(guide, style, nightCents, days, people);
+  const { lines, total, nights, rooms } = estimate(guide, style, nightCents, days, people);
+  const sharing =
+    people === 1
+      ? "one room for you"
+      : people % 2 === 0
+        ? `${rooms} ${rooms === 1 ? "room" : "rooms"}, two people to a room`
+        : `${rooms} rooms, two people to a room and one room for the last person`;
   const label = STYLES.find((s) => s.key === style)!.label;
 
   return (
@@ -103,6 +109,7 @@ export function BudgetCalculator({ guide, stays, place }: { guide: CostGuide; st
                 {on && <Check className="absolute top-4 right-4 size-5 text-accent" aria-hidden />}
                 <span className="block text-sm font-medium text-muted">{s.label}</span>
                 <span className="mt-1 block text-3xl font-semibold tracking-tight tabular-nums">{money(c.total)}</span>
+                <span className="block text-xs text-muted">{people === 1 ? "Total for you" : `Total for ${people} people`}</span>
                 <span className="text-sm text-muted">{money(c.perDay)} per person a day</span>
               </button>
             </li>
@@ -163,7 +170,8 @@ export function BudgetCalculator({ guide, stays, place }: { guide: CostGuide; st
       </section>
 
       <p className="fine-print">
-        Excludes flights, visas and shopping. Two travellers share a room. Daily spend checked {guide.checked}:{" "}
+        Excludes flights, visas and shopping. {nights} {nights === 1 ? "night" : "nights"}, {sharing}. Daily spend checked{" "}
+        {guide.checked}:{" "}
         {guide.sources.map((u, i) => (
           <span key={u}>
             {i > 0 && ", "}
