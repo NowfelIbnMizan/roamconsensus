@@ -55,6 +55,14 @@ function details(p: Plan) {
   );
 }
 
+const homepage = (url: string) => {
+  try {
+    return new URL(url).pathname.replace(/\/(en|en-[a-z]+)?\/?$/i, "") === "";
+  } catch {
+    return false;
+  }
+};
+
 function ViewPlan({ p }: { p: Plan }) {
   return (
     <a
@@ -63,7 +71,8 @@ function ViewPlan({ p }: { p: Plan }) {
       rel="noopener noreferrer"
       className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent px-3 py-1.5 text-xs font-medium text-background"
     >
-      View plan <ExternalLink className="size-3" aria-hidden />
+      {/* Some providers have no page per plan; then the link is their site, and the button says so. */}
+      {homepage(p.url) ? `Visit ${p.provider}` : "View plan"} <ExternalLink className="size-3" aria-hidden />
     </a>
   );
 }

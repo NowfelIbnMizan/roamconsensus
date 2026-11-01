@@ -1,5 +1,6 @@
 "use client";
 
+import { bookLabel } from "@/lib/book-label";
 import { Luggage, Search } from "lucide-react";
 import Link from "next/link";
 import { StopNote } from "@/components/stop-note";
@@ -116,6 +117,10 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
     .filter((a) => a.pct > 0)
     .sort((a, b) => b.pct - a.pct);
   const unpriced = items.filter((i) => i.priceCents === null).length;
+  // Hotel nights the total actually pays for, so a one-night total on a week-long trip doesn't read as the trip cost.
+  const nights = items
+    .filter((i) => i.category === "STAY" && i.priceCents !== null)
+    .reduce((n, i) => n + (i.unit === "night" || !i.unit ? i.quantity : 0), 0);
   const remaining = budgetCents === null ? null : budgetCents - totalCents;
 
   function save(text: string, type: string, name: string) {
@@ -166,11 +171,16 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
       <section className="rounded-2xl border border-line bg-card p-4 sm:p-5 lg:col-start-1">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
           <div>
-            <p className="text-3xl font-semibold tabular-nums">{money(totalCents)}</p>
+            {unpriced > 0 && <p className="text-xs font-medium text-muted">Known costs so far</p>}
+            <p className="text-3xl font-semibold tabular-nums">
+              {money(totalCents)}
+              {unpriced > 0 && "+"}
+            </p>
             <p className="text-sm text-muted">
               {days} day{days > 1 && "s"} · {items.length} stop
               {items.length > 1 && "s"}
-              {unpriced > 0 && ` · ${unpriced} priced on site`}
+              {unpriced > 0 && ` · ${unpriced} without a price yet`}
+              {days > 1 && ` · ${nights} of ${days - 1} hotel nights included`}
             </p>
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2">
@@ -389,7 +399,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                           rel="sponsored noopener noreferrer"
                           className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/25 dark:text-emerald-300"
                         >
-                          {item.vendor ? `Book on ${item.vendor}` : "Book"}{" "}
+                          {bookLabel(item.bookUrl!, item.vendor)}{" "}
                           <ExternalLink className="size-3" aria-hidden />
                         </a>
                       ) : (

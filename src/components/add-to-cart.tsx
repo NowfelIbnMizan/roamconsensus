@@ -6,12 +6,15 @@ import { announceAdded } from "@/components/added-toast";
 
 export function AddRouteButton({
   items,
+  days,
   label = "Add whole route to trip",
   doneLabel = "Whole route in your trip",
   removeLabel = "Remove route from trip",
   className = "",
 }: {
   items: CartItem[];
+  /** The route's length in days, kept even when its last days have no stops. */
+  days?: number;
   className?: string;
   label?: string;
   doneLabel?: string;
@@ -21,6 +24,7 @@ export function AddRouteButton({
   const inCart = useCart((s) => s.items);
   const add = useCart((s) => s.add);
   const remove = useCart((s) => s.remove);
+  const setTripDays = useCart((s) => s.setTripDays);
   const ids = new Set(inCart.map((i) => i.id));
   const all = hydrated && items.every((i) => ids.has(i.id));
 
@@ -29,8 +33,13 @@ export function AddRouteButton({
     <button
       type="button"
       onClick={() => {
-        if (all) return items.forEach((i) => remove(i.id));
-        add(items);
+        if (all) {
+          items.forEach((i) => remove(i.id));
+          // Taking out the only route also drops the length it set.
+          if (useCart.getState().items.length === 0) setTripDays(0);
+          return;
+        }
+        add(items, days);
         announceAdded(items.length === 1 ? `Added ${items[0].name} to your trip` : `Added ${items.length} stops to your trip`);
       }}
       aria-pressed={all}

@@ -15,11 +15,11 @@ import { usePrefs } from "@/lib/prefs";
 
 // Most routes cover one city in 1-3 days, so the shortest choice has to be short.
 const DAYS = [
-  { label: "1–2 days", value: 2 },
-  { label: "3–4 days", value: 4 },
-  { label: "5–7 days", value: 7 },
-  { label: "8–10 days", value: 10 },
-  { label: "11+ days", value: 14 },
+  { label: "1–2 days", value: 2, min: 1, max: 2 },
+  { label: "3–4 days", value: 4, min: 3, max: 4 },
+  { label: "5–7 days", value: 7, min: 5, max: 7 },
+  { label: "8–10 days", value: 10, min: 8, max: 10 },
+  { label: "11+ days", value: 14, min: 11, max: 99 },
 ];
 const tierOrder: Tier[] = ["BACKPACKER", "BUDGET", "MIDRANGE", "LUXURY"];
 
@@ -46,7 +46,26 @@ function score(route: Route, a: Answers) {
   const gap = !a.tier ? 0 : Math.abs(tierOrder.indexOf(route.tier) - tierOrder.indexOf(a.tier));
   const tier = [1, 0.5, 0.15, 0][gap];
   if (gap === 0 && a.tier) reasons.push(`${tierLabel[route.tier]} style, like you`);
-  return { pct: Math.round(vibe * 50 + days * 30 + tier * 20), reasons };
+  // Trip length and budget are limits, not tastes: a route outside them only shows when nothing fits, and says why.
+  const misses: string[] = [];
+  const range = DAYS.find((d) => d.value === a.days);
+  if (range && route.days > range.max) misses.push(`${route.days} days, longer than you have`);
+  if (range && route.days < range.min) misses.push(`${route.days} days, shorter than your trip`);
+  if (a.tier && tierOrder.indexOf(route.tier) > tierOrder.indexOf(a.tier))
+    misses.push(`${tierLabel[route.tier]}, above your budget`);
+  return { pct: Math.round(vibe * 50 + days * 30 + tier * 20), reasons, misses };
+}
+
+function Misses({ misses }: { misses: string[] }) {
+  return (
+    <ul className="mt-2 flex flex-wrap gap-1.5">
+      {misses.map((m) => (
+        <li key={m} className="rounded-full bg-amber-500/15 px-2.5 py-1 text-xs text-amber-800 dark:text-amber-300">
+          {m}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 const pill = (on: boolean) =>
@@ -98,7 +117,7 @@ export function Quiz({ data }: { data: QuizData }) {
   const ranked = data.routes
     .filter((r) => !city || r.destination.slug === city)
     .map((r) => ({ ...r, ...score(r, a) }))
-    .sort((x, y) => y.pct - x.pct)
+    .sort((x, y) => x.misses.length - y.misses.length || y.pct - x.pct)
     .slice(0, 3);
   const [top, ...rest] = ranked;
   const spots = data.places
@@ -199,7 +218,9 @@ export function Quiz({ data }: { data: QuizData }) {
           aria-live="polite"
           className="scroll-mt-6 lg:sticky lg:top-6 lg:self-start"
         >
-          <h2 className="eyebrow font-sans">{answered ? "Your best match" : "Tap to find your match"}</h2>
+          <h2 className="eyebrow font-sans">
+            {!answered ? "Tap to find your match" : top?.misses.length ? "Nothing fits all your picks. Closest:" : "Your best match"}
+          </h2>
           {top && (
             <article className="relative mt-2 overflow-hidden rounded-2xl border border-accent bg-card has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
               <Thumb url={top.photoUrl} alt={top.title} category="EXPERIENCE" sizes="420px" className="h-44 w-full" />
@@ -220,6 +241,7 @@ export function Quiz({ data }: { data: QuizData }) {
                   · {top.destination.name} · {top.days} {top.days === 1 ? "day" : "days"} · {tierLabel[top.tier]}
                   {price(top)}
                 </p>
+                {top.misses.length > 0 && <Misses misses={top.misses} />}
                 {top.reasons.length > 0 && (
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {top.reasons.map((x) => (
@@ -260,6 +282,7 @@ export function Quiz({ data }: { data: QuizData }) {
                           {r.creator.name} · {r.days} {r.days === 1 ? "day" : "days"} · {tierLabel[r.tier]}
                           {price(r)}
                         </p>
+                        {r.misses.length > 0 && <Misses misses={r.misses} />}
                       </div>
                     </article>
                   </li>

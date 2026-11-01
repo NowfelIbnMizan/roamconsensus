@@ -45,7 +45,8 @@ type CartState = {
   /** Stops ticked off in trip mode. */
   done: string[];
   toggleDone: (id: string) => void;
-  add: (items: CartItem[]) => void;
+  /** `routeDays`: a whole route's length, so its empty last days (a free day, a travel day) stay in the plan. */
+  add: (items: CartItem[], routeDays?: number) => void;
   setDay: (id: string, day: number | null) => void;
   setNote: (id: string, note: string) => void;
   /** Moves an item before (-1) or after (+1) the neighbouring item planned for the same day. */
@@ -76,7 +77,7 @@ export const useCart = create<CartState>()(
         set((s) => ({ done: s.done.includes(id) ? s.done.filter((d) => d !== id) : [...s.done, id] })),
       // Re-adding an item already in the cart leaves its quantity alone. A route from a new city goes after the
       // days already planned, so Bangkok then Chiang Mai becomes one trip instead of two overlapping ones.
-      add: (incoming) =>
+      add: (incoming, routeDays) =>
         set((s) => {
           const existing = new Set(s.items.map((i) => i.id));
           let added = incoming.filter((i) => !existing.has(i.id));
@@ -85,11 +86,15 @@ export const useCart = create<CartState>()(
             city &&
             s.items.some((i) => i.destination?.slug && i.destination.slug !== city) &&
             !s.items.some((i) => i.destination?.slug === city);
-          const offset = Math.max(0, ...s.items.map((i) => i.day ?? 0));
-          if (!newCity || offset === 0 || !added.some((i) => i.day)) return { items: [...s.items, ...added] };
-          added = added.map((i) => (i.day ? { ...i, day: i.day + offset } : i));
-          const lastDay = Math.max(...added.map((i) => i.day ?? 0));
-          return { items: [...s.items, ...added], tripDays: s.tripDays ? Math.max(s.tripDays, lastDay) : 0 };
+          const planned = Math.max(0, ...s.items.map((i) => i.day ?? 0));
+          const shift = newCity && planned > 0 && added.some((i) => i.day) ? planned : 0;
+          if (shift) added = added.map((i) => (i.day ? { ...i, day: i.day + shift } : i));
+          const items = [...s.items, ...added];
+          const lastDay = Math.max(0, ...items.map((i) => i.day ?? 0));
+          // A 7-day route whose last day has no stops is still 7 days; without a length set, the plan would end at 6.
+          const needed = Math.max(routeDays ? shift + routeDays : 0, shift ? lastDay : 0);
+          const length = s.tripDays || lastDay;
+          return { items, tripDays: needed > length ? needed : s.tripDays };
         }),
       // Swap saved snapshots for current data (prices, links, ids), keeping the traveller's quantity unless the
       // unit changed (a flat price that became per-day should start at the creator's day count).

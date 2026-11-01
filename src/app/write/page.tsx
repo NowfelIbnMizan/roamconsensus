@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PenLine } from "lucide-react";
+import { PageGuide } from "@/components/page-guide";
 import { currentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { currentWriter } from "@/lib/writer/auth";
@@ -60,6 +61,7 @@ export default async function WriteHome({ searchParams }: PageProps<"/write">) {
         Hi {writer.name.split(" ")[0]}. Save drafts as you go, then send a post for review. It goes live once it&apos;s
         approved.
       </p>
+      <PageGuide id="write" className="mt-4" />
       {sent && (
         <p role="status" className="mt-4 rounded-2xl border border-accent bg-card p-4 text-sm">
           Sent for review. Thanks! You&apos;ll see it marked Live here once it&apos;s approved.

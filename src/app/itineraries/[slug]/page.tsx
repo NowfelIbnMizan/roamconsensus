@@ -399,6 +399,7 @@ export default async function ItineraryPage({
           <div className="mt-4">
             <AddRouteButton
               items={[...cartItems.values()].filter((c) => !skipped.has(c.id))}
+              days={it.days}
               className="w-full justify-center sm:w-auto"
             />
             <p className="mt-2 text-sm text-muted">

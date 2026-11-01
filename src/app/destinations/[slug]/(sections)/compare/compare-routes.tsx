@@ -219,7 +219,7 @@ export function CompareRoutes({
               className={`rounded-2xl border p-4 ${g.shared ? "border-accent bg-accent-soft/40" : "border-line bg-card"}`}
             >
               <h3 className="font-semibold">{g.title}</h3>
-              {g.shared && <p className="text-xs text-muted">Safe bets: two creators picked them.</p>}
+              {g.shared && <p className="text-xs text-muted">Included in both routes.</p>}
               {g.slugs.length ? (
                 <ul className="mt-2 grid gap-1">
                   {g.slugs.map((s) => {

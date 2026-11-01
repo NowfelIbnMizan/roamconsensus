@@ -3,7 +3,7 @@ import { CityTabGuide } from "@/components/page-guide";
 import { Photo } from "@/components/photo";
 import { SampleBanner } from "@/components/sample-banner";
 import { getDestination } from "@/lib/data";
-import { DestinationTabs, OverviewOnly } from "./tabs";
+import { CityHeading, DestinationTabs, OverviewOnly } from "./tabs";
 
 export default async function DestinationLayout({ children, params }: LayoutProps<"/destinations/[slug]">) {
   const destination = await getDestination((await params).slug);
@@ -28,7 +28,7 @@ export default async function DestinationLayout({ children, params }: LayoutProp
       <p className="eyebrow">
         {destination.country} · {destination.routes.length} routes · {destination.creatorCount} creators
       </p>
-      <h1 className="mt-1 text-4xl font-semibold tracking-tight sm:text-5xl">{destination.name}</h1>
+      <CityHeading slug={destination.slug} name={destination.name} />
       <OverviewOnly slug={destination.slug}>
         <p className="mt-3 max-w-2xl text-muted">{destination.summary}</p>
       </OverviewOnly>
