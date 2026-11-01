@@ -12,10 +12,12 @@ import { breadcrumbJsonLd, clip, ldJson } from "@/lib/seo";
 import { kindEyebrow } from "@/lib/post-kinds";
 import {
   ArrowRight,
-  ChevronDown,
+  Car,
   ExternalLink,
   Map as MapIcon,
+  MapPin,
 } from "lucide-react";
+import { DayTabs } from "@/components/day-tabs";
 import { SampleBanner } from "@/components/sample-banner";
 import { CreatorChip } from "@/components/creator";
 import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
@@ -28,6 +30,7 @@ import { Money, Price } from "@/components/money";
 import {
   dayColor,
   dayLegs,
+  formatMinutes,
   googleMapsPlaceUrl,
   googleMapsRouteUrl,
   hasPin,
@@ -509,156 +512,17 @@ export default async function ItineraryPage({
           </section>
         )}
 
-        <div className="order-1 mt-10 space-y-3 lg:order-none lg:col-start-1 lg:row-start-1 lg:mt-0">
-          {it.schedule.map(({ day, items }, index) => {
-            const going = items.filter(
-              (i) => i.sentiment !== "AVOID" && !i.closedNote,
-            );
-            // In USD, like the route total: prices can be in local currency.
-            const cost = going.reduce(
-              (n, i) =>
-                n +
-                convertCents((i.priceCents ?? 0) * i.quantity, i.currency, "USD", FALLBACK_RATES).cents,
-              0,
-            );
-            const routeUrl = groups.find((g) => g.id === day)?.routeUrl;
-            return (
-              <Fragment key={day}>
-                {restDays(it.schedule, index, it.days).map((rest) => (
-                  <FreeDay key={rest} day={rest} creator={it.creator.name} />
-                ))}
-                {/* Each day folds to one line (its numbers and stops), so the whole route scans at a glance. */}
-                <details
-                  open={index === 0}
-                  className="group rounded-2xl border border-line bg-card"
-                >
-                  <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
-                    <span
-                      className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-                      style={{ background: dayColor(day - 1) }}
-                      aria-hidden
-                    >
-                      {day}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <h2 className="font-semibold">Day {day}</h2>
-                        <span className="text-sm text-muted tabular-nums">
-                          {going.length} {going.length === 1 ? "stop" : "stops"}
-                          {cost > 0 && (
-                            <>
-                              {" · "}
-                              <Money cents={cost} />
-                            </>
-                          )}
-                        </span>
-                        <DriveSummary minutes={drive.get(day)?.total ?? 0} />
-                      </span>
-                      <span className="mt-0.5 block truncate text-sm text-muted group-open:hidden">
-                        {going.map((i) => i.name).join(" · ")}
-                      </span>
-                    </span>
-                    <ChevronDown
-                      className="size-5 shrink-0 text-muted transition group-open:rotate-180"
-                      aria-hidden
-                    />
-                  </summary>
-                  <ul className="divide-y divide-line border-t border-line px-2 sm:px-3">
-                    {items.map((item) => {
-                      const skip = item.sentiment === "AVOID";
-                      return (
-                        <li
-                          key={item.id}
-                          className="flex items-center gap-2 py-2"
-                        >
-                          <StopDetails
-                            label={item.name}
-                            row={
-                              <>
-                                <span className="relative shrink-0 p-1">
-                                  <Thumb
-                                    url={item.photoUrl}
-                                    alt={item.name}
-                                    category={item.category}
-                                    className={`size-14 rounded-lg ${skip ? "opacity-50 grayscale" : ""}`}
-                                  />
-                                  {pinNumber.has(item.id) && (
-                                    <span
-                                      className="absolute top-0 left-0 inline-flex size-5 items-center justify-center rounded-full text-[11px] font-semibold text-white ring-2 ring-card"
-                                      style={{ background: dayColor(day - 1) }}
-                                      title="Pin number on the map"
-                                    >
-                                      {pinNumber.get(item.id)}
-                                    </span>
-                                  )}
-                                </span>
-                                <span className="min-w-0 flex-1 py-1">
-                                  <span className="block font-medium leading-snug">
-                                    {item.name}
-                                    {item.sentiment === "MUST_VISIT" && (
-                                      <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
-                                        {sentimentLabel.MUST_VISIT}
-                                      </span>
-                                    )}
-                                    {skip && (
-                                      <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
-                                        {sentimentLabel.AVOID}
-                                      </span>
-                                    )}
-                                    {item.closedNote && (
-                                      <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
-                                        Closed
-                                      </span>
-                                    )}
-                                  </span>
-                                  {item.note && (
-                                    <span className="block truncate text-sm text-muted">
-                                      {item.note}
-                                    </span>
-                                  )}
-                                </span>
-                                <span
-                                  className={`shrink-0 pr-1 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-32 truncate text-muted" : ""}`}
-                                >
-                                  <Price item={item} />
-                                </span>
-                              </>
-                            }
-                          >
-                            <StopCard
-                              item={item}
-                              destination={it.destination.slug}
-                              leg={drive.get(day)?.legs.get(item.id)}
-                            />
-                          </StopDetails>
-                          <div className="shrink-0">
-                            {/* "Skip it" stays out of the whole-route bundle, but the traveller can still add it. */}
-                            <AddItemButton item={cartItems.get(item.id)!} />
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  {routeUrl && (
-                    <p className="border-t border-line px-4 py-3 text-sm">
-                      <a
-                        href={routeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-medium text-accent hover:underline"
-                      >
-                        Open Day {day} in Google Maps{" "}
-                        <ExternalLink className="size-3.5" aria-hidden />
-                      </a>
-                    </p>
-                  )}
-                </details>
-              </Fragment>
-            );
-          })}
-          {restDays(it.schedule, it.schedule.length, it.days).map((rest) => (
-            <FreeDay key={rest} day={rest} creator={it.creator.name} />
-          ))}
+        <div className="order-1 mt-10 lg:order-none lg:col-start-1 lg:row-start-1 lg:mt-0">
+          <DayTimeline
+            schedule={it.schedule}
+            cartItems={cartItems}
+            drive={drive}
+            pinNumber={pinNumber}
+            routeUrls={new Map(groups.map((g) => [g.id, g.routeUrl]))}
+            destination={it.destination.slug}
+            days={it.days}
+            creator={it.creator.name}
+          />
         </div>
       </div>
 
@@ -668,5 +532,199 @@ export default async function ItineraryPage({
         className="mt-10"
       />
     </>
+  );
+}
+
+/** "Ubud to Tegallalang", or "Around Canggu", from the areas the day's stops sit in. */
+function dayAreas(items: Stop[]) {
+  const areas = [...new Set(items.map((i) => i.area).filter((a): a is string => !!a))];
+  const title = !areas.length ? null : areas.length === 1 ? `Around ${areas[0]}` : `${areas[0]} to ${areas.at(-1)}`;
+  return { title, areas };
+}
+
+/**
+ * The route as a timeline: day tabs that stick to the top, then each day with its title, area pills, and its stops
+ * down a line, with the drive between them. Tapping a stop opens its full details.
+ */
+function DayTimeline({
+  schedule,
+  cartItems,
+  drive,
+  pinNumber,
+  routeUrls,
+  destination,
+  days,
+  creator,
+}: {
+  schedule: { day: number; items: Stop[] }[];
+  cartItems: Map<string, CartItem>;
+  drive: Map<number, ReturnType<typeof dayLegs>>;
+  pinNumber: Map<string, number>;
+  routeUrls: Map<number, string | null | undefined>;
+  destination: string;
+  days: number;
+  creator: string;
+}) {
+  return (
+    <div>
+      {schedule.length > 1 && <DayTabs days={schedule.map((d) => d.day)} />}
+      <div className="mt-6 space-y-10">
+        {schedule.map(({ day, items }, index) => {
+          const going = items.filter((i) => i.sentiment !== "AVOID" && !i.closedNote);
+          const { title, areas } = dayAreas(going);
+          // In USD, like the route total: prices can be in local currency.
+          const cost = going.reduce(
+            (n, i) => n + convertCents((i.priceCents ?? 0) * i.quantity, i.currency, "USD", FALLBACK_RATES).cents,
+            0,
+          );
+          const legs = drive.get(day)?.legs;
+          const routeUrl = routeUrls.get(day);
+          return (
+            <Fragment key={day}>
+              {restDays(schedule, index, days).map((rest) => (
+                <FreeDay key={rest} day={rest} creator={creator} />
+              ))}
+              <section id={`day-${day}`} className="scroll-mt-16">
+                <header className="flex items-start gap-3">
+                  <span
+                    className="mt-1 inline-flex size-3.5 shrink-0 rounded-full ring-4 ring-background"
+                    style={{ background: dayColor(day - 1) }}
+                    aria-hidden
+                  />
+                  <div className="min-w-0">
+                    <p className="eyebrow">Day {day}</p>
+                    <h2 className="font-display text-2xl font-semibold tracking-tight">{title ?? `Day ${day}`}</h2>
+                    <p className="mt-0.5 flex flex-wrap items-center gap-x-2">
+                      <span className="text-sm text-muted tabular-nums">
+                        {going.length} {going.length === 1 ? "stop" : "stops"}
+                        {cost > 0 && (
+                          <>
+                            {" · "}
+                            <Money cents={cost} />
+                          </>
+                        )}
+                      </span>
+                      <DriveSummary minutes={drive.get(day)?.total ?? 0} />
+                    </p>
+                    {areas.length > 1 && (
+                      <ul className="mt-2 flex flex-wrap gap-1.5">
+                        {areas.map((a) => (
+                          <li
+                            key={a}
+                            className="inline-flex items-center gap-1 rounded-full border border-line bg-card px-2.5 py-0.5 text-xs"
+                          >
+                            <MapPin className="size-3 text-accent" aria-hidden /> {a}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </header>
+
+                <ol className="mt-4 ml-[6px] border-l border-line-strong pl-5 sm:pl-6">
+                  {items.map((item) => {
+                    const leg = legs?.get(item.id);
+                    const skip = item.sentiment === "AVOID";
+                    const pin = pinNumber.get(item.id);
+                    return (
+                      <li key={item.id} className="relative pb-6 last:pb-1">
+                        <span
+                          className="absolute top-2 -left-[25px] size-2.5 rounded-full ring-4 ring-background sm:-left-[29px]"
+                          style={{ background: skip ? "var(--color-line-strong)" : dayColor(day - 1) }}
+                          aria-hidden
+                        />
+                        {leg && leg.minutes > 0 && (
+                          <p className="-mt-3 mb-2 flex items-center gap-1 text-xs text-muted">
+                            <Car className="size-3" aria-hidden /> ~{formatMinutes(leg.minutes)} drive
+                            {leg.km > 0 && ` · ${leg.km} km`}
+                          </p>
+                        )}
+                        <div className="flex items-start gap-2">
+                          <StopDetails
+                            label={item.name}
+                            className="-m-1.5 block min-w-0 flex-1 rounded-xl p-1.5 text-left transition hover:bg-line/40 focus-visible:outline-2 focus-visible:outline-accent"
+                            row={
+                              <>
+                                <span className="flex items-start gap-3">
+                                  <span className="min-w-0 flex-1">
+                                    <span className="block text-xs text-muted">
+                                      {pin && (
+                                        <span
+                                          className="mr-1.5 inline-flex size-4 items-center justify-center rounded-full align-[-2px] text-[10px] font-semibold text-white"
+                                          style={{ background: dayColor(day - 1) }}
+                                          title="Pin number on the map"
+                                        >
+                                          {pin}
+                                        </span>
+                                      )}
+                                      {categoryLabel[item.category]}
+                                      {item.area && ` · ${item.area}`}
+                                    </span>
+                                    <span className="block text-lg leading-snug font-medium">
+                                      {item.name}
+                                      {item.sentiment === "MUST_VISIT" && (
+                                        <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
+                                          {sentimentLabel.MUST_VISIT}
+                                        </span>
+                                      )}
+                                      {(skip || item.closedNote) && (
+                                        <span className="ml-2 rounded-full bg-red-100 px-2 py-0.5 align-middle text-xs font-medium text-red-700 dark:bg-red-950 dark:text-red-300">
+                                          {skip ? sentimentLabel.AVOID : "Closed"}
+                                        </span>
+                                      )}
+                                    </span>
+                                    {item.note && (
+                                      <span className="mt-0.5 line-clamp-2 block text-sm text-muted">{item.note}</span>
+                                    )}
+                                  </span>
+                                  <span
+                                    className={`shrink-0 pt-4 text-right text-sm tabular-nums ${item.priceCents === null ? "max-w-28 truncate text-muted" : ""}`}
+                                  >
+                                    <Price item={item} />
+                                  </span>
+                                </span>
+                                {item.photoUrl && (
+                                  <Thumb
+                                    url={item.photoUrl}
+                                    alt={item.name}
+                                    category={item.category}
+                                    className={`mt-2 aspect-[4/3] w-40 rounded-xl sm:w-52 ${skip ? "opacity-50 grayscale" : ""}`}
+                                  />
+                                )}
+                              </>
+                            }
+                          >
+                            <StopCard item={item} destination={destination} leg={leg} />
+                          </StopDetails>
+                          {/* "Skip it" stays out of the whole-route bundle, but the traveller can still add it. */}
+                          <div className="shrink-0 pt-3">
+                            <AddItemButton item={cartItems.get(item.id)!} />
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ol>
+                {routeUrl && (
+                  <p className="mt-1 ml-[26px] text-sm sm:ml-[30px]">
+                    <a
+                      href={routeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-medium text-accent hover:underline"
+                    >
+                      Open Day {day} in Google Maps <ExternalLink className="size-3.5" aria-hidden />
+                    </a>
+                  </p>
+                )}
+              </section>
+            </Fragment>
+          );
+        })}
+        {restDays(schedule, schedule.length, days).map((rest) => (
+          <FreeDay key={rest} day={rest} creator={creator} />
+        ))}
+      </div>
+    </div>
   );
 }

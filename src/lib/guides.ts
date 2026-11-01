@@ -115,7 +115,7 @@ export const guides = {
   itinerary: [
     {
       lead: "One creator's plan",
-      text: "Every stop, day by day, in the order the creator did it. Tap a day to fold it open or shut.",
+      text: "Every stop, day by day, in the order the creator did it. Tap a day at the top to jump to it, or a stop for its details.",
     },
     {
       lead: "Take what you like",
