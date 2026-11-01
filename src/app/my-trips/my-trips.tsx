@@ -88,7 +88,7 @@ function SignedOut() {
       </ul>
       <button
         type="button"
-        onClick={() => signInWithGoogle("/my-trips")}
+        onClick={() => signInWithGoogle("/my-trips" + window.location.hash)}
         className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
       >
         <GoogleMark />

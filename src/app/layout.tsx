@@ -59,6 +59,7 @@ const goatcounter = /^[a-z0-9-]+$/.test(process.env.GOATCOUNTER_CODE ?? "")
 const FOOTER_LINKS = [
   ["/creators", "Creators"],
   ["/visa", "Visa check"],
+  ["/split-travel-costs", "Split costs"],
   ["/blog", "Blog"],
   ["/about", "About"],
   ["/disclosure", "Credits"],

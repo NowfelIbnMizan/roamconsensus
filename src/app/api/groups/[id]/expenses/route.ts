@@ -26,9 +26,12 @@ export async function POST(request: Request, { params }: Params) {
   const parsed = Expense.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Check the amount and who it's split between" }, { status: 400 });
   const e = parsed.data;
-  const members = new Set(
-    (await db.groupMember.findMany({ where: { groupId: group.id }, select: { userId: true } })).map((m) => m.userId),
-  );
+  // Members and guests both count; a guest's id stands in for a user id.
+  const [memberRows, guestRows] = await Promise.all([
+    db.groupMember.findMany({ where: { groupId: group.id }, select: { userId: true } }),
+    db.groupGuest.findMany({ where: { groupId: group.id }, select: { id: true } }),
+  ]);
+  const members = new Set([...memberRows.map((m) => m.userId), ...guestRows.map((g) => g.id)]);
   const shares = e.shares.filter((s) => s.amountCents > 0);
   if (!members.has(e.paidById) || shares.some((s) => !members.has(s.userId)) || new Set(shares.map((s) => s.userId)).size !== shares.length)
     return Response.json({ error: "Everyone in a cost must be in this group trip" }, { status: 400 });
