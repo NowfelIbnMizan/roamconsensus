@@ -1,0 +1,375 @@
+{
+  "slug": "penang",
+  "name": "Penang",
+  "country": "Malaysia",
+  "summary": "George Town's UNESCO heritage streets, murals and clan jetties, Kek Lok Si temple on the hill, and Malaysia's best hawker food.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/George_Town,_Penang",
+  "months": [
+    {
+      "month": 1,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 80,
+      "crowd": "HIGH",
+      "note": "One of the driest months; Chinese New Year often falls in late Jan or Feb and fills George Town."
+    },
+    {
+      "month": 2,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 86,
+      "crowd": "HIGH",
+      "note": "Driest month; Chinese New Year and Chap Goh Meh bring crowds and higher room prices."
+    },
+    {
+      "month": 3,
+      "highC": 33,
+      "lowC": 25,
+      "rainMm": 146,
+      "crowd": "MEDIUM",
+      "note": "Hot and mostly dry; a good time to walk the heritage streets."
+    },
+    {
+      "month": 4,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 188,
+      "crowd": "MEDIUM",
+      "note": "Showers pick up in the afternoons; mornings are best for walking."
+    },
+    {
+      "month": 5,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 229,
+      "crowd": "LOW",
+      "note": "Inter-monsoon storms most afternoons."
+    },
+    {
+      "month": 6,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 164,
+      "crowd": "LOW",
+      "note": "A short drier spell between the rains."
+    },
+    {
+      "month": 7,
+      "highC": 32,
+      "lowC": 25,
+      "rainMm": 190,
+      "crowd": "MEDIUM",
+      "note": "Afternoon showers; school holidays bring regional visitors."
+    },
+    {
+      "month": 8,
+      "highC": 31,
+      "lowC": 25,
+      "rainMm": 246,
+      "crowd": "MEDIUM",
+      "note": "Wetter, with heavy afternoon downpours."
+    },
+    {
+      "month": 9,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 316,
+      "crowd": "LOW",
+      "note": "Very wet; quietest time for hotels."
+    },
+    {
+      "month": 10,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 337,
+      "crowd": "LOW",
+      "note": "Wettest month; plan indoor stops like museums and cafes."
+    },
+    {
+      "month": 11,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 233,
+      "crowd": "LOW",
+      "note": "Still wet as the northeast monsoon starts."
+    },
+    {
+      "month": 12,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 116,
+      "crowd": "HIGH",
+      "note": "Rain eases; year-end holidays fill hotels."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Fill in the MDAC before you fly",
+      "body": "Travellers entering Malaysia must submit a Malaysia Digital Arrival Card (MDAC) before travel, and airlines may ask for it at check-in. Use only the official site, imigresen-online.imi.gov.my/mdac/main. The Malaysian Immigration website lists who is exempt.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "90-day visa-free stay for UK visitors",
+      "body": "British tourists are normally allowed 90 days on arrival. Other nationalities should check their own allowance. Work, study or longer stays need a visa arranged before travel.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Six months' passport validity",
+      "body": "Your passport must be valid for at least 6 months after your arrival date, undamaged and with no missing pages.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Safety",
+      "title": "Do not overstay",
+      "body": "Even a short overstay can lead to a fine, detention, deportation at your own cost or a ban on returning. Check the stay granted on your entry record.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Safety",
+      "title": "Possible drug test on arrival",
+      "body": "Authorities may require a urine test on arrival. You can be penalised even if the drug was taken in a country where it is legal.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Money",
+      "title": "Declare cash of US$10,000 or more",
+      "body": "You must declare cash or travellers' cheques worth US$10,000 or more. Taking ringgit worth US$10,000 or more into or out of Malaysia needs prior approval.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Health",
+      "title": "Yellow fever certificate if arriving from a risk country",
+      "body": "You need a yellow fever vaccination certificate if you are coming from a country listed as a transmission risk. This does not apply to direct flights from most of Europe or North America.",
+      "sourceUrl": "https://gov.uk/foreign-travel-advice/malaysia/entry-requirements"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Cover up at mosques and temples",
+      "body": "Cover shoulders and knees and take off your shoes before going in.",
+      "sourceUrl": "https://kualalumpurcity.my/kuala-lumpur-travel-tips-first-timers/"
+    },
+    {
+      "topic": "Money",
+      "title": "Tipping is optional",
+      "body": "Restaurants often add a service charge, so tipping isn't expected. RM2 to RM5 for hotel housekeeping is a kind extra.",
+      "sourceUrl": "https://kualalumpurcity.my/kuala-lumpur-travel-tips-first-timers/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Free CAT bus around George Town",
+      "body": "The free CAT hop-on bus loops George Town between Weld Quay and KOMTAR bus terminals every 10 to 15 minutes, from about 6 am to midnight.",
+      "sourceUrl": "https://penang-traveltips.com/cat.htm"
+    },
+    {
+      "topic": "Transport",
+      "title": "Bus 203 or 204 to Kek Lok Si",
+      "body": "Rapid Penang buses 203 and 204 run from KOMTAR to Air Itam in about 50 minutes for RM2. A Grab is about RM11.",
+      "sourceUrl": "https://www.wheregoesrose.com/visiting-kek-lok-si-penang/"
+    },
+    {
+      "topic": "Money",
+      "title": "Penang Hill funicular costs RM40 return",
+      "body": "Visitors without a Malaysian MyKad pay RM40 return per adult on the normal lane, or RM80 on the express lane. The funicular runs from 6:30 am.",
+      "sourceUrl": "https://penanghill.gov.my/index.php/en/tickets"
+    }
+  ],
+  "places": [
+    {
+      "slug": "reunion-carnarvon",
+      "name": "Reunion Carnarvon",
+      "category": "STAY",
+      "area": "George Town",
+      "blurb": "Small hotel on Lebuh Carnarvon in George Town's heritage zone, opened 2024.",
+      "lat": 5.4155,
+      "lng": 100.3335,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "the-frame-guesthouse",
+      "name": "The Frame Guesthouse",
+      "category": "STAY",
+      "area": "George Town",
+      "blurb": "Guesthouse with dorms, capsules and private rooms in a three-storey heritage shophouse on Lebuh Chulia, once a frame maker's shop.",
+      "website": "https://www.theframeguesthouse.com/",
+      "lat": 5.4176,
+      "lng": 100.3365,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "hotel-penaga",
+      "name": "Hotel Penaga",
+      "category": "STAY",
+      "area": "George Town",
+      "blurb": "Heritage boutique hotel made from a row of pre-war terrace houses at Jalan Hutton and Lebuh Clarke.",
+      "website": "https://www.hotelpenaga.com/",
+      "lat": 5.4205,
+      "lng": 100.3305,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "george-town-street-art",
+      "name": "George Town street art",
+      "category": "EXPERIENCE",
+      "area": "George Town",
+      "blurb": "Murals and iron-rod cartoons across the UNESCO heritage zone, including Ernest Zacharevic's 2012 pieces like Children on Bicycle on Armenian Street.",
+      "lat": 5.4145,
+      "lng": 100.3375,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "chew-jetty",
+      "name": "Chew Jetty",
+      "category": "EXPERIENCE",
+      "area": "George Town",
+      "blurb": "The largest of George Town's Chinese clan jetties: stilt houses on wooden walkways over the water, still lived in by the Chew clan.",
+      "lat": 5.4127,
+      "lng": 100.3404,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "antarabangsa-enterprise",
+      "name": "Antarabangsa Enterprise",
+      "category": "FOOD",
+      "area": "George Town",
+      "blurb": "Kerbside bar attached to a liquor shop on Lorong Stewart, known as the cheapest place in George Town for drinks. Daily 5 pm to 2 am.",
+      "lat": 5.4166,
+      "lng": 100.3368,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "kek-lok-si-temple",
+      "name": "Kek Lok Si Temple",
+      "category": "EXPERIENCE",
+      "area": "Air Itam",
+      "blurb": "Malaysia's largest Buddhist temple, on a hillside in Air Itam, with the seven-tier Ban Po Thar pagoda and a giant Kuan Yin statue.",
+      "tip": "Open 8:30 am to 5:30 pm. The temple is free; the pagoda is RM2 and the inclined lift to Kuan Yin RM2 each way.",
+      "lat": 5.3995,
+      "lng": 100.2735,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "penang-air-itam-laksa",
+      "name": "Penang Air Itam Laksa",
+      "category": "FOOD",
+      "area": "Air Itam",
+      "blurb": "Famous assam laksa stall on Jalan Pasar near Kek Lok Si: sour fish broth with thick rice noodles.",
+      "tip": "Saturday and Sunday only, 11 am to 6 pm, and closed one weekend a month.",
+      "lat": 5.4013,
+      "lng": 100.277,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "farlim-night-market",
+      "name": "Farlim Night Market",
+      "category": "FOOD",
+      "area": "Air Itam",
+      "blurb": "Wednesday-night pasar malam at Medan Angsana in Farlim, with street food and stalls.",
+      "tip": "Wednesdays only, from about 5 or 6:30 pm to 11 pm.",
+      "lat": 5.3935,
+      "lng": 100.273,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "bus-to-air-itam",
+      "name": "Bus from George Town to Air Itam",
+      "category": "TRANSIT",
+      "area": "George Town",
+      "blurb": "Rapid Penang buses 203 and 204 from KOMTAR to Air Itam, about 50 minutes.",
+      "lat": 5.4145,
+      "lng": 100.3296,
+      "checkedAt": "2026-11-01"
+    }
+  ],
+  "creators": [
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "penang-3-days-bucketlistly",
+      "title": "Penang in 3 days",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/malaysia-10-days-backpacking-itinerary",
+      "summary": "The last leg of Pete's 10 days in Malaysia: George Town's street art and clan jetties, cheap beers, then Kek Lok Si with a bowl of laksa and the Farlim night market.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Reunion Carnarvon",
+          "category": "STAY",
+          "note": "Creator's pick. Or The Frame Guesthouse (dorms) or Hotel Penaga (high-end). Base yourself in George Town.",
+          "place": "reunion-carnarvon",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 1,
+          "name": "George Town street art",
+          "category": "EXPERIENCE",
+          "note": "Hunt for the murals, like Brother & Sister on a Swing.",
+          "place": "george-town-street-art"
+        },
+        {
+          "day": 1,
+          "name": "Chew Jetty",
+          "category": "EXPERIENCE",
+          "note": "Walk along the jetty.",
+          "place": "chew-jetty"
+        },
+        {
+          "day": 1,
+          "name": "Antarabangsa Enterprise",
+          "category": "FOOD",
+          "note": "Cheap beers.",
+          "place": "antarabangsa-enterprise"
+        },
+        {
+          "day": 2,
+          "name": "Bus to Air Itam",
+          "category": "TRANSIT",
+          "note": "A direct bus runs from George Town to Kek Lok Si.",
+          "place": "bus-to-air-itam",
+          "price": 0.48,
+          "priceNote": "RM2, buses 203 or 204 from KOMTAR",
+          "priceSource": "https://www.wheregoesrose.com/visiting-kek-lok-si-penang/"
+        },
+        {
+          "day": 2,
+          "name": "Kek Lok Si Temple",
+          "category": "EXPERIENCE",
+          "note": "Spend a day here.",
+          "place": "kek-lok-si-temple",
+          "price": 0.48,
+          "priceNote": "temple free; RM2 for the pagoda",
+          "priceSource": "https://www.malaysia-traveller.com/kek-lok-si.html"
+        },
+        {
+          "day": 2,
+          "name": "Laksa near Kek Lok Si",
+          "category": "FOOD",
+          "note": "Try the most delicious laksa there.",
+          "place": "penang-air-itam-laksa",
+          "price": 1.67,
+          "priceNote": "RM7 a bowl; weekends only",
+          "priceSource": "https://notyourtypicaltourist.com/malaysia/air-itam-assam-laksa/"
+        },
+        {
+          "day": 3,
+          "name": "Farlim Night Market",
+          "category": "FOOD",
+          "note": "Go in the evening and try all the street food Penang has to offer. Runs on Wednesdays.",
+          "place": "farlim-night-market"
+        }
+      ]
+    }
+  ]
+}

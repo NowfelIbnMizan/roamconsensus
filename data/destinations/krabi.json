@@ -1,0 +1,497 @@
+{
+  "slug": "krabi",
+  "name": "Krabi",
+  "country": "Thailand",
+  "summary": "Limestone cliffs and islands off Ao Nang: 4 Islands boat trips, boat-only Railay, Tiger Cave Temple's 1,237 steps and the Emerald Pool in the forest.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Krabi",
+  "months": [
+    {
+      "month": 1,
+      "highC": 33,
+      "lowC": 22,
+      "rainMm": 32,
+      "crowd": "HIGH",
+      "note": "Peak season: calm Andaman Sea and dry days, best for island boat trips."
+    },
+    {
+      "month": 2,
+      "highC": 34,
+      "lowC": 22,
+      "rainMm": 43,
+      "crowd": "HIGH",
+      "note": "Driest, calmest month; book island tours and rooms early."
+    },
+    {
+      "month": 3,
+      "highC": 34,
+      "lowC": 23,
+      "rainMm": 98,
+      "crowd": "MEDIUM",
+      "note": "Hot and mostly calm; still good for boat trips."
+    },
+    {
+      "month": 4,
+      "highC": 34,
+      "lowC": 24,
+      "rainMm": 147,
+      "crowd": "MEDIUM",
+      "note": "Hot, with Songkran (13-15 Apr) and the first storms."
+    },
+    {
+      "month": 5,
+      "highC": 33,
+      "lowC": 24,
+      "rainMm": 172,
+      "crowd": "LOW",
+      "note": "Southwest monsoon starts; boats run less often."
+    },
+    {
+      "month": 6,
+      "highC": 32,
+      "lowC": 23,
+      "rainMm": 193,
+      "crowd": "LOW",
+      "note": "Rainy season with rougher seas; island trips can be cancelled on bad days."
+    },
+    {
+      "month": 7,
+      "highC": 32,
+      "lowC": 23,
+      "rainMm": 201,
+      "crowd": "MEDIUM",
+      "note": "Rainy, with sunny breaks between storms."
+    },
+    {
+      "month": 8,
+      "highC": 31,
+      "lowC": 23,
+      "rainMm": 266,
+      "crowd": "MEDIUM",
+      "note": "Wetter; Maya Bay is closed in August and September."
+    },
+    {
+      "month": 9,
+      "highC": 31,
+      "lowC": 23,
+      "rainMm": 275,
+      "crowd": "LOW",
+      "note": "Among the wettest months and the quietest; lowest prices."
+    },
+    {
+      "month": 10,
+      "highC": 31,
+      "lowC": 22,
+      "rainMm": 324,
+      "crowd": "LOW",
+      "note": "Wettest month; check boat trips the day before."
+    },
+    {
+      "month": 11,
+      "highC": 31,
+      "lowC": 22,
+      "rainMm": 180,
+      "crowd": "MEDIUM",
+      "note": "Rain eases and the high season begins."
+    },
+    {
+      "month": 12,
+      "highC": 31,
+      "lowC": 22,
+      "rainMm": 68,
+      "crowd": "HIGH",
+      "note": "Peak season and holiday crowds; book early."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free stays cut to 30 days",
+      "body": "From 15 September 2026 the 60-day visa exemption ended, and passport holders from 60 countries (including the UK, US and Australia) now get 30 days visa-free for tourism. Visa-free entries by land are generally limited to 2 per calendar year.",
+      "sourceUrl": "https://www.tatnews.org/2026/09/thailand-introduces-new-30-day-and-15-day-visa-exemption-rules-from-15-september/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Show funds and an onward ticket",
+      "body": "Visa-exempt visitors may be asked for at least 10,000 baht per person or 20,000 baht per family, plus proof of onward or return travel.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Entry",
+      "title": "Complete the TDAC within 3 days of arrival",
+      "body": "All foreign nationals have needed the Thailand Digital Arrival Card (TDAC) since 1 May 2025. Submit it free in the 3 days before arrival at tdac.immigration.go.th.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Obey red flags on the beach",
+      "body": "People have drowned in strong riptides, especially during the monsoon (roughly May to October on the Andaman coast). Follow beach flags and warning signs, and don't swim when red flags fly.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Jellyfish risk May–October",
+      "body": "Jellyfish are more common from May to October, and some stings can be fatal. Get medical help quickly if you are stung.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Jet-ski and motorbike rental scams",
+      "body": "Never give your passport as a deposit to jet-ski or motorbike rental businesses, which may hold it against made-up damage claims.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Vapes are illegal, including for tourists",
+      "body": "Possessing or using any vape, e-cigarette, pod, e-liquid or heat-not-burn device is illegal, with no exceptions for tourists. Fines typically run 5,000–30,000 baht, plus confiscation and possible detention.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Safety",
+      "title": "Cannabis is medical-only",
+      "body": "Recreational cannabis is illegal again. Use requires a Thai-issued prescription limited to a 30-day supply, and taking cannabis out of the country without permission brings fines from 30,000 baht per kg.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Transport",
+      "title": "Scooters need an IDP and a helmet",
+      "body": "Carry a 1968 International Driving Permit (IDP) plus your home licence, and wear a helmet, which is required by law. Riding without the right licence can void your insurance.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Health",
+      "title": "Insurance and emergency numbers",
+      "body": "Hospitals require a guarantee of payment, so travel insurance is essential. Call 191 for police, fire or ambulance, or 1669 for an ambulance.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Money",
+      "title": "Use ATMs inside banks",
+      "body": "ATM skimming has been reported, so use machines inside bank branches and cover your PIN.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Respect the monarchy and mind what you post",
+      "body": "Criticising the Thai monarchy carries long prison sentences. Posting photos online of people drinking or in clothing seen as inappropriate can also be illegal.",
+      "sourceUrl": "https://www.gov.uk/api/content/foreign-travel-advice/thailand"
+    },
+    {
+      "topic": "Transport",
+      "title": "Railay is boat-only",
+      "body": "Railay has no road access. Long-tail boats from Ao Nang beach take about 15 minutes and cost 100 baht per person each way, from 8 am to 6 pm; after that you need a private charter.",
+      "sourceUrl": "https://www.cktravels.com/krabi-ao-nang-to-railay-beach-longtail-boat/"
+    },
+    {
+      "topic": "Money",
+      "title": "Bring cash for the 200 baht park fee",
+      "body": "Island trips enter Hat Noppharat Thara-Mu Ko Phi Phi National Park: 200 baht per adult and 100 baht per child, usually not included in the tour price. Keep the receipt for checks.",
+      "sourceUrl": "https://www.thainationalparks.com/hat-noppharat-thara-mu-ko-phi-phi-national-park"
+    },
+    {
+      "topic": "Safety",
+      "title": "Boats get cancelled in the rainy season",
+      "body": "The rainy season runs about May to December. Boats run less often then and trips can be cancelled on bad-weather days, so keep a spare day. Maya Bay closes every 1 August to 30 September.",
+      "sourceUrl": "https://www.thainationalparks.com/hat-noppharat-thara-mu-ko-phi-phi-national-park"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Cover knees and shoulders at Tiger Cave",
+      "body": "At Wat Tham Suea, women must cover knees and shoulders; sarongs rent for about 20 baht at the entrance. Take off your shoes on the top deck.",
+      "sourceUrl": "https://www.placesofjuma.com/tiger-cave-temple-krabi/"
+    }
+  ],
+  "places": [
+    {
+      "slug": "sea-seeker-krabi-resort",
+      "name": "Sea Seeker Krabi Resort",
+      "category": "STAY",
+      "area": "Ao Nang",
+      "blurb": "Family-friendly 233-room resort with a pool, kids' club and free beach shuttle, a 15-minute walk from Ao Nang Beach.",
+      "lat": 8.0365,
+      "lng": 98.824,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "kbunk-hostel",
+      "name": "Kbunk Hostel",
+      "category": "STAY",
+      "area": "Ao Nang",
+      "blurb": "Budget dorm hostel in Ao Nang.",
+      "lat": 8.037,
+      "lng": 98.823
+    },
+    {
+      "slug": "aonang-princeville",
+      "name": "Aonang Princeville Villa Resort & Spa",
+      "category": "STAY",
+      "area": "Ao Nang",
+      "blurb": "Four-star boutique resort on the Ao Nang beachfront, fully renovated in 2019.",
+      "website": "https://www.aonangprinceville.com/",
+      "lat": 8.0335,
+      "lng": 98.8195,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "krabi-4-islands-tour",
+      "name": "4 Islands tour",
+      "category": "EXPERIENCE",
+      "area": "Ao Nang",
+      "blurb": "Day boat trip from Ao Nang to Koh Poda, Koh Tup, Chicken Island and Railay/Phra Nang, usually with lunch and snorkel gear.",
+      "tip": "Runs about 8 am to 3-4 pm. Long-tail is cheaper and slower than speedboat.",
+      "lat": 8.0314,
+      "lng": 98.8225,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "koh-poda",
+      "name": "Koh Poda",
+      "category": "EXPERIENCE",
+      "area": "Krabi islands",
+      "blurb": "Small island about 5 km off Railay with a white-sand beach, clear water for snorkelling and a famous limestone stack.",
+      "lat": 7.97,
+      "lng": 98.809
+    },
+    {
+      "slug": "koh-tup",
+      "name": "Koh Tup",
+      "category": "EXPERIENCE",
+      "area": "Krabi islands",
+      "blurb": "Tiny island joined to Chicken Island and Koh Mor by a sandbar at low tide, the 'separated sea' (Thale Waek).",
+      "lat": 7.9636,
+      "lng": 98.8072
+    },
+    {
+      "slug": "chicken-island",
+      "name": "Chicken Island (Koh Kai)",
+      "category": "EXPERIENCE",
+      "area": "Krabi islands",
+      "blurb": "Island named for its rock pinnacle shaped like a chicken's head, with good snorkelling around it.",
+      "lat": 7.951,
+      "lng": 98.807
+    },
+    {
+      "slug": "railay-beach",
+      "name": "Railay Beach",
+      "category": "EXPERIENCE",
+      "area": "Railay",
+      "blurb": "Peninsula between Krabi and Ao Nang cut off by limestone cliffs, so it can only be reached by boat. Famous for rock climbing.",
+      "lat": 8.0106,
+      "lng": 98.8394
+    },
+    {
+      "slug": "phra-nang-beach",
+      "name": "Phra Nang Beach",
+      "category": "EXPERIENCE",
+      "area": "Railay",
+      "blurb": "Cliff-backed beach at the tip of Railay, with Phra Nang Cave and its shrine to a sea princess.",
+      "lat": 8.0062,
+      "lng": 98.838
+    },
+    {
+      "slug": "krabi-weekend-night-market",
+      "name": "Krabi Town Weekend Night Market",
+      "category": "FOOD",
+      "area": "Krabi Town",
+      "blurb": "Walking-street market around Soi Maharaj 8 with street food, crafts and live music.",
+      "tip": "Friday to Sunday, 5 pm to 10 pm.",
+      "lat": 8.064,
+      "lng": 98.917,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "tiger-cave-temple-krabi",
+      "name": "Tiger Cave Temple (Wat Tham Suea)",
+      "category": "EXPERIENCE",
+      "area": "Krabi Town",
+      "blurb": "Forest temple north of Krabi Town with about 1,237 steps up to a golden Buddha and views over Krabi.",
+      "tip": "Free to climb; allow 40 minutes to an hour up. Cover knees and shoulders.",
+      "lat": 8.125,
+      "lng": 98.923,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "hot-spring-waterfall-krabi",
+      "name": "Hot Spring Waterfall",
+      "category": "EXPERIENCE",
+      "area": "Khlong Thom",
+      "blurb": "Warm spring water running over limestone terraces into natural pools in the forest of Khlong Thom.",
+      "lat": 7.936,
+      "lng": 99.199
+    },
+    {
+      "slug": "emerald-pool-krabi",
+      "name": "Emerald Pool (Sa Morakot)",
+      "category": "EXPERIENCE",
+      "area": "Khlong Thom",
+      "blurb": "Clear, spring-fed green pool in the Khao Phra Bang Khram forest, reached by a short boardwalk. Swimming allowed.",
+      "tip": "Wet rocks are very slippery.",
+      "lat": 7.9259,
+      "lng": 99.2672,
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "slug": "phuket-to-krabi-bus",
+      "name": "Bus from Phuket to Krabi",
+      "category": "TRANSIT",
+      "area": "Krabi",
+      "blurb": "Tourist buses from Phuket Bus Terminal to Krabi, about 3 hours.",
+      "lat": 7.8869,
+      "lng": 98.3925
+    },
+    {
+      "slug": "krabi-to-khao-sok-bus",
+      "name": "Bus from Krabi to Khao Sok",
+      "category": "TRANSIT",
+      "area": "Ao Nang",
+      "blurb": "Tourist bus from Ao Nang or Krabi Town to Khao Sok, about 4.5 hours.",
+      "lat": 8.0314,
+      "lng": 98.8225
+    }
+  ],
+  "creators": [
+    {
+      "handle": "bucketlistly",
+      "name": "Bucketlistly",
+      "platform": "BLOG",
+      "profileUrl": "https://www.bucketlistly.blog",
+      "bio": "Pete R.'s travel blog and photography."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "krabi-3-days-bucketlistly",
+      "title": "Krabi in 3 days",
+      "tier": "BUDGET",
+      "days": 3,
+      "creator": "bucketlistly",
+      "sourceUrl": "https://www.bucketlistly.blog/posts/one-month-itinerary-backpacking-thailand",
+      "summary": "The Krabi leg of Pete's month in Thailand: a 4 Islands boat day from Ao Nang, then Tiger Cave Temple at dawn, the Hot Spring Waterfall and the Emerald Pool, with the weekend night market.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Bus from Phuket",
+          "category": "TRANSIT",
+          "note": "Tourist buses leave Phuket Bus Terminal 7:20 am to 6 pm, about 3 hours.",
+          "place": "phuket-to-krabi-bus",
+          "price": 7.44,
+          "priceNote": "creator: no more than 250 THB"
+        },
+        {
+          "day": 1,
+          "name": "Sea Seeker Krabi Resort",
+          "category": "STAY",
+          "note": "Creator's pick in Ao Nang. Or Kbunk Hostel (dorms) or Aonang Princeville (high-end).",
+          "place": "sea-seeker-krabi-resort",
+          "unit": "night",
+          "quantity": 3,
+          "price": 38.2,
+          "priceNote": "CA$53 per night incl. taxes (Oct 2026)",
+          "priceSource": "https://ca.hotels.com/ho868097728/sea-seeker-krabi-resort-krabi-thailand/"
+        },
+        {
+          "day": 1,
+          "name": "4 Islands tour",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Book beforehand and pack swimsuits. Back in Ao Nang by 3-4 pm.",
+          "place": "krabi-4-islands-tour",
+          "price": 29.74,
+          "priceNote": "about 800 THB group long-tail tour + 200 THB park fee in cash",
+          "priceSource": "https://explorertom.com/4-islands-tour-krabi/"
+        },
+        {
+          "day": 1,
+          "name": "Koh Poda",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "The highlight of this trip for the creator: snorkelling and the iconic cliff rock.",
+          "place": "koh-poda",
+          "price": 0,
+          "priceNote": "part of the 4 Islands tour",
+          "priceSource": "https://explorertom.com/4-islands-tour-krabi/"
+        },
+        {
+          "day": 1,
+          "name": "Koh Tup",
+          "category": "EXPERIENCE",
+          "note": "Best at low tide, when the sea 'separates'.",
+          "place": "koh-tup",
+          "price": 0,
+          "priceNote": "part of the 4 Islands tour",
+          "priceSource": "https://explorertom.com/4-islands-tour-krabi/"
+        },
+        {
+          "day": 1,
+          "name": "Chicken Island",
+          "category": "EXPERIENCE",
+          "place": "chicken-island",
+          "price": 0,
+          "priceNote": "part of the 4 Islands tour",
+          "priceSource": "https://explorertom.com/4-islands-tour-krabi/"
+        },
+        {
+          "day": 1,
+          "name": "Railay Beach",
+          "category": "EXPERIENCE",
+          "note": "Only reachable by boat.",
+          "place": "railay-beach",
+          "price": 0,
+          "priceNote": "part of the 4 Islands tour",
+          "priceSource": "https://explorertom.com/4-islands-tour-krabi/"
+        },
+        {
+          "day": 1,
+          "name": "Phra Nang Beach",
+          "category": "EXPERIENCE",
+          "place": "phra-nang-beach",
+          "price": 0,
+          "priceNote": "part of the 4 Islands tour",
+          "priceSource": "https://explorertom.com/4-islands-tour-krabi/"
+        },
+        {
+          "day": 1,
+          "name": "Krabi Town Weekend Night Market",
+          "category": "FOOD",
+          "note": "Street food if you're there on a Friday, Saturday or Sunday.",
+          "place": "krabi-weekend-night-market"
+        },
+        {
+          "day": 2,
+          "name": "Tiger Cave Temple",
+          "category": "EXPERIENCE",
+          "note": "Start as early as 6 am; about 1,200 steps, 30 minutes to an hour. Be in good shape.",
+          "place": "tiger-cave-temple-krabi",
+          "price": 0,
+          "priceNote": "free; 40 THB donation at the cave",
+          "priceSource": "https://www.placesofjuma.com/tiger-cave-temple-krabi/"
+        },
+        {
+          "day": 2,
+          "name": "Hot Spring Waterfall",
+          "category": "EXPERIENCE",
+          "note": "Freshen up after the climb.",
+          "place": "hot-spring-waterfall-krabi"
+        },
+        {
+          "day": 2,
+          "name": "Emerald Pool",
+          "category": "EXPERIENCE",
+          "note": "One of the most picturesque places in Krabi. Careful on the wet rocks.",
+          "place": "emerald-pool-krabi",
+          "price": 5.95,
+          "priceNote": "200 THB per foreign adult",
+          "priceSource": "https://krabinature.com/emerald-pool-krabi/"
+        },
+        {
+          "day": 3,
+          "name": "Bus to Khao Sok",
+          "category": "TRANSIT",
+          "note": "Tourist bus from Ao Nang or Krabi Town at 10-11 am, 4.5 hours.",
+          "place": "krabi-to-khao-sok-bus",
+          "price": 11.9,
+          "priceNote": "creator: 400 THB per person"
+        }
+      ]
+    }
+  ]
+}
