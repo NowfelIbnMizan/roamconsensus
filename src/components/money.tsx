@@ -39,6 +39,11 @@ export function CurrencyProvider({ rates, children }: { rates: Rates; children: 
   return <RatesContext.Provider value={rates}>{children}</RatesContext.Provider>;
 }
 
+/** Today's exchange rates (per US dollar), for sums across currencies. */
+export function useRates() {
+  return useContext(RatesContext);
+}
+
 type Priced = { priceCents: number | null; quantity: number; currency?: string; priceNote?: string | null };
 
 /** Formatters in the traveller's chosen currency. */

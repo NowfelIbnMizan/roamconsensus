@@ -119,7 +119,7 @@ export function GroupTrips() {
   }
 
   return (
-    <section className="rounded-2xl border border-line bg-card p-4">
+    <section id="groups" className="scroll-mt-6 rounded-2xl border border-line bg-card p-4">
       <h2 className="flex items-center gap-2 font-semibold">
         <Users className="size-4 text-accent" aria-hidden /> Plan with friends
       </h2>

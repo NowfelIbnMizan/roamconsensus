@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { Copy, Link2, LogOut, RefreshCw, Share2, Luggage, ThumbsUp, Trash2, Upload } from "lucide-react";
+import { Copy, Link2, LogOut, Receipt, RefreshCw, Share2, Luggage, ThumbsUp, Trash2, Upload } from "lucide-react";
 import { Avatar } from "@/components/account-button";
 import { Thumb } from "@/components/thumb";
 import { AddItemButton } from "@/components/add-to-cart";
@@ -11,6 +11,7 @@ import { authClient, signInWithGoogle } from "@/lib/auth-client";
 import { useCart, useCartHydrated } from "@/lib/cart-store";
 import { categoryLabel } from "@/lib/format";
 import type { GroupView } from "@/lib/groups";
+import { type CostDraft, SplitCosts } from "./split-costs";
 
 const button = "inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent";
 
@@ -30,10 +31,10 @@ export function GroupTripView() {
         </button>
       </section>
     );
-  return <Group />;
+  return <Group me={session.user.id} />;
 }
 
-function Group() {
+function Group({ me }: { me: string }) {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const hydrated = useCartHydrated();
@@ -42,6 +43,7 @@ function Group() {
   const [group, setGroup] = useState<GroupView | null>(null);
   const [missing, setMissing] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [draft, setDraft] = useState<CostDraft | null>(null);
 
   const load = useCallback(async () => {
     const res = await fetch(`/api/groups/${id}`).catch(() => null);
@@ -217,6 +219,8 @@ function Group() {
         </p>
       )}
 
+      <SplitCosts group={group} me={me} draft={draft} onDraftUsed={() => setDraft(null)} reload={load} />
+
       {group.items.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-line p-10 text-center text-muted">
           No stops yet. Add places to your trip, then come back and add them here. Or{" "}
@@ -254,6 +258,22 @@ function Group() {
                       · added by {i.addedBy.split(" ")[0]}
                     </p>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setDraft({
+                        title: i.item.name,
+                        amountCents: (i.item.priceCents ?? 0) * (i.item.quantity || 1),
+                        currency: i.item.currency || "USD",
+                        itemId: i.id,
+                      })
+                    }
+                    aria-label={`Log a cost for ${i.item.name}`}
+                    title="Log what you paid for this"
+                    className="inline-flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs hover:border-accent"
+                  >
+                    <Receipt className="size-3.5" aria-hidden /> Cost
+                  </button>
                   <AddItemButton item={i.item} />
                   {i.canRemove && (
                     <button
