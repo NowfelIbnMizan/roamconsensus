@@ -374,13 +374,13 @@ model Post {
 
 /// Travellers who signed in with Google. The four auth tables follow Better Auth's schema (src/lib/auth.ts).
 model User {
-  id              String              @id
+  id              String           @id
   name            String
-  email           String              @unique
-  emailVerified   Boolean             @default(false)
+  email           String           @unique
+  emailVerified   Boolean          @default(false)
   image           String?
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
   sessions        Session[]
   accounts        Account[]
   cart            UserCart?
@@ -390,16 +390,14 @@ model User {
   groups          GroupMember[]
   groupItems      GroupItem[]
   groupVotes      GroupVote[]
-  expensesPaid    GroupExpense[]      @relation("ExpensePaidBy")
-  expenseShares   GroupExpenseShare[]
   /// Daily email when prices in their cart change or creators add routes for their cart's cities. Off until they opt in.
-  alertsEnabled   Boolean             @default(false)
+  alertsEnabled   Boolean          @default(false)
   /// Last alert check; only routes added after it count as new.
   alertsCheckedAt DateTime?
   /// Private travel profile set on My trips: style, trip length, passport, currency, cities been to.
   prefs           Json?
   /// May write blog posts for review at /write; set by an invite link from Admin > Writers.
-  writer          Boolean             @default(false)
+  writer          Boolean          @default(false)
   posts           Post[]
 }
 
@@ -509,6 +507,7 @@ model GroupTrip {
   members     GroupMember[]
   items       GroupItem[]
   expenses    GroupExpense[]
+  guests      GroupGuest[]
   /// Shared budget for "budget vs spent", in US cents; null until someone sets one.
   budgetCents Int?
   createdAt   DateTime       @default(now())
@@ -550,8 +549,8 @@ model GroupExpense {
   title        String
   amountCents  Int
   currency     String
+  /// A member's user id or a guest's id. No foreign key, so costs stay put when someone leaves or deletes their account.
   paidById     String
-  paidBy       User                @relation("ExpensePaidBy", fields: [paidById], references: [id], onDelete: Cascade)
   createdById  String
   isSettlement Boolean             @default(false)
   /// The group stop this cost came from, when added from the plan.
@@ -566,12 +565,24 @@ model GroupExpense {
 model GroupExpenseShare {
   expenseId   String
   expense     GroupExpense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+  /// A member's user id or a guest's id (see GroupExpense.paidById).
   userId      String
-  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   amountCents Int
 
   @@id([expenseId, userId])
   @@index([userId])
+}
+
+/// A friend in a group trip who has no account: members log costs for them by name.
+model GroupGuest {
+  id          String    @id @default(cuid())
+  groupId     String
+  group       GroupTrip @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  name        String
+  createdById String
+  createdAt   DateTime  @default(now())
+
+  @@index([groupId])
 }
 
 model GroupVote {

@@ -45,7 +45,10 @@ export function SplitCosts({
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [draft]);
 
-  const name = (id: string) => (id === me ? "You" : (group.members.find((m) => m.id === id)?.name.split(" ")[0] ?? "Someone"));
+  const name = (id: string) =>
+    id === me ? "You" : (group.people.find((p) => p.id === id)?.name.split(" ")[0] ?? "Former member");
+  // Guests never sign in, so anyone in the trip can record a payback that involves one.
+  const isGuest = (id: string) => group.people.some((p) => p.id === id && p.guest);
   const bal = balances(group.expenses, rates);
   const transfers = settleUp(bal);
   const spent = spentUsd(group.expenses, rates);
@@ -178,7 +181,7 @@ export function SplitCosts({
                   <ArrowRight className="size-4 text-muted" aria-hidden />
                   <span className="font-medium">{name(t.to)}</span>
                   <span className="tabular-nums">{money(t.cents)}</span>
-                  {(t.from === me || t.to === me) && (
+                  {(t.from === me || t.to === me || isGuest(t.from) || isGuest(t.to)) && (
                     <button
                       type="button"
                       onClick={() => markPaid(t.from, t.to, t.cents)}
@@ -282,7 +285,7 @@ function CostForm({
   const [amount, setAmount] = useState(draft ? String(draft.amountCents / 100) : "");
   const [currency, setCurrency] = useState(draft?.currency ?? viewer);
   const [paidBy, setPaidBy] = useState(me);
-  const [who, setWho] = useState(group.members.map((m) => m.id));
+  const [who, setWho] = useState(group.people.map((p) => p.id));
   const [custom, setCustom] = useState(false);
   const [parts, setParts] = useState<Record<string, string>>({});
 
@@ -340,9 +343,9 @@ function CostForm({
         <label className="grid gap-1 text-sm">
           Paid by
           <select value={paidBy} onChange={(e) => setPaidBy(e.target.value)} className={input}>
-            {group.members.map((m) => (
-              <option key={m.id} value={m.id}>
-                {m.id === me ? "You" : m.name}
+            {group.people.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.id === me ? "You" : p.guest ? `${p.name} (guest)` : p.name}
               </option>
             ))}
           </select>
@@ -351,10 +354,10 @@ function CostForm({
       <div className="text-sm">
         <p>Split between</p>
         <div className="mt-1.5 flex flex-wrap gap-2">
-          {group.members.map((m) => (
-            <button key={m.id} type="button" aria-pressed={who.includes(m.id)} onClick={() => toggle(m.id)} className={pill(who.includes(m.id))}>
-              {who.includes(m.id) && <Check className="size-3.5" aria-hidden />}
-              {m.id === me ? "You" : m.name.split(" ")[0]}
+          {group.people.map((p) => (
+            <button key={p.id} type="button" aria-pressed={who.includes(p.id)} onClick={() => toggle(p.id)} className={pill(who.includes(p.id))}>
+              {who.includes(p.id) && <Check className="size-3.5" aria-hidden />}
+              {p.id === me ? "You" : p.name.split(" ")[0]}
             </button>
           ))}
         </div>
@@ -365,7 +368,7 @@ function CostForm({
           <div className="mt-2 grid gap-2">
             {who.map((id) => (
               <label key={id} className="flex items-center justify-between gap-3">
-                {id === me ? "You" : group.members.find((m) => m.id === id)?.name}
+                {id === me ? "You" : group.people.find((p) => p.id === id)?.name}
                 <input
                   inputMode="decimal"
                   value={parts[id] ?? ""}
