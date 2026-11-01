@@ -26,7 +26,8 @@ export default async function DestinationLayout({ children, params }: LayoutProp
         </div>
       </OverviewOnly>
       <p className="eyebrow">
-        {destination.country} · {destination.routes.length} routes · {destination.creatorCount} creators
+        {destination.country} · {destination.routes.length} {destination.routes.length === 1 ? "route" : "routes"} ·{" "}
+        {destination.creatorCount} {destination.creatorCount === 1 ? "creator" : "creators"}
       </p>
       <CityHeading slug={destination.slug} name={destination.name} />
       <OverviewOnly slug={destination.slug}>
