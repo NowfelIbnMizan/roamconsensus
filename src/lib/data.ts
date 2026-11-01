@@ -826,7 +826,7 @@ export async function getSiteStats() {
   "use cache";
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
-  const [cities, trips, creators, places, stops] = await Promise.all([
+  const [cities, trips, creators, places, stops, faces] = await Promise.all([
     db.destination.count(),
     db.itinerary.count(),
     // Only creators with a route on the site; one whose routes were all deleted shouldn't count.
@@ -839,8 +839,10 @@ export async function getSiteStats() {
       where: { items: { some: { sentiment: { not: "AVOID" } } } },
     }),
     db.item.count(),
+    db.siteSetting.findUnique({ where: { key: "homeCreatorFaces" } }),
   ]);
-  return { cities, trips, creators, places, stops };
+  // Admin > Creators switch; on unless turned off.
+  return { cities, trips, creators, places, stops, showFaces: faces?.value !== false };
 }
 
 export async function getCreatorHandles() {

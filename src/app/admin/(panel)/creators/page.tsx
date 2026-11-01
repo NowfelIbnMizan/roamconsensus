@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { deleteCreator, saveCreator } from "@/lib/admin/actions";
+import { deleteCreator, saveCreator, saveHomeFaces } from "@/lib/admin/actions";
 import { SOCIALS } from "@/lib/creator-links";
 import { platformOptions } from "../../options";
 import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea } from "../../ui";
@@ -59,6 +59,7 @@ export default async function CreatorsAdmin() {
     orderBy: { name: "asc" },
     include: { _count: { select: { itineraries: true } } },
   });
+  const faces = await db.siteSetting.findUnique({ where: { key: "homeCreatorFaces" } });
   const badge = "rounded-full px-2 py-0.5 text-xs";
   return (
     <>
@@ -74,6 +75,14 @@ export default async function CreatorsAdmin() {
         </EditDialog>
       </div>
       <p className="mt-1 text-sm text-muted">Most routes first. Creators with no route don&apos;t show on the site.</p>
+      <form action={saveHomeFaces} className="mt-4 flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-card p-4">
+        <Checkbox
+          label="Show creator photos on the home page (photos only; hidden until 3 load)"
+          name="homeCreatorFaces"
+          defaultChecked={faces?.value !== false}
+        />
+        <SaveButton />
+      </form>
       <ul className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {creators
           .toSorted((a, b) => b._count.itineraries - a._count.itineraries)

@@ -570,3 +570,9 @@ model AboutPhoto {
   wide     Boolean @default(false)
   position Int     @default(0)
 }
+
+/// Site-wide admin switches, one row per key (e.g. "homeCreatorFaces").
+model SiteSetting {
+  key   String @id
+  value Json
+}
