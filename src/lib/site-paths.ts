@@ -19,6 +19,7 @@ export async function sitePaths() {
   return [
     "/",
     "/visa",
+    "/split-travel-costs",
     "/about",
     "/contact",
     "/privacy",

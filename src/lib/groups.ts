@@ -52,9 +52,11 @@ export async function groupView(groupId: string, userId: string) {
         include: { addedBy: { select: { id: true, name: true } }, votes: { select: { userId: true } } },
         orderBy: { createdAt: "asc" },
       },
+      guests: { orderBy: { createdAt: "asc" } },
       expenses: { include: { shares: { select: { userId: true, amountCents: true } } }, orderBy: { createdAt: "desc" } },
     },
   });
+  const members = g.members.map((m) => ({ ...m.user, isOwner: m.user.id === g.ownerId }));
   return {
     id: g.id,
     name: g.name,
@@ -73,7 +75,20 @@ export async function groupView(groupId: string, userId: string) {
       createdAt: e.createdAt.toISOString(),
       canDelete: [e.createdById, e.paidById, g.ownerId].includes(userId),
     })),
-    members: g.members.map((m) => ({ ...m.user, isOwner: m.user.id === g.ownerId })),
+    members,
+    guests: g.guests.map((x) => ({
+      id: x.id,
+      name: x.name,
+      // A guest can go while no cost names them; after that, removing them would break the balances.
+      canRemove:
+        [x.createdById, g.ownerId].includes(userId) &&
+        !g.expenses.some((e) => e.paidById === x.id || e.shares.some((s) => s.userId === x.id)),
+    })),
+    /** Everyone a cost can name: members first, then guests. */
+    people: [
+      ...members.map((m) => ({ id: m.id, name: m.name, guest: false })),
+      ...g.guests.map((x) => ({ id: x.id, name: x.name, guest: true })),
+    ],
     items: g.items
       .map((i) => ({
         id: i.itemId,

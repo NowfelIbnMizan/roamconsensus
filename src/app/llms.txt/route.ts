@@ -50,6 +50,7 @@ export async function GET() {
     `- [All creators](${base}/creators)`,
     `- [Trip finder by length and budget](${base}/itineraries)`,
     `- [Visa checker](${base}/visa)`,
+    `- [Split travel costs with friends](${base}/split-travel-costs)`,
     `- [About](${base}/about)`,
     "",
   );

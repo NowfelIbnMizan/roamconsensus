@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { Copy, Link2, LogOut, Receipt, RefreshCw, Share2, Luggage, ThumbsUp, Trash2, Upload } from "lucide-react";
+import { Copy, Link2, LogOut, Receipt, RefreshCw, Share2, Luggage, ThumbsUp, Trash2, Upload, UserPlus, X } from "lucide-react";
 import { Avatar } from "@/components/account-button";
 import { Thumb } from "@/components/thumb";
 import { AddItemButton } from "@/components/add-to-cart";
@@ -44,6 +44,7 @@ function Group({ me }: { me: string }) {
   const [missing, setMissing] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [draft, setDraft] = useState<CostDraft | null>(null);
+  const [guestName, setGuestName] = useState("");
 
   const load = useCallback(async () => {
     const res = await fetch(`/api/groups/${id}`).catch(() => null);
@@ -132,6 +133,22 @@ function Group({ me }: { me: string }) {
     } catch {} // share sheet closed
   }
 
+  async function addGuest(e: React.FormEvent) {
+    e.preventDefault();
+    if (!guestName.trim()) return;
+    const res = await post("/guests", { name: guestName.trim() });
+    if (res.ok) setGuestName("");
+    else setMessage((await res.json().catch(() => ({}))).error ?? "Couldn't add them. Try again.");
+    void load();
+  }
+
+  async function removeGuest(guestId: string, name: string) {
+    if (!confirm(`Remove ${name} from this trip?`)) return;
+    const res = await fetch(`/api/groups/${id}/guests?${new URLSearchParams({ guestId })}`, { method: "DELETE" });
+    if (!res.ok) setMessage((await res.json().catch(() => ({}))).error ?? "Couldn't remove them.");
+    void load();
+  }
+
   async function newLink() {
     if (!confirm("Make a new invite link? The old link stops working. People already in stay in.")) return;
     await post("/invite", {});
@@ -168,6 +185,26 @@ function Group({ me }: { me: string }) {
               {m.isOwner && <span className="text-xs text-muted">(organiser)</span>}
             </li>
           ))}
+          {group.guests.map((g) => (
+            <li
+              key={g.id}
+              className="flex items-center gap-1.5 rounded-full border border-dashed border-line-strong bg-card py-0.5 pr-2 pl-0.5 text-sm"
+            >
+              <Avatar name={g.name} image={null} className="size-6" />
+              {g.name}
+              <span className="text-xs text-muted">(guest)</span>
+              {g.canRemove && (
+                <button
+                  type="button"
+                  onClick={() => removeGuest(g.id, g.name)}
+                  aria-label={`Remove ${g.name}`}
+                  className="-my-1 flex size-7 items-center justify-center rounded-full text-muted hover:text-rose-600"
+                >
+                  <X className="size-3.5" aria-hidden />
+                </button>
+              )}
+            </li>
+          ))}
         </ul>
       </header>
 
@@ -198,6 +235,25 @@ function Group({ me }: { me: string }) {
             </button>
           )}
         </div>
+        <form onSubmit={addGuest} className="mt-4 border-t border-line pt-4">
+          <label htmlFor="guest-name" className="flex items-center gap-2 font-medium">
+            <UserPlus className="size-4 text-accent" aria-hidden /> Friend without an account?
+          </label>
+          <p className="mt-1 text-sm text-muted">Add them by name. You can split costs with them; they never sign up.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <input
+              id="guest-name"
+              value={guestName}
+              onChange={(e) => setGuestName(e.target.value)}
+              maxLength={40}
+              placeholder="e.g. Sam"
+              className="min-w-0 flex-1 basis-40 rounded-lg border border-line bg-background px-3 py-2 text-sm"
+            />
+            <button type="submit" disabled={!guestName.trim()} className={`${button} disabled:opacity-40`}>
+              Add guest
+            </button>
+          </div>
+        </form>
       </section>
 
       <div className="flex flex-wrap gap-2">

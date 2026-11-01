@@ -106,6 +106,11 @@ export function GroupTrips() {
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
+  // The section only appears once the session loads, so a link to #groups has to scroll here itself.
+  useEffect(() => {
+    if (window.location.hash === "#groups") document.getElementById("groups")?.scrollIntoView({ block: "start" });
+  }, []);
+
   async function start(e: React.FormEvent) {
     e.preventDefault();
     const res = await fetch("/api/groups", {
@@ -138,7 +143,13 @@ export function GroupTrips() {
           ))}
         </ul>
       ) : (
-        <p className="mt-1 text-sm text-muted">Share a link. Everyone adds stops and votes.</p>
+        <p className="mt-1 text-sm text-muted">
+          Share a link. Everyone adds stops, votes and{" "}
+          <Link href="/split-travel-costs" className="underline">
+            splits costs
+          </Link>
+          .
+        </p>
       )}
       {open ? (
         <form onSubmit={start} className="mt-3">
