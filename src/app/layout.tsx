@@ -124,6 +124,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                   Visa check
                 </Link>
                 <Link
+                  href="/split-travel-costs"
+                  className="hidden hover:text-accent xl:inline"
+                >
+                  Split costs
+                </Link>
+                <Link
                   href="/#plan"
                   aria-label="Search trips, places and creators"
                   className="hidden size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground sm:flex"

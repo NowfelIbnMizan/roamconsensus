@@ -196,6 +196,7 @@ function placeSummary(place: PlaceWithItems) {
           destination: pick.itinerary.destination,
         }
       : null,
+    closed: place.closed,
     creators: toList(byCreator(false)),
     skippedBy: toList(byCreator(true)),
   };
