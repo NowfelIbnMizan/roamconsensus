@@ -1,0 +1,571 @@
+{
+  "slug": "jeju",
+  "name": "Jeju",
+  "country": "South Korea",
+  "summary": "Korea's volcanic island: sunrise at Seongsan Ilchulbong, lava tubes, basalt cliffs, waterfalls, green tea fields and black pork barbecue.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Jeju_City",
+  "months": [
+    {
+      "month": 1,
+      "highC": 9,
+      "lowC": 4,
+      "rainMm": 68,
+      "crowd": "LOW",
+      "note": "Cold, windy and grey; quiet, but hills and coasts feel colder than the city."
+    },
+    {
+      "month": 2,
+      "highC": 10,
+      "lowC": 4,
+      "rainMm": 57,
+      "crowd": "LOW",
+      "note": "Still cold; Hallabong oranges are in season at the markets."
+    },
+    {
+      "month": 3,
+      "highC": 13,
+      "lowC": 7,
+      "rainMm": 91,
+      "crowd": "MEDIUM",
+      "note": "Spring starts; canola flowers and early cherry blossoms."
+    },
+    {
+      "month": 4,
+      "highC": 18,
+      "lowC": 11,
+      "rainMm": 90,
+      "crowd": "HIGH",
+      "note": "Cherry blossoms and yellow canola fields; busy weekends."
+    },
+    {
+      "month": 5,
+      "highC": 22,
+      "lowC": 15,
+      "rainMm": 96,
+      "crowd": "HIGH",
+      "note": "Mild and pleasant, one of the best months for hiking and driving the coast."
+    },
+    {
+      "month": 6,
+      "highC": 25,
+      "lowC": 19,
+      "rainMm": 171,
+      "crowd": "MEDIUM",
+      "note": "Warm, with the rainy season starting late in the month."
+    },
+    {
+      "month": 7,
+      "highC": 29,
+      "lowC": 24,
+      "rainMm": 210,
+      "crowd": "HIGH",
+      "note": "Hot and humid; beach season and Korean summer holidays."
+    },
+    {
+      "month": 8,
+      "highC": 30,
+      "lowC": 25,
+      "rainMm": 272,
+      "crowd": "HIGH",
+      "note": "Hottest and wettest month; typhoons are possible."
+    },
+    {
+      "month": 9,
+      "highC": 26,
+      "lowC": 21,
+      "rainMm": 228,
+      "crowd": "MEDIUM",
+      "note": "Typhoon risk lingers; warm and humid."
+    },
+    {
+      "month": 10,
+      "highC": 22,
+      "lowC": 16,
+      "rainMm": 95,
+      "crowd": "HIGH",
+      "note": "Clear and mild; silver pampas grass at Sangumburi and the oreum."
+    },
+    {
+      "month": 11,
+      "highC": 16,
+      "lowC": 10,
+      "rainMm": 70,
+      "crowd": "MEDIUM",
+      "note": "Cooler and dry; tangerine harvest season."
+    },
+    {
+      "month": 12,
+      "highC": 11,
+      "lowC": 6,
+      "rainMm": 56,
+      "crowd": "LOW",
+      "note": "Cold winds return; quiet hotels."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "K-ETA waived through 2026",
+      "body": "Korea has extended its temporary K-ETA exemption from 1 January to 31 December 2026 for 67 countries and territories, including the US, UK, most of the EU, Canada, Australia, Japan, Singapore and Taiwan. No extension beyond 2026 has been announced, so check your nationality at k-eta.go.kr.",
+      "sourceUrl": "https://blog.wego.com/south-korea-travel-rules-k-eta-waiver-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "e-Arrival Card is mandatory",
+      "body": "Since 1 January 2026, foreign visitors must submit the free e-Arrival Card at e-arrivalcard.go.kr within 72 hours before arrival and show the QR code at immigration. Paper cards have been discontinued for most visitors. Valid K-ETA holders are exempt.",
+      "sourceUrl": "https://blog.wego.com/south-korea-travel-rules-k-eta-waiver-2026/"
+    },
+    {
+      "topic": "Connectivity",
+      "title": "Use Naver Map or KakaoMap",
+      "body": "Google Maps still lacks full walking and driving directions in Korea, and locals rely on Naver and Kakao. Korea has approved exporting map data to Google under strict conditions, but no date has been set for full navigation.",
+      "sourceUrl": "https://www.yahoo.com/news/articles/south-korea-allows-google-export-071150260.html"
+    },
+    {
+      "topic": "Money",
+      "title": "WOWPASS: prepaid card plus T-money",
+      "body": "WOWPASS is a prepaid card you can use at Korean shops that accept local cards, and it has a built-in T-money transit function. The T-money balance is topped up separately from the WOWPASS balance.",
+      "sourceUrl": "https://wowpass.io/en/guide"
+    },
+    {
+      "topic": "Transport",
+      "title": "Get Kakao T for taxis",
+      "body": "Download Kakao T and link a card before you land. It has English and is more reliable than hailing a taxi in the street.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Money",
+      "title": "Don't tip",
+      "body": "Tipping isn't done in Korea. Pay the exact bill.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Money",
+      "title": "Cash for markets and street stalls",
+      "body": "Visa and Mastercard work in restaurants, shops, cafes and most taxis. Keep some cash for pojangmacha tents, traditional markets and street food.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Health",
+      "title": "Check your medicines",
+      "body": "Codeine cold medicine, some ADHD drugs and other controlled medicines may need approval before you bring them in.",
+      "sourceUrl": "https://mileasia.com/korea/first-time-tips/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Tourist buses stop early",
+      "body": "Island buses usually run every 30 minutes. Tourist routes start around 8:30 am and the last bus leaves around 5:30 pm, and most sights close around 6 pm with last entry at 5 or 5:30 pm.",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-jeju-itinerary/"
+    },
+    {
+      "topic": "Transport",
+      "title": "Hire a driver or rent a car",
+      "body": "Taxis are easy at the airport but hard to flag at most sights. Book a taxi or private driver for the whole day, or rent a car if you hold an International Driving Permit.",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-jeju-itinerary/"
+    },
+    {
+      "topic": "Money",
+      "title": "Hypermarts close on the last Saturday",
+      "body": "Big supermarkets in Jeju close on the last Saturday of each month, so stock up the day before.",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-jeju-itinerary/"
+    },
+    {
+      "topic": "Packing",
+      "title": "Pack a warm layer",
+      "body": "Hills, coasts and lava caves can feel 5 to 10°C colder than the city. Manjanggul cave stays around 11°C all year.",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-jeju-itinerary/"
+    }
+  ],
+  "places": [
+    {
+      "slug": "elin-hotel",
+      "name": "Elin Hotel",
+      "category": "STAY",
+      "area": "Jeju City",
+      "blurb": "Mid-range hotel in Jeju City, near the airport and the Shilla duty-free area.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.4892,
+      "lng": 126.4862
+    },
+    {
+      "slug": "jeju-city-tour-bus",
+      "name": "Jeju City tour bus",
+      "category": "TRANSIT",
+      "area": "Jeju City",
+      "blurb": "Hop-on hop-off city bus loop from Jeju International Airport, one bus an hour, about 2 hours per loop.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.5066,
+      "lng": 126.4929
+    },
+    {
+      "slug": "dongmun-market",
+      "name": "Dongmun Traditional Market",
+      "category": "FOOD",
+      "area": "Jeju City",
+      "blurb": "Jeju's oldest traditional market: Hallabong oranges, strawberries, omegi-tteok rice cakes and gimbap.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.5118,
+      "lng": 126.5279
+    },
+    {
+      "slug": "black-pork-street",
+      "name": "Black Pork Street",
+      "category": "FOOD",
+      "area": "Jeju City",
+      "blurb": "Street of restaurants grilling Jeju's black pork (heuk dwaeji) at the table.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.5148,
+      "lng": 126.5335
+    },
+    {
+      "slug": "halla-arboretum",
+      "name": "Halla Arboretum",
+      "category": "EXPERIENCE",
+      "area": "Jeju City",
+      "blurb": "Free arboretum and walking trails in the city with over 1,300 native and rare plant species.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.4701,
+      "lng": 126.4931
+    },
+    {
+      "slug": "dodu-rainbow-coastal-road",
+      "name": "Dodu-dong Rainbow Coastal Road",
+      "category": "EXPERIENCE",
+      "area": "Jeju City",
+      "blurb": "Seawall painted in rainbow stripes facing the ocean near the airport; best at sunset. Search 도두동 무지개 해안도로.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.5152,
+      "lng": 126.4679
+    },
+    {
+      "slug": "sashimi-restaurant-doduil",
+      "name": "Sashimi Restaurant, Doduil-dong",
+      "category": "FOOD",
+      "area": "Jeju City",
+      "blurb": "Highly rated raw-fish restaurant at 2615-4 Doduil-dong, near the rainbow road.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.5101,
+      "lng": 126.4641
+    },
+    {
+      "slug": "jeju-private-driver",
+      "name": "Private car with driver",
+      "category": "TRANSIT",
+      "area": "Jeju island",
+      "blurb": "Driver for the day, the easiest way to reach the east and west coasts if you don't drive.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.4996,
+      "lng": 126.5312
+    },
+    {
+      "slug": "seongsan-ilchulbong",
+      "name": "Seongsan Ilchulbong",
+      "category": "EXPERIENCE",
+      "area": "Seongsan",
+      "blurb": "UNESCO-listed tuff cone on the east tip of the island; climb 20 to 45 minutes for sunrise over the crater. Haenyeo divers perform below.",
+      "checkedAt": "2026-11-02",
+      "tip": "Enter about an hour before sunrise. Closed the first Monday of each month.",
+      "lat": 33.458,
+      "lng": 126.9425
+    },
+    {
+      "slug": "manjanggul-lava-tube",
+      "name": "Manjanggul Lava Tube",
+      "category": "EXPERIENCE",
+      "area": "Gujwa",
+      "blurb": "UNESCO-listed lava tube over 13 km long; about 1 km is open, ending at a 7.6 m lava column. Reopened 30 May 2026 after renovation.",
+      "checkedAt": "2026-11-02",
+      "tip": "About 11°C inside. 9 am to 6 pm, last entry 5:10 pm, closed the first Wednesday of each month.",
+      "lat": 33.5283,
+      "lng": 126.7714
+    },
+    {
+      "slug": "seopjikoji",
+      "name": "Seopjikoji",
+      "category": "EXPERIENCE",
+      "area": "Seongsan",
+      "blurb": "Free coastal walk on a basalt headland with a lighthouse, plus Tadao Ando's Glass House and Genius Loci.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.424,
+      "lng": 126.9306
+    },
+    {
+      "slug": "sangumburi",
+      "name": "Sangumburi Crater",
+      "category": "EXPERIENCE",
+      "area": "Jocheon",
+      "blurb": "Volcanic crater over 2 km wide; silver pampas grass in autumn.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.4331,
+      "lng": 126.69
+    },
+    {
+      "slug": "seongmi-garden",
+      "name": "Seongmi Garden",
+      "category": "FOOD",
+      "area": "Jocheon",
+      "blurb": "Restaurant near Sangumburi known for chicken shabu-shabu and other chicken dishes.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.4262,
+      "lng": 126.6858
+    },
+    {
+      "slug": "osulloc-tea-museum",
+      "name": "O'sulloc Tea Museum",
+      "category": "EXPERIENCE",
+      "area": "Seogwang",
+      "blurb": "Green tea fields, museum and cafe on the west side; try the green tea milkshake.",
+      "checkedAt": "2026-11-02",
+      "website": "https://www.osulloc.com/",
+      "lat": 33.3058,
+      "lng": 126.2895
+    },
+    {
+      "slug": "innisfree-jeju-house",
+      "name": "Innisfree Jeju House",
+      "category": "EXPERIENCE",
+      "area": "Seogwang",
+      "blurb": "Innisfree's flagship store and cafe next to the O'sulloc tea fields.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.3049,
+      "lng": 126.2919
+    },
+    {
+      "slug": "sanbangsan",
+      "name": "Sanbangsan",
+      "category": "EXPERIENCE",
+      "area": "Andeok",
+      "blurb": "Bell-shaped lava dome by the coast, with a temple grotto and a short climb to a signal beacon.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.2366,
+      "lng": 126.311
+    },
+    {
+      "slug": "cheonjeyeon-falls",
+      "name": "Cheonjeyeon Falls",
+      "category": "EXPERIENCE",
+      "area": "Seogwipo",
+      "blurb": "Three-tier waterfall in a forest gorge with the arched Seonimgyo Bridge; the first fall is the easiest to reach.",
+      "checkedAt": "2026-11-02",
+      "tip": "Lots of stairs between the falls.",
+      "lat": 33.2522,
+      "lng": 126.418
+    },
+    {
+      "slug": "jusangjeolli-cliff",
+      "name": "Jusangjeolli Cliff",
+      "category": "EXPERIENCE",
+      "area": "Seogwipo",
+      "blurb": "Hexagonal basalt columns along the sea, seen from wooden decks.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.2375,
+      "lng": 126.425
+    },
+    {
+      "slug": "yakcheonsa",
+      "name": "Yakcheonsa Temple",
+      "category": "EXPERIENCE",
+      "area": "Seogwipo",
+      "blurb": "Large hillside temple with a huge main hall and colourful lanterns.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.247,
+      "lng": 126.453
+    },
+    {
+      "slug": "nene-chicken",
+      "name": "Nene Chicken",
+      "category": "FOOD",
+      "area": "Jeju City",
+      "blurb": "One of Korea's big fried chicken chains; order a mixed-flavour platter delivered to your hotel.",
+      "checkedAt": "2026-11-02",
+      "lat": 33.4895,
+      "lng": 126.487
+    }
+  ],
+  "creators": [
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "jeju-3-days-willflyforfood",
+      "title": "Jeju in 3 days",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-jeju-itinerary/",
+      "summary": "Jeju City by tour bus and black pork on day one, then a driver for the east coast (Seongsan sunrise, Manjanggul, Seopjikoji) and the west and south (O'sulloc tea fields, waterfalls, basalt cliffs).",
+      "items": [
+        {
+          "day": 1,
+          "name": "Elin Hotel",
+          "category": "STAY",
+          "place": "elin-hotel",
+          "note": "Creator's top-rated mid-range pick in Jeju City. Or Orasung Motel (budget) or Grand Hyatt Jeju (luxury). The writer stayed at a small budget hotel near Shilla duty-free for under US$60 a night for three.",
+          "unit": "night",
+          "quantity": 2
+        },
+        {
+          "day": 1,
+          "name": "Jeju City tour bus day pass",
+          "category": "TRANSIT",
+          "place": "jeju-city-tour-bus",
+          "note": "First bus leaves the airport at 9 am and reaches Dongmun Market at 9:40 am.",
+          "price": 9.04,
+          "priceNote": "creator: KRW 12,000 day pass (or KRW 3,000 a ride)"
+        },
+        {
+          "day": 1,
+          "name": "Dongmun Traditional Market",
+          "category": "FOOD",
+          "place": "dongmun-market",
+          "note": "Strawberries, Hallabong oranges, omegi-tteok and gimbap.",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 1,
+          "name": "Black Pork Street",
+          "category": "FOOD",
+          "place": "black-pork-street",
+          "note": "Lunch: grilled black pork."
+        },
+        {
+          "day": 1,
+          "name": "Halla Arboretum",
+          "category": "EXPERIENCE",
+          "place": "halla-arboretum",
+          "note": "Next stop on the city bus."
+        },
+        {
+          "day": 1,
+          "name": "Dodu-dong Rainbow Coastal Road",
+          "category": "EXPERIENCE",
+          "place": "dodu-rainbow-coastal-road",
+          "note": "Sunset around 6 pm. Take the 4 pm+ bus from the arboretum or a cab."
+        },
+        {
+          "day": 1,
+          "name": "Sashimi Restaurant, Doduil-dong",
+          "category": "FOOD",
+          "place": "sashimi-restaurant-doduil",
+          "note": "Dinner: fresh seafood, good service despite the language barrier."
+        },
+        {
+          "day": 2,
+          "name": "Private car with driver",
+          "category": "TRANSIT",
+          "place": "jeju-private-driver",
+          "note": "For days 2 and 3, 8 am to 6 pm. The writers booked theirs on Klook.",
+          "price": 226.07,
+          "priceNote": "creator: KRW 300,000 for two days"
+        },
+        {
+          "day": 2,
+          "name": "Seongsan Ilchulbong",
+          "category": "EXPERIENCE",
+          "place": "seongsan-ilchulbong",
+          "note": "Sunrise climb, then watch the haenyeo divers.",
+          "price": 3.77,
+          "priceNote": "KRW 5,000 per adult",
+          "priceSource": "https://www.ktriptips.com/eng/tourspot/335389",
+          "sentiment": "MUST_VISIT"
+        },
+        {
+          "day": 2,
+          "name": "Manjanggul Lava Tube",
+          "category": "EXPERIENCE",
+          "place": "manjanggul-lava-tube",
+          "note": "Allow an hour for the 1 km walk there and back. Bring a jacket.",
+          "price": 3.01,
+          "priceNote": "KRW 4,000 per adult",
+          "priceSource": "https://korea.stripes.com/travel/article9395570.ece"
+        },
+        {
+          "day": 2,
+          "name": "Seopjikoji",
+          "category": "EXPERIENCE",
+          "place": "seopjikoji",
+          "note": "Basalt coast and clear water; look for the Glass House and Genius Loci.",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.ktriptips.com/eng/tourspot/335533"
+        },
+        {
+          "day": 2,
+          "name": "Sangumburi Crater",
+          "category": "EXPERIENCE",
+          "place": "sangumburi",
+          "note": "Best in autumn for the silver pampas."
+        },
+        {
+          "day": 2,
+          "name": "Seongmi Garden",
+          "category": "FOOD",
+          "place": "seongmi-garden",
+          "note": "Dinner if you have a car: chicken shabu-shabu. The writers missed it when their driver's day ended."
+        },
+        {
+          "day": 3,
+          "name": "O'sulloc Tea Museum",
+          "category": "EXPERIENCE",
+          "place": "osulloc-tea-museum",
+          "note": "Walk the tea fields, then the museum cafe for a milkshake.",
+          "sentiment": "RECOMMENDED"
+        },
+        {
+          "day": 3,
+          "name": "Innisfree Jeju House",
+          "category": "EXPERIENCE",
+          "place": "innisfree-jeju-house",
+          "note": "Next door; the writer recommends the volcanic clay mousse mask."
+        },
+        {
+          "day": 3,
+          "name": "Sanbangsan",
+          "category": "EXPERIENCE",
+          "place": "sanbangsan",
+          "note": "Short trek to a signal beacon for coast views (Yongmeori Coast was too windy)."
+        },
+        {
+          "day": 3,
+          "name": "Cheonjeyeon Falls",
+          "category": "EXPERIENCE",
+          "place": "cheonjeyeon-falls",
+          "note": "Three falls; the first is the easiest to reach.",
+          "price": 1.88,
+          "priceNote": "KRW 2,500 per adult",
+          "priceSource": "https://korea.stripes.com/travel/article9395570.ece"
+        },
+        {
+          "day": 3,
+          "name": "Jusangjeolli Cliff",
+          "category": "EXPERIENCE",
+          "place": "jusangjeolli-cliff",
+          "note": "Basalt columns from wooden bridges and decks.",
+          "price": 1.51,
+          "priceNote": "KRW 2,000 per adult",
+          "priceSource": "https://korea.stripes.com/travel/article9395570.ece"
+        },
+        {
+          "day": 3,
+          "name": "Yakcheonsa Temple",
+          "category": "EXPERIENCE",
+          "place": "yakcheonsa",
+          "note": "Big, beautifully decorated temple with lanterns."
+        },
+        {
+          "day": 3,
+          "name": "Nene Chicken",
+          "category": "FOOD",
+          "place": "nene-chicken",
+          "note": "Dinner: three-flavour fried chicken platter, delivered via hotel reception."
+        }
+      ]
+    }
+  ]
+}

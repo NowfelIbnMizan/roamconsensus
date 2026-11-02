@@ -1,0 +1,179 @@
+{
+  "country": "Spain",
+  "checkedAt": "2026-11-02",
+  "plans": [
+    {
+      "provider": "Airalo",
+      "name": "Spain Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.0,
+      "network": "Orange",
+      "url": "https://www.airalo.com/spain-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Spain Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 17.0,
+      "network": "Orange",
+      "url": "https://www.airalo.com/spain-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Spain Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 23.5,
+      "network": "Orange",
+      "url": "https://www.airalo.com/spain-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Spain Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 32.0,
+      "network": "Orange",
+      "url": "https://www.airalo.com/spain-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Spain Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 43.0,
+      "network": "Orange",
+      "url": "https://www.airalo.com/spain-esim"
+    },
+    {
+      "provider": "Airalo",
+      "name": "Spain Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 63.0,
+      "network": "Orange",
+      "url": "https://www.airalo.com/spain-esim"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 1 day",
+      "dataGb": null,
+      "days": 1,
+      "price": 4.24,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 3 days",
+      "dataGb": null,
+      "days": 3,
+      "price": 11.9,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 5 days",
+      "dataGb": null,
+      "days": 5,
+      "price": 18.5,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 7 days",
+      "dataGb": null,
+      "days": 7,
+      "price": 24.5,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 10 days",
+      "dataGb": null,
+      "days": 10,
+      "price": 33.5,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 15 days",
+      "dataGb": null,
+      "days": 15,
+      "price": 45.9,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Holafly",
+      "name": "Spain Unlimited 30 days",
+      "dataGb": null,
+      "days": 30,
+      "price": 66.5,
+      "network": "Orange/Movistar/Vodafone/Yoigo",
+      "speed": "Hotspot sharing 1 GB a day",
+      "url": "https://esim.holafly.com/esim-spain/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Spain 1 GB / 7 days",
+      "dataGb": 1,
+      "days": 7,
+      "price": 3.99,
+      "url": "https://saily.com/esim-spain/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Spain 3 GB / 30 days",
+      "dataGb": 3,
+      "days": 30,
+      "price": 6.99,
+      "url": "https://saily.com/esim-spain/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Spain 5 GB / 30 days",
+      "dataGb": 5,
+      "days": 30,
+      "price": 9.99,
+      "url": "https://saily.com/esim-spain/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Spain 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 15.99,
+      "url": "https://saily.com/esim-spain/"
+    },
+    {
+      "provider": "Saily",
+      "name": "Spain 20 GB / 30 days",
+      "dataGb": 20,
+      "days": 30,
+      "price": 22.99,
+      "url": "https://saily.com/esim-spain/"
+    },
+    {
+      "provider": "Ubigi",
+      "name": "Spain 10 GB / 30 days",
+      "dataGb": 10,
+      "days": 30,
+      "price": 12.0,
+      "network": "Orange",
+      "url": "https://cellulardata.ubigi.com/rates-and-coverage/spain-data-plans/spain-10gb-30-days/"
+    }
+  ]
+}

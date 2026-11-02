@@ -1,0 +1,394 @@
+{
+  "slug": "madrid",
+  "name": "Madrid",
+  "country": "Spain",
+  "summary": "Spain's capital of museums, plazas and late dinners, and the easiest base for day trips to Toledo and Segovia by high-speed train.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Climate_of_Madrid",
+  "months": [
+    {
+      "month": 1,
+      "highC": 10,
+      "lowC": 3,
+      "rainMm": 32,
+      "crowd": "LOW",
+      "note": "Cold, clear mornings; quiet museums after Three Kings on 6 January."
+    },
+    {
+      "month": 2,
+      "highC": 12,
+      "lowC": 4,
+      "rainMm": 34,
+      "crowd": "LOW",
+      "note": "Still cold but sunny; few tourists."
+    },
+    {
+      "month": 3,
+      "highC": 16,
+      "lowC": 6,
+      "rainMm": 35,
+      "crowd": "MEDIUM",
+      "note": "Spring starts; Easter processions can fall in March or April."
+    },
+    {
+      "month": 4,
+      "highC": 19,
+      "lowC": 8,
+      "rainMm": 46,
+      "crowd": "HIGH",
+      "note": "Mild and blooming; one of the best months for day trips."
+    },
+    {
+      "month": 5,
+      "highC": 23,
+      "lowC": 12,
+      "rainMm": 48,
+      "crowd": "HIGH",
+      "note": "San Isidro festival mid-May; warm and lively."
+    },
+    {
+      "month": 6,
+      "highC": 29,
+      "lowC": 16,
+      "rainMm": 20,
+      "crowd": "HIGH",
+      "note": "Hot afternoons start; long evenings on terraces."
+    },
+    {
+      "month": 7,
+      "highC": 33,
+      "lowC": 20,
+      "rainMm": 9,
+      "crowd": "MEDIUM",
+      "note": "Very hot and dry; do sights early and rest at midday."
+    },
+    {
+      "month": 8,
+      "highC": 32,
+      "lowC": 19,
+      "rainMm": 10,
+      "crowd": "LOW",
+      "note": "Hottest month; many locals leave and some restaurants close."
+    },
+    {
+      "month": 9,
+      "highC": 26,
+      "lowC": 16,
+      "rainMm": 24,
+      "crowd": "HIGH",
+      "note": "Heat eases; great for walking Toledo and Segovia."
+    },
+    {
+      "month": 10,
+      "highC": 20,
+      "lowC": 11,
+      "rainMm": 64,
+      "crowd": "HIGH",
+      "note": "Wettest month, but mild and pleasant."
+    },
+    {
+      "month": 11,
+      "highC": 14,
+      "lowC": 6,
+      "rainMm": 52,
+      "crowd": "MEDIUM",
+      "note": "Cooler and quieter, with some rain."
+    },
+    {
+      "month": 12,
+      "highC": 10,
+      "lowC": 4,
+      "rainMm": 42,
+      "crowd": "MEDIUM",
+      "note": "Christmas lights and markets; cold nights."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "90 days in any 180",
+      "body": "Visa-free visitors can stay in the Schengen area, which includes Spain, for up to 90 days in any 180-day period. Earlier Schengen visits in those 180 days count, and overstaying can bring a ban of up to 3 years.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Check your passport dates",
+      "body": "Your passport must be issued less than 10 years before you arrive and expire at least 3 months after the day you plan to leave the Schengen area.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Fingerprints at the border (EES)",
+      "body": "The EU Entry/Exit System replaces passport stamps. On your first visit you may register fingerprints and a photo at a booth before passport control. It's free, and the record lasts 3 years.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "ETIAS isn't running yet",
+      "body": "ETIAS, the EU's online travel authorisation for visa-free visitors, was not yet operational in August 2026 and was expected to launch in late 2026. It is not a visa. Check before you fly.",
+      "sourceUrl": "https://www.axa-schengen.com/en/visa/visit-schengen"
+    },
+    {
+      "topic": "Entry",
+      "title": "Have proof ready at the border",
+      "body": "Border officers may ask to see a return or onward ticket, travel insurance, enough money for your stay and where you are staying.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Safety",
+      "title": "Watch for pickpockets",
+      "body": "Be alert to street crime. Thieves use distraction techniques and often work in teams. Don't leave your passport at hotel reception to collect later.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Carry photo ID",
+      "body": "You must show photo ID if a police officer asks.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Keep your drink in sight",
+      "body": "Buy your own drinks and keep them in sight so they can't be spiked.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Emergency number 112",
+      "body": "Call 112 for police, ambulance or fire.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/warnings-and-insurance"
+    },
+    {
+      "topic": "Health",
+      "title": "Get travel insurance",
+      "body": "UK and EU visitors can use a GHIC or EHIC for state healthcare, but it is not a replacement for travel insurance.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/health"
+    },
+    {
+      "topic": "Safety",
+      "title": "Summer heat and wildfires",
+      "body": "Extreme heat hits much of Spain in summer. Starting a wildfire is a crime even by accident, so take care with cigarettes and barbecues.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Money",
+      "title": "Declare €10,000 or more in cash",
+      "body": "Cash of €10,000 or more must be declared when you enter or leave the EU. Use official exchange offices or banks to change money.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "No meat or dairy in your bag",
+      "body": "You can't bring meat, milk or products containing them into the EU from outside it, with a few exceptions.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Transport",
+      "title": "Check trains after the Toledo crash",
+      "body": "Gov.uk reported a high-speed rail collision in Toledo on 28 October 2026. Check Renfe for disruption to Madrid–Toledo trains before a day trip; Renfe's helpline is +34 900 10 10 20.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    }
+  ],
+  "places": [
+    {
+      "slug": "madrid-atocha",
+      "name": "Madrid Atocha station",
+      "category": "TRANSIT",
+      "area": "Madrid",
+      "blurb": "Main station for high-speed trains to Toledo.",
+      "checkedAt": "2026-11-02",
+      "lat": 40.4066,
+      "lng": -3.6892
+    },
+    {
+      "slug": "toledo-cathedral",
+      "name": "Toledo Cathedral",
+      "category": "EXPERIENCE",
+      "area": "Toledo",
+      "blurb": "Gothic Primate Cathedral of Spain, the centrepiece of the walled old city.",
+      "checkedAt": "2026-11-02",
+      "tip": "Monday to Saturday 10 am to 6:30 pm, Sunday 2 pm to 6:30 pm; last entry 30 minutes before.",
+      "website": "https://www.catedralprimada.es/",
+      "lat": 39.8569,
+      "lng": -4.0234
+    },
+    {
+      "slug": "synagogue-el-transito",
+      "name": "Synagogue of El Tránsito",
+      "category": "EXPERIENCE",
+      "area": "Toledo",
+      "blurb": "14th-century synagogue, now the Sephardic Museum.",
+      "checkedAt": "2026-11-02",
+      "tip": "Tuesday to Saturday 9:30 am to 8 pm, Sundays and holidays 10 am to 3 pm, closed Mondays.",
+      "website": "https://www.cultura.gob.es/msefardi/",
+      "lat": 39.8565,
+      "lng": -4.0287
+    },
+    {
+      "slug": "mosque-cristo-de-la-luz",
+      "name": "Mosque of Cristo de la Luz",
+      "category": "EXPERIENCE",
+      "area": "Toledo",
+      "blurb": "Small mosque from the year 999, later a church, one of Toledo's 'three cultures' sights.",
+      "checkedAt": "2026-11-02",
+      "lat": 39.8606,
+      "lng": -4.0237
+    },
+    {
+      "slug": "madrid-chamartin",
+      "name": "Madrid Chamartín station",
+      "category": "TRANSIT",
+      "area": "Madrid",
+      "blurb": "Station for high-speed trains to Segovia.",
+      "checkedAt": "2026-11-02",
+      "lat": 40.472,
+      "lng": -3.6827
+    },
+    {
+      "slug": "segovia-aqueduct",
+      "name": "Roman Aqueduct of Segovia",
+      "category": "EXPERIENCE",
+      "area": "Segovia",
+      "blurb": "Roman aqueduct with 166 arches striding through the city centre.",
+      "checkedAt": "2026-11-02",
+      "lat": 40.9481,
+      "lng": -4.1184
+    },
+    {
+      "slug": "alcazar-of-segovia",
+      "name": "Alcázar of Segovia",
+      "category": "EXPERIENCE",
+      "area": "Segovia",
+      "blurb": "Fairytale castle on a rock above two rivers, said to have inspired Disney's Cinderella castle.",
+      "checkedAt": "2026-11-02",
+      "tip": "10 am to 6 pm (Nov to Mar), 10 am to 7:30 pm (Apr to Oct).",
+      "website": "https://www.alcazardesegovia.com/",
+      "lat": 40.9526,
+      "lng": -4.1324
+    },
+    {
+      "slug": "segovia-cathedral",
+      "name": "Segovia Cathedral",
+      "category": "EXPERIENCE",
+      "area": "Segovia",
+      "blurb": "Late-Gothic cathedral on the Plaza Mayor.",
+      "checkedAt": "2026-11-02",
+      "lat": 40.9497,
+      "lng": -4.1249
+    },
+    {
+      "slug": "meson-de-candido",
+      "name": "Mesón de Cándido",
+      "category": "FOOD",
+      "area": "Segovia",
+      "blurb": "Famous restaurant at the foot of the aqueduct, known for cochinillo asado (roast suckling pig).",
+      "checkedAt": "2026-11-02",
+      "website": "https://www.mesondecandido.es/",
+      "lat": 40.9479,
+      "lng": -4.1178
+    }
+  ],
+  "creators": [
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "toledo-day-trip-madrid-willflyforfood",
+      "title": "Toledo day trip from Madrid",
+      "tier": "MIDRANGE",
+      "days": 1,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/best-day-trips-from-madrid/",
+      "summary": "The 'City of the Three Cultures', about half an hour from Madrid by high-speed train: the cathedral, El Tránsito synagogue and the Cristo de la Luz mosque.",
+      "items": [
+        {
+          "day": 1,
+          "name": "AVE from Atocha to Toledo",
+          "category": "TRANSIT",
+          "place": "madrid-atocha",
+          "note": "About 35 minutes, then a 10 to 15 minute walk up to the old city. Gov.uk reported a high-speed rail collision near Toledo on 28 Oct 2026: check Renfe before you go."
+        },
+        {
+          "day": 1,
+          "name": "Toledo Cathedral",
+          "category": "EXPERIENCE",
+          "place": "toledo-cathedral",
+          "note": "The guide suggests a guided tour to get the most out of Toledo.",
+          "price": 13.04,
+          "priceNote": "€12 basic ticket",
+          "priceSource": "https://www.catedralprimada.es/visita-cultural/entradas-catedral-toledo/",
+          "sentiment": "MUST_VISIT"
+        },
+        {
+          "day": 1,
+          "name": "Synagogue of El Tránsito",
+          "category": "EXPERIENCE",
+          "place": "synagogue-el-transito",
+          "note": "Closed Mondays."
+        },
+        {
+          "day": 1,
+          "name": "Mosque of Cristo de la Luz",
+          "category": "EXPERIENCE",
+          "place": "mosque-cristo-de-la-luz",
+          "note": "Small and quick to see."
+        }
+      ]
+    },
+    {
+      "slug": "segovia-day-trip-madrid-willflyforfood",
+      "title": "Segovia day trip from Madrid",
+      "tier": "MIDRANGE",
+      "days": 1,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/best-day-trips-from-madrid/",
+      "summary": "Roman aqueduct, the fairytale Alcázar and the cathedral, with roast suckling pig for lunch. About half an hour by high-speed train from Chamartín.",
+      "items": [
+        {
+          "day": 1,
+          "name": "AVE from Chamartín to Segovia-Guiomar",
+          "category": "TRANSIT",
+          "place": "madrid-chamartin",
+          "note": "About 30 minutes. The station is 8 km out: take bus 11 or 12 into town."
+        },
+        {
+          "day": 1,
+          "name": "Roman Aqueduct of Segovia",
+          "category": "EXPERIENCE",
+          "place": "segovia-aqueduct",
+          "note": "166 arches over the city.",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/best-day-trips-from-madrid/",
+          "sentiment": "MUST_VISIT"
+        },
+        {
+          "day": 1,
+          "name": "Mesón de Cándido",
+          "category": "FOOD",
+          "place": "meson-de-candido",
+          "note": "Lunch: cochinillo asado. Or Restaurante José María."
+        },
+        {
+          "day": 1,
+          "name": "Segovia Cathedral",
+          "category": "EXPERIENCE",
+          "place": "segovia-cathedral",
+          "note": "On the Plaza Mayor."
+        },
+        {
+          "day": 1,
+          "name": "Alcázar of Segovia",
+          "category": "EXPERIENCE",
+          "place": "alcazar-of-segovia",
+          "note": "The castle said to have inspired Cinderella's."
+        }
+      ]
+    }
+  ]
+}
