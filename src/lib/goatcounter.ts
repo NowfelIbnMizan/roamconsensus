@@ -26,16 +26,27 @@ export function visitorStatsReady() {
   return site() !== null;
 }
 
+const wait = (ms: number) => new Promise((done) => setTimeout(done, ms));
+
+/** One API call. Calls are spaced out, and a "too many requests" answer waits for the limit to reset and tries again. */
 async function get<T>(path: string, params: Record<string, string>): Promise<T> {
   const s = site()!;
   const url = `https://${s.code}.goatcounter.com/api/v0/${path}?${new URLSearchParams(params)}`;
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${s.token}`, "Content-Type": "application/json" },
-    cache: "no-store",
-    signal: AbortSignal.timeout(8000),
-  });
-  if (!res.ok) throw new Error(`GoatCounter ${path}: ${res.status}`);
-  return res.json() as Promise<T>;
+  for (let attempt = 0; ; attempt++) {
+    await wait(300);
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${s.token}`, "Content-Type": "application/json" },
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+    if (res.status === 429 && attempt < 2) {
+      const reset = Number(res.headers.get("X-Rate-Limit-Reset")) || 1;
+      await wait(Math.min(reset, 3) * 1000);
+      continue;
+    }
+    if (!res.ok) throw new Error(`GoatCounter ${path}: ${res.status}`);
+    return res.json() as Promise<T>;
+  }
 }
 
 /** GoatCounter wants RFC 3339 times rounded to the hour. */
@@ -53,9 +64,14 @@ export async function visitorStats(): Promise<VisitorStats | null> {
     "stats/hits",
     { ...range, limit: "10" },
   );
+  // A side list that still fails shows as empty instead of hiding every number.
   const list = (page: string) =>
-    get<{ stats?: { name: string; count: number }[] }>(`stats/${page}`, { ...range, limit: "8" }).then((r) =>
-      (r.stats ?? []).map((x) => ({ name: x.name || "(unknown)", count: x.count })),
+    get<{ stats?: { name: string; count: number }[] }>(`stats/${page}`, { ...range, limit: "8" }).then(
+      (r) => (r.stats ?? []).map((x) => ({ name: x.name || "(unknown)", count: x.count })),
+      (e) => {
+        console.error("[stats]", e);
+        return [];
+      },
     );
   const referrers = await list("toprefs");
   const countries = await list("locations");
