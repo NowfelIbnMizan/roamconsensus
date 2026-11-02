@@ -1,0 +1,469 @@
+{
+  "slug": "barcelona",
+  "name": "Barcelona",
+  "country": "Spain",
+  "summary": "Gaudí's city by the sea, and a base for day trips to Montserrat's mountain monastery, medieval Girona and Dalí's museum in Figueres.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Climate_of_Barcelona",
+  "months": [
+    {
+      "month": 1,
+      "highC": 14,
+      "lowC": 8,
+      "rainMm": 33,
+      "crowd": "LOW",
+      "note": "Mild and sunny for winter; quietest month after the holidays."
+    },
+    {
+      "month": 2,
+      "highC": 14,
+      "lowC": 8,
+      "rainMm": 30,
+      "crowd": "LOW",
+      "note": "Cool and dry; good for museums and day trips."
+    },
+    {
+      "month": 3,
+      "highC": 16,
+      "lowC": 10,
+      "rainMm": 38,
+      "crowd": "MEDIUM",
+      "note": "Spring begins; Easter can fall in March."
+    },
+    {
+      "month": 4,
+      "highC": 18,
+      "lowC": 12,
+      "rainMm": 46,
+      "crowd": "HIGH",
+      "note": "Warm days; Sant Jordi on 23 April fills the streets with books and roses."
+    },
+    {
+      "month": 5,
+      "highC": 21,
+      "lowC": 15,
+      "rainMm": 31,
+      "crowd": "HIGH",
+      "note": "Warm and dry, ideal for walking and the hills of Montserrat."
+    },
+    {
+      "month": 6,
+      "highC": 24,
+      "lowC": 19,
+      "rainMm": 18,
+      "crowd": "HIGH",
+      "note": "Beach season starts; Sant Joan on 23 June brings fireworks all night."
+    },
+    {
+      "month": 7,
+      "highC": 27,
+      "lowC": 22,
+      "rainMm": 25,
+      "crowd": "HIGH",
+      "note": "Hot and humid, busiest month."
+    },
+    {
+      "month": 8,
+      "highC": 28,
+      "lowC": 23,
+      "rainMm": 28,
+      "crowd": "HIGH",
+      "note": "Hottest month; many locals leave and some shops close."
+    },
+    {
+      "month": 9,
+      "highC": 25,
+      "lowC": 20,
+      "rainMm": 65,
+      "crowd": "HIGH",
+      "note": "Warm sea, but late-summer storms start; La Mercè festival late in the month."
+    },
+    {
+      "month": 10,
+      "highC": 22,
+      "lowC": 16,
+      "rainMm": 75,
+      "crowd": "MEDIUM",
+      "note": "Wettest month, still mild."
+    },
+    {
+      "month": 11,
+      "highC": 18,
+      "lowC": 11,
+      "rainMm": 38,
+      "crowd": "LOW",
+      "note": "Cooler and quieter, with fewer crowds."
+    },
+    {
+      "month": 12,
+      "highC": 15,
+      "lowC": 9,
+      "rainMm": 33,
+      "crowd": "MEDIUM",
+      "note": "Christmas markets; mild days and cool nights."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "90 days in any 180",
+      "body": "Visa-free visitors can stay in the Schengen area, which includes Spain, for up to 90 days in any 180-day period. Earlier Schengen visits in those 180 days count, and overstaying can bring a ban of up to 3 years.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Check your passport dates",
+      "body": "Your passport must be issued less than 10 years before you arrive and expire at least 3 months after the day you plan to leave the Schengen area.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "Fingerprints at the border (EES)",
+      "body": "The EU Entry/Exit System replaces passport stamps. On your first visit you may register fingerprints and a photo at a booth before passport control. It's free, and the record lasts 3 years.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "ETIAS isn't running yet",
+      "body": "ETIAS, the EU's online travel authorisation for visa-free visitors, was not yet operational in August 2026 and was expected to launch in late 2026. It is not a visa. Check before you fly.",
+      "sourceUrl": "https://www.axa-schengen.com/en/visa/visit-schengen"
+    },
+    {
+      "topic": "Entry",
+      "title": "Have proof ready at the border",
+      "body": "Border officers may ask to see a return or onward ticket, travel insurance, enough money for your stay and where you are staying.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Safety",
+      "title": "Watch for pickpockets",
+      "body": "Be alert to street crime. Thieves use distraction techniques and often work in teams. Don't leave your passport at hotel reception to collect later.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Carry photo ID",
+      "body": "You must show photo ID if a police officer asks.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Keep your drink in sight",
+      "body": "Buy your own drinks and keep them in sight so they can't be spiked.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Safety",
+      "title": "Emergency number 112",
+      "body": "Call 112 for police, ambulance or fire.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/warnings-and-insurance"
+    },
+    {
+      "topic": "Health",
+      "title": "Get travel insurance",
+      "body": "UK and EU visitors can use a GHIC or EHIC for state healthcare, but it is not a replacement for travel insurance.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/health"
+    },
+    {
+      "topic": "Safety",
+      "title": "Summer heat and wildfires",
+      "body": "Extreme heat hits much of Spain in summer. Starting a wildfire is a crime even by accident, so take care with cigarettes and barbecues.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/safety-and-security"
+    },
+    {
+      "topic": "Money",
+      "title": "Declare €10,000 or more in cash",
+      "body": "Cash of €10,000 or more must be declared when you enter or leave the EU. Use official exchange offices or banks to change money.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Entry",
+      "title": "No meat or dairy in your bag",
+      "body": "You can't bring meat, milk or products containing them into the EU from outside it, with a few exceptions.",
+      "sourceUrl": "https://www.gov.uk/foreign-travel-advice/spain/entry-requirements"
+    },
+    {
+      "topic": "Money",
+      "title": "Barcelona tourist tax up to €12 a night",
+      "body": "Since 1 April 2026 Barcelona adds a €5 city surcharge to the Catalan tax. Totals per person per night: €12 in 5-star hotels, €8.40 in 4-star, €9.50 in tourist apartments, €6 in hostels. Children 16 and under are exempt.",
+      "sourceUrl": "https://www.catalannews.com/society-science/item/new-tourist-tax-comes-into-force-in-barcelona"
+    }
+  ],
+  "places": [
+    {
+      "slug": "placa-espanya-station",
+      "name": "Plaça d'Espanya station",
+      "category": "TRANSIT",
+      "area": "Barcelona",
+      "blurb": "FGC station for R5 trains to Montserrat.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.375,
+      "lng": 2.149
+    },
+    {
+      "slug": "montserrat-rack-railway",
+      "name": "Montserrat rack railway",
+      "category": "TRANSIT",
+      "area": "Montserrat",
+      "blurb": "Cremallera rack railway up the mountain to the monastery.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.588,
+      "lng": 1.834
+    },
+    {
+      "slug": "montserrat-monastery",
+      "name": "Montserrat Monastery and Basilica",
+      "category": "EXPERIENCE",
+      "area": "Montserrat",
+      "blurb": "Benedictine abbey of Santa Maria de Montserrat on a jagged mountain, home of the Black Madonna.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.5934,
+      "lng": 1.8378
+    },
+    {
+      "slug": "escolania-de-montserrat",
+      "name": "Escolania de Montserrat",
+      "category": "EXPERIENCE",
+      "area": "Montserrat",
+      "blurb": "One of Europe's oldest boys' choirs, singing in the basilica.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.5933,
+      "lng": 1.8375
+    },
+    {
+      "slug": "sant-jeroni",
+      "name": "Sant Jeroni peak",
+      "category": "EXPERIENCE",
+      "area": "Montserrat",
+      "blurb": "Montserrat's highest point at 1,236 m, a hike from the monastery.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.6062,
+      "lng": 1.8112
+    },
+    {
+      "slug": "sant-joan-funicular",
+      "name": "Sant Joan funicular",
+      "category": "TRANSIT",
+      "area": "Montserrat",
+      "blurb": "Funicular from the monastery up to the Sant Joan trails, a shortcut toward Sant Jeroni.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.5939,
+      "lng": 1.836
+    },
+    {
+      "slug": "barcelona-sants-station",
+      "name": "Barcelona-Sants station",
+      "category": "TRANSIT",
+      "area": "Barcelona",
+      "blurb": "Main station for AVE high-speed trains to Girona and Figueres.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.379,
+      "lng": 2.1404
+    },
+    {
+      "slug": "girona-cathedral",
+      "name": "Girona Cathedral",
+      "category": "EXPERIENCE",
+      "area": "Girona",
+      "blurb": "Cathedral at the top of a grand stairway, with one of the widest Gothic naves in the world.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.9874,
+      "lng": 2.8263
+    },
+    {
+      "slug": "girona-arab-baths",
+      "name": "Arab Baths",
+      "category": "EXPERIENCE",
+      "area": "Girona",
+      "blurb": "Romanesque bathhouse from the 12th century in the old town.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.9878,
+      "lng": 2.8257
+    },
+    {
+      "slug": "girona-jewish-quarter",
+      "name": "Jewish Quarter (El Call)",
+      "category": "EXPERIENCE",
+      "area": "Girona",
+      "blurb": "Narrow medieval lanes of one of Europe's best-kept Jewish quarters.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.986,
+      "lng": 2.825
+    },
+    {
+      "slug": "onyar-houses",
+      "name": "Houses on the Onyar",
+      "category": "EXPERIENCE",
+      "area": "Girona",
+      "blurb": "Row of colourful houses along the River Onyar; Girona doubled as Braavos and King's Landing in Game of Thrones.",
+      "checkedAt": "2026-11-02",
+      "lat": 41.984,
+      "lng": 2.824
+    },
+    {
+      "slug": "el-celler-de-can-roca",
+      "name": "El Celler de Can Roca",
+      "category": "FOOD",
+      "area": "Girona",
+      "blurb": "Three-Michelin-star Catalan restaurant run by the Roca brothers.",
+      "checkedAt": "2026-11-02",
+      "website": "https://cellercanroca.com/",
+      "lat": 41.9935,
+      "lng": 2.8072
+    },
+    {
+      "slug": "dali-theatre-museum",
+      "name": "Dalí Theatre-Museum",
+      "category": "EXPERIENCE",
+      "area": "Figueres",
+      "blurb": "Dalí's own museum, with giant eggs on the roof and the artist buried in a crypt below the stage.",
+      "checkedAt": "2026-11-02",
+      "tip": "Oct to Dec and Jan to mid-Mar: Tuesday to Sunday, 10:30 am to 6 pm. Jul and Aug: daily, 9 am to 8 pm.",
+      "website": "https://www.salvador-dali.org/en/visit/dali-theatre-museum/",
+      "lat": 42.268,
+      "lng": 2.9594
+    }
+  ],
+  "creators": [
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "montserrat-day-trip-barcelona-willflyforfood",
+      "title": "Montserrat day trip from Barcelona",
+      "tier": "MIDRANGE",
+      "days": 1,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/best-day-trips-from-barcelona/",
+      "summary": "The mountain monastery an hour from Barcelona: R5 train and rack railway up, the Black Madonna, the boys' choir before 1 pm and a hike to Sant Jeroni.",
+      "items": [
+        {
+          "day": 1,
+          "name": "R5 train from Plaça d'Espanya",
+          "category": "TRANSIT",
+          "place": "placa-espanya-station",
+          "note": "About 1 hour to the foot of the mountain."
+        },
+        {
+          "day": 1,
+          "name": "Montserrat rack railway",
+          "category": "TRANSIT",
+          "place": "montserrat-rack-railway",
+          "note": "Up to the monastery.",
+          "price": 16.3,
+          "priceNote": "€15 return per adult (rack railway only)",
+          "priceSource": "https://turistren.cat/trens/cremallera-i-funiculars-de-montserrat/"
+        },
+        {
+          "day": 1,
+          "name": "Montserrat Monastery and Basilica",
+          "category": "EXPERIENCE",
+          "place": "montserrat-monastery",
+          "note": "See the Black Madonna.",
+          "sentiment": "MUST_VISIT"
+        },
+        {
+          "day": 1,
+          "name": "Escolania de Montserrat",
+          "category": "EXPERIENCE",
+          "place": "escolania-de-montserrat",
+          "note": "Arrive before 1 pm to catch the boys' choir."
+        },
+        {
+          "day": 1,
+          "name": "Sant Joan funicular",
+          "category": "TRANSIT",
+          "place": "sant-joan-funicular",
+          "note": "Optional shortcut toward the Sant Jeroni trail.",
+          "price": 19.02,
+          "priceNote": "€17.50 return per adult",
+          "priceSource": "https://turistren.cat/trens/cremallera-i-funiculars-de-montserrat/",
+          "sentiment": "OPTIONAL"
+        },
+        {
+          "day": 1,
+          "name": "Hike to Sant Jeroni",
+          "category": "EXPERIENCE",
+          "place": "sant-jeroni",
+          "note": "The 1,236 m peak above the monastery.",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/best-day-trips-from-barcelona/"
+        }
+      ]
+    },
+    {
+      "slug": "girona-figueres-day-trip-barcelona-willflyforfood",
+      "title": "Girona and Figueres day trip from Barcelona",
+      "tier": "MIDRANGE",
+      "days": 1,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/best-day-trips-from-barcelona/",
+      "summary": "Two AVE stops north of Barcelona: Girona's cathedral, Arab baths, Jewish quarter and river houses, then the Dalí Theatre-Museum in Figueres.",
+      "items": [
+        {
+          "day": 1,
+          "name": "AVE from Barcelona-Sants to Girona",
+          "category": "TRANSIT",
+          "place": "barcelona-sants-station",
+          "note": "High-speed train; the guide puts Girona at about 1 hr 30 min door to door."
+        },
+        {
+          "day": 1,
+          "name": "Girona Cathedral",
+          "category": "EXPERIENCE",
+          "place": "girona-cathedral",
+          "note": "Climb the big stairway."
+        },
+        {
+          "day": 1,
+          "name": "Arab Baths",
+          "category": "EXPERIENCE",
+          "place": "girona-arab-baths",
+          "note": "Near the cathedral."
+        },
+        {
+          "day": 1,
+          "name": "Jewish Quarter (El Call)",
+          "category": "EXPERIENCE",
+          "place": "girona-jewish-quarter",
+          "note": "Medieval lanes."
+        },
+        {
+          "day": 1,
+          "name": "Houses on the Onyar",
+          "category": "EXPERIENCE",
+          "place": "onyar-houses",
+          "note": "Game of Thrones fans will spot Braavos and King's Landing.",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/best-day-trips-from-barcelona/"
+        },
+        {
+          "day": 1,
+          "name": "El Celler de Can Roca",
+          "category": "FOOD",
+          "place": "el-celler-de-can-roca",
+          "note": "Three-Michelin-star splurge, if you can get a table.",
+          "sentiment": "OPTIONAL"
+        },
+        {
+          "day": 1,
+          "name": "Dalí Theatre-Museum",
+          "category": "EXPERIENCE",
+          "place": "dali-theatre-museum",
+          "note": "AVE on to Figueres Vilafant. The guide calls it Spain's second most visited museum after the Prado.",
+          "price": 20.11,
+          "priceNote": "from €18.50 per adult",
+          "priceSource": "https://www.salvador-dali.org/en/visit/dali-theatre-museum/",
+          "sentiment": "MUST_VISIT"
+        }
+      ]
+    }
+  ]
+}

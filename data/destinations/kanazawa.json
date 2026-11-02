@@ -1,0 +1,357 @@
+{
+  "slug": "kanazawa",
+  "name": "Kanazawa",
+  "country": "Japan",
+  "summary": "Kenroku-en garden, wooden geisha teahouse districts, samurai lanes, gold leaf everything and the seafood stalls of Omicho Market.",
+  "climateSourceUrl": "https://en.wikipedia.org/wiki/Kanazawa",
+  "months": [
+    {
+      "month": 1,
+      "highC": 7,
+      "lowC": 1,
+      "rainMm": 256,
+      "crowd": "LOW",
+      "note": "Snowy and wet; Kenroku-en's yukitsuri rope supports on the pines."
+    },
+    {
+      "month": 2,
+      "highC": 8,
+      "lowC": 1,
+      "rainMm": 163,
+      "crowd": "LOW",
+      "note": "Cold and grey, with snow on many days."
+    },
+    {
+      "month": 3,
+      "highC": 12,
+      "lowC": 3,
+      "rainMm": 157,
+      "crowd": "MEDIUM",
+      "note": "Plum blossoms; still chilly and damp."
+    },
+    {
+      "month": 4,
+      "highC": 17,
+      "lowC": 8,
+      "rainMm": 144,
+      "crowd": "HIGH",
+      "note": "Cherry blossoms at Kenroku-en and along the river at Kazuemachi; busiest time."
+    },
+    {
+      "month": 5,
+      "highC": 22,
+      "lowC": 14,
+      "rainMm": 138,
+      "crowd": "MEDIUM",
+      "note": "Mild and green; Golden Week crowds early in the month."
+    },
+    {
+      "month": 6,
+      "highC": 26,
+      "lowC": 18,
+      "rainMm": 170,
+      "crowd": "MEDIUM",
+      "note": "Warm, with the rainy season starting."
+    },
+    {
+      "month": 7,
+      "highC": 30,
+      "lowC": 23,
+      "rainMm": 233,
+      "crowd": "MEDIUM",
+      "note": "Hot and humid, rainy season ends mid-month."
+    },
+    {
+      "month": 8,
+      "highC": 31,
+      "lowC": 24,
+      "rainMm": 179,
+      "crowd": "HIGH",
+      "note": "Hottest month; Obon holidays bring crowds."
+    },
+    {
+      "month": 9,
+      "highC": 27,
+      "lowC": 20,
+      "rainMm": 232,
+      "crowd": "MEDIUM",
+      "note": "Hot early, then cooler; typhoons possible."
+    },
+    {
+      "month": 10,
+      "highC": 22,
+      "lowC": 14,
+      "rainMm": 177,
+      "crowd": "MEDIUM",
+      "note": "Pleasant and clear; autumn colours start late in the month."
+    },
+    {
+      "month": 11,
+      "highC": 16,
+      "lowC": 8,
+      "rainMm": 251,
+      "crowd": "HIGH",
+      "note": "Autumn leaves at Kenroku-en; crab season opens and rain picks up."
+    },
+    {
+      "month": 12,
+      "highC": 10,
+      "lowC": 4,
+      "rainMm": 301,
+      "crowd": "LOW",
+      "note": "Wettest month, with the first snow."
+    }
+  ],
+  "tips": [
+    {
+      "topic": "Entry",
+      "title": "Visa-free for short stays",
+      "body": "Travellers from visa-exempt countries such as the US can stay up to 90 days for tourism without a visa. You need a passport valid for your whole stay and usually proof of onward travel.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "Use Visit Japan Web for faster arrival",
+      "body": "Visit Japan Web creates QR codes for immigration and customs that you can scan at automated kiosks on arrival. It is optional in 2026, and paper cards are still accepted. Set up your account about two weeks before you fly.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Entry",
+      "title": "JESTA is not needed yet",
+      "body": "Japan passed a law on 29 May 2026 to create JESTA, an electronic travel authorization for visa-exempt visitors, but it will not launch before 2028. Ignore websites that charge for 'early JESTA registration'.",
+      "sourceUrl": "https://heymondo.com/blog/japan-travel-requirements-2026/"
+    },
+    {
+      "topic": "Money",
+      "title": "Tax-free shopping is now a refund at the airport",
+      "body": "From 1 November 2026, visitors pay the full price including tax in shops and get the consumption tax back after customs checks the goods at departure. You must spend at least ¥5,000 per shop per day, and you need your passport plus all items and receipts. Leave time at the airport, because purchases with a missing item or receipt are not refunded.",
+      "sourceUrl": "https://www.japan.travel/en/us/blog/everything-you-need-to-know-japans-new-tax-free-shopping-system/"
+    },
+    {
+      "topic": "Money",
+      "title": "Carry some cash",
+      "body": "Japan still relies heavily on cash, so check whether a place takes cards before you order. You can withdraw yen at most ATMs, at airports or at banks.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Etiquette",
+      "title": "Don't tip",
+      "body": "Tipping is not customary in Japan and can cause embarrassment or confusion. The price you see is what you pay.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Connectivity",
+      "title": "Plugs and voltage",
+      "body": "Japan uses two flat parallel-prong plugs at 100 V AC. Bring an adapter, and check that your devices accept 100 V.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Safety",
+      "title": "Emergency numbers",
+      "body": "Dial 110 for police and 119 for fire or ambulance.",
+      "sourceUrl": "https://www.japan.travel/en/greenexpo2027/about/visitor-guide/"
+    },
+    {
+      "topic": "Money",
+      "title": "Departure tax is now ¥3,000",
+      "body": "Japan's International Tourist Tax rose from ¥1,000 to ¥3,000 per departure on 1 July 2026. It is usually included in your ticket price when you buy the ticket.",
+      "sourceUrl": "https://www.japan.travel/en/ca/news/japans-international-tourist-tax-is-increasing/"
+    },
+    {
+      "topic": "Health",
+      "title": "Check your medicines",
+      "body": "Japan's anti-stimulant law bans some common medicines, including Vicks inhalers, cold and flu tablets containing pseudoephedrine, and some codeine painkillers. Foreign nationals have been detained and deported for carrying them. Check with a Japanese embassy before packing.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Safety",
+      "title": "Typhoon season June–December",
+      "body": "Typhoon season runs from June to December and peaks from July to September. Follow Japan Meteorological Agency (JMA) forecasts and any evacuation orders.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Safety",
+      "title": "Earthquakes and the Visitor Hotline",
+      "body": "Japan is a major earthquake zone, so follow tsunami warnings and staff instructions in hotels and stations. The Japan Visitor Hotline (+81 50 3816 2787) gives emergency help in English.",
+      "sourceUrl": "https://tnaqa.mirrorweb.com/ukgwa/20260825151133mp_/https://www.gov.uk/foreign-travel-advice/japan/print"
+    },
+    {
+      "topic": "Transport",
+      "title": "Kenroku-en takes cash only",
+      "body": "Kenroku-en charges ¥320 for adults (18+), cash only. Over-65s get in free. Hours are 7 am to 6 pm from 1 March to 15 October and 8 am to 5 pm the rest of the year.",
+      "sourceUrl": "https://shiro-niwa.pref.ishikawa.lg.jp/kenrokuen-garden/e/info.html"
+    }
+  ],
+  "places": [
+    {
+      "slug": "kenroku-en",
+      "name": "Kenroku-en",
+      "category": "EXPERIENCE",
+      "area": "Kenrokumachi",
+      "blurb": "One of Japan's three most famous landscape gardens, next to Kanazawa Castle.",
+      "checkedAt": "2026-11-02",
+      "tip": "Go early. 7 am to 6 pm (1 Mar to 15 Oct), 8 am to 5 pm otherwise. Cash only.",
+      "website": "https://shiro-niwa.pref.ishikawa.lg.jp/kenrokuen-garden/e/",
+      "lat": 36.5621,
+      "lng": 136.6627
+    },
+    {
+      "slug": "kazuemachi-chayagai",
+      "name": "Kazuemachi Chayagai",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Smallest and quietest of Kanazawa's three geisha districts, on the Asano River; cherry trees hang over the water in spring.",
+      "checkedAt": "2026-11-02",
+      "lat": 36.5716,
+      "lng": 136.6648
+    },
+    {
+      "slug": "higashi-chayagai",
+      "name": "Higashi Chayagai",
+      "category": "EXPERIENCE",
+      "area": "Higashiyama",
+      "blurb": "Biggest and most famous geisha district: wooden teahouses, shops and cafes. Good place to rent a kimono.",
+      "checkedAt": "2026-11-02",
+      "lat": 36.5725,
+      "lng": 136.6668
+    },
+    {
+      "slug": "hakuichi-higashiyama",
+      "name": "Hakuichi",
+      "category": "FOOD",
+      "area": "Higashiyama",
+      "blurb": "Gold leaf shop in Higashi Chayagai famous for soft-serve ice cream wrapped in a sheet of gold leaf. Kanazawa makes 99% of Japan's gold leaf.",
+      "checkedAt": "2026-11-02",
+      "website": "https://www.hakuichi.co.jp/",
+      "lat": 36.5722,
+      "lng": 136.6661
+    },
+    {
+      "slug": "omicho-market",
+      "name": "Omicho Market",
+      "category": "FOOD",
+      "area": "Omicho",
+      "blurb": "Covered market with over 200 shops and restaurants selling produce and Kanazawa's excellent seafood.",
+      "checkedAt": "2026-11-02",
+      "tip": "9 am to 5 pm daily.",
+      "lat": 36.5714,
+      "lng": 136.6567
+    },
+    {
+      "slug": "nagamachi-samurai-district",
+      "name": "Nagamachi Samurai District",
+      "category": "EXPERIENCE",
+      "area": "Nagamachi",
+      "blurb": "Edo-era samurai neighbourhood near Kanazawa Castle, with earthen walls, canals and samurai house museums.",
+      "checkedAt": "2026-11-02",
+      "lat": 36.5627,
+      "lng": 136.6497
+    },
+    {
+      "slug": "jr-kanazawa-komatsu",
+      "name": "JR train, Kanazawa to Komatsu",
+      "category": "TRANSIT",
+      "area": "Kanazawa Station",
+      "blurb": "JR train south to Komatsu, about an hour by the creator's count.",
+      "checkedAt": "2026-11-02",
+      "lat": 36.5781,
+      "lng": 136.6478
+    },
+    {
+      "slug": "rojo-park",
+      "name": "Rojo Park",
+      "category": "EXPERIENCE",
+      "area": "Komatsu",
+      "blurb": "Free public park in Komatsu with cherry blossoms and wisteria, open 24 hours.",
+      "checkedAt": "2026-11-02",
+      "lat": 36.4046,
+      "lng": 136.45
+    }
+  ],
+  "creators": [
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
+    }
+  ],
+  "itineraries": [
+    {
+      "slug": "kanazawa-1-day-willflyforfood",
+      "title": "Kanazawa in 1 day",
+      "tier": "MIDRANGE",
+      "days": 1,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/chubu-itinerary/",
+      "summary": "Day 4 of Will Fly For Food's Central Japan trip: Kenroku-en early, two geisha districts, gold leaf ice cream, lunch at Omicho Market, the samurai district, then Rojo Park in spring. Written with the Central Japan tourism board.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Kenroku-en",
+          "category": "EXPERIENCE",
+          "place": "kenroku-en",
+          "note": "Get an early start; about 1 hour. The writer calls it the most beautiful garden she's seen.",
+          "price": 2.02,
+          "priceNote": "¥320 per adult, cash only",
+          "priceSource": "https://shiro-niwa.pref.ishikawa.lg.jp/kenrokuen-garden/e/info.html",
+          "sentiment": "MUST_VISIT"
+        },
+        {
+          "day": 1,
+          "name": "Kazuemachi Chayagai",
+          "category": "EXPERIENCE",
+          "place": "kazuemachi-chayagai",
+          "note": "Walk over from Kenroku-en; about 30 minutes. The writer's favourite of the three."
+        },
+        {
+          "day": 1,
+          "name": "Higashi Chayagai",
+          "category": "EXPERIENCE",
+          "place": "higashi-chayagai",
+          "note": "About 1 hour. Consider renting a kimono."
+        },
+        {
+          "day": 1,
+          "name": "Hakuichi",
+          "category": "FOOD",
+          "place": "hakuichi-higashiyama",
+          "note": "Gold leaf soft cream."
+        },
+        {
+          "day": 1,
+          "name": "Omicho Market",
+          "category": "FOOD",
+          "place": "omicho-market",
+          "note": "Lunch: fresh seafood."
+        },
+        {
+          "day": 1,
+          "name": "Nagamachi Samurai District",
+          "category": "EXPERIENCE",
+          "place": "nagamachi-samurai-district",
+          "note": "Walk from Omicho; 30 minutes to 1 hour."
+        },
+        {
+          "day": 1,
+          "name": "JR train to Komatsu",
+          "category": "TRANSIT",
+          "place": "jr-kanazawa-komatsu",
+          "note": "About an hour south by JR. The writers used the Takayama-Hokuriku Area Tourist Pass."
+        },
+        {
+          "day": 1,
+          "name": "Rojo Park",
+          "category": "EXPERIENCE",
+          "place": "rojo-park",
+          "note": "Spring only: cherry blossoms and wisteria. About 2 hours.",
+          "price": 0,
+          "priceNote": "free",
+          "priceSource": "https://www.willflyforfood.net/chubu-itinerary/",
+          "sentiment": "OPTIONAL"
+        }
+      ]
+    }
+  ]
+}
