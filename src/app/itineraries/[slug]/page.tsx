@@ -630,7 +630,11 @@ function DayTimeline({
                           </>
                         )}
                       </span>
-                      <DriveSummary minutes={drive.get(day)?.total ?? 0} />
+                      <DriveSummary
+                        minutes={drive.get(day)?.total ?? 0}
+                        far={drive.get(day)?.far}
+                        flight={drive.get(day)?.flight}
+                      />
                     </p>
                     {areas.length > 1 && (
                       <ul className="mt-2 flex flex-wrap gap-1.5">

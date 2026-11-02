@@ -1,6 +1,7 @@
 import Link from "next/link";
 import * as asia from "@/lib/asia-map";
 import * as world from "@/lib/world-map";
+import { distanceKm } from "@/lib/map";
 
 type City = {
   slug: string;
@@ -15,21 +16,54 @@ const FONT = 26;
 const PAD = 40;
 // Sizes above are tuned for a view about this wide; a wider view (cities on several continents) scales them up to match.
 const VIEW = 900;
-const overlaps = (a: Box, b: Box) =>
-  a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+const MIN_VIEW = 420;
 
 const inside = (map: typeof asia, c: City) => {
   const [x, y] = map.project(c.lat, c.lng);
   return x > 0 && x < map.MAP_W && y > 0 && y < map.MAP_H;
 };
 
+/** Cities closer than this (km) to some other city in a group share one map panel. */
+const REGION_KM = 2000;
+
+/** Groups cities into regions (Asia, Europe...) by chaining nearby ones, biggest region first. */
+function regions(cities: City[]) {
+  const groups: City[][] = [];
+  for (const c of cities) {
+    const near = groups.filter((g) => g.some((o) => distanceKm(o, c) < REGION_KM));
+    const merged = [c, ...near.flat()];
+    for (const g of near) groups.splice(groups.indexOf(g), 1);
+    groups.push(merged);
+  }
+  return groups.sort((a, b) => b.length - a.length);
+}
+
 /**
- * The home page map: every city as a pin with its route count, zoomed to fit them. It uses the detailed East and
- * Southeast Asia map while every city is there, and the world map once a city added in admin is anywhere else, so
- * any new city shows up by itself. Pins that sit on top of each other (Kyoto and Osaka) are nudged apart, and each
- * label takes the first side that doesn't hit another pin or label.
+ * The home page map: every city as a pin with its route count. Cities far apart (Southeast Asia, Japan and Korea, Spain) get a panel each,
+ * so one map isn't stretched over a continent of empty land. A region inside East and Southeast Asia uses the
+ * detailed Asia map, anywhere else the world map, so any new city shows up by itself.
  */
 export function CityMap({ cities }: { cities: City[] }) {
+  const [main, ...rest] = regions(cities);
+  if (!main) return null;
+  if (rest.length === 0) return <RegionMap cities={main} legend />;
+  return (
+    <div className="grid gap-3 sm:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+      <RegionMap cities={main} legend />
+      <div className="grid content-start gap-3 max-sm:grid-cols-2">
+        {rest.map((r) => (
+          <RegionMap key={r[0].slug} cities={r} small />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * One region: pins zoomed to fit. Pins that sit on top of each other (Kyoto and Osaka) are nudged apart, and each
+ * label takes the first side that doesn't hit another pin or label, or the side that hits least.
+ */
+function RegionMap({ cities, legend = false, small = false }: { cities: City[]; legend?: boolean; small?: boolean }) {
   const { LAND, MAP_W, MAP_H, project } = cities.every((c) => inside(asia, c)) ? asia : world;
   const placed = cities
     .map((c) => {
@@ -44,7 +78,7 @@ export function CityMap({ cities }: { cities: City[] }) {
   );
   const k = Math.max(1, span / VIEW);
   const font = FONT * k;
-  const pins = placed.map((p) => ({ ...p, r: (15 + Math.min(p.routes, 8)) * k }));
+  const pins = placed.map((p) => ({ ...p, r: (12 + Math.min(p.routes, 8) * 0.8) * k }));
 
   for (let pass = 0; pass < 40; pass++)
     for (const a of pins)
@@ -53,7 +87,7 @@ export function CityMap({ cities }: { cities: City[] }) {
         const dx = b.x - a.x || 0.01;
         const dy = b.y - a.y;
         const d = Math.hypot(dx, dy);
-        const min = a.r + b.r + 6 * k;
+        const min = a.r + b.r + 14 * k;
         if (d >= min) continue;
         const push = (min - d) / 2 / d;
         a.x -= dx * push;
@@ -62,25 +96,44 @@ export function CityMap({ cities }: { cities: City[] }) {
         b.y += dy * push;
       }
 
-  const taken: Box[] = pins.map((p) => ({
-    x: p.x - p.r,
-    y: p.y - p.r,
-    w: p.r * 2,
-    h: p.r * 2,
-  }));
+  // Each pin's soft halo counts too, so a label never sits on a neighbour's halo.
+  const taken: Box[] = pins.map((p) => {
+    const r = p.r + 6 * k;
+    return { x: p.x - r, y: p.y - r, w: r * 2, h: r * 2 };
+  });
   const labels = pins.map((p) => {
     const w = p.name.length * font * 0.56;
     const h = font;
     const gap = p.r + 8 * k;
+    const d = gap * 0.75;
+    // Sides in order of preference: right, left, above, below, then the diagonals.
     const sides = [
       { x: p.x + gap, y: p.y - h / 2, anchor: "start" },
       { x: p.x - gap - w, y: p.y - h / 2, anchor: "end" },
       { x: p.x - w / 2, y: p.y - gap - h, anchor: "middle" },
       { x: p.x - w / 2, y: p.y + gap, anchor: "middle" },
+      { x: p.x + d, y: p.y - d - h, anchor: "start" },
+      { x: p.x + d, y: p.y + d, anchor: "start" },
+      { x: p.x - d - w, y: p.y - d - h, anchor: "end" },
+      { x: p.x - d - w, y: p.y + d, anchor: "end" },
     ] as const;
-    const pick =
-      sides.find((s) => !taken.some((t) => overlaps({ ...s, w, h }, t))) ??
-      sides[0];
+    const hit = (s: Box) =>
+      taken.reduce((sum, t) => {
+        const ox = Math.min(s.x + s.w, t.x + t.w) - Math.max(s.x, t.x);
+        const oy = Math.min(s.y + s.h, t.y + t.h) - Math.max(s.y, t.y);
+        return sum + (ox > 0 && oy > 0 ? ox * oy : 0);
+      }, 0);
+    // A label must read as its own pin's: clearly nearer to it than to any other pin. Take the first such side that
+    // hits nothing but a sliver of a halo, else the side that overlaps least.
+    const gapTo = (s: Box, q: { x: number; y: number; r: number }) =>
+      Math.hypot(Math.max(s.x - q.x, 0, q.x - s.x - s.w), Math.max(s.y - q.y, 0, q.y - s.y - s.h)) - q.r;
+    const own = (s: Box) => pins.every((q) => q === p || gapTo(s, q) > gapTo(s, p) * 2 + 6 * k);
+    const boxes = sides.map((s) => ({ s, box: { x: s.x, y: s.y, w, h } }));
+    const pick = (
+      boxes.find((b) => own(b.box) && hit(b.box) <= w * h * 0.1) ??
+      boxes.find((b) => hit(b.box) === 0) ??
+      boxes.reduce((best, b) => (hit(b.box) < hit(best.box) ? b : best))
+    ).s;
     taken.push({ x: pick.x, y: pick.y, w, h });
     return {
       x:
@@ -95,10 +148,17 @@ export function CityMap({ cities }: { cities: City[] }) {
   });
 
   const pad = PAD * k;
-  const x0 = Math.max(0, Math.min(...taken.map((t) => t.x)) - pad);
-  const y0 = Math.max(0, Math.min(...taken.map((t) => t.y)) - pad);
-  const x1 = Math.min(MAP_W, Math.max(...taken.map((t) => t.x + t.w)) + pad);
-  const y1 = Math.min(MAP_H, Math.max(...taken.map((t) => t.y + t.h)) + pad);
+  let x0 = Math.max(0, Math.min(...taken.map((t) => t.x)) - pad);
+  let y0 = Math.max(0, Math.min(...taken.map((t) => t.y)) - pad);
+  let x1 = Math.min(MAP_W, Math.max(...taken.map((t) => t.x + t.w)) + pad);
+  let y1 = Math.min(MAP_H, Math.max(...taken.map((t) => t.y + t.h)) + pad);
+  // A small region (two cities in Spain) keeps enough land around it to see where it is.
+  const grow = (lo: number, hi: number, min: number, max: number) => {
+    const extra = Math.max(0, min - (hi - lo)) / 2;
+    return [Math.max(0, lo - extra), Math.min(max, hi + extra)];
+  };
+  [x0, x1] = grow(x0, x1, MIN_VIEW, MAP_W);
+  [y0, y1] = grow(y0, y1, MIN_VIEW * 0.75, MAP_H);
 
   // The map key goes in the first corner with no pins or labels in it (top-left on today's Asia map).
   const corners = [
@@ -117,7 +177,7 @@ export function CityMap({ cities }: { cities: City[] }) {
     )?.at ?? "top-3 left-3";
 
   return (
-    <figure className="relative overflow-hidden rounded-3xl border border-line bg-card">
+    <figure className={`relative overflow-hidden border border-line bg-card ${small ? "rounded-2xl" : "rounded-3xl"}`}>
       <svg
         viewBox={`${x0} ${y0} ${x1 - x0} ${y1 - y0}`}
         className="block h-auto w-full"
@@ -165,10 +225,10 @@ export function CityMap({ cities }: { cities: City[] }) {
             />
             <text
               x={p.x}
-              y={p.y + 8 * k}
+              y={p.y + 6.5 * k}
               textAnchor="middle"
               fill="var(--card)"
-              fontSize={22 * k}
+              fontSize={18 * k}
               fontWeight="600"
             >
               {p.routes}
@@ -191,12 +251,14 @@ export function CityMap({ cities }: { cities: City[] }) {
         ))}
       </svg>
       {/* Map key: a sample pin and what its number means. */}
-      <figcaption className={`absolute ${corner} flex items-center gap-2 rounded-full border border-line bg-card/85 py-1 pr-3 pl-1 text-xs text-muted shadow-sm backdrop-blur-sm`}>
-        <span className="flex size-5 items-center justify-center rounded-full bg-accent text-[10px] font-semibold text-background tabular-nums">
-          4
-        </span>
-        Creator routes per city
-      </figcaption>
+      {legend && (
+        <figcaption className={`absolute ${corner} flex items-center gap-2 rounded-full border border-line bg-card/85 py-1 pr-3 pl-1 text-xs text-muted shadow-sm backdrop-blur-sm`}>
+          <span className="flex size-5 items-center justify-center rounded-full bg-accent text-[10px] font-semibold text-background tabular-nums">
+            4
+          </span>
+          Creator routes per city
+        </figcaption>
+      )}
     </figure>
   );
 }
