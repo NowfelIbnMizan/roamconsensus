@@ -1,9 +1,16 @@
-import { AlertTriangle, Car } from "lucide-react";
-import { formatMinutes, PACKED_MINUTES } from "@/lib/map";
+import { AlertTriangle, Car, Plane } from "lucide-react";
+import { formatMinutes, hopMode, PACKED_MINUTES, type Leg } from "@/lib/map";
 
 /** "~35 min drive from the last stop", under a stop's name. */
-export function LegHint({ leg }: { leg?: { km: number; minutes: number } }) {
+export function LegHint({ leg }: { leg?: Leg }) {
   if (!leg) return null;
+  if (leg.far)
+    return (
+      <p className="mt-0.5 flex items-center gap-1 text-xs text-amber-700 dark:text-amber-300">
+        <Plane className="size-3" aria-hidden />
+        {leg.km.toLocaleString("en-US")} km from the last stop: {hopMode(leg.km).text}. Give it its own day.
+      </p>
+    );
   return (
     <p className="mt-0.5 flex items-center gap-1 text-xs text-muted">
       <Car className="size-3" aria-hidden />
@@ -13,8 +20,23 @@ export function LegHint({ leg }: { leg?: { km: number; minutes: number } }) {
   );
 }
 
-/** Day header note: total time on the road, flagged when the day is packed. */
-export function DriveSummary({ minutes }: { minutes: number }) {
+/** Day header note: total time on the road, flagged when the day is packed or mixes cities. */
+export function DriveSummary({
+  minutes,
+  far = 0,
+  flight = false,
+}: {
+  minutes: number;
+  far?: number;
+  flight?: boolean;
+}) {
+  if (far > 0)
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">
+        {flight ? <Plane className="size-3" aria-hidden /> : <AlertTriangle className="size-3" aria-hidden />}
+        {flight ? "Needs a flight: stops in different cities" : "Long transfer: stops in different cities"}
+      </span>
+    );
   if (minutes === 0) return null;
   const packed = minutes >= PACKED_MINUTES;
   return (

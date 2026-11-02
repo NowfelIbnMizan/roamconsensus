@@ -81,7 +81,7 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(siteJsonLd)} />
-      <section className="grid items-center gap-6 pb-6 md:grid-cols-[1fr_1.1fr] md:gap-10 md:py-8">
+      <section className="grid items-center gap-6 pb-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:py-8">
         <div>
           <Link
             href="/creators"

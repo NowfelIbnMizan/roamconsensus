@@ -9,6 +9,7 @@ const links = [
   { href: "/admin/health", label: "City health" },
   { href: "/admin/creators", label: "Creators" },
   { href: "/admin/blog", label: "Blog" },
+  { href: "/admin/stats", label: "Visitors" },
 ];
 const more = [
   { href: "/admin/vendors", label: "Booking sites & coupons" },

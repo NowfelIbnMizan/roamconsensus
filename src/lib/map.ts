@@ -87,20 +87,44 @@ export function formatMinutes(min: number) {
 /** Hours on the road that make a day "packed". */
 export const PACKED_MINUTES = 180;
 
-/** Drive time from the previous pinned stop, for each pinned stop in order, and the day's total. */
+/** Straight-line km past which two stops are in different places (a flight or transfer), not a drive. */
+export const FAR_KM = 150;
+
+export type Leg = { km: number; minutes: number; far?: boolean };
+
+/** How people usually cover a long hop, from straight-line km (same bands as the city-to-city card). */
+export function hopMode(km: number) {
+  if (km > 700) return { flight: true, text: "a flight" };
+  if (km > 250) return { flight: true, text: "an overnight train or bus, or a short flight" };
+  return { flight: false, text: "a few hours by bus, train or taxi" };
+}
+
+/**
+ * Drive time from the previous pinned stop, for each pinned stop in order, and the day's total. A hop between
+ * cities (Chiang Mai to Bali) is not a drive: it is marked far, left out of the total and counted in `far`.
+ */
 export function dayLegs<T extends { id: string; lat?: number | null; lng?: number | null }>(stops: T[]) {
-  const legs = new Map<string, { km: number; minutes: number }>();
+  const legs = new Map<string, Leg>();
   let prev: Point | null = null;
   let total = 0;
+  let far = 0;
+  let flight = false;
   for (const s of stops) {
     if (s.lat == null || s.lng == null) continue;
     const here = { lat: s.lat, lng: s.lng };
     if (prev) {
-      const leg = driveMinutes(prev, here);
-      legs.set(s.id, leg);
-      total += leg.minutes;
+      const straight = distanceKm(prev, here);
+      if (straight > FAR_KM) {
+        legs.set(s.id, { km: Math.round(straight), minutes: 0, far: true });
+        far++;
+        if (hopMode(straight).flight) flight = true;
+      } else {
+        const leg = driveMinutes(prev, here);
+        legs.set(s.id, leg);
+        total += leg.minutes;
+      }
     }
     prev = here;
   }
-  return { legs, total };
+  return { legs, total, far, flight };
 }

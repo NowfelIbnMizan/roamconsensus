@@ -215,7 +215,7 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
         const prevCity = before ? cityOf(before.list) : null;
         const moved = city && prevCity && city.slug !== prevCity.slug;
         const pinned = list.filter(hasPin);
-        const { legs, total } = dayLegs(pinned);
+        const { legs, total, far, flight } = dayLegs(pinned);
         const routeUrl = pinned.length > 1 ? googleMapsRouteUrl(pinned) : null;
         const cost = list.reduce((sum, i) => sum + lineTotal(i), 0);
         let pin = 0;
@@ -225,9 +225,10 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
               <TravelDay
                 from={{
                   name: prevCity.name,
-                  last: before.list.findLast(hasPin),
+                  // Measure city to city: a day can hold stray stops from the other city.
+                  last: before.list.findLast((i) => hasPin(i) && i.destination?.slug === prevCity.slug),
                 }}
-                to={{ name: city.name, first: list.find(hasPin) }}
+                to={{ name: city.name, first: list.find((i) => hasPin(i) && i.destination?.slug === city.slug) }}
               />
             )}
             {/* Each day folds to one line, like a creator's route; the first day and the unplanned stops start open. */}
@@ -265,7 +266,7 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                       {list.length === 0 ? "Free day" : `${list.length} ${list.length === 1 ? "stop" : "stops"}`}
                       {cost > 0 && ` · ${money(cost)}`}
                     </span>
-                    {day !== null && <DriveSummary minutes={total} />}
+                    {day !== null && <DriveSummary minutes={total} far={far} flight={flight} />}
                   </span>
                   {list.length > 0 && (
                     <span className="mt-0.5 block truncate text-sm text-muted group-open:hidden">
