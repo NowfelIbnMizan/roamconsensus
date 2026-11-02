@@ -586,6 +586,159 @@
       "lng": 126.9246,
       "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/seoul/seohg/hoteldetail",
       "checkedAt": "2026-10-25"
+    },
+    {
+      "slug": "solaria-nishitetsu-myeongdong",
+      "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+      "category": "STAY",
+      "area": "Myeongdong",
+      "blurb": "Mid-range hotel in Myeongdong.",
+      "lat": 37.5612,
+      "lng": 126.9845
+    },
+    {
+      "slug": "tosokchon",
+      "name": "Tosokchon",
+      "category": "FOOD",
+      "area": "Sajik-dong",
+      "blurb": "Samgyetang (ginseng chicken soup) restaurant west of Gyeongbokgung, open over 30 years.",
+      "lat": 37.5778,
+      "lng": 126.9714
+    },
+    {
+      "slug": "ikseondong-hanok-village",
+      "name": "Ikseondong Hanok Village",
+      "category": "EXPERIENCE",
+      "area": "Jongno",
+      "blurb": "Lanes of old hanok houses turned into cafes and boutiques, west of Jongmyo.",
+      "lat": 37.574,
+      "lng": 126.9898
+    },
+    {
+      "slug": "imun-seolleongtang",
+      "name": "Imun Seolleongtang",
+      "category": "FOOD",
+      "area": "Jongno",
+      "blurb": "Seoul's oldest restaurant, serving ox-bone soup for about 120 years.",
+      "lat": 37.5714,
+      "lng": 126.985
+    },
+    {
+      "slug": "gyeonghuigung-palace",
+      "name": "Gyeonghuigung Palace",
+      "category": "EXPERIENCE",
+      "area": "Jongno",
+      "blurb": "The king's secondary palace and one of the Five Grand Palaces. Free entry.",
+      "lat": 37.5713,
+      "lng": 126.9681
+    },
+    {
+      "slug": "jeonju-yuhalmeoni-bibimbap",
+      "name": "Jeonju Yuhalmeoni Bibimbap",
+      "category": "FOOD",
+      "area": "Jung-gu",
+      "blurb": "Grandma Yu's Jeonju-style bibimbap restaurant near City Hall, open over 40 years.",
+      "lat": 37.5627,
+      "lng": 126.9776
+    },
+    {
+      "slug": "namdaemun-market",
+      "name": "Namdaemun Market",
+      "category": "EXPERIENCE",
+      "area": "Jung-gu",
+      "blurb": "Korea's largest traditional market, with over 10,000 shops.",
+      "lat": 37.5592,
+      "lng": 126.9773
+    },
+    {
+      "slug": "myeongdong-kyoja",
+      "name": "Myeongdong Kyoja",
+      "category": "FOOD",
+      "area": "Myeongdong",
+      "blurb": "Kalguksu (knife-cut noodle) restaurant open over 50 years, with steamed mandu.",
+      "lat": 37.5626,
+      "lng": 126.9856
+    },
+    {
+      "slug": "noryangjin-fish-market",
+      "name": "Noryangjin Fisheries Wholesale Market",
+      "category": "FOOD",
+      "area": "Dongjak-gu",
+      "blurb": "Huge 24-hour seafood market; second-floor restaurants cook what you buy downstairs.",
+      "lat": 37.5134,
+      "lng": 126.9408
+    },
+    {
+      "slug": "bbq-olive-chicken-cafe-gangnam",
+      "name": "BBQ Olive Chicken Cafe (Gangnam)",
+      "category": "FOOD",
+      "area": "Gangnam",
+      "blurb": "Fried chicken and beer (chimaek) chain featured in the drama Goblin.",
+      "lat": 37.4937,
+      "lng": 127.0794
+    },
+    {
+      "slug": "bongeunsa-temple",
+      "name": "Bongeunsa Temple",
+      "category": "EXPERIENCE",
+      "area": "Gangnam",
+      "blurb": "Buddhist temple just north of COEX Mall. Free entry.",
+      "lat": 37.515,
+      "lng": 127.0573
+    },
+    {
+      "slug": "gangnam-daero",
+      "name": "Gangnam-daero shopping street",
+      "category": "EXPERIENCE",
+      "area": "Gangnam",
+      "blurb": "Main shopping and dining strip between Gangnam and Sinnonhyeon stations.",
+      "lat": 37.5013,
+      "lng": 127.0257
+    },
+    {
+      "slug": "wonjo-masan-halmae-agujjim",
+      "name": "Wonjo Masan Halmae Agujjim",
+      "category": "FOOD",
+      "area": "Sinsa",
+      "blurb": "Restaurant known for ganjang gejang, raw crab marinated in soy sauce.",
+      "lat": 37.5165,
+      "lng": 127.0205
+    },
+    {
+      "slug": "woo-lae-oak",
+      "name": "Woo Lae Oak",
+      "category": "FOOD",
+      "area": "Jung-gu",
+      "blurb": "One of Seoul's oldest restaurants, known for bulgogi and naengmyeon.",
+      "lat": 37.568,
+      "lng": 126.9985
+    },
+    {
+      "slug": "itaewon",
+      "name": "Itaewon",
+      "category": "EXPERIENCE",
+      "area": "Yongsan-gu",
+      "blurb": "Diverse neighbourhood of bars, clubs and international restaurants.",
+      "lat": 37.5345,
+      "lng": 126.9946
+    },
+    {
+      "slug": "sigol-bapsang",
+      "name": "Sigol Bapsang",
+      "category": "FOOD",
+      "area": "Itaewon",
+      "blurb": "Tiny old-fashioned 24-hour restaurant serving 20+ banchan with rice and jjigae.",
+      "lat": 37.5348,
+      "lng": 126.995
+    },
+    {
+      "slug": "woosung-galbi",
+      "name": "Woosung Galbi",
+      "category": "FOOD",
+      "area": "Sindang",
+      "blurb": "No-frills pork galbi barbecue popular with locals, near Yaksu station.",
+      "lat": 37.556,
+      "lng": 127.01
     }
   ],
   "creators": [
@@ -616,6 +769,13 @@
       "platform": "BLOG",
       "profileUrl": "https://www.foratravel.com",
       "bio": "Travel advisor guides. Tokyo guide by Liza Goncharov."
+    },
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
     }
   ],
   "itineraries": [
@@ -1252,6 +1412,309 @@
           "price": 24.85,
           "priceNote": "33,000 KRW per adult",
           "priceSource": "https://www.incorea.it/en/lotte-world-tower-seoul-sky/"
+        }
+      ]
+    },
+    {
+      "slug": "seoul-5-days-willflyforfood",
+      "title": "Seoul in 5 days",
+      "tier": "MIDRANGE",
+      "days": 5,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/the-perfect-seoul-itinerary/",
+      "summary": "Will Fly For Food's food-first five days: the five palaces with old-school restaurants like Tosokchon and Imun Seolleongtang, markets from Namdaemun to Noryangjin, Gangnam, Itaewon barbecue and a DMZ day trip.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+          "category": "STAY",
+          "place": "solaria-nishitetsu-myeongdong",
+          "note": "Creator's mid-range pick; Myeongdong is the best area for first-timers. Or Dream Guesthouse (budget) or THE PLAZA Seoul (luxury).",
+          "unit": "night",
+          "quantity": 5
+        },
+        {
+          "day": 1,
+          "name": "Gyeongbokgung Palace",
+          "category": "EXPERIENCE",
+          "place": "gyeongbokgung-palace",
+          "note": "Arrive before 10 am for the Royal Guard change at Gwanghwamun (not Tuesdays). The integrated palace ticket covers five sites.",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do",
+          "sentiment": "MUST_VISIT"
+        },
+        {
+          "day": 1,
+          "name": "Tosokchon",
+          "category": "FOOD",
+          "place": "tosokchon",
+          "note": "Lunch: samgyetang."
+        },
+        {
+          "day": 1,
+          "name": "Bukchon Hanok Village",
+          "category": "EXPERIENCE",
+          "place": "bukchon-hanok-village",
+          "note": "People live here, so keep your voice down.",
+          "price": 0,
+          "priceNote": "free; fines up to 100,000 KRW in the red zone from 5 pm to 10 am"
+        },
+        {
+          "day": 1,
+          "name": "Changdeokgung Palace and Huwon",
+          "category": "EXPERIENCE",
+          "place": "changdeokgung-palace",
+          "note": "The best preserved of the five palaces.",
+          "price": 2.26,
+          "priceNote": "3,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Changgyeonggung Palace",
+          "category": "EXPERIENCE",
+          "place": "changgyeonggung-palace",
+          "note": "Smaller and less impressive, but on the integrated ticket.",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Jongmyo Shrine",
+          "category": "EXPERIENCE",
+          "place": "jongmyo-shrine",
+          "note": "Solemn royal shrine; be respectful.",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 1,
+          "name": "Ikseondong Hanok Village",
+          "category": "EXPERIENCE",
+          "place": "ikseondong-hanok-village",
+          "note": "Go later in the day; shops were closed in the morning."
+        },
+        {
+          "day": 1,
+          "name": "Insadong",
+          "category": "FOOD",
+          "place": "insadong",
+          "note": "Galleries, craft shops and street food.",
+          "price": 0,
+          "priceNote": "free to walk around; tea houses extra"
+        },
+        {
+          "day": 1,
+          "name": "Jogyesa Temple",
+          "category": "EXPERIENCE",
+          "place": "jogyesa-temple",
+          "note": "Open 24 hours.",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 1,
+          "name": "Imun Seolleongtang",
+          "category": "FOOD",
+          "place": "imun-seolleongtang",
+          "note": "Dinner: seolleongtang with makgeolli."
+        },
+        {
+          "day": 2,
+          "name": "Gyeonghuigung Palace",
+          "category": "EXPERIENCE",
+          "place": "gyeonghuigung-palace",
+          "note": "Be here by 9:30 am to make the 11 am guard change at Deoksugung.",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 2,
+          "name": "Deoksugung Palace",
+          "category": "EXPERIENCE",
+          "place": "deoksugung-palace",
+          "note": "Royal Guard changes at 11 am, 2 pm and 3:30 pm.",
+          "price": 0.75,
+          "priceNote": "1,000 KRW per adult",
+          "priceSource": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do"
+        },
+        {
+          "day": 2,
+          "name": "Jeonju Yuhalmeoni Bibimbap",
+          "category": "FOOD",
+          "place": "jeonju-yuhalmeoni-bibimbap",
+          "note": "Lunch: Jeonju bibimbap."
+        },
+        {
+          "day": 2,
+          "name": "Namdaemun Market",
+          "category": "EXPERIENCE",
+          "place": "namdaemun-market"
+        },
+        {
+          "day": 2,
+          "name": "N Seoul Tower",
+          "category": "EXPERIENCE",
+          "place": "n-seoul-tower",
+          "note": "Walk up or take the cable car like most tourists.",
+          "price": 19.58,
+          "priceNote": "26,000 KRW per adult (creator: 29,000 won ($20))",
+          "priceSource": "https://wowpass-event.oopy.io/adceab42-13fa-41a3-903b-9c0f57d52173"
+        },
+        {
+          "day": 2,
+          "name": "Myeongdong",
+          "category": "FOOD",
+          "place": "myeongdong",
+          "note": "Street food from late afternoon: tteokbokki, seafood skewers, grilled lobster tails.",
+          "price": 2.5,
+          "priceNote": "street snacks ₩3,500–5,000",
+          "priceSource": "https://www.tunextravels.com/best-korean-street-foods-to-try-2025-guide-korean-street-foods/"
+        },
+        {
+          "day": 2,
+          "name": "Myeongdong Kyoja",
+          "category": "FOOD",
+          "place": "myeongdong-kyoja",
+          "note": "Dinner: kalguksu with steamed mandu."
+        },
+        {
+          "day": 3,
+          "name": "Noryangjin Fish Market",
+          "category": "FOOD",
+          "place": "noryangjin-fish-market",
+          "note": "Try sannakji (live octopus); upstairs restaurants cook what you buy."
+        },
+        {
+          "day": 3,
+          "name": "Hongdae",
+          "category": "EXPERIENCE",
+          "place": "hongdae",
+          "note": "Cafes, boutiques and street performers.",
+          "price": 0,
+          "priceNote": "free to walk around"
+        },
+        {
+          "day": 3,
+          "name": "BBQ Olive Chicken Cafe",
+          "category": "FOOD",
+          "place": "bbq-olive-chicken-cafe-gangnam",
+          "note": "Golden Olive Chicken and sweet potato fries."
+        },
+        {
+          "day": 3,
+          "name": "Bongeunsa Temple",
+          "category": "EXPERIENCE",
+          "place": "bongeunsa-temple",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Starfield Library, COEX Mall",
+          "category": "EXPERIENCE",
+          "place": "coex-mall",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 3,
+          "name": "Gangnam-daero",
+          "category": "EXPERIENCE",
+          "place": "gangnam-daero"
+        },
+        {
+          "day": 3,
+          "name": "Wonjo Masan Halmae Agujjim",
+          "category": "FOOD",
+          "place": "wonjo-masan-halmae-agujjim",
+          "note": "Dinner: ganjang gejang, one of the creator's favourite Seoul foods."
+        },
+        {
+          "day": 4,
+          "name": "Cheonggyecheon Stream",
+          "category": "EXPERIENCE",
+          "place": "cheonggyecheon-stream",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 4,
+          "name": "Gwangjang Market",
+          "category": "FOOD",
+          "place": "gwangjang-market",
+          "note": "Breakfast: bindaetteok, tteokbokki, kimbap.",
+          "price": 3.57,
+          "priceNote": "KRW 5,000, mung bean pancake",
+          "priceSource": "https://www.seoultourism.org/gwangjang-market-food-guide/"
+        },
+        {
+          "day": 4,
+          "name": "Woo Lae Oak",
+          "category": "FOOD",
+          "place": "woo-lae-oak",
+          "note": "Lunch: get the naengmyeon."
+        },
+        {
+          "day": 4,
+          "name": "Ihwa Mural Village",
+          "category": "EXPERIENCE",
+          "place": "ihwa-mural-village",
+          "note": "People live here; keep noise down.",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 4,
+          "name": "Dongdaemun Design Plaza",
+          "category": "EXPERIENCE",
+          "place": "dongdaemun-design-plaza",
+          "note": "Zaha Hadid design; closed Mondays.",
+          "price": 0,
+          "priceNote": "free (creator)"
+        },
+        {
+          "day": 4,
+          "name": "Itaewon",
+          "category": "EXPERIENCE",
+          "place": "itaewon"
+        },
+        {
+          "day": 4,
+          "name": "Sigol Bapsang",
+          "category": "FOOD",
+          "place": "sigol-bapsang",
+          "note": "20+ banchan with rice and jjigae.",
+          "price": 15,
+          "priceNote": "creator: under US$15"
+        },
+        {
+          "day": 4,
+          "name": "Woosung Galbi",
+          "category": "FOOD",
+          "place": "woosung-galbi",
+          "note": "Dinner: pork galbi."
+        },
+        {
+          "day": 5,
+          "name": "DMZ half-day tour",
+          "category": "EXPERIENCE",
+          "place": "dmz-tour",
+          "note": "Day trip pick. The creator found the DMZ especially fascinating."
+        },
+        {
+          "day": 5,
+          "name": "Nami Island",
+          "category": "EXPERIENCE",
+          "place": "nami-island",
+          "note": "Or a day trip to Nami Island (or Everland).",
+          "price": 14.31,
+          "priceNote": "19,000 KRW per adult",
+          "priceSource": "https://namisum-en.imweb.me/163",
+          "sentiment": "OPTIONAL"
         }
       ]
     }
