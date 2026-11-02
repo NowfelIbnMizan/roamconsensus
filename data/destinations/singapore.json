@@ -923,6 +923,91 @@
       "blurb": "Large food court located inside the VivoCity shopping mall.",
       "lat": 1.26475,
       "lng": 103.82236
+    },
+    {
+      "slug": "quincy-hotel",
+      "name": "Quincy Hotel Singapore by Far East Hospitality",
+      "category": "STAY",
+      "area": "Orchard",
+      "blurb": "Boutique hotel off Orchard Road.",
+      "lat": 1.3054,
+      "lng": 103.8331
+    },
+    {
+      "slug": "fullerton-hotel",
+      "name": "The Fullerton Hotel",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "The 1928 former General Post Office on the Singapore River, now a hotel; its facade is lit up at night.",
+      "lat": 1.2863,
+      "lng": 103.8531
+    },
+    {
+      "slug": "victoria-theatre-and-concert-hall",
+      "name": "Victoria Theatre and Concert Hall",
+      "category": "EXPERIENCE",
+      "area": "Civic District",
+      "blurb": "Colonial-era performing arts venue with a clock tower, mixing Renaissance and Palladian styles.",
+      "website": "https://artshouselimited.sg/vtvch",
+      "lat": 1.288,
+      "lng": 103.8516
+    },
+    {
+      "slug": "singapore-flyer",
+      "name": "Singapore Flyer",
+      "category": "EXPERIENCE",
+      "area": "Marina Bay",
+      "blurb": "165-metre observation wheel by Marina Bay; one rotation takes about 30 minutes.",
+      "lat": 1.2893,
+      "lng": 103.8631,
+      "checkedAt": "2026-11-02"
+    },
+    {
+      "slug": "supertree-grove",
+      "name": "Supertree Grove",
+      "category": "EXPERIENCE",
+      "area": "Gardens by the Bay",
+      "blurb": "Grove of giant vertical-garden 'Supertrees' in Gardens by the Bay, with an elevated walkway and a rooftop observatory.",
+      "lat": 1.2816,
+      "lng": 103.8636
+    },
+    {
+      "slug": "singapore-cable-car",
+      "name": "Singapore Cable Car",
+      "category": "TRANSIT",
+      "area": "Mount Faber",
+      "blurb": "Cable car from Mount Faber over the harbour to Sentosa.",
+      "lat": 1.2716,
+      "lng": 103.8187
+    },
+    {
+      "slug": "singapore-oceanarium",
+      "name": "Singapore Oceanarium (formerly S.E.A. Aquarium)",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Large aquarium at Resorts World Sentosa, reopened in 2025 as the Singapore Oceanarium.",
+      "lat": 1.2583,
+      "lng": 103.8205,
+      "checkedAt": "2026-11-02"
+    },
+    {
+      "slug": "skyline-luge-sentosa",
+      "name": "Skyline Luge Sentosa",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Gravity-powered luge tracks down Imbiah hill to Siloso Beach, with a chairlift back up.",
+      "website": "https://www.skylineluge.com/en/sentosa/",
+      "lat": 1.254,
+      "lng": 103.8167
+    },
+    {
+      "slug": "mega-adventure-park",
+      "name": "Mega Adventure Park",
+      "category": "EXPERIENCE",
+      "area": "Sentosa",
+      "blurb": "Ziplines and high-ropes course on Sentosa's Imbiah hill down to Siloso Beach.",
+      "lat": 1.2535,
+      "lng": 103.8155
     }
   ],
   "creators": [
@@ -960,6 +1045,13 @@
       "name": "Bottle Cap Backpacker",
       "platform": "BLOG",
       "profileUrl": "https://bottlecapbackpacker.com"
+    },
+    {
+      "handle": "willflyforfood",
+      "name": "Will Fly For Food",
+      "platform": "BLOG",
+      "profileUrl": "https://www.willflyforfood.net",
+      "bio": "Food-focused travel blog by JB and Renée."
     }
   ],
   "itineraries": [
@@ -1978,6 +2070,209 @@
           "place": "jewel-rain-vortex",
           "sentiment": "RECOMMENDED",
           "note": "Wander through the indoor jungle and see the world's tallest indoor waterfall."
+        }
+      ]
+    },
+    {
+      "slug": "singapore-3-days-willflyforfood",
+      "title": "Singapore in 3 days",
+      "tier": "MIDRANGE",
+      "days": 3,
+      "creator": "willflyforfood",
+      "sourceUrl": "https://www.willflyforfood.net/singapore-itinerary/",
+      "summary": "Marion's three days for Will Fly For Food: colonial Singapore and Chinatown, then Marina Bay, the Flyer and Gardens by the Bay, then a Sentosa day ending at Newton Food Centre.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Quincy Hotel Singapore",
+          "category": "STAY",
+          "place": "quincy-hotel",
+          "note": "Creator's mid-range pick in Orchard. Or YOTEL Orchard Road (budget) or Four Seasons (luxury).",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 1,
+          "name": "Merlion Park",
+          "category": "EXPERIENCE",
+          "place": "merlion-park",
+          "note": "Start early to beat the heat; skyline and Marina Bay Sands views.",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 1,
+          "name": "Marina Bay stroll",
+          "category": "EXPERIENCE",
+          "place": "marina-bay-waterfront-promenade",
+          "note": "Past the Esplanade and the Helix Bridge.",
+          "price": 0,
+          "priceNote": "free to walk around"
+        },
+        {
+          "day": 1,
+          "name": "Chinatown",
+          "category": "EXPERIENCE",
+          "place": "chinatown",
+          "note": "Lunch at a hawker centre: Hainanese chicken rice and satay. Street markets for souvenirs.",
+          "price": 0,
+          "priceNote": "free to walk around"
+        },
+        {
+          "day": 1,
+          "name": "Buddha Tooth Relic Temple",
+          "category": "EXPERIENCE",
+          "place": "buddha-tooth-relic-temple",
+          "price": 0,
+          "priceNote": "free entry"
+        },
+        {
+          "day": 1,
+          "name": "Sri Mariamman Temple",
+          "category": "EXPERIENCE",
+          "place": "sri-mariamman-temple"
+        },
+        {
+          "day": 1,
+          "name": "The Fullerton Hotel",
+          "category": "EXPERIENCE",
+          "place": "fullerton-hotel",
+          "note": "See the facade lit up at night."
+        },
+        {
+          "day": 1,
+          "name": "Raffles Hotel",
+          "category": "EXPERIENCE",
+          "place": "raffles-hotel",
+          "note": "The imposing colonial hotel, lit up at night."
+        },
+        {
+          "day": 1,
+          "name": "Victoria Theatre and Concert Hall",
+          "category": "EXPERIENCE",
+          "place": "victoria-theatre-and-concert-hall"
+        },
+        {
+          "day": 2,
+          "name": "ArtScience Museum",
+          "category": "EXPERIENCE",
+          "place": "artscience-museum",
+          "note": "Lotus-shaped museum with interactive exhibitions.",
+          "price": 26.65,
+          "priceNote": "From US$26.65 (teamLab Future World, off-peak tourist)",
+          "priceSource": "https://www.pelago.com/activity/p4ikn-artscience-museum-singapore"
+        },
+        {
+          "day": 2,
+          "name": "Singapore Flyer",
+          "category": "EXPERIENCE",
+          "place": "singapore-flyer",
+          "note": "Asia's largest observation wheel; on a clear day you may spot Indonesian islands.",
+          "price": 36.0,
+          "priceNote": "SGD 46 per adult",
+          "priceSource": "https://www.singapore-spirit.com/guides/singapore-flyer-guide/"
+        },
+        {
+          "day": 2,
+          "name": "Flower Dome & Cloud Forest",
+          "category": "EXPERIENCE",
+          "place": "flower-dome-and-cloud-forest",
+          "price": 36.0,
+          "priceNote": "46 SGD per adult (creator: The ticket is 32 SGD)",
+          "priceSource": "https://www.gardensbythebay.com.sg/en/frequently-asked-questions/general.html"
+        },
+        {
+          "day": 2,
+          "name": "Supertree Grove",
+          "category": "EXPERIENCE",
+          "place": "supertree-grove",
+          "note": "Daytime visit to the walkways."
+        },
+        {
+          "day": 2,
+          "name": "SkyPark Observation Deck",
+          "category": "EXPERIENCE",
+          "place": "marina-bay-sands-skypark-observation-deck",
+          "note": "For Marina Bay at night. Or the Supertree Observatory.",
+          "price": 27.39,
+          "priceNote": "35 SGD per adult (creator: paid entry for non-guests (no amount))",
+          "priceSource": "https://www.marinabaysands.com/attractions/sands-skypark.html"
+        },
+        {
+          "day": 2,
+          "name": "Spectra Light and Water Show",
+          "category": "EXPERIENCE",
+          "place": "spectra-light-and-water-show",
+          "note": "If time permits.",
+          "price": 0,
+          "priceNote": "free show"
+        },
+        {
+          "day": 2,
+          "name": "Clarke Quay",
+          "category": "EXPERIENCE",
+          "place": "clarke-quay",
+          "note": "Riverside nightlife and dining.",
+          "price": 0,
+          "priceNote": "free to walk around"
+        },
+        {
+          "day": 3,
+          "name": "Cable car to Sentosa",
+          "category": "TRANSIT",
+          "place": "singapore-cable-car",
+          "note": "Aerial views of the island and coast."
+        },
+        {
+          "day": 3,
+          "name": "Universal Studios Singapore",
+          "category": "EXPERIENCE",
+          "place": "universal-studios-singapore",
+          "price": 63.28,
+          "priceNote": "SGD 81 per adult, 1 day",
+          "priceSource": "https://blog.waug.com/universal-studios-singapore-tickets-price-promos/",
+          "sentiment": "OPTIONAL"
+        },
+        {
+          "day": 3,
+          "name": "Singapore Oceanarium",
+          "category": "EXPERIENCE",
+          "place": "singapore-oceanarium",
+          "note": "Over 100,000 marine animals.",
+          "price": 43.04,
+          "priceNote": "from SGD 55 per adult",
+          "priceSource": "https://thesmartlocal.com/read/singapore-oceanarium-sentosa/amp"
+        },
+        {
+          "day": 3,
+          "name": "Siloso Beach",
+          "category": "EXPERIENCE",
+          "place": "siloso-beach",
+          "price": 0,
+          "priceNote": "free"
+        },
+        {
+          "day": 3,
+          "name": "Skyline Luge",
+          "category": "EXPERIENCE",
+          "place": "skyline-luge-sentosa"
+        },
+        {
+          "day": 3,
+          "name": "Mega Adventure Park",
+          "category": "EXPERIENCE",
+          "place": "mega-adventure-park",
+          "note": "Zipline; solo and family options."
+        },
+        {
+          "day": 3,
+          "name": "Newton Food Centre",
+          "category": "FOOD",
+          "place": "newton-food-centre",
+          "note": "Chilli crab, laksa and satay. Or dinner at a beachside restaurant on Sentosa.",
+          "price": 6.25,
+          "priceNote": "S$8–12 for oyster omelette; seafood S$25+",
+          "priceSource": "https://disneyblog.com/guide/singapore/hawker-centers/newton-food-centre/"
         }
       ]
     }

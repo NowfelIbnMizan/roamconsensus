@@ -346,6 +346,43 @@
       "blurb": "Tourist bus from Ao Nang or Krabi Town to Khao Sok, about 4.5 hours.",
       "lat": 8.0314,
       "lng": 98.8225
+    },
+    {
+      "slug": "pak-up-hostel",
+      "name": "Pak-Up Hostel",
+      "category": "STAY",
+      "area": "Krabi Town",
+      "blurb": "Backpacker hostel in Krabi Town.",
+      "lat": 8.061,
+      "lng": 98.9155
+    },
+    {
+      "slug": "ao-nang-beach",
+      "name": "Ao Nang Beach",
+      "category": "EXPERIENCE",
+      "area": "Ao Nang",
+      "blurb": "Krabi's main resort beach, lined with long-tail boats that run to Railay and the islands.",
+      "lat": 8.0314,
+      "lng": 98.8225
+    },
+    {
+      "slug": "ao-nang-railay-longtail",
+      "name": "Long-tail boat Ao Nang to Railay",
+      "category": "TRANSIT",
+      "area": "Ao Nang",
+      "blurb": "Shared long-tail boats from Ao Nang beach to Railay, about 15 minutes, 8 am to 6 pm.",
+      "lat": 8.0314,
+      "lng": 98.8225,
+      "checkedAt": "2026-11-02"
+    },
+    {
+      "slug": "tonsai-beach",
+      "name": "Tonsai Beach",
+      "category": "EXPERIENCE",
+      "area": "Railay",
+      "blurb": "Backpacker and rock-climbing bay next to Railay West, cut off by cliffs and reached by boat or a short scramble.",
+      "lat": 8.016,
+      "lng": 98.833
     }
   ],
   "creators": [
@@ -355,6 +392,13 @@
       "platform": "BLOG",
       "profileUrl": "https://www.bucketlistly.blog",
       "bio": "Pete R.'s travel blog and photography."
+    },
+    {
+      "handle": "thebrokebackpacker",
+      "name": "The Broke Backpacker",
+      "platform": "BLOG",
+      "profileUrl": "https://www.thebrokebackpacker.com",
+      "bio": "Budget backpacking travel blog."
     }
   ],
   "itineraries": [
@@ -490,6 +534,63 @@
           "place": "krabi-to-khao-sok-bus",
           "price": 11.9,
           "priceNote": "creator: 400 THB per person"
+        }
+      ]
+    },
+    {
+      "slug": "krabi-3-days-thebrokebackpacker",
+      "title": "Krabi in 3 days",
+      "tier": "BACKPACKER",
+      "days": 3,
+      "creator": "thebrokebackpacker",
+      "sourceUrl": "https://www.thebrokebackpacker.com/backpacking-thailand/",
+      "summary": "The Krabi stop of the Broke Backpacker's Thailand guide: Ao Nang beaches, Railay viewpoints, climbing and deep-water soloing at Tonsai, and island-hopping. They say skip Krabi Town and Ao Nang's tacky main strip.",
+      "items": [
+        {
+          "day": 1,
+          "name": "Pak-Up Hostel",
+          "category": "STAY",
+          "note": "Creator's hostel pick. Or Phu Pha Aonang Resort & Spa for a private room. Base in Railay for scenery, Tonsai for backpackers, Ao Nang for convenience.",
+          "place": "pak-up-hostel",
+          "unit": "night",
+          "quantity": 3
+        },
+        {
+          "day": 1,
+          "name": "Ao Nang beaches",
+          "category": "EXPERIENCE",
+          "note": "Handy base, but the main strip is a bit tacky.",
+          "place": "ao-nang-beach"
+        },
+        {
+          "day": 2,
+          "name": "Long-tail boat to Railay",
+          "category": "TRANSIT",
+          "place": "ao-nang-railay-longtail",
+          "price": 2.97,
+          "priceNote": "100 THB per person each way",
+          "priceSource": "https://www.cktravels.com/krabi-ao-nang-to-railay-beach-longtail-boat/"
+        },
+        {
+          "day": 2,
+          "name": "Railay viewpoints",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "place": "railay-beach"
+        },
+        {
+          "day": 2,
+          "name": "Tonsai climbing and deep-water soloing",
+          "category": "EXPERIENCE",
+          "note": "Climbing without gear straight over the sea, organised from Tonsai or Railay. Stay in Tonsai to party.",
+          "place": "tonsai-beach"
+        },
+        {
+          "day": 3,
+          "name": "Island-hopping boat trip",
+          "category": "EXPERIENCE",
+          "sentiment": "MUST_VISIT",
+          "note": "Creator says island-hopping; Ao Nang's classic trip is the 4 Islands tour."
         }
       ]
     }
