@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Coins, PiggyBank, Receipt, Scale, UserPlus, Users } from "lucide-react";
 import { FaqList } from "@/components/faq-list";
 import type { Faq } from "@/lib/faq";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/split-travel-costs" },
+  ...canonical("/split-travel-costs"),
   title: "Split travel costs with friends, free",
   description:
     "Log who paid what on a group trip, in any currency, and see the fewest payments to settle up. Free, in your browser, and friends don't need to sign up.",

@@ -29,7 +29,7 @@ import {
   hasPin,
 } from "@/lib/map";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
-import { breadcrumbJsonLd, clip, ldJson } from "@/lib/seo";
+import { breadcrumbJsonLd, clip, ldJson, canonical, fillDescription } from "@/lib/seo";
 
 type Props = PageProps<"/destinations/[slug]/places/[place]">;
 type Mentions = NonNullable<Awaited<ReturnType<typeof getPlace>>>["mentions"];
@@ -52,8 +52,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const fits = [base, `${p.name}, ${p.destination.name}`, p.name.replace(/\s*\(.*\)$/, "")].find((t) => t.length <= 58);
   return {
     title: base.length <= 32 ? `${base}: what creators say` : (fits ?? clip(p.name, 58)),
-    description: clip(p.blurb ?? `${p.name} in ${where}, as recommended by travel creators, with prices and tips.`),
-    alternates: { canonical: placeHref(p.destination.slug, p.slug) },
+    description: fillDescription(
+      p.blurb ?? `${p.name} in ${where}.`,
+      `What travel creators say about it, with prices, tips and a map, in ${where}.`,
+    ),
+    ...canonical(placeHref(p.destination.slug, p.slug)),
   };
 }
 

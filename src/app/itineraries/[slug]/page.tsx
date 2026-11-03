@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { siteUrl } from "@/lib/email";
-import { breadcrumbJsonLd, clip, ldJson } from "@/lib/seo";
+import { breadcrumbJsonLd, clip, ldJson, canonical } from "@/lib/seo";
 import { kindEyebrow } from "@/lib/post-kinds";
 import {
   ArrowRight,
@@ -232,7 +232,7 @@ export async function generateMetadata({
     // Titles past about 60 characters get cut in results, so the creator's name goes only where it fits.
     title: title.length + it.creator.name.length <= 50 ? `${title}, by ${it.creator.name}` : title,
     description: clip(it.summary),
-    alternates: { canonical: `/itineraries/${it.slug}` },
+    ...canonical(`/itineraries/${it.slug}`),
   };
 }
 
@@ -325,8 +325,12 @@ export default async function ItineraryPage({
     name: it.title,
     description: it.summary,
     url: `${siteUrl()}/itineraries/${it.slug}`,
-    author: { "@type": "Person", name: it.creator.name, url: it.creator.profileUrl },
-    isBasedOn: it.sourceUrl,
+    // A trip has no author in schema.org; the creator's own post is what it is "subject of".
+    subjectOf: {
+      "@type": "CreativeWork",
+      url: it.sourceUrl,
+      author: { "@type": "Person", name: it.creator.name, ...(it.creator.profileUrl && { url: it.creator.profileUrl }) },
+    },
     itinerary: {
       "@type": "ItemList",
       itemListElement: kept.map((i, n) => ({ "@type": "ListItem", position: n + 1, name: i.name })),

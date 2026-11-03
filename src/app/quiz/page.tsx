@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { getQuizData } from "@/lib/data";
 import { PageGuide } from "@/components/page-guide";
 import { Quiz } from "./quiz";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/quiz" },
+  ...canonical("/quiz"),
   title: "Find your trip",
-  description: "Tap where, how long, your budget style and what you love: the creator itinerary that fits shows up as you go.",
+  description: "Tap where, how long, your budget style and what you love: the travel creator itinerary that fits you best shows up as you go.",
 };
 
 export default async function QuizPage() {

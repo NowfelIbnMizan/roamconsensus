@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { PageGuide } from "@/components/page-guide";
 import Link from "next/link";
 import { getCreators } from "@/lib/data";
@@ -6,10 +7,10 @@ import { CreatorNoticeLine } from "@/components/creator-notice";
 import { CreatorsList } from "./creators-list";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/creators" },
+  ...canonical("/creators"),
   title: "Travel creators",
   description:
-    "The travel bloggers and creators whose itineraries Creatour compares, with their bios, socials and routes.",
+    "The travel bloggers and creators whose itineraries Creatour compares, with their bios, socials, cities and day-by-day routes.",
 };
 
 export default async function CreatorsPage() {

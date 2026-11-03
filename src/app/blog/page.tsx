@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { PageGuide } from "@/components/page-guide";
 import { ArrowRight, BookOpen } from "lucide-react";
@@ -9,8 +10,8 @@ import { PostCover, formatDate } from "@/components/post-cover";
 
 export const metadata: Metadata = {
   title: "Travel blog",
-  description: "Short reads to plan smarter, built on the places travel creators don't miss. No sponsored lists.",
-  alternates: { canonical: "/blog" },
+  description: "Short reads to plan your trip smarter, built on the places travel creators don't miss, with routes to add. No sponsored lists.",
+  ...canonical("/blog"),
 };
 
 export default async function BlogPage() {

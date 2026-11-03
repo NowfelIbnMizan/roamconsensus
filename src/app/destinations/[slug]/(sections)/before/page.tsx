@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { Checklist } from "./checklist";
@@ -16,8 +17,8 @@ export async function generateMetadata({
   return d
     ? {
         title: `${d.name} travel checklist`,
-        description: `Visa, money, SIM, health and etiquette: what to sort out before you fly to ${d.name}.`,
-        alternates: { canonical: `/destinations/${d.slug}/before` },
+        description: `Visa, money, SIM, health and etiquette: what to sort out before you fly to ${d.name}, plus what to do once you land.`,
+        ...canonical(`/destinations/${d.slug}/before`),
       }
     : {};
 }

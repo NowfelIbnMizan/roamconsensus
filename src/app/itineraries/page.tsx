@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { PageGuide } from "@/components/page-guide";
 import { getQuizData } from "@/lib/data";
 import { TripFinder } from "./finder";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/itineraries" },
+  ...canonical("/itineraries"),
   title: "Find a route by length and budget",
   description:
-    "Every creator itinerary on Creatour, filtered by how many days you have and what you want to spend.",
+    "Every creator itinerary on Creatour, filtered by how many days you have, what you want to spend and which cities you want to see.",
 };
 
 export default async function TripsPage() {

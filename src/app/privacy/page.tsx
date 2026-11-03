@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { LegalPage } from "@/components/legal";
 import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/privacy" },
+  ...canonical("/privacy"),
   title: "Privacy policy",
   description:
-    "What Creatour collects, why, and how to have it deleted. Short version: very little, and no tracking cookies.",
+    "What Creatour collects, why, and how to have it deleted. Short version: very little, no ads and no tracking cookies at all.",
 };
 
 export default function PrivacyPage() {

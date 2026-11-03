@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { CollectionHeader } from "@/components/collection-header";
 import { cityCollections, findArea } from "@/lib/collections";
@@ -25,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { d, a } = page;
   return {
     title: `Things to do in ${a.name}, ${d.name}${a.name.length + d.name.length <= 24 ? ": creator picks" : ""}`,
-    description: `${a.places.length} places in ${a.name} that travel creators recommend, sights and food, most-picked first, with prices and a map.`,
-    alternates: { canonical: `/destinations/${d.slug}/areas/${a.slug}` },
+    description: `${a.places.length} places in ${a.name} that travel creators recommend in ${d.name}: sights and food, most-picked first, with prices and a map.`,
+    ...canonical(`/destinations/${d.slug}/areas/${a.slug}`),
   };
 }
 

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { FellowTraveller } from "@/components/creator-notice";
 import { getEditor } from "@/lib/editor";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/disclosure" },
+  ...canonical("/disclosure"),
   title: "Credits",
-  description: "Who owns the content on Creatour and how creators are credited.",
+  description: "Who owns the content on Creatour, how travel creators and photographers are credited, and how to ask for a change or removal.",
 };
 
 export default async function DisclosurePage() {

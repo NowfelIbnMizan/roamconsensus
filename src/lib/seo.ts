@@ -23,3 +23,13 @@ export function breadcrumbJsonLd(crumbs: [name: string, path: string][]) {
 
 /** For a <script type="application/ld+json">; escapes "<" so text can't close the tag. */
 export const ldJson = (data: unknown) => ({ __html: JSON.stringify(data).replace(/</g, "\\u003c") });
+
+/** Site audits flag descriptions under about 110 characters; a short one gets `extra` added, then is clipped. */
+export function fillDescription(text: string, extra: string) {
+  return clip(text.length >= 110 ? text : `${text.replace(/[.\s]*$/, ".")} ${extra}`);
+}
+
+/** The canonical link. `og:url` comes from the root layout ("./" resolves to each page's own path). */
+export function canonical(path: string) {
+  return { alternates: { canonical: path } };
+}

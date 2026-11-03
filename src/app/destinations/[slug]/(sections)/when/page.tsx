@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { Sun } from "lucide-react";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
@@ -18,8 +19,8 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   return d
     ? {
         title: `Best time to visit ${d.name}`,
-        description: `${d.name} weather, rain and crowds month by month, and the best months to go.`,
-        alternates: { canonical: `/destinations/${d.slug}/when` },
+        description: `${d.name} weather, rain and crowds month by month, and the best months to go, so you can pick your dates before you plan the route.`,
+        ...canonical(`/destinations/${d.slug}/when`),
       }
     : {};
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { CalendarCheck } from "lucide-react";
 import { getDestinations } from "@/lib/data";
 import { visaRules } from "@/lib/visa";
@@ -6,9 +7,9 @@ import { VisaList } from "@/components/visa-check";
 import { PageGuide } from "@/components/page-guide";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/visa" },
+  ...canonical("/visa"),
   title: "Do I need a visa? Visa checker by passport",
-  description: "Pick your passport and see whether you need a visa for each destination, with official links.",
+  description: "Pick your passport and see whether you need a visa for each destination, how long you can stay, and the official links to apply.",
 };
 
 export default async function VisaPage() {

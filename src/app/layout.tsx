@@ -43,7 +43,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   // Makes share-image and canonical URLs absolute.
   metadataBase: new URL(siteUrl()),
-  openGraph: { siteName: "Creatour", type: "website" },
+  // A relative url resolves to each page's own path, so every page gets og:url. A page that sets openGraph repeats it.
+  openGraph: { siteName: "Creatour", type: "website", url: "./" },
   twitter: { card: "summary_large_image" },
   appleWebApp: { capable: true, title: "Creatour", statusBarStyle: "default" },
   icons: { apple: "/icons/apple-touch-icon.png" },

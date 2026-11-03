@@ -13,7 +13,7 @@ import { HomeSearch } from "@/components/home-search";
 import { CityMap } from "@/components/city-map";
 import { siteUrl } from "@/lib/email";
 import { CONTACT_EMAIL } from "@/lib/contact";
-import { ldJson } from "@/lib/seo";
+import { ldJson, canonical } from "@/lib/seo";
 import { BeenCity } from "@/components/been-city";
 import { CreatorFaces } from "@/components/creator-faces";
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: { absolute: "Creatour: travel itineraries from creators, compared" },
   description:
     "See where travel creators agree. Compare their itineraries for Bali, Tokyo, Bangkok and more, then build your own day-by-day trip plan.",
-  alternates: { canonical: "/" },
+  ...canonical("/"),
 };
 
 const siteJsonLd = {

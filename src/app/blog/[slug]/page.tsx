@@ -7,6 +7,7 @@ import { PostCover, formatDate } from "@/components/post-cover";
 import { UpdatedOn } from "@/components/updated-on";
 import { getEditor } from "@/lib/editor";
 import { siteUrl } from "@/lib/email";
+import { canonical, clip } from "@/lib/seo";
 import { getDestination, getPost, getPosts } from "@/lib/data";
 import { kindEyebrow } from "@/lib/post-kinds";
 import { RouteCard, SideBySide } from "@/components/post-routes";
@@ -24,9 +25,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
   return {
     title: post.title,
-    description: post.excerpt ?? undefined,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: { type: "article", publishedTime: post.publishedAt, modifiedTime: post.updatedAt },
+    description: post.excerpt || clip(post.body.replace(/[#*_>\[\]()`]/g, "").replace(/\s+/g, " ").trim()),
+    ...canonical(`/blog/${post.slug}`),
+    openGraph: {
+      siteName: "Creatour",
+      type: "article",
+      url: "./",
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt,
+    },
   };
 }
 

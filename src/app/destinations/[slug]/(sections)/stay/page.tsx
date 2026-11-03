@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddItemButton } from "@/components/add-to-cart";
@@ -57,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? {
         title: `Where to stay in ${d.name}: creators' areas`,
         description: `The ${d.name} neighbourhoods where travel creators' routes put their hotels, with nightly prices and what's nearby.`,
-        alternates: { canonical: `/destinations/${d.slug}/stay` },
+        ...canonical(`/destinations/${d.slug}/stay`),
       }
     : {};
 }

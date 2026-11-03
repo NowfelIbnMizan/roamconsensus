@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical, fillDescription } from "@/lib/seo";
 import { AtSign, Mail } from "lucide-react";
 import { FellowTraveller } from "@/components/creator-notice";
 import { EditorAvatar } from "@/components/editor-take";
@@ -10,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const e = await getEditor();
   return {
     title: `About ${e.name}`,
-    description: e.tagline ?? `Who runs Creatour and how it works.`,
-    alternates: { canonical: "/about" },
+    description: fillDescription(e.tagline ?? "Who runs Creatour and how it works.", "Creatour collects travel creators' public itineraries and shows where they agree."),
+    ...canonical("/about"),
   };
 }
 

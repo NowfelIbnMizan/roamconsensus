@@ -9,7 +9,7 @@ import { CreatorTrips } from "@/components/creator-trips";
 import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 import { SOCIALS } from "@/lib/creator-links";
 import { siteUrl } from "@/lib/email";
-import { clip, ldJson } from "@/lib/seo";
+import { clip, ldJson, canonical, fillDescription } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return getCreatorHandles();
@@ -24,8 +24,11 @@ export async function generateMetadata({ params }: PageProps<"/creators/[handle]
   return {
     title: `${c.name}: travel itineraries`,
     // A short bio alone makes a thin snippet; lead with the routes and keep the bio after.
-    description: clip(c.bio && c.bio.length >= 100 ? c.bio : `${routes}, day by day with prices and map.${c.bio ? ` ${c.bio}` : ""}`),
-    alternates: { canonical: `/creators/${c.handle}` },
+    description: fillDescription(
+      c.bio && c.bio.length >= 100 ? c.bio : `${routes}, day by day with prices and map.${c.bio ? ` ${c.bio}` : ""}`,
+      "Every stop with prices, tips and a map, ready to add to your own trip plan.",
+    ),
+    ...canonical(`/creators/${c.handle}`),
   };
 }
 
