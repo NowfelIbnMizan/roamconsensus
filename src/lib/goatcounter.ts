@@ -28,7 +28,8 @@ export function visitorStatsReady() {
 
 const wait = (ms: number) => new Promise((done) => setTimeout(done, ms));
 
-/** One API call. Calls are spaced out, and a "too many requests" answer waits for the limit to reset and tries again. */
+/** One API call. Calls are spaced out. A "too many requests" answer waits for the limit to reset and tries again;
+ * a stray 404 or server error (seen now and then on stats/total) gets one more try. */
 async function get<T>(path: string, params: Record<string, string>): Promise<T> {
   const s = site()!;
   const url = `https://${s.code}.goatcounter.com/api/v0/${path}?${new URLSearchParams(params)}`;
@@ -42,6 +43,10 @@ async function get<T>(path: string, params: Record<string, string>): Promise<T> 
     if (res.status === 429 && attempt < 2) {
       const reset = Number(res.headers.get("X-Rate-Limit-Reset")) || 1;
       await wait(Math.min(reset, 3) * 1000);
+      continue;
+    }
+    if ((res.status === 404 || res.status >= 500) && attempt === 0) {
+      await wait(1000);
       continue;
     }
     if (!res.ok) throw new Error(`GoatCounter ${path}: ${res.status}`);
@@ -59,7 +64,13 @@ export async function visitorStats(): Promise<VisitorStats | null> {
   const start = new Date(`${new Date(Date.now() - 29 * 86_400_000).toISOString().slice(0, 10)}T00:00:00Z`);
   const range = { start: hour(start), end: hour(end) };
 
-  const total = await get<{ total: number; stats?: { day: string; daily: number }[] }>("stats/total", range);
+  // The daily totals still fail sometimes after the retry; the lists below are worth showing anyway.
+  const total = await get<{ total?: number; stats?: { day: string; daily: number }[] }>("stats/total", range).catch(
+    (e) => {
+      console.error("[stats]", e);
+      return {} as { total?: number; stats?: { day: string; daily: number }[] };
+    },
+  );
   const hits = await get<{ hits?: { path: string; title?: string; count: number; event?: boolean }[] }>(
     "stats/hits",
     { ...range, limit: "10" },

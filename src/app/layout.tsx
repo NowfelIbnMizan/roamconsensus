@@ -47,7 +47,15 @@ export const metadata: Metadata = {
   openGraph: { siteName: "Creatour", type: "website", url: "./" },
   twitter: { card: "summary_large_image" },
   appleWebApp: { capable: true, title: "Creatour", statusBarStyle: "default" },
-  icons: { apple: "/icons/apple-touch-icon.png" },
+  // Google shows a favicon only if it finds a square one of 48px or a multiple. Next adds favicon.ico itself;
+  // the PNG and SVG give it more to pick from.
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
+  },
   title: { default: "Creatour", template: "%s · Creatour" },
   description: "Compare travel creators' itineraries and see the places they don't miss.",
 };

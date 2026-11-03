@@ -20,7 +20,7 @@ import type {
   Sentiment,
   Tier,
 } from "@/generated/prisma/enums";
-import { Prisma } from "@/generated/prisma/client";
+import { Prisma, type PrismaClient } from "@/generated/prisma/client";
 import { findPhoto } from "@/lib/photos";
 import { placePhotoKey, placeQuery } from "@/lib/place";
 import { ImportData } from "@/lib/content-schema";
@@ -912,7 +912,15 @@ export async function importItineraries(
       creatorIds.set(c.handle, (await db.creator.create({ data: c })).id);
   const vendorIds = new Map(vendors.map((v) => [v.slug, v.id]));
   for (const it of itineraries)
-    await loadItinerary(db, it, dest.id, creatorIds, placeIds, vendorIds);
+    // db has a retry wrapper (src/lib/db.ts), so its type differs from a plain client; the calls are the same.
+    await loadItinerary(
+      db as unknown as PrismaClient,
+      it,
+      dest.id,
+      creatorIds,
+      placeIds,
+      vendorIds,
+    );
   // So a later deploy with the same itinerary in data/ doesn't add it twice.
   await db.seedLog.createMany({
     data: itineraries.map((it) => ({ key: `itinerary:${it.slug}` })),
