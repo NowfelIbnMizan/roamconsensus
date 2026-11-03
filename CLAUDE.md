@@ -44,7 +44,7 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 10. **No affiliate/money claims.** Site is free and earns nothing. No affiliate IDs exist yet. When IDs arrive, add disclosure section + footer line in the same PR.
 11. Never scrape creator photos or avatars. Avatars only after a creator's written OK.
 12. Marketing copy: never claim creator partnerships or that the owner visited/tested a route. Framing = "fellow traveller".
-13. The container can't reach `creatour.co` or `*.vercel.app` directly; use a web-fetch tool or the Vercel MCP for logs.
+13. Since 2026-11-03 the container reaches `creatour.co` and `*.vercel.app` (curl/Playwright through the proxy; Node fetch needs `NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt`). Image hosts (Unsplash, bstatic) and GoatCounter are still blocked. Vercel MCP for logs.
 
 ## Limits and batching (owner rule, 2026-10-27)
 
