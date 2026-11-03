@@ -1,8 +1,9 @@
 import { collectionPaths } from "@/lib/collections";
+import { CONSENSUS_PREVIEW } from "@/app/destinations/[slug]/(sections)/preview";
 import { getCreatorHandles, getDestination, getDestinationSlugs, getItinerarySlugs, getPlaceParams, getPosts } from "@/lib/data";
 
-/** City tabs that are worth indexing (Compare is interactive, so left out). */
-export const DESTINATION_TABS = ["", "/best", "/stay", "/when", "/before", "/budget", "/esim"];
+/** City tabs that are worth indexing. */
+export const DESTINATION_TABS = ["", "/best", "/stay", "/when", "/before", "/budget", "/esim", "/compare"];
 
 export const destinationPaths = (slug: string) => DESTINATION_TABS.map((tab) => `/destinations/${slug}${tab}`);
 
@@ -32,7 +33,10 @@ export async function sitePaths() {
     ...posts.map((p) => `/blog/${p.slug}`),
     ...creators.map((c) => `/creators/${c.handle}`),
     ...destinations.flatMap((d) => destinationPaths(d.slug)),
-    ...destinations.map((d) => `/destinations/${d.slug}/places`),
+    // A city with no more places than its own page shows never links to the full list, so it isn't listed.
+    ...cities.flatMap((d) =>
+      d && d.consensus.length > CONSENSUS_PREVIEW ? [`/destinations/${d.slug}/places`] : [],
+    ),
     ...cities.flatMap((d) => (d ? collectionPaths(d) : [])),
     ...itineraries.map((i) => `/itineraries/${i.slug}`),
     ...places.map((p) => `/destinations/${p.slug}/places/${p.place}`),

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { CollectionHeader } from "@/components/collection-header";
 import { RouteCollection } from "@/components/route-collection";
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${d.name} on a budget: ${routes.length} creator itineraries`,
     description: `${routes.length} backpacker and budget ${d.name} itineraries from travel creators, cheapest a day first, with the places they all include.`,
-    alternates: { canonical: `/destinations/${d.slug}/on-a-budget` },
+    ...canonical(`/destinations/${d.slug}/on-a-budget`),
   };
 }
 

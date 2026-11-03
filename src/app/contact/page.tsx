@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/contact" },
+  ...canonical("/contact"),
   title: "Contact",
-  description: "Get in touch with Creatour: questions, corrections, creator requests and partnerships.",
+  description: "Get in touch with Creatour: questions about a route, price or place corrections, creator requests and partnerships. One email address.",
 };
 
 const reasons = [

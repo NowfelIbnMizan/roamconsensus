@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { CompareRoutes } from "./compare-routes";
@@ -12,8 +13,8 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   return d
     ? {
         title: `Compare ${d.name} itineraries`,
-        description: `${d.name} creator routes side by side.`,
-        alternates: { canonical: `/destinations/${d.slug}/compare` },
+        description: `Every ${d.name} creator route in one table: days, budget, style and stops. Tick two to see what each one has that the other skips.`,
+        ...canonical(`/destinations/${d.slug}/compare`),
       }
     : {};
 }

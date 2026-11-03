@@ -19,7 +19,7 @@ export function CreatorFaces({ faces, max = 6 }: { faces: Face[]; max?: number }
         <span key={f.handle} className="relative block size-9 shrink-0 overflow-hidden rounded-full bg-line ring-2 ring-background">
           <Image
             src={f.avatarUrl}
-            alt=""
+            alt={f.name}
             fill
             sizes="64px"
             unoptimized

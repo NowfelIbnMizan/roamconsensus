@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs, getStays } from "@/lib/data";
 import { costGuideOf } from "@/lib/costs";
@@ -13,8 +14,8 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   return d
     ? {
         title: `${d.name} trip budget calculator`,
-        description: `How much a trip to ${d.name} costs per day, for backpackers, mid-range and luxury travellers.`,
-        alternates: { canonical: `/destinations/${d.slug}/budget` },
+        description: `How much a trip to ${d.name} costs per day, for backpackers, mid-range and luxury travellers: stays, food, transport and sights.`,
+        ...canonical(`/destinations/${d.slug}/budget`),
       }
     : {};
 }

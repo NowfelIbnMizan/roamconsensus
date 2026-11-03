@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { CollectionHeader } from "@/components/collection-header";
 import { cityCollections, foodPlaces } from "@/lib/collections";
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Where to eat in ${d.name}: ${places.length} spots creators pick`,
     description: `The ${places.length} restaurants, street food stalls and markets travel creators recommend in ${d.name}, most-picked first, with prices and a map.`,
-    alternates: { canonical: `/destinations/${d.slug}/eat` },
+    ...canonical(`/destinations/${d.slug}/eat`),
   };
 }
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { CONSENSUS_PREVIEW } from "../(sections)/preview";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
@@ -15,8 +17,9 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   return d
     ? {
         title: `All ${d.name} places travel creators recommend`,
-        description: `Every place travel creators recommend in ${d.name}, most-picked first, on one map.`,
-        alternates: { canonical: `/destinations/${d.slug}/places` },
+        description: `Every place travel creators recommend in ${d.name}, most-picked first, on one map, with prices, tips and a + to add each one to your trip.`,
+        // When the city page already shows every place, this list repeats it: the city page is the one to index.
+        ...canonical(`/destinations/${d.slug}${d.consensus.length > CONSENSUS_PREVIEW ? "/places" : ""}`),
       }
     : {};
 }

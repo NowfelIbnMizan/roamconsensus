@@ -73,7 +73,7 @@ export function DayFaces({ urls }: { urls: string[] }) {
     <span className="flex -space-x-2.5" aria-hidden>
       {urls.slice(0, 4).map((url, n) => (
         <span key={n} className="relative size-8 overflow-hidden rounded-full bg-line ring-2 ring-background">
-          <Image src={url} alt="" fill sizes="32px" unoptimized={!optimized(url)} className="object-cover" />
+          <Image src={url} alt="Stop photo" fill sizes="32px" unoptimized={!optimized(url)} className="object-cover" />
         </span>
       ))}
     </span>

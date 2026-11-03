@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import Link from "next/link";
 import { LegalPage } from "@/components/legal";
 import { CONTACT_EMAIL, mailto } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/terms" },
+  ...canonical("/terms"),
   title: "Terms of use",
   description:
-    "The rules for using Creatour: prices are estimates, check before you book, and creators own their work.",
+    "The rules for using Creatour: prices are estimates, check them before you book, and creators own their work, photos and words.",
 };
 
 export default function TermsPage() {

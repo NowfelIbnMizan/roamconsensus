@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getDestination, getDestinationSlugs, getEsimPlans } from "@/lib/data";
 import { getEsimGuide, type EsimGuide } from "@/lib/esim-guides";
@@ -18,8 +19,8 @@ export async function generateMetadata({
     ? {
         // Cities in one country share the plans, so the city name keeps each title its own.
         title: `${d.name} eSIM: ${d.country} data plans compared`,
-        description: `Compare ${d.country} eSIM data plans for ${d.name} by price, data and days, and check your phone works first.`,
-        alternates: { canonical: `/destinations/${d.slug}/esim` },
+        description: `Compare ${d.country} eSIM data plans for ${d.name} by price, data and days, and check your phone works with eSIM before you buy one.`,
+        ...canonical(`/destinations/${d.slug}/esim`),
       }
     : {};
 }

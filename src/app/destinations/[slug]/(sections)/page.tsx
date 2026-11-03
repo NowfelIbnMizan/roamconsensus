@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { clip } from "@/lib/seo";
+import { clip, canonical } from "@/lib/seo";
 import { cityCollections } from "@/lib/collections";
 import { ArrowRight, Users } from "lucide-react";
 import { AllocationBar } from "@/components/allocation-bar";
@@ -57,7 +57,7 @@ export async function generateMetadata({
     ? {
         title: `${d.name} itineraries from travel creators`,
         description: clip(d.summary),
-        alternates: { canonical: `/destinations/${d.slug}` },
+        ...canonical(`/destinations/${d.slug}`),
       }
     : {};
 }
