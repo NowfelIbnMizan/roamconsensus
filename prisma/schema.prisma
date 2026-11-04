@@ -625,3 +625,13 @@ model SiteSetting {
   key   String @id
   value Json
 }
+
+/// A short intro above a list page (country, city mid-range, ...), keyed by the page path. An AI draft or the owner's
+/// own words wait in `draft`; only `text` (set when the owner approves in Admin > Page intros) is shown on the site.
+model PageIntro {
+  path       String    @id
+  draft      String?
+  text       String?
+  approvedAt DateTime?
+  updatedAt  DateTime  @updatedAt
+}

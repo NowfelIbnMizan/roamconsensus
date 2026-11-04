@@ -16,6 +16,7 @@ const more = [
   { href: "/admin/esim", label: "eSIM plans" },
   { href: "/admin/about", label: "About me" },
   { href: "/admin/writers", label: "Guest writers" },
+  { href: "/admin/intros", label: "Page intros" },
   { href: "/admin/subscribers", label: "Email sign-ups" },
 ];
 

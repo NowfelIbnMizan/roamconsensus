@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { PageGuide } from "@/components/page-guide";
+import { PageIntro } from "@/components/page-intro";
 import { breadcrumbJsonLd, ldJson } from "@/lib/seo";
+import { countryHref, getCountries } from "@/lib/countries";
 
 /** Back link, title and one line of facts for a city list page, plus its breadcrumb data. */
-export function CollectionHeader({
+export async function CollectionHeader({
   city,
   path,
   title,
@@ -34,9 +36,18 @@ export function CollectionHeader({
         <ChevronLeft className="size-4" aria-hidden />
         {city.name}
       </Link>
-      <p className="eyebrow mt-3">{city.country}</p>
+      <p className="eyebrow mt-3">
+        {(await getCountries()).some((c) => c.name === city.country) ? (
+          <Link href={countryHref(city.country)} className="hover:text-accent hover:underline">
+            {city.country}
+          </Link>
+        ) : (
+          city.country
+        )}
+      </p>
       <h1 className="text-3xl font-semibold tracking-tight text-balance">{title}</h1>
       <p className="mt-1 text-sm text-muted">{facts}</p>
+      <PageIntro path={path} className="mt-3" />
       <PageGuide id="city-collection" className="mt-4" />
     </>
   );

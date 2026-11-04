@@ -1,4 +1,5 @@
 import { collectionPaths } from "@/lib/collections";
+import { countryHref, getCountries } from "@/lib/countries";
 import { CONSENSUS_PREVIEW } from "@/app/destinations/[slug]/(sections)/preview";
 import { getCreatorHandles, getDestination, getDestinationSlugs, getItinerarySlugs, getPlaceParams, getPosts } from "@/lib/data";
 
@@ -16,7 +17,10 @@ export async function sitePaths() {
     getCreatorHandles(),
     getPosts(),
   ]);
-  const cities = await Promise.all(destinations.map((d) => getDestination(d.slug)));
+  const [cities, countries] = await Promise.all([
+    Promise.all(destinations.map((d) => getDestination(d.slug))),
+    getCountries(),
+  ]);
   return [
     "/",
     "/visa",
@@ -32,6 +36,7 @@ export async function sitePaths() {
     "/blog",
     ...posts.map((p) => `/blog/${p.slug}`),
     ...creators.map((c) => `/creators/${c.handle}`),
+    ...countries.map((c) => countryHref(c.name)),
     ...destinations.flatMap((d) => destinationPaths(d.slug)),
     // A city with no more places than its own page shows never links to the full list, so it isn't listed.
     ...cities.flatMap((d) =>
