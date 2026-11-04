@@ -2,12 +2,15 @@ import { notFound } from "next/navigation";
 import { CityTabGuide } from "@/components/page-guide";
 import { Photo } from "@/components/photo";
 import { SampleBanner } from "@/components/sample-banner";
+import Link from "next/link";
 import { getDestination } from "@/lib/data";
+import { countryHref, getCountries } from "@/lib/countries";
 import { CityHeading, DestinationTabs, OverviewOnly } from "./tabs";
 
 export default async function DestinationLayout({ children, params }: LayoutProps<"/destinations/[slug]">) {
   const destination = await getDestination((await params).slug);
   if (!destination) notFound();
+  const hasCountryPage = (await getCountries()).some((c) => c.name === destination.country);
 
   return (
     <>
@@ -26,7 +29,14 @@ export default async function DestinationLayout({ children, params }: LayoutProp
         </div>
       </OverviewOnly>
       <p className="eyebrow">
-        {destination.country} · {destination.routes.length} {destination.routes.length === 1 ? "route" : "routes"} ·{" "}
+        {hasCountryPage ? (
+          <Link href={countryHref(destination.country)} className="underline-offset-2 hover:text-accent hover:underline">
+            {destination.country}
+          </Link>
+        ) : (
+          destination.country
+        )}{" "}
+        · {destination.routes.length} {destination.routes.length === 1 ? "route" : "routes"} ·{" "}
         {destination.creatorCount} {destination.creatorCount === 1 ? "creator" : "creators"}
       </p>
       <CityHeading slug={destination.slug} name={destination.name} />

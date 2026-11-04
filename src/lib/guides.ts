@@ -280,6 +280,20 @@ export const guides = {
       text: "Chips show one type at a time. Tap + to add a place to your trip.",
     },
   ],
+  country: [
+    {
+      lead: "The whole country",
+      text: "Every creator route in this country, city by city, cheapest a day first.",
+    },
+    {
+      lead: "More than one city?",
+      text: "Add a route from each city to your trip. The second city's days go after the first.",
+    },
+    {
+      lead: "Where they agree",
+      text: "Under each city, the places its routes share. Tap one to see who picked it.",
+    },
+  ],
   "city-collection": [
     {
       lead: "A shortlist for one question",

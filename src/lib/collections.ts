@@ -24,6 +24,11 @@ const areaPlaces = (d: Destination, area: string) =>
 export const foodPlaces = (d: Destination) => d.consensus.filter((p) => p.category === "FOOD");
 export const budgetRoutes = (d: Destination) => d.routes.filter((r) => BUDGET_TIERS.has(r.tier));
 export const routesOfLength = (d: Destination, days: number) => d.routes.filter((r) => r.days === days);
+export const midRangeRoutes = (d: Destination) => d.routes.filter((r) => r.tier === "MIDRANGE");
+export const luxuryRoutes = (d: Destination) => d.routes.filter((r) => r.tier === "LUXURY");
+
+/** Enough routes for a list, but not every route the city has (that list is the city page itself). */
+const worthAList = (d: Destination, routes: Route[]) => routes.length >= MIN_ROUTES && routes.length < d.routes.length;
 
 /** Every list page a city has enough data for. */
 export function cityCollections(d: Destination) {
@@ -40,6 +45,8 @@ export function cityCollections(d: Destination) {
     areas,
     lengths,
     budget: budgetRoutes(d).length >= MIN_ROUTES,
+    midRange: worthAList(d, midRangeRoutes(d)),
+    luxury: worthAList(d, luxuryRoutes(d)),
   };
 }
 
@@ -49,6 +56,8 @@ export function collectionPaths(d: Destination) {
   return [
     ...(c.eat ? [`${base}/eat`] : []),
     ...(c.budget ? [`${base}/on-a-budget`] : []),
+    ...(c.midRange ? [`${base}/mid-range`] : []),
+    ...(c.luxury ? [`${base}/luxury`] : []),
     ...c.lengths.map((n) => `${base}/days/${n}`),
     ...c.areas.map((a) => `${base}/areas/${a.slug}`),
   ];
