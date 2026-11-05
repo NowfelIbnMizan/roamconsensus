@@ -51,7 +51,8 @@ export default async function CountryPage({ params }: Props) {
       <p className="eyebrow">Country</p>
       <h1 className="text-3xl font-semibold tracking-tight text-balance">{c.name} itineraries from travel creators</h1>
       <p className="mt-1 text-sm text-muted">
-        {c.routes.length} routes across {c.cities.length} cities, from {c.creators}{" "}
+        {c.routes.length} {c.routes.length === 1 ? "route" : "routes"} across {c.cities.length}{" "}
+        {c.cities.length === 1 ? "city" : "cities"}, from {c.creators}{" "}
         {c.creators === 1 ? "creator" : "creators"}.
       </p>
       <PageIntro path={path} className="mt-3" />

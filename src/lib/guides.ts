@@ -10,7 +10,7 @@ export const guides = {
       text: "Each card is one creator's full day-by-day plan. Open one to see every stop.",
     },
     {
-      lead: "What creators don't miss",
+      lead: "Top picks first",
       text: "The Top 5 and the photo grid put the places most creators recommend first. Hover or tap a photo for a quick look.",
     },
     {
@@ -218,6 +218,10 @@ export const guides = {
     {
       lead: "Set a budget",
       text: "Routes over your budget, or with hotels that have no price, are hidden.",
+    },
+    {
+      lead: "Travel styles",
+      text: "Backpacker: hostels and dorms, street food. Budget: cheap private rooms, local eats. Mid-range: 3–4 star hotels, sit-down meals. Luxury: 5-star stays, private tours.",
     },
     {
       lead: "Not sure where?",

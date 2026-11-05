@@ -19,7 +19,7 @@ import { Photo } from "@/components/photo";
 import { PhotoGallery } from "@/components/photo-gallery";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import { getPlace, getPlaceParams } from "@/lib/data";
-import { categoryLabel, sentimentLabel } from "@/lib/format";
+import { categoryName, sentimentLabel } from "@/lib/format";
 import {
   categoryHex,
   distanceKm,
@@ -110,7 +110,7 @@ export default async function PlacePage({ params }: Props) {
           label: String(n + 1),
           color: categoryHex[o.category],
           title: o.name,
-          subtitle: [o.area, categoryLabel[o.category]]
+          subtitle: [o.area, categoryName[o.category]]
             .filter(Boolean)
             .join(" · "),
           href: googleMapsPlaceUrl(
@@ -193,7 +193,7 @@ export default async function PlacePage({ params }: Props) {
                     <MapPin className="size-3.5" aria-hidden /> {p.area} ·
                   </>
                 )}{" "}
-                {categoryLabel[p.category]}
+                {categoryName[p.category]}
                 {p.fromPrice && (
                   <>
                     {" · "}
@@ -347,7 +347,7 @@ export default async function PlacePage({ params }: Props) {
                               driveMinutes(p as { lat: number; lng: number }, o)
                                 .minutes,
                             )}{" "}
-                            · {categoryLabel[o.category]}
+                            · {categoryName[o.category]}
                           </span>
                         </Link>
                         {o.cartItem && o.skippedBy.length === 0 && (

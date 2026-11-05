@@ -6,7 +6,7 @@ import { Printer } from "lucide-react";
 import { planLength } from "@/components/day-plan";
 import { useMoney } from "@/components/money";
 import { lineTotal, useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
-import { categoryLabel } from "@/lib/format";
+import { categoryName } from "@/lib/format";
 
 /** Paper can't click a link, so print just the site: getyourguide.com, not its long search address. */
 const site = (url: string) => {
@@ -102,7 +102,7 @@ export function PrintTrip() {
                     <span className="tabular-nums">{price(i)}</span>
                   </p>
                   <p className="text-sm text-muted">
-                    {categoryLabel[i.category]}
+                    {categoryName[i.category]}
                     {i.destination && ` · ${i.destination.name}`} · from {i.itinerary.title}
                     {i.couponCode && ` · code ${i.couponCode}`}
                   </p>

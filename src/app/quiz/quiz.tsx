@@ -7,7 +7,7 @@ import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import { Thumb } from "@/components/thumb";
 import type { QuizData } from "@/lib/data";
-import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
+import { categoryName, mostlyPriced, tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
@@ -219,7 +219,7 @@ export function Quiz({ data }: { data: QuizData }) {
           className="scroll-mt-6 lg:sticky lg:top-6 lg:self-start"
         >
           <h2 className="eyebrow font-sans">
-            {!answered ? "Tap to find your match" : top?.misses.length ? "Nothing fits all your picks. Closest:" : "Your best match"}
+            {!answered ? "Tap above to find your match" : top?.misses.length ? "Nothing fits all your picks. Closest:" : "Your best match"}
           </h2>
           {top && (
             <article className="relative mt-2 overflow-hidden rounded-2xl border border-accent bg-card has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">
@@ -329,7 +329,7 @@ export function Quiz({ data }: { data: QuizData }) {
                 >
                   <p className="font-medium">{p.name}</p>
                   <p className="mt-0.5 text-xs text-muted">
-                    {[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+                    {[p.area, categoryName[p.category]].filter(Boolean).join(" · ")}
                     {p.creatorCount > 1 && ` · ${p.creatorCount} creators`}
                   </p>
                   <p className="mt-2 flex flex-wrap gap-1">

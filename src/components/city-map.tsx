@@ -194,7 +194,7 @@ function RegionMap({ cities, legend = false, small = false }: { cities: City[]; 
           <Link
             key={p.slug}
             href={`/destinations/${p.slug}`}
-            aria-label={`${p.name}, ${p.routes} routes`}
+            aria-label={`${p.name}, ${p.routes} ${p.routes === 1 ? "route" : "routes"}`}
             className="group outline-none"
           >
             <circle

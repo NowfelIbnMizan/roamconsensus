@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 const reasons = [
   {
     title: "Spotted a mistake?",
-    text: "A closed place, a wrong price or a broken link. Tell us the page and what's changed and we'll fix it.",
+    text: "A closed place, a wrong price or a broken link. Tell me the page and what's changed and I'll fix it.",
     subject: "Correction",
   },
   {
     title: "Are you a featured creator?",
-    text: "Ask us to correct your itinerary, use your own booking links for your picks, or remove your content. We act on these first.",
+    text: "Ask me to correct your itinerary, use your own booking links for your picks, or remove your content. These come first.",
     subject: "Creator request",
   },
   {
     title: "Your data",
-    text: "Ask what we hold about you, or to delete your email from our list. See the privacy policy for what we keep.",
+    text: "Ask what Creatour holds about you, or to delete your email from the list. The privacy policy says what's kept.",
     subject: "Privacy request",
   },
   {
@@ -37,7 +37,7 @@ export default function ContactPage() {
   return (
     <article className="max-w-2xl">
       <h1 className="text-3xl font-semibold tracking-tight">Contact</h1>
-      <p className="mt-3">One inbox for everything. We read every email and usually reply within a few days.</p>
+      <p className="mt-3">One inbox for everything. I read every email and usually reply within a few days.</p>
       <p className="mt-5">
         <a href={mailto()} className="inline-flex items-center gap-2 text-lg font-medium text-accent underline">
           <Mail className="size-5" aria-hidden /> {CONTACT_EMAIL}
@@ -50,7 +50,7 @@ export default function ContactPage() {
             <h2 className="font-semibold">{r.title}</h2>
             <p className="mt-1 text-sm text-muted">{r.text}</p>
             <a href={mailto(r.subject)} className="mt-3 inline-block text-sm font-medium text-accent underline">
-              Email us
+              Email me
             </a>
           </li>
         ))}

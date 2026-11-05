@@ -5,7 +5,7 @@ import { FavouriteButton } from "@/components/favourite-button";
 import { Photo } from "@/components/photo";
 import { TripMap, type MapStop } from "@/components/trip-map";
 import type { getDestination } from "@/lib/data";
-import { categoryLabel } from "@/lib/format";
+import { categoryLabel, categoryName } from "@/lib/format";
 import { categoryHex, googleMapsPlaceUrl, hasPin } from "@/lib/map";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
@@ -36,7 +36,7 @@ export function PlaceMiniCard({
 }) {
   return (
     <MiniCard
-      eyebrow={[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+      eyebrow={[p.area, categoryName[p.category]].filter(Boolean).join(" · ")}
       name={p.name}
       fromPrice={p.fromPrice}
       blurb={p.blurb}
@@ -78,7 +78,7 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
     title: p.name,
     subtitle: [
       p.area,
-      categoryLabel[p.category],
+      categoryName[p.category],
       creatorCount > 1 ? `${p.creators.length}/${creatorCount} creators` : null,
     ]
       .filter(Boolean)
@@ -179,7 +179,7 @@ export function PlaceList({ destination, limit = false }: { destination: Destina
               </div>
               <div className="min-w-0 flex-1">
                 <p className={`eyebrow truncate ${limit ? "mt-2.5" : "sm:mt-2.5"}`}>
-                  {p.area ?? categoryLabel[p.category]}
+                  {p.area ?? categoryName[p.category]}
                 </p>
                 <Link
                   href={placeHref(destination.slug, p.slug)}
