@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { PlaceHover } from "@/components/place-hover";
+import { ScrollRow } from "@/components/scroll-row";
 import { optimized } from "@/components/thumb";
 
 export type Snapshot = {
@@ -14,10 +15,14 @@ export type Snapshot = {
 };
 
 /** A swipeable row of captioned photos: the trip at a glance before the day-by-day list. */
-export function Snapshots({ shots, className = "" }: { shots: Snapshot[]; className?: string }) {
+export function Snapshots({ shots: all, className = "" }: { shots: Snapshot[]; className?: string }) {
+  // Two stops can share one stock photo (e.g. neighbouring palaces); show it once.
+  const seen = new Set<string>();
+  const shots = all.filter((s) => !seen.has(s.url) && seen.add(s.url));
   if (shots.length < 2) return null;
   return (
-    <div
+    <ScrollRow
+      label="photos"
       className={`-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pt-1 pb-3 [scrollbar-width:none] sm:mx-0 sm:px-1 ${className}`}
     >
       {shots.slice(0, 12).map((s) => {
@@ -62,7 +67,7 @@ export function Snapshots({ shots, className = "" }: { shots: Snapshot[]; classN
           </figure>
         );
       })}
-    </div>
+    </ScrollRow>
   );
 }
 
