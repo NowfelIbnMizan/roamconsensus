@@ -24,7 +24,7 @@ import { AllocationBar } from "@/components/allocation-bar";
 import { lineTotal, useCart, useCartHydrated } from "@/lib/cart-store";
 import { groupByVendor, toIcs, toNotionMarkdown, toText } from "@/lib/cart-export";
 import { VendorBadge } from "@/components/vendor-badge";
-import { categoryLabel } from "@/lib/format";
+import { categoryName } from "@/lib/format";
 import { encodeTrip, shortCode } from "@/lib/share";
 import { EmailSignup } from "@/components/email-signup";
 import { TripMap } from "@/components/trip-map";
@@ -180,7 +180,8 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               {days} day{days > 1 && "s"} · {items.length} stop
               {items.length > 1 && "s"}
               {unpriced > 0 && ` · ${unpriced} not priced yet`}
-              {days > 1 && ` · ${nights} of ${days - 1} hotel nights included`}
+              {days > 1 &&
+                (nights >= days - 1 ? " · all hotel nights included" : ` · ${nights} of ${days - 1} hotel nights included`)}
             </p>
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2">
@@ -357,7 +358,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
                       <div className="min-w-0 flex-1">
                         <p className="font-medium">{item.name}</p>
                         <p className="text-xs text-muted">
-                          {categoryLabel[item.category]} · from{" "}
+                          {categoryName[item.category]} · from{" "}
                           <Link href={`/itineraries/${item.itinerary.slug}`} className="underline">
                             {item.itinerary.title}
                           </Link>

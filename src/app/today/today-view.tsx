@@ -13,7 +13,7 @@ import { planLength } from "@/components/day-plan";
 import { LegHint } from "@/components/road-time";
 import { WeatherCard } from "@/components/weather-card";
 import { useMoney } from "@/components/money";
-import { categoryLabel } from "@/lib/format";
+import { categoryName } from "@/lib/format";
 import { cityOf, tripDayToday } from "@/lib/trip";
 import { dayLegs, googleMapsRouteUrl, hasPin } from "@/lib/map";
 import type { Weather } from "@/lib/weather";
@@ -144,7 +144,7 @@ export function TodayView() {
                   <Link href={p.href} className="min-w-0 hover:underline">
                     <span className="font-medium">{p.name}</span>
                     <span className="block text-xs text-muted">
-                      {[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+                      {[p.area, categoryName[p.category]].filter(Boolean).join(" · ")}
                     </span>
                   </Link>
                   {p.cartItem &&
@@ -190,7 +190,7 @@ export function TodayView() {
                   <p className="text-xs font-semibold uppercase tracking-wide text-accent">Up next</p>
                   <h2 className="mt-1 text-2xl font-semibold leading-tight">{next.name}</h2>
                   <p className="mt-1 text-sm text-muted">
-                    {categoryLabel[next.category]}
+                    {categoryName[next.category]}
                     {lineTotal(next) > 0 && ` · ${price(next)}`}
                     {next.couponCode && (
                       <span className="ml-2 rounded border border-dashed border-accent px-1 font-mono text-accent">
@@ -264,7 +264,7 @@ export function TodayView() {
                         <span className="block truncate">{item.name}</span>
                         {!isDone && (
                           <span className="text-xs text-muted">
-                            {categoryLabel[item.category]}
+                            {categoryName[item.category]}
                             {lineTotal(item) > 0 && ` · ${price(item)}`}
                           </span>
                         )}

@@ -28,7 +28,7 @@ import { getDestination, getItinerary, getItinerarySlugs, getPostsForRoute } fro
 import { type Gap, routeGaps } from "@/lib/gaps";
 import { cachedPhotoUrls } from "@/lib/photos";
 import { GapPicks } from "./gap-picks";
-import { categoryLabel, sentimentLabel, tierLabel } from "@/lib/format";
+import { categoryName, sentimentLabel, tierLabel } from "@/lib/format";
 import { Money, Price } from "@/components/money";
 import {
   dayColor,
@@ -98,7 +98,7 @@ function StopCard({
 }) {
   return (
     <div className="pr-8">
-      <p className="eyebrow">{categoryLabel[item.category]}</p>
+      <p className="eyebrow">{categoryName[item.category]}</p>
       <p className="mt-1 font-display text-xl leading-snug font-semibold">
         {item.name}
       </p>
@@ -299,7 +299,7 @@ export default async function ItineraryPage({
         label: String(n + 1),
         color: dayColor(day - 1),
         title: i.name,
-        subtitle: `Day ${day} · ${categoryLabel[i.category]}`,
+        subtitle: `Day ${day} · ${categoryName[i.category]}`,
         href: googleMapsPlaceUrl(i.name, it.destination.name),
         group: day,
         cartId: i.id,
@@ -489,7 +489,7 @@ export default async function ItineraryPage({
                     <div className="max-h-[60vh] overflow-y-auto">
                       <p className="eyebrow">
                         Day {day} · {i.area ? `${i.area} · ` : ""}
-                        {categoryLabel[i.category]}
+                        {categoryName[i.category]}
                       </p>
                       <p className="mt-1 font-display text-lg font-semibold leading-snug">{i.name}</p>
                       <p className="text-sm text-muted tabular-nums">
@@ -699,7 +699,7 @@ function DayTimeline({
                                           {pin}
                                         </span>
                                       )}
-                                      {categoryLabel[item.category]}
+                                      {categoryName[item.category]}
                                       {item.area && ` · ${item.area}`}
                                     </span>
                                     <span className="block text-lg leading-snug font-medium">

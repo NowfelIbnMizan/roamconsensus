@@ -52,3 +52,13 @@ export const categoryLabel = {
   GEAR: "Gear",
   TRANSIT: "Transit",
 } as const;
+
+/** One stop's type, for a label on a single place ("Stay", not "Stays"). Filters and totals use categoryLabel. */
+export const categoryName = {
+  STAY: "Stay",
+  EXPERIENCE: "Experience",
+  FOOD: "Food",
+  ESIM: "Connectivity",
+  GEAR: "Gear",
+  TRANSIT: "Transit",
+} as const;

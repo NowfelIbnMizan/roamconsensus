@@ -8,7 +8,7 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp, ExternalLink, GripVertical, Minus, Plane, Plus, Trash2 } from "lucide-react";
 import { lineTotal, type CartItem } from "@/lib/cart-store";
 import { StopDetails } from "@/components/stop-details";
-import { categoryLabel } from "@/lib/format";
+import { categoryName } from "@/lib/format";
 import { dayColor, dayLegs, googleMapsPinUrl, googleMapsRouteUrl, hasPin } from "@/lib/map";
 import { DriveSummary, LegHint } from "@/components/road-time";
 import { useMoney } from "@/components/money";
@@ -41,7 +41,7 @@ export function planMap(items: CartItem[], days: number) {
         label: String(n + 1),
         color: dayColor(d - 1),
         title: i.name,
-        subtitle: `Day ${d} · ${categoryLabel[i.category]}`,
+        subtitle: `Day ${d} · ${categoryName[i.category]}`,
         href: googleMapsPinUrl(i),
         group: d,
       }),
@@ -346,7 +346,7 @@ export function DayPlan({ items, days, edit }: { items: CartItem[]; days: number
                           }
                         >
                           <div className="pr-8">
-                            <p className="eyebrow">{categoryLabel[item.category]}</p>
+                            <p className="eyebrow">{categoryName[item.category]}</p>
                             <p className="mt-1 font-display text-xl leading-snug font-semibold">{item.name}</p>
                             <p className="mt-1 text-sm text-muted">
                               From{" "}

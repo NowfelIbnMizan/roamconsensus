@@ -7,7 +7,7 @@ import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import { Thumb } from "@/components/thumb";
 import type { QuizData } from "@/lib/data";
-import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
+import { categoryName, mostlyPriced, tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import { VIBES, type VibeKey } from "@/lib/vibes";
 import type { Tier } from "@/generated/prisma/enums";
@@ -329,7 +329,7 @@ export function Quiz({ data }: { data: QuizData }) {
                 >
                   <p className="font-medium">{p.name}</p>
                   <p className="mt-0.5 text-xs text-muted">
-                    {[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+                    {[p.area, categoryName[p.category]].filter(Boolean).join(" · ")}
                     {p.creatorCount > 1 && ` · ${p.creatorCount} creators`}
                   </p>
                   <p className="mt-2 flex flex-wrap gap-1">

@@ -8,7 +8,7 @@ import { CreatorChip } from "@/components/creator";
 import { useMoney } from "@/components/money";
 import { Thumb } from "@/components/thumb";
 import type { getDestination } from "@/lib/data";
-import { categoryLabel, tierLabel } from "@/lib/format";
+import { categoryName, tierLabel } from "@/lib/format";
 import { placeHref } from "@/lib/place";
 import type { ItemCategory } from "@/generated/prisma/enums";
 import { AddItemButton } from "@/components/add-to-cart";
@@ -233,7 +233,7 @@ export function CompareRoutes({
                           card={
                             p && (
                               <MiniCard
-                                eyebrow={[p.area, categoryLabel[p.category]].filter(Boolean).join(" · ")}
+                                eyebrow={[p.area, categoryName[p.category]].filter(Boolean).join(" · ")}
                                 name={p.name}
                                 fromPrice={p.fromPrice}
                                 blurb={p.blurb}
@@ -256,7 +256,7 @@ export function CompareRoutes({
                               <span className="block text-sm group-hover:text-accent">{p?.name ?? s}</span>
                               {p && (
                                 <span className="block text-xs text-muted tabular-nums">
-                                  {categoryLabel[p.category]}
+                                  {categoryName[p.category]}
                                   {p.fromPrice && (
                                     <>
                                       {" · "}
