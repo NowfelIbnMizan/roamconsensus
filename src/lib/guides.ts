@@ -220,6 +220,10 @@ export const guides = {
       text: "Routes over your budget, or with hotels that have no price, are hidden.",
     },
     {
+      lead: "Travel styles",
+      text: "Backpacker: hostels and dorms, street food. Budget: cheap private rooms, local eats. Mid-range: 3–4 star hotels, sit-down meals. Luxury: 5-star stays, private tours.",
+    },
+    {
       lead: "Not sure where?",
       text: "Find your match asks four quick questions and suggests a route.",
     },

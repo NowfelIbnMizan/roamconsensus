@@ -77,6 +77,17 @@ Every push to any branch = a Vercel build = migrations + seed + full prerender r
 - Don't open PRs that only add agent skills.
 - Talk to him before spending credits on generated media.
 
+## Copy rules (owner-approved 2026-11-05)
+
+- Voice: About = "I" (owner's story). Contact = "I" (his inbox). Everything else, legal and FAQ = "we".
+- Words: "route" = a creator's plan (buttons, headings). "Itinerary" only in SEO titles/descriptions. "Trip plan" / "your trip" = the user's cart. Never "cart" in UI.
+- Missing prices: "+ N not priced" next to a total; "Partly priced" when under 70% priced (`PRICED_ENOUGH`); "No prices listed" when none; single stop = "Price not listed".
+- Counts: always singular/plural (`n === 1 ? "route" : "routes"`). One stop's type uses `categoryName` ("Stay"); filters/totals use `categoryLabel` ("Stays").
+- Styles: Backpacker = hostels, street food · Budget = cheap private rooms, local eats · Mid-range = 3-4 star, sit-down meals · Luxury = 5-star, private tours.
+- Sentence case for headings and labels (no Title Case, no CSS `capitalize`).
+- Creator disclaimers stay where they are (owner said keep all 3 on route pages).
+- Route titles, bios, blurbs live in the DB: owner edits in admin. Don't bulk-rewrite via migration.
+
 ## Redesign rounds done (pick = merged)
 
 - Home map-first (#57), no stats line under map (#81) · city place photo grid (#58) · route page folds (#61) · cart B (#62) · finder B (#63) · place page B (#64) · creator page B (#65).
