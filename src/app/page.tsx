@@ -181,7 +181,7 @@ export default async function Home() {
                     {d.summary}
                   </p>
                   <p className="mt-1 flex items-center gap-1 text-sm text-muted sm:mt-2">
-                    {d._count.itineraries} routes{" "}
+                    {d._count.itineraries} {d._count.itineraries === 1 ? "route" : "routes"}{" "}
                     <ArrowRight
                       className="size-4 transition group-hover:translate-x-0.5"
                       aria-hidden

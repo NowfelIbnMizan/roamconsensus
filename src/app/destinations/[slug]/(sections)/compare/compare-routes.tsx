@@ -97,7 +97,7 @@ export function CompareRoutes({
     r.noStay && !r.sightsOnly && perDay(r) ? (
       <span className="block text-xs text-muted">No hotel price</span>
     ) : r.unpricedCount > 0 && perDay(r) && !r.sightsOnly ? (
-      <span className="block text-xs text-muted">{r.unpricedCount} not priced</span>
+      <span className="block text-xs text-muted">+ {r.unpricedCount} not priced</span>
     ) : null;
 
   const Tick = ({ r }: { r: Route }) => {

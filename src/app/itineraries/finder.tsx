@@ -189,14 +189,14 @@ export function TripFinder({
             ) : (
               r.unpricedCount > 0 && (
                 <span className="block text-xs text-muted">
-                  + {r.unpricedCount} unpriced
+                  + {r.unpricedCount} not priced
                 </span>
               )
             )}
           </>
         ) : (
           <span className="block max-w-24 text-xs text-muted">
-            {r.totalCents > 0 ? "Some prices missing" : "No prices listed"}
+            {r.totalCents > 0 ? "Partly priced" : "No prices listed"}
           </span>
         )}
       </span>

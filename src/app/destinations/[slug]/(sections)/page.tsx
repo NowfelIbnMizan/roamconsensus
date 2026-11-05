@@ -96,7 +96,7 @@ export default async function DestinationPage({
         >
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
             <h2 id="agreed-heading" className="text-xl font-semibold">
-              Top 5 creators don&apos;t miss
+              Top 5 picks
             </h2>
             <a
               href="#agree"
@@ -215,7 +215,7 @@ export default async function DestinationPage({
                   <p className="mb-4 text-xs text-muted">
                     est. per person
                     {r.unpricedCount > 0 &&
-                      ` + ${r.unpricedCount} without prices`}
+                      ` + ${r.unpricedCount} not priced`}
                   </p>
                   <div className="mt-auto">
                     <AllocationBar allocation={r.allocation} legend={false} />
@@ -227,7 +227,7 @@ export default async function DestinationPage({
               ) : (
                 <p className="mt-3 text-sm text-muted">
                   {r.totalCents > 0
-                    ? `Some prices missing (${r.stops - r.unpricedCount} of ${r.stops} stops priced)`
+                    ? `Partly priced: ${r.stops - r.unpricedCount} of ${r.stops} stops`
                     : "No prices listed"}
                 </p>
               )}
@@ -242,11 +242,11 @@ export default async function DestinationPage({
       <section id="agree" className="mt-12 scroll-mt-6">
         <h2 className="flex items-center gap-2 text-xl font-semibold">
           <Users className="size-5 text-accent" aria-hidden />{" "}
-          {creatorCount > 1 ? "Places creators don't miss" : `Places ${destination.routes[0]?.creator.name ?? "the creator"} picked`}
+          {creatorCount > 1 ? "Every place, most-picked first" : `Places ${destination.routes[0]?.creator.name ?? "the creator"} picked`}
         </h2>
         <p className="mt-1 text-sm text-muted">
           {creatorCount > 1
-            ? "Most-picked first. Tap + to add to your trip."
+            ? "Tap + to add to your trip."
             : `From one creator so far.`}{" "}
           <Link
             href={`/destinations/${destination.slug}/best`}

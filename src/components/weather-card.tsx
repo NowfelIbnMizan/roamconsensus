@@ -41,7 +41,7 @@ export function WeatherCard({
             <p className="text-2xl font-semibold tabular-nums">
               {now.tempC}°C <span className="text-base font-normal text-muted">/ {f(now.tempC)}°F</span>
             </p>
-            <p className="text-xs capitalize text-muted">
+            <p className="text-xs text-muted first-letter:uppercase">
               {now.description} · feels {now.feelsC}° · {now.humidity}% humidity
             </p>
           </div>

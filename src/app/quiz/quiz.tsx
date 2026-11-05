@@ -219,7 +219,7 @@ export function Quiz({ data }: { data: QuizData }) {
           className="scroll-mt-6 lg:sticky lg:top-6 lg:self-start"
         >
           <h2 className="eyebrow font-sans">
-            {!answered ? "Tap to find your match" : top?.misses.length ? "Nothing fits all your picks. Closest:" : "Your best match"}
+            {!answered ? "Tap above to find your match" : top?.misses.length ? "Nothing fits all your picks. Closest:" : "Your best match"}
           </h2>
           {top && (
             <article className="relative mt-2 overflow-hidden rounded-2xl border border-accent bg-card has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-accent">

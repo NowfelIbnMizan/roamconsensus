@@ -179,7 +179,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
             <p className="text-sm text-muted">
               {days} day{days > 1 && "s"} · {items.length} stop
               {items.length > 1 && "s"}
-              {unpriced > 0 && ` · ${unpriced} without a price yet`}
+              {unpriced > 0 && ` · ${unpriced} not priced yet`}
               {days > 1 && ` · ${nights} of ${days - 1} hotel nights included`}
             </p>
           </div>

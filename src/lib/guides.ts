@@ -10,7 +10,7 @@ export const guides = {
       text: "Each card is one creator's full day-by-day plan. Open one to see every stop.",
     },
     {
-      lead: "What creators don't miss",
+      lead: "Top picks first",
       text: "The Top 5 and the photo grid put the places most creators recommend first. Hover or tap a photo for a quick look.",
     },
     {
