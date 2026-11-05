@@ -44,7 +44,7 @@ export default async function PanelLayout({ children }: LayoutProps<"/admin">) {
             <summary className="flex cursor-pointer list-none items-center gap-1 opacity-80 hover:opacity-100">
               More <ChevronDown className="size-3.5" aria-hidden />
             </summary>
-            <div className="absolute right-0 z-[1150] mt-2 w-56 rounded-xl border border-line bg-card p-1.5 text-foreground shadow-xl">
+            <div className="absolute left-0 z-[1150] mt-2 w-56 sm:left-auto sm:right-0 rounded-xl border border-line bg-card p-1.5 text-foreground shadow-xl">
               {more.map((l) => (
                 <Link key={l.href} href={l.href} className="block rounded-lg px-3 py-2 hover:bg-line/50">
                   {l.label}

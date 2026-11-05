@@ -441,7 +441,15 @@ export default async function ItineraryPage({
           >
             {fullGuide} <ExternalLink className="size-3.5" aria-hidden />
           </a>
-          {it.editorTake && <EditorTake editor={editor} take={it.editorTake} />}
+          {(it.editorTake || it.editorPros.length > 0 || it.editorCons.length > 0) && (
+            <EditorTake
+              editor={editor}
+              take={it.editorTake}
+              pros={it.editorPros}
+              cons={it.editorCons}
+              creator={it.creator.name}
+            />
+          )}
           {posts.map((p) => (
             <Link
               key={p.slug}

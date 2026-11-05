@@ -436,6 +436,18 @@ export async function saveHomeFaces(fd: FormData) {
   published();
 }
 
+/** Admin > Creators: the "Claim this profile" box at the bottom of every creator page. */
+export async function saveClaimProfile(fd: FormData) {
+  await requireAdmin();
+  const value = checkbox(fd, "claimProfile");
+  await db.siteSetting.upsert({
+    where: { key: "claimProfile" },
+    create: { key: "claimProfile", value },
+    update: { value },
+  });
+  published();
+}
+
 export async function deleteCreator(fd: FormData) {
   await requireAdmin();
   const id = text(fd, "id");
@@ -461,6 +473,8 @@ export async function saveItinerary(fd: FormData) {
     days: Math.max(1, int(fd, "days", 1)),
     sourceUrl: text(fd, "sourceUrl"),
     editorTake: optional(fd, "editorTake"),
+    editorPros: optional(fd, "editorPros"),
+    editorCons: optional(fd, "editorCons"),
     creatorId: text(fd, "creatorId"),
   };
   const row = id

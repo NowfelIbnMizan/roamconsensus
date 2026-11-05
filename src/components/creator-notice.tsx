@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ExternalLink, Heart, Info } from "lucide-react";
+import { BadgeCheck, ExternalLink, Heart, Info } from "lucide-react";
 import { CreatorSocials } from "@/components/creator";
 import type { CreatorLinks } from "@/lib/creator-links";
+import { mailto } from "@/lib/contact";
 
 type Creator = {
   handle: string;
@@ -124,6 +125,28 @@ export function FellowTraveller({
         comments are my own opinion. Their full guides are always better than my
         summary, so please read them, follow them and support their work.
       </p>
+    </aside>
+  );
+}
+
+/** Bottom of a creator page: the creator can email to fix, add to or remove their page. Admin > Creators turns it off. */
+export function ClaimProfile({ name, className = "" }: { name: string; className?: string }) {
+  return (
+    <aside className={`flex flex-wrap items-center gap-4 rounded-2xl border border-line bg-card p-5 ${className}`}>
+      <BadgeCheck className="size-8 shrink-0 self-start text-accent" aria-hidden />
+      <div className="min-w-0 flex-1 basis-64">
+        <p className="font-semibold">Are you {name}? Claim this profile</p>
+        <p className="mt-0.5 text-sm text-muted text-pretty">
+          This page collects your public itineraries. Email us to add your photo, fix your bio or links, add a route, or
+          take anything down.
+        </p>
+      </div>
+      <a
+        href={mailto(`Claim my Creatour profile: ${name}`)}
+        className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm font-medium hover:border-accent hover:text-accent"
+      >
+        Claim profile
+      </a>
     </aside>
   );
 }

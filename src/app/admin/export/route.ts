@@ -109,6 +109,8 @@ export async function GET() {
         creator: it.creator.handle,
         sourceUrl: it.sourceUrl,
         ...(it.editorTake ? { editorTake: it.editorTake } : {}),
+        ...(it.editorPros ? { editorPros: it.editorPros } : {}),
+        ...(it.editorCons ? { editorCons: it.editorCons } : {}),
         items: it.items.map((i) =>
           clean({
             day: i.day,

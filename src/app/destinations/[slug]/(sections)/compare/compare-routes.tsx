@@ -89,7 +89,7 @@ export function CompareRoutes({
     r.sightsOnly
       ? "sights only, no hotel or food"
       : r.noStay && perDay(r)
-        ? `${money(perDay(r)!)}/day, no hotel price`
+        ? "no hotel price yet"
         : perDay(r)
           ? `${money(perDay(r)!)}/day`
           : "price not listed";

@@ -153,6 +153,9 @@ model Itinerary {
   sourceUrl     String
   /// The site owner's own commentary on this itinerary ("Nowfel's take"). Written in the admin panel.
   editorTake    String?
+  /// Owner's pros and cons for the route, one per line; shown in the Editorial review box.
+  editorPros    String?
+  editorCons    String?
   destinationId String
   destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
   creatorId     String
