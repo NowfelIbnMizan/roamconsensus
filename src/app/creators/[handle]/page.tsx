@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
-import { getCreator, getCreatorHandles } from "@/lib/data";
+import { getClaimProfileOn, getCreator, getCreatorHandles } from "@/lib/data";
 import { CreatorSocials } from "@/components/creator";
 import { CreatorAvatar } from "@/components/creator-avatar";
 import { CreatorTrips } from "@/components/creator-trips";
-import { CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
+import { ClaimProfile, CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 import { SOCIALS } from "@/lib/creator-links";
 import { siteUrl } from "@/lib/email";
 import { clip, ldJson, canonical, fillDescription } from "@/lib/seo";
@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: PageProps<"/creators/[handle]
 }
 
 export default async function CreatorPage({ params }: PageProps<"/creators/[handle]">) {
-  const creator = await getCreator((await params).handle);
+  const handle = (await params).handle;
+  const [creator, claim] = await Promise.all([getCreator(handle), getClaimProfileOn()]);
   if (!creator) notFound();
 
   const trips = creator.itineraries;
@@ -85,6 +86,7 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
         <h2 className="text-lg font-semibold">{cities > 1 ? "Where are you going?" : "Their plan"}</h2>
         <CreatorTrips trips={trips} />
       </section>
+      {claim && <ClaimProfile name={creator.name} className="mt-10" />}
     </>
   );
 }

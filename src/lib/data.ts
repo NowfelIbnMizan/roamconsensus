@@ -846,6 +846,15 @@ export async function getSiteStats() {
   return { cities, trips, creators, places, stops, showFaces: faces?.value !== false };
 }
 
+/** Admin > Creators switch for the "Claim this profile" box on creator pages; on unless turned off. */
+export async function getClaimProfileOn() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const row = await db.siteSetting.findUnique({ where: { key: "claimProfile" } });
+  return row?.value !== false;
+}
+
 export async function getCreatorHandles() {
   "use cache";
   cacheLife("hours");

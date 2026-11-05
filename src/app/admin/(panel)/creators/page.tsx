@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { deleteCreator, saveCreator, saveHomeFaces } from "@/lib/admin/actions";
+import { deleteCreator, saveClaimProfile, saveCreator, saveHomeFaces } from "@/lib/admin/actions";
 import { SOCIALS } from "@/lib/creator-links";
 import { platformOptions } from "../../options";
 import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea } from "../../ui";
@@ -59,7 +59,10 @@ export default async function CreatorsAdmin() {
     orderBy: { name: "asc" },
     include: { _count: { select: { itineraries: true } } },
   });
-  const faces = await db.siteSetting.findUnique({ where: { key: "homeCreatorFaces" } });
+  const [faces, claim] = await Promise.all([
+    db.siteSetting.findUnique({ where: { key: "homeCreatorFaces" } }),
+    db.siteSetting.findUnique({ where: { key: "claimProfile" } }),
+  ]);
   const badge = "rounded-full px-2 py-0.5 text-xs";
   return (
     <>
@@ -80,6 +83,14 @@ export default async function CreatorsAdmin() {
           label="Show creator photos on the home page (photos only; hidden until 3 load)"
           name="homeCreatorFaces"
           defaultChecked={faces?.value !== false}
+        />
+        <SaveButton />
+      </form>
+      <form action={saveClaimProfile} className="mt-3 flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-card p-4">
+        <Checkbox
+          label={`Show "Claim this profile" at the bottom of creator pages (creators email you to fix or remove their page)`}
+          name="claimProfile"
+          defaultChecked={claim?.value !== false}
         />
         <SaveButton />
       </form>
