@@ -236,6 +236,18 @@ export default async function ItineraryAdmin({
                   defaultValue={it.editorTake}
                   rows={4}
                 />
+                <TextArea
+                  label="Pros (one per line)"
+                  name="editorPros"
+                  defaultValue={it.editorPros}
+                  rows={3}
+                />
+                <TextArea
+                  label="Cons (one per line)"
+                  name="editorCons"
+                  defaultValue={it.editorCons}
+                  rows={3}
+                />
                 <div className="sm:col-span-2">
                   <SaveButton />
                 </div>

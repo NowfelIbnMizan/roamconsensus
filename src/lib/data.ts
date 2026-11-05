@@ -97,6 +97,11 @@ type Costed = {
   quantity: number;
   place?: { closed: boolean } | null;
 };
+
+/** Text with one entry per line (pros, cons) as a list; blank lines and bullets dropped. */
+const lines = (text: string | null) =>
+  (text ?? "").split("\n").map((l) => l.replace(/^\s*[-*•+]\s*/, "").trim()).filter(Boolean);
+
 /** Closed places stay on the creator's route (it's their route) but count toward neither its cost nor its gaps. */
 const counted = (item: Costed) => !item.place?.closed;
 const isUnpriced = (item: Costed) => item.priceCents === null && counted(item);
@@ -729,6 +734,8 @@ export async function getItinerary(slug: string) {
     title: it.title,
     summary: it.summary,
     editorTake: it.editorTake,
+    editorPros: lines(it.editorPros),
+    editorCons: lines(it.editorCons),
     tier: it.tier,
     days: it.days,
     sourceUrl: it.sourceUrl,

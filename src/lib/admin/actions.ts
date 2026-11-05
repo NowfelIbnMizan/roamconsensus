@@ -473,6 +473,8 @@ export async function saveItinerary(fd: FormData) {
     days: Math.max(1, int(fd, "days", 1)),
     sourceUrl: text(fd, "sourceUrl"),
     editorTake: optional(fd, "editorTake"),
+    editorPros: optional(fd, "editorPros"),
+    editorCons: optional(fd, "editorCons"),
     creatorId: text(fd, "creatorId"),
   };
   const row = id
