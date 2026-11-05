@@ -17,12 +17,12 @@ const perDay = (r: Route) => (r.totalCents ? Math.round(r.totalCents / r.days) :
 
 function useDayPrice() {
   const { money } = useMoney();
-  // Same caveats as the Compare tab: a total without hotel or food isn't a trip cost.
+  // Same caveats as the Compare tab: a total without hotel or food isn't a trip cost, so no per-day figure.
   return (r: Route) =>
     r.sightsOnly
       ? "Sights only, no hotel or food"
       : r.noStay && perDay(r)
-        ? `${money(perDay(r)!)}/day, no hotel price`
+        ? "No hotel price yet"
         : perDay(r)
           ? `${money(perDay(r)!)}/day`
           : "Price not listed";
