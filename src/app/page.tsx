@@ -16,6 +16,7 @@ import { CONTACT_EMAIL } from "@/lib/contact";
 import { ldJson, canonical } from "@/lib/seo";
 import { BeenCity } from "@/components/been-city";
 import { CreatorFaces } from "@/components/creator-faces";
+import { HomeCompare, pickComparison } from "@/components/home-compare";
 
 export const metadata: Metadata = {
   // The bare brand name tells search nothing; lead with what the site is.
@@ -65,9 +66,11 @@ export default async function Home() {
   const covered = [...destinations]
     .sort((a, b) => b._count.itineraries - a._count.itineraries)
     .slice(0, 3);
-  const examples = (
-    await Promise.all(covered.map((d) => getDestination(d.slug)))
-  )
+  const coveredCities = (await Promise.all(covered.map((d) => getDestination(d.slug)))).filter(
+    (d) => d !== null,
+  );
+  const comparison = pickComparison(coveredCities);
+  const examples = coveredCities
     .map((d) => {
       const top = d?.consensus.find(
         (p) => p.creators.length >= 2 && p.skippedBy.length === 0,
@@ -97,13 +100,13 @@ export default async function Home() {
               creators
             </span>
           </Link>
-          <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight sm:text-5xl">
-            Where are you going?
+          <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+            Compare travel creators&apos; routes.{" "}
+            <span className="text-accent">Build your own trip.</span>
           </h1>
           <p className="mt-3 max-w-md text-muted">
-            Tap a city or search. See the places travel creators{" "}
-            <em className="font-medium text-accent">don&apos;t miss</em>, then build
-            your trip around them.
+            See where creators agree, what only one of them found, and how much of each route is priced. Then plan it
+            day by day.
           </p>
           <ol className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
             {["Pick a route", "Add it to your trip", "Plan it day by day"].map((step, n) => (
@@ -150,7 +153,9 @@ export default async function Home() {
         />
       </section>
 
-      <section id="destinations" className="mt-4 scroll-mt-6">
+      {comparison && <HomeCompare c={comparison} />}
+
+      <section id="destinations" className="mt-12 scroll-mt-6">
         <h2 className="text-3xl font-semibold">Where to next?</h2>
         <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4">
           {destinations.map((d) => (

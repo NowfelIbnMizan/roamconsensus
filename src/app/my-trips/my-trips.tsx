@@ -13,6 +13,7 @@ import { useCart, useCartHydrated } from "@/lib/cart-store";
 import type { ItemCategory } from "@/generated/prisma/enums";
 import { AlertsToggle, GroupTrips, SavedPlaces } from "./extras";
 import { MyTravel, MyTravelRows, type City } from "./my-travel";
+import { track } from "@/lib/track";
 
 type TripRow = {
   id: string;
@@ -274,6 +275,7 @@ function PlanningNow({ onSaved }: { onSaved: () => void }) {
     const body = await res.json().catch(() => ({}));
     setMessage(res.ok ? "Saved below. Your current trip is unchanged." : (body.error ?? "Couldn't save. Check your connection and try again."));
     if (res.ok) {
+      track("trip-saved");
       setName("");
       setSaving(false);
       onSaved();

@@ -24,6 +24,7 @@ import { rainyDayPicks } from "@/lib/indoor";
 import { getEditor } from "@/lib/editor";
 import { categoryLabel, mostlyPriced, tierLabel } from "@/lib/format";
 import { Money } from "@/components/money";
+import { PriceScopeCovers, PriceScopeLine } from "@/components/price-scope";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { Thumb } from "@/components/thumb";
 import { PlaceHover } from "@/components/place-hover";
@@ -186,7 +187,10 @@ export default async function DestinationPage({
                 <span className="text-xs font-medium uppercase tracking-wide text-accent">
                   {tierLabel[r.tier]}
                 </span>
-                <span className="text-xs text-muted">{r.days} {r.days === 1 ? "day" : "days"}</span>
+                <span className="text-xs text-muted">
+                  {r.days} {r.days === 1 ? "day" : "days"} · {r.scope.stops}{" "}
+                  {r.scope.stops === 1 ? "stop" : "stops"}
+                </span>
               </div>
               <h3 className="mt-1 font-semibold">
                 <Link
@@ -212,11 +216,9 @@ export default async function DestinationPage({
                   <p className="mt-3 text-2xl font-semibold tabular-nums">
                     <Money cents={r.totalCents} />
                   </p>
-                  <p className="mb-4 text-xs text-muted">
-                    est. per person
-                    {r.unpricedCount > 0 &&
-                      ` + ${r.unpricedCount} not priced`}
-                  </p>
+                  <p className="text-xs text-muted">per person</p>
+                  <PriceScopeLine scope={r.scope} className="mt-1" />
+                  <PriceScopeCovers scope={r.scope} className="mb-4" />
                   <div className="mt-auto">
                     <AllocationBar allocation={r.allocation} legend={false} />
                     {r.allocation.length > 0 && (

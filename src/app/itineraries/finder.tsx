@@ -186,13 +186,13 @@ export function TripFinder({
               <span className="block text-xs text-muted">Sights only, no hotel or food</span>
             ) : r.noStay ? (
               <span className="block text-xs text-muted">No hotel price</span>
-            ) : (
-              r.unpricedCount > 0 && (
-                <span className="block text-xs text-muted">
-                  + {r.unpricedCount} not priced
-                </span>
-              )
-            )}
+            ) : null}
+            <span
+              className="block text-xs text-muted"
+              title={`Estimate. ${r.scope.priced} of ${r.scope.stops} stops have a price. No flights.`}
+            >
+              {r.scope.priced} of {r.scope.stops} priced
+            </span>
           </>
         ) : (
           <span className="block max-w-24 text-xs text-muted">
@@ -209,7 +209,7 @@ export function TripFinder({
         <span>Route</span>
         <span>Days</span>
         <span>Style</span>
-        <span className="text-right">Per person</span>
+        <span className="text-right">Per person, est.</span>
       </div>
       <ul className="divide-y divide-line">{rs.map(row)}</ul>
     </div>

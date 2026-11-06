@@ -26,6 +26,7 @@ import { groupByVendor, toIcs, toNotionMarkdown, toText } from "@/lib/cart-expor
 import { VendorBadge } from "@/components/vendor-badge";
 import { categoryName } from "@/lib/format";
 import { encodeTrip, shortCode } from "@/lib/share";
+import { track } from "@/lib/track";
 import { EmailSignup } from "@/components/email-signup";
 import { TripMap } from "@/components/trip-map";
 import { DayPlan, planLength, planMap } from "@/components/day-plan";
@@ -57,6 +58,11 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   const [shared, setShared] = useState(false);
   const [view, setView] = useState<"plan" | "book">("plan");
   const refreshed = useRef(false);
+
+  // Funnel: a plan with a few stops is the point where browsing became planning.
+  useEffect(() => {
+    if (hydrated && items.length >= 3) track("plan-ready", { once: true });
+  }, [hydrated, items.length]);
 
   // Once per visit, pull current prices and links for what was saved earlier.
   useEffect(() => {
@@ -132,12 +138,19 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
     a.click();
     URL.revokeObjectURL(url);
   }
-  const download = () => save(toText(items), "text/plain", "trip-checklist.txt");
+  const download = () => {
+    track("trip-exported");
+    save(toText(items), "text/plain", "trip-checklist.txt");
+  };
   const planned = items.filter((i) => i.day && i.day <= days).length;
-  const calendar = () =>
-    startDate && save(toIcs(items, startDate, days, location.origin), "text/calendar", "creatour-trip.ics");
+  const calendar = () => {
+    if (!startDate) return;
+    track("trip-exported");
+    save(toIcs(items, startDate, days, location.origin), "text/calendar", "creatour-trip.ics");
+  };
 
   async function share() {
+    track("trip-shared");
     const t = encodeTrip(items, days);
     const code = await shortCode(t);
     const url = `${location.origin}/t/${code}`;
@@ -158,6 +171,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
   }
 
   async function copyNotion() {
+    track("trip-exported");
     await navigator.clipboard.writeText(toNotionMarkdown(items));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -183,6 +197,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               {days > 1 &&
                 (nights >= days - 1 ? " · all hotel nights included" : ` · ${nights} of ${days - 1} hotel nights included`)}
             </p>
+            <p className="text-xs text-muted">Estimate per person from creators&apos; and listed prices. No flights.</p>
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2">
             <Link
@@ -220,6 +235,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               <div className="mt-4 grid gap-2">
                 <Link
                   href="/cart/print"
+                  onClick={() => track("trip-exported")}
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-4 py-2 text-sm hover:border-accent"
                 >
                   <Printer className="size-4" aria-hidden /> Print or save as PDF

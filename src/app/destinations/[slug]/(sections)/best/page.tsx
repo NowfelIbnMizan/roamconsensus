@@ -27,7 +27,7 @@ const SECTIONS: {
   {
     category: "EXPERIENCE",
     short: "Things to do",
-    heading: (n) => `Best things to do in ${n}`,
+    heading: (n) => `Things to do in ${n}`,
     limit: 15,
   },
   {
@@ -152,6 +152,22 @@ export default async function BestPage({ params }: Props) {
     ...s,
     places: ranked(d, s.category, s.limit),
   })).filter((s) => s.places.length);
+  // One-creator places outside the ranked lists, so the page isn't only the famous spots. Ones with a note first.
+  const shown = new Set(sections.flatMap((s) => s.places.map((p) => p.slug)));
+  const quiet =
+    d.creatorCount > 1
+      ? d.consensus
+          .filter(
+            (p) =>
+              (p.category === "EXPERIENCE" || p.category === "FOOD") &&
+              p.creators.length === 1 &&
+              !p.skippedBy.length &&
+              !p.closed &&
+              !shown.has(p.slug),
+          )
+          .sort((a, b) => Number(!a.blurb) - Number(!b.blurb))
+          .slice(0, 8)
+      : [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -174,12 +190,19 @@ export default async function BestPage({ params }: Props) {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            The best of {d.name}, according to {who}
+            Most recommended in {d.name}, by {who}
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Ranked by how many of {d.routes.length} {d.name} routes
-            recommend each place.
+            Ranked by how many of {d.routes.length} {d.name}{" "}
+            {d.routes.length === 1 ? "route recommends" : "routes recommend"} each place. Tap the count to see which
+            routes.
           </p>
+          {d.creatorCount > 1 && (
+            <p className="fine-print mt-1 max-w-2xl">
+              A high count means popular, not right for everyone: creators often visit the same famous spots. Check the
+              quieter picks too.
+            </p>
+          )}
         </div>
         <a
           href={`https://www.pinterest.com/pin/create/button/?${new URLSearchParams(
@@ -206,6 +229,11 @@ export default async function BestPage({ params }: Props) {
             {s.short} · {s.places.length}
           </a>
         ))}
+        {quiet.length > 0 && (
+          <a href="#quieter" className="rounded-full border border-line bg-card px-3 py-1 hover:border-accent">
+            Quieter picks · {quiet.length}
+          </a>
+        )}
       </nav>
 
       {sections.map((s) => (
@@ -232,7 +260,7 @@ export default async function BestPage({ params }: Props) {
                   <PickTitle d={d} p={p} n={i + 1} />
                   <PickMeta p={p} />
                   {p.blurb && <p className="line-clamp-2 text-sm md:line-clamp-3">{p.blurb}</p>}
-                  <AgreePill creators={p.creators} total={d.creatorCount} />
+                  <AgreePill creators={p.creators} total={d.creatorCount} sources={p.sources} />
                 </div>
               </li>
             ))}
@@ -256,7 +284,7 @@ export default async function BestPage({ params }: Props) {
                   <div className="min-w-0 flex-1 space-y-0.5">
                     <PickTitle d={d} p={p} n={i + 4} />
                     <PickMeta p={p} />
-                    <AgreePill creators={p.creators} total={d.creatorCount} />
+                    <AgreePill creators={p.creators} total={d.creatorCount} sources={p.sources} />
                   </div>
                 </li>
               ))}
@@ -264,6 +292,34 @@ export default async function BestPage({ params }: Props) {
           )}
         </section>
       ))}
+
+      {quiet.length > 0 && (
+        <section id="quieter" className="mt-10 scroll-mt-6">
+          <h3 className="text-xl font-semibold">Quieter picks</h3>
+          <p className="mt-1 text-sm text-muted">
+            Only one creator mentions these. Fewer crowds, less proof.
+          </p>
+          <ul className="mt-3 grid gap-x-6 gap-y-1 rounded-2xl border border-line bg-card p-2 md:grid-cols-2">
+            {quiet.map((p) => (
+              <li key={p.slug} className="cv-row flex min-w-0 items-center gap-3 rounded-xl p-2">
+                <PlacePhoto d={d} p={p} sizes="112px" className="size-14 shrink-0 rounded-lg" />
+                <div className="min-w-0 flex-1 space-y-0.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <h4 className="font-semibold leading-snug">
+                      <Link href={placeHref(d.slug, p.slug)} className="hover:text-accent hover:underline">
+                        {p.name}
+                      </Link>
+                    </h4>
+                    {p.cartItem && <AddItemButton item={p.cartItem} />}
+                  </div>
+                  <PickMeta p={p} />
+                  <AgreePill creators={p.creators} total={d.creatorCount} sources={p.sources} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <div className="mt-12 rounded-2xl border border-line bg-card p-5">
         <p className="font-medium">Want it as a day-by-day plan?</p>

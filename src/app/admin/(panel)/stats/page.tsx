@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import { db } from "@/lib/db";
 import { visitorStats, visitorStatsReady, type VisitorStats } from "@/lib/goatcounter";
+import { FUNNEL } from "@/lib/track";
 
 export const metadata = { title: "Visitors and users" };
 
@@ -149,6 +150,7 @@ function Visitors({ v }: { v: VisitorStats }) {
           <span>{v.days.at(-1)?.day}</span>
         </div>
       </figure>
+      <Funnel v={v} />
       <div className="mt-3 grid gap-3 md:grid-cols-2">
         <TopList title="Top pages" rows={v.pages} />
         <TopList title="Where they came from" rows={v.referrers} />
@@ -159,6 +161,38 @@ function Visitors({ v }: { v: VisitorStats }) {
         Admin pages aren&apos;t counted. More detail on your GoatCounter dashboard.
       </p>
     </>
+  );
+}
+
+/** How many visitors got from browsing to a usable plan, step by step, last 30 days. */
+function Funnel({ v }: { v: VisitorStats }) {
+  const max = Math.max(1, v.month);
+  return (
+    <section className="mt-3 rounded-2xl border border-line bg-card p-4">
+      <h3 className="text-sm font-medium">Planning funnel, last 30 days</h3>
+      <p className="mt-0.5 text-xs text-muted">
+        Counts of each step, out of {num(v.month)} visitors. Started counting 6 Nov 2026.
+      </p>
+      <ol className="mt-3 space-y-2 text-sm">
+        {FUNNEL.map((f) => {
+          const n = v.events[f.event] ?? 0;
+          return (
+            <li key={f.event}>
+              <span className="flex justify-between gap-3">
+                <span>{f.label}</span>
+                <span className="tabular-nums text-muted">{num(n)}</span>
+              </span>
+              <span className="mt-1 block h-1.5 rounded-full bg-line">
+                <span
+                  className="block h-full rounded-full bg-accent"
+                  style={{ width: `${Math.min(100, (n / max) * 100)}%` }}
+                />
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
   );
 }
 

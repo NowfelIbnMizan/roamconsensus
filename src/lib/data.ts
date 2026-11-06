@@ -8,6 +8,7 @@ import { vibesOf, type VibeKey } from "@/lib/vibes";
 import { cachedPhotoUrls } from "@/lib/photos";
 import { placePhotoKey } from "@/lib/place";
 import { convertCents, FALLBACK_RATES } from "@/lib/currency";
+import { priceScope } from "@/lib/price-scope";
 
 /** On every cached read of site content; admin saves invalidate it so edits show at once. */
 export const CONTENT_TAG = "content";
@@ -204,6 +205,15 @@ function placeSummary(place: PlaceWithItems) {
     closed: place.closed,
     creators: toList(byCreator(false)),
     skippedBy: toList(byCreator(true)),
+    /** The routes that recommend it, so "picked by 3 creators" can show where each said so. */
+    sources: [
+      ...new Map(
+        recommended.map((i) => [
+          i.itinerary.slug,
+          { slug: i.itinerary.slug, title: i.itinerary.title, creator: i.itinerary.creator.name },
+        ]),
+      ).values(),
+    ],
   };
 }
 
@@ -253,6 +263,7 @@ export async function getDestination(slug: string) {
             select: {
               category: true,
               priceCents: true,
+              priceCheckedAt: true,
               currency: true,
               quantity: true,
               sentiment: true,
@@ -318,6 +329,8 @@ export async function getDestination(slug: string) {
     return {
       unpricedCount: it.items.filter(isUnpriced).length,
       stops: it.items.filter(counted).length,
+      /** What the total covers, shown beside it. */
+      scope: priceScope(it.items),
       /** No hotel and no food listed: the total is sights only, so it can't be compared with full routes. */
       sightsOnly: !it.items.some(
         (i) => counted(i) && (i.category === "STAY" || i.category === "FOOD"),
@@ -484,6 +497,7 @@ export async function getQuizData() {
           note: true,
           category: true,
           priceCents: true,
+          priceCheckedAt: true,
           currency: true,
           quantity: true,
           sentiment: true,
@@ -573,6 +587,7 @@ export async function getQuizData() {
       totalCents: it.items.reduce((sum, i) => sum + itemTotal(i), 0),
       unpricedCount: kept.filter(isUnpriced).length,
       stops: kept.filter(counted).length,
+      scope: priceScope(kept),
       /** Hotels without a price leave the total far too low to compare against a budget. */
       unpricedStays: kept.filter((i) => i.category === "STAY" && isUnpriced(i))
         .length,
