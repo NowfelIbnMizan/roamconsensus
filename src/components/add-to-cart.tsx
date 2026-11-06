@@ -3,6 +3,7 @@
 import { Check, Plus, Luggage, X } from "lucide-react";
 import { useCart, useCartHydrated, type CartItem } from "@/lib/cart-store";
 import { announceAdded } from "@/components/added-toast";
+import { track } from "@/lib/track";
 
 export function AddRouteButton({
   items,
@@ -40,6 +41,7 @@ export function AddRouteButton({
           return;
         }
         add(items, days);
+        track(items.length === 1 ? "stop-added" : "route-added");
         announceAdded(items.length === 1 ? `Added ${items[0].name} to your trip` : `Added ${items.length} stops to your trip`);
       }}
       aria-pressed={all}
@@ -78,6 +80,7 @@ export function AddItemButton({ item }: { item: CartItem }) {
       onClick={() => {
         if (added) return remove(item.id);
         add([item]);
+        track("stop-added");
         announceAdded(`Added ${item.name} to your trip`);
       }}
       aria-pressed={added}

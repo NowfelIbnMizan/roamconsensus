@@ -13,10 +13,11 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy policy" updated="1 November 2026">
+    <LegalPage title="Privacy policy" updated="6 November 2026">
       <p>
         <strong>Short version:</strong> you don&apos;t need an account, we set no tracking cookies, your trip plan stays
-        on your own device unless you sign in, and we only keep your email address if you give it to us.
+        on your own device unless you sign in or share it (a shared link saves a copy anyone with the link can open),
+        and we only keep your email address if you give it to us.
       </p>
 
       <h2>What stays on your device</h2>
@@ -64,8 +65,9 @@ export default function PrivacyPage() {
           <a href="https://www.goatcounter.com" className="underline" rel="noopener noreferrer" target="_blank">
             GoatCounter
           </a>
-          : which pages are viewed, the referring site, browser, screen size and country. It uses no cookies and does
-          not identify you.
+          : which pages are viewed, the referring site, browser, screen size and country, plus anonymous counts of
+          planning steps (like adding a route or sharing a trip) so we can see if the planner helps. It uses no cookies
+          and does not identify you.
         </li>
         <li>
           <strong>Server logs</strong> kept briefly by our host for security and fixing errors, such as your IP address

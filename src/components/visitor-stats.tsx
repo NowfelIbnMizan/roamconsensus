@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 declare global {
   interface Window {
-    goatcounter?: { count: (vars: { path: string }) => void };
+    goatcounter?: { count: (vars: { path: string; title?: string; event?: boolean }) => void };
   }
 }
 

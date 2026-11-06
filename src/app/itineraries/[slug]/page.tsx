@@ -47,6 +47,9 @@ import { getEditor } from "@/lib/editor";
 import { Thumb } from "@/components/thumb";
 import { Snapshots } from "@/components/snapshots";
 import { convertCents, FALLBACK_RATES } from "@/lib/currency";
+import { dayPace, PACE_HINT, type Pace } from "@/lib/pace";
+import { priceScope } from "@/lib/price-scope";
+import { PriceScopeFold } from "@/components/price-scope";
 
 /** "Read the full guide on saltinourhair.com", or "Watch the full video on YouTube". */
 function fullGuideLabel(url: string) {
@@ -318,6 +321,20 @@ export default async function ItineraryPage({
     items.filter((i) => i.sentiment !== "AVOID" && !i.closedNote),
   );
   const priced = kept.filter((i) => i.priceCents !== null).length;
+  const scope = priceScope(kept);
+  // How full each day is, for the day headers and a warning up top when some days try to do too much.
+  const paces = new Map(
+    it.schedule.map(({ day, items }) => [
+      day,
+      dayPace(
+        items.filter((i) => i.sentiment !== "AVOID" && !i.closedNote),
+        drive.get(day)?.total ?? 0,
+      ),
+    ]),
+  );
+  const veryFull = [...paces].filter(([, p]) => p?.level === "very-full").map(([day]) => day);
+  const optionalCount = kept.filter((i) => i.sentiment === "OPTIONAL").length;
+  const plannedDays = it.schedule.length || 1;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -400,6 +417,10 @@ export default async function ItineraryPage({
               · {it.days} {it.days === 1 ? "day" : "days"}
             </span>
             <span>· {kept.length} stops</span>
+            {plannedDays > 1 && kept.length / plannedDays >= 2 && (
+              <span>· ~{Math.round(kept.length / plannedDays)} a day</span>
+            )}
+            {optionalCount > 0 && <span>· {optionalCount} optional</span>}
             {it.totalCents > 0 && (
               <span
                 title={
@@ -420,6 +441,14 @@ export default async function ItineraryPage({
               · <UpdatedOn date={it.updatedAt} className="text-sm" />
             </span>
           </p>
+          {it.totalCents > 0 && <PriceScopeFold scope={scope} className="mt-1.5" />}
+          {veryFull.length > 0 && (
+            <p className="mt-2 max-w-2xl rounded-xl bg-amber-500/10 px-3 py-2 text-sm text-amber-800 dark:text-amber-200">
+              {veryFull.length === 1 ? `Day ${veryFull[0]} is` : `Days ${veryFull.join(", ")} are`} very full. Treat this
+              route as a menu: pick the stops you care about
+              {optionalCount > 0 ? " and drop the ones marked optional" : ""}.
+            </p>
+          )}
           <CreatorNoticeLine name={it.creator.name} className="mt-2 max-w-2xl" />
           <p className="mt-3 max-w-2xl">{it.summary}</p>
           {/* The main action comes straight after the summary; full width on phones. */}
@@ -556,6 +585,7 @@ export default async function ItineraryPage({
             creator={it.creator.name}
             gaps={gaps}
             gapPhotos={gapPhotos}
+            paces={paces}
           />
         </div>
       </div>
@@ -566,6 +596,23 @@ export default async function ItineraryPage({
         className="mt-10"
       />
     </>
+  );
+}
+
+/** "Full day · ~7 h", plus how many stops are optional; amber when the day is very full. */
+function PacePill({ pace }: { pace: Pace | null }) {
+  if (!pace) return null;
+  return (
+    <span
+      title={PACE_HINT}
+      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs ${
+        pace.level === "very-full"
+          ? "bg-amber-500/15 font-medium text-amber-700 dark:text-amber-300"
+          : "bg-line text-muted"
+      }`}
+    >
+      {pace.label} · ~{pace.hours} h{pace.optional > 0 && ` · ${pace.optional} optional`}
+    </span>
   );
 }
 
@@ -591,6 +638,7 @@ function DayTimeline({
   creator,
   gaps,
   gapPhotos,
+  paces,
 }: {
   schedule: { day: number; items: Stop[] }[];
   cartItems: Map<string, CartItem>;
@@ -602,6 +650,7 @@ function DayTimeline({
   creator: string;
   gaps: Map<number, Gap[]>;
   gapPhotos: Map<string, string | null>;
+  paces: Map<number, Pace | null>;
 }) {
   return (
     <div>
@@ -642,6 +691,7 @@ function DayTimeline({
                           </>
                         )}
                       </span>
+                      <PacePill pace={paces.get(day) ?? null} />
                       <DriveSummary
                         minutes={drive.get(day)?.total ?? 0}
                         far={drive.get(day)?.far}
@@ -707,6 +757,11 @@ function DayTimeline({
                                       {item.sentiment === "MUST_VISIT" && (
                                         <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 align-middle text-xs font-medium text-accent">
                                           {sentimentLabel.MUST_VISIT}
+                                        </span>
+                                      )}
+                                      {item.sentiment === "OPTIONAL" && (
+                                        <span className="ml-2 rounded-full bg-line px-2 py-0.5 align-middle text-xs font-normal text-muted">
+                                          {sentimentLabel.OPTIONAL}
                                         </span>
                                       )}
                                       {(skip || item.closedNote) && (

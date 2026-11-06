@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChevronDown, CircleCheck } from "lucide-react";
 import { CreatorChip } from "@/components/creator";
 
@@ -11,22 +12,25 @@ export function AgreePill({
   creators,
   total,
   skippedBy = [],
+  sources = [],
   className = "",
 }: {
   creators: Creator[];
   total: number;
   skippedBy?: Creator[];
+  /** The routes that recommend it; listed when the pill opens, so the count can be checked. */
+  sources?: { slug: string; title: string; creator: string }[];
   className?: string;
 }) {
   if (!creators.length && !skippedBy.length) return null;
   const all = total > 1 && creators.length === total;
-  // Phones drop "Picked by" so the pill fits one line in the two-column grid; the section heading says it already.
+  // Phones drop "Recommended by" so the pill fits one line in the two-column grid; the section heading says it already.
   const label =
     total <= 1 ? (
-      `Picked by ${creators[0]?.name ?? "a creator"}`
+      `Recommended by ${creators[0]?.name ?? "a creator"}`
     ) : (
       <>
-        <span className="hidden sm:inline">Picked by </span>
+        <span className="hidden sm:inline">Recommended by </span>
         {all ? `all ${total}` : `${creators.length} of ${total}`} creators
       </>
     );
@@ -65,6 +69,19 @@ export function AgreePill({
           </span>
         )}
       </div>
+      {sources.length > 0 && (
+        <ul className="mt-1.5 space-y-0.5 text-xs text-muted">
+          {sources.map((r) => (
+            <li key={r.slug}>
+              In{" "}
+              <Link href={`/itineraries/${r.slug}`} className="underline hover:text-accent">
+                {r.title}
+              </Link>{" "}
+              by {r.creator}
+            </li>
+          ))}
+        </ul>
+      )}
     </details>
   );
 }

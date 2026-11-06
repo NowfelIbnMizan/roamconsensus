@@ -14,6 +14,8 @@ export type VisitorStats = {
   referrers: Row[];
   countries: Row[];
   devices: Row[];
+  /** Planning-step events (see src/lib/track.ts), by event name. */
+  events: Record<string, number>;
 };
 
 function site() {
@@ -73,7 +75,8 @@ export async function visitorStats(): Promise<VisitorStats | null> {
   );
   const hits = await get<{ hits?: { path: string; title?: string; count: number; event?: boolean }[] }>(
     "stats/hits",
-    { ...range, limit: "10" },
+    // Pages and planning events share one list, so ask for plenty and split them here.
+    { ...range, limit: "100" },
   );
   // A side list that still fails shows as empty instead of hiding every number.
   const list = (page: string) =>
@@ -97,7 +100,9 @@ export async function visitorStats(): Promise<VisitorStats | null> {
     month: total.total ?? sum(30),
     pages: (hits.hits ?? [])
       .filter((h) => !h.event)
+      .slice(0, 10)
       .map((h) => ({ name: h.path, count: h.count })),
+    events: Object.fromEntries((hits.hits ?? []).filter((h) => h.event).map((h) => [h.path, h.count])),
     referrers: referrers.map((r) => (r.name === "(unknown)" ? { ...r, name: "Direct / unknown" } : r)),
     countries,
     devices,
