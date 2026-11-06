@@ -12,6 +12,10 @@ export async function POST(request: Request) {
     return Response.json({ error: "Not a trip" }, { status: 400 });
 
   const code = await shortCode(payload);
+  // Anyone can make links without signing in: cap new ones site-wide so a script can't fill the database.
+  const recent = await db.shareLink.count({ where: { createdAt: { gt: new Date(Date.now() - 60 * 60_000) } } });
+  if (recent >= 500 && !(await db.shareLink.findUnique({ where: { code } })))
+    return Response.json({ error: "Too many links right now" }, { status: 429 });
   const saved = await db.shareLink.upsert({ where: { code }, create: { code, payload }, update: {} });
   // A different trip with the same code is vanishingly unlikely; the caller falls back to the long link.
   if (saved.payload !== payload) return Response.json({ error: "Code taken" }, { status: 409 });

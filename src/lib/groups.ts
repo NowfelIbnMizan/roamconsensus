@@ -27,6 +27,8 @@ export function groupItemJson(item: z.infer<typeof GroupItems>[number]) {
   const copy: Record<string, unknown> = { ...item };
   delete copy.day;
   delete copy.note;
+  // Other members' browsers load this photo: only web photos or the site's own files.
+  if (typeof copy.photoUrl !== "string" || !/^(https:\/\/|\/(?!\/))/.test(copy.photoUrl)) delete copy.photoUrl;
   return copy as Prisma.InputJsonObject;
 }
 

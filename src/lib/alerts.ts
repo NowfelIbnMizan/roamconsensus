@@ -1,15 +1,13 @@
-import { createHmac } from "node:crypto";
 import type { CartData } from "@/lib/cart-data";
 import { freshCartItems } from "@/lib/cart-refresh";
 import { db } from "@/lib/db";
 import { canSendEmail, sendEmail, siteUrl } from "@/lib/email";
 import { formatMoney } from "@/lib/format";
+import { signLink } from "@/lib/signing";
 
 /** Signed so the "turn off alerts" link in an email only works for that account. */
 export function alertsOffToken(userId: string) {
-  return createHmac("sha256", process.env.ADMIN_PASSWORD ?? "roamconsensus")
-    .update(`alerts-off:${userId}`)
-    .digest("hex");
+  return signLink(`alerts-off:${userId}`);
 }
 
 const alertsOffUrl = (userId: string) =>

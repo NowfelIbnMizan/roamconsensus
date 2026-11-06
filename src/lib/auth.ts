@@ -36,6 +36,8 @@ export const auth = betterAuth({
       }
     : {},
   user: { deleteUser: { enabled: true } },
+  // The site never calls Google for anyone, but Better Auth keeps the sign-in tokens: store them encrypted.
+  account: { encryptOAuthTokens: true },
   session: {
     expiresIn: 60 * 60 * 24 * 90, // stay signed in for 90 days
     // Saves a database read on most requests; a sign-out elsewhere takes up to 5 minutes to reach this device.

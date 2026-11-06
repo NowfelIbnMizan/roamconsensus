@@ -2,6 +2,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth, currentUser } from "@/lib/auth";
+import { db } from "@/lib/db";
 
 const COOKIE = "rc_admin";
 
@@ -41,10 +42,35 @@ export async function requireAdmin() {
   if (!(await isAdmin())) redirect("/admin/login");
 }
 
-/** True and sets the cookie when the password matches. */
-export async function logIn(password: string) {
+const TRIES = 10;
+const WINDOW_MS = 15 * 60_000;
+type Tries = { count: number; since: number };
+
+/**
+ * Wrong admin passwords in the last 15 minutes, counted in the database so every server instance sees the same count.
+ * After 10, the password box locks for everyone until the window ends; Google sign-in for ADMIN_EMAILS still works.
+ */
+async function recentTries(): Promise<Tries> {
+  const row = await db.siteSetting.findUnique({ where: { key: "adminLoginTries" } });
+  const value = row?.value as Tries | undefined;
+  return value && Date.now() - value.since < WINDOW_MS ? value : { count: 0, since: Date.now() };
+}
+
+/** "ok" sets the cookie; "wrong" and "locked" don't. */
+export async function logIn(password: string): Promise<"ok" | "wrong" | "locked"> {
   const expected = process.env.ADMIN_PASSWORD;
-  if (!expected || !same(password, expected)) return false;
+  if (!expected) return "wrong";
+  const tries = await recentTries();
+  if (tries.count >= TRIES) return "locked";
+  if (!same(password, expected)) {
+    const value = { count: tries.count + 1, since: tries.since };
+    await db.siteSetting.upsert({
+      where: { key: "adminLoginTries" },
+      create: { key: "adminLoginTries", value },
+      update: { value },
+    });
+    return "wrong";
+  }
   (await cookies()).set(COOKIE, token()!, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -52,7 +78,7 @@ export async function logIn(password: string) {
     path: "/",
     maxAge: 60 * 60 * 24 * 30,
   });
-  return true;
+  return "ok";
 }
 
 /** Ends the password cookie and the Google session too, or a Google admin would land straight back in. */

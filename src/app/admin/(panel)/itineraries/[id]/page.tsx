@@ -19,6 +19,7 @@ import {
   tierOptions,
 } from "../../../options";
 import { DeleteButton, Field, SaveButton, Select, TextArea } from "../../../ui";
+import { requireAdmin } from "@/lib/admin/auth";
 
 type Item = Awaited<ReturnType<typeof load>>["items"][number];
 type Choice = { value: string; label: string };
@@ -149,6 +150,7 @@ function ItemFields({
 export default async function ItineraryAdmin({
   params,
 }: PageProps<"/admin/itineraries/[id]">) {
+  await requireAdmin();
   const { id } = await params;
   const exists = await db.itinerary.findUnique({
     where: { id },

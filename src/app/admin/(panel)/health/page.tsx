@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { cityHealth } from "@/lib/admin/health";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export const metadata = { title: "City health" };
 
 /** Every city against the same checklist, so "finished" means the same thing everywhere. */
 export default async function HealthPage() {
+  await requireAdmin();
   const cities = await cityHealth();
   const total = cities[0]?.checks.length ?? 0;
 

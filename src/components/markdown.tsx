@@ -18,7 +18,7 @@ export function Markdown({ source, guest = false }: { source: string; guest?: bo
   return <div className="space-y-4 leading-relaxed">{blocks.map((b, i) => block(b.trim(), i, rel))}</div>;
 }
 
-const safeUrl = (url: string) => (/^(https?:\/\/|\/|#|mailto:)/i.test(url) ? url : null);
+const safeUrl = (url: string) => (/^(https?:\/\/|\/(?![/\\])|#|mailto:)/i.test(url) ? url : null);
 
 function block(text: string, key: number, rel: string): ReactNode {
   const lines = text.split("\n");

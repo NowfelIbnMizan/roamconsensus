@@ -3,9 +3,11 @@ import { db } from "@/lib/db";
 import { canDraft, introPages, pageFacts } from "@/lib/intros";
 import { approveIntroAction, draftIntroAction, removeIntroAction } from "@/lib/admin/intro-actions";
 import { SaveButton, inputClass } from "../../ui";
+import { requireAdmin } from "@/lib/admin/auth";
 
 /** Short intros for list pages: draft with AI or write, edit, approve. Only approved text shows on the site. */
 export default async function IntrosAdmin({ searchParams }: PageProps<"/admin/intros">) {
+  await requireAdmin();
   const { page, note } = await searchParams;
   const [paths, rows] = await Promise.all([introPages(), db.pageIntro.findMany()]);
   const byPath = new Map(rows.map((r) => [r.path, r]));

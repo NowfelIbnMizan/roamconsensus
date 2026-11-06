@@ -26,7 +26,8 @@ export async function subscribe(_: SubscribeState, fd: FormData): Promise<Subscr
   await db.subscriber.upsert({
     where: { email },
     create: { email, source, tripUrl },
-    update: { tripUrl: tripUrl ?? undefined, unsubscribedAt: null },
+    // Anyone can type any address here, so this form never undoes an unsubscribe. Someone who wants back in writes to us.
+    update: { tripUrl: tripUrl ?? undefined },
   });
 
   if (source !== "trip" || !tripUrl) return { ok: true, message: "You're on the list. Thanks!" };
@@ -35,6 +36,10 @@ export async function subscribe(_: SubscribeState, fd: FormData): Promise<Subscr
   // One trip email per address every 5 minutes, so the form can't be used to flood someone's inbox.
   if (existing?.lastEmailedAt && Date.now() - existing.lastEmailedAt.getTime() < 5 * 60_000)
     return { ok: false, message: "We just sent one. Check your inbox (and spam) in a minute." };
+
+  // And at most 50 trip emails an hour site-wide, so the form can't be used to spam many addresses through us.
+  const lastHour = await db.subscriber.count({ where: { lastEmailedAt: { gt: new Date(Date.now() - 60 * 60_000) } } });
+  if (lastHour >= 50) return { ok: false, message: "Couldn't send the email right now. Try again in a bit." };
 
   const sent = await sendEmail({
     to: email,

@@ -5,8 +5,10 @@ import { db } from "@/lib/db";
 import { AboutPhotosForm } from "../../forms/content-forms";
 import { Field, SaveButton, TextArea } from "../../ui";
 import { EditDialog } from "../../edit-dialog";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export default async function AboutAdmin() {
+  await requireAdmin();
   const e = await loadEditor();
   const photos = await db.aboutPhoto.findMany({ orderBy: { position: "asc" } });
   return (

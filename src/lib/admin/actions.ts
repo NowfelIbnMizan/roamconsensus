@@ -88,7 +88,9 @@ export async function submitAllToIndexNow(_: string | null) {
 }
 
 export async function logInAction(_: string | null, fd: FormData) {
-  if (!(await logIn(text(fd, "password")))) return "Wrong password.";
+  const result = await logIn(text(fd, "password"));
+  if (result === "locked") return "Too many wrong tries. Wait 15 minutes, or sign in with your admin Google account.";
+  if (result === "wrong") return "Wrong password.";
   redirect("/admin");
 }
 

@@ -4,10 +4,12 @@ import { db } from "@/lib/db";
 import { approvePost, deletePost, rejectPost, savePost } from "@/lib/admin/actions";
 import { DeleteButton, SaveButton, inputClass } from "../../../ui";
 import { PostFields, routeOptions } from "../post-fields";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export default async function EditPost({
   params,
 }: PageProps<"/admin/blog/[id]">) {
+  await requireAdmin();
   const { id } = await params;
   const [post, cities, routes] = await Promise.all([
     db.post.findUnique({ where: { id } }),
