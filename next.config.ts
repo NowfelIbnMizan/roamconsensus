@@ -13,6 +13,19 @@ const nextConfig: NextConfig = {
     ],
   },
   partialPrefetching: true,
+  // Other sites can't show Creatour inside a frame (stops click-tricks on buttons like "Delete account").
+  headers: async () => [
+    {
+      source: "/:path*",
+      headers: [
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(self)" },
+      ],
+    },
+  ],
   // Search lives in the home page's "Where to?" box now; old links keep their ?q= (Next passes the query along).
   redirects: async () => [
     { source: "/search", destination: "/#plan", permanent: true },

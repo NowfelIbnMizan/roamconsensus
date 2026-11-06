@@ -32,6 +32,7 @@ import {
   TextArea,
   inputClass,
 } from "../../../ui";
+import { requireAdmin } from "@/lib/admin/auth";
 
 const grid = "grid gap-3 sm:grid-cols-2";
 const badge = "rounded-full px-2 py-0.5 text-xs";
@@ -39,6 +40,7 @@ const badge = "rounded-full px-2 py-0.5 text-xs";
 export default async function DestinationAdmin({
   params,
 }: PageProps<"/admin/destinations/[id]">) {
+  await requireAdmin();
   const { id } = await params;
   const [d, creators] = await Promise.all([
     db.destination.findUnique({

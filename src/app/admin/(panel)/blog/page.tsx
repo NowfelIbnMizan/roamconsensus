@@ -4,8 +4,10 @@ import { savePost } from "@/lib/admin/actions";
 import { SaveButton } from "../../ui";
 import { PostFields, routeOptions } from "./post-fields";
 import { EditDialog } from "../../edit-dialog";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export default async function BlogAdmin() {
+  await requireAdmin();
   const [posts, cities, routes] = await Promise.all([
     db.post.findMany({
       // A guest's unsent draft (or one sent back) is theirs until they send it for review.

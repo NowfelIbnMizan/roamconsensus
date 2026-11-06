@@ -5,6 +5,7 @@ import { platformOptions } from "../../options";
 import { Checkbox, DeleteButton, Field, SaveButton, Select, TextArea } from "../../ui";
 import { EditDialog } from "../../edit-dialog";
 import { CreatorAvatar } from "@/components/creator-avatar";
+import { requireAdmin } from "@/lib/admin/auth";
 
 type Creator = Awaited<ReturnType<typeof db.creator.findFirstOrThrow>>;
 
@@ -55,6 +56,7 @@ function CreatorFields({ c }: { c?: Creator }) {
 }
 
 export default async function CreatorsAdmin() {
+  await requireAdmin();
   const creators = await db.creator.findMany({
     orderBy: { name: "asc" },
     include: { _count: { select: { itineraries: true } } },

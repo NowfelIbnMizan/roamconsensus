@@ -3,6 +3,7 @@ import { connection } from "next/server";
 import { db } from "@/lib/db";
 import { visitorStats, visitorStatsReady, type VisitorStats } from "@/lib/goatcounter";
 import { FUNNEL } from "@/lib/track";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export const metadata = { title: "Visitors and users" };
 
@@ -11,7 +12,8 @@ const day = (d: Date) => d.toISOString().slice(0, 10);
 const daysAgo = (n: number) => new Date(Date.now() - n * 86_400_000);
 
 /** Who visits (GoatCounter) and who signed up (our own database), on one page. */
-export default function StatsPage() {
+export default async function StatsPage() {
+  await requireAdmin();
   return (
     <Suspense fallback={<p className="text-sm text-muted">Loading numbers…</p>}>
       <Stats />

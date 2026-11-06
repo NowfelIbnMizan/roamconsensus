@@ -1,4 +1,4 @@
-import { createHmac } from "node:crypto";
+import { signLink } from "@/lib/signing";
 
 /** Email goes out through Resend once RESEND_API_KEY and EMAIL_FROM are set; until then sign-ups are only stored. */
 export function canSendEmail() {
@@ -11,9 +11,7 @@ export function siteUrl() {
 
 /** Signed so an unsubscribe link only works for the address it was sent to. */
 export function unsubscribeToken(email: string) {
-  return createHmac("sha256", process.env.ADMIN_PASSWORD ?? "roamconsensus")
-    .update(`unsub:${email}`)
-    .digest("hex");
+  return signLink(`unsub:${email}`);
 }
 
 export function unsubscribeUrl(email: string) {

@@ -1,15 +1,11 @@
-import { createHash } from "node:crypto";
 import { siteUrl } from "@/lib/email";
 
-/** IndexNow key: INDEXNOW_KEY if set, else derived from ADMIN_PASSWORD so it stays stable without extra setup. */
+/**
+ * IndexNow key: INDEXNOW_KEY if set, else a fixed random one. The key is public by design (/indexnow-key.txt), so it
+ * must never be derived from a secret: a hash of the admin password published there could be cracked offline.
+ */
 export function indexNowKey() {
-  return (
-    process.env.INDEXNOW_KEY ??
-    createHash("sha256")
-      .update(`indexnow:${process.env.ADMIN_PASSWORD ?? "roamconsensus"}`)
-      .digest("hex")
-      .slice(0, 32)
-  );
+  return process.env.INDEXNOW_KEY ?? "aede5f15fa47db86901eeabdeafda241";
 }
 
 /**

@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { EditDialog } from "../../edit-dialog";
 import { deleteEsimPlan, saveEsimPlan } from "@/lib/admin/actions";
 import { DeleteButton, Field, SaveButton, Select } from "../../ui";
+import { requireAdmin } from "@/lib/admin/auth";
 
 type Plan = Awaited<ReturnType<typeof db.esimPlan.findFirstOrThrow>>;
 
@@ -97,6 +98,7 @@ function PlanFields({ p, country }: { p?: Plan; country?: string }) {
 }
 
 export default async function EsimAdmin() {
+  await requireAdmin();
   const plans = await db.esimPlan.findMany({
     orderBy: [{ country: "asc" }, { provider: "asc" }, { priceCents: "asc" }],
   });

@@ -1,7 +1,9 @@
 import { db } from "@/lib/db";
 import { canSendEmail } from "@/lib/email";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export default async function SubscribersAdmin() {
+  await requireAdmin();
   const subscribers = await db.subscriber.findMany({
     orderBy: { createdAt: "desc" },
   });

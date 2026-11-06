@@ -8,6 +8,7 @@ import {
 } from "@/lib/admin/actions";
 import { couponTypeOptions } from "../../options";
 import { Checkbox, DeleteButton, Field, SaveButton, Select } from "../../ui";
+import { requireAdmin } from "@/lib/admin/auth";
 
 type Coupon = Awaited<ReturnType<typeof db.coupon.findFirstOrThrow>>;
 type Choice = { value: string; label: string };
@@ -74,6 +75,7 @@ function CouponFields({
 }
 
 export default async function VendorsAdmin() {
+  await requireAdmin();
   const [vendorRows, coupons, creatorRows] = await Promise.all([
     db.vendor.findMany({
       orderBy: { name: "asc" },

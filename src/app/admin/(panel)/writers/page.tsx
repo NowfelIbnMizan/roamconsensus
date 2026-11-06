@@ -3,8 +3,10 @@ import { db } from "@/lib/db";
 import { siteUrl } from "@/lib/email";
 import { createWriterInvite, deleteWriterInvite, removeWriter } from "@/lib/admin/actions";
 import { DeleteButton, SaveButton, inputClass } from "../../ui";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export default async function WritersAdmin() {
+  await requireAdmin();
   const [invites, writers] = await Promise.all([
     db.writerInvite.findMany({ where: { usedAt: null }, orderBy: { createdAt: "desc" } }),
     db.user.findMany({

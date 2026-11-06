@@ -8,8 +8,10 @@ import { cachedPhotoUrls } from "@/lib/photos";
 import { Thumb } from "@/components/thumb";
 import { IndexNowButton } from "./indexnow-button";
 import { RecheckPhotosButton } from "./recheck-photos-button";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export default async function AdminHome() {
+  await requireAdmin();
   const destinations = await db.destination.findMany({
     orderBy: { name: "asc" },
     include: { _count: { select: { itineraries: true, places: true } } },
