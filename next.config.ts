@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.pexels.com" },
     ],
   },
-  partialPrefetching: true,
   // Other sites can't show Creatour inside a frame (stops click-tricks on buttons like "Delete account").
   headers: async () => [
     {
@@ -26,6 +25,8 @@ const nextConfig: NextConfig = {
       ],
     },
   ],
+  // No `partialPrefetching`: it embeds a second copy of the page data in every page rendered at request time
+  // (after an admin save), which pushed city and places pages past 1 MB (Bing Site Scan "HTML size is too long").
   // Search lives in the home page's "Where to?" box now; old links keep their ?q= (Next passes the query along).
   redirects: async () => [
     { source: "/search", destination: "/#plan", permanent: true },
