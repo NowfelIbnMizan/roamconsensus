@@ -50,21 +50,6 @@ function offerFor(
   });
 }
 
-/** Resolve the best link + code for one item. Not cached: coupon validity depends on the current time. */
-export async function resolveItemOffer(itemId: string) {
-  const item = await db.item.findUnique({
-    where: { id: itemId },
-    select: {
-      vendorId: true,
-      links: { select: { url: true, creatorId: true } },
-      itinerary: { select: { creator: { select: { id: true, name: true } } } },
-    },
-  });
-  if (!item) return null;
-  const coupons = await couponsByVendor(item.vendorId ? [item.vendorId] : []);
-  return offerFor(item, item.itinerary.creator, coupons);
-}
-
 export async function getDestinations() {
   "use cache";
   cacheLife("hours");

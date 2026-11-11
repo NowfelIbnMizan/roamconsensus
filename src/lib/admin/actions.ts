@@ -373,7 +373,11 @@ async function mapPin(
     const res = await fetch(s, { redirect: "manual" }).catch(() => null);
     s = res?.headers.get("location") ?? s;
   }
-  s = decodeURIComponent(s);
+  try {
+    s = decodeURIComponent(s);
+  } catch {
+    // A stray % in the pasted text: read it as typed instead of failing the whole save.
+  }
   // !3d!4d is the place itself; @lat,lng is only where the map was centred.
   const m =
     s.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/) ??

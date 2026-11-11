@@ -11,17 +11,23 @@ export type CartData = {
   done: string[];
 };
 
-// Items are the browser's own snapshots; only what the site reads back to find and refresh them is checked.
-const Item = z
+// Items are the browser's own snapshots. What every page reads without checking (the stop's type, price, count and
+// route) must be the right shape, or one bad line would crash the trip plan for its owner or a whole group trip.
+export const CartItemSchema = z
   .object({
     id: z.string().max(300),
     name: z.string().max(300),
-    itinerary: z.object({ slug: z.string().max(200) }).passthrough(),
+    category: z.enum(["STAY", "EXPERIENCE", "FOOD", "ESIM", "GEAR", "TRANSIT"]),
+    priceCents: z.number().finite().nullable().catch(null),
+    quantity: z.number().int().min(1).max(999).catch(1),
+    currency: z.string().max(8).catch("USD"),
+    unit: z.string().max(40).nullable().catch(null),
+    itinerary: z.object({ slug: z.string().max(200), title: z.string().max(300).catch("") }).passthrough(),
   })
   .passthrough();
 
 export const CartDataSchema = z.object({
-  items: z.array(Item).max(300),
+  items: z.array(CartItemSchema).max(300),
   budgetCents: z.number().int().nonnegative().nullable().catch(null),
   tripDays: z.number().int().min(0).max(60).catch(0),
   packed: z.array(z.string().max(200)).max(300).catch([]),

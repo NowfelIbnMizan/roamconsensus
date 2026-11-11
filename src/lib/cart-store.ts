@@ -61,6 +61,53 @@ type CartState = {
   clear: () => void;
 };
 
+const CATEGORIES = ["STAY", "EXPERIENCE", "FOOD", "ESIM", "GEAR", "TRANSIT"];
+
+/**
+ * A saved cart's lines with the unreadable ones dropped and the rest topped up. Carts come back from this device's
+ * storage, the account and saved trips, some written by older versions of the site; one line missing its type or
+ * route used to break the trip plan on every visit, with no way out for the traveller.
+ */
+export function cleanItems(items: unknown): CartItem[] {
+  if (!Array.isArray(items)) return [];
+  return items.flatMap((raw): CartItem[] => {
+    const i = raw as Partial<CartItem> | null;
+    if (!i || typeof i.id !== "string" || typeof i.name !== "string") return [];
+    if (!CATEGORIES.includes(i.category as string) || typeof i.itinerary?.slug !== "string") return [];
+    return [
+      {
+        ...(i as CartItem),
+        priceCents: typeof i.priceCents === "number" && Number.isFinite(i.priceCents) ? i.priceCents : null,
+        quantity: Number.isInteger(i.quantity) && i.quantity! > 0 ? i.quantity! : 1,
+        currency: typeof i.currency === "string" && i.currency ? i.currency : "USD",
+        unit: typeof i.unit === "string" ? i.unit : null,
+        vendor: typeof i.vendor === "string" ? i.vendor : null,
+        bookUrl: typeof i.bookUrl === "string" ? i.bookUrl : null,
+        itinerary: { slug: i.itinerary.slug, title: typeof i.itinerary.title === "string" ? i.itinerary.title : "" },
+      },
+    ];
+  });
+}
+
+const strings = (v: unknown) => (Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : []);
+
+/** A whole saved cart made safe to show; see cleanItems. */
+export function cleanCart(data: unknown) {
+  const d = (data ?? {}) as Record<string, unknown>;
+  const days = Number(d.tripDays);
+  return {
+    items: cleanItems(d.items),
+    budgetCents: typeof d.budgetCents === "number" && d.budgetCents >= 0 ? d.budgetCents : null,
+    tripDays: Number.isInteger(days) ? Math.max(0, Math.min(60, days)) : 0,
+    packed: strings(d.packed),
+    startDate: typeof d.startDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? d.startDate : null,
+    done: strings(d.done),
+  };
+}
+
+/** Empties the trip on this device: used by "Clear trip" and when signing out. */
+export const EMPTY_CART = { items: [], budgetCents: null, tripDays: 0, packed: [], startDate: null, done: [] };
+
 export const useCart = create<CartState>()(
   persist(
     (set) => ({
@@ -148,9 +195,15 @@ export const useCart = create<CartState>()(
       setQuantity: (id, quantity) =>
         set((s) => ({ items: s.items.map((i) => (i.id === id ? { ...i, quantity: Math.max(1, quantity) } : i)) })),
       setBudget: (budgetCents) => set({ budgetCents }),
-      clear: () => set({ items: [], done: [] }),
+      // The length, dates and packing ticks go too, or the next route added would inherit the old trip's.
+      clear: () => set((s) => ({ ...EMPTY_CART, budgetCents: s.budgetCents })),
     }),
-    { name: "roamconsensus-cart", storage: createJSONStorage(() => localStorage), skipHydration: true },
+    {
+      name: "roamconsensus-cart",
+      storage: createJSONStorage(() => localStorage),
+      skipHydration: true,
+      merge: (saved, current) => ({ ...current, ...cleanCart(saved) }),
+    },
   ),
 );
 

@@ -9,6 +9,8 @@ import { currentUser } from "@/lib/auth";
 const text = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
 const optional = (fd: FormData, key: string) => text(fd, key) || null;
 
+const MAX_DRAFTS = 50;
+
 /** A slug no other post has: "title", else "title-2", "title-3"… */
 async function freeSlug(title: string) {
   const base = slugify(title) || "post";
@@ -30,12 +32,17 @@ async function save(fd: FormData, submit: boolean) {
   if (id && !before) throw new Error("That post isn't yours.");
   // Once the owner has published a post, changes go through him.
   if (before?.published || before?.publishedAt) throw new Error("This post is live. Ask the owner to change it.");
+  // Guests are invited, but the limits still hold: a post is a few pages, and nobody needs hundreds of drafts.
+  if (!id && (await db.post.count({ where: { authorId: writer.id, publishedAt: null } })) >= MAX_DRAFTS)
+    throw new Error(`You have ${MAX_DRAFTS} unpublished posts. Delete one first.`);
   const { kind, itineraryId, otherItineraryId, routes } = await postKindFields(fd);
+  const coverUrl = optional(fd, "coverUrl");
   const data = {
-    title: text(fd, "title"),
-    excerpt: optional(fd, "excerpt"),
-    body: text(fd, "body"),
-    coverUrl: optional(fd, "coverUrl"),
+    title: text(fd, "title").slice(0, 200),
+    excerpt: optional(fd, "excerpt")?.slice(0, 500) ?? null,
+    body: text(fd, "body").slice(0, 100_000),
+    // Shown as an image on the review page and the blog: a web photo link or nothing.
+    coverUrl: coverUrl && /^https:\/\/\S+$/.test(coverUrl) ? coverUrl.slice(0, 2000) : null,
     destinationId: optional(fd, "destinationId") ?? routes[0]?.destinationId ?? null,
     kind,
     itineraryId,

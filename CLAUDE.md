@@ -45,6 +45,10 @@ Read this first. It replaces the project memory that plain sessions can't see. L
 11. Never scrape creator photos or avatars. Avatars only after a creator's written OK.
 12. Marketing copy: never claim creator partnerships or that the owner visited/tested a route. Framing = "fellow traveller".
 13. Since 2026-11-03 the container reaches `creatour.co` and `*.vercel.app` (curl/Playwright through the proxy; Node fetch needs `NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt`). Image hosts (Unsplash, bstatic) and GoatCounter are still blocked. Vercel MCP for logs.
+14. **A page must not read the database uncached while it renders.** One plain `db.` call in a page (not inside a `"use cache"` function) silently turns it into a render-on-every-visit page: 2 s loads, a Neon read per view. That happened to 42 of 62 route pages (fixed 2026-11-11, `cachedPhotoPairs`). After a build, check: `grep -L "Add whole route" .next/server/app/itineraries/*.html` should list only `[slug].html`.
+15. **Every admin page calls `requireAdmin()` itself** (the layout check alone leaked page data, PR #132). Never derive a public value from `ADMIN_PASSWORD`.
+16. Saved trips (device storage, account, group stops) pass through `cleanCart` / `CartItemSchema` before use. New item fields that pages read without checking belong in both. Signing out with the button clears the trip from the device (`signOutHere`); the account keeps it.
+17. Money in a non-USD currency can exceed a Postgres `Int` (30M VND = 3 billion "cents"): use `BigInt` columns for amounts users type.
 
 ## Limits and batching (owner rule, 2026-10-27)
 

@@ -165,7 +165,12 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
       await navigator.share({ title: "My trip plan", url }).catch(() => {});
       return;
     }
-    await navigator.clipboard.writeText(url);
+    // Some in-app browsers refuse clipboard access; show the link to copy by hand instead of doing nothing.
+    const copied = await navigator.clipboard?.writeText(url).then(
+      () => true,
+      () => false,
+    );
+    if (!copied) return void prompt("Copy this link to share your trip:", url);
     setShared(true);
     setTimeout(() => setShared(false), 2500);
   }

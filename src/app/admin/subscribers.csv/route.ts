@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { isAdmin } from "@/lib/admin/auth";
+import { csvCell } from "@/lib/csv";
 
 /** Active sign-ups as CSV, for importing into an email tool. */
 export async function GET() {
@@ -7,9 +8,13 @@ export async function GET() {
   const rows = await db.subscriber.findMany({ where: { unsubscribedAt: null }, orderBy: { createdAt: "asc" } });
   const csv = [
     "email,source,signed_up",
-    ...rows.map((r) => `${r.email},${r.source},${r.createdAt.toISOString()}`),
+    ...rows.map((r) => [r.email, r.source, r.createdAt.toISOString()].map(csvCell).join(",")),
   ].join("\n");
   return new Response(csv, {
-    headers: { "Content-Type": "text/csv", "Content-Disposition": 'attachment; filename="subscribers.csv"' },
+    headers: {
+      "Content-Type": "text/csv",
+      "Content-Disposition": 'attachment; filename="subscribers.csv"',
+      "Cache-Control": "private, no-store",
+    },
   });
 }

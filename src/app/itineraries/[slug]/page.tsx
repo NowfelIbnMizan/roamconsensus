@@ -26,7 +26,7 @@ import type { CartItem } from "@/lib/cart-store";
 import { toCartItem } from "@/lib/cart-item";
 import { getDestination, getItinerary, getItinerarySlugs, getPostsForRoute } from "@/lib/data";
 import { type Gap, routeGaps } from "@/lib/gaps";
-import { cachedPhotoUrls } from "@/lib/photos";
+import { cachedPhotoPairs } from "@/lib/photos";
 import { GapPicks } from "./gap-picks";
 import { categoryName, sentimentLabel, tierLabel } from "@/lib/format";
 import { Money, Price } from "@/components/money";
@@ -260,8 +260,8 @@ export default async function ItineraryPage({
       )
     : new Map<number, never[]>();
   const gapPlaces = [...gaps.values()].flatMap((g) => g.flatMap((x) => x.picks.map((p) => p.place)));
-  const cached = await cachedPhotoUrls(
-    gapPlaces.filter((p) => !p.photos[0]).map((p) => placePhotoKey(it.destination.slug, p)),
+  const cached = new Map(
+    await cachedPhotoPairs(gapPlaces.filter((p) => !p.photos[0]).map((p) => placePhotoKey(it.destination.slug, p))),
   );
   const gapPhotos = new Map(
     gapPlaces.map((p) => [p.slug, p.photos[0] ?? cached.get(placePhotoKey(it.destination.slug, p)) ?? null]),

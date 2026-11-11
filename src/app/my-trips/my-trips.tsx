@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 import { CalendarDays, FolderOpen, LogOut, Luggage, Plane, Save, Trash2 } from "lucide-react";
 import { Avatar } from "@/components/account-button";
-import { cartData } from "@/components/cart-sync";
+import { cartData, signOutHere } from "@/components/cart-sync";
 import { Thumb } from "@/components/thumb";
 import { authClient, signInWithGoogle } from "@/lib/auth-client";
 import type { CartData } from "@/lib/cart-data";
-import { useCart, useCartHydrated } from "@/lib/cart-store";
+import { cleanCart, useCart, useCartHydrated } from "@/lib/cart-store";
 import type { ItemCategory } from "@/generated/prisma/enums";
 import { AlertsToggle, GroupTrips, SavedPlaces } from "./extras";
 import { MyTravel, MyTravelRows, type City } from "./my-travel";
@@ -143,7 +143,7 @@ function SignedIn({
     const res = await fetch(`/api/account/trips/${trip.id}`);
     if (!res.ok) return alert("Couldn't open that trip. Check your connection and try again.");
     const { data } = (await res.json()) as { data: CartData };
-    useCart.setState(data);
+    useCart.setState(cleanCart(data));
     router.push("/cart");
   }
 
@@ -185,7 +185,7 @@ function SignedIn({
         <div className="flex items-center gap-4 border-t border-line px-4 py-3 text-sm">
           <button
             type="button"
-            onClick={() => authClient.signOut()}
+            onClick={() => signOutHere()}
             className="inline-flex items-center gap-1.5 hover:text-accent"
           >
             <LogOut className="size-4" aria-hidden /> Sign out
