@@ -33,9 +33,7 @@ To wipe and reseed everything: `SEED_RESET=1 npm run db:seed`.
 
 ## API
 
-- `GET /api/coupons/resolve?itemId=` best link + code: platform code, then public promo, then creator code via creator link
-- `GET /api/photos?query=&category=&key=&postUrl=` cache, OTA (stub), oEmbed thumbnail, Unsplash, Pexels, placeholder
-- `GET /api/oembed?url=` YouTube / TikTok / Instagram embeds (Instagram needs `META_OEMBED_TOKEN`)
+- Small JSON routes under `/api` back the trip plan, accounts and group trips; see `src/app/api`.
 
 `npm test` runs the coupon fallback tests.
 

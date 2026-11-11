@@ -550,7 +550,8 @@ model GroupExpense {
   groupId      String
   group        GroupTrip           @relation(fields: [groupId], references: [id], onDelete: Cascade)
   title        String
-  amountCents  Int
+  /// In the cost's own currency, so BigInt: 30 million dong is more "cents" than an Int holds.
+  amountCents  BigInt
   currency     String
   /// A member's user id or a guest's id. No foreign key, so costs stay put when someone leaves or deletes their account.
   paidById     String
@@ -570,7 +571,7 @@ model GroupExpenseShare {
   expense     GroupExpense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
   /// A member's user id or a guest's id (see GroupExpense.paidById).
   userId      String
-  amountCents Int
+  amountCents BigInt
 
   @@id([expenseId, userId])
   @@index([userId])

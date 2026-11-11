@@ -1,4 +1,4 @@
-import { getDestination } from "@/lib/data";
+import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { rainyDayPicks } from "@/lib/indoor";
 import { placeHref } from "@/lib/place";
 import { getWeather } from "@/lib/weather";
@@ -6,7 +6,9 @@ import { getWeather } from "@/lib/weather";
 /** Trip mode's live extras for one city: the weather and indoor backups for rainy days. */
 export async function GET(request: Request) {
   const slug = new URL(request.url).searchParams.get("city") ?? "";
-  const d = await getDestination(slug);
+  // Only real cities are looked up, so made-up names can't each cost a database read.
+  const known = (await getDestinationSlugs()).some((c) => c.slug === slug);
+  const d = known ? await getDestination(slug) : null;
   if (!d) return Response.json({ error: "Unknown city" }, { status: 404 });
   const weather = d.center ? await getWeather(d.center.lat, d.center.lng) : null;
   return Response.json({

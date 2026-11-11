@@ -9,7 +9,7 @@ import { CreatorTrips } from "@/components/creator-trips";
 import { ClaimProfile, CreatorNoticeLine, SupportCreator } from "@/components/creator-notice";
 import { SOCIALS } from "@/lib/creator-links";
 import { siteUrl } from "@/lib/email";
-import { clip, ldJson, canonical, fillDescription } from "@/lib/seo";
+import { ldJson, canonical, fillDescription } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return getCreatorHandles();

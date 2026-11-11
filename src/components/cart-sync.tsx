@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
 import { type CartData, mergeCarts } from "@/lib/cart-data";
-import { useCart, useCartHydrated } from "@/lib/cart-store";
+import { cleanCart, EMPTY_CART, useCart, useCartHydrated } from "@/lib/cart-store";
 import { favouriteKey, useFavourites } from "@/lib/favourites";
 import { type TravelPrefs, usePrefsStore } from "@/lib/prefs";
 import { useCurrencyStore } from "@/components/money";
@@ -30,6 +30,32 @@ const write = (key: string, value: string | null) => {
 export function cartData(): CartData {
   const { items, budgetCents, tripDays, packed, startDate, done } = useCart.getState();
   return { items, budgetCents, tripDays, packed, startDate, done };
+}
+
+// Set while signing out, so the sync below doesn't send the emptied device cart to the account. Signing in again
+// goes through Google and reloads the page, which starts this module fresh.
+let leaving = false;
+// True once this device's cart and the account's have been joined; before that the device copy may be older than the
+// account's and must never be sent over it.
+let inSync = false;
+
+/**
+ * Signs out and takes the trip off this device. The account keeps its copy, so signing in again brings it back; left
+ * behind, it would be merged into whichever account signs in here next (a shared or borrowed computer).
+ */
+export async function signOutHere() {
+  // Last changes first, or an edit made in the final second would be lost with the device copy.
+  if (inSync) await push(cartData());
+  leaving = true;
+  const { error } = await authClient.signOut();
+  if (error) {
+    leaving = false;
+    return false;
+  }
+  write(SYNCED_KEY, null);
+  useCart.setState(EMPTY_CART);
+  usePrefsStore.getState().update({ tier: "", length: 0, been: [] });
+  return true;
 }
 
 const push = (data: CartData, keepalive = false) =>
@@ -65,7 +91,7 @@ export function CartSync() {
   useEffect(() => {
     if (!hydrated || isPending) return;
     if (!userId) {
-      write(SYNCED_KEY, null); // signed out: the cart stays on this device, and a later sign-in merges again
+      write(SYNCED_KEY, null); // session ended without the Sign out button: the cart stays here and merges on the next sign-in
       return;
     }
     let ready = false;
@@ -76,18 +102,21 @@ export function CartSync() {
     (async () => {
       const res = await fetch("/api/account/cart").catch(() => null);
       if (!res?.ok || cancelled) return;
-      const { data: account } = (await res.json()) as { data: CartData | null };
+      const { data: raw } = (await res.json()) as { data: CartData | null };
+      const account = raw && cleanCart(raw);
       const device = cartData();
       const next = !account ? device : read(SYNCED_KEY) === userId ? account : mergeCarts(device, account);
       useCart.setState(next);
       write(SYNCED_KEY, userId);
       last = JSON.stringify(next);
-      if (last !== JSON.stringify(account)) void push(next);
+      if (last !== JSON.stringify(raw)) void push(next);
       ready = true;
+      inSync = true;
     })();
 
     const send = (keepalive = false) => {
       clearTimeout(timer);
+      if (leaving) return;
       const now = JSON.stringify(cartData());
       if (now === last) return;
       last = now;
@@ -105,6 +134,7 @@ export function CartSync() {
       unsubscribe();
       window.removeEventListener("pagehide", onHide);
       if (ready) send(true);
+      inSync = false;
     };
   }, [hydrated, isPending, userId]);
 

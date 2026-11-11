@@ -23,7 +23,7 @@ export async function DELETE(_: Request, { params }: Params) {
 export async function PATCH(request: Request, { params }: Params) {
   const { group, error } = await memberOf((await params).id);
   if (error) return error;
-  const budget = z.number().int().min(0).max(1e12).nullable().safeParse((await request.json().catch(() => ({}))).budgetCents);
+  const budget = z.number().int().min(0).max(2_000_000_000).nullable().safeParse((await request.json().catch(() => ({}))).budgetCents);
   if (!budget.success) return Response.json({ error: "Invalid budget" }, { status: 400 });
   await db.groupTrip.update({ where: { id: group.id }, data: { budgetCents: budget.data } });
   return Response.json({ ok: true });

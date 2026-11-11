@@ -49,6 +49,21 @@ export const auth = betterAuth({
 
 /** The signed-in traveller, or null. Reads cookies, so only call it at request time. */
 export async function currentUser() {
-  const session = await auth.api.getSession({ headers: await headers() });
+  const h = await headers();
+  if (fromAnotherSite(h)) return null;
+  const session = await auth.api.getSession({ headers: h });
   return session?.user ?? null;
+}
+
+/**
+ * True for a request another website's page made. Browsers name the calling site in `Origin` on every POST, PUT,
+ * PATCH and DELETE (plain page visits carry none), so a page elsewhere can't act as a signed-in traveller here even
+ * if a browser sent their cookie along. The cookie's SameSite setting already blocks that; this is the second lock.
+ */
+function fromAnotherSite(h: Headers) {
+  const origin = h.get("origin");
+  if (!origin) return false;
+  const host = URL.parse(origin)?.host;
+  const ours = [h.get("host"), h.get("x-forwarded-host"), new URL(baseURL).host, "creatour.co", "www.creatour.co"];
+  return !host || !ours.includes(host);
 }

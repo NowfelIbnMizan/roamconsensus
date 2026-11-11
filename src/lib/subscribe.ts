@@ -23,6 +23,11 @@ export async function subscribe(_: SubscribeState, fd: FormData): Promise<Subscr
   const tripUrl = tripPath?.startsWith("/trip?t=") ? `${siteUrl()}${tripPath}` : null;
 
   const existing = await db.subscriber.findUnique({ where: { email } });
+  // Anyone can post this form: cap new sign-ups site-wide so a script can't fill the list with made-up addresses.
+  if (!existing) {
+    const lastHour = await db.subscriber.count({ where: { createdAt: { gt: new Date(Date.now() - 60 * 60_000) } } });
+    if (lastHour >= 200) return { ok: false, message: "Lots of sign-ups right now. Try again in a bit." };
+  }
   await db.subscriber.upsert({
     where: { email },
     create: { email, source, tripUrl },

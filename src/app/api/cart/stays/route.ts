@@ -1,11 +1,12 @@
-import { getDestination } from "@/lib/data";
+import { getDestination, getDestinationSlugs } from "@/lib/data";
 import { cachedPhotoUrls } from "@/lib/photos";
 import { placePhotoKey } from "@/lib/place";
 
 /** A city's open hotels that creators recommend, for the trip plan's "no hotel yet" picks. Site data only. */
 export async function GET(request: Request) {
   const slug = new URL(request.url).searchParams.get("city") ?? "";
-  const city = /^[a-z0-9-]{1,60}$/.test(slug) ? await getDestination(slug) : null;
+  const known = (await getDestinationSlugs()).some((c) => c.slug === slug);
+  const city = known ? await getDestination(slug) : null;
   if (!city) return Response.json([], { status: 404 });
   const stays = city.consensus.filter(
     (p) => p.category === "STAY" && !p.closed && p.cartItem && p.creators.length > p.skippedBy.length,

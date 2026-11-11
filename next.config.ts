@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
+  // No "X-Powered-By: Next.js" header: no need to tell scanners what the site runs on.
+  poweredByHeader: false,
   images: {
     // Unsplash and Pexels resize on their own CDNs (src/lib/image-loader.ts), so Vercel's optimizer quota isn't used.
     loader: "custom",

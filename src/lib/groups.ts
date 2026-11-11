@@ -2,6 +2,7 @@ import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import type { Prisma } from "@/generated/prisma/client";
 import { currentUser } from "@/lib/auth";
+import { CartItemSchema } from "@/lib/cart-data";
 import type { CartItem } from "@/lib/cart-store";
 import { db } from "@/lib/db";
 
@@ -9,18 +10,8 @@ export const newInviteToken = () => randomBytes(12).toString("base64url");
 
 export const MAX_GROUP_ITEMS = 300;
 
-// Same checks as a synced cart: the fields the site reads back to find and refresh a line.
-export const GroupItems = z
-  .array(
-    z
-      .object({
-        id: z.string().max(300),
-        name: z.string().max(300),
-        itinerary: z.object({ slug: z.string().max(200) }).passthrough(),
-      })
-      .passthrough(),
-  )
-  .max(MAX_GROUP_ITEMS);
+// Same checks as a synced cart, so a stop one member adds can't break the page for the others.
+export const GroupItems = z.array(CartItemSchema).max(MAX_GROUP_ITEMS);
 
 /** A stop as a group trip keeps it: without the adder's own day plan or private note. */
 export function groupItemJson(item: z.infer<typeof GroupItems>[number]) {
@@ -68,12 +59,12 @@ export async function groupView(groupId: string, userId: string) {
     expenses: g.expenses.map((e) => ({
       id: e.id,
       title: e.title,
-      amountCents: e.amountCents,
+      amountCents: Number(e.amountCents),
       currency: e.currency,
       paidById: e.paidById,
       isSettlement: e.isSettlement,
       itemId: e.itemId,
-      shares: e.shares,
+      shares: e.shares.map((s) => ({ userId: s.userId, amountCents: Number(s.amountCents) })),
       createdAt: e.createdAt.toISOString(),
       canDelete: [e.createdById, e.paidById, g.ownerId].includes(userId),
     })),
@@ -92,6 +83,8 @@ export async function groupView(groupId: string, userId: string) {
       ...g.guests.map((x) => ({ id: x.id, name: x.name, guest: true })),
     ],
     items: g.items
+      // Stops saved before items were checked on the way in: one unreadable stop would break the page for everyone.
+      .filter((i) => CartItemSchema.safeParse(i.item).success)
       .map((i) => ({
         id: i.itemId,
         item: i.item as unknown as CartItem,

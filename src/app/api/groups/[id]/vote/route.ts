@@ -10,9 +10,9 @@ export async function POST(request: Request, { params }: Params) {
   const itemId = String((await request.json().catch(() => ({}))).itemId ?? "");
   const row = await db.groupItem.findUnique({ where: { groupId_itemId: { groupId: group.id, itemId } } });
   if (!row) return Response.json({ error: "Stop not found" }, { status: 404 });
-  const key = { groupItemId_userId: { groupItemId: row.id, userId: user.id } };
-  const existing = await db.groupVote.findUnique({ where: key });
-  if (existing) await db.groupVote.delete({ where: key });
-  else await db.groupVote.create({ data: { groupItemId: row.id, userId: user.id } });
-  return Response.json({ voted: !existing });
+  // Remove-or-add in two steps that can't fail when a double tap sends the same vote twice at once.
+  const vote = { groupItemId: row.id, userId: user.id };
+  const { count: removed } = await db.groupVote.deleteMany({ where: vote });
+  if (!removed) await db.groupVote.createMany({ data: [vote], skipDuplicates: true });
+  return Response.json({ voted: !removed });
 }

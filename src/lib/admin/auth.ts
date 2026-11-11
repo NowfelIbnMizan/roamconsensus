@@ -44,33 +44,38 @@ export async function requireAdmin() {
 
 const TRIES = 10;
 const WINDOW_MS = 15 * 60_000;
-type Tries = { count: number; since: number };
 
 /**
- * Wrong admin passwords in the last 15 minutes, counted in the database so every server instance sees the same count.
- * After 10, the password box locks for everyone until the window ends; Google sign-in for ADMIN_EMAILS still works.
+ * Counts this try and returns how many there have been in the last 15 minutes. One database statement, so a burst of
+ * guesses sent at the same moment can't all read "0 so far" and slip past the limit. Kept in the database so every
+ * server instance sees the same count.
  */
-async function recentTries(): Promise<Tries> {
-  const row = await db.siteSetting.findUnique({ where: { key: "adminLoginTries" } });
-  const value = row?.value as Tries | undefined;
-  return value && Date.now() - value.since < WINDOW_MS ? value : { count: 0, since: Date.now() };
+async function countTry() {
+  const now = Date.now();
+  const rows = await db.$queryRaw<{ count: number }[]>`
+    INSERT INTO "SiteSetting" ("key", "value")
+    VALUES ('adminLoginTries', jsonb_build_object('count', 1, 'since', ${now}::bigint))
+    ON CONFLICT ("key") DO UPDATE SET "value" = CASE
+      WHEN COALESCE(("SiteSetting"."value"->>'since')::bigint, 0) < ${now - WINDOW_MS}::bigint
+        THEN jsonb_build_object('count', 1, 'since', ${now}::bigint)
+      ELSE jsonb_build_object(
+        'count', COALESCE(("SiteSetting"."value"->>'count')::int, 0) + 1,
+        'since', ("SiteSetting"."value"->>'since')::bigint)
+    END
+    RETURNING ("value"->>'count')::int AS count`;
+  return rows[0]?.count ?? TRIES + 1;
 }
 
-/** "ok" sets the cookie; "wrong" and "locked" don't. */
+/**
+ * "ok" sets the cookie; "wrong" and "locked" don't. After 10 tries in 15 minutes the password box locks for everyone
+ * until the window ends; Google sign-in for ADMIN_EMAILS still works. Right passwords count as tries too, which only
+ * matters to someone logging in ten times in a row.
+ */
 export async function logIn(password: string): Promise<"ok" | "wrong" | "locked"> {
   const expected = process.env.ADMIN_PASSWORD;
   if (!expected) return "wrong";
-  const tries = await recentTries();
-  if (tries.count >= TRIES) return "locked";
-  if (!same(password, expected)) {
-    const value = { count: tries.count + 1, since: tries.since };
-    await db.siteSetting.upsert({
-      where: { key: "adminLoginTries" },
-      create: { key: "adminLoginTries", value },
-      update: { value },
-    });
-    return "wrong";
-  }
+  if ((await countTry()) > TRIES) return "locked";
+  if (!same(password, expected)) return "wrong";
   (await cookies()).set(COOKIE, token()!, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",

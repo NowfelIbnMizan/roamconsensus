@@ -53,49 +53,70 @@ export async function runAlerts(now = new Date()) {
     select: { id: true, email: true, alertsCheckedAt: true, cart: true },
   });
   let sent = 0;
+  let failed = 0;
   for (const user of users) {
-    const data = user.cart!.data as unknown as CartData;
-    const fresh = await freshCartItems(data.items.map((i) => ({ id: i.id, name: i.name, slug: i.itinerary.slug })));
-    const before = (user.cart!.alertPrices ?? {}) as Record<string, number | null>;
-    const prices = Object.fromEntries(data.items.map((i) => [i.id, fresh[i.id]?.priceCents ?? i.priceCents]));
-    const changes = data.items.flatMap((i): PriceChange[] => {
-      const from = before[i.id];
-      const to = prices[i.id];
-      return from != null && to != null && from !== to ? [{ name: i.name, from, to }] : [];
-    });
-
-    const cities = [...new Set(data.items.map((i) => i.destination?.slug).filter(Boolean))] as string[];
-    const inCart = new Set(data.items.map((i) => i.itinerary.slug));
-    const routes: NewRoute[] =
-      user.alertsCheckedAt && cities.length
-        ? (
-            await db.itinerary.findMany({
-              where: { createdAt: { gt: user.alertsCheckedAt }, destination: { slug: { in: cities } } },
-              select: {
-                slug: true,
-                title: true,
-                destination: { select: { name: true } },
-                creator: { select: { name: true } },
-              },
-            })
-          )
-            .filter((r) => !inCart.has(r.slug))
-            .map((r) => ({ slug: r.slug, title: r.title, city: r.destination.name, creator: r.creator.name }))
-        : [];
-
-    if (
-      (changes.length || routes.length) &&
-      (await sendEmail({
-        to: user.email,
-        subject: "News for your Creatour trip",
-        html: alertHtml(user.id, changes, routes),
-      }))
-    )
-      sent++;
-    await db.$transaction([
-      db.userCart.update({ where: { userId: user.id }, data: { alertPrices: prices } }),
-      db.user.update({ where: { id: user.id }, data: { alertsCheckedAt: now } }),
-    ]);
+    // One traveller's odd cart must not stop the alerts for everyone after them.
+    try {
+      if (await alertUser(user, now)) sent++;
+    } catch (e) {
+      failed++;
+      console.log(`[alerts] skipped one account: ${e instanceof Error ? e.message : e}`);
+    }
   }
-  return { checked: users.length, sent };
+  return { checked: users.length, sent, failed };
+}
+
+type AlertUser = {
+  id: string;
+  email: string;
+  alertsCheckedAt: Date | null;
+  cart: { data: unknown; alertPrices: unknown } | null;
+};
+
+/** Checks one account and emails it if something changed. True when an email went out. */
+async function alertUser(user: AlertUser, now: Date) {
+  let sent = false;
+  const data = user.cart!.data as unknown as CartData;
+  const fresh = await freshCartItems(data.items.map((i) => ({ id: i.id, name: i.name, slug: i.itinerary.slug })));
+  const before = (user.cart!.alertPrices ?? {}) as Record<string, number | null>;
+  const prices = Object.fromEntries(data.items.map((i) => [i.id, fresh[i.id]?.priceCents ?? i.priceCents]));
+  const changes = data.items.flatMap((i): PriceChange[] => {
+    const from = before[i.id];
+    const to = prices[i.id];
+    return from != null && to != null && from !== to ? [{ name: i.name, from, to }] : [];
+  });
+
+  const cities = [...new Set(data.items.map((i) => i.destination?.slug).filter(Boolean))] as string[];
+  const inCart = new Set(data.items.map((i) => i.itinerary.slug));
+  const routes: NewRoute[] =
+    user.alertsCheckedAt && cities.length
+      ? (
+          await db.itinerary.findMany({
+            where: { createdAt: { gt: user.alertsCheckedAt }, destination: { slug: { in: cities } } },
+            select: {
+              slug: true,
+              title: true,
+              destination: { select: { name: true } },
+              creator: { select: { name: true } },
+            },
+          })
+        )
+          .filter((r) => !inCart.has(r.slug))
+          .map((r) => ({ slug: r.slug, title: r.title, city: r.destination.name, creator: r.creator.name }))
+      : [];
+
+  if (
+    (changes.length || routes.length) &&
+    (await sendEmail({
+      to: user.email,
+      subject: "News for your Creatour trip",
+      html: alertHtml(user.id, changes, routes),
+    }))
+  )
+    sent = true;
+  await db.$transaction([
+    db.userCart.update({ where: { userId: user.id }, data: { alertPrices: prices } }),
+    db.user.update({ where: { id: user.id }, data: { alertsCheckedAt: now } }),
+  ]);
+  return sent;
 }

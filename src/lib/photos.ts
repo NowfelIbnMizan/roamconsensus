@@ -321,6 +321,17 @@ export async function cachedPhotoUrls(keys: string[]) {
   return new Map(rows.map((r) => [r.key, r.url]));
 }
 
+/**
+ * The same lookup behind the content cache, as [key, url] pairs. Pages must use this one: a plain database read
+ * while a page renders stops it being prerendered, so every visit would wait on the database instead.
+ */
+export async function cachedPhotoPairs(keys: string[]) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("content");
+  return [...(await cachedPhotoUrls(keys))];
+}
+
 /** Cached lookup for server components, so prerendered pages don't re-query providers. */
 export async function getPhoto(lookup: Lookup): Promise<Photo> {
   "use cache";

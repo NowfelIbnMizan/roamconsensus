@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import { isAdmin } from "@/lib/admin/auth";
-
-const cell = (s: string) => (/[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
+import { csvCell as cell } from "@/lib/csv";
 
 /** Everyone who signed in with Google, as CSV. Private: admin only. */
 export async function GET() {
