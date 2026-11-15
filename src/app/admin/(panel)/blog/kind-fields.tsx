@@ -16,6 +16,7 @@ export function KindFields({
   body,
   routes,
   help,
+  maxBody,
 }: {
   kind: PostKind;
   itineraryId: string | null;
@@ -23,6 +24,8 @@ export function KindFields({
   body: string;
   routes: Option[];
   help: string;
+  /** Longest post text the form takes (guest writers); the box stops there instead of the save cutting it later. */
+  maxBody?: number;
 }) {
   const [kind, setKind] = useState(initialKind);
   const text = useRef<HTMLTextAreaElement>(null);
@@ -120,6 +123,7 @@ export function KindFields({
           name="body"
           rows={18}
           required
+          maxLength={maxBody}
           defaultValue={body}
           className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2 font-mono text-sm"
         />

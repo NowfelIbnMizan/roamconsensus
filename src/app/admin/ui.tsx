@@ -14,6 +14,9 @@ export function Field({
   placeholder,
   hint,
   step,
+  maxLength,
+  pattern,
+  title,
 }: {
   label: string;
   name: string;
@@ -23,6 +26,10 @@ export function Field({
   placeholder?: string;
   hint?: string;
   step?: string;
+  maxLength?: number;
+  /** Browser check before the form is sent, with `title` as the message shown when it fails. */
+  pattern?: string;
+  title?: string;
 }) {
   return (
     <label className="block text-sm">
@@ -34,6 +41,9 @@ export function Field({
         defaultValue={defaultValue ?? ""}
         required={required}
         placeholder={placeholder}
+        maxLength={maxLength}
+        pattern={pattern}
+        title={title}
         className={`mt-1 ${inputClass}`}
       />
       {hint && <span className="mt-0.5 block text-xs text-muted">{hint}</span>}
@@ -46,16 +56,24 @@ export function TextArea({
   name,
   defaultValue,
   rows = 2,
+  maxLength,
 }: {
   label: string;
   name: string;
   defaultValue?: string | null;
   rows?: number;
+  maxLength?: number;
 }) {
   return (
     <label className="block text-sm sm:col-span-2">
       <span className="text-muted">{label}</span>
-      <textarea name={name} rows={rows} defaultValue={defaultValue ?? ""} className={`mt-1 ${inputClass}`} />
+      <textarea
+        name={name}
+        rows={rows}
+        maxLength={maxLength}
+        defaultValue={defaultValue ?? ""}
+        className={`mt-1 ${inputClass}`}
+      />
     </label>
   );
 }

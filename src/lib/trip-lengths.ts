@@ -6,3 +6,6 @@ export const LENGTHS = [
   { label: "8–14 days", min: 8, max: 14 },
   { label: "15+ days", min: 15, max: Infinity },
 ];
+
+/** Highest day number a stop can sit on. Far past any real trip (several long routes joined end to end). */
+export const MAX_PLAN_DAY = 366;

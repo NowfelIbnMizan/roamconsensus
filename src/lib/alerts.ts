@@ -1,4 +1,5 @@
-import type { CartData } from "@/lib/cart-data";
+import { CartItemSchema } from "@/lib/cart-data";
+import type { CartItem } from "@/lib/cart-store";
 import { freshCartItems } from "@/lib/cart-refresh";
 import { db } from "@/lib/db";
 import { canSendEmail, sendEmail, siteUrl } from "@/lib/email";
@@ -13,7 +14,7 @@ export function alertsOffToken(userId: string) {
 const alertsOffUrl = (userId: string) =>
   `${siteUrl()}/api/account/alerts?off=${encodeURIComponent(userId)}&t=${alertsOffToken(userId)}`;
 
-type PriceChange = { name: string; from: number; to: number };
+type PriceChange = { name: string; from: number; to: number; currency: string };
 type NewRoute = { title: string; slug: string; city: string; creator: string };
 
 const escape = (s: string) =>
@@ -24,7 +25,7 @@ function alertHtml(userId: string, changes: PriceChange[], routes: NewRoute[]) {
   const priceRows = changes
     .map(
       (c) =>
-        `<li>${escape(c.name)}: ${formatMoney(c.from)} → <strong>${formatMoney(c.to)}</strong> ${c.to < c.from ? "(cheaper)" : ""}</li>`,
+        `<li>${escape(c.name)}: ${formatMoney(c.from, c.currency)} → <strong>${formatMoney(c.to, c.currency)}</strong> ${c.to < c.from ? "(cheaper)" : ""}</li>`,
     )
     .join("");
   const routeRows = routes
@@ -76,14 +77,24 @@ type AlertUser = {
 /** Checks one account and emails it if something changed. True when an email went out. */
 async function alertUser(user: AlertUser, now: Date) {
   let sent = false;
-  const data = user.cart!.data as unknown as CartData;
+  // Unreadable lines (saved by an older version of the site) are left out, so the rest of the trip still gets alerts.
+  const stored = (user.cart!.data as { items?: unknown } | null)?.items;
+  const items = (Array.isArray(stored) ? stored : []).flatMap((raw) => {
+    const parsed = CartItemSchema.safeParse(raw);
+    return parsed.success ? [parsed.data as unknown as CartItem] : [];
+  });
+  const data = { items };
   const fresh = await freshCartItems(data.items.map((i) => ({ id: i.id, name: i.name, slug: i.itinerary.slug })));
   const before = (user.cart!.alertPrices ?? {}) as Record<string, number | null>;
   const prices = Object.fromEntries(data.items.map((i) => [i.id, fresh[i.id]?.priceCents ?? i.priceCents]));
   const changes = data.items.flatMap((i): PriceChange[] => {
     const from = before[i.id];
     const to = prices[i.id];
-    return from != null && to != null && from !== to ? [{ name: i.name, from, to }] : [];
+    // A price that moved to another currency isn't a change to report: the two numbers can't be compared.
+    const currency = fresh[i.id]?.currency ?? i.currency;
+    return from != null && to != null && from !== to && currency === i.currency
+      ? [{ name: i.name, from, to, currency }]
+      : [];
   });
 
   const cities = [...new Set(data.items.map((i) => i.destination?.slug).filter(Boolean))] as string[];

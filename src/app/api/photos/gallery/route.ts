@@ -13,6 +13,7 @@ export async function GET(request: Request) {
   // A placeholder main photo (none found, or hidden in admin) gets no gallery either.
   if (main.source === "PLACEHOLDER") return Response.json([]);
   return Response.json(await findGallery(key, query, main), {
-    headers: { "Cache-Control": "public, max-age=3600" },
+    // Shared by every visitor for an hour (s-maxage), so one place page can't trigger a lookup per view.
+    headers: { "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400" },
   });
 }

@@ -28,13 +28,16 @@ export async function WriterPostForm({ p }: { p?: Post }) {
     <form action={saveDraft} className="mt-6 grid gap-3 sm:grid-cols-2">
       {p && <input type="hidden" name="id" value={p.id} />}
       <div className="sm:col-span-2">
-        <Field label="Title" name="title" defaultValue={p?.title} required />
+        <Field label="Title" name="title" defaultValue={p?.title} required maxLength={200} />
       </div>
-      <TextArea label="Short summary (one or two sentences)" name="excerpt" defaultValue={p?.excerpt} />
+      <TextArea label="Short summary (one or two sentences)" name="excerpt" defaultValue={p?.excerpt} maxLength={500} />
       <Field
         label="Cover image link"
         name="coverUrl"
         type="url"
+        maxLength={2000}
+        pattern="https://.+"
+        title="A web link that starts with https://"
         defaultValue={p?.coverUrl}
         hint="A photo you took and host yourself. Blank uses the city's photo."
       />
@@ -52,6 +55,7 @@ export async function WriterPostForm({ p }: { p?: Post }) {
         body={p?.body ?? ""}
         routes={routes}
         help={MARKDOWN_HELP}
+        maxBody={100_000}
       />
       <p className="fine-print sm:col-span-2">
         Write from your own trips and in your own words. Only use photos you took. Creatour may edit your post before it

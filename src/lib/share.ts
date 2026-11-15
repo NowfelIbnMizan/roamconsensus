@@ -1,4 +1,5 @@
 import type { CartItem } from "@/lib/cart-store";
+import { MAX_PLAN_DAY } from "@/lib/trip-lengths";
 
 /** What a shared trip link carries: item ids with quantity and day, and the trip length. Prices load fresh. */
 export type SharedTrip = {
@@ -39,8 +40,9 @@ export function decodeTrip(token: string): SharedTrip | null {
         .map(([n, rest, quantity, day]) => ({
           id: rest.startsWith("~") ? rest.slice(1) : `${slugs[n]}--${rest}`,
           slug: slugs[n],
-          quantity: Math.max(1, Number(quantity) || 1),
-          day: Number.isInteger(day) && day > 0 ? day : null,
+          quantity: Math.min(999, Math.max(1, Math.round(Number(quantity)) || 1)),
+          // A made-up day number would have the plan draw that many days and freeze the page.
+          day: Number.isInteger(day) && day > 0 && day <= MAX_PLAN_DAY ? day : null,
         })),
     };
   } catch {

@@ -5,6 +5,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import type { ItemCategory } from "@/generated/prisma/enums";
 import { convertCents, FALLBACK_RATES } from "@/lib/currency";
+import { MAX_PLAN_DAY } from "@/lib/trip-lengths";
 
 export type CartItem = {
   id: string;
@@ -83,6 +84,9 @@ export function cleanItems(items: unknown): CartItem[] {
         unit: typeof i.unit === "string" ? i.unit : null,
         vendor: typeof i.vendor === "string" ? i.vendor : null,
         bookUrl: typeof i.bookUrl === "string" ? i.bookUrl : null,
+        // The plan draws one section per day up to the highest day number, so a wild one would freeze the page.
+        // A line with no day at all stays that way: the refresh gives it the creator's day.
+        ...(i.day === undefined || (Number.isInteger(i.day) && i.day! >= 1 && i.day! <= MAX_PLAN_DAY) ? {} : { day: null }),
         itinerary: { slug: i.itinerary.slug, title: typeof i.itinerary.title === "string" ? i.itinerary.title : "" },
       },
     ];
