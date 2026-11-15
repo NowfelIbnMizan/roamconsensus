@@ -333,7 +333,12 @@ model Subscriber {
   tripUrl        String?
   lastEmailedAt  DateTime?
   unsubscribedAt DateTime?
+  /// Scrambled code from the visitor's network address and the day (see lib/subscribe.ts): caps sign-ups per sender.
+  /// Changes daily and can't be turned back into the address.
+  signupKey      String?
   createdAt      DateTime  @default(now())
+
+  @@index([signupKey, createdAt])
 }
 
 /// Blog posts, written in Admin > Blog. Body is simple Markdown (headings, lists, links, images, bold/italic).

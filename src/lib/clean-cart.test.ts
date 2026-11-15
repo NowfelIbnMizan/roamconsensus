@@ -41,7 +41,21 @@ test("cleanCart survives a cart that isn't one", () => {
 
 test("csvCell stops spreadsheet formulas and quotes commas", () => {
   assert.equal(csvCell("=HYPERLINK(1)"), "'=HYPERLINK(1)");
-  assert.equal(csvCell("+1@example.com"), "'+1@example.com");
+  assert.equal(csvCell("+cmd|' /C calc'!A0"), "'+cmd|' /C calc'!A0");
+  // A real address stays importable into an email tool.
+  assert.equal(csvCell("+1@example.com"), "+1@example.com");
+  assert.equal(csvCell("-sam@example.com"), "-sam@example.com");
   assert.equal(csvCell('Ann "A", Lee'), '"Ann ""A"", Lee"');
   assert.equal(csvCell("ann@example.com"), "ann@example.com");
+});
+
+test("cleanItems drops a wild day number but keeps real ones and missing ones", () => {
+  const [wild, real, none] = cleanItems([
+    { ...good, id: "a", day: 1e9 },
+    { ...good, id: "b", day: 3 },
+    { ...good, id: "c" },
+  ]);
+  assert.equal(wild.day, null);
+  assert.equal(real.day, 3);
+  assert.equal("day" in none, false);
 });

@@ -13,10 +13,16 @@ export default function PageError({ error, retry }: { error: unknown; retry: () 
   }, [error]);
 
   function startOver() {
-    if (!confirm("Clear the trip plan saved on this device? Trips saved to your account are not affected.")) return;
+    if (
+      !confirm(
+        "Clear the trip plan saved on this device? If you are not signed in, it can't be brought back. Trips saved to your account are not affected.",
+      )
+    )
+      return;
     try {
       localStorage.removeItem("roamconsensus-cart");
       localStorage.removeItem("roamconsensus-cart-sync");
+      localStorage.removeItem("roamconsensus-cart-unsaved");
     } catch {}
     location.reload();
   }
@@ -42,7 +48,10 @@ export default function PageError({ error, retry }: { error: unknown; retry: () 
           Clear the trip on this device
         </button>
       </div>
-      <p className="fine-print mt-4">Still stuck? Clearing the trip on this device fixes most cases.</p>
+      <p className="fine-print mt-4">
+        Still stuck after a few minutes? Clearing the trip on this device is the last resort: only do it if the page
+        keeps breaking.
+      </p>
     </section>
   );
 }

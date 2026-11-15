@@ -10,6 +10,9 @@ const text = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
 const optional = (fd: FormData, key: string) => text(fd, key) || null;
 
 const MAX_DRAFTS = 50;
+const MAX_TITLE = 200;
+const MAX_EXCERPT = 500;
+const MAX_BODY = 100_000;
 
 /** A slug no other post has: "title", else "title-2", "title-3"… */
 async function freeSlug(title: string) {
@@ -37,12 +40,23 @@ async function save(fd: FormData, submit: boolean) {
     throw new Error(`You have ${MAX_DRAFTS} unpublished posts. Delete one first.`);
   const { kind, itineraryId, otherItineraryId, routes } = await postKindFields(fd);
   const coverUrl = optional(fd, "coverUrl");
+  // Too long or a bad link is said out loud: cutting the text quietly would lose the writer's work on the next save.
+  const tooLong = (
+    [
+      ["title", "The title", MAX_TITLE],
+      ["excerpt", "The short summary", MAX_EXCERPT],
+      ["body", "The post", MAX_BODY],
+    ] as const
+  ).find(([key, , max]) => text(fd, key).length > max);
+  if (tooLong) throw new Error(`${tooLong[1]} is too long (${tooLong[2].toLocaleString("en-US")} characters at most). Shorten it and save again.`);
+  if (coverUrl && !(/^https:\/\/\S+$/.test(coverUrl) && coverUrl.length <= 2000))
+    throw new Error("The cover photo must be a web link that starts with https://");
   const data = {
-    title: text(fd, "title").slice(0, 200),
-    excerpt: optional(fd, "excerpt")?.slice(0, 500) ?? null,
-    body: text(fd, "body").slice(0, 100_000),
+    title: text(fd, "title"),
+    excerpt: optional(fd, "excerpt"),
+    body: text(fd, "body"),
     // Shown as an image on the review page and the blog: a web photo link or nothing.
-    coverUrl: coverUrl && /^https:\/\/\S+$/.test(coverUrl) ? coverUrl.slice(0, 2000) : null,
+    coverUrl,
     destinationId: optional(fd, "destinationId") ?? routes[0]?.destinationId ?? null,
     kind,
     itineraryId,

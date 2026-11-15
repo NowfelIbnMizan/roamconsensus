@@ -1,7 +1,9 @@
 "use server";
 
+import { headers } from "next/headers";
 import { z } from "zod";
 import { db } from "@/lib/db";
+import { signLink } from "@/lib/signing";
 import { canSendEmail, sendEmail, siteUrl, tripEmailHtml } from "@/lib/email";
 
 export type SubscribeState = { ok: boolean; message: string } | null;
@@ -14,6 +16,22 @@ const Form = z.object({
   website: z.literal("").optional(),
 });
 
+const PER_SENDER_AN_HOUR = 5;
+/** Backstop for a script spread over many addresses; far above what real visitors reach. */
+const SITE_WIDE_AN_HOUR = 2000;
+
+/**
+ * A code for where this request came from: the network address and today's date, scrambled with the site's secret.
+ * The same sender gets the same code for a day, so it can be capped; the address can't be read back from it, and
+ * tomorrow's code is different.
+ */
+async function senderKey() {
+  const h = await headers();
+  const ip = h.get("x-real-ip") ?? h.get("x-forwarded-for")?.split(",")[0]?.trim();
+  if (!ip) return null;
+  return signLink(`signup:${new Date().toISOString().slice(0, 10)}:${ip}`).slice(0, 24);
+}
+
 /** Footer sign-up, or "email me this trip" from the cart. */
 export async function subscribe(_: SubscribeState, fd: FormData): Promise<SubscribeState> {
   const parsed = Form.safeParse(Object.fromEntries(fd));
@@ -23,14 +41,21 @@ export async function subscribe(_: SubscribeState, fd: FormData): Promise<Subscr
   const tripUrl = tripPath?.startsWith("/trip?t=") ? `${siteUrl()}${tripPath}` : null;
 
   const existing = await db.subscriber.findUnique({ where: { email } });
-  // Anyone can post this form: cap new sign-ups site-wide so a script can't fill the list with made-up addresses.
+  // Anyone can post this form: cap new sign-ups per sender, so a script can't fill the list with made-up addresses
+  // and can't lock everyone else out by using up a shared limit either.
+  const signupKey = existing ? null : await senderKey();
   if (!existing) {
-    const lastHour = await db.subscriber.count({ where: { createdAt: { gt: new Date(Date.now() - 60 * 60_000) } } });
-    if (lastHour >= 200) return { ok: false, message: "Lots of sign-ups right now. Try again in a bit." };
+    const since = { gt: new Date(Date.now() - 60 * 60_000) };
+    const [mine, all] = await Promise.all([
+      signupKey ? db.subscriber.count({ where: { signupKey, createdAt: since } }) : 0,
+      db.subscriber.count({ where: { createdAt: since } }),
+    ]);
+    if (mine >= PER_SENDER_AN_HOUR || all >= SITE_WIDE_AN_HOUR)
+      return { ok: false, message: "Lots of sign-ups right now. Try again in a bit." };
   }
   await db.subscriber.upsert({
     where: { email },
-    create: { email, source, tripUrl },
+    create: { email, source, tripUrl, signupKey },
     // Anyone can type any address here, so this form never undoes an unsubscribe. Someone who wants back in writes to us.
     update: { tripUrl: tripUrl ?? undefined },
   });

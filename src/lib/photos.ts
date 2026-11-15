@@ -388,7 +388,8 @@ export async function findGallery(
     Date.now() - cached[0].fetchedAt.getTime() < CACHE_TTL_MS
   )
     return distinctShots(
-      cached.map(({ url, source, attribution, creditUrl }) => ({
+      // The "nothing found" marker (see below) is a placeholder row, not a photo.
+      cached.filter((c) => c.source !== "PLACEHOLDER").map(({ url, source, attribution, creditUrl }) => ({
         url,
         source,
         attribution,
@@ -432,11 +433,17 @@ export async function findGallery(
     ),
   );
   const gallery: Photo[] = photos.map(unsplashPhoto);
-  await db.$transaction([
-    db.photoCache.deleteMany({ where: { key: { startsWith: `${key}#` } } }),
-    ...gallery.map((p, i) =>
-      db.photoCache.create({ data: { key: `${key}#${i + 2}`, ...p } }),
-    ),
-  ]);
+  // A search that found nothing fitting is remembered too ("<key>#0"), or every visit to the place's page would ask
+  // Unsplash again and use up the hourly limit.
+  const rows = gallery.length
+    ? gallery.map((p, i) => ({ key: `${key}#${i + 2}`, ...p }))
+    : [{ key: `${key}#0`, url: "", source: "PLACEHOLDER" as const, attribution: null, creditUrl: null }];
+  await db
+    .$transaction([
+      db.photoCache.deleteMany({ where: { key: { startsWith: `${key}#` } } }),
+      db.photoCache.createMany({ data: rows, skipDuplicates: true }),
+    ])
+    // Two visitors opening the page at once both search; the second save losing the race is fine.
+    .catch((e) => console.warn(`[photos] gallery "${query}" not saved: ${e instanceof Error ? e.message : e}`));
   return gallery;
 }

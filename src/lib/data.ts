@@ -81,6 +81,7 @@ type Costed = {
   /** The price's own currency; totals are in USD (Money converts for display). */
   currency?: string;
   quantity: number;
+  sentiment?: string | null;
   place?: { closed: boolean } | null;
 };
 
@@ -88,8 +89,11 @@ type Costed = {
 const lines = (text: string | null) =>
   (text ?? "").split("\n").map((l) => l.replace(/^\s*[-*•+]\s*/, "").trim()).filter(Boolean);
 
-/** Closed places stay on the creator's route (it's their route) but count toward neither its cost nor its gaps. */
-const counted = (item: Costed) => !item.place?.closed;
+/**
+ * Closed places and ones the creator says to skip stay on the route (it's their route) but count toward neither its
+ * cost nor its gaps: nobody following the route pays for a stop it tells them to avoid.
+ */
+const counted = (item: Costed) => !item.place?.closed && item.sentiment !== "AVOID";
 const isUnpriced = (item: Costed) => item.priceCents === null && counted(item);
 function itemTotal(item: Costed) {
   if (!counted(item) || !item.priceCents) return 0;
@@ -142,9 +146,12 @@ function placeSummary(place: PlaceWithItems) {
   // The cheapest priced recommendation stands in for the place: its price anchors the card
   // and it is what the + button puts in the cart.
   const recommended = place.items.filter((i) => i.sentiment !== "AVOID");
+  // Compared in US dollars: 150,000 rupiah is cheaper than 20 dollars, whatever the raw numbers say.
+  const usd = (i: (typeof recommended)[number]) =>
+    convertCents(i.priceCents!, i.currency, "USD", FALLBACK_RATES).cents;
   const priced = recommended
     .filter((i) => i.priceCents !== null)
-    .sort((a, b) => a.priceCents! - b.priceCents!);
+    .sort((a, b) => usd(a) - usd(b));
   // A place only creators said to skip can still go in the cart; the traveller decides.
   const pick = priced[0] ?? recommended[0] ?? place.items[0];
   return {

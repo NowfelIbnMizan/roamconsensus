@@ -294,9 +294,14 @@ export function HomeSearch({ cities }: { cities: City[] }) {
     if (start && end) {
       params.set("days", String(tripLength(start, end)));
       params.set("start", start);
-      // The trip cart and trip mode use the same dates, so the plan starts on the right day.
-      setStartDate(start);
-      setTripDays(tripLength(start, end));
+      // A new trip plan and trip mode start from the same dates. A trip already being planned keeps its own: a
+      // search for the next idea must not move its start date or cut its days.
+      const days = tripLength(start, end);
+      void Promise.resolve(useCart.persist.hasHydrated() || useCart.persist.rehydrate()).then(() => {
+        if (useCart.getState().items.length > 0) return;
+        setStartDate(start);
+        setTripDays(days);
+      });
     }
     router.push(`/itineraries?${params}`);
   };

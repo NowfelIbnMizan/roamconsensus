@@ -23,6 +23,15 @@ export function groupItemJson(item: z.infer<typeof GroupItems>[number]) {
   return copy as Prisma.InputJsonObject;
 }
 
+/**
+ * How many stops in a group the page can show. Unreadable ones (saved by an old version of the site) are hidden, so
+ * they must not use up the trip's room: nobody could see them to take them out.
+ */
+export async function readableItemCount(groupId: string) {
+  const rows = await db.groupItem.findMany({ where: { groupId }, select: { item: true } });
+  return rows.filter((r) => CartItemSchema.safeParse(r.item).success).length;
+}
+
 export const unauthorized = () => Response.json({ error: "Sign in first" }, { status: 401 });
 export const notFound = () => Response.json({ error: "Group trip not found" }, { status: 404 });
 
@@ -84,7 +93,11 @@ export async function groupView(groupId: string, userId: string) {
     ],
     items: g.items
       // Stops saved before items were checked on the way in: one unreadable stop would break the page for everyone.
-      .filter((i) => CartItemSchema.safeParse(i.item).success)
+      // The checked copy is what goes out, so a stop with an odd price or count arrives repaired, not as stored.
+      .flatMap((i) => {
+        const parsed = CartItemSchema.safeParse(i.item);
+        return parsed.success ? [{ ...i, item: parsed.data }] : [];
+      })
       .map((i) => ({
         id: i.itemId,
         item: i.item as unknown as CartItem,

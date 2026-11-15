@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { GroupItems, groupItemJson, MAX_GROUP_ITEMS, memberOf } from "@/lib/groups";
+import { GroupItems, groupItemJson, MAX_GROUP_ITEMS, memberOf, readableItemCount } from "@/lib/groups";
 
 type Params = { params: Promise<{ id: string }> };
 
@@ -9,7 +9,7 @@ export async function POST(request: Request, { params }: Params) {
   if (error) return error;
   const items = GroupItems.safeParse((await request.json().catch(() => ({}))).items);
   if (!items.success) return Response.json({ error: "Invalid stops" }, { status: 400 });
-  const count = await db.groupItem.count({ where: { groupId: group.id } });
+  const count = await readableItemCount(group.id);
   const room = Math.max(0, MAX_GROUP_ITEMS - count);
   const { count: added } = await db.groupItem.createMany({
     data: items.data.slice(0, room).map((i) => ({

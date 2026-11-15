@@ -227,16 +227,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
               <label className="mt-4 block text-sm text-muted" htmlFor="budget">
                 Your budget ({code})
               </label>
-              <input
-                id="budget"
-                type="number"
-                min={0}
-                inputMode="numeric"
-                placeholder="e.g. 1500"
-                value={budgetCents === null ? "" : Math.round(toLocal(budgetCents))}
-                onChange={(e) => setBudget(e.target.value === "" ? null : fromLocal(Number(e.target.value)))}
-                className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
-              />
+              <BudgetInput cents={budgetCents} toLocal={toLocal} fromLocal={fromLocal} onChange={setBudget} />
               <div className="mt-4 grid gap-2">
                 <Link
                   href="/cart/print"
@@ -463,6 +454,41 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
         <PackingList items={items} />
       </div>
     </div>
+  );
+}
+
+/**
+ * The budget box. What the traveller types stays on screen as typed while they type: the budget is kept in US cents,
+ * and turning each keystroke into dollars and back rounded small rupiah or dong amounts to 0, so nothing could be typed.
+ */
+function BudgetInput({
+  cents,
+  toLocal,
+  fromLocal,
+  onChange,
+}: {
+  cents: number | null;
+  toLocal: (usdCents: number) => number;
+  fromLocal: (amount: number) => number;
+  onChange: (cents: number | null) => void;
+}) {
+  const [typed, setTyped] = useState<string | null>(null);
+  return (
+    <input
+      id="budget"
+      type="number"
+      min={0}
+      inputMode="numeric"
+      placeholder="e.g. 1500"
+      value={typed ?? (cents === null ? "" : String(Math.round(toLocal(cents))))}
+      onChange={(e) => {
+        const amount = Number(e.target.value);
+        setTyped(e.target.value);
+        onChange(e.target.value === "" || !(amount >= 0) ? null : fromLocal(amount));
+      }}
+      onBlur={() => setTyped(null)}
+      className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
+    />
   );
 }
 

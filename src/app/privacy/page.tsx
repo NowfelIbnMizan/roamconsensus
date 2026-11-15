@@ -57,8 +57,10 @@ export default function PrivacyPage() {
       <ul>
         <li>
           <strong>Your email address</strong>, only if you sign up for updates or ask us to email you a trip plan. We
-          keep the address, where you signed up, the last trip link you asked for, and when we last emailed you. We use
-          it only to send what you asked for, never sell or share it, and every email has an unsubscribe link.
+          keep the address, where you signed up, the last trip link you asked for, when we last emailed you, and a
+          scrambled code made from your network address that changes daily and can&apos;t be turned back into it (it
+          stops one sender flooding the form). We use it only to send what you asked for, never sell or share it, and
+          every email has an unsubscribe link.
         </li>
         <li>
           <strong>Visitor statistics</strong> through{" "}
