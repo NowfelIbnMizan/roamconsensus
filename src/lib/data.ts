@@ -686,6 +686,15 @@ export async function getItinerarySlugs() {
   return db.itinerary.findMany({ select: { slug: true } });
 }
 
+/** When each route last changed, as ISO dates, for the sitemap. */
+export async function getItineraryDates() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const rows = await db.itinerary.findMany({ select: { slug: true, updatedAt: true } });
+  return rows.map((r) => ({ slug: r.slug, updatedAt: r.updatedAt.toISOString() }));
+}
+
 export async function getItinerary(slug: string) {
   "use cache";
   cacheLife("hours");

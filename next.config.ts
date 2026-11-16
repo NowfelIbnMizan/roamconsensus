@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.pexels.com" },
     ],
   },
-  partialPrefetching: true,
   // Other sites can't show Creatour inside a frame (stops click-tricks on buttons like "Delete account").
   headers: async () => [
     {

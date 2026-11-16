@@ -61,8 +61,9 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
         <ChevronLeft className="size-4" aria-hidden />
         All creators
       </Link>
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start lg:gap-10">
-        <div>
+      {/* One grid, so a phone reads header, routes, then the support box, while wide screens keep the box beside the header. */}
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start lg:gap-x-10">
+        <div className="lg:col-start-1 lg:row-start-1">
           <div className="mt-3 flex items-center gap-4">
             <CreatorAvatar creator={creator} size="lg" />
             <div className="min-w-0">
@@ -79,13 +80,12 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
           </div>
           <CreatorNoticeLine name={creator.name} className="mt-3 max-w-2xl" />
         </div>
-        <SupportCreator creator={creator} notice={false} className="mt-8 lg:mt-3" />
+        <section className="mt-8 lg:col-span-2 lg:row-start-2">
+          <h2 className="text-lg font-semibold">{cities > 1 ? "Where are you going?" : "Their plan"}</h2>
+          <CreatorTrips trips={trips} />
+        </section>
+        <SupportCreator creator={creator} notice={false} className="mt-10 lg:col-start-2 lg:row-start-1 lg:mt-3" />
       </div>
-
-      <section className="mt-8">
-        <h2 className="text-lg font-semibold">{cities > 1 ? "Where are you going?" : "Their plan"}</h2>
-        <CreatorTrips trips={trips} />
-      </section>
       {claim && <ClaimProfile name={creator.name} className="mt-10" />}
     </>
   );
