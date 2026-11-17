@@ -298,6 +298,20 @@ export const guides = {
       text: "Under each city, the places its routes share. Tap one to see who picked it.",
     },
   ],
+  versus: [
+    {
+      lead: "Two cities, same questions",
+      text: "Routes, days, cost a day and best months for each city, counted from the creator routes on this site.",
+    },
+    {
+      lead: "Pick one",
+      text: "Each card lists what that city wins on. Tap it to see the city's routes.",
+    },
+    {
+      lead: "Or do both",
+      text: "Add a route from each city to your trip. The second city's days go after the first.",
+    },
+  ],
   "city-collection": [
     {
       lead: "A shortlist for one question",

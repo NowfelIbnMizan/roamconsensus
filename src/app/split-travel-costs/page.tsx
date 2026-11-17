@@ -74,7 +74,7 @@ export default function SplitCostsPage() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link
               href="/my-trips#groups"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 font-medium text-background"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-medium text-background"
             >
               Start a group trip <ArrowRight className="size-4" aria-hidden />
             </Link>
@@ -149,7 +149,7 @@ export default function SplitCostsPage() {
         <p className="text-lg font-semibold">Going away with friends?</p>
         <Link
           href="/my-trips#groups"
-          className="mt-3 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 font-medium text-background"
+          className="mt-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-medium text-background"
         >
           Start a group trip <ArrowRight className="size-4" aria-hidden />
         </Link>

@@ -94,7 +94,7 @@ Every push to any branch = a Vercel build = migrations + seed + full prerender r
 
 ## Redesign rounds done (pick = merged)
 
-- Home map-first (#57), no stats line under map (#81) · city place photo grid (#58) · route page folds (#61) · cart B (#62) · finder B (#63) · place page B (#64) · creator page B (#65).
+- Home "pick a city" (Nov 2026 design + SEO PR; replaced map-first #57): six city photo tiles by route count, other cities as pills, search under them, ready routes, one city's most-picked places, how it works, quiz band. Sections in `src/components/home-sections.tsx`. · city place photo grid (#58) · route page folds (#61) · cart B (#62) · finder B (#63) · place page B (#64) · creator page B (#65).
 - Trip mode `/today` = Up next card + tick list + day arrows (#67). Phone Trip tab = menu (cart / Trip mode / My trips); desktop "Today" link while travelling (#68).
 - Header one line (#69). Site width `max-w-[96rem]` (1536px) since wide-desktop PR; wide screens get 2-column headers on creator, place and route pages and extra grid columns at `2xl`. Route + cart 2-col at `lg` with sticky map right (#70).
 - City tabs: Before-you-go list + "Once you land" fold (#71) · When-to-go 12 month tiles (#72) · Budget 3 style cards + stacked bar (#73) · eSIM 2 questions -> 3 picks (#74) · Compare all-routes table, tick 2 to diff (#75) · Where to stay area list + sticky map, one hotel per row (#77, #79) · Top picks podium + add buttons (#78).
@@ -113,6 +113,9 @@ Every push to any branch = a Vercel build = migrations + seed + full prerender r
 
 - Pages: `src/app/` (`destinations/[slug]/(sections)` = city tabs, `itineraries`, `cart`, `creators`, `today`, `admin`).
 - Data access: `src/lib/data.ts`, `src/lib/place.ts`, `src/lib/trip.ts`; content schema/check/load in `src/lib/content-*.ts`.
-- Key components: `home-search`, `city-map`, `stop-details`, `day-plan`, `creator-hover`, `creator-trips`, `agree-pill`, `read-more`, `page-guide`, `photo`/`thumb`.
+- Key components: `home-search`, `home-sections`, `stop-details`, `day-plan`, `creator-hover`, `creator-trips`, `agree-pill`, `read-more`, `page-guide`, `photo`/`thumb`.
 - Page tips text: `src/lib/guides.ts` (new tabs/pages need an entry).
+- SEO pages built from counts only (never our opinion): "Is X worth it?" box + title on place pages where 3+ creators weigh in (`src/lib/verdict.ts`); city-vs-city pages at `/compare/a-vs-b` (pairs listed in `src/lib/versus.ts`; adding a pair adds its page, sitemap entry and city-page links); budget tab and "N days in" / "on a budget" lists lead with real route costs (`costSpan`, `fullyCosted` in `src/lib/collections.ts`).
+- One rule set: main action buttons are teal (`bg-accent text-background`); dark (`bg-foreground`) is for the selected pill in a filter row. Headings: page section `text-2xl`, sub-section `text-xl`, card title `text-lg`. Touch-only sizing uses the `pointer-coarse:` variant.
+- Footer: Blog link shows only once 3 posts are published (`POSTS_BEFORE_BLOG_LINK` in `src/app/layout.tsx`); the email box on a city page saves `footer:<city>` as the sign-up source.
 - City place grid: `(sections)/place-list.tsx`. The city page renders only the top 20 + top 8 per category and links to `/destinations/[slug]/places` (full list) to keep big cities light on phones.

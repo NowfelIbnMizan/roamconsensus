@@ -254,7 +254,7 @@ export function Quiz({ data }: { data: QuizData }) {
                     ))}
                   </ul>
                 )}
-                <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
+                <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background">
                   Open route and add to trip <ArrowRight className="size-4" aria-hidden />
                 </span>
               </div>

@@ -1,4 +1,5 @@
 import type { getDestination } from "@/lib/data";
+import { formatMoney, mostlyPriced } from "@/lib/format";
 
 type Destination = NonNullable<Awaited<ReturnType<typeof getDestination>>>;
 type Route = Destination["routes"][number];
@@ -82,3 +83,33 @@ export const byDayCost = (a: Route, b: Route) => {
   const key = (r: Route) => (r.sightsOnly || r.noStay ? 1e12 : 0) + (r.totalCents ? r.totalCents / r.days : 1e11);
   return key(a) - key(b);
 };
+
+/** Routes whose total can stand for the trip's cost: a hotel is priced and so are most stops. Cheapest a day first. */
+export const fullyCosted = (routes: Route[]) =>
+  routes.filter((r) => !r.sightsOnly && !r.noStay && r.totalCents > 0 && mostlyPriced(r)).sort(byDayCost);
+
+const range = (xs: number[], show: (n: number) => string) => {
+  const low = Math.min(...xs);
+  const high = Math.max(...xs);
+  return low === high ? show(low) : `${show(low)} to ${show(high)}`;
+};
+
+/**
+ * What these routes cost per person, in USD, from the ones that price a hotel and most stops: "$143 to $377" for the
+ * whole trip, or a day when `perDay` is set. Null when no route qualifies, so a page never leads with a partial total.
+ */
+export function costSpan(routes: Route[], perDay = false) {
+  const costed = fullyCosted(routes);
+  if (!costed.length) return null;
+  return {
+    text: range(
+      costed.map((r) => (perDay ? Math.round(r.totalCents / r.days) : r.totalCents)),
+      (cents) => formatMoney(Math.round(cents / 100) * 100),
+    ),
+    routes: costed.length,
+  };
+}
+
+/** "12 to 23 stops" across these routes. */
+export const stopSpan = (routes: Route[]) =>
+  routes.length ? `${range(routes.map((r) => r.stops), String)} ${routes.every((r) => r.stops === 1) ? "stop" : "stops"}` : null;

@@ -12,6 +12,8 @@ const Form = z.object({
   email: z.string().trim().toLowerCase().email().max(200),
   source: z.enum(["footer", "trip"]),
   tripPath: z.string().max(8000).optional(),
+  // The city page the footer box was on.
+  city: z.string().regex(/^[a-z0-9-]{1,60}$/).optional(),
   // Bots fill every field; people never see this one.
   website: z.literal("").optional(),
 });
@@ -36,7 +38,7 @@ async function senderKey() {
 export async function subscribe(_: SubscribeState, fd: FormData): Promise<SubscribeState> {
   const parsed = Form.safeParse(Object.fromEntries(fd));
   if (!parsed.success) return { ok: false, message: "That email address doesn't look right." };
-  const { email, source, tripPath } = parsed.data;
+  const { email, source, tripPath, city } = parsed.data;
   // Only links to this site's own trip page are ever emailed.
   const tripUrl = tripPath?.startsWith("/trip?t=") ? `${siteUrl()}${tripPath}` : null;
 
@@ -55,7 +57,7 @@ export async function subscribe(_: SubscribeState, fd: FormData): Promise<Subscr
   }
   await db.subscriber.upsert({
     where: { email },
-    create: { email, source, tripUrl, signupKey },
+    create: { email, source: source === "footer" && city ? `footer:${city}` : source, tripUrl, signupKey },
     // Anyone can type any address here, so this form never undoes an unsubscribe. Someone who wants back in writes to us.
     update: { tripUrl: tripUrl ?? undefined },
   });

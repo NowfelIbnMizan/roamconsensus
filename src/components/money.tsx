@@ -92,7 +92,7 @@ export function CurrencyPicker() {
       onChange={(e) => set(e.target.value)}
       aria-label="Show prices in"
       title="Prices are converted at today's rate. You pay in the seller's currency."
-      className="rounded-md border border-line bg-background px-1.5 py-0.5 text-sm text-foreground"
+      className="rounded-md border border-line bg-background px-1.5 py-0.5 text-sm text-foreground pointer-coarse:py-2"
     >
       {CURRENCIES.map((c) => (
         <option key={c.code} value={c.code}>

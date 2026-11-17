@@ -14,7 +14,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.pexels.com" },
     ],
   },
-  partialPrefetching: true,
+  // Off on purpose: with it on, a page rendered at request time (after an admin save) carried a second copy of its
+  // data, and Vercel cached the doubled page (Bing: "HTML size is too long"). Next asks for an explicit value.
+  partialPrefetching: false,
   // Other sites can't show Creatour inside a frame (stops click-tricks on buttons like "Delete account").
   headers: async () => [
     {

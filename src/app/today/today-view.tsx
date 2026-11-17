@@ -61,7 +61,7 @@ export function TodayView() {
         <p className="mt-1 text-sm text-muted">Add a route to your trip, then come back here while you travel.</p>
         <Link
           href="/itineraries"
-          className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+          className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
         >
           <Search className="size-4" aria-hidden /> Find a route
         </Link>

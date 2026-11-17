@@ -1,6 +1,7 @@
 import { getDestination, getDestinations, getPosts } from "@/lib/data";
 import { siteUrl } from "@/lib/email";
 import { tierLabel } from "@/lib/format";
+import { MIN_ROUTES, VERSUS, versusHref } from "@/lib/versus";
 
 /**
  * llms.txt (llmstxt.org): a plain summary of the site for AI assistants, with links to the pages worth reading.
@@ -36,6 +37,15 @@ export async function GET() {
     for (const r of d.routes)
       lines.push(
         `- [${r.title}](${base}/itineraries/${r.slug}): ${d.name}, ${r.days} days, ${tierLabel[r.tier].toLowerCase()}, by ${r.creator.name}`,
+      );
+  }
+  const live = new Map(destinations.flatMap((d) => (d && d.routes.length >= MIN_ROUTES ? [[d.slug, d] as const] : [])));
+  const pairs = VERSUS.filter(([a, b]) => live.has(a) && live.has(b));
+  if (pairs.length) {
+    lines.push("", "## City comparisons", "");
+    for (const [a, b] of pairs)
+      lines.push(
+        `- [${live.get(a)!.name} or ${live.get(b)!.name}?](${base}${versusHref(a, b)}): routes, trip length, cost a day and most-picked places, side by side`,
       );
   }
   const posts = await getPosts();

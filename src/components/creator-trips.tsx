@@ -64,7 +64,7 @@ export function CreatorTrips({ trips }: { trips: Trip[] }) {
                       {t.days} {t.days === 1 ? "day" : "days"} · {tierLabel[t.tier]} · {t.stops} stops
                     </p>
                   </div>
-                  <span className="flex shrink-0 items-center gap-1 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
+                  <span className="flex shrink-0 items-center gap-1 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background">
                     Open plan <ArrowRight className="size-4" aria-hidden />
                   </span>
                 </div>

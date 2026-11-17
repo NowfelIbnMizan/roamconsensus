@@ -189,13 +189,16 @@ export default async function BestPage({ params }: Props) {
       />
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
+          {/* One creator can't rank anything: say whose picks these are instead of "ranked by how many of 1". */}
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Most recommended in {d.name}, by {who}
+            {d.creatorCount > 1
+              ? `Most recommended in ${d.name}, by ${who}`
+              : `${d.routes[0]?.creator.name ?? "One creator"}'s picks in ${d.name}`}
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Ranked by how many of {d.routes.length} {d.name}{" "}
-            {d.routes.length === 1 ? "route recommends" : "routes recommend"} each place. Tap the count to see which
-            routes.
+            {d.creatorCount > 1
+              ? `Ranked by how many of ${d.routes.length} ${d.name} routes recommend each place. Tap the count to see which routes.`
+              : `One creator covers ${d.name} so far, so nothing is ranked yet.`}
           </p>
           {d.creatorCount > 1 && (
             <p className="fine-print mt-1 max-w-2xl">
@@ -328,7 +331,7 @@ export default async function BestPage({ params }: Props) {
         </p>
         <Link
           href={`/destinations/${d.slug}`}
-          className="mt-3 inline-flex rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+          className="mt-3 inline-flex rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
         >
           See {d.name} routes
         </Link>

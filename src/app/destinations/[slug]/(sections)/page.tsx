@@ -14,6 +14,7 @@ import {
   getPosts,
   getStays,
 } from "@/lib/data";
+import { CityNext } from "@/components/city-next";
 import { CityNutshell } from "@/components/city-nutshell";
 import { destinationFaq } from "@/lib/faq";
 import { FaqList } from "@/components/faq-list";
@@ -82,80 +83,15 @@ export default async function DestinationPage({
   ]);
   const faq = destinationFaq(destination, esimPlans);
 
-  // The answer up front: the spots most creators share, before the photo-and-tabs scroll to the full list.
+  // The spots most creators share, as a strip between the routes and the full list.
   const agreed = consensus
     .filter((p) => p.creators.length >= 2 && p.skippedBy.length === 0)
     .slice(0, 5);
 
   return (
     <>
-      <CityNutshell d={destination} stays={stays} />
-      {creatorCount > 1 && agreed.length >= 3 && (
-        <section
-          className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5"
-          aria-labelledby="agreed-heading"
-        >
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2 id="agreed-heading" className="text-xl font-semibold">
-              Top 5 picks
-            </h2>
-            <a
-              href="#agree"
-              className="text-sm font-medium text-accent hover:underline"
-            >
-              All {consensus.length} places ↓
-            </a>
-          </div>
-          <ol className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0">
-            {agreed.map((p, i) => (
-              <li key={p.slug} className="w-40 shrink-0 snap-start sm:w-auto">
-                <PlaceHover
-                  href={placeHref(destination.slug, p.slug)}
-                  name={p.name}
-                  infoAt="top-2 right-2"
-                  card={<PlaceMiniCard p={p} destination={destination.slug} creatorCount={creatorCount} />}
-                >
-                  <span className="group relative block aspect-[4/5] overflow-hidden rounded-xl">
-                    <Photo
-                      photoKey={placePhotoKey(destination.slug, p)}
-                      query={placeQuery(p.name, destination.name)}
-                      category={p.category}
-                      website={p.website}
-                      alt={p.name}
-                      sizes="(min-width: 640px) 220px, 160px"
-                      credit={false}
-                      className="size-full transition duration-300 group-hover:scale-105"
-                    />
-                    <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                    <span className="absolute top-2.5 left-3 font-display text-2xl font-semibold text-white drop-shadow">
-                      {i + 1}
-                    </span>
-                    <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
-                      <span className="block font-semibold leading-tight text-balance">
-                        {p.name}
-                      </span>
-                      <span className="mt-0.5 block text-xs text-white/85">
-                        {p.creators.length} of {creatorCount} creators
-                      </span>
-                    </span>
-                  </span>
-                </PlaceHover>
-              </li>
-            ))}
-          </ol>
-        </section>
-      )}
-      {weather && (
-        <WeatherCard
-          name={destination.name}
-          weather={weather}
-          rainyPicks={rainyDayPicks(consensus, 4).map((p) => ({
-            name: p.name,
-            href: placeHref(destination.slug, p.slug),
-          }))}
-        />
-      )}
-      <section>
+      {/* Routes first: they are what the "Routes" tab promises, and on a phone the facts below pushed them two screens down. */}
+      <section className="mb-10">
         <h2 className="text-xl font-semibold">Pick your route</h2>
         <p className="mt-1 text-sm text-muted">
           Day-by-day plans from independent creators.
@@ -239,8 +175,75 @@ export default async function DestinationPage({
             </article>
           ))}
         </div>
+        <CityNext d={destination} />
       </section>
 
+      <CityNutshell d={destination} stays={stays} />
+      {creatorCount > 1 && agreed.length >= 3 && (
+        <section
+          className="mb-8 rounded-2xl border border-line bg-card p-4 sm:p-5"
+          aria-labelledby="agreed-heading"
+        >
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 id="agreed-heading" className="text-xl font-semibold">
+              Top 5 picks
+            </h2>
+            <a
+              href="#agree"
+              className="text-sm font-medium text-accent hover:underline"
+            >
+              All {consensus.length} places ↓
+            </a>
+          </div>
+          <ol className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0">
+            {agreed.map((p, i) => (
+              <li key={p.slug} className="w-40 shrink-0 snap-start sm:w-auto">
+                <PlaceHover
+                  href={placeHref(destination.slug, p.slug)}
+                  name={p.name}
+                  infoAt="top-2 right-2"
+                  card={<PlaceMiniCard p={p} destination={destination.slug} creatorCount={creatorCount} />}
+                >
+                  <span className="group relative block aspect-[4/5] overflow-hidden rounded-xl">
+                    <Photo
+                      photoKey={placePhotoKey(destination.slug, p)}
+                      query={placeQuery(p.name, destination.name)}
+                      category={p.category}
+                      website={p.website}
+                      alt={p.name}
+                      sizes="(min-width: 640px) 220px, 160px"
+                      credit={false}
+                      className="size-full transition duration-300 group-hover:scale-105"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <span className="absolute top-2.5 left-3 font-display text-2xl font-semibold text-white drop-shadow">
+                      {i + 1}
+                    </span>
+                    <span className="absolute inset-x-0 bottom-0 p-2.5 text-white">
+                      <span className="block font-semibold leading-tight text-balance">
+                        {p.name}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-white/85">
+                        {p.creators.length} of {creatorCount} creators
+                      </span>
+                    </span>
+                  </span>
+                </PlaceHover>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+      {weather && (
+        <WeatherCard
+          name={destination.name}
+          weather={weather}
+          rainyPicks={rainyDayPicks(consensus, 4).map((p) => ({
+            name: p.name,
+            href: placeHref(destination.slug, p.slug),
+          }))}
+        />
+      )}
       <section id="agree" className="mt-12 scroll-mt-6">
         <h2 className="flex items-center gap-2 text-xl font-semibold">
           <Users className="size-5 text-accent" aria-hidden />{" "}

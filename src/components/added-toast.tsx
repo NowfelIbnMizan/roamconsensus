@@ -66,7 +66,7 @@ export function AddedToast({ accounts }: { accounts: boolean }) {
           )}
           <Link
             href="/cart"
-            className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+            className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
           >
             Go to trip plan <ArrowRight className="size-4" aria-hidden />
           </Link>

@@ -221,23 +221,6 @@ function center(places: { lat: number | null; lng: number | null }[]) {
   };
 }
 
-/** Each destination's middle, for the home page map. Destinations without pins are left out. */
-export async function getDestinationCenters() {
-  "use cache";
-  cacheLife("hours");
-  cacheTag(CONTENT_TAG);
-  const places = await db.place.findMany({
-    where: { lat: { not: null }, lng: { not: null } },
-    select: { lat: true, lng: true, destination: { select: { slug: true } } },
-  });
-  const by = new Map<string, typeof places>();
-  for (const p of places)
-    by.set(p.destination.slug, [...(by.get(p.destination.slug) ?? []), p]);
-  return Object.fromEntries(
-    [...by].map(([slug, pins]) => [slug, center(pins)!]),
-  );
-}
-
 export async function getDestination(slug: string) {
   "use cache";
   cacheLife("hours");
@@ -684,6 +667,15 @@ export async function getItinerarySlugs() {
   cacheLife("hours");
   cacheTag(CONTENT_TAG);
   return db.itinerary.findMany({ select: { slug: true } });
+}
+
+/** When each route last changed, as ISO dates, for the sitemap. */
+export async function getItineraryDates() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(CONTENT_TAG);
+  const rows = await db.itinerary.findMany({ select: { slug: true, updatedAt: true } });
+  return rows.map((r) => ({ slug: r.slug, updatedAt: r.updatedAt.toISOString() }));
 }
 
 export async function getItinerary(slug: string) {

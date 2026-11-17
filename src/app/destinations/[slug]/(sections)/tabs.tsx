@@ -54,7 +54,7 @@ export function DestinationTabs({ slug }: { slug: string }) {
             key={t.href}
             href={t.href}
             aria-current={active ? "page" : undefined}
-            className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-4 py-2 text-sm font-medium transition ${
+            className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-4 py-2 text-sm font-medium transition pointer-coarse:py-3 ${
               active ? "border-accent text-accent" : "border-transparent text-muted hover:text-foreground"
             }`}
           >

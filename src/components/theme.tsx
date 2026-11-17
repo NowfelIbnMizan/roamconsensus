@@ -31,7 +31,7 @@ export function ThemeToggle() {
       }}
       aria-label="Switch between light and dark mode"
       title="Light or dark mode"
-      className="flex size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground"
+      className="flex size-8 items-center justify-center rounded-full hover:bg-line hover:text-foreground pointer-coarse:size-10"
     >
       <Moon className="size-4 dark:hidden" aria-hidden />
       <Sun className="hidden size-4 dark:block" aria-hidden />

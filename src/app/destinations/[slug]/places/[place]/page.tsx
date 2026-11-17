@@ -30,6 +30,8 @@ import {
 } from "@/lib/map";
 import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
 import { breadcrumbJsonLd, clip, ldJson, canonical, fillDescription } from "@/lib/seo";
+import { placeVerdict } from "@/lib/verdict";
+import { faqJsonLd } from "@/lib/faq";
 
 type Props = PageProps<"/destinations/[slug]/places/[place]">;
 type Mentions = NonNullable<Awaited<ReturnType<typeof getPlace>>>["mentions"];
@@ -43,9 +45,29 @@ async function load(params: Props["params"]) {
   return getPlace(slug, place);
 }
 
+type Place = NonNullable<Awaited<ReturnType<typeof getPlace>>>;
+
+/** The "worth it?" answer for sights and food that enough creators include; hotels and transport don't get one. */
+function verdictFor(p: Place) {
+  if (p.category !== "EXPERIENCE" && p.category !== "FOOD") return null;
+  const handles = (skip: boolean) =>
+    new Set(p.mentions.filter((m) => (m.sentiment === "AVOID") === skip).map((m) => m.creator.handle));
+  const agree = handles(false);
+  // A creator who includes it in one route and warns about it in another counts as including it.
+  const avoid = [...handles(true)].filter((h) => !agree.has(h)).length;
+  return placeVerdict({ name: p.name, city: p.destination.name, agree: agree.size, avoid, creators: p.creatorCount });
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = await load(params);
   if (!p) return {};
+  const verdict = verdictFor(p);
+  if (verdict?.title)
+    return {
+      title: verdict.title,
+      description: clip(verdict.description),
+      ...canonical(placeHref(p.destination.slug, p.slug)),
+    };
   const where = [p.area, p.destination.name].filter(Boolean).join(", ");
   // Bing flags titles over 70 characters; " · Creatour" (11) is added after this, so the longest that fits wins.
   const base = `${p.name}, ${where}`;
@@ -122,6 +144,8 @@ export default async function PlacePage({ params }: Props) {
       ]
     : [];
 
+  const verdict = verdictFor(p);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": schemaType[p.category] ?? "TouristAttraction",
@@ -152,6 +176,12 @@ export default async function PlacePage({ params }: Props) {
           ]),
         )}
       />
+      {verdict && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={ldJson(faqJsonLd([{ q: verdict.question, a: verdict.answer }]))}
+        />
+      )}
       <Link
         href={`/destinations/${d.slug}`}
         className="text-sm text-muted hover:text-foreground"
@@ -210,7 +240,8 @@ export default async function PlacePage({ params }: Props) {
                   </>
                 )}
               </p>
-              {agree > 0 && (
+              {/* The verdict box below says the same count in a sentence. */}
+              {agree > 0 && !verdict && (
                 <p
                   className={`mt-2 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-sm font-medium ${
                     agree === p.creatorCount
@@ -227,6 +258,12 @@ export default async function PlacePage({ params }: Props) {
                       ? `Picked by all ${agree} creators`
                       : `Picked by ${agree} of ${p.creatorCount} creators`}
                 </p>
+              )}
+              {verdict && (
+                <section className="mt-3 max-w-2xl rounded-2xl border border-line bg-card px-4 py-3">
+                  <h2 className="font-semibold">{verdict.question}</h2>
+                  <p className="mt-0.5 text-sm">{verdict.answer}</p>
+                </section>
               )}
               {p.blurb && (
                 <p className="mt-3 max-w-2xl text-pretty">
