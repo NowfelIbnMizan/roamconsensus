@@ -14,7 +14,8 @@ import { AccountButton } from "@/components/account-button";
 import { CartSync } from "@/components/cart-sync";
 import { googleLoginEnabled } from "@/lib/auth";
 import { VisitorStats } from "@/components/visitor-stats";
-import { EmailSignup } from "@/components/email-signup";
+import { EmailSignup, FooterSignup } from "@/components/email-signup";
+import { getDestinations, getPosts } from "@/lib/data";
 import { getRates } from "@/lib/rates";
 import "./globals.css";
 
@@ -69,7 +70,6 @@ const FOOTER_LINKS = [
   ["/creators", "Creators"],
   ["/visa", "Visa check"],
   ["/split-travel-costs", "Split costs"],
-  ["/blog", "Blog"],
   ["/about", "About"],
   ["/disclosure", "Credits"],
   ["/contact", "Contact"],
@@ -77,8 +77,15 @@ const FOOTER_LINKS = [
   ["/terms", "Terms"],
 ] as const;
 
+// The Blog link waits until there is something to read: a link to an empty page costs a visitor a tap.
+const POSTS_BEFORE_BLOG_LINK = 3;
+
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const { rates } = await getRates();
+  const [{ rates }, cities, posts] = await Promise.all([getRates(), getDestinations(), getPosts()]);
+  const footerLinks: readonly (readonly [string, string])[] =
+    posts.length >= POSTS_BEFORE_BLOG_LINK
+      ? [...FOOTER_LINKS.slice(0, 3), ["/blog", "Blog"], ...FOOTER_LINKS.slice(3)]
+      : FOOTER_LINKS;
   return (
     <html
       lang="en"
@@ -168,17 +175,19 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                   <p className="font-display text-xl font-semibold">
                     New routes by email
                   </p>
-                  <EmailSignup
-                    label="When we add a city or creator route."
-                    button="Sign up"
-                  />
+                  {/* Reads the address bar, so it sits in its own boundary like the phone tab bar below. */}
+                  <Suspense
+                    fallback={<EmailSignup label="When we add a city or creator route." button="Sign up" />}
+                  >
+                    <FooterSignup cities={cities.map(({ slug, name }) => ({ slug, name }))} />
+                  </Suspense>
                 </div>
               </div>
             </div>
             <div className="mx-auto max-w-[96rem] px-4 py-6">
               <nav aria-label="Footer">
                 <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-                  {FOOTER_LINKS.map(([href, label]) => (
+                  {footerLinks.map(([href, label]) => (
                     <li key={href}>
                       <Link
                         href={href}

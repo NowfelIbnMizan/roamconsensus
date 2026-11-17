@@ -16,7 +16,7 @@ type Creator = Awaited<ReturnType<typeof getCreators>>[number];
 const PREVIEW = 3;
 
 const pill = (on: boolean) =>
-  `inline-flex shrink-0 items-center gap-1 rounded-full px-3.5 py-2 text-sm transition ${
+  `inline-flex shrink-0 items-center gap-1 rounded-full px-3.5 py-2 text-sm transition pointer-coarse:py-2.5 ${
     on ? "bg-foreground font-medium text-background" : "border border-line bg-card hover:border-accent"
   }`;
 
@@ -122,7 +122,7 @@ export function CreatorsList({ creators }: { creators: Creator[] }) {
               </ul>
               <Link
                 href={`/creators/${c.handle}`}
-                className="mt-3 inline-flex items-center gap-1 self-start text-sm font-medium text-accent hover:underline"
+                className="mt-3 inline-flex items-center gap-1 self-start text-sm font-medium text-accent hover:underline pointer-coarse:mt-1 pointer-coarse:min-h-11"
               >
                 See creator page
                 <ArrowRight className="size-3.5" aria-hidden />

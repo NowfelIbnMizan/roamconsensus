@@ -41,7 +41,12 @@ export default async function SubscribersAdmin() {
               {s.email}
             </span>
             <span className="text-xs text-muted">
-              {s.source === "trip" ? "Asked for a trip" : "Footer"} ·{" "}
+              {s.source === "trip"
+                ? "Asked for a trip"
+                : s.source.startsWith("footer:")
+                  ? `Footer, on the ${s.source.slice(7)} page`
+                  : "Footer"}{" "}
+              ·{" "}
               {s.createdAt.toISOString().slice(0, 10)}
             </span>
           </li>

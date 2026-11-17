@@ -47,7 +47,7 @@ export function AddRouteButton({
       aria-pressed={all}
       title={all ? `Click to ${removeLabel.toLowerCase()}` : undefined}
       className={`group inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${className} ${
-        all ? "bg-accent-soft text-accent ring-1 ring-accent/30 ring-inset" : "bg-foreground text-background"
+        all ? "bg-accent-soft text-accent ring-1 ring-accent/30 ring-inset" : "bg-accent text-background"
       }`}
     >
       {all ? (

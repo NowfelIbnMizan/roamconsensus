@@ -222,7 +222,7 @@ export function TripFinder({
         : "border border-line bg-card text-muted hover:text-foreground"
     }`;
   const pill = (on: boolean) =>
-    `inline-flex shrink-0 items-center gap-1 rounded-full px-3.5 py-2 text-sm transition ${
+    `inline-flex shrink-0 items-center gap-1 rounded-full px-3.5 py-2 text-sm transition pointer-coarse:py-2.5 ${
       on
         ? "bg-foreground font-medium text-background"
         : "border border-line bg-card hover:border-accent"

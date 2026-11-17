@@ -331,7 +331,7 @@ export default async function BestPage({ params }: Props) {
         </p>
         <Link
           href={`/destinations/${d.slug}`}
-          className="mt-3 inline-flex rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+          className="mt-3 inline-flex rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
         >
           See {d.name} routes
         </Link>

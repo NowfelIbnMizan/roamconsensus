@@ -93,7 +93,7 @@ export function SplitCosts({
           <Receipt className="size-5 text-accent" aria-hidden /> Split costs
         </h2>
         {!adding && (
-          <button type="button" onClick={() => setAdding(true)} className={`${button} bg-foreground text-background`}>
+          <button type="button" onClick={() => setAdding(true)} className={`${button} bg-accent text-background`}>
             <Plus className="size-4" aria-hidden /> Add a cost
           </button>
         )}
@@ -392,7 +392,7 @@ function CostForm({
       <button
         type="submit"
         disabled={!ok}
-        className="justify-self-start rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background disabled:opacity-40"
+        className="justify-self-start rounded-full bg-accent px-5 py-2 text-sm font-medium text-background disabled:opacity-40"
       >
         Save cost
       </button>

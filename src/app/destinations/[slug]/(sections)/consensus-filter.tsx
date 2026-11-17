@@ -40,7 +40,7 @@ export function ConsensusFilter({
       type="button"
       onClick={() => setActive(value)}
       aria-pressed={active === value}
-      className={`rounded-full px-3 py-1 text-sm transition ${
+      className={`rounded-full px-3 py-1 text-sm transition pointer-coarse:px-3.5 pointer-coarse:py-2 ${
         active === value
           ? "bg-foreground font-medium text-background"
           : "border border-line bg-card text-muted hover:text-foreground"

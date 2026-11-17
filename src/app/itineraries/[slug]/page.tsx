@@ -560,7 +560,7 @@ export default async function ItineraryPage({
       <div className="flex flex-col lg:mt-10 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-8">
         {stops.length > 0 && (
           <section className="order-2 mt-10 lg:order-none lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:mt-0">
-            <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+            <h2 className="mb-3 flex items-center gap-2 text-xl font-semibold">
               <MapIcon className="size-5 text-accent" aria-hidden /> Where
               you&apos;ll go
             </h2>

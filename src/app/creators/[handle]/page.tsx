@@ -81,7 +81,7 @@ export default async function CreatorPage({ params }: PageProps<"/creators/[hand
           <CreatorNoticeLine name={creator.name} className="mt-3 max-w-2xl" />
         </div>
         <section className="mt-8 lg:col-span-2 lg:row-start-2">
-          <h2 className="text-lg font-semibold">{cities > 1 ? "Where are you going?" : "Their plan"}</h2>
+          <h2 className="text-xl font-semibold">{cities > 1 ? "Where are you going?" : "Their plan"}</h2>
           <CreatorTrips trips={trips} />
         </section>
         <SupportCreator creator={creator} notice={false} className="mt-10 lg:col-start-2 lg:row-start-1 lg:mt-3" />

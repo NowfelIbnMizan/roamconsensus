@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Clock, MapPin, Sparkles } from "lucide-react";
-import { Photo } from "@/components/photo";
-import {
-  getDestination,
-  getDestinationCenters,
-  getDestinations,
-  getSiteStats,
-} from "@/lib/data";
-import { placeHref, placePhotoKey, placeQuery } from "@/lib/place";
+import { Sparkles } from "lucide-react";
+import { getDestination, getDestinations, getQuizData, getSiteStats } from "@/lib/data";
 import { HomeSearch } from "@/components/home-search";
-import { CityMap } from "@/components/city-map";
 import { siteUrl } from "@/lib/email";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { ldJson, canonical } from "@/lib/seo";
-import { BeenCity } from "@/components/been-city";
 import { CreatorFaces } from "@/components/creator-faces";
-import { HomeCompare, pickComparison } from "@/components/home-compare";
+import {
+  AgreeStrip,
+  CityPills,
+  CityTiles,
+  ClosingBand,
+  HowItWorks,
+  StarterRoutes,
+  TrustLine,
+  pickStarters,
+} from "@/components/home-sections";
 
 export const metadata: Metadata = {
   // The bare brand name tells search nothing; lead with what the site is.
@@ -42,230 +42,63 @@ const siteJsonLd = {
   ],
 };
 
-// Shown while the grid has room, so a single live destination doesn't sit alone. Drop one once it goes live.
-const comingSoon = [
-  { slug: "tokyo", name: "Tokyo", country: "Japan" },
-  { slug: "bangkok", name: "Bangkok", country: "Thailand" },
-];
+// How many cities get a photo tile on the first screen; the rest are pills under them.
+const TILES = 6;
 
 export default async function Home() {
-  const [destinations, stats, centers] = await Promise.all([
-    getDestinations(),
-    getSiteStats(),
-    getDestinationCenters(),
-  ]);
+  const [destinations, stats, quiz] = await Promise.all([getDestinations(), getSiteStats(), getQuizData()]);
   const { creators } = stats;
   // Photos only (letter circles look like a placeholder); CreatorFaces drops expired links and needs three left.
   const faces = creators.filter((c) => c.avatarUrl && !c.hideAvatar);
   const routes = destinations.reduce((n, d) => n + d._count.itineraries, 0);
-  const live = new Set(destinations.map((d) => d.slug));
-  const placeholders = comingSoon
-    .filter((c) => !live.has(c.slug))
-    .slice(0, Math.max(0, 3 - destinations.length));
-  // Show the idea, not just tell it: the most-shared spot in the three best-covered cities.
-  const covered = [...destinations]
-    .sort((a, b) => b._count.itineraries - a._count.itineraries)
-    .slice(0, 3);
-  const coveredCities = (await Promise.all(covered.map((d) => getDestination(d.slug)))).filter(
-    (d) => d !== null,
+  // Best-covered cities first: the first tap should land on a city with routes to compare.
+  const byRoutes = [...destinations].sort(
+    (a, b) => b._count.itineraries - a._count.itineraries || a.name.localeCompare(b.name),
   );
-  const comparison = pickComparison(coveredCities);
-  const examples = coveredCities
-    .map((d) => {
-      const top = d?.consensus.find(
-        (p) => p.creators.length >= 2 && p.skippedBy.length === 0,
-      );
-      return d && top
-        ? { city: d.name, slug: d.slug, place: top, of: d.creatorCount }
-        : null;
-    })
-    .filter((e) => e !== null);
+  // Show the idea, not just tell it: the most-shared places of the best-covered city.
+  const lead = byRoutes[0] ? await getDestination(byRoutes[0].slug) : null;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(siteJsonLd)} />
-      <section className="grid items-center gap-6 pb-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:py-8">
-        <div>
-          <Link
-            href="/creators"
-            className="inline-flex items-center gap-2.5 hover:text-foreground"
-          >
-            {stats.showFaces && (
-              <CreatorFaces
-                faces={faces.map(({ handle, name, avatarUrl }) => ({ handle, name, avatarUrl: avatarUrl! }))}
-              />
-            )}
-            <span className="eyebrow">
-              {destinations.length} cities · {routes} routes · {creators.length}{" "}
-              creators
-            </span>
-          </Link>
-          <h1 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-            Compare travel creators&apos; routes.{" "}
-            <span className="text-accent">Build your own trip.</span>
-          </h1>
-          <p className="mt-3 max-w-md text-muted">
-            See where creators agree, what only one of them found, and how much of each route is priced. Then plan it
-            day by day.
-          </p>
-          <ol className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
-            {["Pick a route", "Add it to your trip", "Plan it day by day"].map((step, n) => (
-              <li key={step} className="flex items-center gap-1.5">
-                <span className="flex size-5 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent">
-                  {n + 1}
-                </span>
-                {step}
-              </li>
-            ))}
-          </ol>
-          <HomeSearch
-            cities={destinations.map(({ slug, name, country }) => ({
-              slug,
-              name,
-              country,
-            }))}
-          />
-          <Link
-            href="/quiz"
-            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-          >
-            <Sparkles className="size-3.5" aria-hidden /> Not sure where? Find
-            your match
-          </Link>
-          <p className="fine-print mt-2">
-            Routes collected from what independent creators share publicly
-            online.
-          </p>
-        </div>
-        <CityMap
-          cities={destinations.flatMap((d) =>
-            centers[d.slug]
-              ? [
-                  {
-                    slug: d.slug,
-                    name: d.name,
-                    routes: d._count.itineraries,
-                    ...centers[d.slug],
-                  },
-                ]
-              : [],
+      <section className="pb-2 lg:pt-4">
+        <Link href="/creators" className="-my-3 inline-flex items-center gap-2.5 py-3 hover:text-foreground">
+          {stats.showFaces && (
+            <CreatorFaces
+              faces={faces.map(({ handle, name, avatarUrl }) => ({ handle, name, avatarUrl: avatarUrl! }))}
+            />
           )}
-        />
+          <span className="eyebrow">
+            {destinations.length} {destinations.length === 1 ? "city" : "cities"} · {routes}{" "}
+            {routes === 1 ? "route" : "routes"} · {creators.length} {creators.length === 1 ? "creator" : "creators"}
+          </span>
+        </Link>
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight sm:text-6xl">Where are you going?</h1>
+        <p className="mt-3 max-w-xl text-muted sm:text-lg">
+          Pick a city. Get day-by-day routes from travel creators, see the places most of them include, and make the
+          trip yours.
+        </p>
+        <CityTiles cities={byRoutes.slice(0, TILES)} />
+        <CityPills cities={byRoutes.slice(TILES)} label="More:" scroll />
+        <div className="mt-6 grid items-end gap-x-10 gap-y-2 border-t border-line pt-2 lg:grid-cols-[minmax(0,1fr)_auto]">
+          <HomeSearch cities={destinations.map(({ slug, name, country }) => ({ slug, name, country }))} />
+          <div className="lg:pb-2">
+            <Link
+              href="/quiz"
+              className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-accent hover:underline"
+            >
+              <Sparkles className="size-3.5" aria-hidden /> Not sure where? Find your match
+            </Link>
+            <TrustLine className="mt-1" />
+          </div>
+        </div>
+        <p className="fine-print mt-4">Routes collected from what independent creators share publicly online.</p>
       </section>
 
-      {comparison && <HomeCompare c={comparison} />}
-
-      <section id="destinations" className="mt-12 scroll-mt-6">
-        <h2 className="text-3xl font-semibold">Where to next?</h2>
-        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4">
-          {destinations.map((d) => (
-            <BeenCity key={d.slug} slug={d.slug}>
-              <Link href={`/destinations/${d.slug}`} className="group block">
-                <span className="block overflow-hidden rounded-2xl">
-                  <Photo
-                    photoKey={`destination:${d.slug}`}
-                    query={`${d.name} ${d.country}`}
-                    category="DESTINATION"
-                    alt={d.name}
-                    sizes="(min-width: 1024px) 33vw, 50vw"
-                    credit={false}
-                    className="aspect-[4/3] transition duration-500 group-hover:scale-[1.03]"
-                  />
-                </span>
-                <div className="pt-2.5 sm:pt-3">
-                  <div className="eyebrow">{d.country}</div>
-                  <h3 className="mt-0.5 font-display text-xl font-semibold group-hover:text-accent sm:text-2xl">
-                    {d.name}
-                    {d.isSample && (
-                      <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200">
-                        Sample
-                      </span>
-                    )}
-                  </h3>
-                  <p className="mt-1 hidden text-sm text-muted sm:line-clamp-2">
-                    {d.summary}
-                  </p>
-                  <p className="mt-1 flex items-center gap-1 text-sm text-muted sm:mt-2">
-                    {d._count.itineraries} {d._count.itineraries === 1 ? "route" : "routes"}{" "}
-                    <ArrowRight
-                      className="size-4 transition group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </p>
-                </div>
-              </Link>
-            </BeenCity>
-          ))}
-          {placeholders.map((c) => (
-            <li key={c.slug} aria-label={`${c.name}, coming soon`} className="order-2">
-              <div className="overflow-hidden rounded-2xl border border-dashed border-line bg-card">
-                <Photo
-                  photoKey={`destination:${c.slug}`}
-                  query={`${c.name} ${c.country}`}
-                  category="DESTINATION"
-                  alt={c.name}
-                  sizes="(min-width: 1024px) 33vw, 50vw"
-                  className="aspect-[16/9] opacity-60 grayscale"
-                />
-                <div className="p-5">
-                  <div className="flex items-center gap-1 text-sm text-muted">
-                    <MapPin className="size-4" aria-hidden /> {c.country}
-                  </div>
-                  <h3 className="mt-1 text-xl font-semibold text-muted">
-                    {c.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted">
-                    Collecting creator routes now.
-                  </p>
-                  <p className="mt-4 flex items-center gap-1 text-sm font-medium text-muted">
-                    <Clock className="size-4" aria-hidden /> Coming soon
-                  </p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-      {examples.length > 0 && (
-        <section aria-labelledby="agree-examples" className="mt-16">
-          <h2 id="agree-examples" className="text-2xl font-semibold">
-            Places creators don&apos;t miss
-          </h2>
-          <ul className="-mx-4 mt-3 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">
-            {examples.map((e) => (
-              <li key={e.slug} className="w-64 shrink-0 snap-start sm:w-auto">
-                <Link
-                  href={placeHref(e.slug, e.place.slug)}
-                  className="group relative block aspect-[4/3] overflow-hidden rounded-2xl"
-                >
-                  <Photo
-                    photoKey={placePhotoKey(e.slug, e.place)}
-                    query={placeQuery(e.place.name, e.city)}
-                    category={e.place.category}
-                    website={e.place.website}
-                    alt={e.place.name}
-                    sizes="(min-width: 640px) 33vw, 256px"
-                    credit={false}
-                    className="size-full transition duration-300 group-hover:scale-105"
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                  <span className="absolute inset-x-0 bottom-0 p-3.5 text-white">
-                    <span className="flex items-center gap-1 text-xs text-white/85">
-                      <MapPin className="size-3.5" aria-hidden /> {e.city}
-                    </span>
-                    <span className="mt-0.5 block font-display text-lg font-semibold leading-snug">
-                      {e.place.name}
-                    </span>
-                    <span className="mt-1 block text-xs text-white/85">
-                      {e.place.creators.length} of {e.of} creators recommend it
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      <StarterRoutes routes={pickStarters(byRoutes, quiz.routes)} total={routes} />
+      {lead && <AgreeStrip city={lead} />}
+      <HowItWorks />
+      <ClosingBand routes={routes} />
     </>
   );
 }

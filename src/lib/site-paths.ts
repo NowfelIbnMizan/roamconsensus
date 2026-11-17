@@ -2,6 +2,7 @@ import { collectionPaths } from "@/lib/collections";
 import { countryHref, getCountries } from "@/lib/countries";
 import { CONSENSUS_PREVIEW } from "@/app/destinations/[slug]/(sections)/preview";
 import { getCreatorHandles, getDestination, getDestinationSlugs, getItineraryDates, getPlaceParams, getPosts } from "@/lib/data";
+import { MIN_ROUTES, VERSUS, versusHref } from "@/lib/versus";
 
 /** City tabs that are worth indexing. */
 export const DESTINATION_TABS = ["", "/best", "/stay", "/when", "/before", "/budget", "/esim", "/compare"];
@@ -46,7 +47,8 @@ export async function siteEntries(): Promise<Entry[]> {
     { path: "/", lastModified: newest },
     ...fixed.map((path) => ({ path })),
     { path: "/itineraries", lastModified: latest(itineraries.map((i) => i.updatedAt)) },
-    { path: "/blog", lastModified: latest(posts.map((p) => p.updatedAt)) },
+    // An empty blog is not a page worth a crawl.
+    ...(posts.length ? [{ path: "/blog", lastModified: latest(posts.map((p) => p.updatedAt)) }] : []),
     ...posts.map((p) => ({ path: `/blog/${p.slug}`, lastModified: p.updatedAt })),
     ...creators.map((c) => ({ path: `/creators/${c.handle}` })),
     ...countries.map((c) => ({
@@ -63,6 +65,12 @@ export async function siteEntries(): Promise<Entry[]> {
         : [],
     ),
     ...cities.flatMap((d) => (d ? collectionPaths(d).map((path) => ({ path, lastModified: d.updatedAt })) : [])),
+    // City-vs-city pages follow whichever of the two cities changed last.
+    ...VERSUS.flatMap(([a, b]) =>
+      [a, b].every((slug) => (cities.find((d) => d?.slug === slug)?.routes.length ?? 0) >= MIN_ROUTES)
+        ? [{ path: versusHref(a, b), lastModified: latest([cityDate.get(a), cityDate.get(b)]) }]
+        : [],
+    ),
     ...itineraries.map((i) => ({ path: `/itineraries/${i.slug}`, lastModified: i.updatedAt })),
     ...places.map((p) => ({ path: `/destinations/${p.slug}/places/${p.place}` })),
   ];

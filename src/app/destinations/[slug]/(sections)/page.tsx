@@ -14,6 +14,7 @@ import {
   getPosts,
   getStays,
 } from "@/lib/data";
+import { CityNext } from "@/components/city-next";
 import { CityNutshell } from "@/components/city-nutshell";
 import { destinationFaq } from "@/lib/faq";
 import { FaqList } from "@/components/faq-list";
@@ -174,6 +175,7 @@ export default async function DestinationPage({
             </article>
           ))}
         </div>
+        <CityNext d={destination} />
       </section>
 
       <CityNutshell d={destination} stays={stays} />

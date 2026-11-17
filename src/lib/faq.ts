@@ -50,7 +50,7 @@ export function destinationFaq(d: Destination, esimPlans: EsimPlanRow[]): Faq[] 
     if (priced.length) {
       const r = priced[0];
       parts.push(
-        `The cheapest fully priced creator route is ${r.creator.name}'s "${r.title}": about ${formatMoney(r.totalCents)} per person for ${r.days} days (${tierLabel[r.tier].toLowerCase()}).`,
+        `The cheapest fully priced creator route is ${r.creator.name}'s "${r.title}": about ${formatMoney(r.totalCents)} per person for ${r.days} ${r.days === 1 ? "day" : "days"} (${tierLabel[r.tier].toLowerCase()}).`,
       );
     }
     faq.push({ q: `How much does a trip to ${d.name} cost?`, a: parts.join(" ") });

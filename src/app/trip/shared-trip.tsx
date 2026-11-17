@@ -64,14 +64,14 @@ export function SharedTripView({ token: given }: { token?: string }) {
         <button
           type="button"
           onClick={save}
-          className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+          className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background"
         >
           <Luggage className="size-4" aria-hidden /> Copy to my trip
         </button>
       </div>
       {stops.length > 0 && (
         <section>
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-semibold">
             <MapIcon className="size-5 text-accent" aria-hidden /> On the map
           </h2>
           <TripMap stops={stops} groups={groups} connect className="h-64 sm:h-80" />

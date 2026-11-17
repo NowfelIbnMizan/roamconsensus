@@ -37,7 +37,7 @@ export function AgreePill({
   return (
     <details className={`group ${className}`}>
       <summary
-        className={`inline-flex cursor-pointer list-none items-center gap-1 py-1 text-xs font-medium hover:underline [&::-webkit-details-marker]:hidden ${
+        className={`inline-flex cursor-pointer list-none items-center gap-1 py-1 text-xs font-medium hover:underline pointer-coarse:py-2 [&::-webkit-details-marker]:hidden ${
           all ? "text-accent" : "text-foreground/75"
         }`}
       >

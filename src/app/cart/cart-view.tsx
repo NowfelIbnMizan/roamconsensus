@@ -100,7 +100,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
         <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
           <Link
             href="/itineraries"
-            className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-background"
           >
             <Search className="size-4" aria-hidden /> Find a route
           </Link>
@@ -207,7 +207,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
           <div className="ml-auto flex flex-wrap items-center gap-2">
             <Link
               href="/today"
-              className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3.5 py-2 text-sm font-medium text-background"
+              className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 text-sm font-medium text-background"
             >
               <Navigation className="size-4" aria-hidden /> Trip mode
             </Link>
@@ -321,7 +321,7 @@ export function CartView({ canEmail = false }: { canEmail?: boolean }) {
 
       {stops.length > 0 && (
         <section className="lg:sticky lg:top-4 lg:col-start-2 lg:row-span-3 lg:row-start-1">
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-semibold">
             <MapIcon className="size-5 text-accent" aria-hidden /> Your trip on the map
           </h2>
           <TripMap stops={stops} groups={groups} connect className="h-64 sm:h-80 lg:h-[calc(100vh-11rem)]" />
